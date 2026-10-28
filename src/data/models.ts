@@ -1,5 +1,7 @@
 import { z } from 'zod';
 import { isValidDayKey } from '../domain/time';
+import { MAX_HEARTS } from '../domain/gamification/hearts';
+export { MAX_HEARTS };
 
 /** Persisted data models. Zod schemas double as validation for import files. */
 
@@ -7,7 +9,6 @@ const dayKey = z.string().refine(isValidDayKey, 'Dia inválido (use AAAA-MM-DD).
 const isoDate = z.string().refine((v) => !Number.isNaN(Date.parse(v)), 'Data inválida.');
 
 export const dailyGoalOptions = [10, 20, 30, 50] as const;
-export const MAX_HEARTS = 5;
 
 export const profileSchema = z.object({
   id: z.literal('me'),

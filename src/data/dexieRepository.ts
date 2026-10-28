@@ -87,6 +87,8 @@ export class DexieRepository implements Repository {
       'rw',
       [db.results, db.lessonProgress, db.daily, db.profile, db.srs, db.achievements],
       async () => {
+        // Idempotent: the same lesson run is never counted twice.
+        if (await db.results.get(validResult.id)) return;
         await db.results.put(validResult);
 
         if (result.kind === 'lesson' || result.kind === 'review') {

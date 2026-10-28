@@ -142,3 +142,16 @@ describe('parseImportFile', () => {
     expect(exportFileName('2026-10-28')).toBe('falae-progresso-2026-10-28.json');
   });
 });
+
+describe('idempotent lesson results', () => {
+  it('ignores a second commit of the same result id', async () => {
+    const repo2 = new DexieRepository({ dbName: `test-idem-${Date.now()}`, nowIso: () => NOW });
+    const o = outcome({ result: result({ id: 'same-run' }) });
+    await repo2.recordLessonResult(o);
+    await repo2.recordLessonResult({ ...o, profile: { ...o.profile, totalXp: 999 } });
+    expect(await repo2.getRecentResults(10)).toHaveLength(1);
+    expect((await repo2.getProfile()).totalXp).toBe(15);
+    expect((await repo2.getDailyStats('2026-10-28', '2026-10-28'))[0]?.xp).toBe(15);
+    repo2.close();
+  });
+});
