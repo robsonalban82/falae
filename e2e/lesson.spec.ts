@@ -159,6 +159,16 @@ async function clickContinue(page: Page) {
 }
 const hearts = (page: Page) => page.getByRole('img', { name: /coraç(ão|ões)$/ });
 
+/** Presses the number key of an option as displayed (options are shuffled per exercise). */
+async function pressOption(page: Page, text: string) {
+  const values = await page
+    .locator('main input[type="radio"]')
+    .evaluateAll((els) => els.map((e) => (e as HTMLInputElement).value));
+  const i = values.indexOf(text);
+  expect(i, `option "${text}" among ${values.join(', ')}`).toBeGreaterThanOrEqual(0);
+  await page.keyboard.press(String(i + 1));
+}
+
 async function tile(page: Page, word: string) {
   await page.getByRole('button', { name: `Adicionar "${word}"` }).click();
 }
@@ -297,7 +307,8 @@ test.describe('lição demo — jogar inteira', () => {
     };
 
     // e01: number key + Enter
-    await page.keyboard.press('1');
+    await expect(page.getByRole('heading', { name: 'Qual destas significa "olá"?' })).toBeVisible();
+    await pressOption(page, 'hello');
     await page.keyboard.press('Enter');
     await expect(feedback(page)).toBeVisible();
     await continueFocusedThenEnter();
@@ -332,7 +343,7 @@ test.describe('lição demo — jogar inteira', () => {
     await continueFocusedThenEnter();
 
     // e05: fill blank with number key
-    await page.keyboard.press('1');
+    await pressOption(page, 'am');
     await page.keyboard.press('Enter');
     await expect(feedback(page)).not.toContainText('Não foi dessa vez');
     await continueFocusedThenEnter();
@@ -360,8 +371,8 @@ test.describe('lição demo — jogar inteira', () => {
     await page.keyboard.press('Enter');
     await continueFocusedThenEnter();
 
-    // e09: second option
-    await page.keyboard.press('2');
+    // e09
+    await pressOption(page, 'thanks');
     await page.keyboard.press('Enter');
     await continueFocusedThenEnter();
 
@@ -783,7 +794,7 @@ test.describe('acessibilidade do feedback (correções da revisão)', () => {
   }) => {
     await page.goto(LESSON);
     await expect(page.getByRole('heading', { name: 'Qual destas significa "olá"?' })).toBeVisible();
-    await page.keyboard.press('1');
+    await pressOption(page, 'hello');
     await page.keyboard.press('Enter');
     await expect(cont(page)).toBeFocused();
     await page.keyboard.press('Enter');

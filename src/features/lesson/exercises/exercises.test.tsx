@@ -22,6 +22,14 @@ function setup(exercise: Exercise, disabled = false) {
   return { ...utils, onChange, onSubmit, onSkip, user: userEvent.setup() };
 }
 
+/** Number key (1–4) for an option, following the order actually displayed (options are shuffled). */
+function keyFor(value: string): string {
+  const values = screen.getAllByRole('radio').map((r) => (r as HTMLInputElement).value);
+  const i = values.indexOf(value);
+  if (i < 0) throw new Error(`option ${value} not shown`);
+  return String(i + 1);
+}
+
 const mc: Exercise = {
   id: 'c-mc',
   type: 'multiple-choice',
@@ -83,7 +91,7 @@ describe('multiple-choice', () => {
     const { user, onChange } = setup(mc);
     const group = screen.getByRole('radiogroup', { name: mc.prompt });
     expect(group).toBeInTheDocument();
-    await user.keyboard('1');
+    await user.keyboard(keyFor('hello'));
     expect(onChange).toHaveBeenLastCalledWith({ kind: 'choice', value: 'hello' });
     expect(screen.getByRole('radio', { name: /hello/ })).toBeChecked();
     await user.click(screen.getByText('thanks'));
@@ -115,8 +123,42 @@ describe('multiple-choice', () => {
   it('number keys still work after an option got focus by click (mixed mouse + keyboard) (fixed)', async () => {
     const { user, onChange } = setup(mc);
     await user.click(screen.getByText('thanks')); // focuses the hidden radio input
-    await user.keyboard('3');
+    await user.keyboard(keyFor('bye'));
     expect(onChange).toHaveBeenLastCalledWith({ kind: 'choice', value: 'bye' });
+  });
+});
+
+describe('option shuffling (seeded by exercise id)', () => {
+  const order = () => screen.getAllByRole('radio').map((r) => (r as HTMLInputElement).value);
+
+  it('shows every option exactly once and keeps the order stable across remounts', () => {
+    const a = setup(mc);
+    const first = order();
+    expect([...first].sort()).toEqual(['bye', 'hello', 'thanks']);
+    a.unmount();
+    setup(mc);
+    expect(order()).toEqual(first);
+  });
+
+  it('the visible number badges match the keys', async () => {
+    const { user, onChange } = setup(mc);
+    const shown = order();
+    for (let i = 0; i < shown.length; i++) {
+      await user.keyboard(String(i + 1));
+      expect(onChange).toHaveBeenLastCalledWith({ kind: 'choice', value: shown[i] });
+      const label = screen.getByRole('radio', { name: new RegExp(shown[i]!) }).closest('label');
+      expect(label).toHaveTextContent(String(i + 1));
+    }
+  });
+
+  it('the right answer is not always first across exercises', () => {
+    const positions = new Set<number>();
+    for (let n = 0; n < 12; n++) {
+      const { unmount } = setup({ ...mc, id: `c-mc-${n}` });
+      positions.add(order().indexOf('hello'));
+      unmount();
+    }
+    expect(positions.size).toBeGreaterThan(1);
   });
 });
 
@@ -124,7 +166,7 @@ describe('fill-blank', () => {
   it('shows the chosen word in the gap and the translation', async () => {
     const { user, onChange } = setup(fill);
     expect(screen.getByText(/Eu tenho trinta anos/)).toBeInTheDocument();
-    await user.keyboard('1');
+    await user.keyboard(keyFor('am'));
     expect(onChange).toHaveBeenLastCalledWith({ kind: 'choice', value: 'am' });
     const sentence = screen.getByText(
       (_, el) => el?.tagName === 'P' && /^I\s*am\s*thirty/.test(el.textContent ?? ''),

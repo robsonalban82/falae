@@ -130,6 +130,15 @@ describe('números', () => {
     expect(verdict(translate(['São duas horas']), 'são 2 horas')).toBe('correct');
   });
 
+  it('Brazilian time formats: "8h" = "8", "8h30" = "8:30", "7:00" = "7"', () => {
+    expect(normalize('às 8h', 'pt')).toBe(normalize('às 8', 'pt'));
+    expect(normalize('8h30', 'pt')).toBe(normalize('8:30', 'pt'));
+    expect(normalize('at 7:00', 'en')).toBe(normalize('at 7', 'en'));
+    expect(verdict(translate(['Eu acordo às 7h']), 'eu acordo as 7:00')).toBe('correct');
+    expect(verdict(translate(['Eu acordo às 7h']), 'eu acordo às 8h')).toBe('wrong');
+    expect(verdict(translate(['Eu acordo às 7h30']), 'eu acordo às 7h')).toBe('wrong');
+  });
+
   it('time 5:30 equals "5 30"', () => {
     expect(verdict(listen("It's 5:30."), 'It is 5 30')).toBe('correct');
   });
