@@ -15,7 +15,8 @@
     "e2e": "playwright test --grep-invert @screens",
     "screenshots": "playwright test e2e/screenshots.spec.ts",
     "validate:content": "tsx scripts/validate-content.ts",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "dev:demo": "VITE_DEMO=1 vite"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible": "^5.3.0",

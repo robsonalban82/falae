@@ -30,7 +30,7 @@ export default defineConfig({
   // Production build (with the service worker) so offline/PWA behaviour is real.
   webServer: {
     command: `npx vite build && npx vite preview --port ${PORT} --strictPort`,
-    env: { VITE_E2E: '1' },
+    env: { VITE_E2E: '1', VITE_DEMO: '1' },
     port: PORT,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
