@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildCourse } from '../src/content/course';
+import { pedagogyIssues } from '../src/content/pedagogy';
 
 const dir = join(import.meta.dirname, '..', 'src', 'content', 'units');
 const files = (existsSync(dir) ? readdirSync(dir) : []).filter((f) => f.endsWith('.json')).sort();
@@ -21,7 +22,8 @@ for (const file of files) {
   }
 }
 
-const { course, errors } = buildCourse(raw);
+const { course, errors: schemaErrors } = buildCourse(raw);
+const errors = [...schemaErrors, ...course.units.flatMap(pedagogyIssues)];
 for (const line of errors) console.error(`✗ ${line}`);
 
 const exercises = course.units.reduce(
