@@ -1,13 +1,14 @@
 import { z } from 'zod';
 import { expandPattern, PatternError } from '../domain/grading/patterns';
 export { formatIssues } from '../lib/zodIssues';
+import { BLANK } from '../domain/grading/blank';
+export { BLANK };
 
 /** MVP shape: every unit has 4 skills × 3 lessons, lessons have 10–15 exercises. */
 export const SKILLS_PER_UNIT = 4;
 export const LESSONS_PER_SKILL = 3;
 export const MIN_EXERCISES = 10;
 export const MAX_EXERCISES = 15;
-export const BLANK = '___';
 
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'Use ids em kebab-case (ex.: u1-hello).');
 const text = z.string().trim().min(1, 'Texto vazio.');

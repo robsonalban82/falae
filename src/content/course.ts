@@ -1,3 +1,4 @@
+import { collectKnownWords } from '../domain/grading/grade';
 import {
   courseIssues,
   formatIssues,
@@ -24,6 +25,8 @@ export type Course = {
   units: Unit[];
   items: Map<string, StudyItem>;
   lessons: Map<string, LessonRef>;
+  /** Normalized words of the whole course; blocks false "almost right" matches. */
+  knownWords: ReadonlySet<string>;
 };
 
 export type BuildResult = { course: Course; errors: string[] };
@@ -73,5 +76,36 @@ function indexCourse(units: Unit[]): Course {
     }
     lessons.set(unit.reviewLesson.id, { lesson: unit.reviewLesson, unit, skill: null, index: -1 });
   }
-  return { units, items, lessons };
+  return { units, items, lessons, knownWords: collectKnownWords(courseTexts(units)) };
+}
+
+function* courseTexts(units: Unit[]): Generator<{ text: string; lang: 'en' | 'pt' }> {
+  for (const unit of units) {
+    for (const skill of unit.skills) {
+      for (const v of skill.vocab) {
+        yield { text: v.en, lang: 'en' };
+        for (const pt of v.pt) yield { text: pt, lang: 'pt' };
+        yield { text: v.example.en, lang: 'en' };
+        yield { text: v.example.pt, lang: 'pt' };
+      }
+      for (const s of skill.sentences) {
+        yield { text: s.en, lang: 'en' };
+        yield { text: s.pt, lang: 'pt' };
+      }
+    }
+    for (const lesson of [...unit.skills.flatMap((s) => s.lessons), unit.reviewLesson]) {
+      for (const ex of lesson.exercises) {
+        if (ex.type === 'multiple-choice')
+          for (const o of ex.options) yield { text: o.text, lang: 'en' };
+        if (ex.type === 'word-bank') for (const d of ex.distractors) yield { text: d, lang: 'en' };
+        if (ex.type === 'fill-blank') for (const o of ex.options) yield { text: o, lang: 'en' };
+        if (ex.type === 'match-pairs') {
+          for (const p of ex.pairs) {
+            yield { text: p.en, lang: 'en' };
+            yield { text: p.pt, lang: 'pt' };
+          }
+        }
+      }
+    }
+  }
 }
