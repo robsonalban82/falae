@@ -90,6 +90,8 @@ Todo exercício pode ter `explanation` (PT, ≤ 2 frases) mostrada quando o alun
 1. **Apresente antes de cobrar**: palavra nova aparece primeiro em `multiple-choice` ou `match-pairs`, só depois em `word-bank`/digitação.
 2. **Lição tem 10–15 exercícios**, pelo menos 4 tipos diferentes, no máximo 1 `speak` a cada 5 exercícios e no máximo 2 `listen-type` por lição.
 3. **No máximo 4 palavras novas por lição.** Lição 3 da habilidade é quase só revisão/combinação.
+   Exceções aceitas pelo revisor linguístico: (a) um bloco de números com padrão (ex.: 6–10, 40/50/60) conta como 1–2 palavras novas; (b) um verbo-estrutura indispensável para as frases da lição (ex.: _have_) pode ser a 5ª palavra, desde que apresentado em múltipla escolha antes de ser cobrado.
+   Ditados (`listen-type`) não levam `accepted` com palavras diferentes do áudio: só contrações/pontuação, que o corretor já resolve. Não use emojis que entreguem a resposta (✅/❌/❓, números alinhados ao PT como 2️⃣ para "segunda").
 4. **Distratores plausíveis**, mas nunca corretos também (cuidado com sinônimos!).
 5. **Frases reais**: o que um americano diria de verdade. Contrações são o padrão na fala ("I'm", "don't").
 6. **Contexto brasileiro** ajuda: nomes (Ana, João, Thiago), cidades, comidas (pão de queijo, açaí) — mas o inglês tem que soar natural.
