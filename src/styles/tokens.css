@@ -1,0 +1,102 @@
+/*
+ * Falaê design tokens. Raw values live here; Tailwind maps them in index.css.
+ * Contrast pairs are checked by src/styles/tokens.test.ts (WCAG AA).
+ */
+:root {
+  --bg: #fff8ef; /* areia */
+  --surface: #ffffff;
+  --surface-2: #fcefdd;
+  --ink: #1b1c33;
+  --ink-muted: #5b5a6e;
+  --line: #e8dcca;
+  --line-strong: #8c7c66; /* borders that must be seen (3:1) */
+
+  --progress-fill: #c75f00;
+  --progress-track: #fcefdd;
+
+  --primary: #ff8a1f; /* manga */
+  --primary-shade: #c75f00;
+  --on-primary: #1b1c33;
+
+  --secondary: #3b3fb6; /* anil */
+  --secondary-shade: #262987;
+  --on-secondary: #ffffff;
+
+  --success: #0f7a37; /* folha */
+  --success-soft: #ddf5e3;
+  --success-shade: #0a5c29;
+  --on-success: #ffffff;
+
+  --danger: #b42318; /* acerola */
+  --danger-soft: #fde4e2;
+  --danger-shade: #8a1a12;
+  --on-danger: #ffffff;
+
+  --xp: #f5c518; /* maracujá */
+  --on-xp: #1b1c33;
+
+  --focus: #3b3fb6;
+  --shadow: 27 28 51;
+
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #14152b; /* noite */
+  --surface: #1e2040;
+  --surface-2: #282b52;
+  --ink: #f4f1ea;
+  --ink-muted: #b6b4c8;
+  --line: #3a3d68;
+  --line-strong: #7a7caa;
+
+  --progress-fill: #ff9a3d;
+  --progress-track: #282b52;
+
+  --primary: #ff9a3d;
+  --primary-shade: #c75f00;
+  --on-primary: #14152b;
+
+  --secondary: #9a9dff;
+  --secondary-shade: #5b5fd6;
+  --on-secondary: #14152b;
+
+  --success: #5be08c;
+  --success-soft: #133524;
+  --success-shade: #2f9e5a;
+  --on-success: #14152b;
+
+  --danger: #ff8f8a;
+  --danger-soft: #3d1719;
+  --danger-shade: #c9443d;
+  --on-danger: #14152b;
+
+  --xp: #f5c518;
+  --on-xp: #14152b;
+
+  --focus: #ffb566;
+  --shadow: 0 0 0;
+
+  color-scheme: dark;
+}
+
+/* Mascot (Tuca) — same art in both themes, body lifted slightly in dark mode. */
+:root {
+  --tuca-body: #2f33a3;
+  --tuca-body-shade: #22257d;
+  --tuca-chest: #ffd23f;
+  --tuca-bib: #fff4d6;
+  --tuca-beak-ridge: #ffb36b;
+  --tuca-beak-top: #ff8a1f;
+  --tuca-beak-bottom: #2fb36b;
+  --tuca-beak-tip: #1b1c33;
+  --tuca-eye: #ffffff;
+  --tuca-pupil: #1b1c33;
+  --tuca-ring: #7fd3ff;
+  --tuca-feet: #ff8a1f;
+  --tuca-cheek: #ff7a9a;
+}
+.dark {
+  --tuca-body: #6a6ff0;
+  --tuca-body-shade: #4c51cc;
+}

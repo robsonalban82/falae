@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-progress-fill: var(--progress-fill);
+  --color-progress-track: var(--progress-track);
+  --color-primary: var(--primary);
+  --color-primary-shade: var(--primary-shade);
+  --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-secondary-shade: var(--secondary-shade);
+  --color-on-secondary: var(--on-secondary);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-shade: var(--success-shade);
+  --color-on-success: var(--on-success);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-shade: var(--danger-shade);
+  --color-on-danger: var(--on-danger);
+  --color-xp: var(--xp);
+  --color-on-xp: var(--on-xp);
+  --color-focus: var(--focus);
+
+  --color-tuca-body: var(--tuca-body);
+  --color-tuca-body-shade: var(--tuca-body-shade);
+  --color-tuca-chest: var(--tuca-chest);
+  --color-tuca-bib: var(--tuca-bib);
+  --color-tuca-beak-ridge: var(--tuca-beak-ridge);
+  --color-tuca-beak-top: var(--tuca-beak-top);
+  --color-tuca-beak-bottom: var(--tuca-beak-bottom);
+  --color-tuca-beak-tip: var(--tuca-beak-tip);
+  --color-tuca-eye: var(--tuca-eye);
+  --color-tuca-pupil: var(--tuca-pupil);
+  --color-tuca-ring: var(--tuca-ring);
+  --color-tuca-feet: var(--tuca-feet);
+  --color-tuca-cheek: var(--tuca-cheek);
+
+  --font-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-ink font-body antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    line-height: 1.15;
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em); /* avoids iOS zoom */
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
