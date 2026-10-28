@@ -1,0 +1,3051 @@
+{
+  "id": "u3-unit",
+  "order": 3,
+  "title": "Comida e restaurante",
+  "description": "Peça comida e bebida com educação, se vire no restaurante e diga do que você gosta.",
+  "color": "folha",
+  "skills": [
+    {
+      "id": "u3-sk1",
+      "title": "Comida",
+      "icon": "🍞",
+      "tip": {
+        "title": "A ou an? E o plural",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Use **a** antes de som de consoante e **an** antes de som de vogal: **a** banana, **an** apple, **an** egg."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "an egg",
+                "pt": "um ovo"
+              },
+              {
+                "en": "an apple",
+                "pt": "uma maçã"
+              },
+              {
+                "en": "a banana",
+                "pt": "uma banana"
+              },
+              {
+                "en": "two eggs",
+                "pt": "dois ovos"
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "a egg",
+            "right": "an egg",
+            "why": "Egg começa com som de vogal, então pede \"an\". Fica até mais fácil de falar."
+          },
+          {
+            "kind": "text",
+            "md": "Plural: quase sempre é só pôr **-s**: egg → eggs, apple → apples. Já **rice**, **bread** e **cheese** não usam a/an nem plural."
+          },
+          {
+            "kind": "text",
+            "md": "Feijão fica no plural: **beans**. E pão de queijo é **cheese bread** (nos EUA, muitas vezes \"Brazilian cheese bread\"): o tipo vem antes."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u3-bread",
+          "en": "bread",
+          "pt": ["pão"],
+          "example": {
+            "en": "This bread is really good.",
+            "pt": "Este pão é muito bom."
+          },
+          "emoji": "🍞",
+          "difficulty": 1,
+          "notes": "Bread não leva \"a\": diga só \"bread\" ou \"some bread\"."
+        },
+        {
+          "id": "u3-cheese",
+          "en": "cheese",
+          "pt": ["queijo"],
+          "example": {
+            "en": "The cheese is from Minas.",
+            "pt": "O queijo é de Minas."
+          },
+          "emoji": "🧀",
+          "difficulty": 1
+        },
+        {
+          "id": "u3-egg",
+          "en": "egg",
+          "pt": ["ovo"],
+          "example": {
+            "en": "Two eggs, please.",
+            "pt": "Dois ovos, por favor."
+          },
+          "emoji": "🥚",
+          "difficulty": 1,
+          "notes": "Começa com som de vogal: an egg."
+        },
+        {
+          "id": "u3-apple",
+          "en": "apple",
+          "pt": ["maçã"],
+          "example": {
+            "en": "This is an apple.",
+            "pt": "Isto é uma maçã."
+          },
+          "emoji": "🍎",
+          "difficulty": 1,
+          "notes": "Começa com som de vogal: an apple."
+        },
+        {
+          "id": "u3-rice",
+          "en": "rice",
+          "pt": ["arroz"],
+          "example": {
+            "en": "Rice and beans, please.",
+            "pt": "Arroz e feijão, por favor."
+          },
+          "emoji": "🍚",
+          "difficulty": 1,
+          "notes": "Pronúncia: \"ráis\"."
+        },
+        {
+          "id": "u3-beans",
+          "en": "beans",
+          "pt": ["feijão"],
+          "acceptedPt": ["feijões"],
+          "example": {
+            "en": "I eat rice and beans.",
+            "pt": "Eu como arroz e feijão."
+          },
+          "emoji": "🫘",
+          "difficulty": 1,
+          "notes": "Em inglês fica no plural: rice and beans."
+        },
+        {
+          "id": "u3-banana",
+          "en": "banana",
+          "pt": ["banana"],
+          "example": {
+            "en": "The bananas are small.",
+            "pt": "As bananas são pequenas."
+          },
+          "emoji": "🍌",
+          "difficulty": 1,
+          "notes": "Pronúncia: \"bâ-NÉ-nâ\", com a tônica no meio."
+        },
+        {
+          "id": "u3-chicken",
+          "en": "chicken",
+          "pt": ["frango"],
+          "acceptedPt": ["galinha"],
+          "example": {
+            "en": "Chicken with rice, please.",
+            "pt": "Frango com arroz, por favor."
+          },
+          "emoji": "🍗",
+          "difficulty": 1
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u3-s-this-is-an-apple",
+          "en": "This is an apple.",
+          "pt": "Isto é uma maçã.",
+          "acceptedEn": ["[This is|It's] an apple"],
+          "acceptedPt": ["[Isto|Isso|Esta|Essa] é uma maçã", "É uma maçã"],
+          "difficulty": 2,
+          "focus": "artigo"
+        },
+        {
+          "id": "u3-s-an-egg-and-a-banana",
+          "en": "An egg and a banana, please.",
+          "pt": "Um ovo e uma banana, por favor.",
+          "acceptedEn": ["An egg and a banana, please", "A banana and an egg, please"],
+          "acceptedPt": ["Um ovo e uma banana, por favor", "Uma banana e um ovo, por favor"],
+          "difficulty": 2,
+          "focus": "artigo"
+        },
+        {
+          "id": "u3-s-two-eggs",
+          "en": "Two eggs, please.",
+          "pt": "Dois ovos, por favor.",
+          "acceptedEn": ["[Two|2] eggs, please"],
+          "acceptedPt": ["[Dois|2] ovos, por favor"],
+          "difficulty": 1,
+          "focus": "plural"
+        },
+        {
+          "id": "u3-s-rice-and-beans",
+          "en": "Rice and beans, please.",
+          "pt": "Arroz e feijão, por favor.",
+          "acceptedEn": ["[Rice and beans|Beans and rice], please"],
+          "acceptedPt": ["[Arroz e feijão|Feijão e arroz], por favor"],
+          "difficulty": 1,
+          "focus": "plural"
+        },
+        {
+          "id": "u3-s-chicken-with-rice",
+          "en": "Chicken with rice, please.",
+          "pt": "Frango com arroz, por favor.",
+          "acceptedPt": ["Frango com arroz, por favor"],
+          "difficulty": 1
+        },
+        {
+          "id": "u3-s-cheese-bread-is-good",
+          "en": "This cheese bread is really good.",
+          "pt": "Este pão de queijo é muito bom.",
+          "acceptedEn": ["[This|The] cheese bread is [really|very|so] good"],
+          "acceptedPt": [
+            "[Este|Esse|O] pão de queijo é [muito bom|muito gostoso|uma delícia|ótimo|bom demais]"
+          ],
+          "difficulty": 3,
+          "focus": "ordem-adjetivo"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u3-sk1-l1",
+          "title": "Pão, queijo, ovo e maçã",
+          "exercises": [
+            {
+              "id": "u3-sk1-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-bread"],
+              "prompt": "Qual destas é \"pão\"?",
+              "options": [
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                },
+                {
+                  "text": "cheese",
+                  "emoji": "🧀"
+                },
+                {
+                  "text": "egg",
+                  "emoji": "🥚"
+                }
+              ],
+              "answer": "bread"
+            },
+            {
+              "id": "u3-sk1-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-cheese"],
+              "prompt": "Qual destas é \"queijo\"?",
+              "options": [
+                {
+                  "text": "apple",
+                  "emoji": "🍎"
+                },
+                {
+                  "text": "cheese",
+                  "emoji": "🧀"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                }
+              ],
+              "answer": "cheese"
+            },
+            {
+              "id": "u3-sk1-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-egg"],
+              "prompt": "Qual destas é \"ovo\"?",
+              "options": [
+                {
+                  "text": "cheese",
+                  "emoji": "🧀"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                },
+                {
+                  "text": "egg",
+                  "emoji": "🥚"
+                }
+              ],
+              "answer": "egg"
+            },
+            {
+              "id": "u3-sk1-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u3-apple"],
+              "prompt": "Qual destas é \"maçã\"?",
+              "options": [
+                {
+                  "text": "apple",
+                  "emoji": "🍎"
+                },
+                {
+                  "text": "egg",
+                  "emoji": "🥚"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                }
+              ],
+              "answer": "apple"
+            },
+            {
+              "id": "u3-sk1-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u3-bread", "u3-cheese", "u3-egg", "u3-apple"],
+              "pairs": [
+                {
+                  "en": "bread",
+                  "pt": "pão"
+                },
+                {
+                  "en": "cheese",
+                  "pt": "queijo"
+                },
+                {
+                  "en": "egg",
+                  "pt": "ovo"
+                },
+                {
+                  "en": "apple",
+                  "pt": "maçã"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk1-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u3-apple", "u3-s-this-is-an-apple"],
+              "sentence": "This is ___ apple.",
+              "options": ["a", "an", "is"],
+              "answer": "an",
+              "translationPt": "Isto é uma maçã.",
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l1-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u3-egg"],
+              "prompt": "Como se diz \"um ovo\"?",
+              "options": [
+                {
+                  "text": "an egg",
+                  "emoji": "🥚"
+                },
+                {
+                  "text": "a egg"
+                },
+                {
+                  "text": "one eggs"
+                }
+              ],
+              "answer": "an egg",
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l1-e08",
+              "type": "word-bank",
+              "itemIds": ["u3-s-this-is-an-apple"],
+              "promptPt": "Isto é uma maçã.",
+              "answer": "This is an apple.",
+              "accepted": ["[This is|It's] an apple"],
+              "distractors": ["a", "have", "egg"],
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l1-e09",
+              "type": "fill-blank",
+              "itemIds": ["u3-egg", "u3-s-two-eggs"],
+              "sentence": "Two ___, please.",
+              "options": ["egg", "eggs", "an egg"],
+              "answer": "eggs",
+              "translationPt": "Dois ovos, por favor.",
+              "explanation": "Depois de two, three… a palavra vai para o plural: two eggs, two bananas."
+            },
+            {
+              "id": "u3-sk1-l1-e10",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-two-eggs"],
+              "promptEn": "Two eggs, please.",
+              "accepted": ["[Dois|2] ovos, por favor"],
+              "explanation": "Depois de two, three… a palavra vai para o plural: two eggs, two bananas."
+            },
+            {
+              "id": "u3-sk1-l1-e11",
+              "type": "listen-type",
+              "itemIds": ["u3-egg"],
+              "textEn": "This is an egg.",
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l1-e12",
+              "type": "speak",
+              "itemIds": ["u3-bread", "u3-cheese"],
+              "textEn": "Bread and cheese, please."
+            },
+            {
+              "id": "u3-sk1-l1-e13",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-this-is-an-apple"],
+              "promptEn": "This is an apple.",
+              "accepted": ["[Isto|Isso|Esta|Essa] é uma maçã", "É uma maçã"],
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            }
+          ]
+        },
+        {
+          "id": "u3-sk1-l2",
+          "title": "Arroz, feijão e frango",
+          "exercises": [
+            {
+              "id": "u3-sk1-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-rice"],
+              "prompt": "Qual destas é \"arroz\"?",
+              "options": [
+                {
+                  "text": "rice",
+                  "emoji": "🍚"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                },
+                {
+                  "text": "cheese",
+                  "emoji": "🧀"
+                }
+              ],
+              "answer": "rice"
+            },
+            {
+              "id": "u3-sk1-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-beans"],
+              "prompt": "Qual destas é \"feijão\"?",
+              "options": [
+                {
+                  "text": "egg",
+                  "emoji": "🥚"
+                },
+                {
+                  "text": "beans",
+                  "emoji": "🫘"
+                },
+                {
+                  "text": "rice",
+                  "emoji": "🍚"
+                }
+              ],
+              "answer": "beans",
+              "explanation": "Feijão em inglês fica no plural: beans. \"Rice and beans\" = arroz e feijão."
+            },
+            {
+              "id": "u3-sk1-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-chicken"],
+              "prompt": "Qual destas é \"frango\"?",
+              "options": [
+                {
+                  "text": "banana",
+                  "emoji": "🍌"
+                },
+                {
+                  "text": "apple",
+                  "emoji": "🍎"
+                },
+                {
+                  "text": "chicken",
+                  "emoji": "🍗"
+                }
+              ],
+              "answer": "chicken"
+            },
+            {
+              "id": "u3-sk1-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u3-rice", "u3-beans", "u3-chicken", "u3-banana"],
+              "pairs": [
+                {
+                  "en": "rice",
+                  "pt": "arroz"
+                },
+                {
+                  "en": "beans",
+                  "pt": "feijão"
+                },
+                {
+                  "en": "chicken",
+                  "pt": "frango"
+                },
+                {
+                  "en": "banana",
+                  "pt": "banana"
+                },
+                {
+                  "en": "egg",
+                  "pt": "ovo"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk1-l2-e05",
+              "type": "fill-blank",
+              "itemIds": ["u3-beans", "u3-s-rice-and-beans"],
+              "sentence": "Rice and ___, please.",
+              "options": ["bean", "beans", "a bean"],
+              "answer": "beans",
+              "translationPt": "Arroz e feijão, por favor.",
+              "explanation": "Feijão em inglês fica no plural: beans. \"Rice and beans\" = arroz e feijão."
+            },
+            {
+              "id": "u3-sk1-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u3-s-rice-and-beans"],
+              "promptPt": "Arroz e feijão, por favor.",
+              "answer": "Rice and beans, please.",
+              "accepted": ["[Rice and beans|Beans and rice], please"],
+              "distractors": ["bean", "with", "a"],
+              "explanation": "Feijão em inglês fica no plural: beans. \"Rice and beans\" = arroz e feijão."
+            },
+            {
+              "id": "u3-sk1-l2-e07",
+              "type": "fill-blank",
+              "itemIds": ["u3-banana"],
+              "sentence": "This is ___ banana.",
+              "options": ["a", "an", "two"],
+              "answer": "a",
+              "translationPt": "Isto é uma banana.",
+              "explanation": "Banana começa com som de consoante (b), então é \"a banana\"."
+            },
+            {
+              "id": "u3-sk1-l2-e08",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-chicken-with-rice"],
+              "promptEn": "Chicken with rice, please.",
+              "accepted": ["Frango com arroz, por favor"]
+            },
+            {
+              "id": "u3-sk1-l2-e09",
+              "type": "word-bank",
+              "itemIds": ["u3-s-chicken-with-rice"],
+              "promptPt": "Frango com arroz, por favor.",
+              "answer": "Chicken with rice, please.",
+              "distractors": ["for", "of", "egg"]
+            },
+            {
+              "id": "u3-sk1-l2-e10",
+              "type": "listen-type",
+              "itemIds": ["u3-s-rice-and-beans"],
+              "textEn": "Rice and beans, please.",
+              "explanation": "Feijão em inglês fica no plural: beans. \"Rice and beans\" = arroz e feijão."
+            },
+            {
+              "id": "u3-sk1-l2-e11",
+              "type": "multiple-choice",
+              "itemIds": ["u3-egg", "u3-s-two-eggs"],
+              "prompt": "Como se diz \"dois ovos\"?",
+              "options": [
+                {
+                  "text": "two eggs",
+                  "emoji": "🥚"
+                },
+                {
+                  "text": "two egg"
+                },
+                {
+                  "text": "a eggs"
+                }
+              ],
+              "answer": "two eggs",
+              "explanation": "Depois de two, three… a palavra vai para o plural: two eggs, two bananas."
+            },
+            {
+              "id": "u3-sk1-l2-e12",
+              "type": "speak",
+              "itemIds": ["u3-s-chicken-with-rice"],
+              "textEn": "Chicken with rice, please."
+            },
+            {
+              "id": "u3-sk1-l2-e13",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-an-egg-and-a-banana"],
+              "promptEn": "An egg and a banana, please.",
+              "accepted": ["Um ovo e uma banana, por favor", "Uma banana e um ovo, por favor"],
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            }
+          ]
+        },
+        {
+          "id": "u3-sk1-l3",
+          "title": "Pão de queijo!",
+          "exercises": [
+            {
+              "id": "u3-sk1-l3-e01",
+              "type": "match-pairs",
+              "itemIds": ["u3-bread", "u3-cheese", "u3-rice", "u3-beans", "u3-chicken"],
+              "pairs": [
+                {
+                  "en": "bread",
+                  "pt": "pão"
+                },
+                {
+                  "en": "cheese",
+                  "pt": "queijo"
+                },
+                {
+                  "en": "rice",
+                  "pt": "arroz"
+                },
+                {
+                  "en": "beans",
+                  "pt": "feijão"
+                },
+                {
+                  "en": "chicken",
+                  "pt": "frango"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk1-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-cheese-bread-is-good"],
+              "prompt": "Como se diz \"pão de queijo\" em inglês?",
+              "options": [
+                {
+                  "text": "cheese bread",
+                  "emoji": "🧀"
+                },
+                {
+                  "text": "bread cheese",
+                  "emoji": "🍞"
+                },
+                {
+                  "text": "bread of cheese"
+                }
+              ],
+              "answer": "cheese bread",
+              "explanation": "Em inglês o \"tipo\" vem antes: cheese bread = pão de queijo (nada de \"bread of cheese\")."
+            },
+            {
+              "id": "u3-sk1-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-cheese-bread-is-good"],
+              "prompt": "O que significa \"really good\"?",
+              "options": [
+                {
+                  "text": "muito bom",
+                  "emoji": "😋"
+                },
+                {
+                  "text": "mais ou menos"
+                },
+                {
+                  "text": "não é bom"
+                }
+              ],
+              "answer": "muito bom",
+              "explanation": "\"Really\" reforça o adjetivo, como \"muito\": really good = muito bom."
+            },
+            {
+              "id": "u3-sk1-l3-e04",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-an-egg-and-a-banana"],
+              "sentence": "___ egg and a banana, please.",
+              "options": ["A", "An", "Two"],
+              "answer": "An",
+              "translationPt": "Um ovo e uma banana, por favor.",
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l3-e05",
+              "type": "word-bank",
+              "itemIds": ["u3-s-cheese-bread-is-good"],
+              "promptPt": "Este pão de queijo é muito bom.",
+              "answer": "This cheese bread is really good.",
+              "accepted": ["[This|The] cheese bread is [really|very|so] good"],
+              "distractors": ["of", "are", "an"],
+              "explanation": "Em inglês o \"tipo\" vem antes: cheese bread = pão de queijo (nada de \"bread of cheese\")."
+            },
+            {
+              "id": "u3-sk1-l3-e06",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-rice-and-beans"],
+              "promptEn": "Rice and beans, please.",
+              "accepted": ["[Arroz e feijão|Feijão e arroz], por favor"],
+              "explanation": "Feijão em inglês fica no plural: beans. \"Rice and beans\" = arroz e feijão."
+            },
+            {
+              "id": "u3-sk1-l3-e07",
+              "type": "listen-type",
+              "itemIds": ["u3-s-two-eggs"],
+              "textEn": "Two eggs, please.",
+              "explanation": "Depois de two, three… a palavra vai para o plural: two eggs, two bananas."
+            },
+            {
+              "id": "u3-sk1-l3-e08",
+              "type": "fill-blank",
+              "itemIds": ["u3-banana"],
+              "sentence": "Two ___, please.",
+              "options": ["banana", "bananas", "a banana"],
+              "answer": "bananas",
+              "translationPt": "Duas bananas, por favor.",
+              "explanation": "Depois de two, three… a palavra vai para o plural: two eggs, two bananas."
+            },
+            {
+              "id": "u3-sk1-l3-e09",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-cheese-bread-is-good"],
+              "promptEn": "This cheese bread is really good.",
+              "accepted": [
+                "[Este|Esse|O] pão de queijo é [muito bom|muito gostoso|uma delícia|ótimo|bom demais]"
+              ],
+              "explanation": "Em inglês o \"tipo\" vem antes: cheese bread = pão de queijo (nada de \"bread of cheese\")."
+            },
+            {
+              "id": "u3-sk1-l3-e10",
+              "type": "word-bank",
+              "itemIds": ["u3-s-an-egg-and-a-banana"],
+              "promptPt": "Um ovo e uma banana, por favor.",
+              "answer": "An egg and a banana, please.",
+              "accepted": ["An egg and a banana, please", "A banana and an egg, please"],
+              "distractors": ["eggs", "with", "is"],
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l3-e11",
+              "type": "speak",
+              "itemIds": ["u3-s-rice-and-beans"],
+              "textEn": "Rice and beans, please."
+            },
+            {
+              "id": "u3-sk1-l3-e12",
+              "type": "multiple-choice",
+              "itemIds": ["u3-apple", "u3-banana"],
+              "prompt": "Qual está certo?",
+              "options": [
+                {
+                  "text": "an apple",
+                  "emoji": "🍎"
+                },
+                {
+                  "text": "a apple"
+                },
+                {
+                  "text": "an banana"
+                }
+              ],
+              "answer": "an apple",
+              "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+            },
+            {
+              "id": "u3-sk1-l3-e13",
+              "type": "translate-typing",
+              "itemIds": ["u3-bread", "u3-cheese"],
+              "promptEn": "Bread and cheese, please.",
+              "accepted": ["[Pão e queijo|Queijo e pão], por favor"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u3-sk2",
+      "title": "Bebidas",
+      "icon": "☕",
+      "tip": {
+        "title": "Pedindo com educação: I'd like… / Can I have…?",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Para pedir algo, use **I'd like…** (eu queria…) ou **Can I have…?** (pode me ver…?). E não esqueça o **please**."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I'd like a coffee, please.",
+                "pt": "Eu queria um café, por favor."
+              },
+              {
+                "en": "Can I have some water, please?",
+                "pt": "Pode me trazer uma água, por favor?"
+              },
+              {
+                "en": "Tea with milk, please.",
+                "pt": "Chá com leite, por favor."
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I want a coffee.",
+            "right": "I'd like a coffee, please.",
+            "why": "\"I want\" soa seco num pedido. \"I'd like\" é o jeito educado."
+          },
+          {
+            "kind": "text",
+            "md": "Vogal longa × curta muda a palavra: **eat** (comer, \"iiit\") × **it** (isso, curtinho). **tea** (chá, \"tiii\") × **tip** (gorjeta, curtinho)."
+          },
+          {
+            "kind": "text",
+            "md": "**a coffee** = um café (uma xícara). **some water** = uma água, um pouco de água."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u3-water",
+          "en": "water",
+          "pt": ["água"],
+          "example": {
+            "en": "Can I have some water, please?",
+            "pt": "Pode me trazer uma água, por favor?"
+          },
+          "emoji": "💧",
+          "difficulty": 1,
+          "notes": "No inglês americano, o t soa como o r de \"caro\": \"UÓ-rer\"."
+        },
+        {
+          "id": "u3-coffee",
+          "en": "coffee",
+          "pt": ["café"],
+          "example": {
+            "en": "I'd like a coffee, please.",
+            "pt": "Eu queria um café, por favor."
+          },
+          "emoji": "☕",
+          "difficulty": 1,
+          "notes": "A tônica é no começo: \"CÓ-fi\"."
+        },
+        {
+          "id": "u3-tea",
+          "en": "tea",
+          "pt": ["chá"],
+          "example": {
+            "en": "Tea with milk, please.",
+            "pt": "Chá com leite, por favor."
+          },
+          "emoji": "🍵",
+          "difficulty": 1,
+          "focus": "vogal-longa-curta",
+          "notes": "Tea tem \"i\" longo: \"tiii\". Tip (gorjeta) é curto."
+        },
+        {
+          "id": "u3-juice",
+          "en": "juice",
+          "pt": ["suco"],
+          "example": {
+            "en": "I'd like an orange juice.",
+            "pt": "Eu queria um suco de laranja."
+          },
+          "emoji": "🧃",
+          "difficulty": 1,
+          "notes": "Pronúncia: \"djuuss\"."
+        },
+        {
+          "id": "u3-milk",
+          "en": "milk",
+          "pt": ["leite"],
+          "example": {
+            "en": "Coffee with milk, please.",
+            "pt": "Café com leite, por favor."
+          },
+          "emoji": "🥛",
+          "difficulty": 1
+        },
+        {
+          "id": "u3-eat",
+          "en": "eat",
+          "pt": ["comer"],
+          "example": {
+            "en": "I eat rice and beans.",
+            "pt": "Eu como arroz e feijão."
+          },
+          "emoji": "🍴",
+          "difficulty": 2,
+          "focus": "vogal-longa-curta",
+          "notes": "Eat tem \"i\" longo: \"iiit\". It (isso) é curto."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u3-s-id-like-a-coffee",
+          "en": "I'd like a coffee, please.",
+          "pt": "Eu queria um café, por favor.",
+          "acceptedEn": ["I'd like [a|one] coffee, please"],
+          "acceptedPt": [
+            "(Eu) [queria|gostaria de|vou querer] um café, por favor",
+            "Um café, por favor",
+            "Me [vê|traz|dá] um café, por favor"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u3-s-can-i-have-some-water",
+          "en": "Can I have some water, please?",
+          "pt": "Pode me trazer uma água, por favor?",
+          "acceptedEn": ["Can I [have|get] [some|a] water, please"],
+          "acceptedPt": [
+            "[Pode|Você pode] me [trazer|dar|ver] uma água, por favor",
+            "Me [vê|traz|dá] uma água, por favor",
+            "Posso [pedir|tomar] uma água, por favor",
+            "(Eu) [queria|gostaria de] uma água, por favor",
+            "[Pode|Você pode] me [trazer|dar] um pouco de água, por favor",
+            "Posso [pedir|tomar|pegar|ter] [uma|um pouco de] água, por favor"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u3-s-tea-with-milk",
+          "en": "Tea with milk, please.",
+          "pt": "Chá com leite, por favor.",
+          "acceptedPt": ["Chá com leite, por favor"],
+          "difficulty": 1
+        },
+        {
+          "id": "u3-s-an-orange-juice",
+          "en": "I'd like an orange juice.",
+          "pt": "Eu queria um suco de laranja.",
+          "acceptedEn": ["I'd like [an|one] orange juice"],
+          "acceptedPt": [
+            "(Eu) [queria|gostaria de|vou querer] um suco de laranja",
+            "Me [vê|traz|dá] um suco de laranja"
+          ],
+          "difficulty": 3,
+          "focus": "artigo"
+        },
+        {
+          "id": "u3-s-i-eat-rice-and-beans",
+          "en": "I eat rice and beans.",
+          "pt": "Eu como arroz e feijão.",
+          "acceptedEn": ["I eat [rice and beans|beans and rice]"],
+          "acceptedPt": ["(Eu) como [arroz e feijão|feijão e arroz]"],
+          "difficulty": 2,
+          "focus": "vogal-longa-curta"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u3-sk2-l1",
+          "title": "Água, café e chá",
+          "exercises": [
+            {
+              "id": "u3-sk2-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-water"],
+              "prompt": "Qual destas é \"água\"?",
+              "options": [
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "cheese",
+                  "emoji": "🧀"
+                }
+              ],
+              "answer": "water"
+            },
+            {
+              "id": "u3-sk2-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-coffee"],
+              "prompt": "Qual destas é \"café\"?",
+              "options": [
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                }
+              ],
+              "answer": "coffee"
+            },
+            {
+              "id": "u3-sk2-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-tea"],
+              "prompt": "Qual destas é \"chá\"?",
+              "options": [
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "tea",
+                  "emoji": "🍵"
+                }
+              ],
+              "answer": "tea",
+              "explanation": "Tea (chá) tem \"i\" longo: \"tiii\". Não confunda com tip (gorjeta), de \"i\" curto."
+            },
+            {
+              "id": "u3-sk2-l1-e04",
+              "type": "match-pairs",
+              "itemIds": ["u3-water", "u3-coffee", "u3-tea"],
+              "pairs": [
+                {
+                  "en": "water",
+                  "pt": "água"
+                },
+                {
+                  "en": "coffee",
+                  "pt": "café"
+                },
+                {
+                  "en": "tea",
+                  "pt": "chá"
+                },
+                {
+                  "en": "bread",
+                  "pt": "pão"
+                },
+                {
+                  "en": "cheese",
+                  "pt": "queijo"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk2-l1-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-id-like-a-coffee"],
+              "prompt": "Qual é o jeito educado de dizer \"Eu queria um café, por favor\"?",
+              "options": [
+                {
+                  "text": "I'd like a coffee, please.",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "I want coffee."
+                },
+                {
+                  "text": "I have a coffee, please."
+                }
+              ],
+              "answer": "I'd like a coffee, please.",
+              "explanation": "\"I'd like…\" (eu queria…) é o jeito educado de pedir. \"I want\" soa seco demais."
+            },
+            {
+              "id": "u3-sk2-l1-e06",
+              "type": "word-bank",
+              "itemIds": ["u3-s-id-like-a-coffee"],
+              "promptPt": "Eu queria um café, por favor.",
+              "answer": "I'd like a coffee, please.",
+              "accepted": ["I'd like [a|one] coffee, please"],
+              "distractors": ["want", "an", "have"],
+              "explanation": "\"I'd like…\" (eu queria…) é o jeito educado de pedir. \"I want\" soa seco demais."
+            },
+            {
+              "id": "u3-sk2-l1-e07",
+              "type": "fill-blank",
+              "itemIds": ["u3-tea"],
+              "sentence": "I'd ___ a tea, please.",
+              "options": ["like", "eat", "is"],
+              "answer": "like",
+              "translationPt": "Eu queria um chá, por favor.",
+              "explanation": "\"I'd like…\" (eu queria…) é o jeito educado de pedir. \"I want\" soa seco demais."
+            },
+            {
+              "id": "u3-sk2-l1-e08",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-id-like-a-coffee"],
+              "promptEn": "I'd like a coffee, please.",
+              "accepted": [
+                "(Eu) [queria|gostaria de|vou querer] um café, por favor",
+                "Um café, por favor",
+                "Me [vê|traz|dá] um café, por favor"
+              ]
+            },
+            {
+              "id": "u3-sk2-l1-e09",
+              "type": "listen-type",
+              "itemIds": ["u3-tea"],
+              "textEn": "I'd like a tea, please.",
+              "explanation": "Tea (chá) tem \"i\" longo: \"tiii\". Não confunda com tip (gorjeta), de \"i\" curto."
+            },
+            {
+              "id": "u3-sk2-l1-e10",
+              "type": "speak",
+              "itemIds": ["u3-s-id-like-a-coffee"],
+              "textEn": "I'd like a coffee, please."
+            },
+            {
+              "id": "u3-sk2-l1-e11",
+              "type": "word-bank",
+              "itemIds": ["u3-water"],
+              "promptPt": "Eu queria uma água, por favor.",
+              "answer": "I'd like some water, please.",
+              "accepted": ["I'd like [some|a] water, please"],
+              "distractors": ["want", "an", "have"],
+              "explanation": "Some water = uma água, um pouco de água. Para pedir, use \"I'd like\"."
+            },
+            {
+              "id": "u3-sk2-l1-e12",
+              "type": "translate-typing",
+              "itemIds": ["u3-water"],
+              "promptEn": "Water, please.",
+              "accepted": ["(Uma) água, por favor"]
+            }
+          ]
+        },
+        {
+          "id": "u3-sk2-l2",
+          "title": "Suco, leite e \"Can I have…?\"",
+          "exercises": [
+            {
+              "id": "u3-sk2-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-milk"],
+              "prompt": "Qual destas é \"leite\"?",
+              "options": [
+                {
+                  "text": "milk",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "tea",
+                  "emoji": "🍵"
+                }
+              ],
+              "answer": "milk"
+            },
+            {
+              "id": "u3-sk2-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-juice"],
+              "prompt": "Qual destas é \"suco\"?",
+              "options": [
+                {
+                  "text": "milk",
+                  "emoji": "🥛"
+                },
+                {
+                  "text": "juice",
+                  "emoji": "🧃"
+                },
+                {
+                  "text": "coffee",
+                  "emoji": "☕"
+                }
+              ],
+              "answer": "juice"
+            },
+            {
+              "id": "u3-sk2-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-eat"],
+              "prompt": "Qual destas significa \"comer\"?",
+              "options": [
+                {
+                  "text": "eat",
+                  "emoji": "🍴"
+                },
+                {
+                  "text": "it"
+                },
+                {
+                  "text": "tea",
+                  "emoji": "🍵"
+                }
+              ],
+              "answer": "eat",
+              "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+            },
+            {
+              "id": "u3-sk2-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u3-juice", "u3-milk", "u3-eat"],
+              "pairs": [
+                {
+                  "en": "juice",
+                  "pt": "suco"
+                },
+                {
+                  "en": "milk",
+                  "pt": "leite"
+                },
+                {
+                  "en": "eat",
+                  "pt": "comer"
+                },
+                {
+                  "en": "tea",
+                  "pt": "chá"
+                },
+                {
+                  "en": "water",
+                  "pt": "água"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk2-l2-e05",
+              "type": "fill-blank",
+              "itemIds": ["u3-milk", "u3-coffee"],
+              "sentence": "Coffee with ___, please.",
+              "options": ["milk", "water", "juice"],
+              "answer": "milk",
+              "translationPt": "Café com leite, por favor."
+            },
+            {
+              "id": "u3-sk2-l2-e06",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-can-i-have-some-water"],
+              "prompt": "Como se diz \"Pode me trazer uma água, por favor?\"",
+              "options": [
+                {
+                  "text": "Can I have some water, please?",
+                  "emoji": "💧"
+                },
+                {
+                  "text": "Can I water, please?"
+                },
+                {
+                  "text": "I can have water?"
+                }
+              ],
+              "answer": "Can I have some water, please?",
+              "explanation": "\"Can I have…?\" = \"Pode me ver/trazer…?\". É assim que se pede no balcão ou no restaurante."
+            },
+            {
+              "id": "u3-sk2-l2-e07",
+              "type": "word-bank",
+              "itemIds": ["u3-s-can-i-have-some-water"],
+              "promptPt": "Pode me trazer uma água, por favor?",
+              "answer": "Can I have some water, please?",
+              "accepted": ["Can I have [some|a] water, please"],
+              "distractors": ["you", "an", "does"],
+              "explanation": "\"Can I have…?\" = \"Pode me ver/trazer…?\". É assim que se pede no balcão ou no restaurante."
+            },
+            {
+              "id": "u3-sk2-l2-e08",
+              "type": "fill-blank",
+              "itemIds": ["u3-eat", "u3-s-i-eat-rice-and-beans"],
+              "sentence": "I ___ rice and beans.",
+              "options": ["eat", "it", "eats"],
+              "answer": "eat",
+              "translationPt": "Eu como arroz e feijão.",
+              "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+            },
+            {
+              "id": "u3-sk2-l2-e09",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-can-i-have-some-water"],
+              "promptEn": "Can I have some water, please?",
+              "accepted": [
+                "[Pode|Você pode] me [trazer|dar|ver] uma água, por favor",
+                "Me [vê|traz|dá] uma água, por favor",
+                "Posso [pedir|tomar] uma água, por favor",
+                "(Eu) [queria|gostaria de] uma água, por favor",
+                "[Pode|Você pode] me [trazer|dar] um pouco de água, por favor",
+                "Posso [pedir|tomar|pegar|ter] [uma|um pouco de] água, por favor"
+              ],
+              "explanation": "\"Can I have…?\" = \"Pode me ver/trazer…?\". É assim que se pede no balcão ou no restaurante."
+            },
+            {
+              "id": "u3-sk2-l2-e10",
+              "type": "listen-type",
+              "itemIds": ["u3-s-i-eat-rice-and-beans"],
+              "textEn": "I eat rice and beans.",
+              "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+            },
+            {
+              "id": "u3-sk2-l2-e11",
+              "type": "speak",
+              "itemIds": ["u3-s-can-i-have-some-water"],
+              "textEn": "Can I have some water, please?"
+            },
+            {
+              "id": "u3-sk2-l2-e12",
+              "type": "multiple-choice",
+              "itemIds": ["u3-juice", "u3-s-an-orange-juice"],
+              "prompt": "Como se diz \"suco de laranja\"?",
+              "options": [
+                {
+                  "text": "orange juice",
+                  "emoji": "🍊"
+                },
+                {
+                  "text": "juice orange",
+                  "emoji": "🧃"
+                },
+                {
+                  "text": "juice of orange"
+                }
+              ],
+              "answer": "orange juice",
+              "explanation": "O sabor vem antes: orange juice = suco de laranja. E orange começa com vogal: an orange juice."
+            },
+            {
+              "id": "u3-sk2-l2-e13",
+              "type": "word-bank",
+              "itemIds": ["u3-s-an-orange-juice"],
+              "promptPt": "Eu queria um suco de laranja.",
+              "answer": "I'd like an orange juice.",
+              "accepted": ["I'd like [an|one] orange juice"],
+              "distractors": ["a", "want", "of"],
+              "explanation": "O sabor vem antes: orange juice = suco de laranja. E orange começa com vogal: an orange juice."
+            },
+            {
+              "id": "u3-sk2-l2-e14",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-tea-with-milk"],
+              "promptEn": "Tea with milk, please.",
+              "accepted": ["Chá com leite, por favor"]
+            }
+          ]
+        },
+        {
+          "id": "u3-sk2-l3",
+          "title": "Hora do café",
+          "exercises": [
+            {
+              "id": "u3-sk2-l3-e01",
+              "type": "match-pairs",
+              "itemIds": ["u3-coffee", "u3-juice", "u3-milk", "u3-water", "u3-eat"],
+              "pairs": [
+                {
+                  "en": "coffee",
+                  "pt": "café"
+                },
+                {
+                  "en": "juice",
+                  "pt": "suco"
+                },
+                {
+                  "en": "milk",
+                  "pt": "leite"
+                },
+                {
+                  "en": "water",
+                  "pt": "água"
+                },
+                {
+                  "en": "eat",
+                  "pt": "comer"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk2-l3-e02",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-can-i-have-some-water"],
+              "sentence": "Can I ___ some water, please?",
+              "options": ["have", "eat", "like"],
+              "answer": "have",
+              "translationPt": "Pode me trazer uma água, por favor?",
+              "explanation": "\"Can I have…?\" = \"Pode me ver/trazer…?\". É assim que se pede no balcão ou no restaurante."
+            },
+            {
+              "id": "u3-sk2-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-eat"],
+              "prompt": "Qual destas palavras tem o som de \"i\" longo (\"iii\")?",
+              "options": [
+                {
+                  "text": "eat",
+                  "emoji": "🍴"
+                },
+                {
+                  "text": "it"
+                },
+                {
+                  "text": "milk",
+                  "emoji": "🥛"
+                }
+              ],
+              "answer": "eat",
+              "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+            },
+            {
+              "id": "u3-sk2-l3-e04",
+              "type": "word-bank",
+              "itemIds": ["u3-s-tea-with-milk"],
+              "promptPt": "Chá com leite, por favor.",
+              "answer": "Tea with milk, please.",
+              "distractors": ["of", "it", "for"]
+            },
+            {
+              "id": "u3-sk2-l3-e05",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-an-orange-juice"],
+              "promptEn": "I'd like an orange juice.",
+              "accepted": [
+                "(Eu) [queria|gostaria de|vou querer] um suco de laranja",
+                "Me [vê|traz|dá] um suco de laranja"
+              ],
+              "explanation": "O sabor vem antes: orange juice = suco de laranja. E orange começa com vogal: an orange juice."
+            },
+            {
+              "id": "u3-sk2-l3-e06",
+              "type": "listen-type",
+              "itemIds": ["u3-coffee", "u3-milk"],
+              "textEn": "Coffee with milk, please."
+            },
+            {
+              "id": "u3-sk2-l3-e07",
+              "type": "word-bank",
+              "itemIds": ["u3-s-i-eat-rice-and-beans"],
+              "promptPt": "Eu como arroz e feijão.",
+              "answer": "I eat rice and beans.",
+              "accepted": ["I eat [rice and beans|beans and rice]"],
+              "distractors": ["it", "eats", "bean"],
+              "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+            },
+            {
+              "id": "u3-sk2-l3-e08",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-i-eat-rice-and-beans"],
+              "promptEn": "I eat rice and beans.",
+              "accepted": ["(Eu) como [arroz e feijão|feijão e arroz]"],
+              "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+            },
+            {
+              "id": "u3-sk2-l3-e09",
+              "type": "speak",
+              "itemIds": ["u3-tea"],
+              "textEn": "I'd like some tea, please."
+            },
+            {
+              "id": "u3-sk2-l3-e10",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-an-orange-juice"],
+              "sentence": "I'd like ___ orange juice.",
+              "options": ["a", "an", "two"],
+              "answer": "an",
+              "translationPt": "Eu queria um suco de laranja.",
+              "explanation": "O sabor vem antes: orange juice = suco de laranja. E orange começa com vogal: an orange juice."
+            },
+            {
+              "id": "u3-sk2-l3-e11",
+              "type": "translate-typing",
+              "itemIds": ["u3-coffee", "u3-milk"],
+              "promptEn": "Can I have a coffee with milk, please?",
+              "accepted": [
+                "[Pode|Você pode] me [trazer|dar|ver] um café com leite, por favor",
+                "Me [vê|traz|dá] um café com leite, por favor",
+                "Posso [pedir|tomar] um café com leite, por favor",
+                "(Eu) [queria|gostaria de] um café com leite, por favor"
+              ],
+              "explanation": "\"Can I have…?\" = \"Pode me ver/trazer…?\". É assim que se pede no balcão ou no restaurante."
+            },
+            {
+              "id": "u3-sk2-l3-e12",
+              "type": "multiple-choice",
+              "itemIds": ["u3-tea", "u3-s-id-like-a-coffee"],
+              "prompt": "Qual é o jeito mais educado de pedir um chá?",
+              "options": [
+                {
+                  "text": "I'd like a tea, please.",
+                  "emoji": "🍵"
+                },
+                {
+                  "text": "I want tea."
+                },
+                {
+                  "text": "Give me tea."
+                }
+              ],
+              "answer": "I'd like a tea, please.",
+              "explanation": "\"I'd like…\" (eu queria…) é o jeito educado de pedir. \"I want\" soa seco demais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u3-sk3",
+      "title": "No restaurante",
+      "icon": "🍽️",
+      "tip": {
+        "title": "Se virando no restaurante",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "No restaurante, frases curtas resolvem tudo. Comece com **Can I…?** / **Can we…?** e termine com **please**."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "A table for two, please.",
+                "pt": "Uma mesa para dois, por favor."
+              },
+              {
+                "en": "Can I see the menu, please?",
+                "pt": "Posso ver o cardápio, por favor?"
+              },
+              {
+                "en": "For here or to go?",
+                "pt": "Para comer aqui ou para levar?"
+              },
+              {
+                "en": "Can we have the check, please?",
+                "pt": "Pode trazer a conta, por favor?"
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I'd like to do a reservation.",
+            "right": "I'd like to make a reservation.",
+            "why": "Reserva se faz com make. Do é para tarefas e atividades."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "PUSH = puxe",
+            "right": "PUSH = empurre (puxe é PULL)",
+            "why": "Push parece \"puxar\", mas é o contrário! Olhe a placa antes de abrir a porta."
+          },
+          {
+            "kind": "text",
+            "md": "Conta de restaurante nos EUA é **the check**. Gorjeta é **tip**, com \"i\" curto, diferente de **tea** (chá), com \"i\" longo."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u3-table",
+          "en": "table",
+          "pt": ["mesa"],
+          "example": {
+            "en": "A table for two, please.",
+            "pt": "Uma mesa para dois, por favor."
+          },
+          "emoji": "🍽️",
+          "difficulty": 1
+        },
+        {
+          "id": "u3-menu",
+          "en": "menu",
+          "pt": ["cardápio", "menu"],
+          "example": {
+            "en": "Can I see the menu, please?",
+            "pt": "Posso ver o cardápio, por favor?"
+          },
+          "emoji": "📋",
+          "difficulty": 1,
+          "notes": "Pronúncia: \"MÉ-niu\"."
+        },
+        {
+          "id": "u3-check",
+          "en": "check",
+          "pt": ["conta"],
+          "example": {
+            "en": "Can we have the check, please?",
+            "pt": "Pode trazer a conta, por favor?"
+          },
+          "emoji": "🧾",
+          "difficulty": 1,
+          "notes": "Nos EUA a conta do restaurante é \"the check\". \"Bill\" é mais britânico."
+        },
+        {
+          "id": "u3-tip",
+          "en": "tip",
+          "pt": ["gorjeta"],
+          "example": {
+            "en": "Here's your tip.",
+            "pt": "Aqui está a sua gorjeta."
+          },
+          "emoji": "💵",
+          "difficulty": 2,
+          "focus": "vogal-longa-curta",
+          "notes": "Tip tem \"i\" curto. Tea (chá) tem \"i\" longo."
+        },
+        {
+          "id": "u3-reservation",
+          "en": "reservation",
+          "pt": ["reserva"],
+          "example": {
+            "en": "I'd like to make a reservation.",
+            "pt": "Eu queria fazer uma reserva."
+          },
+          "emoji": "📅",
+          "difficulty": 2,
+          "focus": "make-do",
+          "notes": "Reserva se faz com make: make a reservation."
+        },
+        {
+          "id": "u3-to-go",
+          "en": "to go",
+          "pt": ["para levar"],
+          "acceptedPt": ["pra levar", "[para|pra] viagem"],
+          "example": {
+            "en": "A coffee to go, please.",
+            "pt": "Um café para levar, por favor."
+          },
+          "emoji": "🥡",
+          "difficulty": 2
+        },
+        {
+          "id": "u3-for-here",
+          "en": "for here",
+          "pt": ["para comer aqui"],
+          "acceptedPt": ["[para|pra] (comer) aqui"],
+          "example": {
+            "en": "For here or to go?",
+            "pt": "Para comer aqui ou para levar?"
+          },
+          "emoji": "📍",
+          "difficulty": 2
+        },
+        {
+          "id": "u3-push",
+          "en": "push",
+          "pt": ["empurre", "empurrar"],
+          "acceptedPt": ["empurra"],
+          "example": {
+            "en": "The door says PUSH.",
+            "pt": "Na porta está escrito EMPURRE."
+          },
+          "emoji": "🚪",
+          "difficulty": 2,
+          "focus": "falso-cognato",
+          "notes": "Push = empurrar. Puxar é pull."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u3-s-a-table-for-two",
+          "en": "A table for two, please.",
+          "pt": "Uma mesa para dois, por favor.",
+          "acceptedEn": ["[A|One] table for [two|2], please"],
+          "acceptedPt": ["(Uma) mesa [para|pra] [dois|duas] (pessoas), por favor"],
+          "difficulty": 2
+        },
+        {
+          "id": "u3-s-can-i-see-the-menu",
+          "en": "Can I see the menu, please?",
+          "pt": "Posso ver o cardápio, por favor?",
+          "acceptedEn": ["Can [I|we] see the menu, please"],
+          "acceptedPt": [
+            "(Eu) posso ver o [cardápio|menu], por favor",
+            "Pode me [trazer|dar|mostrar] o [cardápio|menu], por favor",
+            "Me [vê|traz|dá] o [cardápio|menu], por favor"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u3-s-can-we-have-the-check",
+          "en": "Can we have the check, please?",
+          "pt": "Pode trazer a conta, por favor?",
+          "acceptedEn": ["Can [we|I] [have|get] the check, please"],
+          "acceptedPt": [
+            "[Pode|Você pode] [trazer|me trazer|nos trazer] a conta, por favor",
+            "A conta, por favor",
+            "Me [vê|traz|dá] a conta, por favor",
+            "(Nós) podemos pedir a conta, por favor",
+            "Traz a conta, por favor",
+            "A gente pode [pedir|ver] a conta, por favor",
+            "[Pode|Você pode] fechar a conta, por favor"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u3-s-make-a-reservation",
+          "en": "I'd like to make a reservation.",
+          "pt": "Eu queria fazer uma reserva.",
+          "acceptedPt": ["(Eu) [queria|gostaria de] fazer uma reserva"],
+          "difficulty": 3,
+          "focus": "make-do"
+        },
+        {
+          "id": "u3-s-for-here-or-to-go",
+          "en": "For here or to go?",
+          "pt": "Para comer aqui ou para levar?",
+          "acceptedPt": [
+            "[Para|Pra] comer aqui ou [para|pra] [levar|viagem]",
+            "É [para|pra] comer aqui ou [para|pra] [levar|viagem]",
+            "Aqui ou [para|pra] [levar|viagem]"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u3-s-a-coffee-to-go",
+          "en": "A coffee to go, please.",
+          "pt": "Um café para levar, por favor.",
+          "acceptedPt": ["Um café [para|pra] [levar|viagem], por favor"],
+          "difficulty": 2
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u3-sk3-l1",
+          "title": "Mesa, cardápio e conta",
+          "exercises": [
+            {
+              "id": "u3-sk3-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-table"],
+              "prompt": "Qual destas é \"mesa\"?",
+              "options": [
+                {
+                  "text": "table",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "tea",
+                  "emoji": "🍵"
+                },
+                {
+                  "text": "bread",
+                  "emoji": "🍞"
+                }
+              ],
+              "answer": "table"
+            },
+            {
+              "id": "u3-sk3-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-menu"],
+              "prompt": "Qual destas é \"cardápio\"?",
+              "options": [
+                {
+                  "text": "table",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "menu",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "water",
+                  "emoji": "💧"
+                }
+              ],
+              "answer": "menu"
+            },
+            {
+              "id": "u3-sk3-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-check"],
+              "prompt": "No restaurante, qual destas é \"a conta\"?",
+              "options": [
+                {
+                  "text": "the menu",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "the table",
+                  "emoji": "🪑"
+                },
+                {
+                  "text": "the check",
+                  "emoji": "🧾"
+                }
+              ],
+              "answer": "the check",
+              "explanation": "Nos EUA, a conta do restaurante é \"the check\"."
+            },
+            {
+              "id": "u3-sk3-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u3-tip"],
+              "prompt": "Qual destas é \"gorjeta\"?",
+              "options": [
+                {
+                  "text": "tip",
+                  "emoji": "💵"
+                },
+                {
+                  "text": "tea",
+                  "emoji": "🍵"
+                },
+                {
+                  "text": "table",
+                  "emoji": "🍽️"
+                }
+              ],
+              "answer": "tip",
+              "explanation": "Tip (gorjeta) tem \"i\" curto. Tea (chá) é longo: \"tiii\"."
+            },
+            {
+              "id": "u3-sk3-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u3-table", "u3-menu", "u3-check", "u3-tip"],
+              "pairs": [
+                {
+                  "en": "table",
+                  "pt": "mesa"
+                },
+                {
+                  "en": "menu",
+                  "pt": "cardápio"
+                },
+                {
+                  "en": "check",
+                  "pt": "conta"
+                },
+                {
+                  "en": "tip",
+                  "pt": "gorjeta"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk3-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-a-table-for-two"],
+              "sentence": "A table ___ two, please.",
+              "options": ["for", "to", "of"],
+              "answer": "for",
+              "translationPt": "Uma mesa para dois, por favor.",
+              "explanation": "\"Para duas pessoas\" usa for: a table for two. \"To\" e \"two\" têm o mesmo som, cuidado!"
+            },
+            {
+              "id": "u3-sk3-l1-e07",
+              "type": "word-bank",
+              "itemIds": ["u3-s-a-table-for-two"],
+              "promptPt": "Uma mesa para dois, por favor.",
+              "answer": "A table for two, please.",
+              "accepted": ["[A|One] table for two, please"],
+              "distractors": ["to", "of", "an"],
+              "explanation": "\"Para duas pessoas\" usa for: a table for two. \"To\" e \"two\" têm o mesmo som, cuidado!"
+            },
+            {
+              "id": "u3-sk3-l1-e08",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-a-table-for-two"],
+              "promptEn": "A table for two, please.",
+              "accepted": ["(Uma) mesa [para|pra] [dois|duas] (pessoas), por favor"]
+            },
+            {
+              "id": "u3-sk3-l1-e09",
+              "type": "word-bank",
+              "itemIds": ["u3-s-can-i-see-the-menu"],
+              "promptPt": "Posso ver o cardápio, por favor?",
+              "answer": "Can I see the menu, please?",
+              "distractors": ["do", "check", "is"]
+            },
+            {
+              "id": "u3-sk3-l1-e10",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-can-we-have-the-check"],
+              "promptEn": "Can we have the check, please?",
+              "accepted": [
+                "[Pode|Você pode] [trazer|me trazer|nos trazer] a conta, por favor",
+                "A conta, por favor",
+                "Me [vê|traz|dá] a conta, por favor",
+                "(Nós) podemos pedir a conta, por favor",
+                "Traz a conta, por favor",
+                "A gente pode [pedir|ver] a conta, por favor",
+                "[Pode|Você pode] fechar a conta, por favor"
+              ],
+              "explanation": "Nos EUA, a conta do restaurante é \"the check\"."
+            },
+            {
+              "id": "u3-sk3-l1-e11",
+              "type": "speak",
+              "itemIds": ["u3-s-can-i-see-the-menu"],
+              "textEn": "Can I see the menu, please?"
+            },
+            {
+              "id": "u3-sk3-l1-e12",
+              "type": "listen-type",
+              "itemIds": ["u3-s-can-we-have-the-check"],
+              "textEn": "Can we have the check, please?",
+              "explanation": "Nos EUA, a conta do restaurante é \"the check\"."
+            },
+            {
+              "id": "u3-sk3-l1-e13",
+              "type": "fill-blank",
+              "itemIds": ["u3-tip"],
+              "sentence": "Here's your ___.",
+              "options": ["tip", "tea", "table"],
+              "answer": "tip",
+              "translationPt": "Aqui está a sua gorjeta.",
+              "explanation": "Tip (gorjeta) tem \"i\" curto. Tea (chá) é longo: \"tiii\"."
+            }
+          ]
+        },
+        {
+          "id": "u3-sk3-l2",
+          "title": "Reserva, para levar e PUSH",
+          "exercises": [
+            {
+              "id": "u3-sk3-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-reservation"],
+              "prompt": "Qual destas é \"reserva\"?",
+              "options": [
+                {
+                  "text": "reservation",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "menu",
+                  "emoji": "📋"
+                },
+                {
+                  "text": "check",
+                  "emoji": "🧾"
+                }
+              ],
+              "answer": "reservation",
+              "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+            },
+            {
+              "id": "u3-sk3-l2-e02",
+              "type": "fill-blank",
+              "itemIds": ["u3-reservation", "u3-s-make-a-reservation"],
+              "sentence": "I'd like to ___ a reservation.",
+              "options": ["make", "do", "eat"],
+              "answer": "make",
+              "translationPt": "Eu queria fazer uma reserva.",
+              "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+            },
+            {
+              "id": "u3-sk3-l2-e03",
+              "type": "word-bank",
+              "itemIds": ["u3-s-make-a-reservation"],
+              "promptPt": "Eu queria fazer uma reserva.",
+              "answer": "I'd like to make a reservation.",
+              "distractors": ["do", "an", "want"],
+              "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+            },
+            {
+              "id": "u3-sk3-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u3-push"],
+              "prompt": "Na porta está escrito PUSH. O que você faz?",
+              "options": [
+                {
+                  "text": "Empurro a porta",
+                  "emoji": "🚪"
+                },
+                {
+                  "text": "Puxo a porta"
+                },
+                {
+                  "text": "Bato na porta"
+                }
+              ],
+              "answer": "Empurro a porta",
+              "explanation": "Push parece \"puxar\", mas é o contrário: push = empurrar. Puxar é pull."
+            },
+            {
+              "id": "u3-sk3-l2-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u3-to-go"],
+              "prompt": "Qual destas é \"para levar\"?",
+              "options": [
+                {
+                  "text": "to go",
+                  "emoji": "🥡"
+                },
+                {
+                  "text": "for here",
+                  "emoji": "📍"
+                },
+                {
+                  "text": "the check",
+                  "emoji": "🧾"
+                }
+              ],
+              "answer": "to go",
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l2-e06",
+              "type": "match-pairs",
+              "itemIds": ["u3-reservation", "u3-to-go", "u3-for-here", "u3-push"],
+              "pairs": [
+                {
+                  "en": "reservation",
+                  "pt": "reserva"
+                },
+                {
+                  "en": "to go",
+                  "pt": "para levar"
+                },
+                {
+                  "en": "for here",
+                  "pt": "para comer aqui"
+                },
+                {
+                  "en": "push",
+                  "pt": "empurre"
+                },
+                {
+                  "en": "check",
+                  "pt": "conta"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk3-l2-e07",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-for-here-or-to-go"],
+              "promptEn": "For here or to go?",
+              "accepted": [
+                "[Para|Pra] comer aqui ou [para|pra] [levar|viagem]",
+                "É [para|pra] comer aqui ou [para|pra] [levar|viagem]",
+                "Aqui ou [para|pra] [levar|viagem]"
+              ],
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l2-e08",
+              "type": "word-bank",
+              "itemIds": ["u3-s-a-coffee-to-go"],
+              "promptPt": "Um café para levar, por favor.",
+              "answer": "A coffee to go, please.",
+              "distractors": ["for", "here", "an"],
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u3-s-for-here-or-to-go"],
+              "textEn": "For here or to go?",
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l2-e10",
+              "type": "speak",
+              "itemIds": ["u3-s-make-a-reservation"],
+              "textEn": "I'd like to make a reservation."
+            },
+            {
+              "id": "u3-sk3-l2-e11",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-make-a-reservation"],
+              "promptEn": "I'd like to make a reservation.",
+              "accepted": ["(Eu) [queria|gostaria de] fazer uma reserva"],
+              "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+            },
+            {
+              "id": "u3-sk3-l2-e12",
+              "type": "fill-blank",
+              "itemIds": ["u3-to-go", "u3-s-for-here-or-to-go"],
+              "sentence": "For here or ___ go?",
+              "options": ["to", "two", "for"],
+              "answer": "to",
+              "translationPt": "Para comer aqui ou para levar?",
+              "explanation": "Aqui é \"to\" (para), não \"two\" (dois). Os dois têm o mesmo som!"
+            },
+            {
+              "id": "u3-sk3-l2-e13",
+              "type": "translate-typing",
+              "itemIds": ["u3-push"],
+              "promptEn": "PUSH",
+              "accepted": ["[Empurre|Empurrar|Empurra]"],
+              "explanation": "Push parece \"puxar\", mas é o contrário: push = empurrar. Puxar é pull."
+            }
+          ]
+        },
+        {
+          "id": "u3-sk3-l3",
+          "title": "Jantar fora",
+          "exercises": [
+            {
+              "id": "u3-sk3-l3-e01",
+              "type": "match-pairs",
+              "itemIds": ["u3-table", "u3-menu", "u3-check", "u3-tip", "u3-reservation"],
+              "pairs": [
+                {
+                  "en": "table",
+                  "pt": "mesa"
+                },
+                {
+                  "en": "menu",
+                  "pt": "cardápio"
+                },
+                {
+                  "en": "check",
+                  "pt": "conta"
+                },
+                {
+                  "en": "tip",
+                  "pt": "gorjeta"
+                },
+                {
+                  "en": "reservation",
+                  "pt": "reserva"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk3-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-for-here"],
+              "prompt": "O atendente pergunta \"For here or to go?\". Você vai comer lá mesmo. Você responde:",
+              "options": [
+                {
+                  "text": "For here, please.",
+                  "emoji": "📍"
+                },
+                {
+                  "text": "To go, please.",
+                  "emoji": "🥡"
+                },
+                {
+                  "text": "The check, please.",
+                  "emoji": "🧾"
+                }
+              ],
+              "answer": "For here, please.",
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l3-e03",
+              "type": "fill-blank",
+              "itemIds": ["u3-check", "u3-s-can-we-have-the-check"],
+              "sentence": "Can we have the ___, please?",
+              "options": ["check", "menu", "tip"],
+              "answer": "check",
+              "translationPt": "Pode trazer a conta, por favor?",
+              "explanation": "Nos EUA, a conta do restaurante é \"the check\"."
+            },
+            {
+              "id": "u3-sk3-l3-e04",
+              "type": "word-bank",
+              "itemIds": ["u3-s-can-we-have-the-check"],
+              "promptPt": "Pode trazer a conta, por favor?",
+              "answer": "Can we have the check, please?",
+              "accepted": ["Can [we|I] have the check, please"],
+              "distractors": ["do", "tip", "make"],
+              "explanation": "Nos EUA, a conta do restaurante é \"the check\"."
+            },
+            {
+              "id": "u3-sk3-l3-e05",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-a-coffee-to-go"],
+              "promptEn": "A coffee to go, please.",
+              "accepted": ["Um café [para|pra] [levar|viagem], por favor"],
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l3-e06",
+              "type": "fill-blank",
+              "itemIds": ["u3-reservation"],
+              "sentence": "Can I ___ a reservation for two?",
+              "options": ["make", "do", "eat"],
+              "answer": "make",
+              "translationPt": "Posso fazer uma reserva para dois?",
+              "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+            },
+            {
+              "id": "u3-sk3-l3-e07",
+              "type": "word-bank",
+              "itemIds": ["u3-s-for-here-or-to-go"],
+              "promptPt": "Para comer aqui ou para levar?",
+              "answer": "For here or to go?",
+              "distractors": ["two", "eat", "in"],
+              "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+            },
+            {
+              "id": "u3-sk3-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u3-s-a-table-for-two"],
+              "textEn": "A table for two, please.",
+              "explanation": "\"Para duas pessoas\" usa for: a table for two. \"To\" e \"two\" têm o mesmo som, cuidado!"
+            },
+            {
+              "id": "u3-sk3-l3-e09",
+              "type": "speak",
+              "itemIds": ["u3-check"],
+              "textEn": "The check, please."
+            },
+            {
+              "id": "u3-sk3-l3-e10",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-can-i-see-the-menu"],
+              "promptEn": "Can I see the menu, please?",
+              "accepted": [
+                "(Eu) posso ver o [cardápio|menu], por favor",
+                "Pode me [trazer|dar|mostrar] o [cardápio|menu], por favor",
+                "Me [vê|traz|dá] o [cardápio|menu], por favor"
+              ]
+            },
+            {
+              "id": "u3-sk3-l3-e11",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-make-a-reservation"],
+              "prompt": "Qual frase está certa?",
+              "options": [
+                {
+                  "text": "I'd like to make a reservation.",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "I'd like to do a reservation."
+                },
+                {
+                  "text": "I'd like to make reservation."
+                }
+              ],
+              "answer": "I'd like to make a reservation.",
+              "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+            },
+            {
+              "id": "u3-sk3-l3-e12",
+              "type": "translate-typing",
+              "itemIds": ["u3-tip"],
+              "promptEn": "Here's your tip.",
+              "accepted": ["Aqui [está|tá] [a sua|sua|a] gorjeta"],
+              "explanation": "Tip (gorjeta) tem \"i\" curto. Tea (chá) é longo: \"tiii\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u3-sk4",
+      "title": "Gostos",
+      "icon": "❤️",
+      "tip": {
+        "title": "Do you like…? Falando do que você gosta",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "**I like** = eu gosto de. Para negar: **I don't like**."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I like coffee.",
+                "pt": "Eu gosto de café."
+              },
+              {
+                "en": "I don't like fish.",
+                "pt": "Eu não gosto de peixe."
+              },
+              {
+                "en": "Do you like cheese bread?",
+                "pt": "Você gosta de pão de queijo?"
+              },
+              {
+                "en": "Yes, I do. / No, I don't.",
+                "pt": "Sim, gosto. / Não, não gosto."
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I like of coffee.",
+            "right": "I like coffee.",
+            "why": "Em português é \"gostar DE\", mas em inglês o like vem direto, sem preposição."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I no like fish.",
+            "right": "I don't like fish.",
+            "why": "Para negar, use don't antes do verbo."
+          },
+          {
+            "kind": "text",
+            "md": "Pergunta começa com **Do**: **Do you like açaí?** Resposta curta: **Yes, I do.** / **No, I don't.** Com **he/she** (ele/ela), o verbo ganha **-s**: **She likes tea.**"
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u3-like",
+          "en": "like",
+          "pt": ["gostar de"],
+          "acceptedPt": ["gostar"],
+          "example": {
+            "en": "I like coffee.",
+            "pt": "Eu gosto de café."
+          },
+          "emoji": "👍",
+          "difficulty": 1,
+          "notes": "Sem \"of\": I like coffee."
+        },
+        {
+          "id": "u3-love",
+          "en": "love",
+          "pt": ["amar", "adorar"],
+          "example": {
+            "en": "I love açaí!",
+            "pt": "Eu amo açaí!"
+          },
+          "emoji": "❤️",
+          "difficulty": 1
+        },
+        {
+          "id": "u3-fish",
+          "en": "fish",
+          "pt": ["peixe"],
+          "example": {
+            "en": "I don't like fish.",
+            "pt": "Eu não gosto de peixe."
+          },
+          "emoji": "🐟",
+          "difficulty": 1,
+          "notes": "O plural também é fish: one fish, two fish."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u3-s-i-like-coffee",
+          "en": "I like coffee.",
+          "pt": "Eu gosto de café.",
+          "acceptedPt": ["(Eu) gosto de café"],
+          "difficulty": 1,
+          "focus": "presente-simples"
+        },
+        {
+          "id": "u3-s-i-dont-like-fish",
+          "en": "I don't like fish.",
+          "pt": "Eu não gosto de peixe.",
+          "acceptedPt": ["(Eu) não gosto de peixe"],
+          "difficulty": 2,
+          "focus": "presente-simples"
+        },
+        {
+          "id": "u3-s-i-love-acai",
+          "en": "I love açaí.",
+          "pt": "Eu amo açaí.",
+          "acceptedPt": ["(Eu) [amo|adoro] açaí"],
+          "difficulty": 1
+        },
+        {
+          "id": "u3-s-do-you-like-cheese-bread",
+          "en": "Do you like cheese bread?",
+          "pt": "Você gosta de pão de queijo?",
+          "acceptedPt": ["(Você) gosta de pão de queijo", "Vocês gostam de pão de queijo"],
+          "difficulty": 3,
+          "focus": "pergunta-do"
+        },
+        {
+          "id": "u3-s-do-you-like-fish",
+          "en": "Do you like fish?",
+          "pt": "Você gosta de peixe?",
+          "acceptedPt": ["(Você) gosta de peixe", "Vocês gostam de peixe"],
+          "difficulty": 2,
+          "focus": "pergunta-do"
+        },
+        {
+          "id": "u3-s-yes-i-do",
+          "en": "Yes, I do.",
+          "pt": "Sim, eu gosto.",
+          "acceptedPt": ["Sim, (eu) gosto", "Gosto (sim)"],
+          "difficulty": 2,
+          "focus": "pergunta-do"
+        },
+        {
+          "id": "u3-s-no-i-dont",
+          "en": "No, I don't.",
+          "pt": "Não, eu não gosto.",
+          "acceptedPt": ["Não, (eu) não gosto", "Não gosto (não)", "Não, (eu) não"],
+          "difficulty": 2,
+          "focus": "pergunta-do"
+        },
+        {
+          "id": "u3-s-she-likes-tea",
+          "en": "She likes tea.",
+          "pt": "Ela gosta de chá.",
+          "acceptedPt": ["Ela gosta de chá"],
+          "difficulty": 2,
+          "focus": "presente-simples"
+        },
+        {
+          "id": "u3-s-my-mom-likes-coffee",
+          "en": "My mom likes coffee with milk.",
+          "pt": "Minha mãe gosta de café com leite.",
+          "acceptedEn": ["My [mom|mother] likes coffee with milk"],
+          "acceptedPt": ["(A) minha mãe gosta de café com leite"],
+          "difficulty": 3,
+          "focus": "presente-simples"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u3-sk4-l1",
+          "title": "I like / I don't like",
+          "exercises": [
+            {
+              "id": "u3-sk4-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-like"],
+              "prompt": "Qual destas significa \"gostar de\"?",
+              "options": [
+                {
+                  "text": "like",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "eat",
+                  "emoji": "🍴"
+                },
+                {
+                  "text": "have"
+                }
+              ],
+              "answer": "like"
+            },
+            {
+              "id": "u3-sk4-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u3-fish"],
+              "prompt": "Qual destas é \"peixe\"?",
+              "options": [
+                {
+                  "text": "chicken",
+                  "emoji": "🍗"
+                },
+                {
+                  "text": "fish",
+                  "emoji": "🐟"
+                },
+                {
+                  "text": "egg",
+                  "emoji": "🥚"
+                }
+              ],
+              "answer": "fish"
+            },
+            {
+              "id": "u3-sk4-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-love"],
+              "prompt": "Qual destas significa \"amar, adorar\"?",
+              "options": [
+                {
+                  "text": "eat",
+                  "emoji": "🍴"
+                },
+                {
+                  "text": "like",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "love",
+                  "emoji": "❤️"
+                }
+              ],
+              "answer": "love"
+            },
+            {
+              "id": "u3-sk4-l1-e04",
+              "type": "match-pairs",
+              "itemIds": ["u3-like", "u3-love", "u3-fish"],
+              "pairs": [
+                {
+                  "en": "like",
+                  "pt": "gostar de"
+                },
+                {
+                  "en": "love",
+                  "pt": "amar"
+                },
+                {
+                  "en": "fish",
+                  "pt": "peixe"
+                },
+                {
+                  "en": "chicken",
+                  "pt": "frango"
+                },
+                {
+                  "en": "eat",
+                  "pt": "comer"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk4-l1-e05",
+              "type": "fill-blank",
+              "itemIds": ["u3-like", "u3-s-i-like-coffee"],
+              "sentence": "I ___ coffee.",
+              "options": ["like", "like of", "likes"],
+              "answer": "like",
+              "translationPt": "Eu gosto de café.",
+              "explanation": "Em português é \"gostar DE\", mas em inglês like vem direto: I like coffee."
+            },
+            {
+              "id": "u3-sk4-l1-e06",
+              "type": "word-bank",
+              "itemIds": ["u3-s-i-like-coffee"],
+              "promptPt": "Eu gosto de café.",
+              "answer": "I like coffee.",
+              "distractors": ["of", "likes", "am"],
+              "explanation": "Em português é \"gostar DE\", mas em inglês like vem direto: I like coffee."
+            },
+            {
+              "id": "u3-sk4-l1-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-i-dont-like-fish"],
+              "prompt": "Como se diz \"Eu não gosto de peixe\"?",
+              "options": [
+                {
+                  "text": "I don't like fish.",
+                  "emoji": "🐟"
+                },
+                {
+                  "text": "I no like fish."
+                },
+                {
+                  "text": "I not like fish."
+                }
+              ],
+              "answer": "I don't like fish.",
+              "explanation": "Para negar use don't: I don't like fish. \"I no like\" não existe em inglês."
+            },
+            {
+              "id": "u3-sk4-l1-e08",
+              "type": "word-bank",
+              "itemIds": ["u3-s-i-dont-like-fish"],
+              "promptPt": "Eu não gosto de peixe.",
+              "answer": "I don't like fish.",
+              "distractors": ["no", "not", "of"],
+              "explanation": "Para negar use don't: I don't like fish. \"I no like\" não existe em inglês."
+            },
+            {
+              "id": "u3-sk4-l1-e09",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-i-love-acai"],
+              "promptEn": "I love açaí.",
+              "accepted": ["(Eu) [amo|adoro] açaí"]
+            },
+            {
+              "id": "u3-sk4-l1-e10",
+              "type": "listen-type",
+              "itemIds": ["u3-s-i-dont-like-fish"],
+              "textEn": "I don't like fish.",
+              "explanation": "Para negar use don't: I don't like fish. \"I no like\" não existe em inglês."
+            },
+            {
+              "id": "u3-sk4-l1-e11",
+              "type": "speak",
+              "itemIds": ["u3-like", "u3-coffee"],
+              "textEn": "I like coffee with milk."
+            },
+            {
+              "id": "u3-sk4-l1-e12",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-i-dont-like-fish"],
+              "promptEn": "I don't like fish.",
+              "accepted": ["(Eu) não gosto de peixe"],
+              "explanation": "Para negar use don't: I don't like fish. \"I no like\" não existe em inglês."
+            }
+          ]
+        },
+        {
+          "id": "u3-sk4-l2",
+          "title": "Do you like…?",
+          "exercises": [
+            {
+              "id": "u3-sk4-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-do-you-like-fish"],
+              "prompt": "Como se pergunta \"Você gosta de peixe?\"",
+              "options": [
+                {
+                  "text": "Do you like fish?",
+                  "emoji": "🐟"
+                },
+                {
+                  "text": "You like of fish?"
+                },
+                {
+                  "text": "Are you like fish?"
+                }
+              ],
+              "answer": "Do you like fish?",
+              "explanation": "Pergunta com like começa com Do: Do you like fish?"
+            },
+            {
+              "id": "u3-sk4-l2-e02",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-do-you-like-cheese-bread"],
+              "sentence": "___ you like cheese bread?",
+              "options": ["Do", "Are", "Is"],
+              "answer": "Do",
+              "translationPt": "Você gosta de pão de queijo?",
+              "explanation": "Pergunta com like começa com Do: Do you like fish?"
+            },
+            {
+              "id": "u3-sk4-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-yes-i-do"],
+              "prompt": "\"Do you like coffee?\" Como responder \"Sim, gosto\"?",
+              "options": [
+                {
+                  "text": "Yes, I do.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "Yes, I like."
+                },
+                {
+                  "text": "Yes, I am."
+                }
+              ],
+              "answer": "Yes, I do.",
+              "explanation": "Resposta curta repete o do: Yes, I do. / No, I don't."
+            },
+            {
+              "id": "u3-sk4-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-no-i-dont"],
+              "prompt": "\"Do you like fish?\" Como responder \"Não, não gosto\"?",
+              "options": [
+                {
+                  "text": "No, I don't.",
+                  "emoji": "👎"
+                },
+                {
+                  "text": "No, I not."
+                },
+                {
+                  "text": "No, I'm not."
+                }
+              ],
+              "answer": "No, I don't.",
+              "explanation": "Resposta curta repete o do: Yes, I do. / No, I don't."
+            },
+            {
+              "id": "u3-sk4-l2-e05",
+              "type": "match-pairs",
+              "itemIds": ["u3-s-yes-i-do", "u3-s-no-i-dont", "u3-like", "u3-love"],
+              "pairs": [
+                {
+                  "en": "Yes, I do.",
+                  "pt": "Sim, gosto."
+                },
+                {
+                  "en": "No, I don't.",
+                  "pt": "Não, não gosto."
+                },
+                {
+                  "en": "I like",
+                  "pt": "eu gosto"
+                },
+                {
+                  "en": "I love",
+                  "pt": "eu amo"
+                },
+                {
+                  "en": "fish",
+                  "pt": "peixe"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk4-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u3-s-do-you-like-cheese-bread"],
+              "promptPt": "Você gosta de pão de queijo?",
+              "answer": "Do you like cheese bread?",
+              "distractors": ["of", "are", "likes"],
+              "explanation": "Pergunta com like começa com Do: Do you like fish?"
+            },
+            {
+              "id": "u3-sk4-l2-e07",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-do-you-like-fish"],
+              "promptEn": "Do you like fish?",
+              "accepted": ["(Você) gosta de peixe", "Vocês gostam de peixe"],
+              "explanation": "Pergunta com like começa com Do: Do you like fish?"
+            },
+            {
+              "id": "u3-sk4-l2-e08",
+              "type": "word-bank",
+              "itemIds": ["u3-s-yes-i-do"],
+              "promptPt": "Sim, gosto.",
+              "answer": "Yes, I do.",
+              "distractors": ["like", "am", "does"],
+              "explanation": "Resposta curta repete o do: Yes, I do. / No, I don't."
+            },
+            {
+              "id": "u3-sk4-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u3-s-do-you-like-cheese-bread"],
+              "textEn": "Do you like cheese bread?",
+              "explanation": "Pergunta com like começa com Do: Do you like fish?"
+            },
+            {
+              "id": "u3-sk4-l2-e10",
+              "type": "speak",
+              "itemIds": ["u3-s-no-i-dont"],
+              "textEn": "No, I don't."
+            },
+            {
+              "id": "u3-sk4-l2-e11",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-no-i-dont"],
+              "promptEn": "No, I don't.",
+              "accepted": ["Não, (eu) não gosto", "Não gosto (não)", "Não, (eu) não"],
+              "explanation": "Resposta curta repete o do: Yes, I do. / No, I don't."
+            },
+            {
+              "id": "u3-sk4-l2-e12",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-yes-i-do"],
+              "sentence": "Do you like açaí? Yes, I ___.",
+              "options": ["do", "like", "am"],
+              "answer": "do",
+              "translationPt": "Você gosta de açaí? Sim, gosto.",
+              "explanation": "Resposta curta repete o do: Yes, I do. / No, I don't."
+            }
+          ]
+        },
+        {
+          "id": "u3-sk4-l3",
+          "title": "She likes…",
+          "exercises": [
+            {
+              "id": "u3-sk4-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u3-s-she-likes-tea"],
+              "prompt": "Como se diz \"Ela gosta de chá\"?",
+              "options": [
+                {
+                  "text": "She likes tea.",
+                  "emoji": "🍵"
+                },
+                {
+                  "text": "She like tea."
+                },
+                {
+                  "text": "She likes of tea."
+                }
+              ],
+              "answer": "She likes tea.",
+              "explanation": "Com he/she (ele/ela), o verbo ganha -s: She likes tea."
+            },
+            {
+              "id": "u3-sk4-l3-e02",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-she-likes-tea"],
+              "sentence": "She ___ tea.",
+              "options": ["likes", "like", "liking"],
+              "answer": "likes",
+              "translationPt": "Ela gosta de chá.",
+              "explanation": "Com he/she (ele/ela), o verbo ganha -s: She likes tea."
+            },
+            {
+              "id": "u3-sk4-l3-e03",
+              "type": "word-bank",
+              "itemIds": ["u3-s-she-likes-tea"],
+              "promptPt": "Ela gosta de chá.",
+              "answer": "She likes tea.",
+              "distractors": ["like", "of", "is"],
+              "explanation": "Com he/she (ele/ela), o verbo ganha -s: She likes tea."
+            },
+            {
+              "id": "u3-sk4-l3-e04",
+              "type": "word-bank",
+              "itemIds": ["u3-s-my-mom-likes-coffee"],
+              "promptPt": "Minha mãe gosta de café com leite.",
+              "answer": "My mom likes coffee with milk.",
+              "accepted": ["My [mom|mother] likes coffee with milk"],
+              "distractors": ["like", "of", "is"],
+              "explanation": "Com he/she (ele/ela) ou \"my mom\", o verbo ganha -s: My mom likes coffee."
+            },
+            {
+              "id": "u3-sk4-l3-e05",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-she-likes-tea"],
+              "promptEn": "She likes tea.",
+              "accepted": ["Ela gosta de chá"],
+              "explanation": "Com he/she (ele/ela), o verbo ganha -s: She likes tea."
+            },
+            {
+              "id": "u3-sk4-l3-e06",
+              "type": "match-pairs",
+              "itemIds": ["u3-s-she-likes-tea", "u3-like", "u3-love", "u3-s-i-dont-like-fish"],
+              "pairs": [
+                {
+                  "en": "she likes",
+                  "pt": "ela gosta"
+                },
+                {
+                  "en": "I like",
+                  "pt": "eu gosto"
+                },
+                {
+                  "en": "I don't like",
+                  "pt": "eu não gosto"
+                },
+                {
+                  "en": "I love",
+                  "pt": "eu amo"
+                },
+                {
+                  "en": "Do you like…?",
+                  "pt": "Você gosta…?"
+                }
+              ]
+            },
+            {
+              "id": "u3-sk4-l3-e07",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-my-mom-likes-coffee"],
+              "promptEn": "My mom likes coffee with milk.",
+              "accepted": ["(A) minha mãe gosta de café com leite"],
+              "explanation": "Com he/she (ele/ela) ou \"my mom\", o verbo ganha -s: My mom likes coffee."
+            },
+            {
+              "id": "u3-sk4-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u3-s-she-likes-tea"],
+              "textEn": "She likes tea.",
+              "explanation": "Com he/she (ele/ela), o verbo ganha -s: She likes tea."
+            },
+            {
+              "id": "u3-sk4-l3-e09",
+              "type": "fill-blank",
+              "itemIds": ["u3-s-i-dont-like-fish"],
+              "sentence": "I ___ like fish.",
+              "options": ["don't", "no", "not"],
+              "answer": "don't",
+              "translationPt": "Eu não gosto de peixe.",
+              "explanation": "Para negar use don't: I don't like fish. \"I no like\" não existe em inglês."
+            },
+            {
+              "id": "u3-sk4-l3-e10",
+              "type": "speak",
+              "itemIds": ["u3-s-do-you-like-cheese-bread"],
+              "textEn": "Do you like cheese bread?"
+            },
+            {
+              "id": "u3-sk4-l3-e11",
+              "type": "translate-typing",
+              "itemIds": ["u3-s-do-you-like-cheese-bread"],
+              "promptEn": "Do you like cheese bread?",
+              "accepted": ["(Você) gosta de pão de queijo", "Vocês gostam de pão de queijo"],
+              "explanation": "Pergunta com like começa com Do: Do you like fish?"
+            },
+            {
+              "id": "u3-sk4-l3-e12",
+              "type": "multiple-choice",
+              "itemIds": ["u3-like"],
+              "prompt": "Qual frase está certa?",
+              "options": [
+                {
+                  "text": "I like rice and beans.",
+                  "emoji": "🍚"
+                },
+                {
+                  "text": "I like of rice and beans."
+                },
+                {
+                  "text": "I likes rice and beans."
+                }
+              ],
+              "answer": "I like rice and beans.",
+              "explanation": "Em português é \"gostar DE\", mas em inglês like vem direto: I like coffee."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewLesson": {
+    "id": "u3-review",
+    "title": "Revisão: comida e restaurante",
+    "exercises": [
+      {
+        "id": "u3-review-e01",
+        "type": "match-pairs",
+        "itemIds": ["u3-bread", "u3-coffee", "u3-check", "u3-fish", "u3-water"],
+        "pairs": [
+          {
+            "en": "bread",
+            "pt": "pão"
+          },
+          {
+            "en": "coffee",
+            "pt": "café"
+          },
+          {
+            "en": "check",
+            "pt": "conta"
+          },
+          {
+            "en": "fish",
+            "pt": "peixe"
+          },
+          {
+            "en": "water",
+            "pt": "água"
+          }
+        ]
+      },
+      {
+        "id": "u3-review-e02",
+        "type": "fill-blank",
+        "itemIds": ["u3-egg"],
+        "sentence": "I'd like ___ egg, please.",
+        "options": ["a", "an", "two"],
+        "answer": "an",
+        "translationPt": "Eu queria um ovo, por favor.",
+        "explanation": "Antes de som de vogal usa \"an\": an apple, an egg. Antes de som de consoante, \"a\": a banana."
+      },
+      {
+        "id": "u3-review-e03",
+        "type": "word-bank",
+        "itemIds": ["u3-s-rice-and-beans"],
+        "promptPt": "Arroz e feijão, por favor.",
+        "answer": "Rice and beans, please.",
+        "accepted": ["[Rice and beans|Beans and rice], please"],
+        "distractors": ["bean", "with", "an"],
+        "explanation": "Feijão em inglês fica no plural: beans. \"Rice and beans\" = arroz e feijão."
+      },
+      {
+        "id": "u3-review-e04",
+        "type": "translate-typing",
+        "itemIds": ["u3-s-id-like-a-coffee"],
+        "promptEn": "I'd like a coffee, please.",
+        "accepted": [
+          "(Eu) [queria|gostaria de|vou querer] um café, por favor",
+          "Um café, por favor",
+          "Me [vê|traz|dá] um café, por favor"
+        ],
+        "explanation": "\"I'd like…\" (eu queria…) é o jeito educado de pedir. \"I want\" soa seco demais."
+      },
+      {
+        "id": "u3-review-e05",
+        "type": "fill-blank",
+        "itemIds": ["u3-eat"],
+        "sentence": "I ___ chicken with rice.",
+        "options": ["eat", "it", "eats"],
+        "answer": "eat",
+        "translationPt": "Eu como frango com arroz.",
+        "explanation": "Eat (comer) tem \"i\" longo: \"iiit\". It (isso) é curtinho. Alongue o som de eat!"
+      },
+      {
+        "id": "u3-review-e06",
+        "type": "multiple-choice",
+        "itemIds": ["u3-s-make-a-reservation"],
+        "prompt": "Qual frase está certa?",
+        "options": [
+          {
+            "text": "I'd like to do a reservation."
+          },
+          {
+            "text": "I'd like to make a reservation.",
+            "emoji": "📅"
+          },
+          {
+            "text": "I'd like make a reservation."
+          }
+        ],
+        "answer": "I'd like to make a reservation.",
+        "explanation": "Reserva se faz com make: make a reservation. Do é para tarefas e atividades."
+      },
+      {
+        "id": "u3-review-e07",
+        "type": "word-bank",
+        "itemIds": ["u3-s-can-we-have-the-check"],
+        "promptPt": "Pode trazer a conta, por favor?",
+        "answer": "Can we have the check, please?",
+        "accepted": ["Can [we|I] have the check, please"],
+        "distractors": ["do", "tip", "make"],
+        "explanation": "Nos EUA, a conta do restaurante é \"the check\"."
+      },
+      {
+        "id": "u3-review-e08",
+        "type": "listen-type",
+        "itemIds": ["u3-s-can-i-have-some-water"],
+        "textEn": "Can I have some water, please?",
+        "explanation": "\"Can I have…?\" = \"Pode me ver/trazer…?\". É assim que se pede no balcão ou no restaurante."
+      },
+      {
+        "id": "u3-review-e09",
+        "type": "speak",
+        "itemIds": ["u3-s-a-table-for-two"],
+        "textEn": "A table for two, please."
+      },
+      {
+        "id": "u3-review-e10",
+        "type": "translate-typing",
+        "itemIds": ["u3-s-for-here-or-to-go"],
+        "promptEn": "For here or to go?",
+        "accepted": [
+          "[Para|Pra] comer aqui ou [para|pra] [levar|viagem]",
+          "É [para|pra] comer aqui ou [para|pra] [levar|viagem]",
+          "Aqui ou [para|pra] [levar|viagem]"
+        ],
+        "explanation": "\"Para levar\" é \"to go\". \"For here\" = para comer aqui."
+      },
+      {
+        "id": "u3-review-e11",
+        "type": "multiple-choice",
+        "itemIds": ["u3-push"],
+        "prompt": "A placa na porta diz PUSH. Você deve:",
+        "options": [
+          {
+            "text": "puxar"
+          },
+          {
+            "text": "empurrar",
+            "emoji": "🚪"
+          },
+          {
+            "text": "bater"
+          }
+        ],
+        "answer": "empurrar",
+        "explanation": "Push parece \"puxar\", mas é o contrário: push = empurrar. Puxar é pull."
+      },
+      {
+        "id": "u3-review-e12",
+        "type": "fill-blank",
+        "itemIds": ["u3-s-she-likes-tea"],
+        "sentence": "She ___ cheese bread.",
+        "options": ["likes", "like", "like of"],
+        "answer": "likes",
+        "translationPt": "Ela gosta de pão de queijo.",
+        "explanation": "Com he/she (ele/ela), o verbo ganha -s: She likes tea."
+      },
+      {
+        "id": "u3-review-e13",
+        "type": "word-bank",
+        "itemIds": ["u3-s-do-you-like-fish"],
+        "promptPt": "Você gosta de peixe?",
+        "answer": "Do you like fish?",
+        "distractors": ["of", "are", "likes"],
+        "explanation": "Pergunta com like começa com Do: Do you like fish?"
+      },
+      {
+        "id": "u3-review-e14",
+        "type": "translate-typing",
+        "itemIds": ["u3-s-i-dont-like-fish"],
+        "promptEn": "I don't like fish.",
+        "accepted": ["(Eu) não gosto de peixe"],
+        "explanation": "Para negar use don't: I don't like fish. \"I no like\" não existe em inglês."
+      },
+      {
+        "id": "u3-review-e15",
+        "type": "listen-type",
+        "itemIds": ["u3-s-cheese-bread-is-good"],
+        "textEn": "This cheese bread is really good.",
+        "explanation": "Em inglês o \"tipo\" vem antes: cheese bread = pão de queijo (nada de \"bread of cheese\")."
+      }
+    ]
+  }
+}
