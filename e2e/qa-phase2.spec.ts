@@ -228,7 +228,6 @@ test.describe('rotas', () => {
     '/perfil',
     '/config',
     '/dica/u1-sk1',
-    '/licao/u1-sk1-l1',
     '/boas-vindas',
     '/nivelamento',
     '/nao-existe/abc',
@@ -241,6 +240,18 @@ test.describe('rotas', () => {
       expect(errors).toEqual([]);
     });
   }
+
+  test('unknown lesson id shows "Lição não encontrada." with a way back (Fase 3)', async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/licao/nao-existe');
+    await expect(page.getByRole('heading', { name: 'Lição não encontrada.' })).toBeVisible();
+    await page.getByRole('link', { name: 'Voltar para a trilha' }).click();
+    await expect(page).toHaveURL(/\/$/);
+    expect(errors).toEqual([]);
+  });
 
   test('"Voltar para o início" and browser back work', async ({ page }) => {
     await page.goto('/');
@@ -314,10 +325,13 @@ test.describe('PWA / offline', () => {
 
   test('offline: deep links and unknown routes fall back to the app shell', async ({ page }) => {
     await goOffline(page);
-    for (const path of ['/licao/u1-sk1-l1', '/dica/x', '/qualquer/coisa']) {
+    for (const path of ['/dica/x', '/qualquer/coisa']) {
       await page.goto(path);
       await expect(page.getByRole('heading', { name: 'Em construção' })).toBeVisible();
     }
+    // The lesson route is served offline too (Fase 3: real screen).
+    await page.goto('/licao/nao-existe');
+    await expect(page.getByRole('heading', { name: 'Lição não encontrada.' })).toBeVisible();
     await page.context().setOffline(false);
   });
 
