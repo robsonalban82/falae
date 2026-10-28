@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#FFF8EF" />
+    <meta
+      name="description"
+      content="Aprenda inglês em poucos minutos por dia, do jeito brasileiro."
+    />
+    <title>Falaê — inglês todo dia</title>
+    <script>
+      // Apply the saved theme before first paint (mirrors src/services/theme.ts).
+      (function () {
+        var theme = 'system';
+        try {
+          theme = localStorage.getItem('falae-theme') || 'system';
+        } catch (e) {}
+        var dark =
+          theme === 'dark' ||
+          (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
