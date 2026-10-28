@@ -1,0 +1,3361 @@
+{
+  "id": "u4-unit",
+  "order": 4,
+  "title": "Rotina e horas",
+  "description": "Diga as horas, conte sua rotina, use os dias da semana e fale do que você fez ontem.",
+  "color": "acerola",
+  "skills": [
+    {
+      "id": "u4-sk1",
+      "title": "Que horas são?",
+      "icon": "⏰",
+      "tip": {
+        "title": "Dizendo as horas",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Para perguntar: **What time is it?** Para responder: **It's** + hora. Para dizer o horário de alguma coisa, use **at** (é o nosso \"às\"): My class is **at** seven."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "It's seven o'clock.",
+                "pt": "São sete em ponto."
+              },
+              {
+                "en": "It's seven thirty.",
+                "pt": "São sete e meia."
+              },
+              {
+                "en": "It's half past seven.",
+                "pt": "São sete e meia."
+              },
+              {
+                "en": "It's noon. / It's midnight.",
+                "pt": "É meio-dia. / É meia-noite."
+              },
+              {
+                "en": "My class is at seven.",
+                "pt": "Minha aula é às sete."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "**O'clock** só na hora cheia. Na meia hora, diga a hora e depois os minutos (**seven thirty**) ou **half past** + hora (**half past seven**)."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "It's seven hours.",
+            "right": "It's seven o'clock.",
+            "why": "Hours é duração (I work eight hours = trabalho oito horas). Para dizer que horas são, use o'clock ou só o número."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "It's seven and half.",
+            "right": "It's seven thirty. / It's half past seven.",
+            "why": "Não existe \"e meia\" com and nas horas em inglês."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u4-time",
+          "en": "time",
+          "pt": ["hora", "horas"],
+          "acceptedPt": ["tempo"],
+          "example": {
+            "en": "What time is it?",
+            "pt": "Que horas são?"
+          },
+          "emoji": "⌚",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-oclock",
+          "en": "o'clock",
+          "pt": ["em ponto"],
+          "acceptedPt": ["horas", "hora"],
+          "example": {
+            "en": "It's ten o'clock.",
+            "pt": "São dez em ponto."
+          },
+          "emoji": "🕙",
+          "difficulty": 1,
+          "focus": "horas",
+          "notes": "O'clock só na hora cheia: seven o'clock. Nunca \"seven thirty o'clock\"."
+        },
+        {
+          "id": "u4-noon",
+          "en": "noon",
+          "pt": ["meio-dia"],
+          "example": {
+            "en": "It's noon.",
+            "pt": "É meio-dia."
+          },
+          "emoji": "🕛",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-midnight",
+          "en": "midnight",
+          "pt": ["meia-noite"],
+          "example": {
+            "en": "It's midnight.",
+            "pt": "É meia-noite."
+          },
+          "emoji": "🌙",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-half-past",
+          "en": "half past",
+          "pt": ["e meia"],
+          "example": {
+            "en": "It's half past seven.",
+            "pt": "São sete e meia."
+          },
+          "emoji": "🕢",
+          "difficulty": 2,
+          "focus": "horas",
+          "notes": "Half past + hora: half past seven = sete e meia."
+        },
+        {
+          "id": "u4-class",
+          "en": "class",
+          "pt": ["aula"],
+          "acceptedPt": ["turma"],
+          "example": {
+            "en": "My class is at seven.",
+            "pt": "Minha aula é às sete."
+          },
+          "emoji": "📚",
+          "difficulty": 1
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u4-s-what-time-is-it",
+          "en": "What time is it?",
+          "pt": "Que horas são?",
+          "acceptedEn": ["What time is it (now)", "What's the time"],
+          "acceptedPt": ["Que horas são (agora)", "Que hora é (agora)"],
+          "difficulty": 1,
+          "focus": "horas"
+        },
+        {
+          "id": "u4-s-its-seven-oclock",
+          "en": "It's seven o'clock.",
+          "pt": "São sete horas.",
+          "acceptedEn": ["[It's|It is] [seven|7] (o'clock)"],
+          "acceptedPt": ["(São) [sete|7] (horas) (em ponto)", "(São) [7h|7:00]"],
+          "difficulty": 2,
+          "focus": "horas"
+        },
+        {
+          "id": "u4-s-its-noon",
+          "en": "It's noon.",
+          "pt": "É meio-dia.",
+          "acceptedEn": ["[It's|It is] (twelve) noon"],
+          "acceptedPt": ["É meio-dia (em ponto)"],
+          "difficulty": 1
+        },
+        {
+          "id": "u4-s-its-midnight",
+          "en": "It's midnight.",
+          "pt": "É meia-noite.",
+          "acceptedEn": ["[It's|It is] midnight"],
+          "acceptedPt": ["É meia-noite (em ponto)"],
+          "difficulty": 1
+        },
+        {
+          "id": "u4-s-its-seven-thirty",
+          "en": "It's seven thirty.",
+          "pt": "São sete e meia.",
+          "acceptedEn": ["[It's|It is] [seven thirty|half past seven]"],
+          "acceptedPt": ["(São) [sete|7] e [meia|trinta]", "(São) [7:30|7h30]"],
+          "difficulty": 2,
+          "focus": "horas"
+        },
+        {
+          "id": "u4-s-class-at-seven",
+          "en": "My class is at seven.",
+          "pt": "Minha aula é às sete.",
+          "acceptedEn": ["My class is at [seven|7] (o'clock)"],
+          "acceptedPt": ["(A) minha aula é às [sete|7] (horas)", "(A) minha aula é às [7h|7:00]"],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-what-time-is-your-class",
+          "en": "What time is your class?",
+          "pt": "A que horas é a sua aula?",
+          "acceptedEn": ["What time is your class"],
+          "acceptedPt": [
+            "(A) que horas é (a) [sua|tua] aula",
+            "(A) [sua|tua] aula é (a) que horas",
+            "(A) que horas começa (a) [sua|tua] aula",
+            "(A) que horas é a aula de vocês"
+          ],
+          "difficulty": 2,
+          "focus": "horas"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u4-sk1-l1",
+          "title": "Horas cheias",
+          "exercises": [
+            {
+              "id": "u4-sk1-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-s-what-time-is-it", "u4-time"],
+              "prompt": "Como se pergunta \"Que horas são?\"",
+              "options": [
+                {
+                  "text": "What time is it?",
+                  "emoji": "⌚"
+                },
+                {
+                  "text": "How old are you?",
+                  "emoji": "🎂"
+                },
+                {
+                  "text": "What's your name?",
+                  "emoji": "📛"
+                },
+                {
+                  "text": "How are you?",
+                  "emoji": "🙂"
+                }
+              ],
+              "answer": "What time is it?"
+            },
+            {
+              "id": "u4-sk1-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-s-its-seven-oclock", "u4-oclock"],
+              "prompt": "São sete horas (em ponto). Qual frase está certa?",
+              "options": [
+                {
+                  "text": "It's seven o'clock.",
+                  "emoji": "🕖"
+                },
+                {
+                  "text": "It's seven hours.",
+                  "emoji": "⏳"
+                },
+                {
+                  "text": "I'm seven.",
+                  "emoji": "🎂"
+                }
+              ],
+              "answer": "It's seven o'clock.",
+              "explanation": "Hora cheia: It's + número + o'clock. \"Seven hours\" é duração (sete horas de trabalho), não horário."
+            },
+            {
+              "id": "u4-sk1-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-noon"],
+              "prompt": "Qual destas é \"meio-dia\"?",
+              "options": [
+                {
+                  "text": "noon",
+                  "emoji": "🕛"
+                },
+                {
+                  "text": "midnight",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "o'clock",
+                  "emoji": "🕖"
+                }
+              ],
+              "answer": "noon"
+            },
+            {
+              "id": "u4-sk1-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u4-midnight"],
+              "prompt": "E \"meia-noite\"?",
+              "options": [
+                {
+                  "text": "midnight",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "noon",
+                  "emoji": "🕛"
+                },
+                {
+                  "text": "time",
+                  "emoji": "⌚"
+                }
+              ],
+              "answer": "midnight"
+            },
+            {
+              "id": "u4-sk1-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u4-time", "u4-oclock", "u4-noon", "u4-midnight"],
+              "pairs": [
+                {
+                  "en": "time",
+                  "pt": "hora"
+                },
+                {
+                  "en": "o'clock",
+                  "pt": "em ponto"
+                },
+                {
+                  "en": "noon",
+                  "pt": "meio-dia"
+                },
+                {
+                  "en": "midnight",
+                  "pt": "meia-noite"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk1-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-oclock"],
+              "sentence": "It's ten ___.",
+              "options": ["o'clock", "hours", "time"],
+              "answer": "o'clock",
+              "translationPt": "São dez em ponto.",
+              "explanation": "Hora cheia = número + o'clock. \"Hours\" é para duração: I work eight hours (trabalho oito horas)."
+            },
+            {
+              "id": "u4-sk1-l1-e07",
+              "type": "word-bank",
+              "itemIds": ["u4-s-what-time-is-it"],
+              "promptPt": "Que horas são?",
+              "answer": "What time is it?",
+              "distractors": ["hour", "are", "how"],
+              "explanation": "What time is it? = Que horas são? O \"it\" só ocupa o lugar do sujeito, como em It's seven (São sete)."
+            },
+            {
+              "id": "u4-sk1-l1-e08",
+              "type": "listen-type",
+              "itemIds": ["u4-s-its-seven-oclock"],
+              "textEn": "It's seven o'clock.",
+              "accepted": ["[It's|It is] 7:00"]
+            },
+            {
+              "id": "u4-sk1-l1-e09",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-its-noon"],
+              "promptEn": "It's noon.",
+              "accepted": ["É meio-dia (em ponto)", "[Agora é|Já é] meio-dia"]
+            },
+            {
+              "id": "u4-sk1-l1-e10",
+              "type": "word-bank",
+              "itemIds": ["u4-s-its-midnight"],
+              "promptPt": "É meia-noite.",
+              "answer": "It's midnight.",
+              "distractors": ["noon", "hours", "are"]
+            },
+            {
+              "id": "u4-sk1-l1-e11",
+              "type": "speak",
+              "itemIds": ["u4-s-what-time-is-it"],
+              "textEn": "What time is it?"
+            },
+            {
+              "id": "u4-sk1-l1-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-oclock"],
+              "promptEn": "It's eleven o'clock.",
+              "accepted": ["(São) [onze|11] (horas) (em ponto)", "(São) [11h|11:00]"],
+              "explanation": "It's eleven o'clock = São onze horas (em ponto). O'clock marca a hora cheia."
+            }
+          ]
+        },
+        {
+          "id": "u4-sk1-l2",
+          "title": "E meia",
+          "exercises": [
+            {
+              "id": "u4-sk1-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-s-its-seven-thirty"],
+              "prompt": "Como se diz \"São sete e meia\"?",
+              "options": [
+                {
+                  "text": "It's seven thirty."
+                },
+                {
+                  "text": "It's seven and half."
+                },
+                {
+                  "text": "It's thirty seven."
+                },
+                {
+                  "text": "It's seven o'clock."
+                }
+              ],
+              "answer": "It's seven thirty.",
+              "explanation": "Em inglês, a hora vem antes dos minutos: seven thirty = 7:30. \"Seven and half\" não se usa para horas."
+            },
+            {
+              "id": "u4-sk1-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-half-past"],
+              "prompt": "Outra forma de dizer 7:30:",
+              "options": [
+                {
+                  "text": "half past seven"
+                },
+                {
+                  "text": "half seven past"
+                },
+                {
+                  "text": "past half seven"
+                }
+              ],
+              "answer": "half past seven",
+              "explanation": "A ordem é half + past + hora: half past seven = \"meia hora depois das sete\"."
+            },
+            {
+              "id": "u4-sk1-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-class"],
+              "prompt": "Qual destas é \"aula\"?",
+              "options": [
+                {
+                  "text": "class",
+                  "emoji": "📚"
+                },
+                {
+                  "text": "time",
+                  "emoji": "⌚"
+                },
+                {
+                  "text": "noon",
+                  "emoji": "🕛"
+                }
+              ],
+              "answer": "class"
+            },
+            {
+              "id": "u4-sk1-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u4-half-past", "u4-class", "u4-noon", "u4-midnight", "u4-oclock"],
+              "pairs": [
+                {
+                  "en": "half past",
+                  "pt": "e meia"
+                },
+                {
+                  "en": "class",
+                  "pt": "aula"
+                },
+                {
+                  "en": "noon",
+                  "pt": "meio-dia"
+                },
+                {
+                  "en": "midnight",
+                  "pt": "meia-noite"
+                },
+                {
+                  "en": "o'clock",
+                  "pt": "em ponto"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk1-l2-e05",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-class-at-seven"],
+              "sentence": "My class is ___ seven.",
+              "options": ["at", "in", "on"],
+              "answer": "at",
+              "translationPt": "Minha aula é às sete.",
+              "explanation": "Com horário exato, use at: at seven, at 7:30, at noon. É o \"às\" do português."
+            },
+            {
+              "id": "u4-sk1-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u4-s-its-seven-thirty"],
+              "promptPt": "São sete e meia.",
+              "answer": "It's seven thirty.",
+              "distractors": ["and", "o'clock", "hours"],
+              "explanation": "Hora + minutos, sem \"and\": seven thirty."
+            },
+            {
+              "id": "u4-sk1-l2-e07",
+              "type": "listen-type",
+              "itemIds": ["u4-half-past", "u4-s-its-seven-thirty"],
+              "textEn": "It's half past seven.",
+              "accepted": ["[It's|It is] half past [seven|7]"]
+            },
+            {
+              "id": "u4-sk1-l2-e08",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-class-at-seven"],
+              "promptEn": "My class is at seven.",
+              "accepted": ["(A) minha aula é às [sete|7] (horas)", "(A) minha aula é às [7h|7:00]"],
+              "explanation": "Horário exato usa at, o nosso \"às\": at seven, at eight thirty."
+            },
+            {
+              "id": "u4-sk1-l2-e09",
+              "type": "fill-blank",
+              "itemIds": ["u4-half-past"],
+              "sentence": "It's half ___ eight.",
+              "options": ["past", "after", "and"],
+              "answer": "past",
+              "translationPt": "São oito e meia.",
+              "explanation": "Half past + hora: half past eight = 8:30."
+            },
+            {
+              "id": "u4-sk1-l2-e10",
+              "type": "word-bank",
+              "itemIds": ["u4-s-what-time-is-your-class"],
+              "promptPt": "A que horas é a sua aula?",
+              "answer": "What time is your class?",
+              "distractors": ["are", "hour", "you"],
+              "explanation": "What time is...? = A que horas é...? O \"a que\" já está em What time."
+            },
+            {
+              "id": "u4-sk1-l2-e11",
+              "type": "speak",
+              "itemIds": ["u4-half-past"],
+              "textEn": "It's half past seven."
+            },
+            {
+              "id": "u4-sk1-l2-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-its-seven-thirty"],
+              "promptEn": "It's nine thirty.",
+              "accepted": ["(São) [nove|9] e [meia|trinta]", "(São) [9:30|9h30]"],
+              "explanation": "It's nine thirty = São nove e meia: primeiro a hora, depois os minutos."
+            },
+            {
+              "id": "u4-sk1-l2-e13",
+              "type": "word-bank",
+              "itemIds": ["u4-class", "u4-noon"],
+              "promptPt": "A aula é ao meio-dia.",
+              "answer": "The class is at noon.",
+              "distractors": ["in", "on", "midnight"],
+              "explanation": "Noon e midnight também usam at: at noon, at midnight."
+            }
+          ]
+        },
+        {
+          "id": "u4-sk1-l3",
+          "title": "Revisão das horas",
+          "exercises": [
+            {
+              "id": "u4-sk1-l3-e01",
+              "type": "match-pairs",
+              "itemIds": ["u4-half-past", "u4-oclock", "u4-noon", "u4-midnight"],
+              "pairs": [
+                {
+                  "en": "seven thirty",
+                  "pt": "sete e meia"
+                },
+                {
+                  "en": "half past six",
+                  "pt": "seis e meia"
+                },
+                {
+                  "en": "six o'clock",
+                  "pt": "seis em ponto"
+                },
+                {
+                  "en": "noon",
+                  "pt": "meio-dia"
+                },
+                {
+                  "en": "midnight",
+                  "pt": "meia-noite"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk1-l3-e02",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-class-at-seven", "u4-noon"],
+              "sentence": "My class is ___ noon.",
+              "options": ["at", "in", "on"],
+              "answer": "at",
+              "translationPt": "Minha aula é ao meio-dia.",
+              "explanation": "Noon e midnight funcionam como horários: at noon, at midnight."
+            },
+            {
+              "id": "u4-sk1-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-s-its-seven-thirty", "u4-s-what-time-is-it"],
+              "prompt": "Ana pergunta: \"What time is it?\" São 8:30. O que você responde?",
+              "options": [
+                {
+                  "text": "It's eight thirty."
+                },
+                {
+                  "text": "It's eight and half."
+                },
+                {
+                  "text": "I'm eight thirty."
+                },
+                {
+                  "text": "It's thirty eight."
+                }
+              ],
+              "answer": "It's eight thirty.",
+              "explanation": "Para dizer as horas: It's + hora + minutos. Nada de \"and half\", e o verbo é is (It's), não \"I'm\"."
+            },
+            {
+              "id": "u4-sk1-l3-e04",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-what-time-is-it"],
+              "promptEn": "What time is it?",
+              "accepted": ["Que horas são (agora)", "Que hora é (agora)"],
+              "explanation": "What time is it? = Que horas são? O \"it\" só ocupa o lugar do sujeito, como em It's seven (São sete)."
+            },
+            {
+              "id": "u4-sk1-l3-e05",
+              "type": "word-bank",
+              "itemIds": ["u4-s-class-at-seven", "u4-s-its-seven-thirty"],
+              "promptPt": "Minha aula é às oito e meia.",
+              "answer": "My class is at eight thirty.",
+              "accepted": ["My class is at half past eight"],
+              "distractors": ["in", "on", "and"],
+              "explanation": "Horário exato usa at, o nosso \"às\": at seven, at eight thirty."
+            },
+            {
+              "id": "u4-sk1-l3-e06",
+              "type": "listen-type",
+              "itemIds": ["u4-class", "u4-noon"],
+              "textEn": "My class is at noon."
+            },
+            {
+              "id": "u4-sk1-l3-e07",
+              "type": "speak",
+              "itemIds": ["u4-s-class-at-seven"],
+              "textEn": "My class is at seven thirty."
+            },
+            {
+              "id": "u4-sk1-l3-e08",
+              "type": "fill-blank",
+              "itemIds": ["u4-oclock"],
+              "sentence": "It's six ___.",
+              "options": ["o'clock", "hours", "half"],
+              "answer": "o'clock",
+              "translationPt": "São seis em ponto.",
+              "explanation": "Hora cheia: six o'clock. \"Six hours\" seria duração."
+            },
+            {
+              "id": "u4-sk1-l3-e09",
+              "type": "translate-typing",
+              "itemIds": ["u4-half-past"],
+              "promptEn": "It's half past ten.",
+              "accepted": ["(São) [dez|10] e [meia|trinta]", "(São) [10:30|10h30]"],
+              "explanation": "Half past + hora = e meia: half past ten = 10:30."
+            },
+            {
+              "id": "u4-sk1-l3-e10",
+              "type": "multiple-choice",
+              "itemIds": ["u4-s-what-time-is-it", "u4-noon"],
+              "prompt": "A resposta é \"It's noon.\" Qual foi a pergunta?",
+              "options": [
+                {
+                  "text": "What time is it?",
+                  "emoji": "⌚"
+                },
+                {
+                  "text": "How old are you?",
+                  "emoji": "🎂"
+                },
+                {
+                  "text": "How are you?",
+                  "emoji": "🙂"
+                }
+              ],
+              "answer": "What time is it?"
+            },
+            {
+              "id": "u4-sk1-l3-e11",
+              "type": "word-bank",
+              "itemIds": ["u4-oclock"],
+              "promptPt": "São onze em ponto.",
+              "answer": "It's eleven o'clock.",
+              "distractors": ["hours", "are", "half"],
+              "explanation": "Hora cheia: eleven o'clock, não \"eleven hours\"."
+            },
+            {
+              "id": "u4-sk1-l3-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-what-time-is-your-class"],
+              "promptEn": "What time is your class?",
+              "accepted": [
+                "(A) que horas é (a) [sua|tua] aula",
+                "(A) [sua|tua] aula é (a) que horas",
+                "(A) que horas começa (a) [sua|tua] aula",
+                "(A) que horas é a aula de vocês"
+              ],
+              "explanation": "What time is...? = A que horas é...? O \"a que\" já está em What time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u4-sk2",
+      "title": "Minha rotina",
+      "icon": "🚿",
+      "tip": {
+        "title": "Falando da rotina",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Para hábitos, use o presente simples: **I wake up at six** (eu acordo às seis). **Wake up** é acordar (abrir os olhos); **get up** é levantar da cama."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I wake up at six.",
+                "pt": "Eu acordo às seis."
+              },
+              {
+                "en": "I take a shower at seven.",
+                "pt": "Eu tomo banho às sete."
+              },
+              {
+                "en": "I have breakfast at seven thirty.",
+                "pt": "Eu tomo café da manhã às sete e meia."
+              },
+              {
+                "en": "I go to bed at eleven.",
+                "pt": "Eu vou dormir às onze."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "Com **he / she / it**, o verbo ganha **-s**: he **gets** up, she **goes** to work. **Have** vira **has**: he **has** lunch."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "He get up at six.",
+            "right": "He gets up at six.",
+            "why": "Com he/she, o verbo leva -s — só no verbo, não no \"up\"."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I take breakfast. / I take coffee in the morning.",
+            "right": "I have breakfast. / I drink coffee in the morning.",
+            "why": "Refeições usam have: have breakfast, have lunch, have dinner. \"Tomar café\" não vira \"take coffee\"."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u4-wake-up",
+          "en": "wake up",
+          "pt": ["acordar"],
+          "example": {
+            "en": "I wake up at six.",
+            "pt": "Eu acordo às seis."
+          },
+          "emoji": "⏰",
+          "difficulty": 1,
+          "notes": "Wake up = acordar (abrir os olhos). Get up = sair da cama."
+        },
+        {
+          "id": "u4-get-up",
+          "en": "get up",
+          "pt": ["levantar", "levantar-se"],
+          "acceptedPt": ["(se) levantar (da cama)"],
+          "example": {
+            "en": "I get up at six thirty.",
+            "pt": "Eu me levanto às seis e meia."
+          },
+          "emoji": "🛏️",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-take-a-shower",
+          "en": "take a shower",
+          "pt": ["tomar banho"],
+          "acceptedPt": ["tomar [um banho|uma ducha]"],
+          "example": {
+            "en": "I take a shower at seven.",
+            "pt": "Eu tomo banho às sete."
+          },
+          "emoji": "🚿",
+          "difficulty": 2
+        },
+        {
+          "id": "u4-have-breakfast",
+          "en": "have breakfast",
+          "pt": ["tomar café da manhã"],
+          "acceptedPt": ["tomar (o) café (da manhã)"],
+          "example": {
+            "en": "I have breakfast at seven thirty.",
+            "pt": "Eu tomo café da manhã às sete e meia."
+          },
+          "emoji": "🥐",
+          "difficulty": 2,
+          "notes": "Refeições usam have: have breakfast (não \"take coffee\")."
+        },
+        {
+          "id": "u4-go-to-work",
+          "en": "go to work",
+          "pt": ["ir para o trabalho", "ir trabalhar"],
+          "acceptedPt": ["ir [ao|pro] trabalho"],
+          "example": {
+            "en": "She goes to work at eight.",
+            "pt": "Ela vai para o trabalho às oito."
+          },
+          "emoji": "💼",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-go-to-school",
+          "en": "go to school",
+          "pt": ["ir para a escola"],
+          "acceptedPt": ["ir [à|pra] escola"],
+          "example": {
+            "en": "My son goes to school at seven.",
+            "pt": "Meu filho vai para a escola às sete."
+          },
+          "emoji": "🏫",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-have-lunch",
+          "en": "have lunch",
+          "pt": ["almoçar"],
+          "example": {
+            "en": "He has lunch at noon.",
+            "pt": "Ele almoça ao meio-dia."
+          },
+          "emoji": "🍽️",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-go-to-bed",
+          "en": "go to bed",
+          "pt": ["ir para a cama", "ir dormir"],
+          "acceptedPt": ["(ir) deitar", "deitar-se", "ir pra cama"],
+          "example": {
+            "en": "I go to bed at eleven.",
+            "pt": "Eu vou dormir às onze."
+          },
+          "emoji": "🛌",
+          "difficulty": 1,
+          "notes": "Go to bed, sem \"the\"."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u4-s-i-wake-up-at-six",
+          "en": "I wake up at six.",
+          "pt": "Eu acordo às seis.",
+          "acceptedEn": ["I wake up at [six|6] (o'clock)"],
+          "acceptedPt": ["(Eu) acordo às [seis|6] (horas) (da manhã)"],
+          "difficulty": 2
+        },
+        {
+          "id": "u4-s-i-get-up-at-six-thirty",
+          "en": "I get up at six thirty.",
+          "pt": "Eu me levanto às seis e meia.",
+          "acceptedEn": ["I get up at [six thirty|half past six]"],
+          "acceptedPt": [
+            "(Eu) (me) levanto às [seis|6] e [meia|trinta]",
+            "(Eu) (me) levanto às [6:30|6h30]"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u4-s-i-take-a-shower-at-seven",
+          "en": "I take a shower at seven.",
+          "pt": "Eu tomo banho às sete.",
+          "acceptedEn": ["I take a shower at [seven|7] (o'clock)"],
+          "acceptedPt": ["(Eu) tomo [banho|um banho|uma ducha] às [sete|7] (horas)"],
+          "difficulty": 2
+        },
+        {
+          "id": "u4-s-i-have-breakfast",
+          "en": "I have breakfast at seven thirty.",
+          "pt": "Eu tomo café da manhã às sete e meia.",
+          "acceptedEn": ["I have breakfast at [seven thirty|half past seven]"],
+          "acceptedPt": [
+            "(Eu) tomo (o) café (da manhã) às [sete|7] e [meia|trinta]",
+            "(Eu) tomo (o) café (da manhã) às [7:30|7h30]"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u4-s-she-goes-to-work",
+          "en": "She goes to work at eight.",
+          "pt": "Ela vai para o trabalho às oito.",
+          "acceptedEn": ["She goes to work at [eight|8]"],
+          "acceptedPt": [
+            "Ela vai [para o|pro|ao] trabalho às [oito|8] (horas)",
+            "Ela vai trabalhar às [oito|8] (horas)"
+          ],
+          "difficulty": 3,
+          "focus": "presente-simples"
+        },
+        {
+          "id": "u4-s-he-gets-up-at-six",
+          "en": "He gets up at six.",
+          "pt": "Ele se levanta às seis.",
+          "acceptedEn": ["He gets up at [six|6]"],
+          "acceptedPt": ["Ele (se) levanta às [seis|6] (horas)"],
+          "difficulty": 3,
+          "focus": "presente-simples"
+        },
+        {
+          "id": "u4-s-he-has-lunch-at-noon",
+          "en": "He has lunch at noon.",
+          "pt": "Ele almoça ao meio-dia.",
+          "acceptedEn": ["He has lunch at noon"],
+          "acceptedPt": ["Ele almoça ao meio-dia"],
+          "difficulty": 3,
+          "focus": "presente-simples"
+        },
+        {
+          "id": "u4-s-i-go-to-bed-at-eleven",
+          "en": "I go to bed at eleven.",
+          "pt": "Eu vou dormir às onze.",
+          "acceptedEn": ["I go to bed at [eleven|11]"],
+          "acceptedPt": [
+            "(Eu) [vou dormir|vou para a cama|vou pra cama|vou deitar|vou me deitar|me deito|deito] às [onze|11] (horas)"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u4-s-what-time-do-you-get-up",
+          "en": "What time do you get up?",
+          "pt": "A que horas você se levanta?",
+          "acceptedEn": ["What time do you get up"],
+          "acceptedPt": ["(A) que horas você (se) levanta", "(A) que horas vocês (se) levantam"],
+          "difficulty": 3,
+          "focus": "pergunta-do"
+        },
+        {
+          "id": "u4-s-my-son-goes-to-school",
+          "en": "My son goes to school at seven.",
+          "pt": "Meu filho vai para a escola às sete.",
+          "acceptedEn": ["My son goes to school at [seven|7]"],
+          "acceptedPt": ["(O) meu filho vai [para a|pra|à] escola às [sete|7] (horas)"],
+          "difficulty": 3,
+          "focus": "presente-simples"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u4-sk2-l1",
+          "title": "Acordar e levantar",
+          "exercises": [
+            {
+              "id": "u4-sk2-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-wake-up"],
+              "prompt": "Qual destas é \"acordar\"?",
+              "options": [
+                {
+                  "text": "wake up",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "get up",
+                  "emoji": "🛏️"
+                },
+                {
+                  "text": "take a shower",
+                  "emoji": "🚿"
+                }
+              ],
+              "answer": "wake up"
+            },
+            {
+              "id": "u4-sk2-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-get-up"],
+              "prompt": "E \"levantar (da cama)\"?",
+              "options": [
+                {
+                  "text": "get up",
+                  "emoji": "🛏️"
+                },
+                {
+                  "text": "wake up",
+                  "emoji": "⏰"
+                },
+                {
+                  "text": "have breakfast",
+                  "emoji": "🥐"
+                }
+              ],
+              "answer": "get up",
+              "explanation": "Wake up = acordar (abrir os olhos). Get up = sair da cama."
+            },
+            {
+              "id": "u4-sk2-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-take-a-shower"],
+              "prompt": "Qual destas é \"tomar banho\"?",
+              "options": [
+                {
+                  "text": "take a shower",
+                  "emoji": "🚿"
+                },
+                {
+                  "text": "have breakfast",
+                  "emoji": "🥐"
+                },
+                {
+                  "text": "get up",
+                  "emoji": "🛏️"
+                }
+              ],
+              "answer": "take a shower"
+            },
+            {
+              "id": "u4-sk2-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u4-have-breakfast"],
+              "prompt": "Como se diz \"tomar café da manhã\"?",
+              "options": [
+                {
+                  "text": "have breakfast",
+                  "emoji": "🥐"
+                },
+                {
+                  "text": "take coffee",
+                  "emoji": "☕"
+                },
+                {
+                  "text": "take breakfast",
+                  "emoji": "🍳"
+                }
+              ],
+              "answer": "have breakfast",
+              "explanation": "Refeições usam have: have breakfast, have lunch. \"Take coffee\" é tradução ao pé da letra e soa estranho."
+            },
+            {
+              "id": "u4-sk2-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u4-wake-up", "u4-get-up", "u4-take-a-shower", "u4-have-breakfast"],
+              "pairs": [
+                {
+                  "en": "wake up",
+                  "pt": "acordar"
+                },
+                {
+                  "en": "get up",
+                  "pt": "levantar"
+                },
+                {
+                  "en": "take a shower",
+                  "pt": "tomar banho"
+                },
+                {
+                  "en": "have breakfast",
+                  "pt": "tomar café da manhã"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk2-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-take-a-shower", "u4-s-i-take-a-shower-at-seven"],
+              "sentence": "I ___ a shower at seven.",
+              "options": ["take", "make", "do"],
+              "answer": "take",
+              "translationPt": "Eu tomo banho às sete.",
+              "explanation": "Banho de chuveiro é take a shower. Não use make nem do."
+            },
+            {
+              "id": "u4-sk2-l1-e07",
+              "type": "word-bank",
+              "itemIds": ["u4-s-i-wake-up-at-six"],
+              "promptPt": "Eu acordo às seis.",
+              "answer": "I wake up at six.",
+              "distractors": ["in", "on", "get"]
+            },
+            {
+              "id": "u4-sk2-l1-e08",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-take-a-shower-at-seven"],
+              "promptEn": "I take a shower at seven.",
+              "accepted": ["(Eu) tomo [banho|um banho|uma ducha] às [sete|7] (horas)"]
+            },
+            {
+              "id": "u4-sk2-l1-e09",
+              "type": "listen-type",
+              "itemIds": ["u4-s-i-get-up-at-six-thirty"],
+              "textEn": "I get up at six thirty.",
+              "accepted": ["I get up at [six thirty|half past six]"]
+            },
+            {
+              "id": "u4-sk2-l1-e10",
+              "type": "fill-blank",
+              "itemIds": ["u4-have-breakfast"],
+              "sentence": "I ___ breakfast at seven thirty.",
+              "options": ["have", "take", "drink"],
+              "answer": "have",
+              "translationPt": "Eu tomo café da manhã às sete e meia.",
+              "explanation": "Tomar café da manhã = have breakfast. \"Take\" e \"drink\" não combinam com breakfast."
+            },
+            {
+              "id": "u4-sk2-l1-e11",
+              "type": "speak",
+              "itemIds": ["u4-wake-up", "u4-s-i-wake-up-at-six"],
+              "textEn": "I wake up at six."
+            },
+            {
+              "id": "u4-sk2-l1-e12",
+              "type": "word-bank",
+              "itemIds": ["u4-s-i-have-breakfast"],
+              "promptPt": "Eu tomo café da manhã às sete e meia.",
+              "answer": "I have breakfast at seven thirty.",
+              "accepted": ["I have breakfast at half past seven"],
+              "distractors": ["take", "coffee", "in"],
+              "explanation": "Refeição usa have: I have breakfast."
+            },
+            {
+              "id": "u4-sk2-l1-e13",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-get-up-at-six-thirty"],
+              "promptEn": "I get up at six thirty.",
+              "accepted": [
+                "(Eu) (me) levanto às [seis|6] e [meia|trinta]",
+                "(Eu) (me) levanto às [6:30|6h30]"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u4-sk2-l2",
+          "title": "Trabalho, escola e cama",
+          "exercises": [
+            {
+              "id": "u4-sk2-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-go-to-work"],
+              "prompt": "Qual destas é \"ir para o trabalho\"?",
+              "options": [
+                {
+                  "text": "go to work",
+                  "emoji": "💼"
+                },
+                {
+                  "text": "go to school",
+                  "emoji": "🏫"
+                },
+                {
+                  "text": "go to bed",
+                  "emoji": "🛌"
+                }
+              ],
+              "answer": "go to work"
+            },
+            {
+              "id": "u4-sk2-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-go-to-bed"],
+              "prompt": "E \"ir para a cama / ir dormir\"?",
+              "options": [
+                {
+                  "text": "go to bed",
+                  "emoji": "🛌"
+                },
+                {
+                  "text": "go to work",
+                  "emoji": "💼"
+                },
+                {
+                  "text": "get up",
+                  "emoji": "🛏️"
+                }
+              ],
+              "answer": "go to bed"
+            },
+            {
+              "id": "u4-sk2-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-have-lunch"],
+              "prompt": "Qual destas é \"almoçar\"?",
+              "options": [
+                {
+                  "text": "have lunch",
+                  "emoji": "🍽️"
+                },
+                {
+                  "text": "have breakfast",
+                  "emoji": "🥐"
+                },
+                {
+                  "text": "go to school",
+                  "emoji": "🏫"
+                }
+              ],
+              "answer": "have lunch"
+            },
+            {
+              "id": "u4-sk2-l2-e04",
+              "type": "match-pairs",
+              "itemIds": [
+                "u4-go-to-work",
+                "u4-go-to-school",
+                "u4-have-lunch",
+                "u4-go-to-bed",
+                "u4-wake-up"
+              ],
+              "pairs": [
+                {
+                  "en": "go to work",
+                  "pt": "ir para o trabalho"
+                },
+                {
+                  "en": "go to school",
+                  "pt": "ir para a escola"
+                },
+                {
+                  "en": "have lunch",
+                  "pt": "almoçar"
+                },
+                {
+                  "en": "go to bed",
+                  "pt": "ir para a cama"
+                },
+                {
+                  "en": "wake up",
+                  "pt": "acordar"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk2-l2-e05",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-she-goes-to-work"],
+              "sentence": "She ___ to work at eight.",
+              "options": ["goes", "go", "going"],
+              "answer": "goes",
+              "translationPt": "Ela vai para o trabalho às oito.",
+              "explanation": "Com he/she/it, o verbo ganha -s: she works, he gets up. Go vira goes."
+            },
+            {
+              "id": "u4-sk2-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u4-s-i-go-to-bed-at-eleven"],
+              "promptPt": "Eu vou dormir às onze.",
+              "answer": "I go to bed at eleven.",
+              "distractors": ["the", "in", "on"],
+              "explanation": "Go to bed, sem \"the\"."
+            },
+            {
+              "id": "u4-sk2-l2-e07",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-she-goes-to-work"],
+              "promptEn": "She goes to work at eight.",
+              "accepted": [
+                "Ela vai [para o|pro|ao] trabalho às [oito|8] (horas)",
+                "Ela vai trabalhar às [oito|8] (horas)"
+              ],
+              "explanation": "She goes to work = ela vai para o trabalho (o -s só mostra que é ela)."
+            },
+            {
+              "id": "u4-sk2-l2-e08",
+              "type": "listen-type",
+              "itemIds": ["u4-s-my-son-goes-to-school", "u4-go-to-school"],
+              "textEn": "My son goes to school at seven."
+            },
+            {
+              "id": "u4-sk2-l2-e09",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-he-has-lunch-at-noon"],
+              "sentence": "He ___ lunch at noon.",
+              "options": ["has", "have", "takes"],
+              "answer": "has",
+              "translationPt": "Ele almoça ao meio-dia.",
+              "explanation": "Com he/she/it, have vira has: he has lunch."
+            },
+            {
+              "id": "u4-sk2-l2-e10",
+              "type": "word-bank",
+              "itemIds": ["u4-s-he-has-lunch-at-noon"],
+              "promptPt": "Ele almoça ao meio-dia.",
+              "answer": "He has lunch at noon.",
+              "distractors": ["have", "in", "takes"],
+              "explanation": "He + has (não \"have\"). Refeição usa have/has, não take."
+            },
+            {
+              "id": "u4-sk2-l2-e11",
+              "type": "speak",
+              "itemIds": ["u4-go-to-bed", "u4-s-i-go-to-bed-at-eleven"],
+              "textEn": "I go to bed at eleven."
+            },
+            {
+              "id": "u4-sk2-l2-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-go-to-bed-at-eleven"],
+              "promptEn": "I go to bed at eleven.",
+              "accepted": [
+                "(Eu) [vou dormir|vou para a cama|vou pra cama|vou deitar|vou me deitar|me deito|deito] às [onze|11] (horas)"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u4-sk2-l3",
+          "title": "A rotina dele",
+          "exercises": [
+            {
+              "id": "u4-sk2-l3-e01",
+              "type": "match-pairs",
+              "itemIds": [
+                "u4-get-up",
+                "u4-take-a-shower",
+                "u4-have-lunch",
+                "u4-go-to-school",
+                "u4-go-to-bed"
+              ],
+              "pairs": [
+                {
+                  "en": "get up",
+                  "pt": "levantar"
+                },
+                {
+                  "en": "take a shower",
+                  "pt": "tomar banho"
+                },
+                {
+                  "en": "have lunch",
+                  "pt": "almoçar"
+                },
+                {
+                  "en": "go to school",
+                  "pt": "ir para a escola"
+                },
+                {
+                  "en": "go to bed",
+                  "pt": "ir para a cama"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk2-l3-e02",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-he-gets-up-at-six"],
+              "sentence": "He ___ up at six.",
+              "options": ["gets", "get", "getting"],
+              "answer": "gets",
+              "translationPt": "Ele se levanta às seis.",
+              "explanation": "He/she/it: o verbo ganha -s. Get vira gets."
+            },
+            {
+              "id": "u4-sk2-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-s-he-gets-up-at-six"],
+              "prompt": "Qual frase está certa?",
+              "options": [
+                {
+                  "text": "He gets up at six."
+                },
+                {
+                  "text": "He get up at six."
+                },
+                {
+                  "text": "He gets ups at six."
+                }
+              ],
+              "answer": "He gets up at six.",
+              "explanation": "O -s vai só no verbo (gets), nunca no \"up\"."
+            },
+            {
+              "id": "u4-sk2-l3-e04",
+              "type": "word-bank",
+              "itemIds": ["u4-s-he-gets-up-at-six"],
+              "promptPt": "Ele se levanta às seis.",
+              "answer": "He gets up at six.",
+              "distractors": ["get", "in", "on"],
+              "explanation": "He gets up = ele se levanta. Com he, get vira gets."
+            },
+            {
+              "id": "u4-sk2-l3-e05",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-he-gets-up-at-six"],
+              "promptEn": "He gets up at six.",
+              "accepted": ["Ele (se) levanta às [seis|6] (horas)"],
+              "explanation": "He gets up = ele se levanta. Com he, get vira gets."
+            },
+            {
+              "id": "u4-sk2-l3-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-what-time-do-you-get-up"],
+              "sentence": "What time ___ you get up?",
+              "options": ["do", "are", "does"],
+              "answer": "do",
+              "translationPt": "A que horas você se levanta?",
+              "explanation": "Pergunta no presente simples usa do: What time do you...? Com he/she, é does."
+            },
+            {
+              "id": "u4-sk2-l3-e07",
+              "type": "word-bank",
+              "itemIds": ["u4-s-what-time-do-you-get-up"],
+              "promptPt": "A que horas você se levanta?",
+              "answer": "What time do you get up?",
+              "distractors": ["are", "does", "in"],
+              "explanation": "Pergunta com do: What time do you get up?"
+            },
+            {
+              "id": "u4-sk2-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u4-s-he-has-lunch-at-noon"],
+              "textEn": "He has lunch at noon."
+            },
+            {
+              "id": "u4-sk2-l3-e09",
+              "type": "speak",
+              "itemIds": ["u4-s-what-time-do-you-get-up"],
+              "textEn": "What time do you get up?"
+            },
+            {
+              "id": "u4-sk2-l3-e10",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-my-son-goes-to-school"],
+              "promptEn": "My son goes to school at seven.",
+              "accepted": ["(O) meu filho vai [para a|pra|à] escola às [sete|7] (horas)"],
+              "explanation": "My son goes to school = meu filho vai para a escola (o -s de goes só mostra que é ele)."
+            },
+            {
+              "id": "u4-sk2-l3-e11",
+              "type": "multiple-choice",
+              "itemIds": ["u4-have-breakfast"],
+              "prompt": "Thiago pergunta: \"What time do you have breakfast?\" Você toma café às 7h. Responda:",
+              "options": [
+                {
+                  "text": "I have breakfast at seven."
+                },
+                {
+                  "text": "I take breakfast at seven."
+                },
+                {
+                  "text": "I have breakfast in seven."
+                }
+              ],
+              "answer": "I have breakfast at seven.",
+              "explanation": "Refeição usa have, e horário usa at: I have breakfast at seven."
+            },
+            {
+              "id": "u4-sk2-l3-e12",
+              "type": "word-bank",
+              "itemIds": ["u4-take-a-shower"],
+              "promptPt": "Ela toma banho às sete.",
+              "answer": "She takes a shower at seven.",
+              "distractors": ["take", "makes", "in"],
+              "explanation": "She + takes: o verbo ganha -s com he/she."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u4-sk3",
+      "title": "Dias e períodos",
+      "icon": "📅",
+      "tip": {
+        "title": "Dias, períodos e preposições",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Três preposições para falar de tempo: **on** para dias da semana, **in** para partes do dia, **at** para horas — e para **night**."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "See you on Monday!",
+                "pt": "Até segunda!"
+              },
+              {
+                "en": "I work in the morning.",
+                "pt": "Eu trabalho de manhã."
+              },
+              {
+                "en": "She goes to school in the afternoon.",
+                "pt": "Ela vai para a escola à tarde."
+              },
+              {
+                "en": "He works at night.",
+                "pt": "Ele trabalha à noite."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "O **th** de **Thursday** (e de **three**): ponha a ponta da língua entre os dentes e sopre. Não é \"t\" nem \"f\". E atenção: **Tuesday** = terça, **Thursday** = quinta."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "My class is in Monday.",
+            "right": "My class is on Monday.",
+            "why": "Dia da semana sempre com on."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "He works in the night.",
+            "right": "He works at night.",
+            "why": "Night é a exceção: at night, sem \"the\". Já morning e afternoon usam in the."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u4-monday",
+          "en": "Monday",
+          "pt": ["segunda-feira", "segunda"],
+          "example": {
+            "en": "See you on Monday!",
+            "pt": "Até segunda!"
+          },
+          "emoji": "📅",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-tuesday",
+          "en": "Tuesday",
+          "pt": ["terça-feira", "terça"],
+          "example": {
+            "en": "My class is on Tuesday.",
+            "pt": "Minha aula é na terça."
+          },
+          "emoji": "📅",
+          "difficulty": 1,
+          "notes": "Tuesday (terça) começa com \"tu\". Não confunda com Thursday (quinta)."
+        },
+        {
+          "id": "u4-wednesday",
+          "en": "Wednesday",
+          "pt": ["quarta-feira", "quarta"],
+          "example": {
+            "en": "It's Wednesday.",
+            "pt": "É quarta-feira."
+          },
+          "emoji": "📅",
+          "difficulty": 1,
+          "notes": "Pronuncia-se \"WENZ-dei\": o primeiro d é mudo."
+        },
+        {
+          "id": "u4-thursday",
+          "en": "Thursday",
+          "pt": ["quinta-feira", "quinta"],
+          "example": {
+            "en": "It's Thursday.",
+            "pt": "É quinta-feira."
+          },
+          "emoji": "📅",
+          "difficulty": 1,
+          "focus": "th",
+          "notes": "Th: ponta da língua entre os dentes. Thursday = quinta; Tuesday = terça."
+        },
+        {
+          "id": "u4-friday",
+          "en": "Friday",
+          "pt": ["sexta-feira", "sexta"],
+          "example": {
+            "en": "See you on Friday!",
+            "pt": "Até sexta!"
+          },
+          "emoji": "📅",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-saturday",
+          "en": "Saturday",
+          "pt": ["sábado"],
+          "example": {
+            "en": "On Saturday, I wake up at ten.",
+            "pt": "No sábado, eu acordo às dez."
+          },
+          "emoji": "📅",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-sunday",
+          "en": "Sunday",
+          "pt": ["domingo"],
+          "example": {
+            "en": "I don't work on Sunday.",
+            "pt": "Eu não trabalho no domingo."
+          },
+          "emoji": "📅",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-morning",
+          "en": "morning",
+          "pt": ["manhã"],
+          "example": {
+            "en": "I work in the morning.",
+            "pt": "Eu trabalho de manhã."
+          },
+          "emoji": "🌅",
+          "difficulty": 1,
+          "focus": "in-on-at",
+          "notes": "in the morning = de manhã."
+        },
+        {
+          "id": "u4-afternoon",
+          "en": "afternoon",
+          "pt": ["tarde"],
+          "example": {
+            "en": "She goes to school in the afternoon.",
+            "pt": "Ela vai para a escola à tarde."
+          },
+          "emoji": "🌤️",
+          "difficulty": 1,
+          "focus": "in-on-at",
+          "notes": "after + noon = depois do meio-dia. in the afternoon = à tarde."
+        },
+        {
+          "id": "u4-night",
+          "en": "night",
+          "pt": ["noite"],
+          "example": {
+            "en": "He works at night.",
+            "pt": "Ele trabalha à noite."
+          },
+          "emoji": "🌃",
+          "difficulty": 1,
+          "focus": "in-on-at",
+          "notes": "at night (sem \"the\") = à noite."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u4-s-see-you-on-monday",
+          "en": "See you on Monday!",
+          "pt": "Até segunda!",
+          "acceptedEn": ["See you (on) Monday"],
+          "acceptedPt": [
+            "Até (a) segunda(-feira)",
+            "[Te vejo|A gente se vê|Nos vemos|Vejo você] na segunda(-feira)",
+            "[Te vejo|A gente se vê] segunda(-feira)"
+          ],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-class-on-tuesday",
+          "en": "My class is on Tuesday.",
+          "pt": "Minha aula é na terça.",
+          "acceptedEn": ["My class is on [Tuesday|Tuesdays]"],
+          "acceptedPt": [
+            "(A) minha aula é na terça(-feira)",
+            "(A) minha aula é às terças(-feiras)"
+          ],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-its-thursday",
+          "en": "It's Thursday.",
+          "pt": "É quinta-feira.",
+          "acceptedEn": ["[It's|It is] Thursday"],
+          "acceptedPt": ["(Hoje) é quinta(-feira)"],
+          "difficulty": 1,
+          "focus": "th"
+        },
+        {
+          "id": "u4-s-i-work-in-the-morning",
+          "en": "I work in the morning.",
+          "pt": "Eu trabalho de manhã.",
+          "acceptedEn": ["I work in the morning"],
+          "acceptedPt": [
+            "(Eu) trabalho [de|pela|na parte da] manhã",
+            "[De|Pela] manhã (eu) trabalho"
+          ],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-she-goes-to-school-in-the-afternoon",
+          "en": "She goes to school in the afternoon.",
+          "pt": "Ela vai para a escola à tarde.",
+          "acceptedEn": ["She goes to school in the afternoon"],
+          "acceptedPt": ["Ela vai [para a|pra|à] escola [à|de|pela|na parte da] tarde"],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-he-works-at-night",
+          "en": "He works at night.",
+          "pt": "Ele trabalha à noite.",
+          "acceptedEn": ["He works at night"],
+          "acceptedPt": ["Ele trabalha [à|de|pela|durante a] noite"],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-on-saturday-i-wake-up-at-ten",
+          "en": "On Saturday, I wake up at ten.",
+          "pt": "No sábado, eu acordo às dez.",
+          "acceptedEn": [
+            "On [Saturday|Saturdays] I wake up at [ten|10]",
+            "I wake up at [ten|10] on [Saturday|Saturdays]"
+          ],
+          "acceptedPt": [
+            "[No sábado|Aos sábados] (eu) acordo às [dez|10] (horas)",
+            "(Eu) acordo às [dez|10] (horas) [no sábado|aos sábados]"
+          ],
+          "difficulty": 3,
+          "focus": "in-on-at"
+        },
+        {
+          "id": "u4-s-i-dont-work-on-sunday",
+          "en": "I don't work on Sunday.",
+          "pt": "Eu não trabalho no domingo.",
+          "acceptedEn": ["I [don't|do not] work on [Sunday|Sundays]"],
+          "acceptedPt": [
+            "(Eu) não trabalho [no domingo|aos domingos|nos domingos|domingo]",
+            "[No domingo|Aos domingos|Nos domingos|Domingo] (eu) não trabalho"
+          ],
+          "difficulty": 2,
+          "focus": "in-on-at"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u4-sk3-l1",
+          "title": "De segunda a quinta",
+          "exercises": [
+            {
+              "id": "u4-sk3-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-monday"],
+              "prompt": "Qual é \"segunda-feira\"?",
+              "options": [
+                {
+                  "text": "Monday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Tuesday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Thursday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Monday"
+            },
+            {
+              "id": "u4-sk3-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-tuesday"],
+              "prompt": "E \"terça-feira\"?",
+              "options": [
+                {
+                  "text": "Tuesday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Thursday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Wednesday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Tuesday",
+              "explanation": "Tuesday (terça) e Thursday (quinta) se parecem! Tuesday começa com \"tu\"; Thursday, com \"th\"."
+            },
+            {
+              "id": "u4-sk3-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-wednesday"],
+              "prompt": "Qual é \"quarta-feira\"?",
+              "options": [
+                {
+                  "text": "Wednesday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Monday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Thursday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Wednesday",
+              "explanation": "Wednesday se pronuncia \"WENZ-dei\" — o primeiro d é mudo."
+            },
+            {
+              "id": "u4-sk3-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u4-thursday"],
+              "prompt": "E \"quinta-feira\"?",
+              "options": [
+                {
+                  "text": "Thursday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Tuesday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Wednesday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Thursday",
+              "explanation": "Thursday = quinta. O th se faz com a língua entre os dentes."
+            },
+            {
+              "id": "u4-sk3-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u4-monday", "u4-tuesday", "u4-wednesday", "u4-thursday"],
+              "pairs": [
+                {
+                  "en": "Monday",
+                  "pt": "segunda-feira"
+                },
+                {
+                  "en": "Tuesday",
+                  "pt": "terça-feira"
+                },
+                {
+                  "en": "Wednesday",
+                  "pt": "quarta-feira"
+                },
+                {
+                  "en": "Thursday",
+                  "pt": "quinta-feira"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk3-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-see-you-on-monday"],
+              "sentence": "See you ___ Monday!",
+              "options": ["on", "in", "at"],
+              "answer": "on",
+              "translationPt": "Até segunda!",
+              "explanation": "Com dias da semana, use on: on Monday, on Friday."
+            },
+            {
+              "id": "u4-sk3-l1-e07",
+              "type": "word-bank",
+              "itemIds": ["u4-s-class-on-tuesday"],
+              "promptPt": "Minha aula é na terça.",
+              "answer": "My class is on Tuesday.",
+              "distractors": ["in", "at", "Thursday"],
+              "explanation": "Dia da semana usa on. E terça é Tuesday (quinta é Thursday)."
+            },
+            {
+              "id": "u4-sk3-l1-e08",
+              "type": "speak",
+              "itemIds": ["u4-s-its-thursday", "u4-thursday"],
+              "textEn": "It's Thursday.",
+              "explanation": "Th: ponha a ponta da língua entre os dentes e sopre — \"THURS-dei\", não \"tursdei\" nem \"fursdei\"."
+            },
+            {
+              "id": "u4-sk3-l1-e09",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-see-you-on-monday"],
+              "promptEn": "See you on Monday!",
+              "accepted": [
+                "Até (a) segunda(-feira)",
+                "[Te vejo|A gente se vê|Nos vemos|Vejo você] na segunda(-feira)",
+                "[Te vejo|A gente se vê] segunda(-feira)"
+              ],
+              "explanation": "See you on + dia = Até + dia. Dia da semana usa on."
+            },
+            {
+              "id": "u4-sk3-l1-e10",
+              "type": "listen-type",
+              "itemIds": ["u4-thursday", "u4-s-class-on-tuesday"],
+              "textEn": "My class is on Thursday.",
+              "accepted": ["My class is on Thursdays"],
+              "explanation": "Thursday é quinta, com th. Não confunda com Tuesday (terça)."
+            },
+            {
+              "id": "u4-sk3-l1-e11",
+              "type": "multiple-choice",
+              "itemIds": ["u4-thursday"],
+              "prompt": "Qual destas palavras tem o som de \"th\" (língua entre os dentes)?",
+              "options": [
+                {
+                  "text": "Thursday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Tuesday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Monday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Thursday",
+              "explanation": "Thursday e three têm th: língua entre os dentes. Tuesday tem só \"t\"."
+            },
+            {
+              "id": "u4-sk3-l1-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-wednesday"],
+              "promptEn": "It's Wednesday.",
+              "accepted": ["(Hoje) é quarta(-feira)"]
+            }
+          ]
+        },
+        {
+          "id": "u4-sk3-l2",
+          "title": "Manhã, tarde e noite",
+          "exercises": [
+            {
+              "id": "u4-sk3-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-friday"],
+              "prompt": "Qual é \"sexta-feira\"?",
+              "options": [
+                {
+                  "text": "Friday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Monday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Thursday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Friday"
+            },
+            {
+              "id": "u4-sk3-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-morning"],
+              "prompt": "Qual é \"manhã\"?",
+              "options": [
+                {
+                  "text": "morning",
+                  "emoji": "🌅"
+                },
+                {
+                  "text": "afternoon",
+                  "emoji": "🌤️"
+                },
+                {
+                  "text": "night",
+                  "emoji": "🌃"
+                }
+              ],
+              "answer": "morning"
+            },
+            {
+              "id": "u4-sk3-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-afternoon"],
+              "prompt": "E \"tarde\"?",
+              "options": [
+                {
+                  "text": "afternoon",
+                  "emoji": "🌤️"
+                },
+                {
+                  "text": "morning",
+                  "emoji": "🌅"
+                },
+                {
+                  "text": "night",
+                  "emoji": "🌃"
+                }
+              ],
+              "answer": "afternoon",
+              "explanation": "After + noon = depois do meio-dia: afternoon é a tarde."
+            },
+            {
+              "id": "u4-sk3-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u4-friday", "u4-morning", "u4-afternoon", "u4-night", "u4-noon"],
+              "pairs": [
+                {
+                  "en": "Friday",
+                  "pt": "sexta-feira"
+                },
+                {
+                  "en": "morning",
+                  "pt": "manhã"
+                },
+                {
+                  "en": "afternoon",
+                  "pt": "tarde"
+                },
+                {
+                  "en": "night",
+                  "pt": "noite"
+                },
+                {
+                  "en": "noon",
+                  "pt": "meio-dia"
+                }
+              ],
+              "explanation": "Night (noite) é diferente de noon (meio-dia)."
+            },
+            {
+              "id": "u4-sk3-l2-e05",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-i-work-in-the-morning"],
+              "sentence": "I work ___ the morning.",
+              "options": ["in", "on", "at"],
+              "answer": "in",
+              "translationPt": "Eu trabalho de manhã.",
+              "explanation": "Partes do dia usam in the: in the morning, in the afternoon. A exceção é at night."
+            },
+            {
+              "id": "u4-sk3-l2-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-he-works-at-night"],
+              "sentence": "He works ___ night.",
+              "options": ["at", "in", "on"],
+              "answer": "at",
+              "translationPt": "Ele trabalha à noite.",
+              "explanation": "Night é a exceção: at night, sem \"the\"."
+            },
+            {
+              "id": "u4-sk3-l2-e07",
+              "type": "word-bank",
+              "itemIds": ["u4-s-she-goes-to-school-in-the-afternoon"],
+              "promptPt": "Ela vai para a escola à tarde.",
+              "answer": "She goes to school in the afternoon.",
+              "distractors": ["at", "on", "go"],
+              "explanation": "Tarde = in the afternoon. E com she, go vira goes."
+            },
+            {
+              "id": "u4-sk3-l2-e08",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-work-in-the-morning"],
+              "promptEn": "I work in the morning.",
+              "accepted": [
+                "(Eu) trabalho [de|pela|na parte da] manhã",
+                "[De|Pela] manhã (eu) trabalho"
+              ],
+              "explanation": "In the morning = de manhã. Partes do dia usam in the."
+            },
+            {
+              "id": "u4-sk3-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u4-s-he-works-at-night"],
+              "textEn": "He works at night."
+            },
+            {
+              "id": "u4-sk3-l2-e10",
+              "type": "word-bank",
+              "itemIds": ["u4-friday", "u4-s-see-you-on-monday"],
+              "promptPt": "Até sexta!",
+              "answer": "See you on Friday!",
+              "accepted": ["See you Friday"],
+              "distractors": ["in", "at", "Thursday"],
+              "explanation": "Dia da semana usa on. Sexta é Friday."
+            },
+            {
+              "id": "u4-sk3-l2-e11",
+              "type": "speak",
+              "itemIds": ["u4-s-i-work-in-the-morning"],
+              "textEn": "I work in the morning."
+            },
+            {
+              "id": "u4-sk3-l2-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-she-goes-to-school-in-the-afternoon"],
+              "promptEn": "She goes to school in the afternoon.",
+              "accepted": ["Ela vai [para a|pra|à] escola [à|de|pela|na parte da] tarde"],
+              "explanation": "In the afternoon = à tarde. Com she, go vira goes."
+            },
+            {
+              "id": "u4-sk3-l2-e13",
+              "type": "multiple-choice",
+              "itemIds": ["u4-night"],
+              "prompt": "Complete: \"He works ___.\" (Ele trabalha à noite.)",
+              "options": [
+                {
+                  "text": "at night"
+                },
+                {
+                  "text": "in the night"
+                },
+                {
+                  "text": "on night"
+                }
+              ],
+              "answer": "at night",
+              "explanation": "Para \"à noite\" (no geral), diga at night. Morning e afternoon usam in the."
+            }
+          ]
+        },
+        {
+          "id": "u4-sk3-l3",
+          "title": "Fim de semana",
+          "exercises": [
+            {
+              "id": "u4-sk3-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-saturday"],
+              "prompt": "Qual é \"sábado\"?",
+              "options": [
+                {
+                  "text": "Saturday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Sunday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Tuesday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Saturday"
+            },
+            {
+              "id": "u4-sk3-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-sunday"],
+              "prompt": "E \"domingo\"?",
+              "options": [
+                {
+                  "text": "Sunday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Saturday",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "Monday",
+                  "emoji": "📅"
+                }
+              ],
+              "answer": "Sunday",
+              "explanation": "Sunday vem de sun (sol): o \"dia do sol\"."
+            },
+            {
+              "id": "u4-sk3-l3-e03",
+              "type": "match-pairs",
+              "itemIds": ["u4-saturday", "u4-sunday", "u4-friday", "u4-monday", "u4-wednesday"],
+              "pairs": [
+                {
+                  "en": "Saturday",
+                  "pt": "sábado"
+                },
+                {
+                  "en": "Sunday",
+                  "pt": "domingo"
+                },
+                {
+                  "en": "Friday",
+                  "pt": "sexta-feira"
+                },
+                {
+                  "en": "Monday",
+                  "pt": "segunda-feira"
+                },
+                {
+                  "en": "Wednesday",
+                  "pt": "quarta-feira"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk3-l3-e04",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-i-dont-work-on-sunday"],
+              "sentence": "I don't work ___ Sunday.",
+              "options": ["on", "in", "at"],
+              "answer": "on",
+              "translationPt": "Eu não trabalho no domingo.",
+              "explanation": "Dia da semana usa on — inclusive sábado e domingo: on Saturday, on Sunday."
+            },
+            {
+              "id": "u4-sk3-l3-e05",
+              "type": "word-bank",
+              "itemIds": ["u4-s-on-saturday-i-wake-up-at-ten"],
+              "promptPt": "No sábado, eu acordo às dez.",
+              "answer": "On Saturday, I wake up at ten.",
+              "accepted": ["I wake up at ten on Saturday"],
+              "distractors": ["in", "the", "Sunday"],
+              "explanation": "Dia: on Saturday. Hora: at ten."
+            },
+            {
+              "id": "u4-sk3-l3-e06",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-dont-work-on-sunday"],
+              "promptEn": "I don't work on Sunday.",
+              "accepted": [
+                "(Eu) não trabalho [no domingo|aos domingos|nos domingos|domingo]",
+                "[No domingo|Aos domingos|Nos domingos|Domingo] (eu) não trabalho"
+              ],
+              "explanation": "On Sunday = no domingo. Dia da semana sempre com on."
+            },
+            {
+              "id": "u4-sk3-l3-e07",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-on-saturday-i-wake-up-at-ten"],
+              "sentence": "On Saturday, I wake up ___ ten.",
+              "options": ["at", "on", "in"],
+              "answer": "at",
+              "translationPt": "No sábado, eu acordo às dez.",
+              "explanation": "Dia usa on; hora usa at."
+            },
+            {
+              "id": "u4-sk3-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u4-saturday", "u4-s-see-you-on-monday"],
+              "textEn": "See you on Saturday!",
+              "accepted": ["See you Saturday"]
+            },
+            {
+              "id": "u4-sk3-l3-e09",
+              "type": "multiple-choice",
+              "itemIds": ["u4-monday", "u4-morning"],
+              "prompt": "Complete: \"I work ___ Monday. I work ___ the morning.\"",
+              "options": [
+                {
+                  "text": "on / in"
+                },
+                {
+                  "text": "in / on"
+                },
+                {
+                  "text": "at / in"
+                },
+                {
+                  "text": "on / at"
+                }
+              ],
+              "answer": "on / in",
+              "explanation": "Dia da semana: on Monday. Parte do dia: in the morning."
+            },
+            {
+              "id": "u4-sk3-l3-e10",
+              "type": "speak",
+              "itemIds": ["u4-s-i-dont-work-on-sunday"],
+              "textEn": "I don't work on Sunday."
+            },
+            {
+              "id": "u4-sk3-l3-e11",
+              "type": "word-bank",
+              "itemIds": ["u4-s-i-dont-work-on-sunday"],
+              "promptPt": "Eu não trabalho no domingo.",
+              "answer": "I don't work on Sunday.",
+              "accepted": ["I don't work on Sundays"],
+              "distractors": ["in", "at", "Saturday"],
+              "explanation": "On Sunday = no domingo. Dia da semana sempre com on."
+            },
+            {
+              "id": "u4-sk3-l3-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-on-saturday-i-wake-up-at-ten"],
+              "promptEn": "On Saturday, I wake up at ten.",
+              "accepted": [
+                "[No sábado|Aos sábados] (eu) acordo às [dez|10] (horas)",
+                "(Eu) acordo às [dez|10] (horas) [no sábado|aos sábados]"
+              ],
+              "explanation": "Dia usa on (on Saturday); hora usa at (at ten)."
+            },
+            {
+              "id": "u4-sk3-l3-e13",
+              "type": "multiple-choice",
+              "itemIds": ["u4-thursday"],
+              "prompt": "Thursday é…",
+              "options": [
+                {
+                  "text": "quinta-feira"
+                },
+                {
+                  "text": "terça-feira"
+                },
+                {
+                  "text": "sábado"
+                }
+              ],
+              "answer": "quinta-feira",
+              "explanation": "Thursday (com th) = quinta. Tuesday = terça."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u4-sk4",
+      "title": "Ontem",
+      "icon": "⏪",
+      "tip": {
+        "title": "Passado regular e make × do",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Para falar de ontem, a maioria dos verbos ganha **-ed**: work → **worked**, play → **played**. É igual para todo mundo: I worked, she worked, they worked."
+          },
+          {
+            "kind": "text",
+            "md": "O **-ed** tem 3 sons: **/t/** depois de k, p, s, sh, ch (worked, cooked, watched); **/d/** na maioria dos outros (played, studied); **/ɪd/**, com sílaba extra, só depois de t ou d (wanted, pretended)."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I worked yesterday.",
+                "pt": "Eu trabalhei ontem."
+              },
+              {
+                "en": "She wanted a coffee.",
+                "pt": "Ela queria um café."
+              },
+              {
+                "en": "I do my homework at night.",
+                "pt": "Eu faço minha lição de casa à noite."
+              },
+              {
+                "en": "I make dinner at eight.",
+                "pt": "Eu faço o jantar às oito."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "**Make × do** (os dois são \"fazer\"): **do** para tarefas e obrigações (**do** homework); **make** para preparar ou criar algo (**make** dinner)."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I work-ED yesterday. (falando \"uor-qued\")",
+            "right": "I worked yesterday. (soa \"workt\")",
+            "why": "Só tem sílaba extra depois de t ou d: wanted. Worked tem uma sílaba só."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I pretend to travel. (querendo dizer \"pretendo viajar\")",
+            "right": "I plan to travel.",
+            "why": "Pretend é falso cognato: significa fingir. \"Pretender\" é plan to."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u4-yesterday",
+          "en": "yesterday",
+          "pt": ["ontem"],
+          "example": {
+            "en": "I worked yesterday.",
+            "pt": "Eu trabalhei ontem."
+          },
+          "emoji": "📆",
+          "difficulty": 1
+        },
+        {
+          "id": "u4-worked",
+          "en": "worked",
+          "pt": ["trabalhei", "trabalhou"],
+          "acceptedPt": ["trabalhamos", "trabalharam"],
+          "example": {
+            "en": "I worked yesterday.",
+            "pt": "Eu trabalhei ontem."
+          },
+          "emoji": "💼",
+          "difficulty": 2,
+          "focus": "ed-final",
+          "notes": "O -ed soa /t/: \"workt\", uma sílaba só."
+        },
+        {
+          "id": "u4-played",
+          "en": "played",
+          "pt": ["brinquei", "joguei"],
+          "acceptedPt": ["brincou", "jogou", "brincamos", "jogamos"],
+          "example": {
+            "en": "I played with my son.",
+            "pt": "Eu brinquei com meu filho."
+          },
+          "emoji": "🎮",
+          "difficulty": 2,
+          "focus": "ed-final",
+          "notes": "O -ed soa /d/: \"pleid\"."
+        },
+        {
+          "id": "u4-wanted",
+          "en": "wanted",
+          "pt": ["queria", "quis"],
+          "example": {
+            "en": "She wanted a coffee.",
+            "pt": "Ela queria um café."
+          },
+          "emoji": "🙋",
+          "difficulty": 2,
+          "focus": "ed-final",
+          "notes": "Depois de t ou d, o -ed vira sílaba extra /ɪd/: \"WAN-tid\" (t e d como em \"tatu\", não \"tchi\")."
+        },
+        {
+          "id": "u4-watched",
+          "en": "watched",
+          "pt": ["assisti", "assistiu"],
+          "acceptedPt": ["vi", "viu"],
+          "example": {
+            "en": "He watched TV yesterday.",
+            "pt": "Ele assistiu TV ontem."
+          },
+          "emoji": "📺",
+          "difficulty": 2,
+          "focus": "ed-final",
+          "notes": "O -ed soa /t/: \"watcht\". E assistir TV é watch, não \"assist\" (= ajudar)."
+        },
+        {
+          "id": "u4-studied",
+          "en": "studied",
+          "pt": ["estudei", "estudou"],
+          "example": {
+            "en": "I studied English yesterday.",
+            "pt": "Eu estudei inglês ontem."
+          },
+          "emoji": "📖",
+          "difficulty": 2,
+          "focus": "ed-final",
+          "notes": "Consoante + y: troque o y por i e ponha -ed (study → studied). Soa /d/."
+        },
+        {
+          "id": "u4-do-homework",
+          "en": "do homework",
+          "pt": ["fazer a lição de casa", "fazer o dever de casa"],
+          "acceptedPt": ["fazer (a) [lição|tarefa] (de casa)", "fazer o dever (de casa)"],
+          "example": {
+            "en": "I do my homework at night.",
+            "pt": "Eu faço minha lição de casa à noite."
+          },
+          "emoji": "📝",
+          "difficulty": 2,
+          "focus": "make-do",
+          "notes": "Tarefa/obrigação usa do: do homework (nunca \"make homework\")."
+        },
+        {
+          "id": "u4-make-dinner",
+          "en": "make dinner",
+          "pt": ["fazer o jantar"],
+          "acceptedPt": ["[fazer|preparar] (o) jantar", "fazer (a) janta"],
+          "example": {
+            "en": "I make dinner at eight.",
+            "pt": "Eu faço o jantar às oito."
+          },
+          "emoji": "🍲",
+          "difficulty": 2,
+          "focus": "make-do",
+          "notes": "Preparar comida usa make: make dinner, make coffee."
+        },
+        {
+          "id": "u4-cooked",
+          "en": "cooked",
+          "pt": ["cozinhei", "cozinhou"],
+          "example": {
+            "en": "He cooked dinner yesterday.",
+            "pt": "Ele cozinhou o jantar ontem."
+          },
+          "emoji": "🍳",
+          "difficulty": 2,
+          "focus": "ed-final",
+          "notes": "O -ed soa /t/: \"cookt\"."
+        },
+        {
+          "id": "u4-pretend",
+          "en": "pretend",
+          "pt": ["fingir"],
+          "example": {
+            "en": "My son pretends to study.",
+            "pt": "Meu filho finge que estuda."
+          },
+          "emoji": "🎭",
+          "difficulty": 3,
+          "focus": "falso-cognato",
+          "notes": "Falso cognato! Pretend = fingir. \"Pretender\" (ter intenção) é plan to ou intend to."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u4-s-i-worked-yesterday",
+          "en": "I worked yesterday.",
+          "pt": "Eu trabalhei ontem.",
+          "acceptedEn": ["Yesterday I worked"],
+          "acceptedPt": ["(Eu) trabalhei ontem", "Ontem (eu) trabalhei"],
+          "difficulty": 2,
+          "focus": "ed-final"
+        },
+        {
+          "id": "u4-s-i-played-with-my-son",
+          "en": "I played with my son.",
+          "pt": "Eu brinquei com meu filho.",
+          "acceptedEn": ["I played with my son"],
+          "acceptedPt": ["(Eu) [brinquei|joguei] com (o) meu filho"],
+          "difficulty": 2,
+          "focus": "ed-final"
+        },
+        {
+          "id": "u4-s-she-wanted-a-coffee",
+          "en": "She wanted a coffee.",
+          "pt": "Ela queria um café.",
+          "acceptedEn": ["She wanted (a) coffee"],
+          "acceptedPt": ["Ela [queria|quis] (um) café"],
+          "difficulty": 2,
+          "focus": "ed-final"
+        },
+        {
+          "id": "u4-s-he-watched-tv-yesterday",
+          "en": "He watched TV yesterday.",
+          "pt": "Ele assistiu TV ontem.",
+          "acceptedEn": ["Yesterday he watched TV"],
+          "acceptedPt": [
+            "Ele [assistiu|viu] (a) [TV|televisão] ontem",
+            "Ele assistiu à [TV|televisão] ontem",
+            "Ontem ele [assistiu|viu] (a) [TV|televisão]"
+          ],
+          "difficulty": 2,
+          "focus": "ed-final"
+        },
+        {
+          "id": "u4-s-i-studied-english-yesterday",
+          "en": "I studied English yesterday.",
+          "pt": "Eu estudei inglês ontem.",
+          "acceptedEn": ["Yesterday I studied English"],
+          "acceptedPt": ["(Eu) estudei inglês ontem", "Ontem (eu) estudei inglês"],
+          "difficulty": 2,
+          "focus": "ed-final"
+        },
+        {
+          "id": "u4-s-i-do-my-homework-at-night",
+          "en": "I do my homework at night.",
+          "pt": "Eu faço minha lição de casa à noite.",
+          "acceptedEn": ["I do my homework at night"],
+          "acceptedPt": [
+            "(Eu) faço (a) (minha) [lição|tarefa] (de casa) [à|de] noite",
+            "(Eu) faço (o) (meu) dever (de casa) [à|de] noite"
+          ],
+          "difficulty": 3,
+          "focus": "make-do"
+        },
+        {
+          "id": "u4-s-i-make-dinner-at-eight",
+          "en": "I make dinner at eight.",
+          "pt": "Eu faço o jantar às oito.",
+          "acceptedEn": ["I make dinner at [eight|8]"],
+          "acceptedPt": [
+            "(Eu) [faço|preparo] (o) jantar às [oito|8] (horas)",
+            "(Eu) faço (a) janta às [oito|8] (horas)"
+          ],
+          "difficulty": 3,
+          "focus": "make-do"
+        },
+        {
+          "id": "u4-s-he-cooked-dinner-yesterday",
+          "en": "He cooked dinner yesterday.",
+          "pt": "Ele cozinhou o jantar ontem.",
+          "acceptedEn": ["Yesterday he cooked dinner"],
+          "acceptedPt": [
+            "Ele [cozinhou|fez|preparou] (o) jantar ontem",
+            "Ele fez a janta ontem",
+            "Ontem ele [cozinhou|fez|preparou] (o) jantar"
+          ],
+          "difficulty": 2,
+          "focus": "ed-final"
+        },
+        {
+          "id": "u4-s-he-pretended-to-work",
+          "en": "He pretended to work.",
+          "pt": "Ele fingiu que trabalhava.",
+          "acceptedEn": ["He pretended to work"],
+          "acceptedPt": [
+            "Ele fingiu [que trabalhava|que estava trabalhando|trabalhar|estar trabalhando]"
+          ],
+          "difficulty": 3,
+          "focus": "falso-cognato"
+        },
+        {
+          "id": "u4-s-my-son-pretends-to-study",
+          "en": "My son pretends to study.",
+          "pt": "Meu filho finge que estuda.",
+          "acceptedEn": ["My son pretends to study"],
+          "acceptedPt": [
+            "(O) meu filho finge [que estuda|que está estudando|estudar|estar estudando]"
+          ],
+          "difficulty": 3,
+          "focus": "falso-cognato"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u4-sk4-l1",
+          "title": "O -ed: t, d, id",
+          "exercises": [
+            {
+              "id": "u4-sk4-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-yesterday"],
+              "prompt": "Qual destas é \"ontem\"?",
+              "options": [
+                {
+                  "text": "yesterday",
+                  "emoji": "📆"
+                },
+                {
+                  "text": "noon",
+                  "emoji": "🕛"
+                },
+                {
+                  "text": "morning",
+                  "emoji": "🌅"
+                }
+              ],
+              "answer": "yesterday"
+            },
+            {
+              "id": "u4-sk4-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-worked"],
+              "prompt": "Como se diz \"eu trabalhei\"?",
+              "options": [
+                {
+                  "text": "I worked"
+                },
+                {
+                  "text": "I work"
+                },
+                {
+                  "text": "I working"
+                }
+              ],
+              "answer": "I worked",
+              "explanation": "Passado regular: verbo + -ed. Work → worked."
+            },
+            {
+              "id": "u4-sk4-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-played"],
+              "prompt": "E \"eu brinquei\"?",
+              "options": [
+                {
+                  "text": "I played"
+                },
+                {
+                  "text": "I play"
+                },
+                {
+                  "text": "I plaied"
+                }
+              ],
+              "answer": "I played",
+              "explanation": "Play + -ed = played. Aqui o y fica, porque antes dele vem vogal (a)."
+            },
+            {
+              "id": "u4-sk4-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u4-wanted", "u4-s-she-wanted-a-coffee"],
+              "prompt": "\"Ela queria um café.\" Qual frase está certa?",
+              "options": [
+                {
+                  "text": "She wanted a coffee."
+                },
+                {
+                  "text": "She want a coffee."
+                },
+                {
+                  "text": "She wanteds a coffee."
+                }
+              ],
+              "answer": "She wanted a coffee.",
+              "explanation": "No passado, o verbo é igual para todos: she wanted (sem -s)."
+            },
+            {
+              "id": "u4-sk4-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u4-yesterday", "u4-worked", "u4-played", "u4-wanted"],
+              "pairs": [
+                {
+                  "en": "yesterday",
+                  "pt": "ontem"
+                },
+                {
+                  "en": "worked",
+                  "pt": "trabalhei"
+                },
+                {
+                  "en": "played",
+                  "pt": "brinquei"
+                },
+                {
+                  "en": "wanted",
+                  "pt": "queria"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk4-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-i-worked-yesterday"],
+              "sentence": "I ___ yesterday.",
+              "options": ["worked", "work", "works"],
+              "answer": "worked",
+              "translationPt": "Eu trabalhei ontem.",
+              "explanation": "Yesterday pede passado: worked."
+            },
+            {
+              "id": "u4-sk4-l1-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u4-worked"],
+              "prompt": "Como soa o -ed de \"worked\"?",
+              "options": [
+                {
+                  "text": "/t/, como \"workt\""
+                },
+                {
+                  "text": "/ɪd/, como \"work-id\""
+                },
+                {
+                  "text": "/d/, como \"work-d\""
+                }
+              ],
+              "answer": "/t/, como \"workt\"",
+              "explanation": "Depois de k, p, s, sh e ch, o -ed soa /t/: worked, cooked, watched. Nada de \"work-ED\"."
+            },
+            {
+              "id": "u4-sk4-l1-e08",
+              "type": "multiple-choice",
+              "itemIds": ["u4-wanted"],
+              "prompt": "Em qual verbo o -ed vira uma sílaba extra (/ɪd/)?",
+              "options": [
+                {
+                  "text": "wanted",
+                  "emoji": "🙋"
+                },
+                {
+                  "text": "worked",
+                  "emoji": "💼"
+                },
+                {
+                  "text": "played",
+                  "emoji": "🎮"
+                }
+              ],
+              "answer": "wanted",
+              "explanation": "Só depois de t ou d o -ed ganha sílaba: wanted (\"WAN-tid\"). Worked e played têm uma sílaba só."
+            },
+            {
+              "id": "u4-sk4-l1-e09",
+              "type": "word-bank",
+              "itemIds": ["u4-s-i-worked-yesterday"],
+              "promptPt": "Eu trabalhei ontem.",
+              "answer": "I worked yesterday.",
+              "accepted": ["Yesterday I worked"],
+              "distractors": ["work", "am", "works"],
+              "explanation": "Yesterday pede passado: worked (\"workt\", uma sílaba)."
+            },
+            {
+              "id": "u4-sk4-l1-e10",
+              "type": "speak",
+              "itemIds": ["u4-s-i-worked-yesterday"],
+              "textEn": "I worked yesterday.",
+              "explanation": "Worked soa \"workt\", com uma sílaba só."
+            },
+            {
+              "id": "u4-sk4-l1-e11",
+              "type": "listen-type",
+              "itemIds": ["u4-s-she-wanted-a-coffee"],
+              "textEn": "She wanted a coffee."
+            },
+            {
+              "id": "u4-sk4-l1-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-played-with-my-son"],
+              "promptEn": "I played with my son.",
+              "accepted": ["(Eu) [brinquei|joguei] com (o) meu filho"],
+              "explanation": "Played = brinquei/joguei. No passado, o verbo é igual para todos."
+            },
+            {
+              "id": "u4-sk4-l1-e13",
+              "type": "word-bank",
+              "itemIds": ["u4-s-she-wanted-a-coffee"],
+              "promptPt": "Ela queria um café.",
+              "answer": "She wanted a coffee.",
+              "distractors": ["want", "wants", "an"],
+              "explanation": "Wanted = queria. No passado não tem -s: she wanted."
+            }
+          ]
+        },
+        {
+          "id": "u4-sk4-l2",
+          "title": "Make ou do?",
+          "exercises": [
+            {
+              "id": "u4-sk4-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-watched", "u4-s-he-watched-tv-yesterday"],
+              "prompt": "\"Ele assistiu TV ontem.\" Qual frase está certa?",
+              "options": [
+                {
+                  "text": "He watched TV yesterday."
+                },
+                {
+                  "text": "He assisted TV yesterday."
+                },
+                {
+                  "text": "He watch TV yesterday."
+                }
+              ],
+              "answer": "He watched TV yesterday.",
+              "explanation": "Assistir TV = watch TV. \"Assist\" é falso cognato: significa ajudar."
+            },
+            {
+              "id": "u4-sk4-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-studied"],
+              "prompt": "Como se escreve \"eu estudei\"?",
+              "options": [
+                {
+                  "text": "I studied"
+                },
+                {
+                  "text": "I studyed"
+                },
+                {
+                  "text": "I study"
+                }
+              ],
+              "answer": "I studied",
+              "explanation": "Consoante + y: troque o y por i e ponha -ed. Study → studied."
+            },
+            {
+              "id": "u4-sk4-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u4-do-homework"],
+              "prompt": "Como se diz \"fazer a lição de casa\"?",
+              "options": [
+                {
+                  "text": "do homework",
+                  "emoji": "📝"
+                },
+                {
+                  "text": "make homework",
+                  "emoji": "🛠️"
+                },
+                {
+                  "text": "take homework",
+                  "emoji": "✋"
+                }
+              ],
+              "answer": "do homework",
+              "explanation": "Tarefas e obrigações usam do: do homework. Make é para preparar ou criar algo."
+            },
+            {
+              "id": "u4-sk4-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u4-make-dinner"],
+              "prompt": "E \"fazer o jantar\"?",
+              "options": [
+                {
+                  "text": "make dinner"
+                },
+                {
+                  "text": "do dinner"
+                },
+                {
+                  "text": "take dinner"
+                }
+              ],
+              "answer": "make dinner",
+              "explanation": "Preparar comida usa make: make dinner, make coffee."
+            },
+            {
+              "id": "u4-sk4-l2-e05",
+              "type": "match-pairs",
+              "itemIds": [
+                "u4-watched",
+                "u4-studied",
+                "u4-do-homework",
+                "u4-make-dinner",
+                "u4-yesterday"
+              ],
+              "pairs": [
+                {
+                  "en": "watched",
+                  "pt": "assisti"
+                },
+                {
+                  "en": "studied",
+                  "pt": "estudei"
+                },
+                {
+                  "en": "do homework",
+                  "pt": "fazer a lição de casa"
+                },
+                {
+                  "en": "make dinner",
+                  "pt": "fazer o jantar"
+                },
+                {
+                  "en": "yesterday",
+                  "pt": "ontem"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk4-l2-e06",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-i-do-my-homework-at-night"],
+              "sentence": "I ___ my homework at night.",
+              "options": ["do", "make", "take"],
+              "answer": "do",
+              "translationPt": "Eu faço minha lição de casa à noite.",
+              "explanation": "Homework é tarefa: do homework. \"Make homework\" é erro clássico de quem traduz \"fazer\"."
+            },
+            {
+              "id": "u4-sk4-l2-e07",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-i-make-dinner-at-eight"],
+              "sentence": "I ___ dinner at eight.",
+              "options": ["make", "do", "take"],
+              "answer": "make",
+              "translationPt": "Eu faço o jantar às oito.",
+              "explanation": "Preparar comida: make dinner. \"Do dinner\" não significa preparar o jantar."
+            },
+            {
+              "id": "u4-sk4-l2-e08",
+              "type": "word-bank",
+              "itemIds": ["u4-s-he-watched-tv-yesterday"],
+              "promptPt": "Ele assistiu TV ontem.",
+              "answer": "He watched TV yesterday.",
+              "accepted": ["Yesterday he watched TV"],
+              "distractors": ["assisted", "watch", "saw"],
+              "explanation": "Assistir TV = watch TV. Assist significa ajudar."
+            },
+            {
+              "id": "u4-sk4-l2-e09",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-studied-english-yesterday"],
+              "promptEn": "I studied English yesterday.",
+              "accepted": ["(Eu) estudei inglês ontem", "Ontem (eu) estudei inglês"],
+              "explanation": "Studied = estudei (study → studied)."
+            },
+            {
+              "id": "u4-sk4-l2-e10",
+              "type": "listen-type",
+              "itemIds": ["u4-s-i-do-my-homework-at-night"],
+              "textEn": "I do my homework at night."
+            },
+            {
+              "id": "u4-sk4-l2-e11",
+              "type": "word-bank",
+              "itemIds": ["u4-s-i-make-dinner-at-eight"],
+              "promptPt": "Eu faço o jantar às oito.",
+              "answer": "I make dinner at eight.",
+              "distractors": ["do", "in", "take"],
+              "explanation": "Jantar se prepara: make dinner."
+            },
+            {
+              "id": "u4-sk4-l2-e12",
+              "type": "speak",
+              "itemIds": ["u4-s-i-studied-english-yesterday"],
+              "textEn": "I studied English yesterday.",
+              "explanation": "Studied tem duas sílabas, como study: \"STÂ-did\". O -ed é só um /d/ no fim, sem sílaba nova."
+            },
+            {
+              "id": "u4-sk4-l2-e13",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-i-make-dinner-at-eight"],
+              "promptEn": "I make dinner at eight.",
+              "accepted": [
+                "(Eu) [faço|preparo] (o) jantar às [oito|8] (horas)",
+                "(Eu) faço (a) janta às [oito|8] (horas)"
+              ],
+              "explanation": "Jantar se prepara: make dinner (não \"do\")."
+            }
+          ]
+        },
+        {
+          "id": "u4-sk4-l3",
+          "title": "Ontem e o falso amigo",
+          "exercises": [
+            {
+              "id": "u4-sk4-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u4-pretend"],
+              "prompt": "O que significa \"pretend\"?",
+              "options": [
+                {
+                  "text": "fingir"
+                },
+                {
+                  "text": "pretender"
+                },
+                {
+                  "text": "planejar"
+                }
+              ],
+              "answer": "fingir",
+              "explanation": "Falso cognato! Pretend = fingir. \"Pretender\" (ter intenção) é plan to ou intend to."
+            },
+            {
+              "id": "u4-sk4-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u4-cooked", "u4-s-he-cooked-dinner-yesterday"],
+              "prompt": "\"Ele cozinhou o jantar ontem.\" Qual frase está certa?",
+              "options": [
+                {
+                  "text": "He cooked dinner yesterday."
+                },
+                {
+                  "text": "He cooks dinner yesterday."
+                },
+                {
+                  "text": "He cooking dinner yesterday."
+                }
+              ],
+              "answer": "He cooked dinner yesterday.",
+              "explanation": "Yesterday pede passado: cook → cooked (soa \"cookt\")."
+            },
+            {
+              "id": "u4-sk4-l3-e03",
+              "type": "match-pairs",
+              "itemIds": ["u4-cooked", "u4-pretend", "u4-watched", "u4-studied", "u4-played"],
+              "pairs": [
+                {
+                  "en": "cooked",
+                  "pt": "cozinhei"
+                },
+                {
+                  "en": "pretend",
+                  "pt": "fingir"
+                },
+                {
+                  "en": "watched",
+                  "pt": "assisti"
+                },
+                {
+                  "en": "studied",
+                  "pt": "estudei"
+                },
+                {
+                  "en": "played",
+                  "pt": "brinquei"
+                }
+              ]
+            },
+            {
+              "id": "u4-sk4-l3-e04",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-my-son-pretends-to-study"],
+              "sentence": "My son ___ to study.",
+              "options": ["pretends", "pretend", "pretending"],
+              "answer": "pretends",
+              "translationPt": "Meu filho finge que estuda.",
+              "explanation": "My son = he, então o verbo leva -s: pretends. E lembre: pretend = fingir."
+            },
+            {
+              "id": "u4-sk4-l3-e05",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-my-son-pretends-to-study"],
+              "promptEn": "My son pretends to study.",
+              "accepted": [
+                "(O) meu filho finge [que estuda|que está estudando|estudar|estar estudando]"
+              ],
+              "explanation": "Pretend é falso cognato: significa fingir, não \"pretender\"."
+            },
+            {
+              "id": "u4-sk4-l3-e06",
+              "type": "word-bank",
+              "itemIds": ["u4-s-he-pretended-to-work"],
+              "promptPt": "Ele fingiu que trabalhava.",
+              "answer": "He pretended to work.",
+              "distractors": ["worked", "pretends", "intended"],
+              "explanation": "Fingir = pretend; no passado, pretended. Intend é \"pretender, ter intenção\"."
+            },
+            {
+              "id": "u4-sk4-l3-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u4-pretend", "u4-s-he-pretended-to-work"],
+              "prompt": "Em qual destes o -ed soa /ɪd/ (sílaba extra)?",
+              "options": [
+                {
+                  "text": "pretended",
+                  "emoji": "🎭"
+                },
+                {
+                  "text": "cooked",
+                  "emoji": "🍳"
+                },
+                {
+                  "text": "played",
+                  "emoji": "🎮"
+                }
+              ],
+              "answer": "pretended",
+              "explanation": "Pretend termina em d, então o -ed vira sílaba: \"pre-TEN-did\". Cooked soa /t/ e played soa /d/."
+            },
+            {
+              "id": "u4-sk4-l3-e08",
+              "type": "fill-blank",
+              "itemIds": ["u4-s-i-make-dinner-at-eight", "u4-make-dinner"],
+              "sentence": "My mom ___ dinner at seven.",
+              "options": ["makes", "does", "takes"],
+              "answer": "makes",
+              "translationPt": "Minha mãe faz o jantar às sete.",
+              "explanation": "Preparar comida usa make; com she (my mom), makes."
+            },
+            {
+              "id": "u4-sk4-l3-e09",
+              "type": "listen-type",
+              "itemIds": ["u4-s-he-cooked-dinner-yesterday"],
+              "textEn": "He cooked dinner yesterday.",
+              "accepted": ["Yesterday he cooked dinner"]
+            },
+            {
+              "id": "u4-sk4-l3-e10",
+              "type": "word-bank",
+              "itemIds": ["u4-played", "u4-s-i-played-with-my-son"],
+              "promptPt": "Eu brinquei com meu filho ontem.",
+              "answer": "I played with my son yesterday.",
+              "accepted": ["Yesterday I played with my son"],
+              "distractors": ["play", "on", "in"],
+              "explanation": "Play + -ed = played (soa \"pleid\")."
+            },
+            {
+              "id": "u4-sk4-l3-e11",
+              "type": "speak",
+              "itemIds": ["u4-s-he-pretended-to-work"],
+              "textEn": "He pretended to work.",
+              "explanation": "Pretended tem sílaba extra no final: \"pre-TEN-did\"."
+            },
+            {
+              "id": "u4-sk4-l3-e12",
+              "type": "translate-typing",
+              "itemIds": ["u4-s-he-watched-tv-yesterday"],
+              "promptEn": "He watched TV yesterday.",
+              "accepted": [
+                "Ele [assistiu|viu] (a) [TV|televisão] ontem",
+                "Ele assistiu à [TV|televisão] ontem",
+                "Ontem ele [assistiu|viu] (a) [TV|televisão]"
+              ],
+              "explanation": "Watched TV = assistiu TV. Assist significa ajudar."
+            },
+            {
+              "id": "u4-sk4-l3-e13",
+              "type": "multiple-choice",
+              "itemIds": ["u4-do-homework", "u4-make-dinner"],
+              "prompt": "Qual frase usa make e do do jeito certo?",
+              "options": [
+                {
+                  "text": "I do my homework and make dinner."
+                },
+                {
+                  "text": "I make my homework and do dinner."
+                },
+                {
+                  "text": "I do my homework and do dinner."
+                }
+              ],
+              "answer": "I do my homework and make dinner.",
+              "explanation": "Do para tarefas (homework); make para preparar comida (dinner)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewLesson": {
+    "id": "u4-review",
+    "title": "Revisão da unidade",
+    "exercises": [
+      {
+        "id": "u4-review-e01",
+        "type": "match-pairs",
+        "itemIds": ["u4-wake-up", "u4-thursday", "u4-noon", "u4-yesterday", "u4-go-to-bed"],
+        "pairs": [
+          {
+            "en": "wake up",
+            "pt": "acordar"
+          },
+          {
+            "en": "Thursday",
+            "pt": "quinta-feira"
+          },
+          {
+            "en": "noon",
+            "pt": "meio-dia"
+          },
+          {
+            "en": "yesterday",
+            "pt": "ontem"
+          },
+          {
+            "en": "go to bed",
+            "pt": "ir para a cama"
+          }
+        ]
+      },
+      {
+        "id": "u4-review-e02",
+        "type": "multiple-choice",
+        "itemIds": ["u4-half-past", "u4-s-its-seven-thirty"],
+        "prompt": "São 7:30. Como se diz?",
+        "options": [
+          {
+            "text": "It's half past seven."
+          },
+          {
+            "text": "It's seven and half."
+          },
+          {
+            "text": "It's half seven past."
+          }
+        ],
+        "answer": "It's half past seven.",
+        "explanation": "Para 7:30: half past seven ou seven thirty. Nada de \"and half\"."
+      },
+      {
+        "id": "u4-review-e03",
+        "type": "fill-blank",
+        "itemIds": ["u4-s-i-wake-up-at-six"],
+        "sentence": "I wake up ___ six.",
+        "options": ["at", "in", "on"],
+        "answer": "at",
+        "translationPt": "Eu acordo às seis.",
+        "explanation": "Horário exato usa at: at six."
+      },
+      {
+        "id": "u4-review-e04",
+        "type": "fill-blank",
+        "itemIds": ["u4-friday", "u4-s-see-you-on-monday"],
+        "sentence": "See you ___ Friday!",
+        "options": ["on", "in", "at"],
+        "answer": "on",
+        "translationPt": "Até sexta!",
+        "explanation": "Dia da semana usa on."
+      },
+      {
+        "id": "u4-review-e05",
+        "type": "word-bank",
+        "itemIds": ["u4-s-he-gets-up-at-six"],
+        "promptPt": "Ele se levanta às seis e meia.",
+        "answer": "He gets up at six thirty.",
+        "accepted": ["He gets up at half past six"],
+        "distractors": ["get", "and", "in"],
+        "explanation": "He + gets (com -s). E 6:30 é six thirty, sem \"and\"."
+      },
+      {
+        "id": "u4-review-e06",
+        "type": "translate-typing",
+        "itemIds": ["u4-s-what-time-is-it"],
+        "promptEn": "What time is it?",
+        "accepted": ["Que horas são (agora)", "Que hora é (agora)"],
+        "explanation": "What time is it? = Que horas são? O \"it\" só ocupa o lugar do sujeito, como em It's seven (São sete)."
+      },
+      {
+        "id": "u4-review-e07",
+        "type": "listen-type",
+        "itemIds": ["u4-s-i-work-in-the-morning"],
+        "textEn": "I work in the morning."
+      },
+      {
+        "id": "u4-review-e08",
+        "type": "fill-blank",
+        "itemIds": ["u4-s-i-do-my-homework-at-night", "u4-do-homework"],
+        "sentence": "I ___ my homework on Sunday.",
+        "options": ["do", "make", "take"],
+        "answer": "do",
+        "translationPt": "Eu faço minha lição de casa no domingo.",
+        "explanation": "Homework é tarefa: do homework."
+      },
+      {
+        "id": "u4-review-e09",
+        "type": "multiple-choice",
+        "itemIds": ["u4-wanted"],
+        "prompt": "Em qual verbo o -ed soa /ɪd/ (sílaba extra)?",
+        "options": [
+          {
+            "text": "wanted",
+            "emoji": "🙋"
+          },
+          {
+            "text": "watched",
+            "emoji": "📺"
+          },
+          {
+            "text": "studied",
+            "emoji": "📖"
+          }
+        ],
+        "answer": "wanted",
+        "explanation": "Só depois de t ou d: wanted. Watched soa /t/ e studied soa /d/."
+      },
+      {
+        "id": "u4-review-e10",
+        "type": "word-bank",
+        "itemIds": ["u4-worked", "u4-saturday"],
+        "promptPt": "Eu trabalhei no sábado.",
+        "answer": "I worked on Saturday.",
+        "distractors": ["work", "in", "at"],
+        "explanation": "Passado: worked. Dia da semana: on Saturday."
+      },
+      {
+        "id": "u4-review-e11",
+        "type": "speak",
+        "itemIds": ["u4-thursday", "u4-s-see-you-on-monday"],
+        "textEn": "See you on Thursday!",
+        "explanation": "Thursday: língua entre os dentes no th."
+      },
+      {
+        "id": "u4-review-e12",
+        "type": "translate-typing",
+        "itemIds": ["u4-s-she-goes-to-work"],
+        "promptEn": "She goes to work at eight.",
+        "accepted": [
+          "Ela vai [para o|pro|ao] trabalho às [oito|8] (horas)",
+          "Ela vai trabalhar às [oito|8] (horas)"
+        ],
+        "explanation": "She goes to work = ela vai para o trabalho (o -s só mostra que é ela)."
+      },
+      {
+        "id": "u4-review-e13",
+        "type": "translate-typing",
+        "itemIds": ["u4-s-he-pretended-to-work"],
+        "promptEn": "He pretended to work.",
+        "accepted": [
+          "Ele fingiu [que trabalhava|que estava trabalhando|trabalhar|estar trabalhando]"
+        ],
+        "explanation": "Pretend = fingir (falso cognato)."
+      },
+      {
+        "id": "u4-review-e14",
+        "type": "listen-type",
+        "itemIds": ["u4-s-he-watched-tv-yesterday"],
+        "textEn": "He watched TV yesterday.",
+        "accepted": ["Yesterday he watched TV"]
+      },
+      {
+        "id": "u4-review-e15",
+        "type": "word-bank",
+        "itemIds": ["u4-have-breakfast"],
+        "promptPt": "Eu tomo café da manhã às sete.",
+        "answer": "I have breakfast at seven.",
+        "distractors": ["take", "coffee", "on"],
+        "explanation": "Refeição usa have: have breakfast."
+      }
+    ]
+  }
+}
