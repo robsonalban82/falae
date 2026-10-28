@@ -3,6 +3,7 @@ import { AppLayout } from './AppLayout';
 import { ComingSoon } from './ComingSoon';
 import { paths } from './routes';
 import { Showcase } from '../features/showcase/Showcase';
+import { LessonScreen } from '../features/lesson/LessonScreen';
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,6 @@ export const router = createBrowserRouter([
   // Full-screen flows (no navigation bar).
   { path: paths.welcome, element: <ComingSoon /> },
   { path: paths.placement, element: <ComingSoon /> },
-  { path: paths.lesson(), element: <ComingSoon /> },
+  { path: paths.lesson(), element: <LessonScreen /> },
   { path: '*', element: <ComingSoon /> },
 ]);

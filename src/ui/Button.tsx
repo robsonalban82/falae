@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'success' | 'danger';
 
@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   ghost: 'bg-surface text-ink border-2 border-line-strong shadow-none',
 };
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = ComponentProps<'button'> & {
   variant?: Variant;
   block?: boolean;
   /** Optional trailing icon (e.g. an arrow on "Continuar"). */
