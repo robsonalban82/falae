@@ -37,3 +37,9 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 **Contexto:** um bug de domínio poderia gravar dados que o próprio export depois rejeitaria; um registro inválido era trocado pelo padrão sem aviso.
 **Decisão:** `DexieRepository` valida com Zod toda escrita e todo import; registros inválidos de `profile`/`settings` vão para a tabela `quarantine` (v1) antes do fallback. `recordLessonResult` recebe um `LessonOutcome` completo e grava tudo numa transação.
 **Consequências:** backup sempre restaurável; leitura de profile/settings pode escrever (não chamar dentro de transação read-only).
+
+## ADR-007 — Contrações com uma leitura só (aceita, Fase 3)
+
+**Contexto:** a §5 previa duas leituras para `'s`/`'d` (is/has, would/had).
+**Decisão:** no A1 só usamos `he's = he is` e `I'd = I would`; formas sem apóstrofo (`im`, `dont`, `cant`…) também são expandidas, exceto as que são palavras reais (`its`, `were`, `well`, `ill`, `wont`…).
+**Consequências:** "He's got" ≠ "He has got" até um conteúdo A2 precisar; respostas digitadas no celular sem apóstrofo são aceitas.
