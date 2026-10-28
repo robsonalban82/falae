@@ -5,32 +5,32 @@
 
 ## 1. Identidade (original)
 
-| | |
-|---|---|
-| **Nome** | **Falaê** — de "fala aí", convite brasileiro para conversar. |
-| **Mascote** | **Tuca**, um tucano-de-bico-verde estilizado em SVG próprio, formas geométricas arredondadas. Estados: `feliz`, `comemorando`, `triste`, `incentivando`, `pensando`. Animado com Framer Motion (piscar, inclinar a cabeça, pulinho). |
-| **Paleta** | Base "noite tropical" + bico de tucano: primária **Manga** `#FF8A1F`, secundária **Anil** `#3B3FB6`, fundo claro **Areia** `#FFF8EF`, fundo escuro **Noite** `#14152B`. Acerto **Folha** `#16A34A`/`#0F7A37`, erro **Acerola** `#E5484D`/`#B42318`, destaque **Maracujá** `#F5C518` (XP/ofensiva). Valores finais e variantes com contraste AA são definidos na Fase 2. |
-| **Tipografia** | Títulos: **Fredoka** (arredondada, amigável). Texto: **Atkinson Hyperlegible** (alta legibilidade, ótima para aprendizes). Ambas auto-hospedadas via `@fontsource` (funcionam offline). |
-| **Sons** | Gerados em tempo real com Web Audio API (osciladores curtos) — sem arquivos de terceiros, sem questão de direitos. |
+|                |                                                                                                                                                                                                                                                                                                                                                                         |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nome**       | **Falaê** — de "fala aí", convite brasileiro para conversar.                                                                                                                                                                                                                                                                                                            |
+| **Mascote**    | **Tuca**, um tucano-de-bico-verde estilizado em SVG próprio, formas geométricas arredondadas. Estados: `feliz`, `comemorando`, `triste`, `incentivando`, `pensando`. Animado com Framer Motion (piscar, inclinar a cabeça, pulinho).                                                                                                                                    |
+| **Paleta**     | Base "noite tropical" + bico de tucano: primária **Manga** `#FF8A1F`, secundária **Anil** `#3B3FB6`, fundo claro **Areia** `#FFF8EF`, fundo escuro **Noite** `#14152B`. Acerto **Folha** `#16A34A`/`#0F7A37`, erro **Acerola** `#E5484D`/`#B42318`, destaque **Maracujá** `#F5C518` (XP/ofensiva). Valores finais e variantes com contraste AA são definidos na Fase 2. |
+| **Tipografia** | Títulos: **Fredoka** (arredondada, amigável). Texto: **Atkinson Hyperlegible** (alta legibilidade, ótima para aprendizes). Ambas auto-hospedadas via `@fontsource` (funcionam offline).                                                                                                                                                                                 |
+| **Sons**       | Gerados em tempo real com Web Audio API (osciladores curtos) — sem arquivos de terceiros, sem questão de direitos.                                                                                                                                                                                                                                                      |
 
 Nada de verde-coruja, nomes, sons ou textos do Duolingo. O `revisor-ux` checa isso em toda fase visual.
 
 ## 2. Stack e justificativas
 
-| Camada | Escolha | Observação |
-|---|---|---|
-| Build | Vite + React 19 + TypeScript `strict` | conforme pedido |
-| PWA | `vite-plugin-pwa` (Workbox, `generateSW`, precache de todo o app + conteúdo) | offline após 1º acesso, instalável |
-| Rotas | `react-router` (modo biblioteca, `createBrowserRouter`) | `navigateFallback` no SW para rotas offline |
-| Estado | Zustand (stores finas, sem lógica de negócio) | |
-| Persistência | Dexie (IndexedDB) atrás da interface `Repository` | trocar por Supabase depois sem tocar na UI |
-| Validação | Zod (conteúdo, import de progresso, settings) | |
-| Estilo | Tailwind CSS v4 com tokens em CSS variables | modo escuro via classe `dark` + `prefers-color-scheme` |
-| Animação | Framer Motion (`motion`) com `useReducedMotion` | |
-| Voz | Web Speech API (`speechSynthesis`, `SpeechRecognition`/`webkitSpeechRecognition`) | fallbacks em §9 |
-| Gráfico | SVG próprio (barras de 7 dias) | evita lib de gráficos pesada |
-| Testes | Vitest + Testing Library + `fake-indexeddb`; Playwright (projetos `mobile` 390×844 e `desktop`) | |
-| Qualidade | ESLint (flat config, `typescript-eslint`, `react-hooks`, `jsx-a11y`) + Prettier | |
+| Camada       | Escolha                                                                                         | Observação                                             |
+| ------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Build        | Vite + React 19 + TypeScript `strict`                                                           | conforme pedido                                        |
+| PWA          | `vite-plugin-pwa` (Workbox, `generateSW`, precache de todo o app + conteúdo)                    | offline após 1º acesso, instalável                     |
+| Rotas        | `react-router` (modo biblioteca, `createBrowserRouter`)                                         | `navigateFallback` no SW para rotas offline            |
+| Estado       | Zustand (stores finas, sem lógica de negócio)                                                   |                                                        |
+| Persistência | Dexie (IndexedDB) atrás da interface `Repository`                                               | trocar por Supabase depois sem tocar na UI             |
+| Validação    | Zod (conteúdo, import de progresso, settings)                                                   |                                                        |
+| Estilo       | Tailwind CSS v4 com tokens em CSS variables                                                     | modo escuro via classe `dark` + `prefers-color-scheme` |
+| Animação     | Framer Motion (`motion`) com `useReducedMotion`                                                 |                                                        |
+| Voz          | Web Speech API (`speechSynthesis`, `SpeechRecognition`/`webkitSpeechRecognition`)               | fallbacks em §9                                        |
+| Gráfico      | SVG próprio (barras de 7 dias)                                                                  | evita lib de gráficos pesada                           |
+| Testes       | Vitest + Testing Library + `fake-indexeddb`; Playwright (projetos `mobile` 390×844 e `desktop`) |                                                        |
+| Qualidade    | ESLint (flat config, `typescript-eslint`, `react-hooks`, `jsx-a11y`) + Prettier                 |                                                        |
 
 Dependências extras além das pedidas: `vite-plugin-pwa`, `react-router`, `@fontsource/*`, `fake-indexeddb` (dev), `eslint-plugin-jsx-a11y` (dev). Nenhuma lib de datas: as poucas operações de dia ficam em `src/domain/time.ts`.
 
@@ -83,52 +83,85 @@ Tipos inferidos do Zod; abaixo, a forma.
 
 ```ts
 type Unit = {
-  id: string; order: number; title: string; description: string;
-  color: 'manga' | 'anil' | 'folha' | 'acerola';   // token
-  skills: Skill[];                                   // exatamente 4 no MVP
-  reviewLesson: Lesson;                              // revisão da unidade
+  id: string;
+  order: number;
+  title: string;
+  description: string;
+  color: 'manga' | 'anil' | 'folha' | 'acerola'; // token
+  skills: Skill[]; // exatamente 4 no MVP
+  reviewLesson: Lesson; // revisão da unidade
 };
 
 type Skill = {
-  id: string; title: string; icon: string;           // emoji
+  id: string;
+  title: string;
+  icon: string; // emoji
   tip: Tip;
   vocab: VocabItem[];
   sentences: Sentence[];
-  lessons: Lesson[];                                 // exatamente 3
+  lessons: Lesson[]; // exatamente 3
 };
 
-type Tip = { title: string; blocks: TipBlock[] };    // 3–6 blocos
+type Tip = { title: string; blocks: TipBlock[] }; // 3–6 blocos
 type TipBlock =
-  | { kind: 'text'; md: string }                     // markdown mínimo (negrito/itálico)
+  | { kind: 'text'; md: string } // markdown mínimo (negrito/itálico)
   | { kind: 'examples'; items: { en: string; pt: string }[] }
   | { kind: 'pitfall'; wrong: string; right: string; why: string };
 
 type VocabItem = {
-  id: string; en: string; pt: string[];              // pt[0] = tradução principal
-  acceptedPt?: string[]; acceptedEn?: string[];
+  id: string;
+  en: string;
+  pt: string[]; // pt[0] = tradução principal
+  acceptedPt?: string[];
+  acceptedEn?: string[];
   example: { en: string; pt: string };
-  emoji?: string; icon?: string;
-  difficulty: 1 | 2 | 3; focus?: FocusTag; notes?: string;
+  emoji?: string;
+  icon?: string;
+  difficulty: 1 | 2 | 3;
+  focus?: FocusTag;
+  notes?: string;
 };
 
 type Sentence = {
-  id: string; en: string; pt: string;
-  acceptedEn?: string[]; acceptedPt?: string[];
-  difficulty: 1 | 2 | 3; focus?: FocusTag;
+  id: string;
+  en: string;
+  pt: string;
+  acceptedEn?: string[];
+  acceptedPt?: string[];
+  difficulty: 1 | 2 | 3;
+  focus?: FocusTag;
 };
 
-type Lesson = { id: string; title?: string; exercises: Exercise[] };   // 10–15
+type Lesson = { id: string; title?: string; exercises: Exercise[] }; // 10–15
 
 type BaseExercise = { id: string; itemIds: string[]; explanation?: string };
-type Exercise = BaseExercise & (
-  | { type: 'multiple-choice'; prompt: string; options: { text: string; emoji?: string }[]; answer: string }
-  | { type: 'word-bank'; promptPt: string; answer: string; accepted?: string[]; distractors: string[] }
-  | { type: 'translate-typing'; promptEn: string; accepted: string[] }
-  | { type: 'listen-type'; textEn: string; accepted?: string[] }
-  | { type: 'speak'; textEn: string }
-  | { type: 'match-pairs'; pairs: { en: string; pt: string }[] }
-  | { type: 'fill-blank'; sentence: string; options: string[]; answer: string; translationPt: string }
-);
+type Exercise = BaseExercise &
+  (
+    | {
+        type: 'multiple-choice';
+        prompt: string;
+        options: { text: string; emoji?: string }[];
+        answer: string;
+      }
+    | {
+        type: 'word-bank';
+        promptPt: string;
+        answer: string;
+        accepted?: string[];
+        distractors: string[];
+      }
+    | { type: 'translate-typing'; promptEn: string; accepted: string[] }
+    | { type: 'listen-type'; textEn: string; accepted?: string[] }
+    | { type: 'speak'; textEn: string }
+    | { type: 'match-pairs'; pairs: { en: string; pt: string }[] }
+    | {
+        type: 'fill-blank';
+        sentence: string;
+        options: string[];
+        answer: string;
+        translationPt: string;
+      }
+  );
 ```
 
 **Validações extras (`superRefine`)**: ids únicos globais; `itemIds` existem; `answer` ∈ `options`; `word-bank` montável com `answer` tokenizado ⊆ banco; padrões expandem para ≤ 64 frases; 10–15 exercícios por lição; 4 skills × 3 lições por unidade.
@@ -143,6 +176,7 @@ type GradeResult = { verdict: Verdict; correctAnswer: string; note?: string };
 ```
 
 `normalize(text, lang)`:
+
 1. NFC → minúsculas → troca aspas tipográficas (`’` → `'`).
 2. Remove acentos/diacríticos (PT e EN).
 3. Remove pontuação (exceto apóstrofo interno), colapsa espaços, trim.
@@ -173,8 +207,15 @@ Fluxo de UI: instrução → exercício → botão **Verificar** (desabilitado s
 Um `SrsCard` por item (vocab ou frase) que o aluno já viu.
 
 ```ts
-type SrsCard = { itemId: string; ease: number; intervalDays: number; reps: number;
-                 lapses: number; dueDay: string /* YYYY-MM-DD */; lastReviewDay: string };
+type SrsCard = {
+  itemId: string;
+  ease: number;
+  intervalDays: number;
+  reps: number;
+  lapses: number;
+  dueDay: string /* YYYY-MM-DD */;
+  lastReviewDay: string;
+};
 ```
 
 Nota `q` a partir do resultado agregado do item na sessão:
@@ -191,19 +232,19 @@ Um item conta como **"palavra aprendida"** quando `reps ≥ 1` e `intervalDays �
 
 ## 8. Gamificação (`src/domain/gamification/`)
 
-| Regra | Valor |
-|---|---|
-| XP lição normal | 10 |
-| Bônus lição perfeita (nenhum erro) | +5 |
-| Bônus combo | +1 a cada 5 acertos seguidos, máx. +5 por lição |
-| XP prática (Praticar) | 8 (+5 se perfeita) |
-| XP revisão da unidade | 15 (+5 se perfeita) |
-| Nivelamento | 0 XP |
-| Corações | máx. 5; −1 por erro em lição normal; +1 a cada **4 h** (calculado de forma preguiçosa a partir de `heartsUpdatedAt`); concluir uma prática dá **+1** |
-| Sem corações | lição para na tela "Sem corações" com Tuca triste: opções **Praticar para ganhar coração** ou **Esperar** (mostra tempo até o próximo) |
-| Ofensiva | +1 no primeiro dia (fuso local) em que conclui ≥ 1 lição/prática |
-| Congelar ofensiva | ganha 1 a cada 100 XP acumulados; máx. 2 guardados; se o último dia ativo foi anteontem (1 dia perdido) e há congelamento, consome 1 e a ofensiva continua; 2+ dias perdidos → ofensiva zera |
-| Meta diária | 10 / 20 / 30 / 50 XP (padrão 20); anel de progresso na trilha; atingir mostra celebração 1×/dia |
+| Regra                              | Valor                                                                                                                                                                                        |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| XP lição normal                    | 10                                                                                                                                                                                           |
+| Bônus lição perfeita (nenhum erro) | +5                                                                                                                                                                                           |
+| Bônus combo                        | +1 a cada 5 acertos seguidos, máx. +5 por lição                                                                                                                                              |
+| XP prática (Praticar)              | 8 (+5 se perfeita)                                                                                                                                                                           |
+| XP revisão da unidade              | 15 (+5 se perfeita)                                                                                                                                                                          |
+| Nivelamento                        | 0 XP                                                                                                                                                                                         |
+| Corações                           | máx. 5; −1 por erro em lição normal; +1 a cada **4 h** (calculado de forma preguiçosa a partir de `heartsUpdatedAt`); concluir uma prática dá **+1**                                         |
+| Sem corações                       | lição para na tela "Sem corações" com Tuca triste: opções **Praticar para ganhar coração** ou **Esperar** (mostra tempo até o próximo)                                                       |
+| Ofensiva                           | +1 no primeiro dia (fuso local) em que conclui ≥ 1 lição/prática                                                                                                                             |
+| Congelar ofensiva                  | ganha 1 a cada 100 XP acumulados; máx. 2 guardados; se o último dia ativo foi anteontem (1 dia perdido) e há congelamento, consome 1 e a ofensiva continua; 2+ dias perdidos → ofensiva zera |
+| Meta diária                        | 10 / 20 / 30 / 50 XP (padrão 20); anel de progresso na trilha; atingir mostra celebração 1×/dia                                                                                              |
 
 **Conquistas** (lista inicial, declarativa — cada uma é `{ id, title, description, icon, check(stats) }`):
 primeira lição · lição perfeita · 3 / 7 / 30 dias de ofensiva · 50 / 100 / 250 palavras aprendidas · 1ª unidade concluída · meta diária batida 7 vezes · 500 / 1000 XP · madrugador (lição antes das 8h) · persistente (voltou após perder todos os corações).
@@ -223,44 +264,88 @@ Toda regra usa `clock.now()`. Em produção = `Date.now()`. Em testes/E2E (build
 ## 11. Persistência
 
 ### Interface
+
 ```ts
 interface Repository {
-  getProfile(): Promise<Profile>;            saveProfile(p: Profile): Promise<void>;
-  getSettings(): Promise<Settings>;          saveSettings(s: Settings): Promise<void>;
+  getProfile(): Promise<Profile>;
+  saveProfile(p: Profile): Promise<void>;
+  getSettings(): Promise<Settings>;
+  saveSettings(s: Settings): Promise<void>;
   getLessonProgress(): Promise<LessonProgress[]>;
-  recordLessonResult(r: LessonResult): Promise<void>;   // atômico: resultado + progresso + XP do dia
-  getSrsCards(): Promise<SrsCard[]>;         upsertSrsCards(c: SrsCard[]): Promise<void>;
+  recordLessonResult(o: LessonOutcome): Promise<void>; // atômico: resultado + progresso + XP do dia + profile + SRS + conquistas
+  getRecentResults(limit: number): Promise<LessonResult[]>;
+  getSrsCards(): Promise<SrsCard[]>;
+  upsertSrsCards(c: SrsCard[]): Promise<void>;
   getDailyStats(fromDay: string, toDay: string): Promise<DailyStats[]>;
-  getAchievements(): Promise<UnlockedAchievement[]>;  unlockAchievements(a: UnlockedAchievement[]): Promise<void>;
-  exportAll(): Promise<ExportFile>;          importAll(f: ExportFile): Promise<void>;   // substitui tudo, em transação
+  getAchievements(): Promise<UnlockedAchievement[]>;
+  unlockAchievements(a: UnlockedAchievement[]): Promise<void>;
+  exportAll(): Promise<ExportFile>;
+  importAll(f: ExportFile): Promise<void>; // substitui tudo, em transação
   resetAll(): Promise<void>;
 }
 ```
 
 ### Modelos persistidos
+
 ```ts
 type Profile = {
-  id: 'me'; createdAt: string; onboardingDone: boolean; placement?: { score: number; skippedUnit1: boolean };
-  totalXp: number; hearts: number; heartsUpdatedAt: string;
-  streak: { current: number; longest: number; lastActiveDay?: string; freezes: number; xpTowardFreeze: number };
+  id: 'me';
+  createdAt: string;
+  onboardingDone: boolean;
+  placement?: { score: number; skippedUnit1: boolean };
+  totalXp: number;
+  hearts: number;
+  heartsUpdatedAt: string;
+  streak: {
+    current: number;
+    longest: number;
+    lastActiveDay?: string;
+    freezes: number;
+    xpTowardFreeze: number;
+  };
   lastGoalCelebratedDay?: string;
 };
-type Settings = { id: 'me'; dailyGoalXp: 10|20|30|50; sound: boolean; haptics: boolean;
-                  theme: 'system'|'light'|'dark'; reminder: { enabled: boolean; time: 'HH:MM' };
-                  speakDisabledUntil?: string };
-type LessonProgress = { lessonId: string; completedCount: number; bestAccuracy: number; firstCompletedAt: string };
-type LessonResult = { id: string; lessonId: string; kind: 'lesson'|'review'|'practice'|'placement';
-                      day: string; finishedAt: string; xp: number; accuracy: number; durationMs: number;
-                      mistakes: number; perfect: boolean; itemOutcomes: { itemId: string; q: number }[] };
+type Settings = {
+  id: 'me';
+  dailyGoalXp: 10 | 20 | 30 | 50;
+  sound: boolean;
+  haptics: boolean;
+  theme: 'system' | 'light' | 'dark';
+  reminder: { enabled: boolean; time: 'HH:MM' };
+  speakDisabledUntil?: string;
+};
+type LessonProgress = {
+  lessonId: string;
+  completedCount: number;
+  bestAccuracy: number;
+  firstCompletedAt: string;
+};
+type LessonResult = {
+  id: string;
+  lessonId: string;
+  kind: 'lesson' | 'review' | 'practice' | 'placement';
+  day: string;
+  finishedAt: string;
+  xp: number;
+  accuracy: number;
+  durationMs: number;
+  mistakes: number;
+  perfect: boolean;
+  itemOutcomes: { itemId: string; q: number }[];
+};
 type DailyStats = { day: string; xp: number; lessons: number; goalMet: boolean };
 type UnlockedAchievement = { id: string; unlockedAt: string };
 ```
 
 ### Dexie (`db.ts`, versão 1)
-`profile: 'id'` · `settings: 'id'` · `lessonProgress: 'lessonId'` · `results: 'id, day, lessonId'` · `srs: 'itemId, dueDay'` · `daily: 'day'` · `achievements: 'id'`.
+
+`profile: 'id'` · `settings: 'id'` · `lessonProgress: 'lessonId'` · `results: 'id, day, lessonId, finishedAt'` · `srs: 'itemId, dueDay'` · `daily: 'day'` · `achievements: 'id'` · `quarantine: '++id'`.
+
+`LessonOutcome = { result, profile, srsCards, newAchievements, dailyGoalXp }`. Toda escrita é validada com Zod antes da transação. Linhas corrompidas de `profile`/`settings` são movidas para `quarantine` (com as issues) e o app segue com os padrões — progresso nunca é apagado em silêncio.
 Migrações futuras com `db.version(n).upgrade(...)` e teste de migração obrigatório.
 
 ### Exportar/Importar
+
 Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, exportedAt, data: {...todas as tabelas} }`. Import valida com Zod, mostra resumo (XP, ofensiva, data) e pede confirmação antes de substituir. Arquivo inválido → mensagem clara, nada é alterado.
 
 ## 12. Progressão e trilha (`src/domain/progression/`)
@@ -272,16 +357,16 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, e
 
 ## 13. Telas e rotas
 
-| Rota | Tela |
-|---|---|
-| `/boas-vindas` | Onboarding: Tuca se apresenta → escolhe meta diária → "Sou iniciante" ou "Fazer teste de nível" |
-| `/nivelamento` | Teste de nível |
-| `/` | **Trilha**: cabeçalho (ofensiva 🔥, XP, corações, anel da meta), unidades com nós em caminho sinuoso, botão da dica por habilidade |
-| `/dica/:skillId` | Dica de gramática |
-| `/licao/:lessonId` | Lição (tela cheia, sem barra inferior) → tela de fim (XP, precisão, tempo, ofensiva, Tuca comemorando) |
-| `/praticar` | Praticar (itens vencidos; contador; botão iniciar) |
-| `/perfil` | XP total, palavras aprendidas, ofensiva atual/recorde, gráfico 7 dias, conquistas |
-| `/config` | Som, vibração, meta, tema, lembrete, exportar/importar, redefinir progresso (confirmação dupla) |
+| Rota               | Tela                                                                                                                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `/boas-vindas`     | Onboarding: Tuca se apresenta → escolhe meta diária → "Sou iniciante" ou "Fazer teste de nível"                                    |
+| `/nivelamento`     | Teste de nível                                                                                                                     |
+| `/`                | **Trilha**: cabeçalho (ofensiva 🔥, XP, corações, anel da meta), unidades com nós em caminho sinuoso, botão da dica por habilidade |
+| `/dica/:skillId`   | Dica de gramática                                                                                                                  |
+| `/licao/:lessonId` | Lição (tela cheia, sem barra inferior) → tela de fim (XP, precisão, tempo, ofensiva, Tuca comemorando)                             |
+| `/praticar`        | Praticar (itens vencidos; contador; botão iniciar)                                                                                 |
+| `/perfil`          | XP total, palavras aprendidas, ofensiva atual/recorde, gráfico 7 dias, conquistas                                                  |
+| `/config`          | Som, vibração, meta, tema, lembrete, exportar/importar, redefinir progresso (confirmação dupla)                                    |
 
 Barra inferior (celular) / lateral (desktop ≥ 1024px): Trilha · Praticar · Perfil · Configurações. Primeiro acesso redireciona para `/boas-vindas`.
 
@@ -303,14 +388,14 @@ Barra inferior (celular) / lateral (desktop ≥ 1024px): Trilha · Praticar · P
 
 ## 16. Fluxo de trabalho com agentes e portões
 
-| Fase | Produz | Verifica (em paralelo quando possível) | Portão |
-|---|---|---|---|
-| 1 Planejamento | arquiteto | **usuário** | aprovação do usuário |
-| 2 Base | desenvolvedor | revisor-de-codigo + qa-tester; revisor-ux (tokens, mascote) | 0 bloqueantes; lint/typecheck/test verdes |
-| 3 Motor de lição | desenvolvedor | revisor-de-codigo + qa-tester; revisor-ux | idem + testes do corretor |
-| 4 Conteúdo | autor-de-conteudo | revisor-linguistico (ciclo até APROVADO) | schema ok + APROVADO |
-| 5 Trilha e gamificação | desenvolvedor | revisor-de-codigo + qa-tester; revisor-ux | idem |
-| 6 SRS, perfil, config | desenvolvedor | revisor-de-codigo + qa-tester; revisor-ux | idem |
-| 7 Polimento e QA final | todos | qa-tester (E2E completo), revisor-ux, revisor-de-codigo, Lighthouse | critérios de pronto |
+| Fase                   | Produz            | Verifica (em paralelo quando possível)                              | Portão                                    |
+| ---------------------- | ----------------- | ------------------------------------------------------------------- | ----------------------------------------- |
+| 1 Planejamento         | arquiteto         | **usuário**                                                         | aprovação do usuário                      |
+| 2 Base                 | desenvolvedor     | revisor-de-codigo + qa-tester; revisor-ux (tokens, mascote)         | 0 bloqueantes; lint/typecheck/test verdes |
+| 3 Motor de lição       | desenvolvedor     | revisor-de-codigo + qa-tester; revisor-ux                           | idem + testes do corretor                 |
+| 4 Conteúdo             | autor-de-conteudo | revisor-linguistico (ciclo até APROVADO)                            | schema ok + APROVADO                      |
+| 5 Trilha e gamificação | desenvolvedor     | revisor-de-codigo + qa-tester; revisor-ux                           | idem                                      |
+| 6 SRS, perfil, config  | desenvolvedor     | revisor-de-codigo + qa-tester; revisor-ux                           | idem                                      |
+| 7 Polimento e QA final | todos             | qa-tester (E2E completo), revisor-ux, revisor-de-codigo, Lighthouse | critérios de pronto                       |
 
 Cada fase começa com `docs/fases/FASE-N.md` (arquiteto) e termina com commit(s) e resumo ao usuário. Antes das telas (Fase 2), consultar as skills de design disponíveis (`audit-suite:emil-design-engineering`, `make-interfaces-feel-better`, `web-design-guidelines`, `web-animation-design`) para fixar a direção visual.

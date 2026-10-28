@@ -58,28 +58,30 @@ IDs: `kebab-case`, estáveis e únicos no app inteiro, com prefixo da unidade: `
 
 Usada em `acceptedEn`, `acceptedPt` e em `accepted` dos exercícios. O app expande para todas as combinações.
 
-| Sintaxe | Significa | Exemplo | Aceita |
-|---|---|---|---|
-| `(x)` | opcional | `(Eu) sou Ana` | "Eu sou Ana", "Sou Ana" |
+| Sintaxe  | Significa   | Exemplo             | Aceita                    |
+| -------- | ----------- | ------------------- | ------------------------- |
+| `(x)`    | opcional    | `(Eu) sou Ana`      | "Eu sou Ana", "Sou Ana"   |
 | `[a\|b]` | alternativa | `[I'm\|I am] tired` | "I'm tired", "I am tired" |
 
 Não precisa listar variações de: maiúsculas, acentos, pontuação final, espaços extras, nem contrações padrão (`I'm`↔`I am`, `don't`↔`do not`, `it's`↔`it is`… o corretor já normaliza). **Precisa** listar sinônimos reais e ordens alternativas válidas ("Bom dia" × "Bom dia!" não; "Olá" × "Oi" sim).
 
 Limite: cada padrão deve expandir para no máximo 64 frases (o validador acusa).
 
+Atenção: `|` só vale dentro de `[ ]` — para alternativas opcionais use `([a|b])`. Não existe escape para `( ) [ ] |` literais; evite esses caracteres nas respostas. Um padrão que não gera nenhuma resposta (`()`, `[|]`) é recusado.
+
 ## 4. Tipos de exercício
 
 Todo exercício tem `id`, `type`, e `itemIds` (ids de vocab/frases que ele treina — alimenta a repetição espaçada).
 
-| `type` | Campos principais | Quando usar |
-|---|---|---|
-| `multiple-choice` | `prompt` (PT), `options[3-4]` com `emoji`, `answer` | Apresentar palavra nova (sempre antes de pedir para escrevê-la) |
-| `word-bank` | `promptPt`, `answer` (EN), `accepted`, `distractors[2-4]` | PT→EN montando frase |
-| `translate-typing` | `promptEn`, `accepted` (PT) | EN→PT digitando |
-| `listen-type` | `textEn`, `accepted` | Ouvir e escrever (o app oferece velocidade lenta) |
-| `speak` | `textEn` | Falar a frase; escolha frases de 2–8 palavras |
-| `match-pairs` | `pairs[4-5]` `{en, pt}` | Revisar vocabulário |
-| `fill-blank` | `sentence` com `___`, `options[3-4]`, `answer`, `translationPt` | Gramática pontual (preposições, make/do, be) |
+| `type`             | Campos principais                                               | Quando usar                                                     |
+| ------------------ | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `multiple-choice`  | `prompt` (PT), `options[3-4]` com `emoji`, `answer`             | Apresentar palavra nova (sempre antes de pedir para escrevê-la) |
+| `word-bank`        | `promptPt`, `answer` (EN), `accepted`, `distractors[2-4]`       | PT→EN montando frase                                            |
+| `translate-typing` | `promptEn`, `accepted` (PT)                                     | EN→PT digitando                                                 |
+| `listen-type`      | `textEn`, `accepted`                                            | Ouvir e escrever (o app oferece velocidade lenta)               |
+| `speak`            | `textEn`                                                        | Falar a frase; escolha frases de 2–8 palavras                   |
+| `match-pairs`      | `pairs[4-5]` `{en, pt}`                                         | Revisar vocabulário                                             |
+| `fill-blank`       | `sentence` com `___`, `options[3-4]`, `answer`, `translationPt` | Gramática pontual (preposições, make/do, be)                    |
 
 Todo exercício pode ter `explanation` (PT, ≤ 2 frases) mostrada quando o aluno erra. **Obrigatório** em exercícios com `focus` em erro típico.
 
