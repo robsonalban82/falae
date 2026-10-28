@@ -98,6 +98,24 @@ describe('free-text grading', () => {
     expect(gradeExercise(translate, choice('Bom dia'), ctx).verdict).toBe('wrong');
   });
 
+  it('accepts "its" typed for "it\'s" only when that makes the answer right', () => {
+    const clock: ExerciseOf<'listen-type'> = {
+      id: 'e-c',
+      type: 'listen-type',
+      itemIds: ['x'],
+      textEn: "It's seven o'clock.",
+    };
+    expect(gradeExercise(clock, text('its seven oclock'), ctx).verdict).toBe('correct');
+    const tail: ExerciseOf<'listen-type'> = {
+      id: 'e-d',
+      type: 'listen-type',
+      itemIds: ['x'],
+      textEn: 'The dog wagged its tail.',
+    };
+    expect(gradeExercise(tail, text('the dog wagged its tail'), ctx).verdict).toBe('correct');
+    expect(gradeExercise(tail, text("the dog wagged it's tail"), ctx).verdict).toBe('wrong');
+  });
+
   it('listen-type accepts contractions either way', () => {
     expect(gradeExercise(listen, text('it is quiet tonight'), ctx).verdict).toBe('correct');
   });

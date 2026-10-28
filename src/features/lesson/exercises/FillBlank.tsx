@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import { seededShuffle } from '../../../lib/shuffle';
 import { BLANK } from '../../../content/schema';
 import { t } from '../../../i18n/pt-BR';
 import { En } from '../../../ui/En';
@@ -8,6 +9,11 @@ import type { ExerciseProps } from './types';
 export function FillBlank({ exercise, disabled, onChange }: ExerciseProps<'fill-blank'>) {
   const [choice, setChoice] = useState<string | null>(null);
   const [before, after] = exercise.sentence.split(BLANK);
+  // Stable per exercise, so the answer's position never gives it away.
+  const options = useMemo(
+    () => seededShuffle(exercise.options, exercise.id).map((text) => ({ text })),
+    [exercise],
+  );
   const onSelect = useCallback(
     (value: string) => {
       setChoice(value);
@@ -32,7 +38,7 @@ export function FillBlank({ exercise, disabled, onChange }: ExerciseProps<'fill-
       </p>
       <ChoiceList
         name={t.lesson.instructions['fill-blank']}
-        options={exercise.options.map((text) => ({ text }))}
+        options={options}
         disabled={disabled}
         onSelect={onSelect}
         layout="row"

@@ -78,6 +78,16 @@ describe('normalize — PT', () => {
     expect(normalize(input, 'pt')).toBe(expected);
   });
 
+  it.each([
+    ['às 8h', 'as 8'],
+    ['às 8h30', 'as 8 30'],
+    ['às 7:00', 'as 7'],
+    ['às 7:30', 'as 7 30'],
+    ['às oito', 'as 8'],
+  ])('times: %s', (input, expected) => {
+    expect(normalize(input, 'pt')).toBe(expected);
+  });
+
   it('does not expand English contractions in Portuguese', () => {
     expect(normalize("d'água", 'pt')).toBe('dagua');
   });

@@ -220,6 +220,9 @@ export function stripAccents(text: string): string {
 export function normalize(text: string, lang: Lang): string {
   let s = stripAccents(text.normalize('NFC').toLowerCase());
   s = s.replace(/[’‘`´]/g, "'").replace(/[“”«»]/g, ' ');
+  // Times: "7:00" / "7h" → "7", "7h30" / "7:30" → "7 30" (both languages).
+  s = s.replace(/\b(\d{1,2})(?::|h)00\b/g, '$1').replace(/\b(\d{1,2})h(\d{2})\b/g, '$1 $2');
+  s = s.replace(/\b(\d{1,2})h\b/g, '$1');
   s = s.replace(/[-–—:/]/g, ' '); // "twenty-one", "5:30", "e/ou"
   s = s.replace(/[^\p{L}\p{N}'\s]/gu, ' ');
 

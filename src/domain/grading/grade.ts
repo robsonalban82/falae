@@ -109,7 +109,7 @@ export function gradeExercise(
       if (!accepted) return wrong;
       const input = normalize(response.value, accepted.lang);
       if (!input) return wrong;
-      const exact = accepted.byNormalized.get(input);
+      const exact = accepted.byNormalized.get(input) ?? matchWithoutApostrophe(input, accepted);
       if (exact !== undefined) return { verdict: 'correct', correctAnswer: exact };
       // Tiles can't have typos, so "almost" only applies to typed answers.
       if (exercise.type !== 'word-bank') {
@@ -119,6 +119,18 @@ export function gradeExercise(
       return wrong;
     }
   }
+}
+
+/**
+ * "its" is a real word, so it is not expanded during normalization. But on phones
+ * "its seven o'clock" almost always means "it's": accept it when that makes an exact match.
+ */
+function matchWithoutApostrophe(input: string, accepted: Accepted): string | undefined {
+  if (accepted.lang !== 'en' || !words(input).includes('its')) return undefined;
+  const expanded = words(input)
+    .flatMap((w) => (w === 'its' ? ['it', 'is'] : [w]))
+    .join(' ');
+  return accepted.byNormalized.get(expanded);
 }
 
 /**
