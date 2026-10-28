@@ -1,0 +1,3214 @@
+{
+  "id": "u1-unit",
+  "order": 1,
+  "title": "Cumprimentos e apresentações",
+  "description": "Diga oi e tchau, apresente-se, conte de onde você é e pergunte como a pessoa está.",
+  "color": "manga",
+  "skills": [
+    {
+      "id": "u1-sk1",
+      "title": "Olá e tchau",
+      "icon": "👋",
+      "tip": {
+        "title": "Cumprimentos ao longo do dia",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "**Hi** e **hello** = oi / olá. Hi é mais informal; hello serve para tudo (e para atender o telefone)."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "Good morning!",
+                "pt": "Bom dia! (até o meio-dia)"
+              },
+              {
+                "en": "Good afternoon!",
+                "pt": "Boa tarde! (do meio-dia até umas 18h)"
+              },
+              {
+                "en": "Good evening!",
+                "pt": "Boa noite! (ao chegar, à noite)"
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "**Good night** também é \"boa noite\", mas **só na despedida** ou na hora de dormir."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "Good night! (chegando numa festa às 21h)",
+            "right": "Good evening! / Hi!",
+            "why": "Good night é tchau. Para cumprimentar à noite, use good evening ou um simples hi."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "Bye!",
+                "pt": "Tchau!"
+              },
+              {
+                "en": "See you later!",
+                "pt": "Até mais tarde! / Até logo!"
+              },
+              {
+                "en": "See you tomorrow!",
+                "pt": "Até amanhã!"
+              }
+            ]
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u1-hi",
+          "en": "hi",
+          "pt": ["oi"],
+          "acceptedPt": ["olá"],
+          "acceptedEn": ["hello"],
+          "example": {
+            "en": "Hi, Ana!",
+            "pt": "Oi, Ana!"
+          },
+          "emoji": "👋",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-bye",
+          "en": "bye",
+          "pt": ["tchau"],
+          "acceptedEn": ["goodbye"],
+          "example": {
+            "en": "Bye, João!",
+            "pt": "Tchau, João!"
+          },
+          "emoji": "🚶",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-good-morning",
+          "en": "good morning",
+          "pt": ["bom dia"],
+          "example": {
+            "en": "Good morning, Ana!",
+            "pt": "Bom dia, Ana!"
+          },
+          "emoji": "🌅",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-good-afternoon",
+          "en": "good afternoon",
+          "pt": ["boa tarde"],
+          "example": {
+            "en": "Good afternoon, João!",
+            "pt": "Boa tarde, João!"
+          },
+          "emoji": "☀️",
+          "difficulty": 1,
+          "notes": "Afternoon = after (depois) + noon (meio-dia)."
+        },
+        {
+          "id": "u1-hello",
+          "en": "hello",
+          "pt": ["olá", "oi"],
+          "acceptedPt": ["alô"],
+          "acceptedEn": ["hi"],
+          "example": {
+            "en": "Hello! Good morning!",
+            "pt": "Olá! Bom dia!"
+          },
+          "emoji": "👋",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-good-evening",
+          "en": "good evening",
+          "pt": ["boa noite"],
+          "example": {
+            "en": "Good evening, Thiago!",
+            "pt": "Boa noite, Thiago!"
+          },
+          "emoji": "🌆",
+          "difficulty": 2,
+          "notes": "Para cumprimentar à noite, ao chegar."
+        },
+        {
+          "id": "u1-good-night",
+          "en": "good night",
+          "pt": ["boa noite"],
+          "example": {
+            "en": "Good night! See you tomorrow.",
+            "pt": "Boa noite! Até amanhã."
+          },
+          "emoji": "🌙",
+          "difficulty": 2,
+          "notes": "Só para se despedir ou ir dormir. Para cumprimentar à noite: good evening."
+        },
+        {
+          "id": "u1-see-you-later",
+          "en": "see you later",
+          "pt": ["até mais tarde", "até logo"],
+          "acceptedPt": ["até [mais|depois]", "[te vejo|a gente se vê] [mais tarde|depois|logo]"],
+          "example": {
+            "en": "Bye, Ana! See you later!",
+            "pt": "Tchau, Ana! Até mais tarde!"
+          },
+          "emoji": "🔜",
+          "difficulty": 2
+        },
+        {
+          "id": "u1-see-you-tomorrow",
+          "en": "see you tomorrow",
+          "pt": ["até amanhã"],
+          "acceptedPt": ["[te vejo|a gente se vê] amanhã"],
+          "example": {
+            "en": "Good night! See you tomorrow.",
+            "pt": "Boa noite! Até amanhã."
+          },
+          "emoji": "📅",
+          "difficulty": 2
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u1-s-good-morning-ana",
+          "en": "Good morning, Ana!",
+          "pt": "Bom dia, Ana!",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-s-bye-see-you-later",
+          "en": "Bye! See you later!",
+          "pt": "Tchau! Até mais tarde!",
+          "acceptedEn": ["[Bye|Goodbye]! See you later!"],
+          "acceptedPt": [
+            "Tchau! (E) até [mais tarde|mais|logo|depois]!",
+            "Tchau! [Te vejo|A gente se vê] [mais tarde|depois|logo]!"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u1-s-good-night-see-you-tomorrow",
+          "en": "Good night! See you tomorrow.",
+          "pt": "Boa noite! Até amanhã.",
+          "acceptedPt": [
+            "Boa noite! (E) até amanhã.",
+            "Boa noite! [Te vejo|A gente se vê] amanhã."
+          ],
+          "difficulty": 2
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u1-sk1-l1",
+          "title": "Oi, tchau, bom dia",
+          "exercises": [
+            {
+              "id": "u1-sk1-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-hi"],
+              "prompt": "Qual destas significa \"oi\"?",
+              "options": [
+                {
+                  "text": "hi",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "bye",
+                  "emoji": "🚶"
+                },
+                {
+                  "text": "good morning",
+                  "emoji": "🌅"
+                }
+              ],
+              "answer": "hi"
+            },
+            {
+              "id": "u1-sk1-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-bye"],
+              "prompt": "Como se diz \"tchau\"?",
+              "options": [
+                {
+                  "text": "good morning",
+                  "emoji": "🌅"
+                },
+                {
+                  "text": "hi",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "bye",
+                  "emoji": "🚶"
+                }
+              ],
+              "answer": "bye"
+            },
+            {
+              "id": "u1-sk1-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-good-morning"],
+              "prompt": "Como se diz \"bom dia\"?",
+              "options": [
+                {
+                  "text": "bye",
+                  "emoji": "🚶"
+                },
+                {
+                  "text": "good morning",
+                  "emoji": "🌅"
+                },
+                {
+                  "text": "hi",
+                  "emoji": "👋"
+                }
+              ],
+              "answer": "good morning"
+            },
+            {
+              "id": "u1-sk1-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u1-good-afternoon"],
+              "prompt": "Como se diz \"boa tarde\"?",
+              "options": [
+                {
+                  "text": "good morning",
+                  "emoji": "🌅"
+                },
+                {
+                  "text": "good afternoon",
+                  "emoji": "☀️"
+                },
+                {
+                  "text": "bye",
+                  "emoji": "🚶"
+                }
+              ],
+              "answer": "good afternoon",
+              "explanation": "Morning = manhã. Afternoon = tarde (after + noon = depois do meio-dia)."
+            },
+            {
+              "id": "u1-sk1-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u1-hi", "u1-bye", "u1-good-morning", "u1-good-afternoon"],
+              "pairs": [
+                {
+                  "en": "hi",
+                  "pt": "oi"
+                },
+                {
+                  "en": "bye",
+                  "pt": "tchau"
+                },
+                {
+                  "en": "good morning",
+                  "pt": "bom dia"
+                },
+                {
+                  "en": "good afternoon",
+                  "pt": "boa tarde"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk1-l1-e06",
+              "type": "translate-typing",
+              "itemIds": ["u1-good-morning"],
+              "promptEn": "Good morning!",
+              "accepted": ["Bom dia!"]
+            },
+            {
+              "id": "u1-sk1-l1-e07",
+              "type": "word-bank",
+              "itemIds": ["u1-good-morning", "u1-s-good-morning-ana"],
+              "promptPt": "Bom dia, Ana!",
+              "answer": "Good morning, Ana!",
+              "distractors": ["afternoon", "bye"]
+            },
+            {
+              "id": "u1-sk1-l1-e08",
+              "type": "listen-type",
+              "itemIds": ["u1-good-afternoon"],
+              "textEn": "Good afternoon!"
+            },
+            {
+              "id": "u1-sk1-l1-e09",
+              "type": "translate-typing",
+              "itemIds": ["u1-hi"],
+              "promptEn": "Hi, João!",
+              "accepted": ["Oi, João!", "Olá, João!"]
+            },
+            {
+              "id": "u1-sk1-l1-e10",
+              "type": "speak",
+              "itemIds": ["u1-s-good-morning-ana"],
+              "textEn": "Good morning, Ana!"
+            },
+            {
+              "id": "u1-sk1-l1-e11",
+              "type": "fill-blank",
+              "itemIds": ["u1-good-afternoon"],
+              "sentence": "Good ___, João!",
+              "options": ["afternoon", "morning", "bye"],
+              "answer": "afternoon",
+              "translationPt": "Boa tarde, João!"
+            },
+            {
+              "id": "u1-sk1-l1-e12",
+              "type": "word-bank",
+              "itemIds": ["u1-hi", "u1-good-morning"],
+              "promptPt": "Oi! Bom dia!",
+              "answer": "Hi! Good morning!",
+              "distractors": ["afternoon", "bye"]
+            },
+            {
+              "id": "u1-sk1-l1-e13",
+              "type": "translate-typing",
+              "itemIds": ["u1-bye"],
+              "promptEn": "Bye, Ana!",
+              "accepted": ["Tchau, Ana!"]
+            },
+            {
+              "id": "u1-sk1-l1-e14",
+              "type": "listen-type",
+              "itemIds": ["u1-hi", "u1-good-morning"],
+              "textEn": "Hi! Good morning!"
+            }
+          ]
+        },
+        {
+          "id": "u1-sk1-l2",
+          "title": "Boa noite: chegando ou saindo?",
+          "exercises": [
+            {
+              "id": "u1-sk1-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-hello"],
+              "prompt": "Qual destas significa \"olá\"?",
+              "options": [
+                {
+                  "text": "hello",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "bye",
+                  "emoji": "🚶"
+                },
+                {
+                  "text": "good afternoon",
+                  "emoji": "☀️"
+                }
+              ],
+              "answer": "hello"
+            },
+            {
+              "id": "u1-sk1-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-good-evening", "u1-good-night"],
+              "prompt": "Você chega a um jantar às 20h. Como cumprimenta?",
+              "options": [
+                {
+                  "text": "good evening",
+                  "emoji": "🌆"
+                },
+                {
+                  "text": "good night",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "good morning",
+                  "emoji": "🌅"
+                }
+              ],
+              "answer": "good evening",
+              "explanation": "Good evening é para cumprimentar à noite (ao chegar). Good night é só para se despedir ou ir dormir."
+            },
+            {
+              "id": "u1-sk1-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-good-night", "u1-good-evening"],
+              "prompt": "Você vai dormir. O que diz para a família?",
+              "options": [
+                {
+                  "text": "good night",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "good evening",
+                  "emoji": "🌆"
+                },
+                {
+                  "text": "good afternoon",
+                  "emoji": "☀️"
+                }
+              ],
+              "answer": "good night",
+              "explanation": "Good night = boa noite na despedida ou antes de dormir."
+            },
+            {
+              "id": "u1-sk1-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u1-see-you-later"],
+              "prompt": "Como se diz \"até mais tarde\"?",
+              "options": [
+                {
+                  "text": "see you later",
+                  "emoji": "🔜"
+                },
+                {
+                  "text": "good night",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "hello",
+                  "emoji": "👋"
+                }
+              ],
+              "answer": "see you later"
+            },
+            {
+              "id": "u1-sk1-l2-e05",
+              "type": "match-pairs",
+              "itemIds": [
+                "u1-hello",
+                "u1-good-evening",
+                "u1-good-night",
+                "u1-see-you-later",
+                "u1-good-afternoon"
+              ],
+              "pairs": [
+                {
+                  "en": "hello",
+                  "pt": "olá"
+                },
+                {
+                  "en": "good evening",
+                  "pt": "boa noite (chegando)"
+                },
+                {
+                  "en": "good night",
+                  "pt": "boa noite (saindo)"
+                },
+                {
+                  "en": "see you later",
+                  "pt": "até mais tarde"
+                },
+                {
+                  "en": "good afternoon",
+                  "pt": "boa tarde"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk1-l2-e06",
+              "type": "fill-blank",
+              "itemIds": ["u1-good-evening", "u1-good-night"],
+              "sentence": "Hello, Ana! Good ___!",
+              "options": ["evening", "night", "morning"],
+              "answer": "evening",
+              "translationPt": "Olá, Ana! Boa noite! (chegando, às 20h)",
+              "explanation": "Good evening é para cumprimentar à noite (ao chegar). Good night é só para se despedir ou ir dormir."
+            },
+            {
+              "id": "u1-sk1-l2-e07",
+              "type": "word-bank",
+              "itemIds": ["u1-bye", "u1-see-you-later", "u1-s-bye-see-you-later"],
+              "promptPt": "Tchau! Até mais tarde!",
+              "answer": "Bye! See you later!",
+              "distractors": ["night", "hello"]
+            },
+            {
+              "id": "u1-sk1-l2-e08",
+              "type": "translate-typing",
+              "itemIds": ["u1-see-you-later"],
+              "promptEn": "See you later!",
+              "accepted": [
+                "Até mais tarde!",
+                "Até [mais|logo|depois]!",
+                "[Te vejo|A gente se vê] [mais tarde|depois|logo]!"
+              ]
+            },
+            {
+              "id": "u1-sk1-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u1-good-evening"],
+              "textEn": "Good evening!"
+            },
+            {
+              "id": "u1-sk1-l2-e10",
+              "type": "speak",
+              "itemIds": ["u1-s-bye-see-you-later"],
+              "textEn": "Bye! See you later!"
+            },
+            {
+              "id": "u1-sk1-l2-e11",
+              "type": "translate-typing",
+              "itemIds": ["u1-good-night"],
+              "promptEn": "Good night, Thiago!",
+              "accepted": ["Boa noite, Thiago!"]
+            },
+            {
+              "id": "u1-sk1-l2-e12",
+              "type": "fill-blank",
+              "itemIds": ["u1-good-night", "u1-good-evening"],
+              "sentence": "Bye, João! Good ___!",
+              "options": ["night", "evening", "afternoon"],
+              "answer": "night",
+              "translationPt": "Tchau, João! Boa noite! (saindo, às 22h)",
+              "explanation": "Na despedida, à noite, use good night. Good evening é para quando você chega."
+            },
+            {
+              "id": "u1-sk1-l2-e13",
+              "type": "word-bank",
+              "itemIds": ["u1-hello", "u1-good-evening"],
+              "promptPt": "Olá! Boa noite! (chegando a um lugar)",
+              "answer": "Hello! Good evening!",
+              "accepted": ["[Hello|Hi]! Good evening!"],
+              "distractors": ["night", "bye"],
+              "explanation": "Good evening é para cumprimentar à noite (ao chegar). Good night é só para se despedir ou ir dormir."
+            },
+            {
+              "id": "u1-sk1-l2-e14",
+              "type": "listen-type",
+              "itemIds": ["u1-good-night"],
+              "textEn": "Good night, Ana!"
+            }
+          ]
+        },
+        {
+          "id": "u1-sk1-l3",
+          "title": "Até amanhã!",
+          "exercises": [
+            {
+              "id": "u1-sk1-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-see-you-tomorrow"],
+              "prompt": "Como se diz \"até amanhã\"?",
+              "options": [
+                {
+                  "text": "see you tomorrow",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "see you later",
+                  "emoji": "🔜"
+                },
+                {
+                  "text": "good night",
+                  "emoji": "🌙"
+                }
+              ],
+              "answer": "see you tomorrow"
+            },
+            {
+              "id": "u1-sk1-l3-e02",
+              "type": "match-pairs",
+              "itemIds": [
+                "u1-hi",
+                "u1-bye",
+                "u1-see-you-tomorrow",
+                "u1-good-morning",
+                "u1-good-afternoon"
+              ],
+              "pairs": [
+                {
+                  "en": "hi",
+                  "pt": "oi"
+                },
+                {
+                  "en": "bye",
+                  "pt": "tchau"
+                },
+                {
+                  "en": "see you tomorrow",
+                  "pt": "até amanhã"
+                },
+                {
+                  "en": "good morning",
+                  "pt": "bom dia"
+                },
+                {
+                  "en": "good afternoon",
+                  "pt": "boa tarde"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk1-l3-e03",
+              "type": "word-bank",
+              "itemIds": [
+                "u1-good-night",
+                "u1-see-you-tomorrow",
+                "u1-s-good-night-see-you-tomorrow"
+              ],
+              "promptPt": "Boa noite! Até amanhã. (saindo)",
+              "answer": "Good night! See you tomorrow.",
+              "distractors": ["evening", "later"],
+              "explanation": "Saindo à noite = good night. Good evening é só para chegar."
+            },
+            {
+              "id": "u1-sk1-l3-e04",
+              "type": "translate-typing",
+              "itemIds": ["u1-see-you-tomorrow"],
+              "promptEn": "See you tomorrow, Ana!",
+              "accepted": ["Até amanhã, Ana!", "[Te vejo|A gente se vê] amanhã, Ana!"]
+            },
+            {
+              "id": "u1-sk1-l3-e05",
+              "type": "fill-blank",
+              "itemIds": ["u1-see-you-tomorrow"],
+              "sentence": "Bye, Ana! See you ___!",
+              "options": ["tomorrow", "later", "night"],
+              "answer": "tomorrow",
+              "translationPt": "Tchau, Ana! Até amanhã!"
+            },
+            {
+              "id": "u1-sk1-l3-e06",
+              "type": "speak",
+              "itemIds": ["u1-s-good-night-see-you-tomorrow"],
+              "textEn": "Good night! See you tomorrow."
+            },
+            {
+              "id": "u1-sk1-l3-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u1-good-evening", "u1-good-night"],
+              "prompt": "São 19h e você entra numa loja. O que diz?",
+              "options": [
+                {
+                  "text": "Good evening!",
+                  "emoji": "🌆"
+                },
+                {
+                  "text": "Good night!",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "Good morning!",
+                  "emoji": "🌅"
+                }
+              ],
+              "answer": "Good evening!",
+              "explanation": "Good evening é para cumprimentar à noite (ao chegar). Good night é só para se despedir ou ir dormir."
+            },
+            {
+              "id": "u1-sk1-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u1-see-you-tomorrow"],
+              "textEn": "See you tomorrow!"
+            },
+            {
+              "id": "u1-sk1-l3-e09",
+              "type": "translate-typing",
+              "itemIds": ["u1-good-evening"],
+              "promptEn": "Good evening, Thiago!",
+              "accepted": ["Boa noite, Thiago!"]
+            },
+            {
+              "id": "u1-sk1-l3-e10",
+              "type": "word-bank",
+              "itemIds": ["u1-hi", "u1-good-afternoon"],
+              "promptPt": "Oi! Boa tarde!",
+              "answer": "Hi! Good afternoon!",
+              "accepted": ["[Hi|Hello]! Good afternoon!"],
+              "distractors": ["evening", "morning"]
+            },
+            {
+              "id": "u1-sk1-l3-e11",
+              "type": "multiple-choice",
+              "itemIds": ["u1-see-you-later", "u1-good-evening"],
+              "prompt": "Qual destas é uma despedida (para ir embora)?",
+              "options": [
+                {
+                  "text": "See you later!",
+                  "emoji": "🔜"
+                },
+                {
+                  "text": "Good evening!",
+                  "emoji": "🌆"
+                },
+                {
+                  "text": "Good morning!",
+                  "emoji": "🌅"
+                }
+              ],
+              "answer": "See you later!",
+              "explanation": "See you later = até mais tarde. Good evening e good morning são cumprimentos de chegada."
+            },
+            {
+              "id": "u1-sk1-l3-e12",
+              "type": "speak",
+              "itemIds": ["u1-hello", "u1-good-evening"],
+              "textEn": "Hello! Good evening!"
+            },
+            {
+              "id": "u1-sk1-l3-e13",
+              "type": "translate-typing",
+              "itemIds": ["u1-bye", "u1-good-night"],
+              "promptEn": "Bye! Good night!",
+              "accepted": ["Tchau! (E) boa noite!"]
+            },
+            {
+              "id": "u1-sk1-l3-e14",
+              "type": "listen-type",
+              "itemIds": ["u1-hi", "u1-good-evening"],
+              "textEn": "Hi! Good evening!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u1-sk2",
+      "title": "Meu nome é…",
+      "icon": "📛",
+      "tip": {
+        "title": "Dizendo seu nome e apresentando alguém",
+        "blocks": [
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I'm Ana.",
+                "pt": "Eu sou a Ana."
+              },
+              {
+                "en": "My name is João.",
+                "pt": "Meu nome é João."
+              },
+              {
+                "en": "What's your name?",
+                "pt": "Qual é o seu nome?"
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I Ana. / My name Ana.",
+            "right": "I'm Ana. / My name is Ana.",
+            "why": "Em inglês o verbo (am / is) nunca some. I'm é a forma curta de I am."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "Nice to know you.",
+            "right": "Nice to meet you.",
+            "why": "Conhecer alguém pela primeira vez é meet. A resposta é: Nice to meet you too!"
+          },
+          {
+            "kind": "text",
+            "md": "Para **apresentar alguém**, use **This is…**: *Ana, this is Maria.* = Ana, esta é a Maria."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u1-name",
+          "en": "name",
+          "pt": ["nome"],
+          "example": {
+            "en": "My name is Ana.",
+            "pt": "Meu nome é Ana."
+          },
+          "emoji": "📛",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-my",
+          "en": "my",
+          "pt": ["meu", "minha"],
+          "example": {
+            "en": "My name is João.",
+            "pt": "Meu nome é João."
+          },
+          "emoji": "👈",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-im",
+          "en": "I'm",
+          "pt": ["eu sou", "sou"],
+          "acceptedPt": ["(eu) estou"],
+          "acceptedEn": ["I am"],
+          "example": {
+            "en": "I'm Ana.",
+            "pt": "Eu sou a Ana."
+          },
+          "emoji": "🙋",
+          "difficulty": 1,
+          "focus": "verbo-be",
+          "notes": "I'm = I am. ❌ I Ana → ✅ I'm Ana."
+        },
+        {
+          "id": "u1-your",
+          "en": "your",
+          "pt": ["seu", "sua"],
+          "acceptedPt": ["[teu|tua|de você]"],
+          "example": {
+            "en": "What's your name?",
+            "pt": "Qual é o seu nome?"
+          },
+          "emoji": "👉",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-what",
+          "en": "what",
+          "pt": ["qual", "o que"],
+          "acceptedPt": ["que"],
+          "example": {
+            "en": "What's your name?",
+            "pt": "Qual é o seu nome?"
+          },
+          "emoji": "❓",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-too",
+          "en": "too",
+          "pt": ["também"],
+          "example": {
+            "en": "Nice to meet you too.",
+            "pt": "Prazer em te conhecer também."
+          },
+          "emoji": "➕",
+          "difficulty": 1,
+          "notes": "Too (também) tem o mesmo som de to e two, mas se escreve com dois \"o\"."
+        },
+        {
+          "id": "u1-this-is",
+          "en": "this is",
+          "pt": ["este é", "esta é"],
+          "acceptedPt": ["[esse|essa] é"],
+          "example": {
+            "en": "Ana, this is Maria.",
+            "pt": "Ana, esta é a Maria."
+          },
+          "emoji": "🤝",
+          "difficulty": 2,
+          "notes": "Para apresentar alguém: This is Maria."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u1-s-my-name-is-ana",
+          "en": "My name is Ana.",
+          "pt": "Meu nome é Ana.",
+          "acceptedEn": ["[My name is|My name's|I'm] Ana."],
+          "acceptedPt": ["[Meu nome é|(Eu) me chamo|(Eu) sou a] Ana."],
+          "difficulty": 1
+        },
+        {
+          "id": "u1-s-im-joao",
+          "en": "I'm João.",
+          "pt": "Eu sou o João.",
+          "acceptedEn": ["[I'm|My name is|My name's] João."],
+          "acceptedPt": ["(Eu) sou (o) João.", "[Meu nome é|(Eu) me chamo] João."],
+          "difficulty": 2,
+          "focus": "verbo-be"
+        },
+        {
+          "id": "u1-s-whats-your-name",
+          "en": "What's your name?",
+          "pt": "Qual é o seu nome?",
+          "acceptedPt": [
+            "Qual é o seu nome?",
+            "Qual (é) (o) [seu|teu] nome?",
+            "Como (é que) você se chama?",
+            "Como se chama?",
+            "Como é (o) [seu|teu] nome?"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u1-s-nice-to-meet-you",
+          "en": "Nice to meet you.",
+          "pt": "Prazer em te conhecer.",
+          "acceptedEn": ["(It's) [nice|great|good] to meet you.", "Pleased to meet you."],
+          "acceptedPt": [
+            "(Muito) prazer.",
+            "(É um) prazer te conhecer.",
+            "(É um) prazer [em|de] [te conhecer|conhecer você|conhecer vocês|conhecê-lo|conhecê-la|lhe conhecer].",
+            "Muito prazer em [te conhecer|conhecer você|conhecer vocês]."
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u1-s-nice-to-meet-you-too",
+          "en": "Nice to meet you too.",
+          "pt": "Prazer em te conhecer também.",
+          "acceptedEn": ["[Nice|Great|Good] to meet you too.", "You too."],
+          "acceptedPt": [
+            "(Muito) prazer também.",
+            "Prazer [em|de] [te conhecer|conhecer você] também.",
+            "(O) prazer é (todo) meu.",
+            "Igualmente."
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u1-s-this-is-maria",
+          "en": "This is Maria.",
+          "pt": "Esta é a Maria.",
+          "acceptedPt": ["[Esta|Essa] (aqui) é (a) Maria.", "[Te|Lhe] apresento a Maria."],
+          "difficulty": 2
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u1-sk2-l1",
+          "title": "I'm… / My name is…",
+          "exercises": [
+            {
+              "id": "u1-sk2-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-name"],
+              "prompt": "O que significa \"name\"?",
+              "options": [
+                {
+                  "text": "nome",
+                  "emoji": "📛"
+                },
+                {
+                  "text": "número",
+                  "emoji": "🔢"
+                },
+                {
+                  "text": "noite",
+                  "emoji": "🌙"
+                }
+              ],
+              "answer": "nome"
+            },
+            {
+              "id": "u1-sk2-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-my"],
+              "prompt": "Como se diz \"meu\"?",
+              "options": [
+                {
+                  "text": "my",
+                  "emoji": "👈"
+                },
+                {
+                  "text": "hi",
+                  "emoji": "👋"
+                },
+                {
+                  "text": "bye",
+                  "emoji": "🚶"
+                }
+              ],
+              "answer": "my"
+            },
+            {
+              "id": "u1-sk2-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-im"],
+              "prompt": "Como se diz \"Eu sou a Ana\"?",
+              "options": [
+                {
+                  "text": "I'm Ana."
+                },
+                {
+                  "text": "I Ana."
+                },
+                {
+                  "text": "My Ana."
+                }
+              ],
+              "answer": "I'm Ana.",
+              "explanation": "O verbo be não pode sumir: I'm (= I am) Ana. ❌ I Ana."
+            },
+            {
+              "id": "u1-sk2-l1-e04",
+              "type": "match-pairs",
+              "itemIds": ["u1-name", "u1-my", "u1-im", "u1-hi", "u1-bye"],
+              "pairs": [
+                {
+                  "en": "name",
+                  "pt": "nome"
+                },
+                {
+                  "en": "my",
+                  "pt": "meu"
+                },
+                {
+                  "en": "I'm",
+                  "pt": "eu sou"
+                },
+                {
+                  "en": "hi",
+                  "pt": "oi"
+                },
+                {
+                  "en": "bye",
+                  "pt": "tchau"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk2-l1-e05",
+              "type": "word-bank",
+              "itemIds": ["u1-my", "u1-name", "u1-s-my-name-is-ana"],
+              "promptPt": "Meu nome é Ana.",
+              "answer": "My name is Ana.",
+              "distractors": ["your", "bye"]
+            },
+            {
+              "id": "u1-sk2-l1-e06",
+              "type": "translate-typing",
+              "itemIds": ["u1-my", "u1-name"],
+              "promptEn": "My name is João.",
+              "accepted": ["Meu nome é João.", "[Meu nome é|(Eu) me chamo|(Eu) sou (o)] João."]
+            },
+            {
+              "id": "u1-sk2-l1-e07",
+              "type": "fill-blank",
+              "itemIds": ["u1-im"],
+              "sentence": "Hi! ___ Ana.",
+              "options": ["I'm", "I", "My"],
+              "answer": "I'm",
+              "translationPt": "Oi! Eu sou a Ana.",
+              "explanation": "O verbo be não pode sumir: I'm (= I am) Ana. ❌ I Ana."
+            },
+            {
+              "id": "u1-sk2-l1-e08",
+              "type": "listen-type",
+              "itemIds": ["u1-s-my-name-is-ana"],
+              "textEn": "My name is Ana."
+            },
+            {
+              "id": "u1-sk2-l1-e09",
+              "type": "word-bank",
+              "itemIds": ["u1-im", "u1-s-im-joao"],
+              "promptPt": "Oi! Eu sou o João.",
+              "answer": "Hi! I'm João.",
+              "accepted": ["[Hi|Hello]! I'm João."],
+              "distractors": ["my", "is"],
+              "explanation": "O verbo be não pode sumir: I'm (= I am) João. ❌ I João."
+            },
+            {
+              "id": "u1-sk2-l1-e10",
+              "type": "speak",
+              "itemIds": ["u1-hello", "u1-s-my-name-is-ana"],
+              "textEn": "Hello, my name is Ana."
+            },
+            {
+              "id": "u1-sk2-l1-e11",
+              "type": "translate-typing",
+              "itemIds": ["u1-im", "u1-s-im-joao"],
+              "promptEn": "I'm Thiago.",
+              "accepted": ["(Eu) sou (o) Thiago.", "[Meu nome é|(Eu) me chamo] Thiago."],
+              "explanation": "I'm = I am = eu sou. Em português dá para dizer só: Sou o Thiago."
+            },
+            {
+              "id": "u1-sk2-l1-e12",
+              "type": "fill-blank",
+              "itemIds": ["u1-name"],
+              "sentence": "My ___ is Ana.",
+              "options": ["name", "I'm", "bye"],
+              "answer": "name",
+              "translationPt": "Meu nome é Ana."
+            },
+            {
+              "id": "u1-sk2-l1-e13",
+              "type": "listen-type",
+              "itemIds": ["u1-good-morning", "u1-im"],
+              "textEn": "Good morning! I'm Ana."
+            }
+          ]
+        },
+        {
+          "id": "u1-sk2-l2",
+          "title": "Prazer em te conhecer",
+          "exercises": [
+            {
+              "id": "u1-sk2-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-your"],
+              "prompt": "Como se diz \"seu\" (de você)?",
+              "options": [
+                {
+                  "text": "your",
+                  "emoji": "👉"
+                },
+                {
+                  "text": "my",
+                  "emoji": "👈"
+                },
+                {
+                  "text": "name",
+                  "emoji": "📛"
+                }
+              ],
+              "answer": "your"
+            },
+            {
+              "id": "u1-sk2-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-what", "u1-your", "u1-s-whats-your-name"],
+              "prompt": "Como se pergunta \"Qual é o seu nome?\"",
+              "options": [
+                {
+                  "text": "What's your name?"
+                },
+                {
+                  "text": "What's my name?"
+                },
+                {
+                  "text": "My name is Ana."
+                }
+              ],
+              "answer": "What's your name?"
+            },
+            {
+              "id": "u1-sk2-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-s-nice-to-meet-you"],
+              "prompt": "Você acabou de conhecer alguém. O que diz?",
+              "options": [
+                {
+                  "text": "Nice to meet you.",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "Nice to know you."
+                },
+                {
+                  "text": "Good night.",
+                  "emoji": "🌙"
+                }
+              ],
+              "answer": "Nice to meet you.",
+              "explanation": "Para \"prazer em te conhecer\" (primeiro encontro), o inglês usa meet: Nice to meet you. Know é conhecer no sentido de já ter familiaridade: I know Ana = Eu conheço a Ana."
+            },
+            {
+              "id": "u1-sk2-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u1-your", "u1-my", "u1-what", "u1-name", "u1-s-nice-to-meet-you"],
+              "pairs": [
+                {
+                  "en": "your",
+                  "pt": "seu"
+                },
+                {
+                  "en": "my",
+                  "pt": "meu"
+                },
+                {
+                  "en": "what",
+                  "pt": "qual / o que"
+                },
+                {
+                  "en": "name",
+                  "pt": "nome"
+                },
+                {
+                  "en": "Nice to meet you.",
+                  "pt": "Prazer em te conhecer."
+                }
+              ]
+            },
+            {
+              "id": "u1-sk2-l2-e05",
+              "type": "word-bank",
+              "itemIds": ["u1-what", "u1-your", "u1-s-whats-your-name"],
+              "promptPt": "Qual é o seu nome?",
+              "answer": "What's your name?",
+              "distractors": ["my", "I'm"]
+            },
+            {
+              "id": "u1-sk2-l2-e06",
+              "type": "fill-blank",
+              "itemIds": ["u1-your"],
+              "sentence": "What's ___ name?",
+              "options": ["your", "my", "I'm"],
+              "answer": "your",
+              "translationPt": "Qual é o seu nome?"
+            },
+            {
+              "id": "u1-sk2-l2-e07",
+              "type": "translate-typing",
+              "itemIds": ["u1-s-nice-to-meet-you"],
+              "promptEn": "Nice to meet you.",
+              "accepted": [
+                "(Muito) prazer.",
+                "(É um) prazer te conhecer.",
+                "(É um) prazer [em|de] [te conhecer|conhecer você|conhecer vocês|conhecê-lo|conhecê-la|lhe conhecer].",
+                "Muito prazer em [te conhecer|conhecer você|conhecer vocês]."
+              ]
+            },
+            {
+              "id": "u1-sk2-l2-e08",
+              "type": "listen-type",
+              "itemIds": ["u1-s-whats-your-name"],
+              "textEn": "What's your name?"
+            },
+            {
+              "id": "u1-sk2-l2-e09",
+              "type": "word-bank",
+              "itemIds": ["u1-s-nice-to-meet-you"],
+              "promptPt": "Prazer em te conhecer, Ana.",
+              "answer": "Nice to meet you, Ana.",
+              "distractors": ["know", "my"],
+              "explanation": "Para \"prazer em te conhecer\" (primeiro encontro), o inglês usa meet: Nice to meet you. Know é conhecer no sentido de já ter familiaridade: I know Ana = Eu conheço a Ana."
+            },
+            {
+              "id": "u1-sk2-l2-e10",
+              "type": "speak",
+              "itemIds": ["u1-s-nice-to-meet-you"],
+              "textEn": "Nice to meet you."
+            },
+            {
+              "id": "u1-sk2-l2-e11",
+              "type": "translate-typing",
+              "itemIds": ["u1-s-whats-your-name"],
+              "promptEn": "What's your name?",
+              "accepted": [
+                "Qual é o seu nome?",
+                "Qual (é) (o) [seu|teu] nome?",
+                "Como (é que) você se chama?",
+                "Como se chama?",
+                "Como é (o) [seu|teu] nome?"
+              ]
+            },
+            {
+              "id": "u1-sk2-l2-e12",
+              "type": "fill-blank",
+              "itemIds": ["u1-s-nice-to-meet-you"],
+              "sentence": "Nice to ___ you.",
+              "options": ["meet", "know", "name"],
+              "answer": "meet",
+              "translationPt": "Prazer em te conhecer.",
+              "explanation": "Para \"prazer em te conhecer\" (primeiro encontro), o inglês usa meet: Nice to meet you. Know é conhecer no sentido de já ter familiaridade: I know Ana = Eu conheço a Ana."
+            },
+            {
+              "id": "u1-sk2-l2-e13",
+              "type": "listen-type",
+              "itemIds": ["u1-im", "u1-s-nice-to-meet-you"],
+              "textEn": "Hi, I'm Ana. Nice to meet you."
+            },
+            {
+              "id": "u1-sk2-l2-e14",
+              "type": "word-bank",
+              "itemIds": ["u1-s-my-name-is-ana", "u1-s-whats-your-name"],
+              "promptPt": "Oi, meu nome é João. Qual é o seu nome?",
+              "answer": "Hi, my name is João. What's your name?",
+              "distractors": ["you", "know"]
+            }
+          ]
+        },
+        {
+          "id": "u1-sk2-l3",
+          "title": "Esta é a Maria",
+          "exercises": [
+            {
+              "id": "u1-sk2-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-too"],
+              "prompt": "O que significa \"too\" em \"Nice to meet you too\"?",
+              "options": [
+                {
+                  "text": "também",
+                  "emoji": "➕"
+                },
+                {
+                  "text": "amanhã",
+                  "emoji": "📅"
+                },
+                {
+                  "text": "depois",
+                  "emoji": "🔜"
+                }
+              ],
+              "answer": "também"
+            },
+            {
+              "id": "u1-sk2-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-this-is", "u1-s-this-is-maria"],
+              "prompt": "Como você apresenta sua amiga Maria?",
+              "options": [
+                {
+                  "text": "This is Maria.",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "She Maria."
+                },
+                {
+                  "text": "I'm Maria."
+                }
+              ],
+              "answer": "This is Maria.",
+              "explanation": "Para apresentar alguém, use This is… (Esta é…). ❌ She Maria."
+            },
+            {
+              "id": "u1-sk2-l3-e03",
+              "type": "match-pairs",
+              "itemIds": ["u1-too", "u1-this-is", "u1-your", "u1-see-you-tomorrow"],
+              "pairs": [
+                {
+                  "en": "too",
+                  "pt": "também"
+                },
+                {
+                  "en": "this is",
+                  "pt": "esta é"
+                },
+                {
+                  "en": "your",
+                  "pt": "seu"
+                },
+                {
+                  "en": "see you tomorrow",
+                  "pt": "até amanhã"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk2-l3-e04",
+              "type": "word-bank",
+              "itemIds": ["u1-too", "u1-s-nice-to-meet-you-too"],
+              "promptPt": "Prazer em te conhecer também.",
+              "answer": "Nice to meet you too.",
+              "distractors": ["know", "this"],
+              "explanation": "Para \"prazer em te conhecer\" (primeiro encontro), o inglês usa meet: Nice to meet you. Know é conhecer no sentido de já ter familiaridade: I know Ana = Eu conheço a Ana."
+            },
+            {
+              "id": "u1-sk2-l3-e05",
+              "type": "translate-typing",
+              "itemIds": ["u1-this-is", "u1-s-this-is-maria"],
+              "promptEn": "This is Maria.",
+              "accepted": ["[Esta|Essa] (aqui) é (a) Maria.", "[Te|Lhe] apresento a Maria."]
+            },
+            {
+              "id": "u1-sk2-l3-e06",
+              "type": "fill-blank",
+              "itemIds": ["u1-this-is"],
+              "sentence": "Ana, ___ is João.",
+              "options": ["this", "he", "my"],
+              "answer": "this",
+              "translationPt": "Ana, este é o João.",
+              "explanation": "Para apresentar alguém: This is João (Este é o João)."
+            },
+            {
+              "id": "u1-sk2-l3-e07",
+              "type": "speak",
+              "itemIds": ["u1-this-is", "u1-s-this-is-maria"],
+              "textEn": "Ana, this is Maria."
+            },
+            {
+              "id": "u1-sk2-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u1-s-nice-to-meet-you-too"],
+              "textEn": "Nice to meet you too."
+            },
+            {
+              "id": "u1-sk2-l3-e09",
+              "type": "word-bank",
+              "itemIds": ["u1-this-is"],
+              "promptPt": "Ana, este é o Thiago.",
+              "answer": "Ana, this is Thiago.",
+              "distractors": ["he", "I'm"]
+            },
+            {
+              "id": "u1-sk2-l3-e10",
+              "type": "translate-typing",
+              "itemIds": ["u1-hi", "u1-s-nice-to-meet-you"],
+              "promptEn": "Hi, Maria! Nice to meet you.",
+              "accepted": [
+                "[Oi|Olá], Maria! ([Muito|É um]) prazer ([em|de] [te conhecer|conhecer você|conhecê-la|lhe conhecer])."
+              ]
+            },
+            {
+              "id": "u1-sk2-l3-e11",
+              "type": "fill-blank",
+              "itemIds": ["u1-too", "u1-s-nice-to-meet-you-too"],
+              "sentence": "Nice to meet you ___!",
+              "options": ["too", "to", "two"],
+              "answer": "too",
+              "translationPt": "Prazer em te conhecer também! (respondendo)",
+              "explanation": "Too = também. To e two têm o mesmo som, mas outro sentido (two = dois)."
+            },
+            {
+              "id": "u1-sk2-l3-e12",
+              "type": "listen-type",
+              "itemIds": ["u1-this-is", "u1-s-this-is-maria"],
+              "textEn": "This is Maria."
+            },
+            {
+              "id": "u1-sk2-l3-e13",
+              "type": "multiple-choice",
+              "itemIds": ["u1-s-nice-to-meet-you-too"],
+              "prompt": "Alguém diz \"Nice to meet you!\". Qual é a melhor resposta?",
+              "options": [
+                {
+                  "text": "Nice to meet you too!",
+                  "emoji": "🤝"
+                },
+                {
+                  "text": "Good night!",
+                  "emoji": "🌙"
+                },
+                {
+                  "text": "My name is too."
+                }
+              ],
+              "answer": "Nice to meet you too!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u1-sk3",
+      "title": "De onde você é?",
+      "icon": "🌎",
+      "tip": {
+        "title": "O verbo be: am, is, are",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "O verbo **be** é \"ser\" e \"estar\" ao mesmo tempo. Ele muda com a pessoa: **I am**, **you are**, **he / she is**."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I'm from Brazil.",
+                "pt": "Eu sou do Brasil."
+              },
+              {
+                "en": "She's Brazilian.",
+                "pt": "Ela é brasileira."
+              },
+              {
+                "en": "He's from the US.",
+                "pt": "Ele é dos Estados Unidos."
+              },
+              {
+                "en": "Where are you from?",
+                "pt": "De onde você é?"
+              },
+              {
+                "en": "Are you Brazilian?",
+                "pt": "Você é brasileiro?"
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I from Brazil. / She Brazilian.",
+            "right": "I'm from Brazil. / She's Brazilian.",
+            "why": "Em português dá para pular o verbo na fala rápida; em inglês, o be é obrigatório."
+          },
+          {
+            "kind": "text",
+            "md": "**He** = ele, **she** = ela. Muita gente troca na pressa: preste atenção! País × nacionalidade: *Brazil* (Brasil) × *Brazilian* (brasileiro/a), sempre com letra maiúscula."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "Where you are from?",
+            "right": "Where are you from?",
+            "why": "Na pergunta, o verbo vem antes de you, e o from vai para o final."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u1-from",
+          "en": "from",
+          "pt": ["de"],
+          "acceptedPt": ["[do|da|dos]"],
+          "example": {
+            "en": "I'm from Brazil.",
+            "pt": "Eu sou do Brasil."
+          },
+          "emoji": "📍",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-where",
+          "en": "where",
+          "pt": ["onde"],
+          "example": {
+            "en": "Where are you from?",
+            "pt": "De onde você é?"
+          },
+          "emoji": "🗺️",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-brazil",
+          "en": "Brazil",
+          "pt": ["Brasil"],
+          "example": {
+            "en": "I'm from Brazil.",
+            "pt": "Eu sou do Brasil."
+          },
+          "emoji": "🇧🇷",
+          "difficulty": 1,
+          "notes": "Em inglês, com Z: Brazil."
+        },
+        {
+          "id": "u1-the-us",
+          "en": "the US",
+          "pt": ["os Estados Unidos"],
+          "acceptedPt": ["[os|o] EUA", "Estados Unidos"],
+          "acceptedEn": ["the [US|U.S.|USA|U.S.A.|United States]"],
+          "example": {
+            "en": "He's from the US.",
+            "pt": "Ele é dos Estados Unidos."
+          },
+          "emoji": "🇺🇸",
+          "difficulty": 2,
+          "notes": "Sempre com the: from the US."
+        },
+        {
+          "id": "u1-brazilian",
+          "en": "Brazilian",
+          "pt": ["brasileiro", "brasileira"],
+          "example": {
+            "en": "She's Brazilian.",
+            "pt": "Ela é brasileira."
+          },
+          "emoji": "🇧🇷",
+          "difficulty": 1,
+          "notes": "Nacionalidade começa com maiúscula e serve para homem e mulher."
+        },
+        {
+          "id": "u1-american",
+          "en": "American",
+          "pt": ["americano", "americana"],
+          "acceptedPt": ["[norte-americano|norte-americana|estadunidense]"],
+          "example": {
+            "en": "He's American.",
+            "pt": "Ele é americano."
+          },
+          "emoji": "🇺🇸",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-he",
+          "en": "he",
+          "pt": ["ele"],
+          "example": {
+            "en": "He's American.",
+            "pt": "Ele é americano."
+          },
+          "emoji": "👨",
+          "difficulty": 1,
+          "focus": "pronome"
+        },
+        {
+          "id": "u1-she",
+          "en": "she",
+          "pt": ["ela"],
+          "example": {
+            "en": "She's Brazilian.",
+            "pt": "Ela é brasileira."
+          },
+          "emoji": "👩",
+          "difficulty": 1,
+          "focus": "pronome"
+        },
+        {
+          "id": "u1-portugal",
+          "en": "Portugal",
+          "pt": ["Portugal"],
+          "example": {
+            "en": "João is from Portugal.",
+            "pt": "O João é de Portugal."
+          },
+          "emoji": "🇵🇹",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-mexico",
+          "en": "Mexico",
+          "pt": ["México"],
+          "example": {
+            "en": "Maria is from Mexico.",
+            "pt": "A Maria é do México."
+          },
+          "emoji": "🇲🇽",
+          "difficulty": 1
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u1-s-im-from-brazil",
+          "en": "I'm from Brazil.",
+          "pt": "Eu sou do Brasil.",
+          "acceptedPt": ["(Eu) sou do Brasil."],
+          "difficulty": 2,
+          "focus": "verbo-be"
+        },
+        {
+          "id": "u1-s-where-are-you-from",
+          "en": "Where are you from?",
+          "pt": "De onde você é?",
+          "acceptedPt": [
+            "De onde você é?",
+            "De onde (é que) [você é|vocês são|tu és]?",
+            "[Você é|Vocês são|Tu és] de onde?"
+          ],
+          "difficulty": 3,
+          "focus": "verbo-be"
+        },
+        {
+          "id": "u1-s-shes-brazilian",
+          "en": "She's Brazilian.",
+          "pt": "Ela é brasileira.",
+          "difficulty": 2,
+          "focus": "pronome"
+        },
+        {
+          "id": "u1-s-hes-american",
+          "en": "He's American.",
+          "pt": "Ele é americano.",
+          "acceptedPt": ["Ele é [americano|norte-americano|estadunidense]."],
+          "difficulty": 2,
+          "focus": "pronome"
+        },
+        {
+          "id": "u1-s-are-you-brazilian",
+          "en": "Are you Brazilian?",
+          "pt": "Você é brasileiro?",
+          "acceptedPt": [
+            "[Você é|Tu és] [brasileiro|brasileira]?",
+            "Vocês são [brasileiros|brasileiras]?"
+          ],
+          "difficulty": 3,
+          "focus": "verbo-be"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u1-sk3-l1",
+          "title": "I'm from Brazil",
+          "exercises": [
+            {
+              "id": "u1-sk3-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-brazil"],
+              "prompt": "Como se escreve \"Brasil\" em inglês?",
+              "options": [
+                {
+                  "text": "Brazil",
+                  "emoji": "🇧🇷"
+                },
+                {
+                  "text": "Brasil"
+                },
+                {
+                  "text": "the US",
+                  "emoji": "🇺🇸"
+                }
+              ],
+              "answer": "Brazil",
+              "explanation": "Em inglês, Brasil se escreve com Z: Brazil."
+            },
+            {
+              "id": "u1-sk3-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-the-us"],
+              "prompt": "Como se diz \"os Estados Unidos\"?",
+              "options": [
+                {
+                  "text": "the US",
+                  "emoji": "🇺🇸"
+                },
+                {
+                  "text": "Brazil",
+                  "emoji": "🇧🇷"
+                },
+                {
+                  "text": "the Brazil"
+                }
+              ],
+              "answer": "the US",
+              "explanation": "Estados Unidos leva the: the US. Brasil não leva: Brazil."
+            },
+            {
+              "id": "u1-sk3-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-from"],
+              "prompt": "O que significa \"from\" em \"I'm from Brazil\"?",
+              "options": [
+                {
+                  "text": "de (origem)",
+                  "emoji": "📍"
+                },
+                {
+                  "text": "para"
+                },
+                {
+                  "text": "com"
+                }
+              ],
+              "answer": "de (origem)"
+            },
+            {
+              "id": "u1-sk3-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u1-where"],
+              "prompt": "O que significa \"where\"?",
+              "options": [
+                {
+                  "text": "onde",
+                  "emoji": "🗺️"
+                },
+                {
+                  "text": "quando"
+                },
+                {
+                  "text": "quem"
+                }
+              ],
+              "answer": "onde"
+            },
+            {
+              "id": "u1-sk3-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u1-from", "u1-where", "u1-brazil", "u1-the-us", "u1-my"],
+              "pairs": [
+                {
+                  "en": "from",
+                  "pt": "de"
+                },
+                {
+                  "en": "where",
+                  "pt": "onde"
+                },
+                {
+                  "en": "Brazil",
+                  "pt": "Brasil"
+                },
+                {
+                  "en": "the US",
+                  "pt": "os Estados Unidos"
+                },
+                {
+                  "en": "my",
+                  "pt": "meu"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk3-l1-e06",
+              "type": "word-bank",
+              "itemIds": ["u1-from", "u1-brazil", "u1-s-im-from-brazil"],
+              "promptPt": "Eu sou do Brasil.",
+              "answer": "I'm from Brazil.",
+              "distractors": ["I", "of"],
+              "explanation": "Não esqueça o 'm: I'm from Brazil. ❌ I from Brazil."
+            },
+            {
+              "id": "u1-sk3-l1-e07",
+              "type": "fill-blank",
+              "itemIds": ["u1-from", "u1-s-im-from-brazil"],
+              "sentence": "I'm ___ Brazil.",
+              "options": ["from", "of", "to"],
+              "answer": "from",
+              "translationPt": "Eu sou do Brasil.",
+              "explanation": "Para dizer de onde você é, use from: I'm from Brazil."
+            },
+            {
+              "id": "u1-sk3-l1-e08",
+              "type": "multiple-choice",
+              "itemIds": ["u1-where", "u1-s-where-are-you-from"],
+              "prompt": "Como se pergunta \"De onde você é?\"",
+              "options": [
+                {
+                  "text": "Where are you from?"
+                },
+                {
+                  "text": "Where you are from?"
+                },
+                {
+                  "text": "From where you are?"
+                }
+              ],
+              "answer": "Where are you from?",
+              "explanation": "Na pergunta, o verbo (are) vem antes de you, e o from vai para o final: Where are you from?"
+            },
+            {
+              "id": "u1-sk3-l1-e09",
+              "type": "listen-type",
+              "itemIds": ["u1-s-im-from-brazil"],
+              "textEn": "I'm from Brazil."
+            },
+            {
+              "id": "u1-sk3-l1-e10",
+              "type": "word-bank",
+              "itemIds": ["u1-where", "u1-s-where-are-you-from"],
+              "promptPt": "De onde você é?",
+              "answer": "Where are you from?",
+              "distractors": ["is", "of"],
+              "explanation": "Pergunta com be: Where + are + you + from? ❌ Where you are from?"
+            },
+            {
+              "id": "u1-sk3-l1-e11",
+              "type": "speak",
+              "itemIds": ["u1-s-where-are-you-from"],
+              "textEn": "Where are you from?"
+            },
+            {
+              "id": "u1-sk3-l1-e12",
+              "type": "translate-typing",
+              "itemIds": ["u1-the-us", "u1-s-im-from-brazil"],
+              "promptEn": "I'm from the US.",
+              "accepted": ["(Eu) sou [dos Estados Unidos|dos EUA]."],
+              "explanation": "I'm = eu sou; from the US = dos Estados Unidos (sempre com the)."
+            },
+            {
+              "id": "u1-sk3-l1-e13",
+              "type": "translate-typing",
+              "itemIds": ["u1-s-where-are-you-from"],
+              "promptEn": "Where are you from?",
+              "accepted": [
+                "De onde você é?",
+                "De onde (é que) [você é|vocês são|tu és]?",
+                "[Você é|Vocês são|Tu és] de onde?"
+              ],
+              "explanation": "Where are you from? = De onde você é? O from do final corresponde ao \"de\" do começo."
+            },
+            {
+              "id": "u1-sk3-l1-e14",
+              "type": "fill-blank",
+              "itemIds": ["u1-s-where-are-you-from"],
+              "sentence": "Where ___ you from?",
+              "options": ["are", "is", "am"],
+              "answer": "are",
+              "translationPt": "De onde você é?",
+              "explanation": "Com you, o verbo be é are: you are. Na pergunta: Where are you from?"
+            }
+          ]
+        },
+        {
+          "id": "u1-sk3-l2",
+          "title": "Brasileiro ou americano?",
+          "exercises": [
+            {
+              "id": "u1-sk3-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-brazilian"],
+              "prompt": "Como se diz \"brasileira\"?",
+              "options": [
+                {
+                  "text": "Brazilian",
+                  "emoji": "🇧🇷"
+                },
+                {
+                  "text": "Brazil"
+                },
+                {
+                  "text": "American",
+                  "emoji": "🇺🇸"
+                }
+              ],
+              "answer": "Brazilian",
+              "explanation": "País: Brazil. Nacionalidade: Brazilian (serve para homem e mulher)."
+            },
+            {
+              "id": "u1-sk3-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-american"],
+              "prompt": "Como se diz \"americano\"?",
+              "options": [
+                {
+                  "text": "American",
+                  "emoji": "🇺🇸"
+                },
+                {
+                  "text": "the US"
+                },
+                {
+                  "text": "Brazilian",
+                  "emoji": "🇧🇷"
+                }
+              ],
+              "answer": "American",
+              "explanation": "País: the US. Nacionalidade: American."
+            },
+            {
+              "id": "u1-sk3-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-she", "u1-he"],
+              "prompt": "Qual palavra significa \"ela\"?",
+              "options": [
+                {
+                  "text": "she",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "he",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "I'm",
+                  "emoji": "🙋"
+                }
+              ],
+              "answer": "she",
+              "explanation": "She = ela. He = ele. Cuidado para não trocar!"
+            },
+            {
+              "id": "u1-sk3-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u1-he", "u1-she", "u1-brazilian", "u1-american", "u1-the-us"],
+              "pairs": [
+                {
+                  "en": "he",
+                  "pt": "ele"
+                },
+                {
+                  "en": "she",
+                  "pt": "ela"
+                },
+                {
+                  "en": "Brazilian",
+                  "pt": "brasileiro"
+                },
+                {
+                  "en": "American",
+                  "pt": "americano"
+                },
+                {
+                  "en": "the US",
+                  "pt": "os Estados Unidos"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk3-l2-e05",
+              "type": "fill-blank",
+              "itemIds": ["u1-she", "u1-s-shes-brazilian"],
+              "sentence": "This is Maria. ___ is Brazilian.",
+              "options": ["She", "He", "I"],
+              "answer": "She",
+              "translationPt": "Esta é a Maria. Ela é brasileira.",
+              "explanation": "Maria é mulher, então: she (ela). He é para homem."
+            },
+            {
+              "id": "u1-sk3-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u1-she", "u1-brazilian", "u1-s-shes-brazilian"],
+              "promptPt": "Ela é brasileira.",
+              "answer": "She's Brazilian.",
+              "distractors": ["He's", "Brazil"],
+              "explanation": "She's = She is. Ela = she; nacionalidade = Brazilian (não Brazil)."
+            },
+            {
+              "id": "u1-sk3-l2-e07",
+              "type": "translate-typing",
+              "itemIds": ["u1-he", "u1-american", "u1-s-hes-american"],
+              "promptEn": "He's American.",
+              "accepted": ["Ele é [americano|norte-americano|estadunidense]."],
+              "explanation": "He's = He is = ele é. He = ele; she = ela."
+            },
+            {
+              "id": "u1-sk3-l2-e08",
+              "type": "fill-blank",
+              "itemIds": ["u1-he", "u1-s-hes-american"],
+              "sentence": "John is from the US. ___ is American.",
+              "options": ["He", "She", "I"],
+              "answer": "He",
+              "translationPt": "O John é dos Estados Unidos. Ele é americano.",
+              "explanation": "John é homem, então: he (ele)."
+            },
+            {
+              "id": "u1-sk3-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u1-s-shes-brazilian"],
+              "textEn": "She's Brazilian."
+            },
+            {
+              "id": "u1-sk3-l2-e10",
+              "type": "word-bank",
+              "itemIds": ["u1-he", "u1-the-us"],
+              "promptPt": "Ele é dos Estados Unidos.",
+              "answer": "He's from the US.",
+              "distractors": ["She's", "of"],
+              "explanation": "Ele = he. E Estados Unidos sempre com the: from the US."
+            },
+            {
+              "id": "u1-sk3-l2-e11",
+              "type": "speak",
+              "itemIds": ["u1-brazilian", "u1-s-im-from-brazil"],
+              "textEn": "I'm Brazilian. I'm from Brazil."
+            },
+            {
+              "id": "u1-sk3-l2-e12",
+              "type": "fill-blank",
+              "itemIds": ["u1-she", "u1-american"],
+              "sentence": "She ___ American.",
+              "options": ["is", "am", "are"],
+              "answer": "is",
+              "translationPt": "Ela é americana.",
+              "explanation": "Com he e she, use is: She is (She's) American. ❌ She American."
+            },
+            {
+              "id": "u1-sk3-l2-e13",
+              "type": "translate-typing",
+              "itemIds": ["u1-she", "u1-brazilian", "u1-s-shes-brazilian"],
+              "promptEn": "She's from Brazil. She's Brazilian.",
+              "accepted": [
+                "Ela é do Brasil. (Ela) é brasileira.",
+                "Ela é do Brasil e (ela) é brasileira."
+              ],
+              "explanation": "She's = She is = ela é. Brazil = Brasil; Brazilian = brasileira."
+            },
+            {
+              "id": "u1-sk3-l2-e14",
+              "type": "listen-type",
+              "itemIds": ["u1-he", "u1-the-us"],
+              "textEn": "He's from the US."
+            }
+          ]
+        },
+        {
+          "id": "u1-sk3-l3",
+          "title": "Você é brasileiro?",
+          "exercises": [
+            {
+              "id": "u1-sk3-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-mexico"],
+              "prompt": "Como se diz \"México\" em inglês?",
+              "options": [
+                {
+                  "text": "Mexico",
+                  "emoji": "🇲🇽"
+                },
+                {
+                  "text": "Portugal",
+                  "emoji": "🇵🇹"
+                },
+                {
+                  "text": "Brazil",
+                  "emoji": "🇧🇷"
+                }
+              ],
+              "answer": "Mexico"
+            },
+            {
+              "id": "u1-sk3-l3-e02",
+              "type": "match-pairs",
+              "itemIds": ["u1-mexico", "u1-portugal", "u1-he", "u1-she", "u1-brazilian"],
+              "pairs": [
+                {
+                  "en": "Mexico",
+                  "pt": "México"
+                },
+                {
+                  "en": "Portugal",
+                  "pt": "Portugal"
+                },
+                {
+                  "en": "he",
+                  "pt": "ele"
+                },
+                {
+                  "en": "she",
+                  "pt": "ela"
+                },
+                {
+                  "en": "Brazilian",
+                  "pt": "brasileiro"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk3-l3-e03",
+              "type": "fill-blank",
+              "itemIds": ["u1-portugal", "u1-from"],
+              "sentence": "João ___ from Portugal.",
+              "options": ["is", "am", "are"],
+              "answer": "is",
+              "translationPt": "O João é de Portugal.",
+              "explanation": "João = he, e com he use is."
+            },
+            {
+              "id": "u1-sk3-l3-e04",
+              "type": "fill-blank",
+              "itemIds": ["u1-im", "u1-s-im-from-brazil"],
+              "sentence": "I ___ from Brazil.",
+              "options": ["am", "is", "are"],
+              "answer": "am",
+              "translationPt": "Eu sou do Brasil.",
+              "explanation": "Com I, use am: I am (I'm) from Brazil."
+            },
+            {
+              "id": "u1-sk3-l3-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u1-s-are-you-brazilian"],
+              "prompt": "Como se pergunta \"Você é brasileiro?\"",
+              "options": [
+                {
+                  "text": "Are you Brazilian?"
+                },
+                {
+                  "text": "Is you Brazilian?"
+                },
+                {
+                  "text": "Are you Brazil?"
+                }
+              ],
+              "answer": "Are you Brazilian?",
+              "explanation": "Para perguntar com be, o verbo vem primeiro: Are you Brazilian? Com you, o verbo é are; e nacionalidade é Brazilian, não Brazil."
+            },
+            {
+              "id": "u1-sk3-l3-e06",
+              "type": "word-bank",
+              "itemIds": ["u1-s-are-you-brazilian"],
+              "promptPt": "Você é brasileira?",
+              "answer": "Are you Brazilian?",
+              "distractors": ["Is", "Brazil"],
+              "explanation": "Pergunta com be: Are + you + …? Com you, nunca is."
+            },
+            {
+              "id": "u1-sk3-l3-e07",
+              "type": "translate-typing",
+              "itemIds": ["u1-portugal", "u1-s-are-you-brazilian"],
+              "promptEn": "Are you from Portugal?",
+              "accepted": ["[Você é|Vocês são|Tu és] de Portugal?", "É de Portugal?"],
+              "explanation": "Are you…? = Você é…? Na pergunta, are vem antes de you."
+            },
+            {
+              "id": "u1-sk3-l3-e08",
+              "type": "speak",
+              "itemIds": ["u1-mexico", "u1-s-are-you-brazilian"],
+              "textEn": "Are you from Mexico?"
+            },
+            {
+              "id": "u1-sk3-l3-e09",
+              "type": "listen-type",
+              "itemIds": ["u1-she", "u1-portugal"],
+              "textEn": "She's from Portugal."
+            },
+            {
+              "id": "u1-sk3-l3-e10",
+              "type": "word-bank",
+              "itemIds": ["u1-portugal", "u1-from"],
+              "promptPt": "O João é de Portugal.",
+              "answer": "João is from Portugal.",
+              "distractors": ["are", "of"]
+            },
+            {
+              "id": "u1-sk3-l3-e11",
+              "type": "fill-blank",
+              "itemIds": ["u1-where", "u1-mexico"],
+              "sentence": "Where ___ Ana from? She's from Mexico.",
+              "options": ["is", "are", "am"],
+              "answer": "is",
+              "translationPt": "De onde a Ana é? Ela é do México.",
+              "explanation": "Ana = she, então: Where is Ana from?"
+            },
+            {
+              "id": "u1-sk3-l3-e12",
+              "type": "translate-typing",
+              "itemIds": ["u1-mexico", "u1-from"],
+              "promptEn": "Maria is from Mexico.",
+              "accepted": ["(A) Maria é do México."]
+            },
+            {
+              "id": "u1-sk3-l3-e13",
+              "type": "listen-type",
+              "itemIds": ["u1-s-are-you-brazilian"],
+              "textEn": "Are you Brazilian?"
+            },
+            {
+              "id": "u1-sk3-l3-e14",
+              "type": "multiple-choice",
+              "itemIds": ["u1-s-im-from-brazil", "u1-s-where-are-you-from"],
+              "prompt": "— Where are you from? Qual é a resposta certa?",
+              "options": [
+                {
+                  "text": "I'm from Brazil."
+                },
+                {
+                  "text": "I'm Brazil."
+                },
+                {
+                  "text": "I from Brazil."
+                }
+              ],
+              "answer": "I'm from Brazil.",
+              "explanation": "Resposta completa: I'm from Brazil (ou I'm Brazilian). ❌ I'm Brazil. ❌ I from Brazil."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u1-sk4",
+      "title": "Como vai?",
+      "icon": "😊",
+      "tip": {
+        "title": "Como vai? Por favor, obrigado e desculpa",
+        "blocks": [
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "How are you?",
+                "pt": "Como você está? / Tudo bem?"
+              },
+              {
+                "en": "I'm good, thanks. And you?",
+                "pt": "Estou bem, obrigado. E você?"
+              },
+              {
+                "en": "I'm great! / I'm tired.",
+                "pt": "Estou ótimo! / Estou cansado."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "Estar bem, cansado ou ótimo também usa **be**: *I'm tired* (estou cansado). ❌ I tired."
+          },
+          {
+            "kind": "text",
+            "md": "**Excuse me** = com licença (para chamar a atenção ou passar). **Sorry** = desculpa (para pedir perdão). **Please** = por favor."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "Actually = atualmente",
+            "right": "Actually = na verdade",
+            "why": "Falso cognato! \"Atualmente\" em inglês é now ou currently. Actually, I'm tired. = Na verdade, estou cansado."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u1-fine",
+          "en": "fine",
+          "pt": ["bem"],
+          "example": {
+            "en": "I'm fine, thanks.",
+            "pt": "Estou bem, obrigado."
+          },
+          "emoji": "🙂",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-good",
+          "en": "good",
+          "pt": ["bem", "bom"],
+          "acceptedPt": ["boa"],
+          "example": {
+            "en": "I'm good, thanks.",
+            "pt": "Estou bem, obrigada."
+          },
+          "emoji": "👍",
+          "difficulty": 1,
+          "notes": "Respondendo a How are you?, I'm good = estou bem."
+        },
+        {
+          "id": "u1-tired",
+          "en": "tired",
+          "pt": ["cansado", "cansada"],
+          "example": {
+            "en": "I'm tired.",
+            "pt": "Estou cansado."
+          },
+          "emoji": "😴",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-thanks",
+          "en": "thanks",
+          "pt": ["obrigado", "obrigada"],
+          "acceptedPt": ["valeu"],
+          "acceptedEn": ["thank you"],
+          "example": {
+            "en": "Thanks, Ana!",
+            "pt": "Obrigado, Ana!"
+          },
+          "emoji": "🙏",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-great",
+          "en": "great",
+          "pt": ["ótimo", "ótima"],
+          "example": {
+            "en": "I'm great, thanks!",
+            "pt": "Estou ótimo, obrigado!"
+          },
+          "emoji": "🤩",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-please",
+          "en": "please",
+          "pt": ["por favor"],
+          "example": {
+            "en": "Your name, please?",
+            "pt": "Seu nome, por favor?"
+          },
+          "emoji": "🤲",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-sorry",
+          "en": "sorry",
+          "pt": ["desculpa", "desculpe"],
+          "acceptedPt": ["[perdão|foi mal|sinto muito]"],
+          "example": {
+            "en": "Sorry, what's your name?",
+            "pt": "Desculpa, qual é o seu nome?"
+          },
+          "emoji": "😔",
+          "difficulty": 1
+        },
+        {
+          "id": "u1-excuse-me",
+          "en": "excuse me",
+          "pt": ["com licença"],
+          "acceptedPt": ["licença", "[desculpe|desculpa]"],
+          "example": {
+            "en": "Excuse me, are you Ana?",
+            "pt": "Com licença, você é a Ana?"
+          },
+          "emoji": "✋",
+          "difficulty": 2,
+          "notes": "Excuse me = com licença (chamar atenção, passar). Sorry = desculpa (pedir perdão)."
+        },
+        {
+          "id": "u1-actually",
+          "en": "actually",
+          "pt": ["na verdade"],
+          "acceptedPt": ["[na realidade|de fato]"],
+          "example": {
+            "en": "Actually, I'm from Mexico.",
+            "pt": "Na verdade, eu sou do México."
+          },
+          "emoji": "💡",
+          "difficulty": 3,
+          "focus": "falso-cognato",
+          "notes": "Actually NÃO é \"atualmente\" (= now / currently)."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u1-s-how-are-you",
+          "en": "How are you?",
+          "pt": "Como você está?",
+          "acceptedPt": [
+            "Como (você) está?",
+            "Como [vocês estão|vai|vão|vai você|você vai|tu estás]?",
+            "Tudo bem (com você)?",
+            "Tudo bom?",
+            "E aí, tudo bem?"
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u1-s-im-fine-thanks",
+          "en": "I'm fine, thanks.",
+          "pt": "Estou bem, obrigado.",
+          "acceptedEn": ["I'm [fine|good|OK|okay], [thanks|thank you]."],
+          "acceptedPt": [
+            "(Eu) [estou|tô] bem, [obrigado|obrigada|valeu].",
+            "Tudo bem, [obrigado|obrigada|valeu].",
+            "Bem, [obrigado|obrigada]."
+          ],
+          "difficulty": 2
+        },
+        {
+          "id": "u1-s-and-you",
+          "en": "And you?",
+          "pt": "E você?",
+          "acceptedPt": ["E [você|vocês|tu]?"],
+          "difficulty": 1
+        },
+        {
+          "id": "u1-s-im-tired",
+          "en": "I'm tired.",
+          "pt": "Estou cansado.",
+          "acceptedPt": ["(Eu) [estou|tô] [cansado|cansada]."],
+          "difficulty": 2,
+          "focus": "verbo-be"
+        },
+        {
+          "id": "u1-s-excuse-me-are-you-ana",
+          "en": "Excuse me, are you Ana?",
+          "pt": "Com licença, você é a Ana?",
+          "acceptedPt": ["[Com licença|Licença|Desculpe|Desculpa], [você é|é você] (a) Ana?"],
+          "difficulty": 3
+        },
+        {
+          "id": "u1-s-actually-im-tired",
+          "en": "Actually, I'm tired.",
+          "pt": "Na verdade, estou cansado.",
+          "acceptedPt": ["[Na verdade|Na realidade], (Eu) [estou|tô] [cansado|cansada]."],
+          "difficulty": 3,
+          "focus": "falso-cognato"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u1-sk4-l1",
+          "title": "How are you?",
+          "exercises": [
+            {
+              "id": "u1-sk4-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-s-how-are-you"],
+              "prompt": "O que significa \"How are you?\"",
+              "options": [
+                {
+                  "text": "Como você está?",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "De onde você é?",
+                  "emoji": "🌎"
+                },
+                {
+                  "text": "Qual é o seu nome?",
+                  "emoji": "📛"
+                }
+              ],
+              "answer": "Como você está?"
+            },
+            {
+              "id": "u1-sk4-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-tired"],
+              "prompt": "Como se diz \"cansado\"?",
+              "options": [
+                {
+                  "text": "tired",
+                  "emoji": "😴"
+                },
+                {
+                  "text": "fine",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "thanks",
+                  "emoji": "🙏"
+                }
+              ],
+              "answer": "tired"
+            },
+            {
+              "id": "u1-sk4-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-thanks"],
+              "prompt": "Como se diz \"obrigado\"?",
+              "options": [
+                {
+                  "text": "thanks",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "tired",
+                  "emoji": "😴"
+                },
+                {
+                  "text": "good morning",
+                  "emoji": "🌅"
+                }
+              ],
+              "answer": "thanks"
+            },
+            {
+              "id": "u1-sk4-l1-e04",
+              "type": "match-pairs",
+              "itemIds": ["u1-fine", "u1-tired", "u1-thanks", "u1-s-how-are-you", "u1-s-and-you"],
+              "pairs": [
+                {
+                  "en": "fine",
+                  "pt": "bem"
+                },
+                {
+                  "en": "tired",
+                  "pt": "cansado"
+                },
+                {
+                  "en": "thanks",
+                  "pt": "obrigado"
+                },
+                {
+                  "en": "How are you?",
+                  "pt": "Como você está?"
+                },
+                {
+                  "en": "And you?",
+                  "pt": "E você?"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk4-l1-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u1-good", "u1-thanks"],
+              "prompt": "Qual destas significa \"Estou bem, obrigado\"?",
+              "options": [
+                {
+                  "text": "I'm good, thanks.",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "I'm tired, thanks.",
+                  "emoji": "😴"
+                },
+                {
+                  "text": "I'm Brazilian, thanks.",
+                  "emoji": "🇧🇷"
+                }
+              ],
+              "answer": "I'm good, thanks.",
+              "explanation": "I'm good e I'm fine = estou bem."
+            },
+            {
+              "id": "u1-sk4-l1-e06",
+              "type": "word-bank",
+              "itemIds": ["u1-fine", "u1-thanks", "u1-s-im-fine-thanks"],
+              "promptPt": "Estou bem, obrigado.",
+              "answer": "I'm fine, thanks.",
+              "distractors": ["tired", "is"]
+            },
+            {
+              "id": "u1-sk4-l1-e07",
+              "type": "translate-typing",
+              "itemIds": ["u1-s-how-are-you"],
+              "promptEn": "How are you?",
+              "accepted": [
+                "Como (você) está?",
+                "Como [vocês estão|vai|vão|vai você|você vai|tu estás]?",
+                "Tudo bem (com você)?",
+                "Tudo bom?",
+                "E aí, tudo bem?"
+              ]
+            },
+            {
+              "id": "u1-sk4-l1-e08",
+              "type": "fill-blank",
+              "itemIds": ["u1-tired", "u1-s-im-tired"],
+              "sentence": "I ___ tired.",
+              "options": ["am", "is", "have"],
+              "answer": "am",
+              "translationPt": "Eu estou cansado.",
+              "explanation": "Estar cansado também usa o verbo be: I am (I'm) tired. ❌ I tired."
+            },
+            {
+              "id": "u1-sk4-l1-e09",
+              "type": "listen-type",
+              "itemIds": ["u1-s-how-are-you"],
+              "textEn": "How are you?"
+            },
+            {
+              "id": "u1-sk4-l1-e10",
+              "type": "speak",
+              "itemIds": ["u1-s-im-fine-thanks", "u1-s-and-you"],
+              "textEn": "I'm fine, thanks. And you?"
+            },
+            {
+              "id": "u1-sk4-l1-e11",
+              "type": "translate-typing",
+              "itemIds": ["u1-tired", "u1-s-im-tired"],
+              "promptEn": "I'm tired.",
+              "accepted": ["(Eu) [estou|tô] [cansado|cansada]."],
+              "explanation": "Aqui I'm = eu estou. O verbo be serve para ser e para estar."
+            },
+            {
+              "id": "u1-sk4-l1-e12",
+              "type": "word-bank",
+              "itemIds": ["u1-s-how-are-you"],
+              "promptPt": "Oi, Ana! Como você está?",
+              "answer": "Hi, Ana! How are you?",
+              "distractors": ["is", "where"]
+            },
+            {
+              "id": "u1-sk4-l1-e13",
+              "type": "translate-typing",
+              "itemIds": ["u1-good", "u1-thanks", "u1-s-and-you"],
+              "promptEn": "I'm good, thanks. And you?",
+              "accepted": [
+                "(Eu) [estou|tô] bem, [obrigado|obrigada|valeu]. E [você|vocês|tu]?",
+                "Tudo bem, [obrigado|obrigada|valeu]. E [você|vocês|tu]?",
+                "Bem, [obrigado|obrigada|valeu]. E [você|vocês|tu]?"
+              ]
+            },
+            {
+              "id": "u1-sk4-l1-e14",
+              "type": "listen-type",
+              "itemIds": ["u1-s-im-tired", "u1-s-and-you"],
+              "textEn": "I'm tired. And you?"
+            }
+          ]
+        },
+        {
+          "id": "u1-sk4-l2",
+          "title": "Por favor e desculpa",
+          "exercises": [
+            {
+              "id": "u1-sk4-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-great"],
+              "prompt": "Como se diz \"ótimo\"?",
+              "options": [
+                {
+                  "text": "great",
+                  "emoji": "🤩"
+                },
+                {
+                  "text": "tired",
+                  "emoji": "😴"
+                },
+                {
+                  "text": "sorry",
+                  "emoji": "😔"
+                }
+              ],
+              "answer": "great"
+            },
+            {
+              "id": "u1-sk4-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u1-please"],
+              "prompt": "O que significa \"please\"?",
+              "options": [
+                {
+                  "text": "por favor",
+                  "emoji": "🤲"
+                },
+                {
+                  "text": "obrigado",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "desculpa",
+                  "emoji": "😔"
+                }
+              ],
+              "answer": "por favor"
+            },
+            {
+              "id": "u1-sk4-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u1-sorry"],
+              "prompt": "O que significa \"sorry\"?",
+              "options": [
+                {
+                  "text": "desculpa",
+                  "emoji": "😔"
+                },
+                {
+                  "text": "por favor",
+                  "emoji": "🤲"
+                },
+                {
+                  "text": "ótimo",
+                  "emoji": "🤩"
+                }
+              ],
+              "answer": "desculpa"
+            },
+            {
+              "id": "u1-sk4-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u1-excuse-me"],
+              "prompt": "O que significa \"excuse me\"?",
+              "options": [
+                {
+                  "text": "com licença",
+                  "emoji": "✋"
+                },
+                {
+                  "text": "obrigado",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "boa noite",
+                  "emoji": "🌙"
+                }
+              ],
+              "answer": "com licença",
+              "explanation": "Excuse me é para pedir licença ou chamar a atenção de alguém. Sorry é para pedir desculpas."
+            },
+            {
+              "id": "u1-sk4-l2-e05",
+              "type": "match-pairs",
+              "itemIds": ["u1-great", "u1-please", "u1-sorry", "u1-excuse-me", "u1-thanks"],
+              "pairs": [
+                {
+                  "en": "great",
+                  "pt": "ótimo"
+                },
+                {
+                  "en": "please",
+                  "pt": "por favor"
+                },
+                {
+                  "en": "sorry",
+                  "pt": "desculpa"
+                },
+                {
+                  "en": "excuse me",
+                  "pt": "com licença"
+                },
+                {
+                  "en": "thanks",
+                  "pt": "obrigado"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk4-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u1-excuse-me", "u1-s-excuse-me-are-you-ana"],
+              "promptPt": "Com licença, você é a Ana?",
+              "answer": "Excuse me, are you Ana?",
+              "distractors": ["please", "is"],
+              "explanation": "Para chamar a atenção de alguém, use excuse me (com licença)."
+            },
+            {
+              "id": "u1-sk4-l2-e07",
+              "type": "translate-typing",
+              "itemIds": ["u1-great", "u1-thanks"],
+              "promptEn": "I'm great, thanks!",
+              "accepted": [
+                "(Eu) [estou|tô] [ótimo|ótima], [obrigado|obrigada|valeu]!",
+                "Tudo ótimo, [obrigado|obrigada|valeu]!"
+              ]
+            },
+            {
+              "id": "u1-sk4-l2-e08",
+              "type": "fill-blank",
+              "itemIds": ["u1-please"],
+              "sentence": "Your name, ___?",
+              "options": ["please", "sorry", "thanks"],
+              "answer": "please",
+              "translationPt": "Seu nome, por favor?"
+            },
+            {
+              "id": "u1-sk4-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u1-s-excuse-me-are-you-ana"],
+              "textEn": "Excuse me, are you Ana?"
+            },
+            {
+              "id": "u1-sk4-l2-e10",
+              "type": "speak",
+              "itemIds": ["u1-excuse-me", "u1-s-excuse-me-are-you-ana"],
+              "textEn": "Excuse me, are you Maria?"
+            },
+            {
+              "id": "u1-sk4-l2-e11",
+              "type": "translate-typing",
+              "itemIds": ["u1-sorry", "u1-s-whats-your-name"],
+              "promptEn": "Sorry, what's your name?",
+              "accepted": [
+                "[Desculpa|Desculpe|Perdão|Foi mal], qual (é) (o) [seu|teu] nome?",
+                "[Desculpa|Desculpe|Perdão], como você se chama?",
+                "[Desculpa|Desculpe|Perdão|Foi mal], como é (o) [seu|teu] nome?"
+              ]
+            },
+            {
+              "id": "u1-sk4-l2-e12",
+              "type": "word-bank",
+              "itemIds": ["u1-great", "u1-thanks", "u1-s-and-you"],
+              "promptPt": "Estou ótima, obrigada! E você?",
+              "answer": "I'm great, thanks! And you?",
+              "distractors": ["please", "tired"]
+            },
+            {
+              "id": "u1-sk4-l2-e13",
+              "type": "multiple-choice",
+              "itemIds": ["u1-thanks"],
+              "prompt": "Alguém diz \"Thank you!\". O que significa?",
+              "options": [
+                {
+                  "text": "Obrigado!",
+                  "emoji": "🙏"
+                },
+                {
+                  "text": "Por favor!",
+                  "emoji": "🤲"
+                },
+                {
+                  "text": "Desculpa!",
+                  "emoji": "😔"
+                }
+              ],
+              "answer": "Obrigado!"
+            },
+            {
+              "id": "u1-sk4-l2-e14",
+              "type": "listen-type",
+              "itemIds": ["u1-great", "u1-thanks"],
+              "textEn": "I'm great, thank you."
+            }
+          ]
+        },
+        {
+          "id": "u1-sk4-l3",
+          "title": "Na verdade…",
+          "exercises": [
+            {
+              "id": "u1-sk4-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u1-actually"],
+              "prompt": "O que significa \"actually\"?",
+              "options": [
+                {
+                  "text": "na verdade",
+                  "emoji": "💡"
+                },
+                {
+                  "text": "atualmente"
+                },
+                {
+                  "text": "hoje em dia"
+                }
+              ],
+              "answer": "na verdade",
+              "explanation": "Falso cognato! Actually = na verdade. \"Atualmente\" em inglês é now ou currently."
+            },
+            {
+              "id": "u1-sk4-l3-e02",
+              "type": "fill-blank",
+              "itemIds": ["u1-actually"],
+              "sentence": "— Are you American? — ___, I'm Brazilian.",
+              "options": ["Actually", "Please", "Thanks"],
+              "answer": "Actually",
+              "translationPt": "— Você é americano? — Na verdade, sou brasileiro.",
+              "explanation": "Falso cognato! Actually = na verdade. \"Atualmente\" em inglês é now ou currently."
+            },
+            {
+              "id": "u1-sk4-l3-e03",
+              "type": "translate-typing",
+              "itemIds": ["u1-actually", "u1-s-actually-im-tired"],
+              "promptEn": "Actually, I'm tired.",
+              "accepted": ["[Na verdade|Na realidade], (Eu) [estou|tô] [cansado|cansada]."],
+              "explanation": "Falso cognato! Actually = na verdade. \"Atualmente\" em inglês é now ou currently."
+            },
+            {
+              "id": "u1-sk4-l3-e04",
+              "type": "match-pairs",
+              "itemIds": ["u1-actually", "u1-sorry", "u1-please", "u1-great", "u1-tired"],
+              "pairs": [
+                {
+                  "en": "actually",
+                  "pt": "na verdade"
+                },
+                {
+                  "en": "sorry",
+                  "pt": "desculpa"
+                },
+                {
+                  "en": "please",
+                  "pt": "por favor"
+                },
+                {
+                  "en": "great",
+                  "pt": "ótimo"
+                },
+                {
+                  "en": "tired",
+                  "pt": "cansado"
+                }
+              ]
+            },
+            {
+              "id": "u1-sk4-l3-e05",
+              "type": "word-bank",
+              "itemIds": ["u1-actually", "u1-mexico"],
+              "promptPt": "Na verdade, eu sou do México.",
+              "answer": "Actually, I'm from Mexico.",
+              "distractors": ["Please", "of"],
+              "explanation": "Falso cognato! Actually = na verdade. \"Atualmente\" em inglês é now ou currently."
+            },
+            {
+              "id": "u1-sk4-l3-e06",
+              "type": "multiple-choice",
+              "itemIds": ["u1-s-how-are-you", "u1-s-im-fine-thanks"],
+              "prompt": "— How are you? Qual é a melhor resposta?",
+              "options": [
+                {
+                  "text": "I'm good, thanks. And you?",
+                  "emoji": "👍"
+                },
+                {
+                  "text": "I'm from Brazil.",
+                  "emoji": "🇧🇷"
+                },
+                {
+                  "text": "Nice to meet you too.",
+                  "emoji": "🤝"
+                }
+              ],
+              "answer": "I'm good, thanks. And you?"
+            },
+            {
+              "id": "u1-sk4-l3-e07",
+              "type": "speak",
+              "itemIds": ["u1-actually", "u1-s-im-from-brazil"],
+              "textEn": "Actually, I'm from Brazil."
+            },
+            {
+              "id": "u1-sk4-l3-e08",
+              "type": "listen-type",
+              "itemIds": ["u1-s-actually-im-tired"],
+              "textEn": "Actually, I'm tired."
+            },
+            {
+              "id": "u1-sk4-l3-e09",
+              "type": "fill-blank",
+              "itemIds": ["u1-excuse-me"],
+              "sentence": "___ me, are you João?",
+              "options": ["Excuse", "Sorry", "Please"],
+              "answer": "Excuse",
+              "translationPt": "Com licença, você é o João?",
+              "explanation": "Com licença = excuse me."
+            },
+            {
+              "id": "u1-sk4-l3-e10",
+              "type": "translate-typing",
+              "itemIds": ["u1-s-how-are-you"],
+              "promptEn": "How are you, João?",
+              "accepted": [
+                "Como (você) está, João?",
+                "Como [vai|vai você|você vai|tu estás], João?",
+                "Tudo [bem|bom] (com você), João?",
+                "E aí, João, tudo bem?"
+              ]
+            },
+            {
+              "id": "u1-sk4-l3-e11",
+              "type": "word-bank",
+              "itemIds": ["u1-sorry", "u1-s-im-tired"],
+              "promptPt": "Desculpa, estou cansado.",
+              "answer": "Sorry, I'm tired.",
+              "distractors": ["Excuse", "have"],
+              "explanation": "Sorry = desculpa. Estou cansado = I'm tired (com be, nunca have)."
+            },
+            {
+              "id": "u1-sk4-l3-e12",
+              "type": "fill-blank",
+              "itemIds": ["u1-thanks", "u1-s-im-fine-thanks"],
+              "sentence": "I'm fine, ___. And you?",
+              "options": ["thanks", "please", "sorry"],
+              "answer": "thanks",
+              "translationPt": "Estou bem, obrigado. E você?"
+            },
+            {
+              "id": "u1-sk4-l3-e13",
+              "type": "listen-type",
+              "itemIds": ["u1-s-im-fine-thanks", "u1-s-and-you"],
+              "textEn": "I'm fine, thanks. And you?"
+            },
+            {
+              "id": "u1-sk4-l3-e14",
+              "type": "multiple-choice",
+              "itemIds": ["u1-sorry", "u1-excuse-me"],
+              "prompt": "Você chegou atrasado e quer pedir desculpas. O que diz?",
+              "options": [
+                {
+                  "text": "Sorry!",
+                  "emoji": "😔"
+                },
+                {
+                  "text": "Excuse me!",
+                  "emoji": "✋"
+                },
+                {
+                  "text": "Please!",
+                  "emoji": "🤲"
+                }
+              ],
+              "answer": "Sorry!",
+              "explanation": "Sorry = desculpa (pedir perdão). Excuse me = com licença (chamar a atenção ou passar)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewLesson": {
+    "id": "u1-review",
+    "title": "Revisão da unidade 1",
+    "exercises": [
+      {
+        "id": "u1-review-e01",
+        "type": "match-pairs",
+        "itemIds": ["u1-good-morning", "u1-see-you-later", "u1-name", "u1-from", "u1-sorry"],
+        "pairs": [
+          {
+            "en": "good morning",
+            "pt": "bom dia"
+          },
+          {
+            "en": "see you later",
+            "pt": "até mais tarde"
+          },
+          {
+            "en": "name",
+            "pt": "nome"
+          },
+          {
+            "en": "from",
+            "pt": "de"
+          },
+          {
+            "en": "sorry",
+            "pt": "desculpa"
+          }
+        ]
+      },
+      {
+        "id": "u1-review-e02",
+        "type": "multiple-choice",
+        "itemIds": ["u1-good-evening", "u1-good-night"],
+        "prompt": "Você chega a uma festa às 21h. O que diz?",
+        "options": [
+          {
+            "text": "Good evening!",
+            "emoji": "🌆"
+          },
+          {
+            "text": "Good night!",
+            "emoji": "🌙"
+          },
+          {
+            "text": "Good afternoon!",
+            "emoji": "☀️"
+          }
+        ],
+        "answer": "Good evening!",
+        "explanation": "Good evening é para cumprimentar à noite (ao chegar). Good night é só para se despedir ou ir dormir."
+      },
+      {
+        "id": "u1-review-e03",
+        "type": "word-bank",
+        "itemIds": ["u1-hi", "u1-s-my-name-is-ana"],
+        "promptPt": "Oi! Meu nome é Thiago.",
+        "answer": "Hi! My name is Thiago.",
+        "distractors": ["I", "know"]
+      },
+      {
+        "id": "u1-review-e04",
+        "type": "fill-blank",
+        "itemIds": ["u1-s-nice-to-meet-you"],
+        "sentence": "Nice to ___ you, Ana.",
+        "options": ["meet", "know", "name"],
+        "answer": "meet",
+        "translationPt": "Prazer em te conhecer, Ana.",
+        "explanation": "Para \"prazer em te conhecer\" (primeiro encontro), o inglês usa meet: Nice to meet you. Know é conhecer no sentido de já ter familiaridade: I know Ana = Eu conheço a Ana."
+      },
+      {
+        "id": "u1-review-e05",
+        "type": "translate-typing",
+        "itemIds": ["u1-s-where-are-you-from"],
+        "promptEn": "Where are you from?",
+        "accepted": [
+          "De onde você é?",
+          "De onde (é que) [você é|vocês são|tu és]?",
+          "[Você é|Vocês são|Tu és] de onde?"
+        ],
+        "explanation": "Where are you from? = De onde você é? O from do final corresponde ao \"de\" do começo."
+      },
+      {
+        "id": "u1-review-e06",
+        "type": "fill-blank",
+        "itemIds": ["u1-he", "u1-portugal"],
+        "sentence": "He ___ from Portugal.",
+        "options": ["is", "are", "am"],
+        "answer": "is",
+        "translationPt": "Ele é de Portugal.",
+        "explanation": "Com he e she, use is: He is (He's) from Portugal."
+      },
+      {
+        "id": "u1-review-e07",
+        "type": "listen-type",
+        "itemIds": ["u1-s-nice-to-meet-you-too"],
+        "textEn": "Nice to meet you too."
+      },
+      {
+        "id": "u1-review-e08",
+        "type": "word-bank",
+        "itemIds": ["u1-s-shes-brazilian", "u1-brazil"],
+        "promptPt": "Ela é brasileira. Ela é do Brasil.",
+        "answer": "She's Brazilian. She's from Brazil.",
+        "distractors": ["He's", "of"],
+        "explanation": "Ela = she. Nacionalidade = Brazilian; país = Brazil."
+      },
+      {
+        "id": "u1-review-e09",
+        "type": "multiple-choice",
+        "itemIds": ["u1-actually", "u1-fine"],
+        "prompt": "Qual é a tradução de \"Actually, I'm fine.\"?",
+        "options": [
+          {
+            "text": "Na verdade, estou bem."
+          },
+          {
+            "text": "Atualmente, estou bem."
+          },
+          {
+            "text": "Agora estou bem."
+          }
+        ],
+        "answer": "Na verdade, estou bem.",
+        "explanation": "Falso cognato! Actually = na verdade. \"Atualmente\" em inglês é now ou currently."
+      },
+      {
+        "id": "u1-review-e10",
+        "type": "speak",
+        "itemIds": ["u1-im", "u1-s-im-from-brazil"],
+        "textEn": "Hi! I'm Ana. I'm from Brazil."
+      },
+      {
+        "id": "u1-review-e11",
+        "type": "translate-typing",
+        "itemIds": ["u1-s-good-night-see-you-tomorrow"],
+        "promptEn": "Good night! See you tomorrow.",
+        "accepted": ["Boa noite! (E) até amanhã.", "Boa noite! [Te vejo|A gente se vê] amanhã."]
+      },
+      {
+        "id": "u1-review-e12",
+        "type": "word-bank",
+        "itemIds": ["u1-excuse-me", "u1-s-whats-your-name"],
+        "promptPt": "Com licença, qual é o seu nome?",
+        "answer": "Excuse me, what's your name?",
+        "distractors": ["please", "my"]
+      },
+      {
+        "id": "u1-review-e13",
+        "type": "listen-type",
+        "itemIds": ["u1-s-where-are-you-from"],
+        "textEn": "Where are you from?"
+      },
+      {
+        "id": "u1-review-e14",
+        "type": "translate-typing",
+        "itemIds": ["u1-this-is", "u1-s-hes-american"],
+        "promptEn": "This is João. He's American.",
+        "accepted": [
+          "[Este|Esse] (aqui) é (o) João. (Ele) é [americano|norte-americano|estadunidense].",
+          "[Este|Esse] é o João e (ele) é [americano|norte-americano|estadunidense]."
+        ],
+        "explanation": "This is = este é (para apresentar). He's = he is = ele é."
+      },
+      {
+        "id": "u1-review-e15",
+        "type": "speak",
+        "itemIds": ["u1-s-how-are-you", "u1-great"],
+        "textEn": "How are you? I'm great, thanks."
+      }
+    ]
+  }
+}
