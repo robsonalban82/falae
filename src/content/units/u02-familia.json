@@ -1,0 +1,3367 @@
+{
+  "id": "u2-unit",
+  "order": 2,
+  "title": "Família, números e idade",
+  "description": "Apresente sua família, conte até 100, diga sua idade e descreva as pessoas.",
+  "color": "anil",
+  "skills": [
+    {
+      "id": "u2-sk1",
+      "title": "Família",
+      "icon": "👨‍👩‍👧",
+      "tip": {
+        "title": "Família e o falso amigo \"parents\"",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Para apresentar alguém da família, use **This is my...** (Este é o meu... / Esta é a minha...). O **my** não muda: my mother, my father, my parents."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "This is my mom.",
+                "pt": "Esta é a minha mãe."
+              },
+              {
+                "en": "I have a brother.",
+                "pt": "Eu tenho um irmão."
+              },
+              {
+                "en": "My wife is from Recife.",
+                "pt": "Minha esposa é de Recife."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "**Mom** e **dad** são o jeito do dia a dia (mãe/mamãe, pai/papai). **Mother** e **father** são um pouco mais formais."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I have parents in Portugal. (querendo dizer \"parentes\")",
+            "right": "I have relatives in Portugal.",
+            "why": "**Parents** = pais (mãe e pai). Parentes (tios, primos, avós) = **relatives**."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u2-mother",
+          "en": "mother",
+          "pt": ["mãe"],
+          "acceptedPt": ["mamãe"],
+          "acceptedEn": ["[mother|mom]"],
+          "example": {
+            "en": "My mother is from Belo Horizonte.",
+            "pt": "Minha mãe é de Belo Horizonte."
+          },
+          "emoji": "👩",
+          "difficulty": 1,
+          "notes": "No dia a dia se diz muito mom (mãe, mamãe)."
+        },
+        {
+          "id": "u2-father",
+          "en": "father",
+          "pt": ["pai"],
+          "acceptedPt": ["papai"],
+          "acceptedEn": ["[father|dad]"],
+          "example": {
+            "en": "My father is from Curitiba.",
+            "pt": "Meu pai é de Curitiba."
+          },
+          "emoji": "👨",
+          "difficulty": 1,
+          "notes": "No dia a dia se diz muito dad (pai, papai)."
+        },
+        {
+          "id": "u2-brother",
+          "en": "brother",
+          "pt": ["irmão"],
+          "example": {
+            "en": "This is my brother, Thiago.",
+            "pt": "Este é o meu irmão, Thiago."
+          },
+          "emoji": "🧑",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-sister",
+          "en": "sister",
+          "pt": ["irmã"],
+          "example": {
+            "en": "This is my sister, Ana.",
+            "pt": "Esta é a minha irmã, Ana."
+          },
+          "emoji": "👭",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-have",
+          "en": "have",
+          "pt": ["ter"],
+          "acceptedPt": ["tenho"],
+          "example": {
+            "en": "I have a brother.",
+            "pt": "Eu tenho um irmão."
+          },
+          "emoji": "🤲",
+          "difficulty": 1,
+          "notes": "I have = eu tenho. Para idade não se usa have: I'm 30."
+        },
+        {
+          "id": "u2-son",
+          "en": "son",
+          "pt": ["filho"],
+          "example": {
+            "en": "This is my son, Pedro.",
+            "pt": "Este é o meu filho, Pedro."
+          },
+          "emoji": "👦",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-daughter",
+          "en": "daughter",
+          "pt": ["filha"],
+          "example": {
+            "en": "This is my daughter, Júlia.",
+            "pt": "Esta é a minha filha, Júlia."
+          },
+          "emoji": "👧",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-wife",
+          "en": "wife",
+          "pt": ["esposa", "mulher"],
+          "example": {
+            "en": "My wife is from Recife.",
+            "pt": "Minha esposa é de Recife."
+          },
+          "emoji": "👰",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-husband",
+          "en": "husband",
+          "pt": ["marido", "esposo"],
+          "example": {
+            "en": "My husband is from Fortaleza.",
+            "pt": "Meu marido é de Fortaleza."
+          },
+          "emoji": "🤵",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-parents",
+          "en": "parents",
+          "pt": ["pais"],
+          "example": {
+            "en": "My parents are from Salvador.",
+            "pt": "Meus pais são de Salvador."
+          },
+          "emoji": "👫",
+          "difficulty": 3,
+          "focus": "falso-cognato",
+          "notes": "Parents = pais (mãe e pai). Parentes = relatives."
+        },
+        {
+          "id": "u2-relatives",
+          "en": "relatives",
+          "pt": ["parentes"],
+          "acceptedPt": ["familiares"],
+          "example": {
+            "en": "I have relatives in Portugal.",
+            "pt": "Eu tenho parentes em Portugal."
+          },
+          "emoji": "🧑‍🤝‍🧑",
+          "difficulty": 2,
+          "focus": "falso-cognato",
+          "notes": "Relatives = parentes (tios, primos, avós). Não confunda com parents (pais)."
+        },
+        {
+          "id": "u2-family",
+          "en": "family",
+          "pt": ["família"],
+          "example": {
+            "en": "My family is from Minas Gerais.",
+            "pt": "Minha família é de Minas Gerais."
+          },
+          "emoji": "👨‍👩‍👧‍👦",
+          "difficulty": 1
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u2-s-this-is-my-mom",
+          "en": "This is my mom.",
+          "pt": "Esta é a minha mãe.",
+          "acceptedEn": ["This is my [mom|mother]"],
+          "acceptedPt": ["[Esta|Essa] é (a) minha [mãe|mamãe]"],
+          "difficulty": 1
+        },
+        {
+          "id": "u2-s-this-is-my-dad",
+          "en": "This is my dad.",
+          "pt": "Este é o meu pai.",
+          "acceptedEn": ["This is my [dad|father]"],
+          "acceptedPt": ["[Este|Esse] é (o) meu [pai|papai]"],
+          "difficulty": 1
+        },
+        {
+          "id": "u2-s-i-have-a-brother",
+          "en": "I have a brother.",
+          "pt": "Eu tenho um irmão.",
+          "acceptedPt": ["(Eu) tenho um irmão"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-i-have-a-sister",
+          "en": "I have a sister.",
+          "pt": "Eu tenho uma irmã.",
+          "acceptedPt": ["(Eu) tenho uma irmã"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-my-wife-is-from-recife",
+          "en": "My wife is from Recife.",
+          "pt": "Minha esposa é de Recife.",
+          "acceptedPt": ["(A) minha [esposa|mulher] é de Recife"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-my-husband-is-brazilian",
+          "en": "My husband is Brazilian.",
+          "pt": "Meu marido é brasileiro.",
+          "acceptedPt": ["(O) meu [marido|esposo] é brasileiro"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-i-have-a-son-and-a-daughter",
+          "en": "I have a son and a daughter.",
+          "pt": "Eu tenho um filho e uma filha.",
+          "acceptedPt": ["(Eu) tenho um filho e uma filha"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-my-parents-are-from-salvador",
+          "en": "My parents are from Salvador.",
+          "pt": "Meus pais são de Salvador.",
+          "acceptedPt": ["(Os) meus pais são de Salvador"],
+          "difficulty": 3,
+          "focus": "falso-cognato"
+        },
+        {
+          "id": "u2-s-i-have-relatives-in-portugal",
+          "en": "I have relatives in Portugal.",
+          "pt": "Eu tenho parentes em Portugal.",
+          "acceptedPt": ["(Eu) tenho [parentes|familiares] em Portugal"],
+          "difficulty": 3,
+          "focus": "falso-cognato"
+        },
+        {
+          "id": "u2-s-this-is-my-family",
+          "en": "This is my family.",
+          "pt": "Esta é a minha família.",
+          "acceptedPt": ["[Esta|Essa] é (a) minha família"],
+          "difficulty": 1
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u2-sk1-l1",
+          "title": "Mãe, pai, irmãos",
+          "exercises": [
+            {
+              "id": "u2-sk1-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-mother"],
+              "prompt": "Qual destas é \"mãe\"?",
+              "options": [
+                {
+                  "text": "mother",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "father",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "brother",
+                  "emoji": "🧑"
+                },
+                {
+                  "text": "sister",
+                  "emoji": "👭"
+                }
+              ],
+              "answer": "mother"
+            },
+            {
+              "id": "u2-sk1-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-father"],
+              "prompt": "Qual destas é \"pai\"?",
+              "options": [
+                {
+                  "text": "father",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "mother",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "sister",
+                  "emoji": "👭"
+                }
+              ],
+              "answer": "father"
+            },
+            {
+              "id": "u2-sk1-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-brother"],
+              "prompt": "Qual destas é \"irmão\"?",
+              "options": [
+                {
+                  "text": "brother",
+                  "emoji": "🧑"
+                },
+                {
+                  "text": "sister",
+                  "emoji": "👭"
+                },
+                {
+                  "text": "father",
+                  "emoji": "👨"
+                }
+              ],
+              "answer": "brother"
+            },
+            {
+              "id": "u2-sk1-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u2-sister"],
+              "prompt": "Qual destas é \"irmã\"?",
+              "options": [
+                {
+                  "text": "sister",
+                  "emoji": "👭"
+                },
+                {
+                  "text": "mother",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "brother",
+                  "emoji": "🧑"
+                }
+              ],
+              "answer": "sister"
+            },
+            {
+              "id": "u2-sk1-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u2-mother", "u2-father", "u2-brother", "u2-sister"],
+              "pairs": [
+                {
+                  "en": "mother",
+                  "pt": "mãe"
+                },
+                {
+                  "en": "father",
+                  "pt": "pai"
+                },
+                {
+                  "en": "brother",
+                  "pt": "irmão"
+                },
+                {
+                  "en": "sister",
+                  "pt": "irmã"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk1-l1-e06",
+              "type": "multiple-choice",
+              "itemIds": ["u2-mother"],
+              "prompt": "No dia a dia, o jeito mais comum de dizer \"mãe\" é...",
+              "options": [
+                {
+                  "text": "mom",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "dad",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "sister",
+                  "emoji": "👭"
+                }
+              ],
+              "answer": "mom",
+              "explanation": "Mom = mãe, mamãe. É o jeito mais usado no dia a dia; mother é um pouco mais formal."
+            },
+            {
+              "id": "u2-sk1-l1-e07",
+              "type": "fill-blank",
+              "itemIds": ["u2-brother"],
+              "sentence": "This is my ___.",
+              "options": ["brother", "sister", "mother"],
+              "answer": "brother",
+              "translationPt": "Este é o meu irmão."
+            },
+            {
+              "id": "u2-sk1-l1-e08",
+              "type": "word-bank",
+              "itemIds": ["u2-s-this-is-my-mom", "u2-mother"],
+              "promptPt": "Esta é a minha mãe.",
+              "answer": "This is my mom.",
+              "accepted": ["This is my [mom|mother]"],
+              "distractors": ["dad", "brother", "your"]
+            },
+            {
+              "id": "u2-sk1-l1-e09",
+              "type": "multiple-choice",
+              "itemIds": ["u2-father"],
+              "prompt": "E o jeito mais comum de dizer \"pai\"?",
+              "options": [
+                {
+                  "text": "dad",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "mom",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "brother",
+                  "emoji": "🧑"
+                }
+              ],
+              "answer": "dad",
+              "explanation": "Dad = pai, papai. Father é um pouco mais formal."
+            },
+            {
+              "id": "u2-sk1-l1-e10",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-this-is-my-dad", "u2-father"],
+              "promptEn": "This is my dad.",
+              "accepted": ["[Este|Esse] é (o) meu [pai|papai]"]
+            },
+            {
+              "id": "u2-sk1-l1-e11",
+              "type": "listen-type",
+              "itemIds": ["u2-sister"],
+              "textEn": "This is my sister."
+            },
+            {
+              "id": "u2-sk1-l1-e12",
+              "type": "speak",
+              "itemIds": ["u2-brother"],
+              "textEn": "This is my brother."
+            },
+            {
+              "id": "u2-sk1-l1-e13",
+              "type": "word-bank",
+              "itemIds": ["u2-father"],
+              "promptPt": "Este é o meu pai.",
+              "answer": "This is my father.",
+              "accepted": ["This is my [father|dad]"],
+              "distractors": ["mother", "sister", "am"]
+            }
+          ]
+        },
+        {
+          "id": "u2-sk1-l2",
+          "title": "Filhos e casal",
+          "exercises": [
+            {
+              "id": "u2-sk1-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-son"],
+              "prompt": "Qual destas é \"filho\"?",
+              "options": [
+                {
+                  "text": "son",
+                  "emoji": "👦"
+                },
+                {
+                  "text": "daughter",
+                  "emoji": "👧"
+                },
+                {
+                  "text": "brother",
+                  "emoji": "🧑"
+                }
+              ],
+              "answer": "son"
+            },
+            {
+              "id": "u2-sk1-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-daughter"],
+              "prompt": "Qual destas é \"filha\"?",
+              "options": [
+                {
+                  "text": "daughter",
+                  "emoji": "👧"
+                },
+                {
+                  "text": "sister",
+                  "emoji": "👭"
+                },
+                {
+                  "text": "son",
+                  "emoji": "👦"
+                }
+              ],
+              "answer": "daughter",
+              "explanation": "Daughter = filha. Sister = irmã."
+            },
+            {
+              "id": "u2-sk1-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-wife"],
+              "prompt": "Qual destas é \"esposa\"?",
+              "options": [
+                {
+                  "text": "wife",
+                  "emoji": "👰"
+                },
+                {
+                  "text": "husband",
+                  "emoji": "🤵"
+                },
+                {
+                  "text": "mother",
+                  "emoji": "👩"
+                }
+              ],
+              "answer": "wife"
+            },
+            {
+              "id": "u2-sk1-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u2-husband"],
+              "prompt": "Qual destas é \"marido\"?",
+              "options": [
+                {
+                  "text": "husband",
+                  "emoji": "🤵"
+                },
+                {
+                  "text": "wife",
+                  "emoji": "👰"
+                },
+                {
+                  "text": "father",
+                  "emoji": "👨"
+                }
+              ],
+              "answer": "husband"
+            },
+            {
+              "id": "u2-sk1-l2-e05",
+              "type": "match-pairs",
+              "itemIds": ["u2-son", "u2-daughter", "u2-wife", "u2-husband"],
+              "pairs": [
+                {
+                  "en": "son",
+                  "pt": "filho"
+                },
+                {
+                  "en": "daughter",
+                  "pt": "filha"
+                },
+                {
+                  "en": "wife",
+                  "pt": "esposa"
+                },
+                {
+                  "en": "husband",
+                  "pt": "marido"
+                },
+                {
+                  "en": "brother",
+                  "pt": "irmão"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk1-l2-e06",
+              "type": "multiple-choice",
+              "itemIds": ["u2-have"],
+              "prompt": "Qual destas é \"ter\" (eu tenho)?",
+              "options": [
+                {
+                  "text": "have",
+                  "emoji": "🤲"
+                },
+                {
+                  "text": "am"
+                },
+                {
+                  "text": "is"
+                }
+              ],
+              "answer": "have",
+              "explanation": "I have = eu tenho: I have a brother. Am e is são do verbo be (ser/estar)."
+            },
+            {
+              "id": "u2-sk1-l2-e07",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-i-have-a-son-and-a-daughter", "u2-son", "u2-have"],
+              "sentence": "I have a ___ and a daughter.",
+              "options": ["son", "sister", "wife"],
+              "answer": "son",
+              "translationPt": "Eu tenho um filho e uma filha."
+            },
+            {
+              "id": "u2-sk1-l2-e08",
+              "type": "word-bank",
+              "itemIds": ["u2-s-i-have-a-brother", "u2-brother", "u2-have"],
+              "promptPt": "Eu tenho um irmão.",
+              "answer": "I have a brother.",
+              "distractors": ["am", "son", "an"],
+              "explanation": "Para dizer que você tem alguém na família, use have: I have a brother (Eu tenho um irmão)."
+            },
+            {
+              "id": "u2-sk1-l2-e09",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-my-wife-is-from-recife", "u2-wife"],
+              "promptEn": "My wife is from Recife.",
+              "accepted": ["(A) minha [esposa|mulher] é de Recife"]
+            },
+            {
+              "id": "u2-sk1-l2-e10",
+              "type": "listen-type",
+              "itemIds": ["u2-s-i-have-a-sister", "u2-sister"],
+              "textEn": "I have a sister."
+            },
+            {
+              "id": "u2-sk1-l2-e11",
+              "type": "word-bank",
+              "itemIds": ["u2-s-my-husband-is-brazilian", "u2-husband"],
+              "promptPt": "Meu marido é brasileiro.",
+              "answer": "My husband is Brazilian.",
+              "distractors": ["wife", "Brazil", "are"]
+            },
+            {
+              "id": "u2-sk1-l2-e12",
+              "type": "word-bank",
+              "itemIds": ["u2-s-i-have-a-son-and-a-daughter", "u2-son", "u2-daughter"],
+              "promptPt": "Eu tenho um filho e uma filha.",
+              "answer": "I have a son and a daughter.",
+              "distractors": ["an", "sister", "is"]
+            },
+            {
+              "id": "u2-sk1-l2-e13",
+              "type": "speak",
+              "itemIds": ["u2-wife"],
+              "textEn": "This is my wife."
+            },
+            {
+              "id": "u2-sk1-l2-e14",
+              "type": "translate-typing",
+              "itemIds": ["u2-daughter"],
+              "promptEn": "This is my daughter.",
+              "accepted": ["[Esta|Essa] é (a) minha filha"]
+            }
+          ]
+        },
+        {
+          "id": "u2-sk1-l3",
+          "title": "Pais não são parentes!",
+          "exercises": [
+            {
+              "id": "u2-sk1-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-parents"],
+              "prompt": "Qual destas é \"pais\" (mãe e pai)?",
+              "options": [
+                {
+                  "text": "parents",
+                  "emoji": "👫"
+                },
+                {
+                  "text": "relatives",
+                  "emoji": "🧑‍🤝‍🧑"
+                },
+                {
+                  "text": "family",
+                  "emoji": "👨‍👩‍👧‍👦"
+                }
+              ],
+              "answer": "parents",
+              "explanation": "Parents = pais (mãe e pai). Parece \"parentes\", mas não é: parentes = relatives."
+            },
+            {
+              "id": "u2-sk1-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-relatives"],
+              "prompt": "Qual destas é \"parentes\" (tios, primos, avós)?",
+              "options": [
+                {
+                  "text": "relatives",
+                  "emoji": "🧑‍🤝‍🧑"
+                },
+                {
+                  "text": "parents",
+                  "emoji": "👫"
+                },
+                {
+                  "text": "brothers",
+                  "emoji": "🧑"
+                }
+              ],
+              "answer": "relatives",
+              "explanation": "Parentes (tios, primos, avós) = relatives. Parents é só pai e mãe."
+            },
+            {
+              "id": "u2-sk1-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-family"],
+              "prompt": "Qual destas é \"família\"?",
+              "options": [
+                {
+                  "text": "family",
+                  "emoji": "👨‍👩‍👧‍👦"
+                },
+                {
+                  "text": "father",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "parents",
+                  "emoji": "👫"
+                }
+              ],
+              "answer": "family"
+            },
+            {
+              "id": "u2-sk1-l3-e04",
+              "type": "match-pairs",
+              "itemIds": ["u2-parents", "u2-relatives", "u2-family", "u2-husband", "u2-daughter"],
+              "pairs": [
+                {
+                  "en": "parents",
+                  "pt": "pais"
+                },
+                {
+                  "en": "relatives",
+                  "pt": "parentes"
+                },
+                {
+                  "en": "family",
+                  "pt": "família"
+                },
+                {
+                  "en": "husband",
+                  "pt": "marido"
+                },
+                {
+                  "en": "daughter",
+                  "pt": "filha"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk1-l3-e05",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-my-parents-are-from-salvador", "u2-parents"],
+              "sentence": "My ___ are from Salvador.",
+              "options": ["parents", "relatives", "family"],
+              "answer": "parents",
+              "translationPt": "Meus pais são de Salvador.",
+              "explanation": "Parents = pais (mãe e pai). Parece \"parentes\", mas não é: parentes = relatives."
+            },
+            {
+              "id": "u2-sk1-l3-e06",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-i-have-relatives-in-portugal", "u2-relatives"],
+              "sentence": "I have ___ in Portugal.",
+              "options": ["relatives", "parents", "brothers"],
+              "answer": "relatives",
+              "translationPt": "Eu tenho parentes em Portugal.",
+              "explanation": "Parentes (tios, primos, avós) = relatives. Parents é só pai e mãe."
+            },
+            {
+              "id": "u2-sk1-l3-e07",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-my-parents-are-from-salvador", "u2-parents"],
+              "promptEn": "My parents are from Salvador.",
+              "accepted": ["(Os) meus pais são de Salvador"],
+              "explanation": "Parents = pais (mãe e pai). Parece \"parentes\", mas não é: parentes = relatives."
+            },
+            {
+              "id": "u2-sk1-l3-e08",
+              "type": "word-bank",
+              "itemIds": ["u2-s-i-have-relatives-in-portugal", "u2-relatives"],
+              "promptPt": "Eu tenho parentes em Portugal.",
+              "answer": "I have relatives in Portugal.",
+              "distractors": ["parents", "brothers", "on"],
+              "explanation": "Parentes (tios, primos, avós) = relatives. Parents é só pai e mãe."
+            },
+            {
+              "id": "u2-sk1-l3-e09",
+              "type": "listen-type",
+              "itemIds": ["u2-s-this-is-my-family", "u2-family"],
+              "textEn": "This is my family."
+            },
+            {
+              "id": "u2-sk1-l3-e10",
+              "type": "speak",
+              "itemIds": ["u2-parents"],
+              "textEn": "My parents are from Brazil."
+            },
+            {
+              "id": "u2-sk1-l3-e11",
+              "type": "translate-typing",
+              "itemIds": ["u2-family"],
+              "promptEn": "My family is from Minas Gerais.",
+              "accepted": ["(A) minha família é de Minas (Gerais)"]
+            },
+            {
+              "id": "u2-sk1-l3-e12",
+              "type": "word-bank",
+              "itemIds": ["u2-wife", "u2-son"],
+              "promptPt": "Esta é a minha esposa e este é o meu filho.",
+              "answer": "This is my wife and this is my son.",
+              "distractors": ["husband", "daughter", "are"]
+            },
+            {
+              "id": "u2-sk1-l3-e13",
+              "type": "match-pairs",
+              "itemIds": ["u2-mother", "u2-father", "u2-sister", "u2-son", "u2-wife"],
+              "pairs": [
+                {
+                  "en": "mother",
+                  "pt": "mãe"
+                },
+                {
+                  "en": "father",
+                  "pt": "pai"
+                },
+                {
+                  "en": "sister",
+                  "pt": "irmã"
+                },
+                {
+                  "en": "son",
+                  "pt": "filho"
+                },
+                {
+                  "en": "wife",
+                  "pt": "esposa"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2-sk2",
+      "title": "Números 0–20",
+      "icon": "🔢",
+      "tip": {
+        "title": "Números de 0 a 20 e o plural com -s",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "De 13 a 19 os números terminam em **-teen**: thirteen, fourteen, fifteen... O 11 e o 12 são diferentes: **eleven**, **twelve**."
+          },
+          {
+            "kind": "text",
+            "md": "Plural: na maioria das palavras é só pôr **-s**. One brother → two brother**s**; one sister → three sister**s**."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "I have two brothers.",
+                "pt": "Eu tenho dois irmãos."
+              },
+              {
+                "en": "How many sisters do you have?",
+                "pt": "Quantas irmãs você tem?"
+              },
+              {
+                "en": "What's your phone number?",
+                "pt": "Qual é o seu número de telefone?"
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "Telefone se fala número por número, e o zero muitas vezes vira **oh**: 905 = nine-oh-five. Por enquanto, aprenda **How many ... do you have?** como um bloco pronto; o **do** fica para a unidade 3."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I have two brother.",
+            "right": "I have two brothers.",
+            "why": "Com mais de um, a palavra ganha **-s**, como no português (irmão → irmãos)."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u2-num-1-5",
+          "en": "one, two, three, four, five",
+          "pt": ["um, dois, três, quatro, cinco"],
+          "example": {
+            "en": "I have three sisters.",
+            "pt": "Eu tenho três irmãs."
+          },
+          "emoji": "🖐️",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-num-6-10",
+          "en": "six, seven, eight, nine, ten",
+          "pt": ["seis, sete, oito, nove, dez"],
+          "example": {
+            "en": "Six, seven, eight, nine, ten!",
+            "pt": "Seis, sete, oito, nove, dez!"
+          },
+          "emoji": "🔟",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-num-11-12",
+          "en": "eleven, twelve",
+          "pt": ["onze, doze"],
+          "example": {
+            "en": "I have twelve relatives in Portugal.",
+            "pt": "Eu tenho doze parentes em Portugal."
+          },
+          "emoji": "🔢",
+          "difficulty": 2,
+          "focus": "numeros",
+          "notes": "Eleven e twelve são diferentes: não terminam em -teen."
+        },
+        {
+          "id": "u2-num-13-15",
+          "en": "thirteen, fourteen, fifteen",
+          "pt": ["treze, catorze, quinze"],
+          "example": {
+            "en": "My son is thirteen.",
+            "pt": "Meu filho tem treze anos."
+          },
+          "emoji": "🔢",
+          "difficulty": 2,
+          "focus": "numeros",
+          "notes": "De 13 a 19 termina em -teen, com força no final: thirTEEN."
+        },
+        {
+          "id": "u2-num-16-20",
+          "en": "sixteen, seventeen, eighteen, nineteen, twenty",
+          "pt": ["dezesseis, dezessete, dezoito, dezenove, vinte"],
+          "example": {
+            "en": "I have twenty relatives in Brazil.",
+            "pt": "Eu tenho vinte parentes no Brasil."
+          },
+          "emoji": "🔢",
+          "difficulty": 2,
+          "focus": "numeros"
+        },
+        {
+          "id": "u2-zero",
+          "en": "zero",
+          "pt": ["zero"],
+          "example": {
+            "en": "Zero, one, two, three!",
+            "pt": "Zero, um, dois, três!"
+          },
+          "emoji": "0️⃣",
+          "difficulty": 1,
+          "notes": "Em número de telefone, o zero costuma ser falado \"oh\"."
+        },
+        {
+          "id": "u2-how-many",
+          "en": "how many",
+          "pt": ["quantos", "quantas"],
+          "example": {
+            "en": "How many brothers do you have?",
+            "pt": "Quantos irmãos você tem?"
+          },
+          "emoji": "❓",
+          "difficulty": 2,
+          "focus": "plural"
+        },
+        {
+          "id": "u2-phone-number",
+          "en": "phone number",
+          "pt": ["número de telefone"],
+          "acceptedPt": ["(número de) [telefone|celular]"],
+          "example": {
+            "en": "What's your phone number?",
+            "pt": "Qual é o seu número de telefone?"
+          },
+          "emoji": "📱",
+          "difficulty": 1
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u2-s-i-have-two-brothers",
+          "en": "I have two brothers.",
+          "pt": "Eu tenho dois irmãos.",
+          "acceptedPt": ["(Eu) tenho dois irmãos"],
+          "difficulty": 2,
+          "focus": "plural"
+        },
+        {
+          "id": "u2-s-i-have-three-sisters",
+          "en": "I have three sisters.",
+          "pt": "Eu tenho três irmãs.",
+          "acceptedPt": ["(Eu) tenho três irmãs"],
+          "difficulty": 2,
+          "focus": "plural"
+        },
+        {
+          "id": "u2-s-how-many-brothers",
+          "en": "How many brothers do you have?",
+          "pt": "Quantos irmãos você tem?",
+          "acceptedPt": [
+            "Quantos irmãos [você tem|vocês têm|tu tens]",
+            "[Você tem|Vocês têm] quantos irmãos"
+          ],
+          "difficulty": 3,
+          "focus": "plural"
+        },
+        {
+          "id": "u2-s-how-many-sisters",
+          "en": "How many sisters do you have?",
+          "pt": "Quantas irmãs você tem?",
+          "acceptedPt": [
+            "Quantas irmãs [você tem|vocês têm|tu tens]",
+            "[Você tem|Vocês têm] quantas irmãs"
+          ],
+          "difficulty": 3,
+          "focus": "plural"
+        },
+        {
+          "id": "u2-s-whats-your-phone-number",
+          "en": "What's your phone number?",
+          "pt": "Qual é o seu número de telefone?",
+          "acceptedEn": ["What's your (phone) number"],
+          "acceptedPt": [
+            "Qual (é) o [seu|teu] (número de) [telefone|celular]",
+            "Qual (é) o [seu|teu] número"
+          ],
+          "difficulty": 2
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u2-sk2-l1",
+          "title": "De 1 a 10",
+          "exercises": [
+            {
+              "id": "u2-sk2-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-1-5"],
+              "prompt": "Como se diz 3?",
+              "options": [
+                {
+                  "text": "three"
+                },
+                {
+                  "text": "two"
+                },
+                {
+                  "text": "ten"
+                }
+              ],
+              "answer": "three"
+            },
+            {
+              "id": "u2-sk2-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-6-10"],
+              "prompt": "Como se diz 7?",
+              "options": [
+                {
+                  "text": "seven"
+                },
+                {
+                  "text": "six"
+                },
+                {
+                  "text": "nine"
+                }
+              ],
+              "answer": "seven"
+            },
+            {
+              "id": "u2-sk2-l1-e03",
+              "type": "match-pairs",
+              "itemIds": ["u2-num-1-5"],
+              "pairs": [
+                {
+                  "en": "one",
+                  "pt": "um"
+                },
+                {
+                  "en": "two",
+                  "pt": "dois"
+                },
+                {
+                  "en": "three",
+                  "pt": "três"
+                },
+                {
+                  "en": "four",
+                  "pt": "quatro"
+                },
+                {
+                  "en": "five",
+                  "pt": "cinco"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk2-l1-e04",
+              "type": "match-pairs",
+              "itemIds": ["u2-num-6-10"],
+              "pairs": [
+                {
+                  "en": "six",
+                  "pt": "seis"
+                },
+                {
+                  "en": "seven",
+                  "pt": "sete"
+                },
+                {
+                  "en": "eight",
+                  "pt": "oito"
+                },
+                {
+                  "en": "nine",
+                  "pt": "nove"
+                },
+                {
+                  "en": "ten",
+                  "pt": "dez"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk2-l1-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-6-10"],
+              "prompt": "Como se diz 8?",
+              "options": [
+                {
+                  "text": "eight"
+                },
+                {
+                  "text": "nine"
+                },
+                {
+                  "text": "five"
+                }
+              ],
+              "answer": "eight"
+            },
+            {
+              "id": "u2-sk2-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-i-have-two-brothers", "u2-num-1-5"],
+              "sentence": "I have ___ brothers.",
+              "options": ["two", "ten", "one"],
+              "answer": "two",
+              "translationPt": "Eu tenho dois irmãos.",
+              "explanation": "Two = 2. Repare que brothers tem -s porque é mais de um."
+            },
+            {
+              "id": "u2-sk2-l1-e07",
+              "type": "fill-blank",
+              "itemIds": ["u2-sister", "u2-num-1-5"],
+              "sentence": "I have two ___.",
+              "options": ["sisters", "sister", "a sister"],
+              "answer": "sisters",
+              "translationPt": "Eu tenho duas irmãs.",
+              "explanation": "Mais de um? Na maioria das palavras é só pôr -s: one sister, two sisters."
+            },
+            {
+              "id": "u2-sk2-l1-e08",
+              "type": "word-bank",
+              "itemIds": ["u2-s-i-have-three-sisters", "u2-num-1-5"],
+              "promptPt": "Eu tenho três irmãs.",
+              "answer": "I have three sisters.",
+              "distractors": ["sister", "two", "am"],
+              "explanation": "Mais de um? Na maioria das palavras é só pôr -s: one sister, two sisters."
+            },
+            {
+              "id": "u2-sk2-l1-e09",
+              "type": "listen-type",
+              "itemIds": ["u2-s-i-have-two-brothers", "u2-num-1-5"],
+              "textEn": "I have two brothers."
+            },
+            {
+              "id": "u2-sk2-l1-e10",
+              "type": "translate-typing",
+              "itemIds": ["u2-num-1-5", "u2-brother"],
+              "promptEn": "I have five brothers.",
+              "accepted": ["(Eu) tenho cinco irmãos"]
+            },
+            {
+              "id": "u2-sk2-l1-e11",
+              "type": "speak",
+              "itemIds": ["u2-num-1-5"],
+              "textEn": "One, two, three, four, five."
+            },
+            {
+              "id": "u2-sk2-l1-e12",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-6-10"],
+              "prompt": "Quanto é \"nine\"?",
+              "options": [
+                {
+                  "text": "9"
+                },
+                {
+                  "text": "5"
+                },
+                {
+                  "text": "6"
+                }
+              ],
+              "answer": "9"
+            },
+            {
+              "id": "u2-sk2-l1-e13",
+              "type": "word-bank",
+              "itemIds": ["u2-num-1-5", "u2-brother", "u2-sister"],
+              "promptPt": "Eu tenho um irmão e duas irmãs.",
+              "answer": "I have a brother and two sisters.",
+              "accepted": ["I have two sisters and a brother"],
+              "distractors": ["sister", "brothers", "is"],
+              "explanation": "Mais de um? Na maioria das palavras é só pôr -s: one sister, two sisters."
+            }
+          ]
+        },
+        {
+          "id": "u2-sk2-l2",
+          "title": "De 11 a 20",
+          "exercises": [
+            {
+              "id": "u2-sk2-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-11-12"],
+              "prompt": "Como se diz 11?",
+              "options": [
+                {
+                  "text": "eleven"
+                },
+                {
+                  "text": "seven"
+                },
+                {
+                  "text": "twelve"
+                }
+              ],
+              "answer": "eleven"
+            },
+            {
+              "id": "u2-sk2-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-11-12"],
+              "prompt": "Como se diz 12?",
+              "options": [
+                {
+                  "text": "twelve"
+                },
+                {
+                  "text": "twenty"
+                },
+                {
+                  "text": "two"
+                }
+              ],
+              "answer": "twelve"
+            },
+            {
+              "id": "u2-sk2-l2-e03",
+              "type": "match-pairs",
+              "itemIds": ["u2-num-11-12", "u2-num-13-15"],
+              "pairs": [
+                {
+                  "en": "eleven",
+                  "pt": "onze"
+                },
+                {
+                  "en": "twelve",
+                  "pt": "doze"
+                },
+                {
+                  "en": "thirteen",
+                  "pt": "treze"
+                },
+                {
+                  "en": "fourteen",
+                  "pt": "catorze"
+                },
+                {
+                  "en": "fifteen",
+                  "pt": "quinze"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk2-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u2-num-16-20"],
+              "pairs": [
+                {
+                  "en": "sixteen",
+                  "pt": "dezesseis"
+                },
+                {
+                  "en": "seventeen",
+                  "pt": "dezessete"
+                },
+                {
+                  "en": "eighteen",
+                  "pt": "dezoito"
+                },
+                {
+                  "en": "nineteen",
+                  "pt": "dezenove"
+                },
+                {
+                  "en": "twenty",
+                  "pt": "vinte"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk2-l2-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-13-15"],
+              "prompt": "Como se diz 15?",
+              "options": [
+                {
+                  "text": "fifteen"
+                },
+                {
+                  "text": "five"
+                },
+                {
+                  "text": "fourteen"
+                }
+              ],
+              "answer": "fifteen",
+              "explanation": "De 13 a 19 o número termina em -teen: fifteen = 15."
+            },
+            {
+              "id": "u2-sk2-l2-e06",
+              "type": "fill-blank",
+              "itemIds": ["u2-num-11-12", "u2-relatives"],
+              "sentence": "I have ___ relatives in Portugal.",
+              "options": ["twelve", "two", "twenty"],
+              "answer": "twelve",
+              "translationPt": "Eu tenho doze parentes em Portugal.",
+              "explanation": "Twelve = 12. Cuidado: twenty = 20 e two = 2."
+            },
+            {
+              "id": "u2-sk2-l2-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-16-20"],
+              "prompt": "Quanto é \"eighteen\"?",
+              "options": [
+                {
+                  "text": "18"
+                },
+                {
+                  "text": "8"
+                },
+                {
+                  "text": "80"
+                }
+              ],
+              "answer": "18",
+              "explanation": "-teen = de 13 a 19: eighteen = 18."
+            },
+            {
+              "id": "u2-sk2-l2-e08",
+              "type": "listen-type",
+              "itemIds": ["u2-num-13-15", "u2-num-16-20"],
+              "textEn": "Fourteen, fifteen, sixteen."
+            },
+            {
+              "id": "u2-sk2-l2-e09",
+              "type": "word-bank",
+              "itemIds": ["u2-son", "u2-daughter"],
+              "promptPt": "Eu tenho dois filhos e uma filha.",
+              "answer": "I have two sons and a daughter.",
+              "accepted": ["I have a daughter and two sons"],
+              "distractors": ["son", "daughters", "is"],
+              "explanation": "Mais de um? Na maioria das palavras é só pôr -s: one sister, two sisters."
+            },
+            {
+              "id": "u2-sk2-l2-e10",
+              "type": "translate-typing",
+              "itemIds": ["u2-num-16-20", "u2-relatives"],
+              "promptEn": "I have twenty relatives in Brazil.",
+              "accepted": ["(Eu) tenho [vinte|20] [parentes|familiares] no Brasil"],
+              "explanation": "Twenty = 20 (twelve = 12). E relatives = parentes, não pais."
+            },
+            {
+              "id": "u2-sk2-l2-e11",
+              "type": "fill-blank",
+              "itemIds": ["u2-num-11-12", "u2-num-13-15"],
+              "sentence": "Eleven, twelve, ___, fourteen.",
+              "options": ["thirteen", "thirty", "three"],
+              "answer": "thirteen",
+              "translationPt": "Onze, doze, treze, catorze.",
+              "explanation": "13 = thirteen (com -teen). Three = 3."
+            },
+            {
+              "id": "u2-sk2-l2-e12",
+              "type": "speak",
+              "itemIds": ["u2-num-16-20"],
+              "textEn": "Eighteen, nineteen, twenty."
+            }
+          ]
+        },
+        {
+          "id": "u2-sk2-l3",
+          "title": "Quantos? E o telefone",
+          "exercises": [
+            {
+              "id": "u2-sk2-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-how-many"],
+              "prompt": "Como se pergunta \"quantos?\"",
+              "options": [
+                {
+                  "text": "how many",
+                  "emoji": "🔢"
+                },
+                {
+                  "text": "how are you",
+                  "emoji": "🙂"
+                },
+                {
+                  "text": "where",
+                  "emoji": "📍"
+                }
+              ],
+              "answer": "how many",
+              "explanation": "How many = quantos/quantas. Serve para coisas que se contam: How many brothers?"
+            },
+            {
+              "id": "u2-sk2-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-phone-number"],
+              "prompt": "Qual destas é \"número de telefone\"?",
+              "options": [
+                {
+                  "text": "phone number",
+                  "emoji": "📱"
+                },
+                {
+                  "text": "how many",
+                  "emoji": "🔢"
+                },
+                {
+                  "text": "family",
+                  "emoji": "👨‍👩‍👧‍👦"
+                }
+              ],
+              "answer": "phone number"
+            },
+            {
+              "id": "u2-sk2-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-zero"],
+              "prompt": "Como se diz 0?",
+              "options": [
+                {
+                  "text": "zero"
+                },
+                {
+                  "text": "ten"
+                },
+                {
+                  "text": "two"
+                }
+              ],
+              "answer": "zero",
+              "explanation": "Zero = 0. Em número de telefone, o zero também é falado \"oh\"."
+            },
+            {
+              "id": "u2-sk2-l3-e04",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-how-many-sisters", "u2-how-many"],
+              "sentence": "How ___ sisters do you have?",
+              "options": ["many", "much", "are"],
+              "answer": "many",
+              "translationPt": "Quantas irmãs você tem?",
+              "explanation": "Para coisas que se contam (irmãos, irmãs), use how many."
+            },
+            {
+              "id": "u2-sk2-l3-e05",
+              "type": "word-bank",
+              "itemIds": ["u2-s-how-many-brothers", "u2-how-many"],
+              "promptPt": "Quantos irmãos você tem?",
+              "answer": "How many brothers do you have?",
+              "distractors": ["much", "brother", "are"],
+              "explanation": "How many = quantos/quantas, para coisas que se contam: How many brothers do you have? (Quantos irmãos você tem?)"
+            },
+            {
+              "id": "u2-sk2-l3-e06",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-how-many-sisters", "u2-how-many"],
+              "promptEn": "How many sisters do you have?",
+              "accepted": [
+                "Quantas irmãs [você tem|vocês têm|tu tens]",
+                "[Você tem|Vocês têm] quantas irmãs"
+              ],
+              "explanation": "How many = quantos/quantas: How many sisters? = Quantas irmãs?"
+            },
+            {
+              "id": "u2-sk2-l3-e07",
+              "type": "match-pairs",
+              "itemIds": [
+                "u2-phone-number",
+                "u2-how-many",
+                "u2-zero",
+                "u2-num-11-12",
+                "u2-num-16-20"
+              ],
+              "pairs": [
+                {
+                  "en": "phone number",
+                  "pt": "número de telefone"
+                },
+                {
+                  "en": "how many",
+                  "pt": "quantos"
+                },
+                {
+                  "en": "zero",
+                  "pt": "zero"
+                },
+                {
+                  "en": "twelve",
+                  "pt": "doze"
+                },
+                {
+                  "en": "twenty",
+                  "pt": "vinte"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk2-l3-e08",
+              "type": "multiple-choice",
+              "itemIds": ["u2-zero", "u2-num-6-10", "u2-num-1-5"],
+              "prompt": "Alguém diz seu telefone: \"nine, oh, five\". Que número é?",
+              "options": [
+                {
+                  "text": "905"
+                },
+                {
+                  "text": "950"
+                },
+                {
+                  "text": "9005"
+                }
+              ],
+              "answer": "905",
+              "explanation": "No telefone, o zero costuma ser falado \"oh\": nine-oh-five = 905."
+            },
+            {
+              "id": "u2-sk2-l3-e09",
+              "type": "word-bank",
+              "itemIds": ["u2-s-whats-your-phone-number", "u2-phone-number"],
+              "promptPt": "Qual é o seu número de telefone?",
+              "answer": "What's your phone number?",
+              "accepted": ["What's your (phone) number"],
+              "distractors": ["how", "many", "are"]
+            },
+            {
+              "id": "u2-sk2-l3-e10",
+              "type": "listen-type",
+              "itemIds": ["u2-s-whats-your-phone-number", "u2-phone-number"],
+              "textEn": "What's your phone number?"
+            },
+            {
+              "id": "u2-sk2-l3-e11",
+              "type": "speak",
+              "itemIds": ["u2-s-how-many-brothers", "u2-how-many"],
+              "textEn": "How many brothers do you have?"
+            },
+            {
+              "id": "u2-sk2-l3-e12",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-i-have-two-brothers", "u2-s-i-have-three-sisters"],
+              "promptEn": "I have two brothers and three sisters.",
+              "accepted": ["(Eu) tenho dois irmãos e três irmãs"],
+              "explanation": "Brothers e sisters estão no plural (com -s): irmãos e irmãs."
+            },
+            {
+              "id": "u2-sk2-l3-e13",
+              "type": "fill-blank",
+              "itemIds": ["u2-daughter", "u2-num-1-5"],
+              "sentence": "I have three ___.",
+              "options": ["daughters", "daughter", "son"],
+              "answer": "daughters",
+              "translationPt": "Eu tenho três filhas.",
+              "explanation": "Mais de um? Na maioria das palavras é só pôr -s: one sister, two sisters."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2-sk3",
+      "title": "Números até 100 e idade",
+      "icon": "🎂",
+      "tip": {
+        "title": "Idade se diz com o verbo \"be\"",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Em inglês você não \"tem\" idade: você **é** a idade. Use **I'm** + número. O *years old* no final é opcional."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "How old are you?",
+                "pt": "Quantos anos você tem?"
+              },
+              {
+                "en": "I'm 30.",
+                "pt": "Tenho 30 anos."
+              },
+              {
+                "en": "My mom is 60 years old.",
+                "pt": "Minha mãe tem 60 anos."
+              }
+            ]
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I have 30 years.",
+            "right": "I'm 30. / I'm 30 years old.",
+            "why": "Com idade, o inglês usa o verbo **be** (am/is/are), nunca **have**."
+          },
+          {
+            "kind": "text",
+            "md": "O **th** de three, thirteen e thirty: ponta da língua entre os dentes, soltando o ar. Não é \"t\" nem \"f\". Em **thirTEEN** (13) a força vai no final; em **THIRty** (30), no começo."
+          },
+          {
+            "kind": "text",
+            "md": "As dezenas terminam em **-ty**: twenty, thirty, forty (sem \"u\"!), fifty... De 21 a 99, junte com hífen: twenty-one, forty-five. 100 = **one hundred** (ou *a hundred*)."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u2-thirty",
+          "en": "thirty",
+          "pt": ["trinta"],
+          "example": {
+            "en": "My wife is thirty.",
+            "pt": "Minha esposa tem trinta anos."
+          },
+          "emoji": "🔢",
+          "difficulty": 2,
+          "focus": "th",
+          "notes": "Th com a língua entre os dentes. Thirty (30) ≠ thirteen (13)."
+        },
+        {
+          "id": "u2-tens-40-60",
+          "en": "forty, fifty, sixty",
+          "pt": ["quarenta, cinquenta, sessenta"],
+          "example": {
+            "en": "My dad is fifty.",
+            "pt": "Meu pai tem cinquenta anos."
+          },
+          "emoji": "🔢",
+          "difficulty": 2,
+          "focus": "numeros",
+          "notes": "Forty se escreve sem \"u\" (não \"fourty\")."
+        },
+        {
+          "id": "u2-tens-70-90",
+          "en": "seventy, eighty, ninety",
+          "pt": ["setenta, oitenta, noventa"],
+          "example": {
+            "en": "My dad is seventy.",
+            "pt": "Meu pai tem setenta anos."
+          },
+          "emoji": "🔢",
+          "difficulty": 2,
+          "focus": "numeros"
+        },
+        {
+          "id": "u2-one-hundred",
+          "en": "one hundred",
+          "pt": ["cem"],
+          "acceptedEn": ["[one|a] hundred"],
+          "example": {
+            "en": "I have a hundred relatives!",
+            "pt": "Eu tenho cem parentes!"
+          },
+          "emoji": "💯",
+          "difficulty": 2
+        },
+        {
+          "id": "u2-how-old",
+          "en": "how old",
+          "pt": ["quantos anos"],
+          "example": {
+            "en": "How old are you?",
+            "pt": "Quantos anos você tem?"
+          },
+          "emoji": "🎂",
+          "difficulty": 2,
+          "focus": "idade-com-be",
+          "notes": "How old are you? = Quantos anos você tem?"
+        },
+        {
+          "id": "u2-years-old",
+          "en": "years old",
+          "pt": ["anos de idade"],
+          "acceptedPt": ["anos (de idade)"],
+          "example": {
+            "en": "I'm thirty years old.",
+            "pt": "Eu tenho trinta anos."
+          },
+          "emoji": "🎈",
+          "difficulty": 2,
+          "focus": "idade-com-be",
+          "notes": "Idade com be: I'm 30 years old. Nunca \"I have 30 years\"."
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u2-s-how-old-are-you",
+          "en": "How old are you?",
+          "pt": "Quantos anos você tem?",
+          "acceptedPt": [
+            "Quantos anos [você tem|vocês têm|tu tens]",
+            "[Você tem|Vocês têm] quantos anos",
+            "Qual (é) a sua idade"
+          ],
+          "difficulty": 2,
+          "focus": "idade-com-be"
+        },
+        {
+          "id": "u2-s-im-thirty",
+          "en": "I'm thirty years old.",
+          "pt": "Eu tenho trinta anos.",
+          "acceptedEn": ["[I'm|I am] [thirty|30] (years old)"],
+          "acceptedPt": ["(Eu) tenho [trinta|30] anos (de idade)"],
+          "difficulty": 3,
+          "focus": "idade-com-be"
+        },
+        {
+          "id": "u2-s-my-mom-is-sixty",
+          "en": "My mom is sixty.",
+          "pt": "Minha mãe tem sessenta anos.",
+          "acceptedEn": ["My [mom|mother] is [sixty|60] (years old)"],
+          "acceptedPt": ["(A) minha [mãe|mamãe] tem [sessenta|60] anos (de idade)"],
+          "difficulty": 3,
+          "focus": "idade-com-be"
+        },
+        {
+          "id": "u2-s-my-son-is-thirteen",
+          "en": "My son is thirteen.",
+          "pt": "Meu filho tem treze anos.",
+          "acceptedEn": ["My son is [thirteen|13] (years old)"],
+          "acceptedPt": ["(O) meu filho tem [treze|13] (anos (de idade))"],
+          "difficulty": 3,
+          "focus": "th"
+        },
+        {
+          "id": "u2-s-how-old-is-your-dad",
+          "en": "How old is your dad?",
+          "pt": "Quantos anos o seu pai tem?",
+          "acceptedEn": ["How old is your [dad|father]"],
+          "acceptedPt": [
+            "Quantos anos (o) [seu|teu] [pai|papai] tem",
+            "Quantos anos tem (o) [seu|teu] [pai|papai]",
+            "(O) [seu|teu] [pai|papai] tem quantos anos",
+            "Qual (é) a idade do [seu|teu] [pai|papai]"
+          ],
+          "difficulty": 3,
+          "focus": "idade-com-be"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u2-sk3-l1",
+          "title": "Dezenas até 100",
+          "exercises": [
+            {
+              "id": "u2-sk3-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-thirty"],
+              "prompt": "Como se diz 30?",
+              "options": [
+                {
+                  "text": "thirty"
+                },
+                {
+                  "text": "thirteen"
+                },
+                {
+                  "text": "three"
+                }
+              ],
+              "answer": "thirty",
+              "explanation": "30 = thirty (-ty). 13 = thirteen (-teen). E o th é com a ponta da língua entre os dentes, não \"t\" nem \"f\"."
+            },
+            {
+              "id": "u2-sk3-l1-e02",
+              "type": "match-pairs",
+              "itemIds": ["u2-thirty", "u2-tens-40-60", "u2-num-16-20"],
+              "pairs": [
+                {
+                  "en": "twenty",
+                  "pt": "vinte"
+                },
+                {
+                  "en": "thirty",
+                  "pt": "trinta"
+                },
+                {
+                  "en": "forty",
+                  "pt": "quarenta"
+                },
+                {
+                  "en": "fifty",
+                  "pt": "cinquenta"
+                },
+                {
+                  "en": "sixty",
+                  "pt": "sessenta"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk3-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-tens-40-60"],
+              "prompt": "Como se diz 40?",
+              "options": [
+                {
+                  "text": "forty"
+                },
+                {
+                  "text": "fourteen"
+                },
+                {
+                  "text": "four"
+                }
+              ],
+              "answer": "forty",
+              "explanation": "40 = forty, escrito sem \"u\" (não \"fourty\"). Fourteen = 14."
+            },
+            {
+              "id": "u2-sk3-l1-e04",
+              "type": "match-pairs",
+              "itemIds": ["u2-tens-70-90", "u2-one-hundred", "u2-num-13-15"],
+              "pairs": [
+                {
+                  "en": "seventy",
+                  "pt": "setenta"
+                },
+                {
+                  "en": "eighty",
+                  "pt": "oitenta"
+                },
+                {
+                  "en": "ninety",
+                  "pt": "noventa"
+                },
+                {
+                  "en": "one hundred",
+                  "pt": "cem"
+                },
+                {
+                  "en": "thirteen",
+                  "pt": "treze"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk3-l1-e05",
+              "type": "multiple-choice",
+              "itemIds": ["u2-tens-40-60"],
+              "prompt": "Quanto é \"fifty\"?",
+              "options": [
+                {
+                  "text": "50"
+                },
+                {
+                  "text": "15"
+                },
+                {
+                  "text": "5"
+                }
+              ],
+              "answer": "50",
+              "explanation": "Fifty termina em -ty: 50. Fifteen (-teen) = 15."
+            },
+            {
+              "id": "u2-sk3-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u2-thirty"],
+              "sentence": "Twenty, ___, forty, fifty.",
+              "options": ["thirty", "thirteen", "three"],
+              "answer": "thirty",
+              "translationPt": "Vinte, trinta, quarenta, cinquenta.",
+              "explanation": "30 = thirty (-ty). 13 = thirteen (-teen). E o th é com a ponta da língua entre os dentes, não \"t\" nem \"f\"."
+            },
+            {
+              "id": "u2-sk3-l1-e07",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-16-20", "u2-num-1-5"],
+              "prompt": "Como se diz 21?",
+              "options": [
+                {
+                  "text": "twenty-one"
+                },
+                {
+                  "text": "twelve"
+                },
+                {
+                  "text": "twenty"
+                }
+              ],
+              "answer": "twenty-one",
+              "explanation": "De 21 a 99: dezena + hífen + unidade. 21 = twenty-one."
+            },
+            {
+              "id": "u2-sk3-l1-e08",
+              "type": "listen-type",
+              "itemIds": ["u2-thirty", "u2-tens-40-60"],
+              "textEn": "Thirty, forty, fifty."
+            },
+            {
+              "id": "u2-sk3-l1-e09",
+              "type": "fill-blank",
+              "itemIds": ["u2-one-hundred"],
+              "sentence": "Ninety-nine, one ___.",
+              "options": ["hundred", "ninety", "ten"],
+              "answer": "hundred",
+              "translationPt": "Noventa e nove, cem."
+            },
+            {
+              "id": "u2-sk3-l1-e10",
+              "type": "translate-typing",
+              "itemIds": ["u2-thirty", "u2-relatives"],
+              "promptEn": "I have thirty-two relatives in Portugal.",
+              "accepted": ["(Eu) tenho [trinta e dois|32] [parentes|familiares] em Portugal"],
+              "explanation": "Thirty-two = 32 (o th é com a língua entre os dentes). Relatives = parentes."
+            },
+            {
+              "id": "u2-sk3-l1-e11",
+              "type": "speak",
+              "itemIds": ["u2-thirty", "u2-num-13-15", "u2-num-1-5"],
+              "textEn": "Thirteen, thirty, three."
+            },
+            {
+              "id": "u2-sk3-l1-e12",
+              "type": "word-bank",
+              "itemIds": ["u2-one-hundred", "u2-relatives"],
+              "promptPt": "Eu tenho cem parentes!",
+              "answer": "I have a hundred relatives!",
+              "accepted": ["I have [a|one] hundred relatives"],
+              "distractors": ["parents", "years", "am"],
+              "explanation": "Parentes (tios, primos, avós) = relatives. Parents é só pai e mãe."
+            },
+            {
+              "id": "u2-sk3-l1-e13",
+              "type": "multiple-choice",
+              "itemIds": ["u2-tens-70-90"],
+              "prompt": "Quanto é \"ninety\"?",
+              "options": [
+                {
+                  "text": "90"
+                },
+                {
+                  "text": "19"
+                },
+                {
+                  "text": "9"
+                }
+              ],
+              "answer": "90",
+              "explanation": "Ninety termina em -ty: 90. Nineteen (-teen) = 19."
+            }
+          ]
+        },
+        {
+          "id": "u2-sk3-l2",
+          "title": "Quantos anos você tem?",
+          "exercises": [
+            {
+              "id": "u2-sk3-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-how-old", "u2-s-how-old-are-you"],
+              "prompt": "Como se pergunta a idade de alguém?",
+              "options": [
+                {
+                  "text": "How old are you?"
+                },
+                {
+                  "text": "How are you?"
+                },
+                {
+                  "text": "Where are you from?"
+                }
+              ],
+              "answer": "How old are you?",
+              "explanation": "How old are you? = Quantos anos você tem? How are you? = Como vai você?"
+            },
+            {
+              "id": "u2-sk3-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-years-old", "u2-s-im-thirty"],
+              "prompt": "Como se diz \"Eu tenho 30 anos\"?",
+              "options": [
+                {
+                  "text": "I'm 30."
+                },
+                {
+                  "text": "I have 30 years."
+                },
+                {
+                  "text": "I have 30."
+                }
+              ],
+              "answer": "I'm 30.",
+              "explanation": "Idade em inglês usa o verbo be: I'm 30 (years old). Nunca \"I have 30 years\"."
+            },
+            {
+              "id": "u2-sk3-l2-e03",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-im-thirty", "u2-years-old"],
+              "sentence": "I ___ thirty years old.",
+              "options": ["am", "have", "is"],
+              "answer": "am",
+              "translationPt": "Eu tenho trinta anos.",
+              "explanation": "Idade em inglês usa o verbo be: I'm 30 (years old). Nunca \"I have 30 years\"."
+            },
+            {
+              "id": "u2-sk3-l2-e04",
+              "type": "match-pairs",
+              "itemIds": ["u2-how-old", "u2-years-old", "u2-how-many"],
+              "pairs": [
+                {
+                  "en": "how old",
+                  "pt": "quantos anos"
+                },
+                {
+                  "en": "years old",
+                  "pt": "anos de idade"
+                },
+                {
+                  "en": "how many",
+                  "pt": "quantos"
+                },
+                {
+                  "en": "thirty",
+                  "pt": "trinta"
+                },
+                {
+                  "en": "one hundred",
+                  "pt": "cem"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk3-l2-e05",
+              "type": "word-bank",
+              "itemIds": ["u2-s-how-old-are-you", "u2-how-old"],
+              "promptPt": "Quantos anos você tem?",
+              "answer": "How old are you?",
+              "distractors": ["have", "many", "years"],
+              "explanation": "Idade se pergunta com How old are you? Nada de \"How many years do you have?\"."
+            },
+            {
+              "id": "u2-sk3-l2-e06",
+              "type": "word-bank",
+              "itemIds": ["u2-s-im-thirty", "u2-years-old", "u2-thirty"],
+              "promptPt": "Eu tenho trinta anos.",
+              "answer": "I'm thirty years old.",
+              "accepted": ["[I'm|I am] [thirty|30] (years old)"],
+              "distractors": ["have", "thirteen", "is"],
+              "explanation": "Idade em inglês usa o verbo be: I'm 30 (years old). Nunca \"I have 30 years\"."
+            },
+            {
+              "id": "u2-sk3-l2-e07",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-my-mom-is-sixty", "u2-tens-40-60"],
+              "sentence": "My mom ___ sixty.",
+              "options": ["is", "has", "are"],
+              "answer": "is",
+              "translationPt": "Minha mãe tem sessenta anos.",
+              "explanation": "Para ele/ela, idade usa is: My mom is 60. Nada de \"has 60 years\"."
+            },
+            {
+              "id": "u2-sk3-l2-e08",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-how-old-are-you", "u2-how-old"],
+              "promptEn": "How old are you?",
+              "accepted": [
+                "Quantos anos [você tem|vocês têm|tu tens]",
+                "[Você tem|Vocês têm] quantos anos",
+                "Qual (é) a sua idade"
+              ],
+              "explanation": "How old are you? é a pergunta de idade: Quantos anos você tem?"
+            },
+            {
+              "id": "u2-sk3-l2-e09",
+              "type": "listen-type",
+              "itemIds": ["u2-s-im-thirty", "u2-years-old"],
+              "textEn": "I'm thirty years old."
+            },
+            {
+              "id": "u2-sk3-l2-e10",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-my-son-is-thirteen", "u2-num-13-15"],
+              "promptEn": "My son is thirteen.",
+              "accepted": ["(O) meu filho tem [treze|13] (anos (de idade))"],
+              "explanation": "Thirteen = 13 (termina em -teen, força no final). Thirty = 30 (-ty, força no começo). O th é com a língua entre os dentes."
+            },
+            {
+              "id": "u2-sk3-l2-e11",
+              "type": "speak",
+              "itemIds": ["u2-s-im-thirty", "u2-thirty"],
+              "textEn": "I'm thirty years old."
+            },
+            {
+              "id": "u2-sk3-l2-e12",
+              "type": "word-bank",
+              "itemIds": ["u2-s-how-old-is-your-dad", "u2-how-old"],
+              "promptPt": "Quantos anos o seu pai tem?",
+              "answer": "How old is your dad?",
+              "accepted": ["How old is your [dad|father]"],
+              "distractors": ["are", "have", "many"],
+              "explanation": "Para perguntar idade: How old...? How many é para contar coisas (irmãos, filhos)."
+            },
+            {
+              "id": "u2-sk3-l2-e13",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-my-mom-is-sixty", "u2-years-old"],
+              "promptEn": "My mom is sixty years old.",
+              "accepted": ["(A) minha [mãe|mamãe] tem [sessenta|60] anos (de idade)"],
+              "explanation": "Para ele/ela, idade usa is: My mom is 60. Nada de \"has 60 years\"."
+            }
+          ]
+        },
+        {
+          "id": "u2-sk3-l3",
+          "title": "Idade da família",
+          "exercises": [
+            {
+              "id": "u2-sk3-l3-e01",
+              "type": "fill-blank",
+              "itemIds": ["u2-years-old", "u2-num-16-20"],
+              "sentence": "I ___ 25.",
+              "options": ["am", "have", "has"],
+              "answer": "am",
+              "translationPt": "Eu tenho 25 anos.",
+              "explanation": "Idade em inglês usa o verbo be: I'm 30 (years old). Nunca \"I have 30 years\"."
+            },
+            {
+              "id": "u2-sk3-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-years-old", "u2-tens-40-60"],
+              "prompt": "Qual frase está certa para \"Ela tem 40 anos\"?",
+              "options": [
+                {
+                  "text": "She's 40."
+                },
+                {
+                  "text": "She has 40 years."
+                },
+                {
+                  "text": "She is 40 years."
+                }
+              ],
+              "answer": "She's 40.",
+              "explanation": "Idade com be: She's 40 ou She's 40 years old. Sem \"old\", \"40 years\" fica incompleto, e have está errado."
+            },
+            {
+              "id": "u2-sk3-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-num-13-15", "u2-thirty"],
+              "prompt": "Como se diz 13?",
+              "options": [
+                {
+                  "text": "thirteen"
+                },
+                {
+                  "text": "thirty"
+                },
+                {
+                  "text": "three"
+                }
+              ],
+              "answer": "thirteen",
+              "explanation": "Thirteen = 13 (termina em -teen, força no final). Thirty = 30 (-ty, força no começo). O th é com a língua entre os dentes."
+            },
+            {
+              "id": "u2-sk3-l3-e04",
+              "type": "match-pairs",
+              "itemIds": [
+                "u2-num-1-5",
+                "u2-num-13-15",
+                "u2-thirty",
+                "u2-tens-70-90",
+                "u2-num-16-20"
+              ],
+              "pairs": [
+                {
+                  "en": "three",
+                  "pt": "três"
+                },
+                {
+                  "en": "thirteen",
+                  "pt": "treze"
+                },
+                {
+                  "en": "thirty",
+                  "pt": "trinta"
+                },
+                {
+                  "en": "ninety",
+                  "pt": "noventa"
+                },
+                {
+                  "en": "nineteen",
+                  "pt": "dezenove"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk3-l3-e05",
+              "type": "word-bank",
+              "itemIds": ["u2-sister", "u2-num-16-20", "u2-years-old"],
+              "promptPt": "Minha irmã tem dezenove anos.",
+              "answer": "My sister is nineteen.",
+              "accepted": ["My sister is nineteen (years old)"],
+              "distractors": ["has", "ninety", "have"],
+              "explanation": "Para ele/ela, idade usa is: My mom is 60. Nada de \"has 60 years\"."
+            },
+            {
+              "id": "u2-sk3-l3-e06",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-how-old-is-your-dad", "u2-how-old"],
+              "promptEn": "How old is your dad?",
+              "accepted": [
+                "Quantos anos (o) [seu|teu] [pai|papai] tem",
+                "Quantos anos tem (o) [seu|teu] [pai|papai]",
+                "(O) [seu|teu] [pai|papai] tem quantos anos",
+                "Qual (é) a idade do [seu|teu] [pai|papai]"
+              ],
+              "explanation": "How old is your dad? = Quantos anos o seu pai tem? Idade em inglês vem com be (is)."
+            },
+            {
+              "id": "u2-sk3-l3-e07",
+              "type": "listen-type",
+              "itemIds": ["u2-s-my-son-is-thirteen", "u2-num-13-15"],
+              "textEn": "My son is thirteen.",
+              "explanation": "Thirteen = 13 (termina em -teen, força no final). Thirty = 30 (-ty, força no começo). O th é com a língua entre os dentes."
+            },
+            {
+              "id": "u2-sk3-l3-e08",
+              "type": "fill-blank",
+              "itemIds": ["u2-parents", "u2-tens-70-90"],
+              "sentence": "My parents ___ both seventy.",
+              "options": ["are", "have", "is"],
+              "answer": "are",
+              "translationPt": "Meus pais têm setenta anos (os dois).",
+              "explanation": "My parents é plural, então use are: My parents are 70. Idade sempre com be, nunca com have."
+            },
+            {
+              "id": "u2-sk3-l3-e09",
+              "type": "word-bank",
+              "itemIds": ["u2-husband", "u2-tens-40-60", "u2-years-old"],
+              "promptPt": "Meu marido tem quarenta e cinco anos.",
+              "answer": "My husband is forty-five.",
+              "accepted": ["My husband is forty-five (years old)"],
+              "distractors": ["has", "fourteen", "have"],
+              "explanation": "Para ele/ela, idade usa is: My mom is 60. Nada de \"has 60 years\"."
+            },
+            {
+              "id": "u2-sk3-l3-e10",
+              "type": "speak",
+              "itemIds": ["u2-s-my-mom-is-sixty"],
+              "textEn": "My mom is sixty."
+            },
+            {
+              "id": "u2-sk3-l3-e11",
+              "type": "translate-typing",
+              "itemIds": ["u2-thirty", "u2-years-old"],
+              "promptEn": "I'm thirty-three.",
+              "accepted": ["(Eu) tenho [trinta e três|33] (anos (de idade))"],
+              "explanation": "Thirty-three = 33. Repare nos dois th: a língua vai entre os dentes nas duas palavras."
+            },
+            {
+              "id": "u2-sk3-l3-e12",
+              "type": "fill-blank",
+              "itemIds": ["u2-how-old", "u2-sister"],
+              "sentence": "How ___ is your sister?",
+              "options": ["old", "many", "much"],
+              "answer": "old",
+              "translationPt": "Quantos anos tem a sua irmã?",
+              "explanation": "Para perguntar idade: How old...? How many é para contar coisas (irmãos, filhos)."
+            },
+            {
+              "id": "u2-sk3-l3-e13",
+              "type": "word-bank",
+              "itemIds": ["u2-years-old", "u2-num-16-20"],
+              "promptPt": "Eu tenho vinte e oito anos.",
+              "answer": "I'm twenty-eight.",
+              "accepted": ["[I'm|I am] twenty-eight (years old)"],
+              "distractors": ["have", "has", "eighteen"],
+              "explanation": "Idade em inglês usa o verbo be: I'm 30 (years old). Nunca \"I have 30 years\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2-sk4",
+      "title": "Descrevendo pessoas",
+      "icon": "🙂",
+      "tip": {
+        "title": "Adjetivo vem ANTES da coisa",
+        "blocks": [
+          {
+            "kind": "text",
+            "md": "Para descrever alguém, use o verbo be: **My brother is tall.** O adjetivo não muda no feminino nem no plural: **tall** = alto, alta, altos, altas."
+          },
+          {
+            "kind": "text",
+            "md": "**his** = dele, **her** = dela. Depende de quem é o \"dono\", não da coisa: *his sister* = a irmã dele."
+          },
+          {
+            "kind": "examples",
+            "items": [
+              {
+                "en": "His name is Thiago.",
+                "pt": "O nome dele é Thiago."
+              },
+              {
+                "en": "Her husband is funny.",
+                "pt": "O marido dela é engraçado."
+              },
+              {
+                "en": "This is my little sister.",
+                "pt": "Esta é a minha irmã mais nova."
+              }
+            ]
+          },
+          {
+            "kind": "text",
+            "md": "Antes de um substantivo, o adjetivo vem **antes**: a **big** family (uma família grande), my **little** sister (minha irmã mais nova)."
+          },
+          {
+            "kind": "pitfall",
+            "wrong": "I have a family big.",
+            "right": "I have a big family.",
+            "why": "Em inglês o adjetivo vem antes da coisa; em português ele costuma vir depois."
+          },
+          {
+            "kind": "text",
+            "md": "Com dois adjetivos, a ordem é: opinião → tamanho → cor. *a **funny little** dog* (um cachorrinho engraçado), *a **big black** dog* (um cachorro grande e preto)."
+          }
+        ]
+      },
+      "vocab": [
+        {
+          "id": "u2-tall",
+          "en": "tall",
+          "pt": ["alto", "alta"],
+          "example": {
+            "en": "My brother is tall.",
+            "pt": "Meu irmão é alto."
+          },
+          "emoji": "🦒",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-short",
+          "en": "short",
+          "pt": ["baixo", "baixa"],
+          "acceptedPt": ["[baixinho|baixinha]"],
+          "example": {
+            "en": "My mom is short.",
+            "pt": "Minha mãe é baixa."
+          },
+          "emoji": "🐭",
+          "difficulty": 1,
+          "notes": "Short também é \"curto\": short hair = cabelo curto."
+        },
+        {
+          "id": "u2-young",
+          "en": "young",
+          "pt": ["jovem"],
+          "acceptedPt": ["[novo|nova]"],
+          "example": {
+            "en": "My parents are young.",
+            "pt": "Meus pais são jovens."
+          },
+          "emoji": "🧒",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-old",
+          "en": "old",
+          "pt": ["velho", "velha"],
+          "acceptedPt": ["[idoso|idosa]"],
+          "example": {
+            "en": "My dog is old.",
+            "pt": "Meu cachorro é velho."
+          },
+          "emoji": "👴",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-nice",
+          "en": "nice",
+          "pt": ["legal", "simpático", "simpática"],
+          "acceptedPt": ["gente boa", "gentil"],
+          "example": {
+            "en": "Your sister is nice.",
+            "pt": "Sua irmã é legal."
+          },
+          "emoji": "😊",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-funny",
+          "en": "funny",
+          "pt": ["engraçado", "engraçada"],
+          "example": {
+            "en": "My husband is funny.",
+            "pt": "Meu marido é engraçado."
+          },
+          "emoji": "😂",
+          "difficulty": 1
+        },
+        {
+          "id": "u2-his",
+          "en": "his",
+          "pt": ["dele"],
+          "example": {
+            "en": "His name is Thiago.",
+            "pt": "O nome dele é Thiago."
+          },
+          "emoji": "👨",
+          "difficulty": 2,
+          "focus": "pronome",
+          "notes": "His = dele (o dono é homem)."
+        },
+        {
+          "id": "u2-her",
+          "en": "her",
+          "pt": ["dela"],
+          "example": {
+            "en": "Her name is Ana.",
+            "pt": "O nome dela é Ana."
+          },
+          "emoji": "👩",
+          "difficulty": 2,
+          "focus": "pronome",
+          "notes": "Her = dela (a dona é mulher)."
+        },
+        {
+          "id": "u2-big",
+          "en": "big",
+          "pt": ["grande"],
+          "example": {
+            "en": "I have a big family.",
+            "pt": "Eu tenho uma família grande."
+          },
+          "emoji": "🐘",
+          "difficulty": 1,
+          "focus": "ordem-adjetivo"
+        },
+        {
+          "id": "u2-little",
+          "en": "little",
+          "pt": ["pequeno", "pequena"],
+          "example": {
+            "en": "This is my little sister.",
+            "pt": "Esta é a minha irmã mais nova."
+          },
+          "emoji": "🤏",
+          "difficulty": 2,
+          "focus": "ordem-adjetivo",
+          "notes": "Little sister/brother = irmã/irmão mais novo."
+        },
+        {
+          "id": "u2-dog",
+          "en": "dog",
+          "pt": ["cachorro"],
+          "acceptedPt": ["cão"],
+          "example": {
+            "en": "My dog is old.",
+            "pt": "Meu cachorro é velho."
+          },
+          "emoji": "🐶",
+          "difficulty": 1
+        }
+      ],
+      "sentences": [
+        {
+          "id": "u2-s-my-brother-is-tall",
+          "en": "My brother is tall.",
+          "pt": "Meu irmão é alto.",
+          "acceptedPt": ["(O) meu irmão é alto"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-my-mom-is-short",
+          "en": "My mom is short.",
+          "pt": "Minha mãe é baixa.",
+          "acceptedEn": ["My [mom|mother] is short"],
+          "acceptedPt": ["(A) minha [mãe|mamãe] é [baixa|baixinha]"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-my-parents-are-young",
+          "en": "My parents are young.",
+          "pt": "Meus pais são jovens.",
+          "acceptedPt": ["(Os) meus pais são [jovens|novos]"],
+          "difficulty": 2
+        },
+        {
+          "id": "u2-s-her-husband-is-funny",
+          "en": "Her husband is funny.",
+          "pt": "O marido dela é engraçado.",
+          "acceptedPt": [
+            "O [marido|esposo] dela é engraçado",
+            "(O) seu [marido|esposo] é engraçado"
+          ],
+          "difficulty": 3,
+          "focus": "pronome"
+        },
+        {
+          "id": "u2-s-his-sister-is-nice",
+          "en": "His sister is nice.",
+          "pt": "A irmã dele é legal.",
+          "acceptedPt": [
+            "A irmã dele é [legal|simpática|gente boa|gentil]",
+            "(A) sua irmã é [legal|simpática|gente boa|gentil]"
+          ],
+          "difficulty": 3,
+          "focus": "pronome"
+        },
+        {
+          "id": "u2-s-this-is-my-little-sister",
+          "en": "This is my little sister.",
+          "pt": "Esta é a minha irmã mais nova.",
+          "acceptedPt": [
+            "[Esta|Essa] é (a) minha [irmã mais nova|irmã caçula|irmãzinha|irmã menor]"
+          ],
+          "difficulty": 3,
+          "focus": "ordem-adjetivo"
+        },
+        {
+          "id": "u2-s-i-have-a-big-family",
+          "en": "I have a big family.",
+          "pt": "Eu tenho uma família grande.",
+          "acceptedPt": ["(Eu) tenho uma [família grande|grande família]"],
+          "difficulty": 3,
+          "focus": "ordem-adjetivo"
+        },
+        {
+          "id": "u2-s-a-funny-little-dog",
+          "en": "I have a funny little dog.",
+          "pt": "Eu tenho um cachorrinho engraçado.",
+          "acceptedPt": ["(Eu) tenho um [cachorrinho|cachorro pequeno|cãozinho] engraçado"],
+          "difficulty": 3,
+          "focus": "ordem-adjetivo"
+        }
+      ],
+      "lessons": [
+        {
+          "id": "u2-sk4-l1",
+          "title": "Alto, baixo, jovem, velho",
+          "exercises": [
+            {
+              "id": "u2-sk4-l1-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-tall"],
+              "prompt": "Qual destas é \"alto\"?",
+              "options": [
+                {
+                  "text": "tall",
+                  "emoji": "🦒"
+                },
+                {
+                  "text": "short",
+                  "emoji": "🐭"
+                },
+                {
+                  "text": "young",
+                  "emoji": "🧒"
+                }
+              ],
+              "answer": "tall"
+            },
+            {
+              "id": "u2-sk4-l1-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-short"],
+              "prompt": "Qual destas é \"baixo\"?",
+              "options": [
+                {
+                  "text": "short",
+                  "emoji": "🐭"
+                },
+                {
+                  "text": "tall",
+                  "emoji": "🦒"
+                },
+                {
+                  "text": "old",
+                  "emoji": "👴"
+                }
+              ],
+              "answer": "short"
+            },
+            {
+              "id": "u2-sk4-l1-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-young"],
+              "prompt": "Qual destas é \"jovem\"?",
+              "options": [
+                {
+                  "text": "young",
+                  "emoji": "🧒"
+                },
+                {
+                  "text": "old",
+                  "emoji": "👴"
+                },
+                {
+                  "text": "tall",
+                  "emoji": "🦒"
+                }
+              ],
+              "answer": "young"
+            },
+            {
+              "id": "u2-sk4-l1-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u2-old"],
+              "prompt": "Qual destas é \"velho\"?",
+              "options": [
+                {
+                  "text": "old",
+                  "emoji": "👴"
+                },
+                {
+                  "text": "young",
+                  "emoji": "🧒"
+                },
+                {
+                  "text": "short",
+                  "emoji": "🐭"
+                }
+              ],
+              "answer": "old"
+            },
+            {
+              "id": "u2-sk4-l1-e05",
+              "type": "match-pairs",
+              "itemIds": ["u2-tall", "u2-short", "u2-young", "u2-old"],
+              "pairs": [
+                {
+                  "en": "tall",
+                  "pt": "alto"
+                },
+                {
+                  "en": "short",
+                  "pt": "baixo"
+                },
+                {
+                  "en": "young",
+                  "pt": "jovem"
+                },
+                {
+                  "en": "old",
+                  "pt": "velho"
+                },
+                {
+                  "en": "brother",
+                  "pt": "irmão"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk4-l1-e06",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-my-brother-is-tall", "u2-tall"],
+              "sentence": "My brother is ___.",
+              "options": ["tall", "short", "old"],
+              "answer": "tall",
+              "translationPt": "Meu irmão é alto."
+            },
+            {
+              "id": "u2-sk4-l1-e07",
+              "type": "word-bank",
+              "itemIds": ["u2-s-my-mom-is-short", "u2-short"],
+              "promptPt": "Minha mãe é baixa.",
+              "answer": "My mom is short.",
+              "accepted": ["My [mom|mother] is short"],
+              "distractors": ["tall", "are", "has"]
+            },
+            {
+              "id": "u2-sk4-l1-e08",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-my-parents-are-young", "u2-young"],
+              "sentence": "My parents ___ young.",
+              "options": ["are", "is", "have"],
+              "answer": "are",
+              "translationPt": "Meus pais são jovens.",
+              "explanation": "My parents é plural, então use are. E o adjetivo não ganha -s: young, não \"youngs\"."
+            },
+            {
+              "id": "u2-sk4-l1-e09",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-my-brother-is-tall", "u2-tall"],
+              "promptEn": "My brother is tall.",
+              "accepted": ["(O) meu irmão é alto"]
+            },
+            {
+              "id": "u2-sk4-l1-e10",
+              "type": "listen-type",
+              "itemIds": ["u2-s-my-parents-are-young", "u2-young"],
+              "textEn": "My parents are young."
+            },
+            {
+              "id": "u2-sk4-l1-e11",
+              "type": "multiple-choice",
+              "itemIds": ["u2-tall", "u2-sister"],
+              "prompt": "Como se diz \"Minhas irmãs são altas\"?",
+              "options": [
+                {
+                  "text": "My sisters are tall."
+                },
+                {
+                  "text": "My sisters are talls."
+                },
+                {
+                  "text": "My sisters is tall."
+                }
+              ],
+              "answer": "My sisters are tall.",
+              "explanation": "Adjetivo em inglês não vai para o plural: tall serve para um ou para vários."
+            },
+            {
+              "id": "u2-sk4-l1-e12",
+              "type": "speak",
+              "itemIds": ["u2-s-my-mom-is-short", "u2-short"],
+              "textEn": "My mom is short."
+            },
+            {
+              "id": "u2-sk4-l1-e13",
+              "type": "translate-typing",
+              "itemIds": ["u2-young", "u2-father"],
+              "promptEn": "My dad is young.",
+              "accepted": ["(O) meu [pai|papai] é [jovem|novo]"]
+            }
+          ]
+        },
+        {
+          "id": "u2-sk4-l2",
+          "title": "Legal, engraçado, dele, dela",
+          "exercises": [
+            {
+              "id": "u2-sk4-l2-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-nice"],
+              "prompt": "Qual destas é \"legal, simpático\"?",
+              "options": [
+                {
+                  "text": "nice",
+                  "emoji": "😊"
+                },
+                {
+                  "text": "funny",
+                  "emoji": "😂"
+                },
+                {
+                  "text": "old",
+                  "emoji": "👴"
+                }
+              ],
+              "answer": "nice"
+            },
+            {
+              "id": "u2-sk4-l2-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-funny"],
+              "prompt": "Qual destas é \"engraçado\"?",
+              "options": [
+                {
+                  "text": "funny",
+                  "emoji": "😂"
+                },
+                {
+                  "text": "nice",
+                  "emoji": "😊"
+                },
+                {
+                  "text": "young",
+                  "emoji": "🧒"
+                }
+              ],
+              "answer": "funny"
+            },
+            {
+              "id": "u2-sk4-l2-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-his"],
+              "prompt": "Qual destas é \"dele\" (de um homem)?",
+              "options": [
+                {
+                  "text": "his",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "her",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "my"
+                }
+              ],
+              "answer": "his",
+              "explanation": "His = dele. Em inglês, his/her depende do dono (Thiago → his), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u2-her"],
+              "prompt": "Qual destas é \"dela\" (de uma mulher)?",
+              "options": [
+                {
+                  "text": "her",
+                  "emoji": "👩"
+                },
+                {
+                  "text": "his",
+                  "emoji": "👨"
+                },
+                {
+                  "text": "my"
+                }
+              ],
+              "answer": "her",
+              "explanation": "Her = dela. Em inglês, his/her depende do dono (Ana → her), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e05",
+              "type": "match-pairs",
+              "itemIds": ["u2-nice", "u2-funny", "u2-his", "u2-her", "u2-tall"],
+              "pairs": [
+                {
+                  "en": "nice",
+                  "pt": "legal"
+                },
+                {
+                  "en": "funny",
+                  "pt": "engraçado"
+                },
+                {
+                  "en": "his",
+                  "pt": "dele"
+                },
+                {
+                  "en": "her",
+                  "pt": "dela"
+                },
+                {
+                  "en": "tall",
+                  "pt": "alto"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk4-l2-e06",
+              "type": "fill-blank",
+              "itemIds": ["u2-her", "u2-husband"],
+              "sentence": "Ana is my sister. ___ husband is funny.",
+              "options": ["Her", "His", "My"],
+              "answer": "Her",
+              "translationPt": "A Ana é minha irmã. O marido dela é engraçado.",
+              "explanation": "Her = dela. Em inglês, his/her depende do dono (Ana → her), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e07",
+              "type": "fill-blank",
+              "itemIds": ["u2-his", "u2-wife"],
+              "sentence": "Thiago is my brother. ___ wife is nice.",
+              "options": ["His", "Her", "Your"],
+              "answer": "His",
+              "translationPt": "O Thiago é meu irmão. A esposa dele é legal.",
+              "explanation": "His = dele. Em inglês, his/her depende do dono (Thiago → his), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e08",
+              "type": "word-bank",
+              "itemIds": ["u2-s-her-husband-is-funny", "u2-her", "u2-funny"],
+              "promptPt": "O marido dela é engraçado.",
+              "answer": "Her husband is funny.",
+              "distractors": ["His", "nice", "are"],
+              "explanation": "Her = dela. Em inglês, his/her depende do dono (Ana → her), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e09",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-his-sister-is-nice", "u2-his", "u2-nice"],
+              "promptEn": "His sister is nice.",
+              "accepted": [
+                "A irmã dele é [legal|simpática|gente boa|gentil]",
+                "(A) sua irmã é [legal|simpática|gente boa|gentil]"
+              ],
+              "explanation": "His = dele. Em inglês, his/her depende do dono (Thiago → his), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e10",
+              "type": "listen-type",
+              "itemIds": ["u2-s-her-husband-is-funny", "u2-her"],
+              "textEn": "Her husband is funny."
+            },
+            {
+              "id": "u2-sk4-l2-e11",
+              "type": "word-bank",
+              "itemIds": ["u2-his"],
+              "promptPt": "O nome dele é Thiago.",
+              "answer": "His name is Thiago.",
+              "distractors": ["Her", "My", "are"],
+              "explanation": "His = dele. Em inglês, his/her depende do dono (Thiago → his), não da coisa."
+            },
+            {
+              "id": "u2-sk4-l2-e12",
+              "type": "speak",
+              "itemIds": ["u2-funny", "u2-husband"],
+              "textEn": "My husband is funny."
+            },
+            {
+              "id": "u2-sk4-l2-e13",
+              "type": "translate-typing",
+              "itemIds": ["u2-her"],
+              "promptEn": "Her name is Ana.",
+              "accepted": ["O nome dela é Ana", "(O) seu nome é Ana", "Ela se chama Ana"],
+              "explanation": "Her = dela. Em inglês, his/her depende do dono (Ana → her), não da coisa."
+            }
+          ]
+        },
+        {
+          "id": "u2-sk4-l3",
+          "title": "A ordem dos adjetivos",
+          "exercises": [
+            {
+              "id": "u2-sk4-l3-e01",
+              "type": "multiple-choice",
+              "itemIds": ["u2-big"],
+              "prompt": "Qual destas é \"grande\"?",
+              "options": [
+                {
+                  "text": "big",
+                  "emoji": "🐘"
+                },
+                {
+                  "text": "little",
+                  "emoji": "🤏"
+                },
+                {
+                  "text": "tall",
+                  "emoji": "🦒"
+                }
+              ],
+              "answer": "big"
+            },
+            {
+              "id": "u2-sk4-l3-e02",
+              "type": "multiple-choice",
+              "itemIds": ["u2-little"],
+              "prompt": "Qual destas é \"pequeno\"?",
+              "options": [
+                {
+                  "text": "little",
+                  "emoji": "🤏"
+                },
+                {
+                  "text": "big",
+                  "emoji": "🐘"
+                },
+                {
+                  "text": "old",
+                  "emoji": "👴"
+                }
+              ],
+              "answer": "little"
+            },
+            {
+              "id": "u2-sk4-l3-e03",
+              "type": "multiple-choice",
+              "itemIds": ["u2-dog"],
+              "prompt": "Qual destas é \"cachorro\"?",
+              "options": [
+                {
+                  "text": "dog",
+                  "emoji": "🐶"
+                },
+                {
+                  "text": "family",
+                  "emoji": "👨‍👩‍👧‍👦"
+                },
+                {
+                  "text": "son",
+                  "emoji": "👦"
+                }
+              ],
+              "answer": "dog"
+            },
+            {
+              "id": "u2-sk4-l3-e04",
+              "type": "multiple-choice",
+              "itemIds": ["u2-s-i-have-a-big-family", "u2-big"],
+              "prompt": "Como se diz \"uma família grande\"?",
+              "options": [
+                {
+                  "text": "a big family"
+                },
+                {
+                  "text": "a family big"
+                },
+                {
+                  "text": "big a family"
+                }
+              ],
+              "answer": "a big family",
+              "explanation": "Em inglês o adjetivo vem antes da coisa: a big family (uma família grande)."
+            },
+            {
+              "id": "u2-sk4-l3-e05",
+              "type": "fill-blank",
+              "itemIds": ["u2-s-this-is-my-little-sister", "u2-little"],
+              "sentence": "This is my ___ sister.",
+              "options": ["little", "big", "old"],
+              "answer": "little",
+              "translationPt": "Esta é a minha irmã mais nova.",
+              "explanation": "Little sister = irmã mais nova (big sister = irmã mais velha). O adjetivo vem antes: my little sister."
+            },
+            {
+              "id": "u2-sk4-l3-e06",
+              "type": "word-bank",
+              "itemIds": ["u2-s-i-have-a-big-family", "u2-big"],
+              "promptPt": "Eu tenho uma família grande.",
+              "answer": "I have a big family.",
+              "distractors": ["much", "has", "an"],
+              "explanation": "Em inglês o adjetivo vem antes da coisa: a big family (uma família grande)."
+            },
+            {
+              "id": "u2-sk4-l3-e07",
+              "type": "match-pairs",
+              "itemIds": ["u2-big", "u2-little", "u2-dog", "u2-funny", "u2-young"],
+              "pairs": [
+                {
+                  "en": "big",
+                  "pt": "grande"
+                },
+                {
+                  "en": "little",
+                  "pt": "pequeno"
+                },
+                {
+                  "en": "dog",
+                  "pt": "cachorro"
+                },
+                {
+                  "en": "funny",
+                  "pt": "engraçado"
+                },
+                {
+                  "en": "young",
+                  "pt": "jovem"
+                }
+              ]
+            },
+            {
+              "id": "u2-sk4-l3-e08",
+              "type": "multiple-choice",
+              "itemIds": ["u2-big", "u2-nice"],
+              "prompt": "Qual ordem está certa para \"uma família grande e legal\"?",
+              "options": [
+                {
+                  "text": "a nice big family"
+                },
+                {
+                  "text": "a big nice family"
+                },
+                {
+                  "text": "a nice family big"
+                }
+              ],
+              "answer": "a nice big family",
+              "explanation": "Com dois adjetivos, a opinião (nice) vem antes do tamanho (big), e os dois vêm antes da coisa: a nice big family."
+            },
+            {
+              "id": "u2-sk4-l3-e09",
+              "type": "word-bank",
+              "itemIds": ["u2-s-a-funny-little-dog", "u2-little", "u2-funny"],
+              "promptPt": "Eu tenho um cachorrinho engraçado.",
+              "answer": "I have a funny little dog.",
+              "distractors": ["big", "has", "an"],
+              "explanation": "Com dois adjetivos, a opinião vem antes do tamanho: a funny little dog."
+            },
+            {
+              "id": "u2-sk4-l3-e10",
+              "type": "listen-type",
+              "itemIds": ["u2-s-this-is-my-little-sister", "u2-little"],
+              "textEn": "This is my little sister."
+            },
+            {
+              "id": "u2-sk4-l3-e11",
+              "type": "translate-typing",
+              "itemIds": ["u2-s-i-have-a-big-family", "u2-big"],
+              "promptEn": "I have a big family.",
+              "accepted": ["(Eu) tenho uma [família grande|grande família]"],
+              "explanation": "A big family = uma família grande. Em inglês o adjetivo vem antes da coisa."
+            },
+            {
+              "id": "u2-sk4-l3-e12",
+              "type": "speak",
+              "itemIds": ["u2-s-a-funny-little-dog"],
+              "textEn": "I have a funny little dog."
+            },
+            {
+              "id": "u2-sk4-l3-e13",
+              "type": "translate-typing",
+              "itemIds": ["u2-little", "u2-her", "u2-tall"],
+              "promptEn": "Her little brother is tall.",
+              "accepted": [
+                "O [irmão mais novo|irmão caçula|irmãozinho|irmão menor] dela é alto",
+                "(O) seu [irmão mais novo|irmão caçula|irmãozinho|irmão menor] é alto"
+              ],
+              "explanation": "Little brother = irmão mais novo (ou irmãozinho). Her = dela: her little brother = o irmão mais novo dela."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewLesson": {
+    "id": "u2-review",
+    "title": "Revisão da unidade 2",
+    "exercises": [
+      {
+        "id": "u2-review-e01",
+        "type": "match-pairs",
+        "itemIds": ["u2-mother", "u2-husband", "u2-parents", "u2-relatives", "u2-daughter"],
+        "pairs": [
+          {
+            "en": "mother",
+            "pt": "mãe"
+          },
+          {
+            "en": "husband",
+            "pt": "marido"
+          },
+          {
+            "en": "parents",
+            "pt": "pais"
+          },
+          {
+            "en": "relatives",
+            "pt": "parentes"
+          },
+          {
+            "en": "daughter",
+            "pt": "filha"
+          }
+        ]
+      },
+      {
+        "id": "u2-review-e02",
+        "type": "fill-blank",
+        "itemIds": ["u2-years-old", "u2-tens-40-60"],
+        "sentence": "I ___ forty years old.",
+        "options": ["am", "have", "is"],
+        "answer": "am",
+        "translationPt": "Eu tenho quarenta anos.",
+        "explanation": "Idade em inglês usa o verbo be: I'm 30 (years old). Nunca \"I have 30 years\"."
+      },
+      {
+        "id": "u2-review-e03",
+        "type": "word-bank",
+        "itemIds": ["u2-parents"],
+        "promptPt": "Meus pais são de Belo Horizonte.",
+        "answer": "My parents are from Belo Horizonte.",
+        "distractors": ["relatives", "is", "have"],
+        "explanation": "Parents = pais (mãe e pai). Parece \"parentes\", mas não é: parentes = relatives."
+      },
+      {
+        "id": "u2-review-e04",
+        "type": "translate-typing",
+        "itemIds": ["u2-s-how-many-brothers", "u2-how-many"],
+        "promptEn": "How many brothers do you have?",
+        "accepted": [
+          "Quantos irmãos [você tem|vocês têm|tu tens]",
+          "[Você tem|Vocês têm] quantos irmãos"
+        ],
+        "explanation": "How many = quantos/quantas: How many brothers? = Quantos irmãos?"
+      },
+      {
+        "id": "u2-review-e05",
+        "type": "multiple-choice",
+        "itemIds": ["u2-num-13-15", "u2-thirty"],
+        "prompt": "Quanto é \"thirteen\"?",
+        "options": [
+          {
+            "text": "13"
+          },
+          {
+            "text": "30"
+          },
+          {
+            "text": "3"
+          }
+        ],
+        "answer": "13",
+        "explanation": "Thirteen = 13 (termina em -teen, força no final). Thirty = 30 (-ty, força no começo). O th é com a língua entre os dentes."
+      },
+      {
+        "id": "u2-review-e06",
+        "type": "fill-blank",
+        "itemIds": ["u2-s-how-old-are-you", "u2-how-old"],
+        "sentence": "How ___ are you?",
+        "options": ["old", "many", "much"],
+        "answer": "old",
+        "translationPt": "Quantos anos você tem?",
+        "explanation": "Para perguntar idade: How old...? How many é para contar coisas (irmãos, filhos)."
+      },
+      {
+        "id": "u2-review-e07",
+        "type": "listen-type",
+        "itemIds": ["u2-sister", "u2-num-1-5"],
+        "textEn": "I have two sisters.",
+        "explanation": "Mais de um? Na maioria das palavras é só pôr -s: one sister, two sisters."
+      },
+      {
+        "id": "u2-review-e08",
+        "type": "word-bank",
+        "itemIds": ["u2-his", "u2-funny", "u2-sister"],
+        "promptPt": "A irmã dele é engraçada.",
+        "answer": "His sister is funny.",
+        "distractors": ["Her", "are", "nice"],
+        "explanation": "His = dele. Em inglês, his/her depende do dono (Thiago → his), não da coisa."
+      },
+      {
+        "id": "u2-review-e09",
+        "type": "translate-typing",
+        "itemIds": ["u2-s-my-mom-is-sixty", "u2-years-old"],
+        "promptEn": "My mom is sixty years old.",
+        "accepted": ["(A) minha [mãe|mamãe] tem [sessenta|60] anos (de idade)"],
+        "explanation": "Para ele/ela, idade usa is: My mom is 60. Nada de \"has 60 years\"."
+      },
+      {
+        "id": "u2-review-e10",
+        "type": "speak",
+        "itemIds": ["u2-s-this-is-my-family", "u2-family"],
+        "textEn": "This is my family."
+      },
+      {
+        "id": "u2-review-e11",
+        "type": "multiple-choice",
+        "itemIds": ["u2-s-i-have-a-big-family", "u2-big"],
+        "prompt": "Qual frase está certa?",
+        "options": [
+          {
+            "text": "I have a big family."
+          },
+          {
+            "text": "I have a family big."
+          },
+          {
+            "text": "I have big a family."
+          }
+        ],
+        "answer": "I have a big family.",
+        "explanation": "Em inglês o adjetivo vem antes da coisa: a big family (uma família grande)."
+      },
+      {
+        "id": "u2-review-e12",
+        "type": "translate-typing",
+        "itemIds": ["u2-s-whats-your-phone-number", "u2-phone-number"],
+        "promptEn": "What's your phone number?",
+        "accepted": [
+          "Qual (é) o [seu|teu] (número de) [telefone|celular]",
+          "Qual (é) o [seu|teu] número"
+        ]
+      },
+      {
+        "id": "u2-review-e13",
+        "type": "word-bank",
+        "itemIds": ["u2-daughter", "u2-num-11-12", "u2-years-old"],
+        "promptPt": "Minha filha tem doze anos.",
+        "answer": "My daughter is twelve.",
+        "accepted": ["My daughter is twelve (years old)"],
+        "distractors": ["has", "twenty", "have"],
+        "explanation": "Para ele/ela, idade usa is: My mom is 60. Nada de \"has 60 years\"."
+      },
+      {
+        "id": "u2-review-e14",
+        "type": "match-pairs",
+        "itemIds": ["u2-num-11-12", "u2-num-16-20", "u2-tens-40-60", "u2-one-hundred"],
+        "pairs": [
+          {
+            "en": "eleven",
+            "pt": "onze"
+          },
+          {
+            "en": "twelve",
+            "pt": "doze"
+          },
+          {
+            "en": "twenty",
+            "pt": "vinte"
+          },
+          {
+            "en": "forty",
+            "pt": "quarenta"
+          },
+          {
+            "en": "one hundred",
+            "pt": "cem"
+          }
+        ]
+      },
+      {
+        "id": "u2-review-e15",
+        "type": "listen-type",
+        "itemIds": ["u2-husband", "u2-thirty"],
+        "textEn": "My husband is thirty-three.",
+        "explanation": "Thirty-three = 33, com th nas duas palavras (língua entre os dentes)."
+      }
+    ]
+  }
+}
