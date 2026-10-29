@@ -247,11 +247,12 @@ test.describe('lição demo — jogar inteira', () => {
     await playRight(page, ids);
     await finishScreen(page);
     await expect(page.getByText('Lição perfeita! Nenhum erro.')).toBeVisible();
-    const xpText = await page.locator('dd').first().textContent();
-    const xp = Number(xpText?.replace('+', ''));
-    expect(xp).toBeGreaterThanOrEqual(15);
-
     const db = await dumpDb(page);
+    const xp = db.results[0]?.xp ?? 0;
+    expect(xp).toBeGreaterThanOrEqual(15);
+    // The XP counter animates up to the saved value.
+    await expect(page.locator('dd').first()).toHaveText(`+${xp}`);
+
     expect(db.profile?.totalXp).toBe(xp);
     expect(db.profile?.hearts).toBe(5);
     expect(db.results).toHaveLength(1);
@@ -608,7 +609,9 @@ test.describe('corretor na tela', () => {
     await page.getByRole('textbox').fill('muito obrigdo');
     await verify(page).click();
     await expect(feedback(page)).toContainText('Quase! Atenção à digitação.');
-    await expect(feedback(page)).toContainText('Resposta certa: Muito obrigado!');
+    await expect(feedback(page)).toContainText('Resposta certa:');
+    // Fase 5: the differing letter is highlighted (and named for screen readers).
+    await expect(feedback(page).locator('mark')).toHaveText('a (letra diferente)');
     await expect(hearts(page)).toHaveAccessibleName('5 corações');
   });
 
@@ -725,7 +728,7 @@ test.describe('sem Web Speech', () => {
     await page.getByRole('button', { name: 'Sair da lição' }).click();
     await page.getByRole('button', { name: 'Sair', exact: true }).click();
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.getByRole('heading', { level: 1, name: 'Falaê' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: 'Sua trilha' })).toBeAttached();
     await softNavigate(page, LESSON);
     await playRight(page, ['e01', 'e02', 'e03', 'e04', 'e05', 'e06']);
     await expect(page.getByRole('heading', { name: 'Fale esta frase em inglês' })).toBeVisible();
@@ -836,12 +839,15 @@ test.describe('acessibilidade do feedback (correções da revisão)', () => {
     await expect(page.getByText(/Próximo coração em/)).toBeVisible();
   });
 
-  test('tempo na tela de fim em formato legível ("s" / "min")', async ({ page }) => {
+  test('tempo na tela de fim em formato m:ss (Fase 5), com forma falada', async ({ page }) => {
     await fakeSpeech(page);
     await page.goto(LESSON);
     await playRight(page, ids);
     await finishScreen(page);
-    const time = await page.locator('dd').nth(2).textContent();
-    expect(time).toMatch(/^(\d+ s|\d+ min( \d+ s)?)$/);
+    const time = await page.locator('dd').nth(2).locator('[aria-hidden="true"]').textContent();
+    expect(time).toMatch(/^\d+:\d{2}$/);
+    await expect(page.locator('dd').nth(2).locator('.sr-only')).toHaveText(
+      /^Tempo: (\d+ s|\d+ min( \d+ s)?)$/,
+    );
   });
 });

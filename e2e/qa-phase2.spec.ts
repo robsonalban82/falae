@@ -14,7 +14,7 @@ const choose = (page: Page, name: string) =>
 test.describe('tema', () => {
   test('"Sistema" is the default and follows the OS, live', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await expect(radio(page, 'Sistema')).toBeChecked();
     await expect(html(page)).toHaveClass(/dark/);
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', /#14152b/i);
@@ -29,7 +29,7 @@ test.describe('tema', () => {
 
   test('explicit "Claro" ignores a dark OS, also after reload', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Claro');
     await expect(html(page)).not.toHaveClass(/dark/);
     await page.reload();
@@ -44,7 +44,7 @@ test.describe('tema', () => {
     page,
   }) => {
     await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Escuro');
     await expect(html(page)).toHaveClass(/dark/);
     await choose(page, 'Sistema');
@@ -56,7 +56,7 @@ test.describe('tema', () => {
   });
 
   test('exactly one theme radio is checked at any time', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     for (const name of ['Escuro', 'Claro', 'Sistema']) {
       await choose(page, name);
       await expect(page.locator('input[name="theme"]:checked')).toHaveCount(1);
@@ -65,7 +65,7 @@ test.describe('tema', () => {
   });
 
   test('rapid repeated clicks end on the last choice, after reload too', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     for (let i = 0; i < 5; i++) {
       await choose(page, 'Escuro');
       await choose(page, 'Claro');
@@ -79,7 +79,7 @@ test.describe('tema', () => {
   test('theme can be chosen with the keyboard (arrow keys in the radio group)', async ({
     page,
   }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await radio(page, 'Sistema').focus();
     await page.keyboard.press('ArrowRight');
     await expect(radio(page, 'Claro')).toBeChecked();
@@ -91,7 +91,7 @@ test.describe('tema', () => {
   });
 
   test('focused theme pill shows a visible focus ring', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     // Tab from the skip area into the radio group: the checked radio receives focus.
     await radio(page, 'Sistema').focus();
     await page.keyboard.press('ArrowRight');
@@ -101,7 +101,7 @@ test.describe('tema', () => {
   });
 
   test('saved theme survives in a second tab of the same profile', async ({ page, context }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Escuro');
     await expect(html(page)).toHaveClass(/dark/);
     const other = await context.newPage();
@@ -111,7 +111,7 @@ test.describe('tema', () => {
 
   test('saved dark theme is applied before first paint (no light flash)', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Escuro');
     await expect(html(page)).toHaveClass(/dark/);
     await page.addInitScript(() => {
@@ -137,20 +137,20 @@ test.describe('vitrine', () => {
     page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('requestfailed', (r) => errors.push(`failed: ${r.url()}`));
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.waitForLoadState('networkidle');
     expect(errors).toEqual([]);
   });
 
   test('shows the 5 mascot moods with accessible names', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     for (const mood of ['feliz', 'comemorando', 'triste', 'incentivando você', 'pensando']) {
       await expect(page.getByRole('img', { name: `Tuca, o tucano, ${mood}` })).toBeVisible();
     }
   });
 
   test('progress bar buttons clamp between 0 and 12', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     const bar = page.getByRole('progressbar');
     const minus = page.getByRole('button', { name: /Diminuir/ });
     const plus = page.getByRole('button', { name: /Aumentar/ });
@@ -161,7 +161,7 @@ test.describe('vitrine', () => {
   });
 
   test('no horizontal scroll at this viewport', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.waitForLoadState('networkidle');
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -171,7 +171,7 @@ test.describe('vitrine', () => {
 
   test('bottom nav does not cover the last content on mobile', async ({ page }, info) => {
     test.skip(info.project.name !== 'mobile', 'mobile layout only');
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     const lastCard = page.locator('main li').last();
     const nav = page.getByRole('navigation', { name: 'Navegação principal' });
@@ -180,7 +180,7 @@ test.describe('vitrine', () => {
   });
 
   test('cards use the --radius-card token (rounded corners render)', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     const radius = await page
       .getByRole('heading', { name: 'Cores' })
       .locator('xpath=..')
@@ -192,7 +192,7 @@ test.describe('vitrine', () => {
 
   test('respects reduced motion (mascot not animating)', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     const tuca = page.getByRole('img', { name: 'Tuca, o tucano, comemorando' });
     const a = await tuca.screenshot();
     await page.waitForTimeout(400);
@@ -203,7 +203,7 @@ test.describe('vitrine', () => {
 
 test.describe('acessibilidade', () => {
   test('first Tab reaches "Pular para o conteúdo", which moves focus to main', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.keyboard.press('Tab');
     const skip = page.getByRole('link', { name: 'Pular para o conteúdo' });
     await expect(skip).toBeFocused();
@@ -227,7 +227,6 @@ test.describe('rotas', () => {
     '/praticar',
     '/perfil',
     '/config',
-    '/dica/u1-sk1',
     '/boas-vindas',
     '/nivelamento',
     '/nao-existe/abc',
@@ -241,20 +240,24 @@ test.describe('rotas', () => {
     });
   }
 
-  test('unknown lesson id shows "Lição não encontrada." with a way back (Fase 3)', async ({
-    page,
-  }) => {
+  test('unknown lesson id goes back to the path with a notice (Fase 5)', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('/licao/nao-existe');
-    await expect(page.getByRole('heading', { name: 'Lição não encontrada.' })).toBeVisible();
-    await page.getByRole('link', { name: 'Voltar para a trilha' }).click();
     await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('status').first()).toHaveText(/Não encontramos essa lição/);
     expect(errors).toEqual([]);
   });
 
+  test('deep link to a tip renders the tip (Fase 5)', async ({ page }) => {
+    await page.goto('/dica/u1-sk1');
+    await expect(
+      page.getByRole('heading', { level: 1, name: 'Cumprimentos ao longo do dia' }),
+    ).toBeVisible();
+  });
+
   test('"Voltar para o início" and browser back work', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.getByRole('link', { name: 'Perfil' }).click();
     await expect(page).toHaveURL(/\/perfil$/);
     await page.goBack();
@@ -279,7 +282,7 @@ test.describe('rotas', () => {
 
 test.describe('PWA / offline', () => {
   test('manifest is valid PT-BR with installable icons', async ({ page, request }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     const href = await page.locator('link[rel="manifest"]').getAttribute('href');
     expect(href).toBeTruthy();
     const manifest = await (await request.get(href!)).json();
@@ -298,7 +301,7 @@ test.describe('PWA / offline', () => {
   });
 
   async function goOffline(page: Page) {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.evaluate(async () => {
       await navigator.serviceWorker.ready;
     });
@@ -308,7 +311,7 @@ test.describe('PWA / offline', () => {
   }
 
   test('offline: reload of the showcase keeps the saved theme', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Escuro');
     await goOffline(page);
     await page.reload();
@@ -325,13 +328,15 @@ test.describe('PWA / offline', () => {
 
   test('offline: deep links and unknown routes fall back to the app shell', async ({ page }) => {
     await goOffline(page);
-    for (const path of ['/dica/x', '/qualquer/coisa']) {
-      await page.goto(path);
-      await expect(page.getByRole('heading', { name: 'Em construção' })).toBeVisible();
-    }
-    // The lesson route is served offline too (Fase 3: real screen).
+    await page.goto('/qualquer/coisa');
+    await expect(page.getByRole('heading', { name: 'Em construção' })).toBeVisible();
+    // Lazy routes (tip, lesson) are precached and work offline too.
+    await page.goto('/dica/x');
+    await expect(page.getByRole('status').first()).toHaveText(/Não encontramos essa dica/);
     await page.goto('/licao/nao-existe');
-    await expect(page.getByRole('heading', { name: 'Lição não encontrada.' })).toBeVisible();
+    await expect(page.getByRole('status').first()).toHaveText(/Não encontramos essa lição/);
+    await page.goto('/dica/u1-sk1');
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     await page.context().setOffline(false);
   });
 
@@ -351,7 +356,7 @@ test.describe('persistência robusta', () => {
   }) => {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Escuro');
     await page.evaluate(
       () =>
@@ -405,7 +410,7 @@ test.describe('persistência robusta', () => {
 
   test('app still renders when IndexedDB is unavailable (private mode-like)', async ({ page }) => {
     await disableIndexedDb(page);
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await expect(page.getByRole('heading', { level: 1, name: 'Falaê' })).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Navegação principal' })).toBeVisible();
   });
@@ -418,7 +423,7 @@ test.describe('persistência robusta', () => {
     page.on('pageerror', (e) => errors.push(e.message));
     await disableIndexedDb(page);
     await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await choose(page, 'Escuro');
     await expect(radio(page, 'Sistema')).toBeChecked();
     await expect(html(page)).not.toHaveClass(/dark/);
@@ -435,7 +440,7 @@ test.describe('persistência robusta', () => {
       (m) => m.type() === 'error' && /Uncaught/.test(m.text()) && errors.push(m.text()),
     );
     await disableIndexedDb(page);
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await page.waitForLoadState('networkidle');
     expect(errors).toEqual([]);
   });
@@ -444,7 +449,7 @@ test.describe('persistência robusta', () => {
     page,
   }) => {
     await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
+    await page.goto('/dev/showcase');
     await expect(radio(page, 'Sistema')).toBeChecked();
     await choose(page, 'Escuro');
     await page.reload(); // no wait: the IndexedDB write may still be in flight

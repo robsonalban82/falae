@@ -1,15 +1,21 @@
 import { expect, test } from '@playwright/test';
 
-test('app loads with title, navigation and mascot', async ({ page }) => {
+test('app opens on the path with title and navigation', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Falaê/);
-  await expect(page.getByRole('heading', { level: 1, name: 'Falaê' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: 'Sua trilha' })).toBeAttached();
   await expect(page.getByRole('navigation', { name: 'Navegação principal' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Lição 1 de 3, .*, atual/ })).toBeVisible();
+});
+
+test('design showcase lives at /dev/showcase', async ({ page }) => {
+  await page.goto('/dev/showcase');
+  await expect(page.getByRole('heading', { level: 1, name: 'Falaê' })).toBeVisible();
   await expect(page.getByRole('img', { name: /Tuca, o tucano, comemorando/ })).toBeVisible();
 });
 
 test('theme choice persists after reload', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/dev/showcase');
   // The native radio is visually hidden; users click its pill (label).
   await page.locator('label').filter({ hasText: 'Escuro' }).click();
   await expect(page.locator('html')).toHaveClass(/dark/);
