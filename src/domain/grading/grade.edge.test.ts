@@ -265,3 +265,12 @@ describe('fala', () => {
     expect(gradeSpeech('Nice to meet you', ['uh nice to meet you too'])).toBe(true);
   });
 });
+
+describe('spelled-out numbers (Phase 7)', () => {
+  it('seven = 7 and twelve = 12 are correct, never "almost"', () => {
+    expect(verdict(listen('I have seven apples.'), 'I have 7 apples')).toBe('correct');
+    expect(verdict(listen('I have 7 apples.'), 'I have seven apples')).toBe('correct');
+    expect(verdict(listen('She is twelve.'), 'she is 12')).toBe('correct');
+    expect(verdict(listen('She is 12.'), 'she is twelve')).toBe('correct');
+  });
+});

@@ -83,8 +83,8 @@ export async function showReminder(
     const registration = await navigator.serviceWorker.ready;
     await registration.showNotification(text.title, {
       body: text.body,
-      icon: '/pwa-192.png',
-      badge: '/pwa-192.png',
+      icon: `${import.meta.env.BASE_URL}pwa-192.png`,
+      badge: `${import.meta.env.BASE_URL}pwa-192.png`,
       tag: REMINDER_TAG,
     });
     localStorage.setItem(LAST_SHOWN_KEY, dayKey(nowMs));

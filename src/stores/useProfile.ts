@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { loadCourse } from '../content/loader';
+import { isReviewLesson } from '../content/loader';
 import { repository } from '../data';
 import { onDataReplaced } from '../data/events';
 import type { AppliedCommit, CommitContext } from '../data/repository';
@@ -48,7 +48,13 @@ type ProfileState = {
   load: () => Promise<void>;
   /** Hearts with lazy refill applied (does not persist). */
   heartsNow: () => { hearts: number; nextHeartInMs: number | null };
-  spendHeart: () => Promise<void>;
+  /**
+   * Spends one heart: optimistic UI plus a transactional write. Returns the hearts count expected
+   * after the write (`target`) right away, so callers can record it before the write lands.
+   */
+  spendHeart: () => { target: number; saved: Promise<boolean> };
+  /** Re-applies a heart spend whose write may have been lost (reload): lowers hearts to `target`. */
+  reconcileHearts: (target: number) => Promise<void>;
   /** Marks the welcome flow as done (transactional read-modify-write). */
   completeOnboarding: () => Promise<void>;
   commitLesson: (
@@ -84,15 +90,40 @@ export const useProfile = create<ProfileState>((set, get) => ({
     return { hearts, nextHeartInMs };
   },
 
-  spendHeart: async () => {
+  spendHeart: () => {
     const now = clock.now();
     // Optimistic UI, then a read-modify-write on the stored profile (another tab may have changed it).
-    set({ profile: { ...get().profile, ...loseHeart(get().profile, now) } });
+    const optimistic = loseHeart(get().profile, now);
+    set({ profile: { ...get().profile, ...optimistic } });
+    const saved = repository
+      .updateProfile((p) => ({ ...p, ...loseHeart(p, now) }))
+      .then(
+        (profile) => {
+          set({ profile });
+          return true;
+        },
+        (err: unknown) => {
+          console.error('[falae] Could not save hearts', err);
+          return false;
+        },
+      );
+    return { target: optimistic.hearts, saved };
+  },
+
+  reconcileHearts: async (target) => {
+    const now = clock.now();
     try {
-      const profile = await repository.updateProfile((p) => ({ ...p, ...loseHeart(p, now) }));
+      const profile = await repository.updateProfile((p) => {
+        let next = { hearts: p.hearts, heartsUpdatedAt: p.heartsUpdatedAt };
+        // Only lost writes are re-applied: a stored count already at (or below) the target is kept.
+        // Bounded: at most MAX_HEARTS steps.
+        for (let i = 0; i < MAX_HEARTS && refillHearts(next, now).hearts > Math.max(0, target); i++)
+          next = loseHeart(next, now);
+        return { ...p, ...next };
+      });
       set({ profile });
     } catch (err) {
-      console.error('[falae] Could not save hearts', err);
+      console.error('[falae] Could not reconcile hearts', err);
     }
   },
 
@@ -121,8 +152,7 @@ export const useProfile = create<ProfileState>((set, get) => ({
       itemOutcomes: summary.itemOutcomes,
     };
 
-    const { course } = loadCourse();
-    const isReview = (id: string) => course.lessons.get(id)?.skill === null;
+    const isReview = isReviewLesson;
     const localHour = clock.localHour();
 
     type Meta = {

@@ -17,6 +17,8 @@ type Props = {
   returnFocus?: RefObject<HTMLElement | null>;
   /** Content between the body and the buttons (e.g. a confirmation field). */
   field?: ReactNode;
+  /** Why the confirm button is (or is no longer) locked; linked to it by aria-describedby. */
+  confirmHint?: ReactNode;
 };
 
 /**
@@ -36,12 +38,14 @@ export function ConfirmDialog({
   extra,
   returnFocus,
   field,
+  confirmHint,
 }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
   const cancel = useRef<HTMLButtonElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const titleId = useId();
   const bodyId = useId();
+  const hintId = useId();
 
   useEffect(() => {
     const dialog = ref.current;
@@ -118,11 +122,17 @@ export function ConfirmDialog({
         </div>
       )}
       {field}
+      {confirmHint && (
+        <p id={hintId} aria-live="polite" className="text-sm font-bold text-ink-muted">
+          {confirmHint}
+        </p>
+      )}
       <div className="flex flex-col gap-3 pt-2">
         <Button
           block
           variant={danger ? 'danger' : 'primary'}
           disabled={confirmDisabled}
+          aria-describedby={confirmHint ? hintId : undefined}
           onClick={onConfirm}
         >
           {confirmLabel}

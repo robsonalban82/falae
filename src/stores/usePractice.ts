@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import type { Course, StudyItem } from '../content/course';
-import { loadCourse, pathUnits } from '../content/loader';
+import type { StudyItem } from '../content/course';
+import { getCourseManifest, loadItemIndex, manifestItemIds, pathUnits } from '../content/loader';
 import { repository } from '../data';
 import { onDataReplaced } from '../data/events';
 import type { SrsCard } from '../data/models';
@@ -36,61 +36,69 @@ export function toPracticeItem(it: StudyItem): PracticeItem {
       };
 }
 
-/** Item ids practiced by a lesson, in exercise order. */
-function lessonItemIds(course: Course, lessonId: string | null): string[] {
-  const lesson = lessonId ? course.lessons.get(lessonId)?.lesson : undefined;
-  return [...new Set((lesson?.exercises ?? []).flatMap((e) => e.itemIds))];
+/** Item ids practiced by a lesson (from the manifest), in exercise order. */
+function lessonItemIds(lessonId: string | null): string[] {
+  if (lessonId === null) return [];
+  for (const unit of getCourseManifest().units) {
+    if (unit.reviewLesson.id === lessonId) return unit.reviewLesson.itemIds;
+    for (const skill of unit.skills) {
+      const lesson = skill.lessons.find((l) => l.id === lessonId);
+      if (lesson) return lesson.itemIds;
+    }
+  }
+  return [];
 }
 
 /** Reserve items (ADR-011): the current lesson of the path; course finished → the last review. */
-function fallbackIds(course: Course, path: PathState): string[] {
-  if (path.currentLessonId !== null) return lessonItemIds(course, path.currentLessonId);
+function fallbackIds(path: PathState): string[] {
+  if (path.currentLessonId !== null) return lessonItemIds(path.currentLessonId);
   const last = pathUnits().at(-1);
-  return last ? lessonItemIds(course, last.reviewLesson.id) : [];
+  return last ? last.reviewLesson.itemIds : [];
 }
 
-/** Items of the unlocked units only (never distractors from a locked unit). */
-function unlockedPool(course: Course, path: PathState): PracticeItem[] {
+/** Path units unlocked in the current state (never distractors from a locked unit). */
+function unlockedUnitIds(path: PathState): string[] {
   const unlocked = new Set(path.units.filter((u) => u.unlocked).map((u) => u.unitId));
   return pathUnits()
     .filter((u) => unlocked.has(u.id))
-    .flatMap((u) =>
-      u.skills.flatMap((s) => [...s.vocab, ...s.sentences].map((i) => course.items.get(i.id))),
-    )
-    .filter((i): i is StudyItem => i !== undefined)
-    .map(toPracticeItem);
+    .map((u) => u.id);
 }
 
+/** Synchronous (manifest only): ids a practice session would use. */
 export function selectPracticeItems(cards: readonly SrsCard[], path: PathState): string[] {
-  const { course } = loadCourse();
-  return selectForPractice(
-    cards,
-    clock.today(),
-    fallbackIds(course, path),
-    new Set(course.items.keys()),
-  );
+  return selectForPractice(cards, clock.today(), fallbackIds(path), manifestItemIds());
 }
 
-/** Builds a new practice session (null when there is nothing to practice). */
-export function buildPracticeSession(
+/** Builds a new practice session (null when there is nothing to practice). Loads the needed units. */
+export async function buildPracticeSession(
   cards: readonly SrsCard[],
   path: PathState,
   caps: Capabilities,
-): LessonState | null {
-  const { course } = loadCourse();
+): Promise<LessonState | null> {
   const seed = clock.now();
-  const items = selectPracticeItems(cards, path)
-    .map((id) => course.items.get(id))
+  const ids = selectPracticeItems(cards, path);
+  const unlocked = unlockedUnitIds(path);
+  // Due cards may belong to units that are locked again (import); load their units too.
+  const owners = pathUnits()
+    .filter((u) => u.skills.some((s) => s.itemIds.some((id) => ids.includes(id))))
+    .map((u) => u.id);
+  const index = await loadItemIndex([...new Set([...unlocked, ...owners])]);
+  const unlockedItems = manifestItemIds(unlocked);
+  const items = ids
+    .map((id) => index.items.get(id))
     .filter((i): i is StudyItem => i !== undefined)
+    .map(toPracticeItem);
+  const distractorPool = [...index.items.values()]
+    .filter((i) => unlockedItems.has(i.id))
     .map(toPracticeItem);
   const generated = generatePractice({
     items,
-    distractorPool: unlockedPool(course, path),
+    distractorPool,
     caps,
     seed,
     choicePrompt: t.practice.choicePrompt,
   });
-  const exercises = applyFallbacks(generated, caps, (id) => course.items.get(id));
+  const exercises = applyFallbacks(generated, caps, (id) => index.items.get(id));
   if (exercises.length === 0) return null;
   return startLesson({
     lessonId: PRACTICE_LESSON_ID,
@@ -123,9 +131,9 @@ export const usePractice = create<PracticeState>((set) => ({
 
 /** Due cards whose item still exists in the content. */
 export function practiceDueCount(cards: readonly SrsCard[]): number {
-  const { course } = loadCourse();
+  const existing = manifestItemIds();
   return dueCount(
-    cards.filter((c) => course.items.has(c.itemId)),
+    cards.filter((c) => existing.has(c.itemId)),
     clock.today(),
   );
 }

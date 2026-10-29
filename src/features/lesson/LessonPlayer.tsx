@@ -26,7 +26,7 @@ import { FeedbackPanel } from './FeedbackPanel';
 import { HeartsBadge } from './HeartsBadge';
 import { LessonComplete } from './LessonComplete';
 import { OutOfHearts } from './OutOfHearts';
-import { clearSession, saveSession } from './sessionStore';
+import { clearHeartsPending, clearSession, markHeartsPending, saveSession } from './sessionStore';
 import { ExitDialog } from './ExitDialog';
 
 const SPEAK_PAUSE_MS = 60 * 60 * 1000;
@@ -50,6 +50,7 @@ export function LessonPlayer({ initial, knownWords, exitTo = paths.path }: Props
   const [saveAttempt, setSaveAttempt] = useState(0);
   const [commit, setCommit] = useState<CommitSummary | null>(null);
   const committedAttempt = useRef(-1);
+  const heartWrites = useRef(0);
   const settings = useSettings((s) => s.settings);
   const updateSettings = useSettings((s) => s.update);
   const spendHeart = useProfile((s) => s.spendHeart);
@@ -113,13 +114,24 @@ export function LessonPlayer({ initial, knownWords, exitTo = paths.path }: Props
         settings.sound,
       );
       vibrate(ok ? 'correct' : 'wrong', settings.haptics);
-      if (!ok && state.usesHearts) void spendHeart();
+      if (!ok && state.usesHearts) {
+        // Record the spend before showing feedback: a reload before the write lands re-applies it.
+        const { target, saved } = spendHeart();
+        heartWrites.current++;
+        markHeartsPending(state.lessonId, target);
+        void saved.then((ok) => {
+          heartWrites.current--;
+          // A failed write keeps the mark, so a restore re-applies it.
+          if (ok && heartWrites.current === 0) clearHeartsPending();
+        });
+      }
       dispatch({ type: 'answer', grade });
     },
     [
       state.status,
       state.combo,
       state.usesHearts,
+      state.lessonId,
       exercise,
       response,
       knownWords,

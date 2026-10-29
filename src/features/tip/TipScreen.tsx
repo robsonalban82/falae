@@ -1,13 +1,15 @@
 import { Fragment, type ReactNode } from 'react';
 import { Link, Navigate, useParams } from 'react-router';
 import { paths, type PathNotice } from '../../app/routes';
-import { findSkill } from '../../content/course';
-import { loadCourse } from '../../content/loader';
+import { findSkillUnit, loadUnit } from '../../content/loader';
 import type { Skill } from '../../content/schema';
 import { t } from '../../i18n/pt-BR';
 import { ttsSupported } from '../../services/speech';
 import { En } from '../../ui/En';
 import { ArrowRightIcon, CheckIcon, CrossIcon } from '../../ui/icons';
+import { ContentError } from '../../ui/ContentError';
+import { ContentSkeleton } from '../../ui/ContentSkeleton';
+import { useAsync } from '../../ui/useAsync';
 import { SpeakerButton } from '../lesson/exercises/SpeakerButton';
 
 type Block = Skill['tip']['blocks'][number];
@@ -75,12 +77,21 @@ function TipBlock({ block, tts }: { block: Block; tts: boolean }) {
 /** Route /dica/:skillId — read-only study tip (open even for locked skills). */
 export function TipScreen() {
   const { skillId = '' } = useParams();
-  const found = findSkill(loadCourse().course, skillId);
-  if (!found) {
+  const unitId = findSkillUnit(skillId);
+  const { state, retry } = useAsync(skillId, async () =>
+    unitId ? (await loadUnit(unitId)).skills.find((s) => s.id === skillId) : undefined,
+  );
+  const notFound = () => {
     const notice: PathNotice = 'tipNotFound';
     return <Navigate to={paths.path} replace state={{ notice }} />;
-  }
-  const { skill } = found;
+  };
+  if (!unitId) return notFound();
+  if (state.status === 'loading') return <ContentSkeleton label={t.tip.loading} />;
+  if (state.status === 'error') return <ContentError onRetry={retry} />;
+  return state.value ? <TipArticle skill={state.value} /> : notFound();
+}
+
+function TipArticle({ skill }: { skill: Skill }) {
   const tts = ttsSupported();
   return (
     <article className="space-y-6">

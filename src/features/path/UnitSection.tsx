@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { paths } from '../../app/routes';
-import type { Unit } from '../../content/schema';
+import type { ManifestUnit } from '../../content/buildManifest';
 import type { LessonNode, UnitState } from '../../domain/progression/pathState';
 import { t } from '../../i18n/pt-BR';
 import { BulbIcon, LockIcon } from '../../ui/icons';
@@ -8,7 +8,7 @@ import { PathNode } from './PathNode';
 import { unitTheme, windingOffset } from './unitTheme';
 
 type Props = {
-  unit: Unit;
+  unit: ManifestUnit;
   state: UnitState;
   number: number;
   reduceMotion: boolean;

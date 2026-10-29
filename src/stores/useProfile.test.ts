@@ -306,3 +306,28 @@ describe('useProfile.commitLesson', () => {
     });
   });
 });
+
+describe('useProfile hearts (reload race)', () => {
+  it('spendHeart returns the target right away and stores it transactionally', async () => {
+    await seedProfile({ hearts: 5 });
+    const { target, saved } = useProfile.getState().spendHeart();
+    expect(target).toBe(4);
+    expect(useProfile.getState().profile.hearts).toBe(4);
+    await saved;
+    expect((await repository.getProfile()).hearts).toBe(4);
+  });
+
+  it('reconcileHearts re-applies a lost write', async () => {
+    await seedProfile({ hearts: 5 });
+    await useProfile.getState().reconcileHearts(4);
+    expect((await repository.getProfile()).hearts).toBe(4);
+  });
+
+  it('reconcileHearts is idempotent when the write already landed', async () => {
+    await seedProfile({ hearts: 5 });
+    await useProfile.getState().spendHeart().saved;
+    await useProfile.getState().reconcileHearts(4);
+    await useProfile.getState().reconcileHearts(4);
+    expect((await repository.getProfile()).hearts).toBe(4);
+  });
+});

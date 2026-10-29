@@ -42,6 +42,8 @@ function useCountUp(target: number, reduce: boolean): number {
   return reduce ? target : value;
 }
 
+const MAX_VISIBLE_ACHIEVEMENTS = 3;
+
 type AchievementKey = keyof typeof t.achievements.list;
 const achievementText = (id: string) =>
   id in t.achievements.list ? t.achievements.list[id as AchievementKey] : null; // `in` narrows the key
@@ -218,8 +220,20 @@ export function LessonComplete({
 
           {achievements.length > 0 && (
             <div className="rounded-card border-2 border-line bg-surface p-3">
-              <h2 className="mb-2 text-xl font-semibold">{t.achievements.heading}</h2>
-              <ul className="space-y-2">
+              <h2 id="new-achievements" className="mb-2 text-xl font-semibold">
+                {t.achievements.heading}
+              </h2>
+              {/* At most ~3 visible: a long list scrolls instead of pushing "Continuar" off-screen. */}
+              <ul
+                aria-labelledby="new-achievements"
+                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable list must be keyboard-reachable (WCAG 2.1.1)
+                tabIndex={achievements.length > MAX_VISIBLE_ACHIEVEMENTS ? 0 : undefined}
+                className={`space-y-2 ${
+                  achievements.length > MAX_VISIBLE_ACHIEVEMENTS
+                    ? 'max-h-48 overflow-y-auto overscroll-contain pr-1'
+                    : ''
+                }`}
+              >
                 {achievements.map((a) => (
                   <li key={a.id} className="flex items-center gap-3">
                     <span aria-hidden="true" className="text-3xl">
@@ -232,6 +246,11 @@ export function LessonComplete({
                   </li>
                 ))}
               </ul>
+              {achievements.length > MAX_VISIBLE_ACHIEVEMENTS && (
+                <p className="mt-2 text-sm font-bold text-ink-muted">
+                  {t.achievements.andMore(achievements.length - MAX_VISIBLE_ACHIEVEMENTS)}
+                </p>
+              )}
             </div>
           )}
         </div>

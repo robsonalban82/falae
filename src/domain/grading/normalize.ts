@@ -212,6 +212,17 @@ function wordsToDigits(words: string[], lang: Lang): string[] {
   return out;
 }
 
+/**
+ * Spelled-out numbers 0–100 → digits, on any text ("I have seven apples" → "i have 7 apples",
+ * "twenty-one" / "twenty one" / "21" → "21"). Applied to both the answer and every accepted
+ * answer, so "seven" and "7" compare equal; a number that differs is never "almost".
+ * Ordinals ("seventh") are not numbers here: the course does not use them.
+ */
+export function normalizeNumbers(text: string, lang: Lang = 'en'): string {
+  const plain = stripAccents(text.toLowerCase()).replace(/[-–—]/g, ' ');
+  return wordsToDigits(plain.split(/\s+/).filter(Boolean), lang).join(' ');
+}
+
 export function stripAccents(text: string): string {
   return text.normalize('NFD').replace(/\p{M}+/gu, '');
 }

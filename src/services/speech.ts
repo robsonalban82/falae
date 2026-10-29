@@ -11,17 +11,56 @@ export function ttsSupported(): boolean {
   );
 }
 
-function pickVoice(): SpeechSynthesisVoice | undefined {
-  const voices = window.speechSynthesis
-    .getVoices()
-    .filter((v) => v.lang.toLowerCase().startsWith('en'));
-  const us = voices.filter((v) => v.lang.toLowerCase() === 'en-us');
-  const pool = us.length ? us : voices;
+type VoiceLike = Pick<SpeechSynthesisVoice, 'lang' | 'localService' | 'name'>;
+
+const langOf = (v: VoiceLike) => v.lang.toLowerCase().replace('_', '-');
+
+/**
+ * Pure: en-US local (natural/enhanced first) → en-US any → other en-* (local first) → undefined
+ * (then the utterance relies on `lang = 'en-US'` alone).
+ */
+export function pickEnglishVoice<V extends VoiceLike>(voices: readonly V[]): V | undefined {
+  const us = voices.filter((v) => langOf(v) === 'en-us');
+  const en = voices.filter((v) => langOf(v) === 'en' || langOf(v).startsWith('en-'));
+  const nice = (v: VoiceLike) => /natural|enhanced|premium/i.test(v.name);
   return (
-    pool.find((v) => v.localService && /natural|enhanced|premium/i.test(v.name)) ??
-    pool.find((v) => v.localService) ??
-    pool[0]
+    us.find((v) => v.localService && nice(v)) ??
+    us.find((v) => v.localService) ??
+    us[0] ??
+    en.find((v) => v.localService) ??
+    en[0]
   );
+}
+
+// Chrome returns [] from getVoices() until `voiceschanged`: keep one cached pick, refreshed by a
+// single listener. speak() never waits for voices; before they load it uses `lang` only.
+let cachedVoice: SpeechSynthesisVoice | undefined;
+let voicesListener: (() => void) | null = null;
+
+function refreshVoice() {
+  cachedVoice = pickEnglishVoice(window.speechSynthesis.getVoices());
+}
+
+function ensureVoices() {
+  if (voicesListener || !ttsSupported()) return;
+  voicesListener = refreshVoice;
+  window.speechSynthesis.addEventListener?.('voiceschanged', voicesListener);
+  refreshVoice();
+}
+
+/** Removes the voices listener (tests, teardown). */
+export function disposeSpeech(): void {
+  if (voicesListener && ttsSupported())
+    window.speechSynthesis.removeEventListener?.('voiceschanged', voicesListener);
+  voicesListener = null;
+  cachedVoice = undefined;
+}
+
+/** Voice speak() would use now (undefined = `lang` only). */
+export function currentVoice(): SpeechSynthesisVoice | undefined {
+  ensureVoices();
+  if (!cachedVoice) refreshVoice();
+  return cachedVoice;
 }
 
 export function speak(text: string, options: { slow?: boolean } = {}): Promise<void> {
@@ -32,7 +71,7 @@ export function speak(text: string, options: { slow?: boolean } = {}): Promise<v
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     utterance.rate = options.slow ? 0.6 : 1;
-    const voice = pickVoice();
+    const voice = currentVoice();
     if (voice) utterance.voice = voice;
     utterance.onend = () => resolve();
     utterance.onerror = (e) =>

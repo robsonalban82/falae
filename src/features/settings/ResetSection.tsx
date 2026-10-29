@@ -71,7 +71,7 @@ export function ResetSection() {
       >
         {t.settings.resetButton}
       </Button>
-      <p role="status" className="min-h-6 font-bold text-danger">
+      <p role="alert" className="min-h-6 font-bold text-danger">
         {error ? t.settings.resetError : ''}
       </p>
 
@@ -90,13 +90,14 @@ export function ResetSection() {
           </Button>
         }
         field={
-          <p
-            role="status"
-            aria-live="polite"
-            className={`min-h-6 font-bold ${exportMessage?.ok === false ? 'text-danger' : 'text-success'}`}
-          >
-            {exportMessage?.text ?? ''}
-          </p>
+          <>
+            <p role="status" aria-live="polite" className="min-h-6 font-bold text-success">
+              {exportMessage?.ok ? exportMessage.text : ''}
+            </p>
+            <p role="alert" className="font-bold text-danger empty:hidden">
+              {exportMessage?.ok === false ? exportMessage.text : ''}
+            </p>
+          </>
         }
       >
         <p>{t.settings.resetBody}</p>
@@ -110,6 +111,7 @@ export function ResetSection() {
         danger
         returnFocus={origin}
         confirmDisabled={busy || !matchesWord(typed)}
+        confirmHint={matchesWord(typed) ? t.settings.resetUnlockedHint : t.settings.resetLockedHint}
         onConfirm={() => void confirm()}
         onCancel={close}
         field={

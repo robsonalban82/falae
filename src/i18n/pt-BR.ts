@@ -122,8 +122,11 @@ export const t = {
     examples: 'Exemplos',
     back: 'Voltar para a trilha',
     backTop: 'Voltar',
+    loading: 'Carregando a dica…',
   },
   achievements: {
+    andMore: (n: number) =>
+      `e mais ${n} — role a lista para ver ${n === 1 ? 'a outra' : 'as outras'}`,
     heading: 'Conquistas novas',
     title: 'Conquistas',
     list: {
@@ -377,7 +380,7 @@ export const t = {
     },
     importTitle: 'Substituir seu progresso?',
     importBody: 'O progresso deste aparelho será trocado pelo do arquivo.',
-    importSummary: 'No arquivo',
+    importSummary: 'Neste backup',
     importCurrent: (xp: number) => `Seu progresso atual: ${xp} XP`,
     importXp: (xp: number) => `${xp} XP`,
     importStreak: (current: number, longest: number) =>
@@ -400,6 +403,8 @@ export const t = {
     resetConfirmTitle: 'Confirme para apagar',
     resetConfirmLabel: 'Digite APAGAR para confirmar',
     resetConfirmWord: 'APAGAR',
+    resetLockedHint: 'O botão "Apagar tudo" só libera quando você digitar APAGAR.',
+    resetUnlockedHint: 'Pronto: o botão "Apagar tudo" está liberado.',
     resetConfirm: 'Apagar tudo',
     resetError: 'Não deu para apagar. Tente de novo.',
   },
@@ -460,5 +465,11 @@ export const t = {
   },
   errors: {
     contentSkipped: 'Parte do conteúdo não pôde ser carregada e foi ignorada.',
+    contentLoading: 'Carregando a lição…',
+    contentTitle: 'Não deu para abrir este conteúdo',
+    contentBody:
+      'Algo nesta parte do curso não carregou direito. Tente de novo; se continuar, volte para a trilha.',
+    contentRetry: 'Tentar de novo',
+    contentBack: 'Voltar para a trilha',
   },
 } as const;

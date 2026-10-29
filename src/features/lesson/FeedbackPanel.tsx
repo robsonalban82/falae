@@ -108,7 +108,8 @@ export function FeedbackPanel({
         aria-describedby={detailsId}
         variant={grade.verdict === 'correct' ? 'success' : ok ? 'primary' : 'danger'}
         block
-        className={`mt-4 transition-opacity duration-300 ${armed ? 'opacity-100' : 'opacity-70'}`}
+        // Full contrast from the start; a thin bar fills during the 400 ms anti double-tap guard.
+        className="relative mt-4 overflow-hidden"
         onClick={(e) => {
           // Keyboard activation (detail 0) is always deliberate.
           if (armed || e.detail === 0) onContinue();
@@ -116,6 +117,13 @@ export function FeedbackPanel({
         trailing={<ArrowRightIcon />}
       >
         {t.lesson.continue}
+        {!armed && (
+          <span
+            aria-hidden="true"
+            data-arming=""
+            className="arm-bar absolute inset-x-0 bottom-0 h-1 origin-left bg-current opacity-50"
+          />
+        )}
       </Button>
     </div>
   );

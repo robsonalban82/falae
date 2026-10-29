@@ -103,9 +103,17 @@ export function BackupSection() {
           />
         </label>
       </div>
+      {/* Successes are polite; errors interrupt (role="alert"). One region per kind, so nothing is announced twice. */}
       <div role="status" aria-live="polite" className="min-h-6">
-        {message && (
-          <div className={message.kind === 'error' ? 'text-danger' : 'text-success'}>
+        {message?.kind === 'ok' && (
+          <div className="text-success">
+            <p className="font-bold">{message.text}</p>
+          </div>
+        )}
+      </div>
+      <div role="alert">
+        {message?.kind === 'error' && (
+          <div className="text-danger">
             <p className="font-bold">{message.text}</p>
             {message.issues && message.issues.length > 0 && (
               <ul className="mt-1 list-disc pl-5 text-sm">

@@ -48,29 +48,37 @@ export function ReminderSection() {
       ) : (
         <p className="font-bold text-ink">{t.settings.reminderUnsupported}</p>
       )}
-      <div className="flex items-center justify-between gap-4">
-        <label
-          htmlFor="setting-reminder-time"
-          className={`font-bold ${enabled ? 'text-ink' : 'text-ink-muted'}`}
-        >
-          {t.settings.reminderTime}
-        </label>
-        {/* lang pt-BR: the browser shows a 24-hour clock (HH:MM). */}
-        <input
-          id="setting-reminder-time"
-          type="time"
-          lang="pt-BR"
-          step={60}
-          value={reminder.time}
-          disabled={!enabled}
-          onChange={(e) => {
-            const time = e.target.value;
-            if (/^([01]\d|2[0-3]):[0-5]\d$/.test(time))
-              void update({ reminder: { ...reminder, time } });
-          }}
-          className="min-h-11 rounded-xl border-2 border-line-strong bg-surface px-3 font-bold text-ink tabular disabled:cursor-not-allowed disabled:border-dashed disabled:bg-surface-2 disabled:text-ink-muted"
-        />
-      </div>
+      {denied ? (
+        // Blocked by the browser: nothing to edit here, so show the saved time as plain text.
+        <p className="flex items-center justify-between gap-4 text-ink-muted">
+          <span className="font-bold">{t.settings.reminderTime}</span>
+          <span className="tabular font-bold">{reminder.time}</span>
+        </p>
+      ) : (
+        <div className="flex items-center justify-between gap-4">
+          <label
+            htmlFor="setting-reminder-time"
+            className={`font-bold ${enabled ? 'text-ink' : 'text-ink-muted'}`}
+          >
+            {t.settings.reminderTime}
+          </label>
+          {/* lang pt-BR: the browser shows a 24-hour clock (HH:MM). */}
+          <input
+            id="setting-reminder-time"
+            type="time"
+            lang="pt-BR"
+            step={60}
+            value={reminder.time}
+            disabled={!enabled}
+            onChange={(e) => {
+              const time = e.target.value;
+              if (/^([01]\d|2[0-3]):[0-5]\d$/.test(time))
+                void update({ reminder: { ...reminder, time } });
+            }}
+            className="min-h-11 rounded-xl border-2 border-line-strong bg-surface px-3 font-bold text-ink tabular disabled:cursor-not-allowed disabled:border-dashed disabled:bg-surface-2 disabled:text-ink-muted"
+          />
+        </div>
+      )}
       {supported && (
         <p role="status" className="min-h-6 font-bold text-ink">
           {denied ? t.settings.reminderDenied : enabled ? t.settings.reminderOn(reminder.time) : ''}

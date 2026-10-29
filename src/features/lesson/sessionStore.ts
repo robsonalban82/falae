@@ -41,12 +41,56 @@ const stateSchema = z.object({
   ),
 });
 
-/** Finished lessons are kept until the result is saved (see clearSession after commit). */
-export function saveSession(state: LessonState): void {
+/**
+ * Hearts count expected once the in-flight heart writes land (null = nothing pending).
+ * Stored with the session so a reload right after a mistake re-applies a lost write.
+ */
+let heartsPending: { lessonId: string; target: number } | null = null;
+
+function write(state: LessonState): void {
   try {
-    sessionStorage.setItem(KEY, JSON.stringify({ v: SESSION_VERSION, state }));
+    const pending = heartsPending?.lessonId === state.lessonId ? heartsPending.target : undefined;
+    sessionStorage.setItem(
+      KEY,
+      JSON.stringify({ v: SESSION_VERSION, state, heartsSpentPending: pending }),
+    );
   } catch {
     // storage full/unavailable: the lesson just won't survive a reload
+  }
+}
+
+let lastState: LessonState | null = null;
+
+/** Finished lessons are kept until the result is saved (see clearSession after commit). */
+export function saveSession(state: LessonState): void {
+  lastState = state;
+  write(state);
+}
+
+/** Records (synchronously) that a heart write is in flight; `target` = hearts after it lands. */
+export function markHeartsPending(lessonId: string, target: number): void {
+  heartsPending = { lessonId, target };
+  if (lastState?.lessonId === lessonId) write(lastState);
+}
+
+/** All heart writes landed. */
+export function clearHeartsPending(): void {
+  heartsPending = null;
+  if (lastState) write(lastState);
+}
+
+/** Pending hearts target saved with `lessonId`'s session (read-only; the next save drops it). */
+export function readHeartsPending(lessonId: string): number | null {
+  try {
+    const raw = sessionStorage.getItem(KEY);
+    if (!raw) return null;
+    const parsed = z
+      .object({ state: z.object({ lessonId: z.string() }), heartsSpentPending: index.optional() })
+      .safeParse(JSON.parse(raw));
+    if (!parsed.success || parsed.data.state.lessonId !== lessonId) return null;
+    return parsed.data.heartsSpentPending ?? null;
+  } catch {
+    return null;
   }
 }
 
@@ -55,7 +99,11 @@ export function loadSession(lessonId: string): LessonState | null {
     const raw = sessionStorage.getItem(KEY);
     if (!raw) return null;
     const parsed = z
-      .object({ v: z.literal(SESSION_VERSION), state: stateSchema })
+      .object({
+        v: z.literal(SESSION_VERSION),
+        state: stateSchema,
+        heartsSpentPending: index.optional(),
+      })
       .safeParse(JSON.parse(raw));
     if (!parsed.success) {
       clearSession();
@@ -77,6 +125,8 @@ export function loadSession(lessonId: string): LessonState | null {
 }
 
 export function clearSession(): void {
+  lastState = null;
+  heartsPending = null;
   try {
     sessionStorage.removeItem(KEY);
   } catch {

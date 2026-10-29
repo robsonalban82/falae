@@ -1,4 +1,4 @@
-import { levenshtein, normalize, stripAccents } from './normalize';
+import { levenshtein, normalize, stripAccents, normalizeNumbers } from './normalize';
 
 describe('normalize — EN', () => {
   it.each([
@@ -103,5 +103,35 @@ describe('helpers', () => {
     expect(levenshtein('morning', 'mornin')).toBe(1);
     expect(levenshtein('morning', 'mroning')).toBe(2);
     expect(levenshtein('a', 'abcdef', 1)).toBe(2);
+  });
+});
+
+describe('normalizeNumbers (Phase 7)', () => {
+  it.each([
+    ['I have 7 apples', 'I have seven apples'],
+    ['twenty-one', '21'],
+    ['twenty one', '21'],
+    ['twenty-one', 'twenty one'],
+    ['twelve', '12'],
+    ['one hundred', '100'],
+    ['a hundred', '100'],
+    ['zero', '0'],
+    ['ninety-nine', '99'],
+  ])('%s = %s', (a, b) => {
+    expect(normalizeNumbers(a)).toBe(normalizeNumbers(b));
+  });
+
+  it.each([
+    ['seventh', 'seventh'],
+    ['seventeen', '17'],
+    ['twenty-seventh', '20 seventh'],
+    ['I am 30', 'i am 30'],
+  ])('%s → %s', (input, expected) => {
+    expect(normalizeNumbers(input)).toBe(expected);
+  });
+
+  it('Portuguese spellings', () => {
+    expect(normalizeNumbers('vinte e um', 'pt')).toBe('21');
+    expect(normalizeNumbers('três', 'pt')).toBe('3');
   });
 });

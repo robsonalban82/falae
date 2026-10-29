@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Navigate, useSearchParams } from 'react-router';
 import { paths } from '../../app/routes';
-import { loadCourse } from '../../content/loader';
-import type { LessonState } from '../../domain/lesson/engine';
+import { loadKnownWords } from '../../content/loader';
 import { clock } from '../../services/clock';
 import { sttSupported, ttsSupported } from '../../services/speech';
 import { buildPracticeSession, PRACTICE_LESSON_ID, usePractice } from '../../stores/usePractice';
 import { useProfile } from '../../stores/useProfile';
 import { useProgress } from '../../stores/useProgress';
 import { useSettings } from '../../stores/useSettings';
+import { ContentError } from '../../ui/ContentError';
+import { ContentSkeleton } from '../../ui/ContentSkeleton';
+import { useAsync } from '../../ui/useAsync';
 import { LessonPlayer } from '../lesson/LessonPlayer';
 import { loadSession } from '../lesson/sessionStore';
 
@@ -35,18 +37,24 @@ export function PracticeSession() {
 }
 
 function PracticeBoot({ exitTo }: { exitTo: string }) {
-  const { course } = loadCourse();
   const speakDisabledUntil = useSettings((s) => s.settings.speakDisabledUntil);
-  const [initial] = useState<LessonState | null>(() => {
+  // Built once per mount: resume the saved session, else load the needed units and build one.
+  const { state, retry } = useAsync('practice', async () => {
+    const knownWords = await loadKnownWords();
     const resumed = loadSession(PRACTICE_LESSON_ID);
-    if (resumed) return resumed;
-    return buildPracticeSession(usePractice.getState().cards, useProgress.getState().pathState, {
-      tts: ttsSupported(),
-      stt: sttSupported(),
-      speakDisabled:
-        speakDisabledUntil !== undefined && Date.parse(speakDisabledUntil) > clock.now(),
-    });
+    const initial =
+      resumed ??
+      (await buildPracticeSession(usePractice.getState().cards, useProgress.getState().pathState, {
+        tts: ttsSupported(),
+        stt: sttSupported(),
+        speakDisabled:
+          speakDisabledUntil !== undefined && Date.parse(speakDisabledUntil) > clock.now(),
+      }));
+    return { initial, knownWords };
   });
+  if (state.status === 'loading') return <ContentSkeleton />;
+  if (state.status === 'error') return <ContentError onRetry={retry} />;
+  const { initial, knownWords } = state.value;
   if (!initial) return <Navigate to={paths.practice} replace />;
-  return <LessonPlayer initial={initial} knownWords={course.knownWords} exitTo={exitTo} />;
+  return <LessonPlayer initial={initial} knownWords={knownWords} exitTo={exitTo} />;
 }

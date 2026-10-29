@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router';
 import { paths } from '../../app/routes';
-import { loadCourse, pathUnits } from '../../content/loader';
+import { loadKnownWords, loadUnit, pathUnits } from '../../content/loader';
+import type { Unit } from '../../content/schema';
 import { startLesson, type LessonState } from '../../domain/lesson/engine';
 import { pickPlacementExercises } from '../../domain/progression/placement';
 import { clock } from '../../services/clock';
@@ -9,6 +10,9 @@ import { sttSupported, ttsSupported } from '../../services/speech';
 import { useProfile } from '../../stores/useProfile';
 import { useSettings } from '../../stores/useSettings';
 import { loadSession } from '../lesson/sessionStore';
+import { ContentError } from '../../ui/ContentError';
+import { ContentSkeleton } from '../../ui/ContentSkeleton';
+import { useAsync } from '../../ui/useAsync';
 import { PlacementPlayer } from './PlacementPlayer';
 
 const PLACEMENT_LESSON_ID = 'placement';
@@ -33,11 +37,22 @@ export function PlacementScreen() {
 }
 
 function PlacementBoot() {
-  const unit = pathUnits()[0];
+  const first = pathUnits()[0];
+  const { state, retry } = useAsync(first?.id ?? '', async () => {
+    if (!first) return null;
+    const [unit, knownWords] = await Promise.all([loadUnit(first.id), loadKnownWords()]);
+    return { unit, knownWords };
+  });
+  if (state.status === 'loading') return <ContentSkeleton />;
+  if (state.status === 'error') return <ContentError onRetry={retry} />;
+  if (!state.value) return <Navigate to={paths.path} replace />;
+  return <PlacementStart {...state.value} />;
+}
+
+function PlacementStart({ unit, knownWords }: { unit: Unit; knownWords: ReadonlySet<string> }) {
   const [initial] = useState<LessonState | null>(() => {
     const resumed = loadSession(PLACEMENT_LESSON_ID);
     if (resumed) return resumed;
-    if (!unit) return null;
     const exercises = pickPlacementExercises(
       unit,
       { tts: ttsSupported(), stt: sttSupported(), speakDisabled: true },
@@ -52,13 +67,7 @@ function PlacementBoot() {
       nowMs: clock.now(),
     });
   });
-  if (!initial || !unit) return <Navigate to={paths.path} replace />;
+  if (!initial) return <Navigate to={paths.path} replace />;
   const unitItemIds = unit.skills.flatMap((s) => [...s.vocab, ...s.sentences].map((i) => i.id));
-  return (
-    <PlacementPlayer
-      initial={initial}
-      knownWords={loadCourse().course.knownWords}
-      unitItemIds={unitItemIds}
-    />
-  );
+  return <PlacementPlayer initial={initial} knownWords={knownWords} unitItemIds={unitItemIds} />;
 }
