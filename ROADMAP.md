@@ -1,6 +1,6 @@
 # Roadmap — Falaê
 
-## v1 (MVP) — em construção
+## v1 (MVP) — concluída
 
 Ver `docs/ARQUITETURA.md`. 4 unidades A1, 7 tipos de exercício, trilha, XP, ofensiva, corações, meta diária, conquistas, repetição espaçada, perfil, configurações, export/import, PWA offline.
 
@@ -14,3 +14,4 @@ Ver `docs/ARQUITETURA.md`. 4 unidades A1, 7 tipos de exercício, trilha, XP, ofe
 - Unidades A2 e B1; histórias curtas e diálogos interativos.
 - Notificações push de verdade (exigem backend).
 - Pronúncia avaliada por fonema (o Web Speech só compara texto).
+- Tradução digitada PT→EN no Praticar (exige um campo novo no formato do conteúdo).
