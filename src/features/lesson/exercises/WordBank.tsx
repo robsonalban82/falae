@@ -68,15 +68,28 @@ export function WordBank({ exercise, disabled, onChange }: ExerciseProps<'word-b
       >
         {tiles.map((tile) => {
           const used = picked.includes(tile.id);
+          if (used) {
+            // Keeps the tile's place and width; not focusable.
+            return (
+              <span
+                key={tile.id}
+                aria-hidden="true"
+                data-used-slot=""
+                className="min-h-12 rounded-xl border-2 border-dashed border-line-strong px-4 py-2 text-lg font-bold text-transparent select-none"
+              >
+                {tile.word}
+              </span>
+            );
+          }
           return (
             <button
               key={tile.id}
               type="button"
               lang="en"
-              disabled={disabled || used}
+              disabled={disabled}
               aria-label={t.lesson.addWord(tile.word)}
               onClick={() => update([...picked, tile.id])}
-              className={`${tileClass} ${used ? 'invisible' : ''}`}
+              className={tileClass}
             >
               {tile.word}
             </button>

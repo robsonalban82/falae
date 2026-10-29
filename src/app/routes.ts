@@ -9,3 +9,6 @@ export const paths = {
   profile: '/perfil',
   settings: '/config',
 } as const;
+
+/** One-off messages the path shows after a redirect (router location state). */
+export type PathNotice = 'lessonLocked' | 'lessonNotFound' | 'tipNotFound';

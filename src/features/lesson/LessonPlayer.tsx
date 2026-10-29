@@ -16,7 +16,7 @@ import { t } from '../../i18n/pt-BR';
 import { clock } from '../../services/clock';
 import { vibrate } from '../../services/haptics';
 import { playSound } from '../../services/sound';
-import { useProfile } from '../../stores/useProfile';
+import { useProfile, type CommitSummary } from '../../stores/useProfile';
 import { useSettings } from '../../stores/useSettings';
 import { Button } from '../../ui/Button';
 import { En } from '../../ui/En';
@@ -43,12 +43,12 @@ export function LessonPlayer({ initial, knownWords }: Props) {
   const [confirmExit, setConfirmExit] = useState(false);
   const [saveStatus, setSaveStatus] = useState<'saving' | 'saved' | 'error'>('saving');
   const [saveAttempt, setSaveAttempt] = useState(0);
+  const [commit, setCommit] = useState<CommitSummary | null>(null);
   const committedAttempt = useRef(-1);
   const settings = useSettings((s) => s.settings);
   const updateSettings = useSettings((s) => s.update);
   const spendHeart = useProfile((s) => s.spendHeart);
   const commitLesson = useProfile((s) => s.commitLesson);
-  const heartsNow = useProfile((s) => s.heartsNow);
 
   const exercise = currentExercise(state);
   const progress = lessonProgress(state);
@@ -71,8 +71,9 @@ export function LessonPlayer({ initial, knownWords }: Props) {
       vibrate('complete', settings.haptics);
     }
     commitLesson(state, summary, settings.dailyGoalXp).then(
-      () => {
+      (saved) => {
         clearSession();
+        setCommit(saved);
         setSaveStatus('saved');
       },
       (err: unknown) => {
@@ -153,12 +154,12 @@ export function LessonPlayer({ initial, knownWords }: Props) {
   const praiseList = t.lesson.feedback.correct;
   const praise = praiseList[state.solved.length % praiseList.length] ?? praiseList[0];
 
-  if (state.status === 'outOfHearts')
-    return <OutOfHearts nextHeartInMs={heartsNow().nextHeartInMs} />;
+  if (state.status === 'outOfHearts') return <OutOfHearts />;
   if (state.status === 'finished' && summary) {
     return (
       <LessonComplete
         summary={summary}
+        commit={commit}
         saving={saveStatus === 'saving'}
         saveError={saveStatus === 'error'}
         onRetry={() => {
@@ -199,7 +200,7 @@ export function LessonPlayer({ initial, knownWords }: Props) {
           </svg>
         </button>
         <ProgressBar value={progress.done} max={progress.total} label={t.lesson.progress} />
-        {state.usesHearts && <HeartsBadge hearts={state.hearts} />}
+        {state.usesHearts && <HeartsBadge hearts={state.hearts} announceLoss />}
       </header>
 
       <main id="conteudo" className="flex-1 py-6">
@@ -222,6 +223,7 @@ export function LessonPlayer({ initial, knownWords }: Props) {
             answerLang={answerLang(exercise)}
             praise={praise ?? ''}
             comboMessage={comboMessage}
+            userAnswer={response?.kind === 'text' ? response.value : undefined}
             onContinue={next}
           />
         ) : (

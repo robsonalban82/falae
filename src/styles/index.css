@@ -27,6 +27,8 @@
   --color-danger-soft: var(--danger-soft);
   --color-danger-shade: var(--danger-shade);
   --color-on-danger: var(--on-danger);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
   --color-xp: var(--xp);
   --color-on-xp: var(--on-xp);
   --color-focus: var(--focus);

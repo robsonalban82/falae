@@ -32,6 +32,9 @@
   --danger-shade: #8a1a12;
   --on-danger: #ffffff;
 
+  --warning: #8a4600; /* "quase" feedback text */
+  --warning-soft: #fff0d6;
+
   --xp: #f5c518; /* maracujá */
   --on-xp: #1b1c33;
 
@@ -70,6 +73,9 @@
   --danger-soft: #3d1719;
   --danger-shade: #c9443d;
   --on-danger: #14152b;
+
+  --warning: #ffc266;
+  --warning-soft: #3a2a12;
 
   --xp: #f5c518;
   --on-xp: #14152b;

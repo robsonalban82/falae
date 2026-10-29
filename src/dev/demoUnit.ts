@@ -99,8 +99,11 @@ function lessonFrom(prefix: string): { id: string; exercises: Exercise[] } {
   return { id: prefix, exercises: lessonOne.map((e) => ({ ...e, id: `${prefix}-${e.id}` })) };
 }
 
+/** Dev/E2E-only unit: hidden from the path and exempt from unlock rules. */
+export const DEMO_UNIT_ID = 'demo-unit';
+
 export const demoUnit = {
-  id: 'demo-unit',
+  id: DEMO_UNIT_ID,
   order: 99,
   title: 'Demo do motor de lição',
   description: 'Unidade de desenvolvimento com todos os tipos de exercício.',

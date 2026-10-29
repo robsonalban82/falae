@@ -182,8 +182,15 @@ describe('word-bank', () => {
       await user.click(screen.getByRole('button', { name: `Adicionar "${w}"` }));
     }
     expect(onChange).toHaveBeenLastCalledWith({ kind: 'text', value: 'Nice to meet you' });
-    // used tiles cannot be added twice
-    expect(screen.getByRole('button', { name: 'Adicionar "Nice"' })).toBeDisabled();
+    // used tiles leave a dashed, non-focusable slot and cannot be added twice
+    expect(screen.queryByRole('button', { name: 'Adicionar "Nice"' })).toBeNull();
+    const slots = document.querySelectorAll('[data-used-slot]');
+    expect(slots).toHaveLength(4);
+    slots.forEach((slot) => {
+      expect(slot).toHaveClass('border-dashed');
+      expect(slot).not.toHaveAttribute('tabindex');
+      expect(slot).toHaveAttribute('aria-hidden', 'true');
+    });
     await user.click(screen.getByRole('button', { name: 'Remover "to"' }));
     expect(onChange).toHaveBeenLastCalledWith({ kind: 'text', value: 'Nice meet you' });
     for (const w of ['Nice', 'meet', 'you']) {
@@ -348,5 +355,25 @@ describe('match-pairs', () => {
     await user.click(screen.getByRole('button', { name: 'bye' }));
     expect(screen.getByRole('button', { name: 'hello' })).toHaveAttribute('aria-pressed', 'false');
     expect(screen.getByRole('button', { name: 'bye' })).toHaveAttribute('aria-pressed', 'true');
+  });
+});
+
+describe('choice reveal after checking', () => {
+  it('marks the wrong pick and the right answer, disables and announces them', async () => {
+    const { user, rerender, onChange, onSubmit, onSkip } = setup(mc);
+    await user.click(screen.getByText('bye'));
+    rerender(
+      <ExerciseView
+        exercise={mc}
+        disabled
+        onChange={onChange}
+        onSubmit={onSubmit}
+        onSkip={onSkip}
+        sound={false}
+      />,
+    );
+    expect(screen.getByRole('radio', { name: /bye.*sua resposta, errada/ })).toBeDisabled();
+    expect(screen.getByRole('radio', { name: /hello.*resposta certa/ })).toBeDisabled();
+    expect(screen.getByRole('radio', { name: 'thanks' })).toBeDisabled();
   });
 });

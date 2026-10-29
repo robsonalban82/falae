@@ -39,6 +39,7 @@ export function FillBlank({ exercise, disabled, onChange }: ExerciseProps<'fill-
       <ChoiceList
         name={t.lesson.instructions['fill-blank']}
         options={options}
+        answer={exercise.answer}
         disabled={disabled}
         onSelect={onSelect}
         layout="row"

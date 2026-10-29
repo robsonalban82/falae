@@ -82,3 +82,16 @@ export function clearSession(): void {
     // ignore
   }
 }
+
+/** Drops the saved session if it belongs to `lessonId` (e.g. the lesson became locked). */
+export function discardSession(lessonId: string): void {
+  try {
+    const raw = sessionStorage.getItem(KEY);
+    if (!raw) return;
+    const parsed: unknown = JSON.parse(raw);
+    const owner = z.object({ state: z.object({ lessonId: z.string() }) }).safeParse(parsed);
+    if (!owner.success || owner.data.state.lessonId === lessonId) clearSession();
+  } catch {
+    clearSession();
+  }
+}

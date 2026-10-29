@@ -13,6 +13,7 @@ export function MultipleChoice({ exercise, disabled, onChange }: ExerciseProps<'
       <ChoiceList
         name={exercise.prompt}
         options={options}
+        answer={exercise.answer}
         disabled={disabled}
         onSelect={onSelect}
       />

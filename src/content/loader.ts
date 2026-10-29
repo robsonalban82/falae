@@ -1,5 +1,5 @@
 import { buildCourse, type BuildResult } from './course';
-import { demoUnit } from '../dev/demoUnit';
+import { DEMO_UNIT_ID, demoUnit } from '../dev/demoUnit';
 
 const modules = import.meta.glob<{ default: unknown }>('./units/*.json', { eager: true });
 
@@ -17,4 +17,14 @@ export function loadCourse(): BuildResult {
     console.error('[falae] Conteúdo inválido foi ignorado:\n' + cached.errors.join('\n'));
   }
   return cached;
+}
+
+/** The demo unit (VITE_DEMO builds only) is not part of the path and its lessons always open. */
+export function isDemoUnit(unitId: string): boolean {
+  return import.meta.env.VITE_DEMO === '1' && unitId === DEMO_UNIT_ID;
+}
+
+/** Units shown on the path (sorted by order). */
+export function pathUnits(): BuildResult['course']['units'] {
+  return loadCourse().course.units.filter((u) => !isDemoUnit(u.id));
 }

@@ -1,42 +1,57 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
-import { paths } from '../../app/routes';
+import { Navigate, useParams } from 'react-router';
+import { paths, type PathNotice } from '../../app/routes';
 import type { LessonRef } from '../../content/course';
-import { loadCourse } from '../../content/loader';
+import { isDemoUnit, loadCourse } from '../../content/loader';
 import { applyFallbacks } from '../../domain/lesson/fallbacks';
 import { startLesson, type LessonState } from '../../domain/lesson/engine';
-import { t } from '../../i18n/pt-BR';
+import { canOpenLesson } from '../../domain/progression/pathState';
 import { clock } from '../../services/clock';
 import { sttSupported, ttsSupported } from '../../services/speech';
 import { useProfile } from '../../stores/useProfile';
+import { useProgress } from '../../stores/useProgress';
 import { useSettings } from '../../stores/useSettings';
 import { LessonPlayer } from './LessonPlayer';
-import { loadSession } from './sessionStore';
+import { discardSession, loadSession } from './sessionStore';
 
-/** Route /licao/:lessonId — waits for profile/settings, then boots the lesson. */
+function backToPath(notice: PathNotice) {
+  return <Navigate to={paths.path} replace state={{ notice }} />;
+}
+
+/** Route /licao/:lessonId — guards unlock rules, waits for profile/settings, then boots the lesson. */
 export function LessonScreen() {
   const { lessonId = '' } = useParams();
   const profileLoaded = useProfile((s) => s.loaded);
   const loadProfile = useProfile((s) => s.load);
   const settingsLoaded = useSettings((s) => s.loaded);
+  const progressLoaded = useProgress((s) => s.loaded);
+  const loadProgress = useProgress((s) => s.load);
+  const pathState = useProgress((s) => s.pathState);
   const { course } = loadCourse();
   const ref = course.lessons.get(lessonId);
+  // Decided once per lesson id: finishing the lesson must not re-run the guard mid-screen.
+  const [allowed, setAllowed] = useState<{ id: string; ok: boolean } | null>(null);
 
   useEffect(() => {
     if (!profileLoaded) void loadProfile();
   }, [profileLoaded, loadProfile]);
+  useEffect(() => {
+    if (!progressLoaded) void loadProgress();
+  }, [progressLoaded, loadProgress]);
 
-  if (!ref) {
-    return (
-      <section className="flex min-h-dvh flex-col items-center justify-center gap-4 p-6 text-center">
-        <h1 className="text-2xl font-semibold">{t.lesson.notFound}</h1>
-        <Link to={paths.path} className="font-bold text-secondary underline underline-offset-4">
-          {t.lesson.backToPath}
-        </Link>
-      </section>
-    );
+  const decided = allowed?.id === lessonId ? allowed.ok : null;
+  if (ref && progressLoaded && decided === null) {
+    // Adjusting state while rendering (React-sanctioned): decide once the progress is known.
+    setAllowed({ id: lessonId, ok: isDemoUnit(ref.unit.id) || canOpenLesson(pathState, lessonId) });
   }
-  if (!profileLoaded || !settingsLoaded) return null;
+  useEffect(() => {
+    // A saved session of a lesson that became locked (import/reset) is dropped, never resumed.
+    if (decided === false) discardSession(lessonId);
+  }, [decided, lessonId]);
+
+  if (!ref) return backToPath('lessonNotFound');
+  if (decided === false) return backToPath('lessonLocked');
+  if (decided === null || !profileLoaded || !settingsLoaded) return null;
   return <LessonBoot key={lessonId} lessonRef={ref} />;
 }
 

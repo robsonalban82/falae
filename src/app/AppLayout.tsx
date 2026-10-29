@@ -65,7 +65,7 @@ export function AppLayout() {
       <main
         id="conteudo"
         tabIndex={-1}
-        className="mx-auto w-full max-w-2xl px-4 pt-6 pb-28 lg:pb-10"
+        className="mx-auto w-full max-w-2xl px-4 pt-6 pb-[calc(4rem+env(safe-area-inset-bottom)+1.5rem)] lg:pb-10"
       >
         <Outlet />
       </main>

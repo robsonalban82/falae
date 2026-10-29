@@ -109,3 +109,12 @@ function* courseTexts(units: Unit[]): Generator<{ text: string; lang: 'en' | 'pt
     }
   }
 }
+
+/** Finds a skill (and its unit) by id. */
+export function findSkill(course: Course, skillId: string): { skill: Skill; unit: Unit } | null {
+  for (const unit of course.units) {
+    const skill = unit.skills.find((s) => s.id === skillId);
+    if (skill) return { skill, unit };
+  }
+  return null;
+}

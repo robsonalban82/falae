@@ -49,6 +49,7 @@ const pairs: [string, string, number, string][] = [
   ['on-xp', 'xp', 4.5, 'XP chip'],
   ['success', 'success-soft', 4.5, 'correct feedback banner'],
   ['danger', 'danger-soft', 4.5, 'wrong feedback banner'],
+  ['warning', 'warning-soft', 4.5, '"almost" feedback banner and its icon'],
   ['secondary', 'bg', 4.5, 'links'],
   ['secondary', 'surface', 4.5, 'active nav item'],
   ['secondary', 'surface-2', 4.5, 'active nav item on its pill'],
