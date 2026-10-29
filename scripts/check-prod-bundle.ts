@@ -5,7 +5,15 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const FORBIDDEN = ['importForTest', 'falae-test-clock', '/dev/showcase', 'Demo do motor de lição'];
+const FORBIDDEN = [
+  'importForTest',
+  'falae-test-clock',
+  'falae-e2e-onboarded',
+  'seedSrs',
+  'notificationPermission',
+  '/dev/showcase',
+  'Demo do motor de lição',
+];
 const dir = join(process.argv[2] ?? 'dist', 'assets');
 
 const files = readdirSync(dir).filter((f) => f.endsWith('.js'));

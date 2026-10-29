@@ -12,6 +12,17 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     locale: 'pt-BR',
     trace: 'retain-on-failure',
+    // Specs written before the welcome flow start "onboarded" (E2E builds only read this key).
+    // Onboarding specs opt out with test.use({ storageState: { cookies: [], origins: [] } }).
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: `http://localhost:${PORT}`,
+          localStorage: [{ name: 'falae-e2e-onboarded', value: '1' }],
+        },
+      ],
+    },
   },
   projects: [
     {
