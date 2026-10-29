@@ -29,7 +29,8 @@ export default defineConfig({
   ],
   // Production build (with the service worker) so offline/PWA behaviour is real.
   webServer: {
-    command: `npx vite build && npx vite preview --port ${PORT} --strictPort`,
+    // Own outDir: the E2E build (test hooks, demo unit) must never land in dist/.
+    command: `npx vite build --outDir dist-e2e && npx vite preview --outDir dist-e2e --port ${PORT} --strictPort`,
     env: { VITE_E2E: '1', VITE_DEMO: '1' },
     port: PORT,
     reuseExistingServer: !process.env.CI,
