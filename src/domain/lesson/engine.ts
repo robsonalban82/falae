@@ -33,6 +33,8 @@ export type LessonState = {
   comboBonus: number;
   mistakes: number;
   usesHearts: boolean;
+  /** false for placement: answers are recorded and the next exercise comes right away. */
+  feedback?: boolean;
   hearts: number;
   startedAt: number;
   itemStats: Record<string, ItemStat>;
@@ -68,6 +70,7 @@ export function startLesson(input: {
     comboBonus: 0,
     mistakes: 0,
     usesHearts,
+    ...(input.kind === 'placement' ? { feedback: false } : {}),
     hearts: input.hearts,
     startedAt: input.nowMs,
     itemStats: {},
@@ -100,6 +103,16 @@ export function lessonReducer(state: LessonState, action: LessonAction): LessonS
               finallyCorrect: true,
             }
           : { ...prev, wrong: prev.wrong + 1, finallyCorrect: false };
+      }
+
+      if (state.feedback === false) {
+        // Assessment mode: no feedback, no retry, no combo, no hearts ("almost" counts as right).
+        return advance({
+          ...state,
+          solved: ok ? addUnique(state.solved, index) : state.solved,
+          missed: ok ? state.missed : addUnique(state.missed, index),
+          itemStats,
+        });
       }
 
       if (ok) {
@@ -165,6 +178,11 @@ export function lessonProgress(state: LessonState): { done: number; total: numbe
   const total =
     state.exercises.length - state.skipped.filter((i) => !state.solved.includes(i)).length;
   return { done: state.solved.length, total: Math.max(total, 1) };
+}
+
+/** Placement score inputs: right answers out of answered exercises (skipped ones excluded). */
+export function answeredCounts(state: LessonState): { correct: number; answered: number } {
+  return { correct: state.solved.length, answered: state.solved.length + state.missed.length };
 }
 
 /** SRS quality per item (docs/ARQUITETURA.md §7). */

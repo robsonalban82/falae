@@ -45,3 +45,8 @@ export function isValidDayKey(key: string): boolean {
     return false;
   }
 }
+
+/** Day of the week of a day key: 0 = Sunday … 6 = Saturday. */
+export function weekday(key: DayKey): number {
+  return parseDayKey(key).getDay();
+}

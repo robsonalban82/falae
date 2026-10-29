@@ -23,3 +23,12 @@ describe('time', () => {
     expect(() => parseDayKey('nope')).toThrow();
   });
 });
+
+describe('weekday', () => {
+  it('returns 0 (Sunday) to 6 (Saturday) from the day key', async () => {
+    const { weekday } = await import('./time');
+    expect(weekday('2026-10-25')).toBe(0);
+    expect(weekday('2026-10-29')).toBe(4);
+    expect(weekday('2026-10-31')).toBe(6);
+  });
+});

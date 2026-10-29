@@ -7,7 +7,7 @@ const zero: AchievementStats = {
   unitsCompleted: 0,
   goalDaysMet: 0,
   wordsLearned: 0,
-  last: { perfect: false, localHour: 12, kind: 'lesson' },
+  last: { perfect: false, localHour: 12, kind: 'lesson', heartsBefore: 5 },
 };
 const none = new Set<string>();
 const unlocks = (patch: Partial<AchievementStats>) => newlyUnlocked({ ...zero, ...patch }, none);
@@ -52,6 +52,24 @@ describe('achievements', () => {
       'perfect-lesson',
     );
     expect(unlocks({ last: { ...zero.last, perfect: false } })).not.toContain('perfect-lesson');
+  });
+
+  describe('persistent (ADR-010)', () => {
+    const practice = (heartsBefore: number) => ({
+      last: { ...zero.last, kind: 'practice' as const, heartsBefore },
+    });
+    it('practice started with 0 hearts unlocks it', () => {
+      expect(unlocks(practice(0))).toContain('persistent');
+    });
+    it('practice with 1 heart (e.g. refill already passed) does not', () => {
+      expect(unlocks(practice(1))).not.toContain('persistent');
+    });
+    it('a lesson never unlocks it', () => {
+      expect(unlocks({ last: { ...zero.last, heartsBefore: 0 } })).not.toContain('persistent');
+    });
+    it('does not repeat once unlocked', () => {
+      expect(newlyUnlocked({ ...zero, ...practice(0) }, new Set(['persistent']))).toEqual([]);
+    });
   });
 
   it('already unlocked ones never repeat', () => {

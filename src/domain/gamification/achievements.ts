@@ -10,9 +10,15 @@ export type AchievementStats = {
   unitsCompleted: number;
   /** Days with daily.goalMet. */
   goalDaysMet: number;
-  /** Cards with reps ≥ 1 and intervalDays ≥ 3 (0 until Phase 6). */
+  /** Cards with reps ≥ 1 and intervalDays ≥ 3, after this session. */
   wordsLearned: number;
-  last: { perfect: boolean; localHour: number; kind: SessionKind };
+  last: {
+    perfect: boolean;
+    localHour: number;
+    kind: SessionKind;
+    /** Hearts (after lazy refill) when the session was committed, before its gain/loss. */
+    heartsBefore: number;
+  };
 };
 
 export type AchievementDef = {
@@ -36,6 +42,12 @@ export const achievements = [
   { id: 'xp-500', icon: '⭐', check: (s) => s.totalXp >= 500 },
   { id: 'xp-1000', icon: '🌟', check: (s) => s.totalXp >= 1000 },
   { id: 'early-bird', icon: '🌅', check: (s) => s.last.localHour < 8 },
+  // ADR-010: derived without a new field — a practice finished while out of hearts.
+  {
+    id: 'persistent',
+    icon: '💪',
+    check: (s) => s.last.kind === 'practice' && s.last.heartsBefore === 0,
+  },
 ] as const satisfies readonly AchievementDef[];
 
 export type AchievementId = (typeof achievements)[number]['id'];

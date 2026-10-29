@@ -1,6 +1,7 @@
 import type { GradeResult } from '../grading/grade';
 import { buildExercises } from '../../test/fixtures/buildUnit';
 import {
+  answeredCounts,
   currentExercise,
   lessonProgress,
   lessonReducer,
@@ -133,5 +134,42 @@ describe('lesson engine', () => {
   it('state survives a JSON round-trip (sessionStorage)', () => {
     const s = play(start(), ok, bad);
     expect(JSON.parse(JSON.stringify(s))).toEqual(s);
+  });
+});
+
+describe('placement mode (no feedback)', () => {
+  const placement = () =>
+    startLesson({ lessonId: 'placement', kind: 'placement', exercises, hearts: 0, nowMs: 1000 });
+  const answer = (s: LessonState, grade: GradeResult) =>
+    lessonReducer(s, { type: 'answer', grade });
+
+  it('never shows feedback nor re-queues mistakes, and ignores hearts', () => {
+    let s = placement();
+    expect(s.status).toBe('answering');
+    s = answer(s, bad);
+    expect(s.status).toBe('answering');
+    expect(s.queue).toHaveLength(exercises.length - 1);
+    expect(s.mistakes).toBe(0);
+    expect(s.combo).toBe(0);
+    s = answer(s, almost);
+    s = answer(s, ok);
+    expect(answeredCounts(s)).toEqual({ correct: 2, answered: 3 });
+  });
+
+  it('skip leaves the denominator and the run finishes after the last answer', () => {
+    let s = placement();
+    s = lessonReducer(s, { type: 'skip' });
+    for (let i = 1; i < exercises.length; i++) s = answer(s, ok);
+    expect(s.status).toBe('finished');
+    expect(answeredCounts(s)).toEqual({
+      correct: exercises.length - 1,
+      answered: exercises.length - 1,
+    });
+    expect(summarize(s, 2000).xp).toBe(0);
+  });
+
+  it('continue does nothing in this mode', () => {
+    const s = answer(placement(), ok);
+    expect(lessonReducer(s, { type: 'continue' })).toBe(s);
   });
 });

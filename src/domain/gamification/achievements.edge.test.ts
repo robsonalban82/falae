@@ -8,7 +8,7 @@ const base: AchievementStats = {
   unitsCompleted: 0,
   goalDaysMet: 0,
   wordsLearned: 0,
-  last: { perfect: false, localHour: 12, kind: 'lesson' },
+  last: { perfect: false, localHour: 12, kind: 'lesson', heartsBefore: 5 },
 };
 
 describe('achievements edge cases', () => {
@@ -44,7 +44,7 @@ describe('achievements edge cases', () => {
       unitsCompleted: 4,
       goalDaysMet: 10,
       wordsLearned: 300,
-      last: { perfect: true, localHour: 6, kind: 'lesson' as const },
+      last: { perfect: true, localHour: 6, kind: 'practice' as const, heartsBefore: 0 },
     };
     const all = newlyUnlocked(big, new Set());
     expect(all).toEqual(achievements.map((a) => a.id));
