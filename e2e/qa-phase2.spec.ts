@@ -217,6 +217,7 @@ test.describe('acessibilidade', () => {
 
   test('skip link exists on placeholder screens too', async ({ page }) => {
     await page.goto('/praticar');
+    await expect(page.getByRole('heading', { level: 1, name: 'Praticar' })).toBeVisible();
     await page.keyboard.press('Tab');
     await expect(page.getByRole('link', { name: 'Pular para o conteúdo' })).toBeFocused();
   });
@@ -235,7 +236,8 @@ test.describe('rotas', () => {
       const errors: string[] = [];
       page.on('pageerror', (e) => errors.push(e.message));
       await page.goto(path);
-      await expect(page.getByRole('heading', { name: 'Em construção' })).toBeVisible();
+      // Phase 6 screens are real now; each route renders a heading and throws nothing.
+      await expect(page.locator('h1, h2').first()).toBeVisible();
       expect(errors).toEqual([]);
     });
   }
@@ -263,6 +265,8 @@ test.describe('rotas', () => {
     await page.goBack();
     await expect(page.getByRole('heading', { level: 1, name: 'Falaê' })).toBeVisible();
     await page.goForward();
+    await expect(page.getByRole('heading', { level: 1, name: 'Perfil' })).toBeVisible();
+    await page.goto('/nao-existe/abc');
     await page.getByRole('link', { name: 'Voltar para o início' }).click();
     await expect(page).toHaveURL(/\/$/);
   });

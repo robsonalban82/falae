@@ -7,6 +7,15 @@ export type Seed = {
   lessonProgress?: { lessonId: string; completedCount?: number }[];
   daily?: { day: string; xp: number; lessons: number; goalMet: boolean }[];
   achievements?: { id: string; unlockedAt: string }[];
+  srs?: {
+    itemId: string;
+    ease: number;
+    intervalDays: number;
+    reps: number;
+    lapses: number;
+    dueDay: string;
+    lastReviewDay: string;
+  }[];
 };
 
 type Hooks = {
@@ -14,7 +23,19 @@ type Hooks = {
   advanceDays: (d: number) => void;
   today: () => string;
   importForTest: (file: unknown) => Promise<void>;
+  notificationPermission: (state: string) => void;
 };
+
+/** Simulates the notification permission (stub survives reloads). */
+export async function notificationPermission(
+  page: Page,
+  state: 'default' | 'denied' | 'granted' | 'unsupported',
+) {
+  await page.evaluate(
+    (s) => (window as unknown as { __falae: Hooks }).__falae.notificationPermission(s),
+    state,
+  );
+}
 
 /** Fixes the simulated clock (survives reloads) and opens the path. */
 export async function startAt(page: Page, isoLocal: string) {
@@ -37,6 +58,7 @@ export function today(page: Page): Promise<string> {
 
 /** Replaces all app data (validated by the app's own schema) and reloads the path. */
 export async function seed(page: Page, data: Seed) {
+  if (page.url() === 'about:blank') await page.goto('/');
   await page.evaluate(async (d) => {
     const hooks = (window as unknown as { __falae: Hooks }).__falae;
     const now = new Date().toISOString();
@@ -71,7 +93,7 @@ export async function seed(page: Page, data: Seed) {
           ...p,
         })),
         results: [],
-        srs: [],
+        srs: d.srs ?? [],
         daily: d.daily ?? [],
         achievements: d.achievements ?? [],
       },

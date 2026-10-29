@@ -26,11 +26,11 @@ test('theme choice persists after reload', async ({ page }) => {
   await expect(page.locator('html')).not.toHaveClass(/dark/);
 });
 
-test('navigation reaches placeholder screens', async ({ page }) => {
+test('navigation reaches the practice screen', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: 'Praticar' }).click();
   await expect(page).toHaveURL(/\/praticar$/);
-  await expect(page.getByRole('heading', { name: 'Em construção' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: 'Praticar' })).toBeVisible();
 });
 
 test('works offline after the first visit', async ({ page, context }) => {
@@ -43,7 +43,7 @@ test('works offline after the first visit', async ({ page, context }) => {
   await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
   await context.setOffline(true);
   await page.goto('/perfil');
-  await expect(page.getByRole('heading', { name: 'Em construção' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: 'Perfil' })).toBeVisible();
   await context.setOffline(false);
 });
 

@@ -2,8 +2,10 @@ import { expect, type Page } from '@playwright/test';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-type Ex = {
+export type Ex = {
   type: string;
+  id?: string;
+  distractors?: string[];
   answer?: string;
   options?: unknown[];
   pairs?: { en: string; pt: string }[];
@@ -28,7 +30,7 @@ export function lessonExercises(lessonId: string): Ex[] {
 }
 
 /** First concrete answer of a content pattern: "(x)" keeps x, "[a|b]" picks a. */
-function firstOf(pattern: string): string {
+export function firstOf(pattern: string): string {
   let s = pattern;
   for (;;) {
     const next = s
@@ -40,7 +42,7 @@ function firstOf(pattern: string): string {
 }
 
 /** Mirrors tokenizeForBank in src/content/schema.ts. */
-function tiles(sentence: string): string[] {
+export function tiles(sentence: string): string[] {
   return sentence
     .split(/\s+/)
     .map((w) => w.replace(/^[^\p{L}\p{N}']+|[^\p{L}\p{N}']+$/gu, ''))
@@ -64,7 +66,7 @@ export async function noRecognition(page: Page) {
   });
 }
 
-async function pressOption(page: Page, text: string) {
+export async function pressOption(page: Page, text: string) {
   const values = await page
     .locator('main input[type="radio"]')
     .evaluateAll((els) => els.map((e) => (e as HTMLInputElement).value));
@@ -73,7 +75,7 @@ async function pressOption(page: Page, text: string) {
   await page.keyboard.press(String(i + 1));
 }
 
-async function answer(page: Page, ex: Ex) {
+export async function answer(page: Page, ex: Ex) {
   switch (ex.type) {
     case 'multiple-choice':
     case 'fill-blank':

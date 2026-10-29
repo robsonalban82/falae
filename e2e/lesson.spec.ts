@@ -823,13 +823,16 @@ test.describe('acessibilidade do feedback (correções da revisão)', () => {
     }
   });
 
-  test('tela sem corações: "Voltar para a trilha" é a ação principal, sem "Praticar"', async ({
+  test('tela sem corações: "Praticar e ganhar coração" é a ação principal (Fase 6), "Voltar" segue', async ({
     page,
   }) => {
     await setHearts(page, 0);
     await page.goto(LESSON);
     await expect(page.getByRole('heading', { name: 'Seus corações acabaram' })).toBeVisible();
-    await expect(page.getByRole('link', { name: /Praticar/ })).toHaveCount(0);
+    await expect(page.getByRole('link', { name: 'Praticar e ganhar coração' })).toHaveAttribute(
+      'href',
+      '/praticar/sessao?from=outOfHearts',
+    );
     await expect(page.getByRole('link', { name: 'Voltar para a trilha' })).toBeVisible();
     await expect(
       page.getByText(
