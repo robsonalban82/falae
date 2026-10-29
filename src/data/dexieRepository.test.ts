@@ -1,5 +1,5 @@
 import { DexieRepository } from './dexieRepository';
-import { parseImportFile, exportFileName } from './exportImport';
+import { parseExportFile, exportFileName } from './exportImport';
 import { defaultProfile, defaultSettings, type LessonResult } from './models';
 import type { LessonOutcome } from './repository';
 
@@ -113,7 +113,7 @@ describe('DexieRepository', () => {
     expect((await repo.getProfile()).totalXp).toBe(0);
     expect(await repo.getLessonProgress()).toEqual([]);
 
-    const parsed = parseImportFile(JSON.stringify(exported));
+    const parsed = parseExportFile(JSON.stringify(exported), '2026-10-28');
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
     expect(parsed.summary.totalXp).toBe(15);
@@ -122,18 +122,16 @@ describe('DexieRepository', () => {
   });
 });
 
-describe('parseImportFile', () => {
+describe('parseExportFile', () => {
   it('rejects non-JSON, foreign and malformed files without throwing', () => {
-    expect(parseImportFile('{oops')).toEqual({
+    expect(parseExportFile('{oops', '2026-10-28')).toEqual({ ok: false, reason: 'json' });
+    expect(parseExportFile('{"app":"other"}', '2026-10-28')).toMatchObject({
       ok: false,
-      reason: 'O arquivo não é um JSON válido.',
+      reason: 'notFalae',
     });
-    expect(parseImportFile('{"app":"other"}')).toMatchObject({
-      ok: false,
-      reason: expect.stringContaining('não é um progresso'),
-    });
-    const r = parseImportFile(
+    const r = parseExportFile(
       JSON.stringify({ app: 'falae', schemaVersion: 1, exportedAt: NOW, data: {} }),
+      '2026-10-28',
     );
     expect(r.ok).toBe(false);
   });
@@ -177,5 +175,53 @@ describe('achievements are never rewritten', () => {
     expect(await repo.getAchievements()).toEqual([
       { id: 'first-lesson', unlockedAt: '2026-01-01T00:00:00.000Z' },
     ]);
+  });
+});
+
+describe('parseExportFile summary and safety (Fase 6)', () => {
+  it('summarizes XP, streak (as shown today), lessons, achievements and date', async () => {
+    await repo.recordLessonResult(outcome());
+    const file = await repo.exportAll();
+    const withStreak = {
+      ...file,
+      data: {
+        ...file.data,
+        profile: {
+          ...file.data.profile,
+          streak: {
+            current: 4,
+            longest: 9,
+            lastActiveDay: '2026-10-20',
+            freezes: 0,
+            xpTowardFreeze: 0,
+          },
+        },
+      },
+    };
+    const r = parseExportFile(JSON.stringify(withStreak), '2026-10-28');
+    if (!r.ok) throw new Error(r.reason);
+    expect(r.summary).toEqual({
+      totalXp: 15,
+      streak: 0, // broken since 2026-10-20
+      longest: 9,
+      lessons: 1,
+      achievements: 1,
+      exportedAt: NOW,
+    });
+  });
+
+  it('an invalid file leaves the database identical', async () => {
+    await repo.recordLessonResult(outcome());
+    const before = await repo.exportAll();
+    const r = parseExportFile(
+      JSON.stringify({ ...before, data: { ...before.data, srs: [{}] } }),
+      '2026-10-28',
+    );
+    expect(r).toMatchObject({ ok: false, reason: 'invalid' });
+    if (!r.ok) expect(r.issues?.length).toBeLessThanOrEqual(3);
+    await expect(
+      repo.importAll({ ...before, data: { ...before.data, srs: [{}] } } as never),
+    ).rejects.toThrow();
+    expect(await repo.exportAll()).toEqual(before);
   });
 });

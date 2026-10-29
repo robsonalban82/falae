@@ -16,7 +16,9 @@ import {
   type LessonProgress,
   type Profile,
   type Settings,
+  type SrsCard,
 } from './models';
+import { isLearned } from '../domain/srs/sm2';
 import type { CommitResult, LessonOutcome, Repository } from './repository';
 import { emitDataReplaced } from './events';
 
@@ -53,6 +55,27 @@ export class DexieRepository implements Repository {
     await this.db.profile.put(profileSchema.parse(profile));
   }
 
+  async updateProfile(mutate: (profile: Profile) => Profile): Promise<Profile> {
+    const db = this.db;
+    const nowIso = this.nowIso();
+    return db.transaction('rw', [db.profile, db.quarantine], async () => {
+      const raw = await db.profile.get('me');
+      let current = defaultProfile(nowIso);
+      if (raw !== undefined) {
+        const parsed = profileSchema.safeParse(raw);
+        if (parsed.success) current = parsed.data;
+        else {
+          const issues = formatIssues(parsed.error);
+          console.error('[falae] Invalid profile row moved to quarantine:', issues);
+          await db.quarantine.add({ table: 'profile', raw, at: nowIso, issues });
+        }
+      }
+      const next = profileSchema.parse(mutate(current));
+      await db.profile.put(next);
+      return next;
+    });
+  }
+
   async getSettings(): Promise<Settings> {
     const stored = await this.db.settings.get('me');
     if (stored === undefined) return defaultSettings();
@@ -76,49 +99,79 @@ export class DexieRepository implements Repository {
     srsCards,
     newAchievements,
     dailyGoalXp,
+    extraItemIds,
     apply,
   }: LessonOutcome<M>): Promise<CommitResult<M>> {
     const db = this.db;
     // Validate up front so a domain bug can never write data that export/import would reject.
     const validResult = lessonResultSchema.parse(result);
-    const validCards = z.array(srsCardSchema).parse(srsCards);
     const nowIso = this.nowIso();
 
     return db.transaction(
       'rw',
-      [db.results, db.lessonProgress, db.daily, db.profile, db.srs, db.achievements],
+      [db.results, db.lessonProgress, db.daily, db.profile, db.srs, db.achievements, db.quarantine],
       async (): Promise<CommitResult<M>> => {
         // Idempotent: the same lesson run is never counted twice (profile and achievements included).
+        // This `get` is the only read of `results` (the one table that grows without limit).
         if (await db.results.get(validResult.id)) return { applied: false };
 
         // Fresh reads inside the transaction.
         const storedRaw = await db.profile.get('me');
-        const storedParsed = profileSchema.safeParse(storedRaw);
-        const storedProfile = storedParsed.success ? storedParsed.data : defaultProfile(nowIso);
-        const unlocked = await db.achievements.toArray();
-        const unlockedIds = new Set(unlocked.map((a) => a.id));
+        let storedProfile: Profile;
+        if (storedRaw === undefined) storedProfile = defaultProfile(nowIso);
+        else {
+          const parsed = profileSchema.safeParse(storedRaw);
+          if (parsed.success) storedProfile = parsed.data;
+          else {
+            // Keep the original row before continuing with the default (same transaction:
+            // if the commit fails, neither the quarantine nor the new profile is written).
+            const issues = formatIssues(parsed.error);
+            console.error('[falae] Invalid profile row moved to quarantine:', issues);
+            await db.quarantine.add({ table: 'profile', raw: storedRaw, at: nowIso, issues });
+            storedProfile = defaultProfile(nowIso);
+          }
+        }
+        const unlockedIds = new Set(
+          (await db.achievements.toCollection().primaryKeys()).map(String),
+        );
         const dayRow = await db.daily.get(validResult.day);
 
         let nextProfile = profile;
         let nextAchievements = newAchievements;
+        let nextCards = srsCards;
         let meta: M | undefined;
         if (apply) {
+          const itemIds = [
+            ...new Set([...validResult.itemOutcomes.map((o) => o.itemId), ...(extraItemIds ?? [])]),
+          ];
+          const cards = (await db.srs.bulkGet(itemIds)).filter(
+            (c): c is SrsCard => c !== undefined,
+          );
           const out = apply({
             profile: storedProfile,
             unlockedIds,
             dailyBefore: dayRow,
-            lessonProgress: await db.lessonProgress.toArray(),
-            goalMetDays: new Set(
-              (await db.daily.filter((d) => d.goalMet).toArray()).map((d) => d.day),
+            completedLessonIds: new Set(
+              (await db.lessonProgress.toCollection().primaryKeys()).map(String),
             ),
-            srsCards: await db.srs.toArray(),
+            // Cursors, never materialized arrays (booleans are not indexable in IndexedDB).
+            goalMetCount: await db.daily
+              .filter((d) => d.goalMet && d.day !== validResult.day)
+              .count(),
+            goalMetToday: dayRow?.goalMet ?? false,
+            srsCards: cards,
+            // O(n) cursor over `srs`, acceptable: the table is bounded by the course items
+            // (hundreds), not by usage. A boolean "learned" cannot be indexed in IndexedDB.
+            wordsLearnedBefore: await db.srs.filter(isLearned).count(),
           });
           nextProfile = out.profile;
           nextAchievements = out.newAchievements;
+          nextCards = out.srsCards;
           meta = out.meta;
         }
         // Throws (and rolls back the transaction) on invalid data.
         const validProfile = profileSchema.parse(nextProfile);
+        const validCards = z.array(srsCardSchema).parse(nextCards);
         const fresh = z
           .array(unlockedAchievementSchema)
           .parse(nextAchievements)
@@ -135,17 +188,20 @@ export class DexieRepository implements Repository {
           });
         }
 
-        // Clock went back (a day before the last activity): XP counts, but no new goal day.
-        const last = storedProfile.streak.lastActiveDay;
-        const clockBack = last !== undefined && validResult.day < last;
-        const xp = (dayRow?.xp ?? 0) + result.xp;
-        await db.daily.put({
-          day: result.day,
-          xp,
-          lessons: (dayRow?.lessons ?? 0) + 1,
-          // Once met, a day stays met even if the goal is raised later.
-          goalMet: (dayRow?.goalMet ?? false) || (!clockBack && xp >= dailyGoalXp),
-        });
+        // Placement is not study: it never shows in the chart nor counts as today's activity.
+        if (result.kind !== 'placement') {
+          // Clock went back (a day before the last activity): XP counts, but no new goal day.
+          const last = storedProfile.streak.lastActiveDay;
+          const clockBack = last !== undefined && validResult.day < last;
+          const xp = (dayRow?.xp ?? 0) + result.xp;
+          await db.daily.put({
+            day: result.day,
+            xp,
+            lessons: (dayRow?.lessons ?? 0) + 1,
+            // Once met, a day stays met even if the goal is raised later.
+            goalMet: (dayRow?.goalMet ?? false) || (!clockBack && xp >= dailyGoalXp),
+          });
+        }
 
         await db.profile.put(validProfile);
         if (validCards.length) await db.srs.bulkPut(validCards);
@@ -163,6 +219,7 @@ export class DexieRepository implements Repository {
     return this.db.srs.toArray();
   }
 
+  /** Tests/helpers only. */
   async upsertSrsCards(cards: LessonOutcome['srsCards']): Promise<void> {
     await this.db.srs.bulkPut(z.array(srsCardSchema).parse(cards));
   }
@@ -219,6 +276,7 @@ export class DexieRepository implements Repository {
     await db.transaction('rw', db.tables, async () => {
       await Promise.all(db.tables.map((t) => t.clear()));
     });
+    emitDataReplaced();
   }
 
   /** Test helper. */

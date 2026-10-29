@@ -13,3 +13,8 @@ export function vibrate(kind: keyof typeof PATTERNS, enabled: boolean): void {
     // ignore
   }
 }
+
+/** Whether the browser exposes the Vibration API at all. */
+export function vibrationSupported(): boolean {
+  return typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function';
+}

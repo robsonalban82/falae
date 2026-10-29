@@ -1,7 +1,7 @@
 import Dexie from 'dexie';
 import { FalaeDb } from './db';
 import { DexieRepository } from './dexieRepository';
-import { parseImportFile } from './exportImport';
+import { parseExportFile } from './exportImport';
 import {
   defaultProfile,
   defaultSettings,
@@ -76,7 +76,7 @@ describe('corrupted IndexedDB rows', () => {
   it('a corrupted profile does not break export (exported file stays importable)', async () => {
     await raw.profile.put({ id: 'me', totalXp: -5 } as never);
     const file = await repo.exportAll();
-    expect(parseImportFile(JSON.stringify(file)).ok).toBe(true);
+    expect(parseExportFile(JSON.stringify(file), '2026-10-28').ok).toBe(true);
   });
 
   it('can overwrite a corrupted row with a valid one', async () => {
@@ -107,25 +107,24 @@ describe('import / export edge cases', () => {
   it('rejects a file from another schema version without touching data', async () => {
     const file = await seed();
     const future = { ...file, schemaVersion: EXPORT_SCHEMA_VERSION + 1 };
-    const r = parseImportFile(JSON.stringify(future));
+    const r = parseExportFile(JSON.stringify(future), '2026-10-28');
     expect(r.ok).toBe(false);
     if (r.ok) return;
-    expect(r.reason).toMatch(/versão mais nova do Falaê/);
-    expect(r.reason).not.toMatch(/schemaVersion|Invalid/);
+    expect(r.reason).toBe('newerVersion');
     expect(await repo.exportAll()).toEqual(file);
   });
 
   it('rejects an older/unknown version 0 with a friendly message', () => {
-    const r = parseImportFile(JSON.stringify({ app: 'falae', schemaVersion: 0 }));
+    const r = parseExportFile(JSON.stringify({ app: 'falae', schemaVersion: 0 }), '2026-10-28');
     expect(r.ok).toBe(false);
     if (r.ok) return;
-    expect(r.reason).toMatch(/não é mais compatível/);
+    expect(r.reason).toBe('invalid');
   });
 
   it('rejects a non-numeric schemaVersion without throwing', () => {
     for (const v of ['1', null, 1.5]) {
       expect(
-        parseImportFile(JSON.stringify({ app: 'falae', schemaVersion: v })).ok,
+        parseExportFile(JSON.stringify({ app: 'falae', schemaVersion: v }), '2026-10-28').ok,
         String(v),
       ).toBe(false);
     }
@@ -135,33 +134,34 @@ describe('import / export edge cases', () => {
     const file = await seed();
     const bad = structuredClone(file);
     bad.data.daily[0]!.day = '2026-02-30';
-    expect(parseImportFile(JSON.stringify(bad)).ok).toBe(false);
+    expect(parseExportFile(JSON.stringify(bad), '2026-10-28').ok).toBe(false);
   });
 
   it('rejects JSON that is valid but not an object', () => {
     for (const text of ['null', '[]', '42', '"falae"', 'true']) {
-      expect(parseImportFile(text).ok, text).toBe(false);
+      expect(parseExportFile(text, '2026-10-28').ok, text).toBe(false);
     }
   });
 
   it('rejects an empty file', () => {
-    expect(parseImportFile('')).toEqual({ ok: false, reason: 'O arquivo não é um JSON válido.' });
+    expect(parseExportFile('', '2026-10-28')).toEqual({ ok: false, reason: 'json' });
   });
 
   it('rejects a file with one corrupted record and names the path', async () => {
     const file = await seed();
     const bad = structuredClone(file);
     bad.data.results[0]!.accuracy = 7;
-    const r = parseImportFile(JSON.stringify(bad));
+    const r = parseExportFile(JSON.stringify(bad), '2026-10-28');
     expect(r.ok).toBe(false);
     if (r.ok) return;
-    expect(r.reason).toMatch(/data › results › 0 › accuracy/);
+    expect(r.reason).toBe('invalid');
+    expect(r.issues?.[0]).toMatch(/data › results › 0 › accuracy/);
   });
 
   it('accepts and strips unknown extra fields in an otherwise valid file', async () => {
     const file = await seed();
     const extra = { ...file, comment: 'hi', data: { ...file.data, futureTable: [] } };
-    const r = parseImportFile(JSON.stringify(extra));
+    const r = parseExportFile(JSON.stringify(extra), '2026-10-28');
     expect(r.ok).toBe(true);
     if (!r.ok) return;
     expect(r.file).toEqual(file);
@@ -187,7 +187,7 @@ describe('import / export edge cases', () => {
 
   it('accepts BOM-prefixed JSON (saved by some Windows editors) (fixed)', async () => {
     const file = await seed();
-    const r = parseImportFile('﻿' + JSON.stringify(file));
+    const r = parseExportFile('﻿' + JSON.stringify(file), '2026-10-28');
     expect(r.ok).toBe(true);
     if (!r.ok) return;
     expect(r.file).toEqual(file);
@@ -197,7 +197,7 @@ describe('import / export edge cases', () => {
     const file = await seed();
     await repo.resetAll();
     expect((await repo.getSettings()).theme).toBe('system');
-    const r = parseImportFile(JSON.stringify(file));
+    const r = parseExportFile(JSON.stringify(file), '2026-10-28');
     if (!r.ok) throw new Error(r.reason);
     await repo.importAll(r.file);
     expect((await repo.getSettings()).theme).toBe('dark');
@@ -287,7 +287,7 @@ describe('write validation (fixed after QA report)', () => {
     await repo.recordLessonResult(outcome());
     await repo.recordLessonResult(outcome({ result: result({ accuracy: 1.5 }) })).catch(() => {});
     const file = await repo.exportAll();
-    expect(parseImportFile(JSON.stringify(file)).ok).toBe(true);
+    expect(parseExportFile(JSON.stringify(file), '2026-10-28').ok).toBe(true);
   });
 
   it('importAll re-validates the file and leaves data intact when it is invalid', async () => {

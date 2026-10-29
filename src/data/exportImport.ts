@@ -1,43 +1,64 @@
 import { formatIssues } from '../lib/zodIssues';
+import { displayStreak } from '../domain/gamification/streak';
+import type { DayKey } from '../domain/time';
 import { EXPORT_SCHEMA_VERSION, exportFileSchema, type ExportFile } from './models';
 
-export type ParseImportResult =
-  | { ok: true; file: ExportFile; summary: { totalXp: number; streak: number; exportedAt: string } }
-  | { ok: false; reason: string };
+export type ImportSummary = {
+  totalXp: number;
+  /** Streak as the app would show it today (not the raw stored value). */
+  streak: number;
+  longest: number;
+  lessons: number;
+  achievements: number;
+  exportedAt: string;
+};
 
-/** Parses and validates an exported progress file. Never throws. */
-export function parseImportFile(text: string): ParseImportResult {
+export type ImportFailure = 'json' | 'notFalae' | 'newerVersion' | 'invalid';
+
+export type ParseExportResult =
+  | { ok: true; file: ExportFile; summary: ImportSummary }
+  | { ok: false; reason: ImportFailure; issues?: string[] };
+
+const MAX_ISSUES = 3;
+
+/** Parses and validates an exported progress file. Pure; never throws. */
+export function parseExportFile(text: string, today: DayKey): ParseExportResult {
   let json: unknown;
   try {
     // Strip a UTF-8 BOM (common in files saved on Windows).
     json = JSON.parse(text.replace(/^\uFEFF/, ''));
   } catch {
-    return { ok: false, reason: 'O arquivo não é um JSON válido.' };
+    return { ok: false, reason: 'json' };
   }
   if (!json || typeof json !== 'object' || !('app' in json) || json.app !== 'falae') {
-    return { ok: false, reason: 'Este arquivo não é um progresso do Falaê.' };
+    return { ok: false, reason: 'notFalae' };
   }
-  if ('schemaVersion' in json && json.schemaVersion !== EXPORT_SCHEMA_VERSION) {
-    return {
-      ok: false,
-      reason:
-        typeof json.schemaVersion === 'number' && json.schemaVersion > EXPORT_SCHEMA_VERSION
-          ? 'Este arquivo foi feito numa versão mais nova do Falaê. Atualize o app e tente de novo.'
-          : 'Este arquivo é de uma versão do Falaê que não é mais compatível.',
-    };
+  if (
+    'schemaVersion' in json &&
+    typeof json.schemaVersion === 'number' &&
+    json.schemaVersion > EXPORT_SCHEMA_VERSION
+  ) {
+    return { ok: false, reason: 'newerVersion' };
   }
   const parsed = exportFileSchema.safeParse(json);
   if (!parsed.success) {
-    const first = formatIssues(parsed.error)[0] ?? 'formato desconhecido';
-    return { ok: false, reason: `Arquivo de progresso inválido (${first}).` };
+    return {
+      ok: false,
+      reason: 'invalid',
+      issues: formatIssues(parsed.error).slice(0, MAX_ISSUES),
+    };
   }
   const file = parsed.data;
+  const { profile } = file.data;
   return {
     ok: true,
     file,
     summary: {
-      totalXp: file.data.profile.totalXp,
-      streak: file.data.profile.streak.current,
+      totalXp: profile.totalXp,
+      streak: displayStreak(profile.streak, today).value,
+      longest: profile.streak.longest,
+      lessons: file.data.lessonProgress.length,
+      achievements: file.data.achievements.length,
       exportedAt: file.exportedAt,
     },
   };

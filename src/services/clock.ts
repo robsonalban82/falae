@@ -52,6 +52,10 @@ declare global {
       today: () => string;
       /** E2E only: replaces all data with a validated export file. */
       importForTest?: (file: unknown) => Promise<void>;
+      /** E2E only: replaces the SRS cards (through the same import path). */
+      seedSrs?: (cards: unknown) => Promise<void>;
+      /** E2E only: simulates the notification permission (survives reloads). */
+      notificationPermission?: (state: NotificationPermission | 'unsupported') => void;
     };
   }
 }

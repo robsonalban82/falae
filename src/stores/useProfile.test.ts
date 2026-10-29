@@ -24,7 +24,7 @@ const summary = (patch: Partial<LessonSummary> = {}): LessonSummary => ({
   ...patch,
 });
 
-const lesson = (lessonId = 'u1-sk1-l1', kind: 'lesson' | 'placement' = 'lesson') =>
+const lesson = (lessonId = 'u1-sk1-l1', kind: 'lesson' | 'placement' | 'practice' = 'lesson') =>
   startLesson({ lessonId, kind, exercises: [exercise], hearts: 5, nowMs: clock.now() });
 
 async function seedProfile(patch: Partial<Profile> = {}) {
@@ -188,5 +188,121 @@ describe('useProfile.commitLesson', () => {
       data: { ...file.data, profile: { ...file.data.profile, totalXp: 777 } },
     });
     await vi.waitFor(() => expect(useProfile.getState().profile.totalXp).toBe(777));
+  });
+
+  it('lesson writes SRS cards in the same commit', async () => {
+    await seedProfile();
+    await useProfile.getState().commitLesson(lesson(), summary(), 10);
+    expect(await repository.getSrsCards()).toEqual([
+      expect.objectContaining({ itemId: 'u1-hi', reps: 1, intervalDays: 1, dueDay: '2026-10-30' }),
+    ]);
+  });
+
+  describe('practice', () => {
+    const practice = () => lesson('practice', 'practice');
+
+    it('adds +1 heart after the refill and updates cards, without lesson progress', async () => {
+      await seedProfile({ hearts: 2, heartsUpdatedAt: clock.iso() });
+      const out = await useProfile.getState().commitLesson(practice(), summary({ xp: 8 }), 10);
+      expect(out.heartGained).toBe(true);
+      expect(out.result.id).toMatch(/^practice-\d+$/);
+      expect((await repository.getProfile()).hearts).toBe(3);
+      expect(await repository.getLessonProgress()).toEqual([]);
+      expect(await repository.getSrsCards()).toHaveLength(1);
+    });
+
+    it('with 5 hearts nothing changes (heartsUpdatedAt kept)', async () => {
+      await seedProfile({ hearts: 5, heartsUpdatedAt: '2026-10-01T12:00:00.000Z' });
+      const out = await useProfile.getState().commitLesson(practice(), summary({ xp: 8 }), 10);
+      expect(out.heartGained).toBe(false);
+      expect(await repository.getProfile()).toMatchObject({
+        hearts: 5,
+        heartsUpdatedAt: '2026-10-01T12:00:00.000Z',
+      });
+    });
+
+    it('started with 0 hearts unlocks "persistent"', async () => {
+      await seedProfile({ hearts: 0, heartsUpdatedAt: clock.iso() });
+      const out = await useProfile.getState().commitLesson(practice(), summary({ xp: 8 }), 10);
+      expect(out.newAchievements).toContain('persistent');
+      expect((await repository.getProfile()).hearts).toBe(1);
+    });
+
+    it('0 hearts but the 4 h refill already passed does not unlock it', async () => {
+      await seedProfile({ hearts: 0, heartsUpdatedAt: '2026-10-29T07:00:00' });
+      const out = await useProfile.getState().commitLesson(practice(), summary({ xp: 8 }), 10);
+      expect(out.newAchievements).not.toContain('persistent');
+    });
+  });
+
+  it('words-50 unlocks when the 50th card becomes learned in this commit', async () => {
+    await seedProfile();
+    const learned = Array.from({ length: 49 }, (_, i) => ({
+      itemId: `w${i}`,
+      ease: 2.5,
+      intervalDays: 3,
+      reps: 2,
+      lapses: 0,
+      dueDay: '2026-11-01',
+      lastReviewDay: '2026-10-20',
+    }));
+    await repository.upsertSrsCards([
+      ...learned,
+      { ...learned[0]!, itemId: 'u1-hi', intervalDays: 1, reps: 1, dueDay: '2026-10-29' }, // fixture exists
+    ]);
+    const out = await useProfile.getState().commitLesson(lesson(), summary(), 10);
+    expect(out.newAchievements).toContain('words-50');
+  });
+
+  describe('placement', () => {
+    const placementState = () => lesson('placement', 'placement');
+
+    it('passed: saves placement, onboarding and seeds only items without a card', async () => {
+      await seedProfile();
+      await repository.upsertSrsCards([
+        {
+          itemId: 'u1-bye',
+          ease: 1.7,
+          intervalDays: 1,
+          reps: 0,
+          lapses: 2,
+          dueDay: '2026-10-29',
+          lastReviewDay: '2026-10-28',
+        },
+      ]);
+      const out = await useProfile
+        .getState()
+        .commitLesson(placementState(), summary({ xp: 0 }), 10, {
+          score: 0.9,
+          passed: true,
+          unitItemIds: ['u1-hi', 'u1-bye'],
+        });
+      expect(out.streak).toBeNull();
+      const stored = await repository.getProfile();
+      expect(stored).toMatchObject({
+        onboardingDone: true,
+        placement: { score: 0.9, skippedUnit1: true },
+        totalXp: 0,
+      });
+      expect(stored.streak.lastActiveDay).toBeUndefined();
+      const cards = await repository.getSrsCards();
+      expect(cards.find((c) => c.itemId === 'u1-bye')).toMatchObject({ lapses: 2, ease: 1.7 });
+      expect(cards.find((c) => c.itemId === 'u1-hi')).toMatchObject({ intervalDays: 3, reps: 2 });
+      expect(await repository.getDailyStats('2026-01-01', '2026-12-31')).toEqual([]);
+    });
+
+    it('failed: no cards', async () => {
+      await seedProfile();
+      await useProfile.getState().commitLesson(placementState(), summary({ xp: 0 }), 10, {
+        score: 0.4,
+        passed: false,
+        unitItemIds: ['u1-hi'],
+      });
+      expect(await repository.getSrsCards()).toEqual([]);
+      expect((await repository.getProfile()).placement).toEqual({
+        score: 0.4,
+        skippedUnit1: false,
+      });
+    });
   });
 });

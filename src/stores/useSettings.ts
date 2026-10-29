@@ -9,7 +9,8 @@ type SettingsState = {
   loaded: boolean;
   /** Bumped on every update so a slow initial load cannot overwrite a newer choice. */
   revision: number;
-  load: () => Promise<void>;
+  /** `fromStorage`: data was replaced (import/reset) — the stored row wins over the theme mirror. */
+  load: (options?: { fromStorage?: boolean }) => Promise<void>;
   update: (patch: Partial<Omit<Settings, 'id'>>) => Promise<void>;
 };
 
@@ -17,7 +18,7 @@ export const useSettings = create<SettingsState>((set, get) => ({
   settings: defaultSettings(),
   loaded: false,
   revision: 0,
-  load: async () => {
+  load: async (options) => {
     const startedAt = get().revision;
     let settings: Settings;
     try {
@@ -31,7 +32,7 @@ export const useSettings = create<SettingsState>((set, get) => ({
     // The localStorage mirror is written synchronously on every change, so if a reload
     // beat the IndexedDB write, the mirror holds the newer choice.
     const remembered = readRememberedTheme();
-    if (remembered && remembered !== settings.theme) {
+    if (!options?.fromStorage && remembered && remembered !== settings.theme) {
       settings = { ...settings, theme: remembered };
       void repository.saveSettings(settings).catch(() => {});
     }
@@ -53,4 +54,4 @@ export const useSettings = create<SettingsState>((set, get) => ({
   },
 }));
 
-onDataReplaced(() => void useSettings.getState().load());
+onDataReplaced(() => void useSettings.getState().load({ fromStorage: true }));

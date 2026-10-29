@@ -5,6 +5,8 @@ import { useSettings } from './useSettings';
 
 beforeEach(async () => {
   await repository.resetAll();
+  // resetAll notifies the stores; let that reload finish before resetting state.
+  await new Promise((r) => setTimeout(r, 20));
   localStorage.clear();
   useSettings.setState({ settings: defaultSettings(), loaded: false, revision: 0 });
 });
