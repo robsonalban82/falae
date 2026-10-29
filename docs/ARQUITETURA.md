@@ -230,6 +230,8 @@ interval = min(interval, 180);  dueDay = hoje + interval
 
 Um item conta como **"palavra aprendida"** quando `reps ≥ 1` e `intervalDays ≥ 3` (usado no perfil e nas conquistas). **Praticar** monta uma lição de 12 exercícios a partir dos cards com `dueDay ≤ hoje` (mais atrasados e com mais lapsos primeiro); se houver menos de 4 vencidos, completa com os de menor `ease`. Exercícios gerados por `src/domain/practice/generate.ts` (múltipla escolha, pares, word-bank, digitação, ouvir).
 
+**Regras da Fase 6** (detalhes em `docs/fases/FASE-6.md`): cards atualizados dentro da transação do commit (`apply` devolve `srsCards`); itens repetidos na sessão usam o menor `q`; **mesmo dia**: card criado hoje (nunca revisado) pode avançar; card já revisado hoje não avança de novo com acerto, e card que já falhou hoje não é penalizado outra vez nem avança (falha depois de um acerto no mesmo dia conta); relógio que volta não altera cards; `ease` arredondado a 2 casas. Praticar: se ainda houver < 4 itens, completa com os itens da lição atual da trilha (ADR-011); gerador determinístico por `seed`, nunca gera `speak`/`fill-blank`, `listen-type` vira digitação sem TTS. Nivelamento (não libera conquistas e não sobrescreve um `placement` já gravado) aprovado cria cards `{ intervalDays: 3, reps: 2, ease: 2.5 }` só para itens sem card.
+
 ## 8. Gamificação (`src/domain/gamification/`)
 
 | Regra                              | Valor                                                                                                                                                                                        |
@@ -249,7 +251,9 @@ Um item conta como **"palavra aprendida"** quando `reps ≥ 1` e `intervalDays �
 **Ofensiva — regras exatas** (`streak.ts`, Fase 5): `gap = diffDays(hoje, lastActiveDay)` em `dayKey` local. Sem dia anterior → 1 · `gap 0` → igual · `gap 1` → +1 · `gap 2` com congelamento → gasta 1 e +1 · `gap 2` sem congelamento ou `gap ≥ 3` → 1 (congelamentos não são gastos) · `gap < 0` (relógio/fuso voltou) → nada muda. Congelamento é gasto antes de somar o XP da lição; com 2 guardados `xpTowardFreeze` fica 0. Só `lesson`/`review`/`practice` contam (nivelamento não). Consumo é preguiçoso: abrir o app não grava; a trilha mostra `displayStreak` (0 se a ofensiva já se perdeu). Meta: celebra quando `xpHoje ≥ meta` e `lastGoalCelebratedDay ≠ hoje`.
 
 **Conquistas** (lista inicial, declarativa — cada uma é `{ id, title, description, icon, check(stats) }`):
-primeira lição · lição perfeita · 3 / 7 / 30 dias de ofensiva · 50 / 100 / 250 palavras aprendidas · 1ª unidade concluída · meta diária batida 7 vezes · 500 / 1000 XP · madrugador (lição antes das 8h) · persistente (voltou após perder todos os corações).
+primeira lição · lição perfeita · 3 / 7 / 30 dias de ofensiva · 50 / 100 / 250 palavras aprendidas · 1ª unidade concluída · meta diária batida 7 vezes · 500 / 1000 XP · madrugador (lição antes das 8h) · persistente (voltou após perder todos os corações — na Fase 6: prática concluída com 0 corações, ADR-010).
+
+Praticar concluída: corações recarregados e depois +1 (teto 5), dentro do `apply`.
 
 ## 9. Voz, som, vibração e fallbacks (`src/services/`)
 
@@ -350,6 +354,8 @@ type UnlockedAchievement = { id: string; unlockedAt: string };
 `LessonOutcome = { result, profile, srsCards, newAchievements, dailyGoalXp }`. Toda escrita é validada com Zod antes da transação. Linhas corrompidas de `profile`/`settings` são movidas para `quarantine` (com as issues) e o app segue com os padrões — progresso nunca é apagado em silêncio.
 Migrações futuras com `db.version(n).upgrade(...)` e teste de migração obrigatório.
 
+**Fase 6 (interface, sem mudança de dados):** `CommitContext` = `{ profile, unlockedIds, dailyBefore, completedLessonIds, goalMetCount, goalMetToday, srsCards (só itens da sessão + extraItemIds), wordsLearnedBefore }`; `AppliedCommit` ganha `srsCards`; `LessonOutcome` ganha `extraItemIds?`. Perfil inválido lido no commit vai para `quarantine` na mesma transação. `placement` não grava `daily`. `resetAll` emite `emitDataReplaced`. Novo `updateProfile(mutate)` transacional.
+
 ### Exportar/Importar
 
 Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, exportedAt, data: {...todas as tabelas} }`. Import valida com Zod, mostra resumo (XP, ofensiva, data) e pede confirmação antes de substituir. Arquivo inválido → mensagem clara, nada é alterado.
@@ -360,6 +366,7 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, e
 - Lições concluídas podem ser refeitas (dão XP e alimentam SRS).
 - **Nivelamento** (opcional, no onboarding): 15 exercícios do conteúdo da unidade 1 (sem corações, sem feedback de certo/errado até o fim). ≥ 80% → unidade 1 marcada como "testada" (todas as lições contam como concluídas, sem coroas de ouro) e unidade 2 desbloqueada; os itens da unidade 1 entram no SRS com intervalo inicial de 3 dias.
 - Estado da trilha é **derivado** (`computePathState(course, lessonProgress, placement)`) — nunca persistido. Como `domain` não importa `content`, recebe um tipo estrutural mínimo (`PathCourseInput`: unidades → habilidades → ids de lições + revisão). Lição concluída nunca volta a ficar bloqueada (progresso importado fora de ordem vence). Lição bloqueada aberta por URL → redireciona para `/` com aviso.
+- **Nivelamento (Fase 6)**: exercícios escritos à mão da unidade 1 (1 por lição + 3 da revisão, sem `speak`/`listen-type`, escolhidos por seed); motor em modo sem feedback (sem reinserir erros, "quase" = acerto); `score = acertos / respondidos`; resultado grava `profile.placement` e `onboardingDone`; 0 XP, sem ofensiva/meta/`daily`. Sair do teste só marca o onboarding.
 
 ## 13. Telas e rotas
 
@@ -374,7 +381,9 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, e
 | `/perfil`          | XP total, palavras aprendidas, ofensiva atual/recorde, gráfico 7 dias, conquistas                                                  |
 | `/config`          | Som, vibração, meta, tema, lembrete, exportar/importar, redefinir progresso (confirmação dupla)                                    |
 
-Barra inferior (celular) / lateral (desktop ≥ 1024px): Trilha · Praticar · Perfil · Configurações. Primeiro acesso redireciona para `/boas-vindas`.
+| `/praticar/sessao` | Sessão de prática (tela cheia, `LessonPlayer` com `kind: 'practice'`; `?from=outOfHearts`) |
+
+Barra inferior (celular) / lateral (desktop ≥ 1024px): Trilha · Praticar · Perfil · Ajustes. Primeiro acesso redireciona para `/boas-vindas` — "primeiro acesso" = `!onboardingDone && totalXp === 0 && sem lessonProgress` (perfis antigos com progresso não são redirecionados).
 
 ## 14. Acessibilidade e desempenho
 

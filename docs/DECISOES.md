@@ -55,3 +55,15 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 **Contexto:** com o relógio/fuso voltando para um dia anterior, `lastGoalCelebratedDay` (um só dia) deixava celebrar de novo e marcar `goalMet` num dia "do passado".
 **Decisão:** quando `today < streak.lastActiveDay` ou `today < lastGoalCelebratedDay`, a meta não é celebrada e o dia não ganha `goalMet` novo. O XP continua contando (total, daily e congelamento).
 **Consequências:** nenhuma celebração/conquista `goal-7` é inflada por mexer no relógio; quem viaja para oeste perde no máximo uma celebração.
+
+## ADR-010 — Conquista "persistente" derivada, sem campo novo (aceita, Fase 6)
+
+**Contexto:** "voltou após perder todos os corações" exigiria lembrar que os corações zeraram, o que não existe no `Profile`.
+**Decisão:** `persistent` acende quando uma **prática** é concluída com 0 corações (após recarga preguiçosa) no início do commit, calculado dentro do `apply` (ADR-008). Lição normal nunca termina com 0 corações, então isso corresponde ao fluxo "Praticar e ganhar coração".
+**Consequências:** sem mudança de schema nem de backup; quem zera e só espera a recarga não ganha a conquista. Alternativa fiel (`Profile.heartsDepletedAt?`) recusada pelo usuário nesta fase.
+
+## ADR-011 — Praticar com itens de reserva e commit sem varrer tabelas (aceita, Fase 6)
+
+**Contexto:** o aluno pode zerar os corações na primeira lição sem ter nenhum card SRS, e o botão "Praticar e ganhar coração" ficaria sem conteúdo. Além disso, o commit montava Sets lendo `daily`, `srs` e `lessonProgress` inteiros.
+**Decisão:** com menos de 4 itens elegíveis, o Praticar completa com os itens da lição atual da trilha. O `CommitContext` passa a receber contagens (`goalMetCount`, `wordsLearnedBefore`), ids de lições concluídas e só os cards dos itens da sessão; `results` nunca é lido no commit. Booleano não é indexável no IndexedDB, por isso não há índice novo.
+**Consequências:** Praticar sempre funciona; commit com custo proporcional a tabelas limitadas; mudança só de interface (Dexie v1, backup v1).
