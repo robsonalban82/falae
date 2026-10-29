@@ -49,7 +49,8 @@ Dependências extras além das pedidas: `vite-plugin-pwa`, `react-router`, `@fon
    ├─ app/            # App.tsx, router, layout (barra inferior), providers
    ├─ content/
    │  ├─ schema.ts    # Zod — fonte da verdade do formato
-   │  ├─ loader.ts    # importa, valida, expande respostas aceitas, indexa
+   │  ├─ loader.ts    # manifesto síncrono + loadUnit() sob demanda (import dinâmico + Zod, cache)
+   │  ├─ manifest.generated.ts # índice leve gerado pelo validate:content (ADR-012)
    │  └─ units/u01-*.json …
    ├─ domain/         # FUNÇÕES PURAS + testes (sem React, sem Dexie)
    │  ├─ grading/     # normalize, expandPatterns, gradeExercise
@@ -166,7 +167,7 @@ type Exercise = BaseExercise &
 
 **Validações extras (`superRefine`)**: ids únicos globais; `itemIds` existem; `answer` ∈ `options`; `word-bank` montável com `answer` tokenizado ⊆ banco; padrões expandem para ≤ 64 frases; 10–15 exercícios por lição; 4 skills × 3 lições por unidade.
 
-**Carregamento**: `loader.ts` importa os JSON (via `import.meta.glob`, entram no bundle e no precache), valida com Zod e **lança erro em build/teste** se algo falhar; em runtime, uma unidade inválida é omitida e é mostrado um aviso (nunca carrega conteúdo inválido). Na carga, os padrões `(x)`/`[a|b]` são expandidos e normalizados uma única vez e guardados num índice `Map<id, ...>`.
+**Carregamento** (ADR-012): a trilha é desenhada só com o manifesto gerado (`manifest.generated.ts`: ids, títulos, ordem, contagens e ids de itens), conferido por `manifest.test.ts`. `loadUnit(id)` importa o JSON da unidade sob demanda (glob lazy, um chunk por unidade, todos no precache do SW), valida com Zod e guarda em cache; conteúdo inválido rejeita com `ContentLoadError` e a tela mostra um estado de erro (nunca carrega conteúdo inválido). Build/teste (`validate:content`, testes de conteúdo) falham se algo estiver inválido. Na carga, os padrões `(x)`/`[a|b]` são expandidos e normalizados uma única vez e guardados num índice `Map<id, ...>`.
 
 ## 5. Corretor de respostas (`src/domain/grading/`)
 

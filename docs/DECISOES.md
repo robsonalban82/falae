@@ -67,3 +67,15 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 **Contexto:** o aluno pode zerar os corações na primeira lição sem ter nenhum card SRS, e o botão "Praticar e ganhar coração" ficaria sem conteúdo. Além disso, o commit montava Sets lendo `daily`, `srs` e `lessonProgress` inteiros.
 **Decisão:** com menos de 4 itens elegíveis, o Praticar completa com os itens da lição atual da trilha. O `CommitContext` passa a receber contagens (`goalMetCount`, `wordsLearnedBefore`), ids de lições concluídas e só os cards dos itens da sessão; `results` nunca é lido no commit. Booleano não é indexável no IndexedDB, por isso não há índice novo.
 **Consequências:** Praticar sempre funciona; commit com custo proporcional a tabelas limitadas; mudança só de interface (Dexie v1, backup v1).
+
+## ADR-012 — Conteúdo carregado por unidade com manifesto leve (aceita, Fase 7)
+
+**Contexto:** `loader.ts` importa todos os JSON de unidade com `eager: true`, e o bundle principal passa de ~930 kB, o que ameaça a meta de Lighthouse ≥ 90 no celular.
+**Decisão:** glob lazy por unidade; `src/content/manifest.ts` (gerado/conferido pelo `validate:content`, com teste de coerência) traz só ids, títulos, ordem e contagens para a trilha. `loadUnit(id)` importa e valida com Zod sob demanda, com cache em memória. O service worker continua fazendo precache de todos os chunks.
+**Consequências:** interface do `loader` fica assíncrona (stores e telas ganham estado de carregamento); formato dos JSON, Dexie v1 e backup v1 inalterados; offline completo mantido após a primeira visita. Aprovada pelo usuário (2026-10-29): manifesto **gerado** pelo `npm run validate:content` (`src/content/manifest.generated.ts` e `knownWords.generated.ts`) e conferido por `manifest.test.ts`.
+
+## ADR-013 — Orçamento do JS inicial total (aceita, Fase 7)
+
+**Contexto:** com os vendors em chunks próprios (react, router, motion, dexie, zod), o chunk de entrada caiu para ~48 kB minificado, então o limite de 250 kB da entrada sozinho deixou de proteger o carregamento inicial.
+**Decisão:** `scripts/check-prod-bundle.ts` também soma o JS inicial (entrada + `modulepreload` do `index.html`, qualquer `base`) e falha acima de **260 kB gzip**. Medido na Fase 7: 718 kB minificado / 226 kB gzip; Lighthouse mobile 100 em `/` e `/boas-vindas`. Mantidos: entrada ≤ 250 kB minificado, nenhum chunk > 300 kB, nenhum JSON de unidade no JS inicial.
+**Consequências:** ~34 kB gzip de folga; nova dependência pesada no caminho inicial exige lazy loading ou rever este ADR. `npm run build:pages-check` confere o mesmo com `VITE_BASE=/falae/`.
