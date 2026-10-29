@@ -204,8 +204,10 @@ test.describe('vitrine', () => {
 test.describe('acessibilidade', () => {
   test('first Tab reaches "Pular para o conteúdo", which moves focus to main', async ({ page }) => {
     await page.goto('/dev/showcase');
-    await page.keyboard.press('Tab');
     const skip = page.getByRole('link', { name: 'Pular para o conteúdo' });
+    // Lazy route: wait until it rendered before the first Tab.
+    await expect(page.locator('main#conteudo')).not.toBeEmpty();
+    await page.keyboard.press('Tab');
     await expect(skip).toBeFocused();
     await expect(skip).toBeVisible();
     await page.keyboard.press('Enter');

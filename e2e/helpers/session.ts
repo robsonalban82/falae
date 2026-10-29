@@ -4,14 +4,14 @@ import { answer, firstOf, pressOption, type Ex } from './playLesson';
 type SessionState = { exercises: Ex[]; queue: number[]; status: string; turn: number };
 
 /** Reads the session saved by the app (sessionStorage) — generated exercises are not in the JSON. */
-async function sessionState(page: Page): Promise<SessionState | null> {
+export async function sessionState(page: Page): Promise<SessionState | null> {
   return page.evaluate(() => {
     const raw = sessionStorage.getItem('falae-lesson-session');
     return raw ? (JSON.parse(raw) as { state: SessionState }).state : null;
   });
 }
 
-async function current(page: Page): Promise<{ ex: Ex; turn: number }> {
+export async function current(page: Page): Promise<{ ex: Ex; turn: number }> {
   let found: { ex: Ex; turn: number } | null = null;
   await expect
     .poll(async () => {
@@ -25,7 +25,7 @@ async function current(page: Page): Promise<{ ex: Ex; turn: number }> {
 }
 
 /** A deliberately wrong answer for each exercise type. */
-async function answerWrong(page: Page, ex: Ex) {
+export async function answerWrong(page: Page, ex: Ex) {
   switch (ex.type) {
     case 'multiple-choice':
     case 'fill-blank': {

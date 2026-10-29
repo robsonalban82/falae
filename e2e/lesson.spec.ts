@@ -508,15 +508,15 @@ test.describe('sessão e saída', () => {
     expect((await dumpDb(page)).profile?.hearts).toBe(4);
   });
 
-  // Race seen ~1 in 60 runs under load: spendHeart() is not awaited, so a reload right after a
-  // wrong answer can lose the IndexedDB write; the profile then still has 5 hearts and the
-  // lesson commit writes 5 back. Flaky by nature, hence fixme.
-  test.fixme('recarregar imediatamente após errar não devolve o coração', async ({ page }) => {
+  // Was a fixme (race ~1 in 60): the spend is now recorded in the session (heartsSpentPending)
+  // synchronously and re-applied on restore. Run with --repeat-each=20 to check.
+  test('recarregar imediatamente após errar não devolve o coração', async ({ page }) => {
     await page.goto(LESSON);
     await page.getByText('bye', { exact: true }).click();
     await verify(page).click();
     await page.reload();
     await expect.poll(async () => (await dumpDb(page)).profile?.hearts).toBe(4);
+    await expect(hearts(page)).toHaveAccessibleName('4 corações');
   });
 
   test('"Sair da lição" pede confirmação; "Continuar a lição" volta; "Sair" descarta a sessão', async ({

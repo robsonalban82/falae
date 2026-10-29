@@ -67,6 +67,8 @@ export async function noRecognition(page: Page) {
 }
 
 export async function pressOption(page: Page, text: string) {
+  // Units load lazily (ADR-012): wait for the options before reading them.
+  await expect(page.locator('main input[type="radio"]').first()).toBeAttached();
   const values = await page
     .locator('main input[type="radio"]')
     .evaluateAll((els) => els.map((e) => (e as HTMLInputElement).value));
