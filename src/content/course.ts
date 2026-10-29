@@ -64,6 +64,16 @@ function labelOf(raw: unknown, i: number): string {
 }
 
 function indexCourse(units: Unit[]): Course {
+  return { ...indexUnits(units), units, knownWords: new Set(knownWordsOf(units)) };
+}
+
+/** Normalized words of the given units (sorted, deduplicated). */
+export function knownWordsOf(units: readonly Unit[]): string[] {
+  return [...collectKnownWords(courseTexts(units))].sort();
+}
+
+/** Item and lesson indexes of already-validated units (no cross-unit checks). */
+export function indexUnits(units: readonly Unit[]): Pick<Course, 'items' | 'lessons'> {
   const items = new Map<string, StudyItem>();
   const lessons = new Map<string, LessonRef>();
   for (const unit of units) {
@@ -76,10 +86,10 @@ function indexCourse(units: Unit[]): Course {
     }
     lessons.set(unit.reviewLesson.id, { lesson: unit.reviewLesson, unit, skill: null, index: -1 });
   }
-  return { units, items, lessons, knownWords: collectKnownWords(courseTexts(units)) };
+  return { items, lessons };
 }
 
-function* courseTexts(units: Unit[]): Generator<{ text: string; lang: 'en' | 'pt' }> {
+function* courseTexts(units: readonly Unit[]): Generator<{ text: string; lang: 'en' | 'pt' }> {
   for (const unit of units) {
     for (const skill of unit.skills) {
       for (const v of skill.vocab) {
