@@ -41,9 +41,10 @@ export function HeartsBadge({ hearts, nextHeartInMs, announceLoss = false }: Pro
         aria-label={t.lesson.hearts(hearts)}
         animate={animate}
         transition={{ duration: 0.3 }}
-        className="inline-flex items-center gap-1 font-display text-xl font-semibold text-danger"
+        className="inline-flex items-center gap-1 font-display text-xl font-semibold text-ink"
       >
-        <HeartIcon />
+        {/* Icon in acerola (≥ 3:1), number in ink (≥ 4.5:1) on both themes. */}
+        <HeartIcon className="text-danger" />
         <span className="tabular" aria-hidden="true">
           {hearts}
         </span>

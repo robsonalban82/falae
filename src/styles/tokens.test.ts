@@ -62,6 +62,12 @@ const pairs: [string, string, number, string][] = [
   ['focus', 'bg', 3, 'focus ring'],
   ['focus', 'surface', 3, 'focus ring on cards'],
   ['focus', 'surface-2', 3, 'focus ring on active nav pill'],
+  ['danger', 'bg', 3, 'heart icon in the sticky header'],
+  ['danger', 'surface', 3, 'heart icon on cards'],
+  ['danger', 'danger-soft', 4.5, '"+1 coração" chip'],
+  ['secondary', 'surface', 3, 'weekly chart bars'],
+  ['progress-fill', 'surface', 3, 'weekly chart: today bar'],
+  ['success', 'surface', 3, 'weekly chart: goal ✓'],
 ];
 
 describe.each([

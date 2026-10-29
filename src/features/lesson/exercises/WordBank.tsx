@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'motion/react';
 import { useMemo, useState } from 'react';
 import { tokenizeForBank } from '../../../content/schema';
 import { t } from '../../../i18n/pt-BR';
@@ -19,6 +20,7 @@ export function WordBank({ exercise, disabled, onChange }: ExerciseProps<'word-b
     [exercise],
   );
   const [picked, setPicked] = useState<number[]>([]);
+  const reduce = useReducedMotion() ?? false;
 
   const update = (next: number[]) => {
     setPicked(next);
@@ -34,10 +36,15 @@ export function WordBank({ exercise, disabled, onChange }: ExerciseProps<'word-b
       <h2 className="text-2xl font-semibold">{t.lesson.instructions['word-bank']}</h2>
       <p className="rounded-2xl bg-surface-2 p-4 text-xl">{exercise.promptPt}</p>
 
-      <div
+      {/* Reserves 2 rows of tiles on phones (1 on desktop) so picking words never pushes the
+          page; a 3rd row grows smoothly (instantly with reduced motion). */}
+      <motion.div
+        layout={!reduce}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
         aria-label={t.lesson.wordBankAnswer}
         role="group"
-        className="flex min-h-28 flex-wrap content-start gap-2 border-b-2 border-line-strong pb-3"
+        data-answer-area=""
+        className="flex min-h-[calc(6.5rem+0.75rem)] flex-wrap content-start gap-2 border-b-2 border-line-strong pb-3 lg:min-h-[calc(3rem+0.75rem)]"
       >
         {picked.length === 0 && (
           <p className="self-center text-ink-muted">{t.lesson.wordBankEmpty}</p>
@@ -46,8 +53,9 @@ export function WordBank({ exercise, disabled, onChange }: ExerciseProps<'word-b
           const tile = tiles[id];
           if (!tile) return null;
           return (
-            <button
+            <motion.button
               key={id}
+              layout={reduce ? false : 'position'}
               type="button"
               lang="en"
               disabled={disabled}
@@ -56,10 +64,10 @@ export function WordBank({ exercise, disabled, onChange }: ExerciseProps<'word-b
               className={tileClass}
             >
               {tile.word}
-            </button>
+            </motion.button>
           );
         })}
-      </div>
+      </motion.div>
 
       <div
         role="group"

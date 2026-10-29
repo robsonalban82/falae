@@ -17,3 +17,16 @@ export function formatDurationLong(ms: number): string {
   const total = Math.max(1, Math.round(ms / 1000));
   return t.time.minutesSeconds(Math.floor(total / 60), total % 60);
 }
+
+/** "29/10" from a day key (YYYY-MM-DD), no Date needed. */
+export function formatDayMonth(day: string): string {
+  return `${day.slice(8, 10)}/${day.slice(5, 7)}`;
+}
+
+/** "12/10/2026" (local date) from an ISO timestamp. */
+export function formatDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
+}

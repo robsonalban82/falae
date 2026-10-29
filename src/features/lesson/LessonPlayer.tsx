@@ -31,12 +31,17 @@ import { ExitDialog } from './ExitDialog';
 
 const SPEAK_PAUSE_MS = 60 * 60 * 1000;
 
-type Props = { initial: LessonState; knownWords: ReadonlySet<string> };
+type Props = {
+  initial: LessonState;
+  knownWords: ReadonlySet<string>;
+  /** Where "Continuar" (finish) and leaving go. Default: the path. */
+  exitTo?: string;
+};
 
 /** Answer language for the correct-answer line in feedback. */
 const answerLang = (ex: Exercise): 'en' | 'pt' => (ex.type === 'translate-typing' ? 'pt' : 'en');
 
-export function LessonPlayer({ initial, knownWords }: Props) {
+export function LessonPlayer({ initial, knownWords, exitTo = paths.path }: Props) {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(lessonReducer, initial);
   const [response, setResponse] = useState<ExerciseResponse | null>(null);
@@ -51,6 +56,7 @@ export function LessonPlayer({ initial, knownWords }: Props) {
   const commitLesson = useProfile((s) => s.commitLesson);
 
   const exercise = currentExercise(state);
+  const isPractice = state.kind === 'practice';
   const progress = lessonProgress(state);
 
   useEffect(() => saveSession(state), [state]);
@@ -158,6 +164,7 @@ export function LessonPlayer({ initial, knownWords }: Props) {
   if (state.status === 'finished' && summary) {
     return (
       <LessonComplete
+        kind={state.kind}
         summary={summary}
         commit={commit}
         saving={saveStatus === 'saving'}
@@ -166,7 +173,7 @@ export function LessonPlayer({ initial, knownWords }: Props) {
           setSaveStatus('saving');
           setSaveAttempt((n) => n + 1);
         }}
-        onContinue={() => navigate(paths.path)}
+        onContinue={() => navigate(exitTo)}
       />
     );
   }
@@ -183,7 +190,7 @@ export function LessonPlayer({ initial, knownWords }: Props) {
         <button
           type="button"
           onClick={() => setConfirmExit(true)}
-          aria-label={t.lesson.close}
+          aria-label={isPractice ? t.practice.close : t.lesson.close}
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink-muted hover:bg-surface-2"
         >
           <svg
@@ -259,10 +266,11 @@ export function LessonPlayer({ initial, knownWords }: Props) {
 
       <ExitDialog
         open={confirmExit}
+        texts={isPractice ? t.practice.confirmExit : t.lesson.confirmExit}
         onStay={() => setConfirmExit(false)}
         onLeave={() => {
           clearSession();
-          navigate(paths.path);
+          navigate(exitTo);
         }}
       />
     </div>

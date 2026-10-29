@@ -3,6 +3,7 @@ import { RouterProvider } from 'react-router';
 import { router } from './router';
 import { useSettings } from '../stores/useSettings';
 import { applyTheme } from '../services/theme';
+import { useReminderScheduler } from './useReminderScheduler';
 
 export function App() {
   const load = useSettings((s) => s.load);
@@ -13,6 +14,7 @@ export function App() {
   }, [load]);
 
   useEffect(() => applyTheme(theme), [theme]);
+  useReminderScheduler();
 
   return <RouterProvider router={router} />;
 }

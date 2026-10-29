@@ -30,8 +30,16 @@ export function OutOfHearts() {
           {t.lesson.outOfHearts.next(formatWait(nextHeartInMs))}
         </p>
       )}
-      {/* "Praticar e ganhar coração" comes back with the Practice screen (Phase 6). */}
-      <Link to={paths.path} className={`${linkButton} bg-primary text-on-primary`}>
+      <Link
+        to={`${paths.practiceSession}?from=outOfHearts`}
+        className={`${linkButton} bg-primary text-on-primary`}
+      >
+        {t.lesson.outOfHearts.practice}
+      </Link>
+      <Link
+        to={paths.path}
+        className={`${linkButton} border-2 border-line-strong bg-surface text-ink`}
+      >
         {t.lesson.outOfHearts.back}
       </Link>
     </section>

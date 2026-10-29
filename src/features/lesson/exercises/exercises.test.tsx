@@ -212,6 +212,31 @@ describe('word-bank', () => {
     expect(order()).toBe(first);
   });
 
+  it('answer area keeps a reserved height (2 rows on phones, 1 on desktop) and the bank keeps its slots', async () => {
+    // jsdom has no layout: the height comes from the reserved min-height classes, so a
+    // getBoundingClientRect mock reads them to show the box does not change while picking.
+    const heightOf = (el: Element) =>
+      el.className.includes('min-h-[calc(6.5rem+0.75rem)]') ? 116 : 0;
+    const spy = vi
+      .spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+      .mockImplementation(function (this: HTMLElement) {
+        return { height: heightOf(this) } as DOMRect;
+      });
+    const { user } = setup(bank);
+    const area = screen.getByRole('group', { name: 'Sua frase' });
+    const bankGroup = screen.getByRole('group', { name: 'Palavras disponíveis' });
+    const empty = area.getBoundingClientRect().height;
+    const slotsBefore = bankGroup.children.length;
+    for (const w of ['Nice', 'to', 'meet']) {
+      await user.click(screen.getByRole('button', { name: `Adicionar "${w}"` }));
+    }
+    expect(area.getBoundingClientRect().height).toBe(empty);
+    expect(empty).toBeGreaterThan(0);
+    expect(area.className).toContain('lg:min-h-[calc(3rem+0.75rem)]');
+    expect(bankGroup.children).toHaveLength(slotsBefore);
+    spy.mockRestore();
+  });
+
   it('distractors are offered as tiles', () => {
     setup(bank);
     expect(screen.getByRole('button', { name: 'Adicionar "know"' })).toBeInTheDocument();

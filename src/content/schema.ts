@@ -2,7 +2,8 @@ import { z } from 'zod';
 import { expandPattern, PatternError } from '../domain/grading/patterns';
 export { formatIssues } from '../lib/zodIssues';
 import { BLANK } from '../domain/grading/blank';
-export { BLANK };
+import { tokenizeForBank } from '../domain/grading/tokenize';
+export { BLANK, tokenizeForBank };
 
 /** MVP shape: every unit has 4 skills × 3 lessons, lessons have 10–15 exercises. */
 export const SKILLS_PER_UNIT = 4;
@@ -118,14 +119,6 @@ export const multipleChoiceSchema = baseExercise
       ctx.addIssue({ code: 'custom', path: ['options'], message: 'Opções repetidas.' });
     }
   });
-
-/** Splits a sentence into word-bank tiles (keeps apostrophes, drops surrounding punctuation). */
-export function tokenizeForBank(sentence: string): string[] {
-  return sentence
-    .split(/\s+/)
-    .map((w) => w.replace(/^[^\p{L}\p{N}']+|[^\p{L}\p{N}']+$/gu, ''))
-    .filter(Boolean);
-}
 
 export const wordBankSchema = baseExercise
   .extend({

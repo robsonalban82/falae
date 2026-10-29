@@ -2,15 +2,17 @@ import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { findAchievement } from '../../domain/gamification/achievements';
 import type { LessonSummary } from '../../domain/lesson/engine';
+import type { SessionKind } from '../../domain/gamification/xp';
 import { t } from '../../i18n/pt-BR';
 import type { CommitSummary } from '../../stores/useProfile';
 import { Button } from '../../ui/Button';
 import { formatDuration, formatDurationLong } from '../../ui/formatTime';
-import { ArrowRightIcon, FlameIcon, FreezeIcon } from '../../ui/icons';
+import { ArrowRightIcon, FlameIcon, FreezeIcon, HeartIcon } from '../../ui/icons';
 import { Tuca } from '../../ui/Mascot/Tuca';
 import { GoalRing } from '../path/GoalRing';
 
 type Props = {
+  kind?: SessionKind;
   summary: LessonSummary;
   /** Set once the lesson is saved. */
   commit: CommitSummary | null;
@@ -63,7 +65,17 @@ function Confetti() {
   );
 }
 
-export function LessonComplete({ summary, commit, saving, saveError, onRetry, onContinue }: Props) {
+export function LessonComplete({
+  kind = 'lesson',
+  summary,
+  commit,
+  saving,
+  saveError,
+  onRetry,
+  onContinue,
+}: Props) {
+  const isPractice = kind === 'practice';
+  const heartGained = commit?.heartGained ?? false;
   const reduce = useReducedMotion() ?? false;
   const xpShown = useCountUp(summary.xp, reduce);
   const accuracy = Math.round(summary.accuracy * 100);
@@ -93,7 +105,10 @@ export function LessonComplete({ summary, commit, saving, saveError, onRetry, on
   // One textual summary for screen readers (animated numbers are not read one by one).
   const spoken = commit
     ? [
-        t.lesson.complete.summary(summary.xp, accuracy),
+        isPractice
+          ? t.practice.complete.summary(summary.xp, accuracy)
+          : t.lesson.complete.summary(summary.xp, accuracy),
+        heartGained && t.practice.complete.heartGainedLong,
         streak && t.header.streak(streak.streak.current),
         streak?.freezeUsed && t.lesson.complete.freezeUsed,
         streak &&
@@ -113,9 +128,20 @@ export function LessonComplete({ summary, commit, saving, saveError, onRetry, on
       {!reduce && commit && <Confetti />}
       <Tuca mood="celebrating" size={160} />
       <h1 className="text-4xl font-semibold" tabIndex={-1} ref={(el) => el?.focus()}>
-        {t.lesson.complete.title}
+        {isPractice ? t.practice.complete.title : t.lesson.complete.title}
       </h1>
-      {summary.perfect && <p className="font-bold text-secondary">{t.lesson.complete.perfect}</p>}
+      {heartGained && (
+        <p className="inline-flex items-center gap-2 rounded-full bg-danger-soft px-4 py-1.5 font-display text-xl font-semibold text-danger">
+          <HeartIcon size={24} />
+          <span aria-hidden="true">{t.practice.complete.heartGained}</span>
+          <span className="sr-only">{t.practice.complete.heartGainedLong}</span>
+        </p>
+      )}
+      {summary.perfect && (
+        <p className="font-bold text-secondary">
+          {isPractice ? t.practice.complete.perfect : t.lesson.complete.perfect}
+        </p>
+      )}
       <dl className="grid w-full grid-cols-3 gap-3">
         {stats.map((s) => (
           <div key={s.label} className={`rounded-card p-3 ${s.tone}`}>

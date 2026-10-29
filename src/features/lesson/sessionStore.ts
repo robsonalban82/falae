@@ -32,6 +32,7 @@ const stateSchema = z.object({
   comboBonus: index,
   mistakes: index,
   usesHearts: z.boolean(),
+  feedback: z.boolean().optional(),
   hearts: index,
   startedAt: z.number(),
   itemStats: z.record(

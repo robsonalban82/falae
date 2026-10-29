@@ -6,6 +6,7 @@ export const paths = {
   tip: (skillId = ':skillId') => `/dica/${skillId}`,
   lesson: (lessonId = ':lessonId') => `/licao/${lessonId}`,
   practice: '/praticar',
+  practiceSession: '/praticar/sessao',
   profile: '/perfil',
   settings: '/config',
 } as const;
