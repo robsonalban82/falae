@@ -17,7 +17,8 @@ import {
   type Profile,
   type Settings,
 } from './models';
-import type { LessonOutcome, Repository } from './repository';
+import type { CommitResult, LessonOutcome, Repository } from './repository';
+import { emitDataReplaced } from './events';
 
 export class DexieRepository implements Repository {
   private readonly db: FalaeDb;
@@ -69,28 +70,61 @@ export class DexieRepository implements Repository {
     return this.db.lessonProgress.toArray();
   }
 
-  async recordLessonResult({
+  async recordLessonResult<M = undefined>({
     result,
     profile,
     srsCards,
     newAchievements,
     dailyGoalXp,
-  }: LessonOutcome): Promise<void> {
+    apply,
+  }: LessonOutcome<M>): Promise<CommitResult<M>> {
     const db = this.db;
-    // Validate everything up front so a domain bug can never write data that export/import would reject.
+    // Validate up front so a domain bug can never write data that export/import would reject.
     const validResult = lessonResultSchema.parse(result);
-    const validProfile = profileSchema.parse(profile);
     const validCards = z.array(srsCardSchema).parse(srsCards);
-    const validAchievements = z.array(unlockedAchievementSchema).parse(newAchievements);
+    const nowIso = this.nowIso();
 
-    await db.transaction(
+    return db.transaction(
       'rw',
       [db.results, db.lessonProgress, db.daily, db.profile, db.srs, db.achievements],
-      async () => {
-        // Idempotent: the same lesson run is never counted twice.
-        if (await db.results.get(validResult.id)) return;
-        await db.results.put(validResult);
+      async (): Promise<CommitResult<M>> => {
+        // Idempotent: the same lesson run is never counted twice (profile and achievements included).
+        if (await db.results.get(validResult.id)) return { applied: false };
 
+        // Fresh reads inside the transaction.
+        const storedRaw = await db.profile.get('me');
+        const storedParsed = profileSchema.safeParse(storedRaw);
+        const storedProfile = storedParsed.success ? storedParsed.data : defaultProfile(nowIso);
+        const unlocked = await db.achievements.toArray();
+        const unlockedIds = new Set(unlocked.map((a) => a.id));
+        const dayRow = await db.daily.get(validResult.day);
+
+        let nextProfile = profile;
+        let nextAchievements = newAchievements;
+        let meta: M | undefined;
+        if (apply) {
+          const out = apply({
+            profile: storedProfile,
+            unlockedIds,
+            dailyBefore: dayRow,
+            lessonProgress: await db.lessonProgress.toArray(),
+            goalMetDays: new Set(
+              (await db.daily.filter((d) => d.goalMet).toArray()).map((d) => d.day),
+            ),
+            srsCards: await db.srs.toArray(),
+          });
+          nextProfile = out.profile;
+          nextAchievements = out.newAchievements;
+          meta = out.meta;
+        }
+        // Throws (and rolls back the transaction) on invalid data.
+        const validProfile = profileSchema.parse(nextProfile);
+        const fresh = z
+          .array(unlockedAchievementSchema)
+          .parse(nextAchievements)
+          .filter((a) => !unlockedIds.has(a.id));
+
+        await db.results.put(validResult);
         if (result.kind === 'lesson' || result.kind === 'review') {
           const prev = await db.lessonProgress.get(result.lessonId);
           await db.lessonProgress.put({
@@ -101,19 +135,22 @@ export class DexieRepository implements Repository {
           });
         }
 
-        const day = await db.daily.get(result.day);
-        const xp = (day?.xp ?? 0) + result.xp;
+        // Clock went back (a day before the last activity): XP counts, but no new goal day.
+        const last = storedProfile.streak.lastActiveDay;
+        const clockBack = last !== undefined && validResult.day < last;
+        const xp = (dayRow?.xp ?? 0) + result.xp;
         await db.daily.put({
           day: result.day,
           xp,
-          lessons: (day?.lessons ?? 0) + 1,
+          lessons: (dayRow?.lessons ?? 0) + 1,
           // Once met, a day stays met even if the goal is raised later.
-          goalMet: (day?.goalMet ?? false) || xp >= dailyGoalXp,
+          goalMet: (dayRow?.goalMet ?? false) || (!clockBack && xp >= dailyGoalXp),
         });
 
         await db.profile.put(validProfile);
         if (validCards.length) await db.srs.bulkPut(validCards);
-        if (validAchievements.length) await db.achievements.bulkPut(validAchievements);
+        if (fresh.length) await db.achievements.bulkAdd(fresh);
+        return { applied: true, profile: validProfile, newAchievements: fresh, meta };
       },
     );
   }
@@ -174,6 +211,7 @@ export class DexieRepository implements Repository {
       await db.daily.bulkPut(data.daily);
       await db.achievements.bulkPut(data.achievements);
     });
+    emitDataReplaced();
   }
 
   async resetAll(): Promise<void> {

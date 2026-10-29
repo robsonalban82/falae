@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { repository } from '../data';
+import { onDataReplaced } from '../data/events';
 import { defaultSettings, type Settings } from '../data/models';
 import { readRememberedTheme, rememberTheme } from '../services/theme';
 
@@ -51,3 +52,5 @@ export const useSettings = create<SettingsState>((set, get) => ({
     }
   },
 }));
+
+onDataReplaced(() => void useSettings.getState().load());

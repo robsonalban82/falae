@@ -147,11 +147,35 @@ describe('idempotent lesson results', () => {
   it('ignores a second commit of the same result id', async () => {
     const repo2 = new DexieRepository({ dbName: `test-idem-${Date.now()}`, nowIso: () => NOW });
     const o = outcome({ result: result({ id: 'same-run' }) });
-    await repo2.recordLessonResult(o);
-    await repo2.recordLessonResult({ ...o, profile: { ...o.profile, totalXp: 999 } });
+    await expect(repo2.recordLessonResult(o)).resolves.toMatchObject({ applied: true });
+    await expect(
+      repo2.recordLessonResult({
+        ...o,
+        profile: { ...o.profile, totalXp: 999 },
+        newAchievements: [{ id: 'xp-500', unlockedAt: NOW }],
+      }),
+    ).resolves.toEqual({ applied: false });
     expect(await repo2.getRecentResults(10)).toHaveLength(1);
+    expect((await repo2.getAchievements()).map((a) => a.id)).not.toContain('xp-500');
     expect((await repo2.getProfile()).totalXp).toBe(15);
     expect((await repo2.getDailyStats('2026-10-28', '2026-10-28'))[0]?.xp).toBe(15);
     repo2.close();
+  });
+});
+
+describe('achievements are never rewritten', () => {
+  it('keeps the original unlockedAt of an achievement already unlocked', async () => {
+    await repo.recordLessonResult(
+      outcome({
+        newAchievements: [{ id: 'first-lesson', unlockedAt: '2026-01-01T00:00:00.000Z' }],
+      }),
+    );
+    const second = await repo.recordLessonResult(
+      outcome({ newAchievements: [{ id: 'first-lesson', unlockedAt: NOW }] }),
+    );
+    expect(second).toMatchObject({ applied: true, newAchievements: [] });
+    expect(await repo.getAchievements()).toEqual([
+      { id: 'first-lesson', unlockedAt: '2026-01-01T00:00:00.000Z' },
+    ]);
   });
 });
