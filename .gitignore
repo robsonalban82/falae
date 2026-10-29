@@ -9,3 +9,5 @@ test-results/
 e2e/screenshots/
 .DS_Store
 *.local
+lighthouse-reports/
+dist-pages

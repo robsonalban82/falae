@@ -5,7 +5,17 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default tseslint.config(
-  { ignores: ['dist', 'dist-e2e', 'dev-dist', 'coverage', 'playwright-report', 'test-results'] },
+  {
+    ignores: [
+      'dist',
+      'dist-pages',
+      'dist-e2e',
+      'dev-dist',
+      'coverage',
+      'playwright-report',
+      'test-results',
+    ],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.strict],
     files: ['**/*.{ts,tsx}'],
@@ -27,7 +37,23 @@ export default tseslint.config(
   },
   {
     files: ['**/*.test.{ts,tsx}', 'e2e/**', 'src/test/**'],
-    rules: { '@typescript-eslint/no-non-null-assertion': 'off' },
+    rules: {
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      // Phase 7: no focused or "fixme" tests in the repository (skips need a platform reason).
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            'MemberExpression[object.name=/^(test|it|describe)$/][property.name=/^(only|fixme)$/]',
+          message: 'Nada de .only/.fixme no repositório.',
+        },
+        {
+          selector:
+            "MemberExpression[object.object.name='test'][object.property.name='describe'][property.name=/^(only|fixme)$/]",
+          message: 'Nada de .only/.fixme no repositório.',
+        },
+      ],
+    },
   },
   {
     files: ['src/data/**'],
