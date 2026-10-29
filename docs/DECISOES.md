@@ -43,3 +43,15 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 **Contexto:** a §5 previa duas leituras para `'s`/`'d` (is/has, would/had).
 **Decisão:** no A1 só usamos `he's = he is` e `I'd = I would`; formas sem apóstrofo (`im`, `dont`, `cant`…) também são expandidas, exceto as que são palavras reais (`its`, `were`, `well`, `ill`, `wont`…).
 **Consequências:** "He's got" ≠ "He has got" até um conteúdo A2 precisar; respostas digitadas no celular sem apóstrofo são aceitas.
+
+## ADR-008 — Regras do fim de lição rodam dentro da transação (aceita, Fase 5)
+
+**Contexto:** a store montava o profile novo fora da transação; duas abas (ou uma store desatualizada) sobrescreviam ofensiva, XP e corações, e conquistas tinham `unlockedAt` regravado.
+**Decisão:** `LessonOutcome.apply(ctx)` é uma função pura executada pelo repositório dentro da transação, sobre profile, conquistas, daily, progresso e cards relidos do banco. Conquista já liberada nunca é regravada.
+**Consequências:** commits concorrentes somam; a interface do `Repository` ganhou genérico `CommitResult<M>` (sem mudança de dados persistidos).
+
+## ADR-009 — Relógio que volta não celebra meta (aceita, Fase 5)
+
+**Contexto:** com o relógio/fuso voltando para um dia anterior, `lastGoalCelebratedDay` (um só dia) deixava celebrar de novo e marcar `goalMet` num dia "do passado".
+**Decisão:** quando `today < streak.lastActiveDay` ou `today < lastGoalCelebratedDay`, a meta não é celebrada e o dia não ganha `goalMet` novo. O XP continua contando (total, daily e congelamento).
+**Consequências:** nenhuma celebração/conquista `goal-7` é inflada por mexer no relógio; quem viaja para oeste perde no máximo uma celebração.

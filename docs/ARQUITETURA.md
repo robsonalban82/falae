@@ -246,6 +246,8 @@ Um item conta como **"palavra aprendida"** quando `reps ≥ 1` e `intervalDays �
 | Congelar ofensiva                  | ganha 1 a cada 100 XP acumulados; máx. 2 guardados; se o último dia ativo foi anteontem (1 dia perdido) e há congelamento, consome 1 e a ofensiva continua; 2+ dias perdidos → ofensiva zera |
 | Meta diária                        | 10 / 20 / 30 / 50 XP (padrão 20); anel de progresso na trilha; atingir mostra celebração 1×/dia                                                                                              |
 
+**Ofensiva — regras exatas** (`streak.ts`, Fase 5): `gap = diffDays(hoje, lastActiveDay)` em `dayKey` local. Sem dia anterior → 1 · `gap 0` → igual · `gap 1` → +1 · `gap 2` com congelamento → gasta 1 e +1 · `gap 2` sem congelamento ou `gap ≥ 3` → 1 (congelamentos não são gastos) · `gap < 0` (relógio/fuso voltou) → nada muda. Congelamento é gasto antes de somar o XP da lição; com 2 guardados `xpTowardFreeze` fica 0. Só `lesson`/`review`/`practice` contam (nivelamento não). Consumo é preguiçoso: abrir o app não grava; a trilha mostra `displayStreak` (0 se a ofensiva já se perdeu). Meta: celebra quando `xpHoje ≥ meta` e `lastGoalCelebratedDay ≠ hoje`.
+
 **Conquistas** (lista inicial, declarativa — cada uma é `{ id, title, description, icon, check(stats) }`):
 primeira lição · lição perfeita · 3 / 7 / 30 dias de ofensiva · 50 / 100 / 250 palavras aprendidas · 1ª unidade concluída · meta diária batida 7 vezes · 500 / 1000 XP · madrugador (lição antes das 8h) · persistente (voltou após perder todos os corações).
 
@@ -272,7 +274,11 @@ interface Repository {
   getSettings(): Promise<Settings>;
   saveSettings(s: Settings): Promise<void>;
   getLessonProgress(): Promise<LessonProgress[]>;
-  recordLessonResult(o: LessonOutcome): Promise<void>; // atômico: resultado + progresso + XP do dia + profile + SRS + conquistas
+  // Atômico: resultado + progresso + XP do dia + profile + SRS + conquistas.
+  // `o.apply(ctx)` (função pura) roda DENTRO da transação sobre profile/conquistas/daily/progresso
+  // relidos do banco, para que duas abas ou uma store desatualizada nunca sobrescrevam dados.
+  // Conquista já liberada nunca é regravada. Run repetido (mesmo result.id) → { applied: false }.
+  recordLessonResult<M>(o: LessonOutcome<M>): Promise<CommitResult<M>>;
   getRecentResults(limit: number): Promise<LessonResult[]>;
   getSrsCards(): Promise<SrsCard[]>;
   upsertSrsCards(c: SrsCard[]): Promise<void>;
@@ -353,7 +359,7 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, e
 - Desbloqueio linear: lição N+1 da habilidade abre após concluir a N; habilidade seguinte abre quando a anterior ganha a **coroa** (3 lições concluídas); **revisão da unidade** abre com as 4 coroas; a próxima unidade abre ao concluir a revisão.
 - Lições concluídas podem ser refeitas (dão XP e alimentam SRS).
 - **Nivelamento** (opcional, no onboarding): 15 exercícios do conteúdo da unidade 1 (sem corações, sem feedback de certo/errado até o fim). ≥ 80% → unidade 1 marcada como "testada" (todas as lições contam como concluídas, sem coroas de ouro) e unidade 2 desbloqueada; os itens da unidade 1 entram no SRS com intervalo inicial de 3 dias.
-- Estado da trilha é **derivado** (`computePathState(content, lessonProgress, placement)`) — nunca persistido.
+- Estado da trilha é **derivado** (`computePathState(course, lessonProgress, placement)`) — nunca persistido. Como `domain` não importa `content`, recebe um tipo estrutural mínimo (`PathCourseInput`: unidades → habilidades → ids de lições + revisão). Lição concluída nunca volta a ficar bloqueada (progresso importado fora de ordem vence). Lição bloqueada aberta por URL → redireciona para `/` com aviso.
 
 ## 13. Telas e rotas
 
