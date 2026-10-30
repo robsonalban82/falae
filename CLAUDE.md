@@ -44,6 +44,7 @@ Agentes em `.claude/agents/`, skills em `.claude/skills/`. **Ninguém aprova o p
 - Conteúdo: `autor-de-conteudo` → `revisor-linguistico` → correção → reconfirmação.
 - Código: `desenvolvedor` → `revisor-de-codigo` + `qa-tester` (em paralelo) → correção → nova verificação.
 - Interface: `revisor-ux` com screenshots (390×844 e desktop) ao fim de cada fase visual.
+- **Modelo por agente** (economia de tokens): cada agente define `model:` no frontmatter — `opus` para `arquiteto` e `revisor-de-codigo` (decisões estruturais e portão de qualidade), `sonnet` para os demais. O agente principal pode sobrescrever com o parâmetro `model` ao delegar: `haiku` para tarefas mecânicas (buscas, renomear, rodar comandos e resumir saída, conferir checklist simples); `opus` quando a tarefa for difícil (bug sutil, refatoração grande, revisão de dados persistidos). Na dúvida, fique no padrão do agente.
 - Severidades: **bloqueante / importante / sugestão**. Fase só avança com 0 bloqueantes e lint/typecheck/test/e2e verdes.
 - Cada fase tem plano em `docs/fases/FASE-N.md`; decisões em `docs/DECISOES.md`.
 
