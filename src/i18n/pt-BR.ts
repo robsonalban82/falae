@@ -137,7 +137,7 @@ export const t = {
       },
       'perfect-lesson': {
         title: 'Sem errar nada',
-        description: 'Você fez uma lição perfeita.',
+        description: 'Você acertou tudo, sem nenhum erro.',
         hint: 'Termine uma lição sem errar nada.',
       },
       'streak-3': {
@@ -189,7 +189,7 @@ export const t = {
       },
       persistent: {
         title: 'Persistente',
-        description: 'Você praticou para recuperar um coração depois de ficar sem nenhum.',
+        description: 'Você recuperou um coração praticando.',
         hint: 'Fique sem corações e pratique para recuperar um.',
       },
     },
@@ -382,14 +382,24 @@ export const t = {
     importBody: 'O progresso deste aparelho será trocado pelo do arquivo.',
     importSummary: 'Neste backup',
     importCurrentTitle: 'Agora',
-    importLoss: (xp: number, streakDays: number) => {
+    importLoss: (loss: { lessons: number; achievements: number; xp: number; streak: number }) => {
       const parts = [
-        ...(xp > 0 ? [`${xp} XP`] : []),
-        ...(streakDays > 0
-          ? [`${streakDays} ${streakDays === 1 ? 'dia' : 'dias'} de ofensiva`]
+        ...(loss.lessons > 0
+          ? [`${loss.lessons} ${loss.lessons === 1 ? 'lição concluída' : 'lições concluídas'}`]
+          : []),
+        ...(loss.achievements > 0
+          ? [`${loss.achievements} ${loss.achievements === 1 ? 'conquista' : 'conquistas'}`]
+          : []),
+        ...(loss.xp > 0 ? [`${loss.xp} XP`] : []),
+        ...(loss.streak > 0
+          ? [`${loss.streak} ${loss.streak === 1 ? 'dia' : 'dias'} de ofensiva`]
           : []),
       ];
-      return `Atenção: você vai perder ${parts.join(' e ')}.`;
+      const list =
+        parts.length > 1
+          ? `${parts.slice(0, -1).join(', ')} e ${parts[parts.length - 1]}`
+          : parts[0];
+      return `Atenção: você vai perder ${list ?? ''}.`;
     },
     importXp: (xp: number) => `${xp} XP`,
     importStreak: (current: number, longest: number) =>
@@ -438,7 +448,6 @@ export const t = {
     },
     continue: 'Continuar',
     levelTitle: 'Você já sabe um pouco de inglês?',
-    levelBody: 'Se já sabe o básico, faça um teste rápido e pule a primeira unidade.',
     beginner: 'Sou iniciante',
     placement: 'Já sei um pouco',
     placementHint: 'Faça um teste de nível rápido e pule o que já sabe.',

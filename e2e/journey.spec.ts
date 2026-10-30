@@ -134,7 +134,8 @@ test('jornada completa §15', async ({ page }) => {
   await page.getByRole('link', { name: 'Perfil' }).click();
   const bars = page.getByRole('list', { name: 'Últimos 7 dias' }).getByRole('listitem');
   await expect(bars).toHaveCount(7);
-  await expect(page.getByRole('listitem', { name: /: 0 XP$/ })).toHaveCount(5);
+  // Only the bars of this chart (scoped to `bars`), not any listitem on the page.
+  await expect(bars.and(page.getByRole('listitem', { name: /: 0 XP$/ }))).toHaveCount(5);
 
   // 6. Persistence: reload on the path, mid-lesson and on the profile.
   await page.goto('/');

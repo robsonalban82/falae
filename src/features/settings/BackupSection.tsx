@@ -31,6 +31,7 @@ export function BackupSection() {
   const [message, setMessage] = useState<Message | null>(null);
   const [pending, setPending] = useState<{ file: ExportFile; summary: ImportSummary } | null>(null);
   const [busy, setBusy] = useState(false);
+  const [currentCounts, setCurrentCounts] = useState({ lessons: 0, achievements: 0 });
 
   const onExport = async () => {
     try {
@@ -62,6 +63,15 @@ export function BackupSection() {
         ...(parsed.issues ? { issues: parsed.issues } : {}),
       });
       return;
+    }
+    try {
+      const [lessons, achievements] = await Promise.all([
+        repository.getLessonProgress(),
+        repository.getAchievements(),
+      ]);
+      setCurrentCounts({ lessons: lessons.length, achievements: achievements.length });
+    } catch (err) {
+      console.error('[falae] Could not read current progress', err);
     }
     setPending({ file: parsed.file, summary: parsed.summary });
   };
@@ -141,32 +151,59 @@ export function BackupSection() {
         <p>{t.settings.importBody}</p>
         {s && (
           <>
-            {(s.totalXp < currentXp || s.streak < currentStreak) && (
-              <p className="rounded-2xl border-2 border-danger bg-danger-soft p-3 font-bold text-danger">
-                {t.settings.importLoss(
-                  Math.max(0, currentXp - s.totalXp),
-                  Math.max(0, currentStreak - s.streak),
-                )}
-              </p>
-            )}
-            <div className="grid grid-cols-2 gap-2 text-ink">
-              <div className="rounded-2xl bg-surface-2 p-3">
-                <p className="font-bold">{t.settings.importCurrentTitle}</p>
-                <ul className="mt-1 space-y-0.5">
-                  <li>{t.settings.importXp(currentXp)}</li>
-                  <li>{t.settings.importStreak(currentStreak, currentLongest)}</li>
-                </ul>
-              </div>
-              <div className="rounded-2xl bg-surface-2 p-3">
-                <p className="font-bold">{t.settings.importSummary}</p>
-                <ul className="mt-1 space-y-0.5">
-                  <li>{t.settings.importXp(s.totalXp)}</li>
-                  <li>{t.settings.importStreak(s.streak, s.longest)}</li>
-                  <li>{t.settings.importLessons(s.lessons)}</li>
-                  <li>{t.settings.importAchievements(s.achievements)}</li>
-                  <li>{t.settings.importDate(formatDate(s.exportedAt))}</li>
-                </ul>
-              </div>
+            {(() => {
+              const loss = {
+                xp: Math.max(0, currentXp - s.totalXp),
+                streak: Math.max(0, currentStreak - s.streak),
+                lessons: Math.max(0, currentCounts.lessons - s.lessons),
+                achievements: Math.max(0, currentCounts.achievements - s.achievements),
+              };
+              const anyLoss = Object.values(loss).some((n) => n > 0);
+              return (
+                anyLoss && (
+                  <p className="rounded-2xl border-2 border-danger bg-danger-soft p-3 font-bold text-danger">
+                    {t.settings.importLoss(loss)}
+                  </p>
+                )
+              );
+            })()}
+            <div className="grid grid-cols-1 gap-2 text-ink sm:grid-cols-2">
+              {[
+                {
+                  title: t.settings.importCurrentTitle,
+                  lessons: currentCounts.lessons,
+                  achievements: currentCounts.achievements,
+                  xp: currentXp,
+                  streak: currentStreak,
+                  longest: currentLongest,
+                  date: null,
+                },
+                {
+                  title: t.settings.importSummary,
+                  lessons: s.lessons,
+                  achievements: s.achievements,
+                  xp: s.totalXp,
+                  streak: s.streak,
+                  longest: s.longest,
+                  date: s.exportedAt,
+                },
+              ].map((col) => (
+                <div key={col.title} className="rounded-2xl bg-surface-2 p-3">
+                  <p className="font-bold">{col.title}</p>
+                  {/* Same rows in the same order in both columns, so they line up. */}
+                  <ul className="mt-1 space-y-0.5">
+                    <li>{t.settings.importLessons(col.lessons)}</li>
+                    <li>{t.settings.importAchievements(col.achievements)}</li>
+                    <li>{t.settings.importXp(col.xp)}</li>
+                    <li>{t.settings.importStreak(col.streak, col.longest)}</li>
+                  </ul>
+                  {col.date && (
+                    <p className="mt-1 text-sm text-ink-muted">
+                      {t.settings.importDate(formatDate(col.date))}
+                    </p>
+                  )}
+                </div>
+              ))}
             </div>
           </>
         )}

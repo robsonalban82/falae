@@ -117,8 +117,6 @@ export function WelcomeScreen() {
             />
           </div>
         )}
-
-        {step === 3 && <p className="text-lg text-ink-muted">{t.welcome.levelBody}</p>}
       </div>
 
       <div className="flex flex-col gap-3">

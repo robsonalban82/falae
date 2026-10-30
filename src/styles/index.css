@@ -33,20 +33,6 @@
   --color-on-xp: var(--on-xp);
   --color-focus: var(--focus);
 
-  --color-tuca-body: var(--tuca-body);
-  --color-tuca-body-shade: var(--tuca-body-shade);
-  --color-tuca-chest: var(--tuca-chest);
-  --color-tuca-bib: var(--tuca-bib);
-  --color-tuca-beak-ridge: var(--tuca-beak-ridge);
-  --color-tuca-beak-top: var(--tuca-beak-top);
-  --color-tuca-beak-bottom: var(--tuca-beak-bottom);
-  --color-tuca-beak-tip: var(--tuca-beak-tip);
-  --color-tuca-eye: var(--tuca-eye);
-  --color-tuca-pupil: var(--tuca-pupil);
-  --color-tuca-ring: var(--tuca-ring);
-  --color-tuca-feet: var(--tuca-feet);
-  --color-tuca-cheek: var(--tuca-cheek);
-
   --font-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
   --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
 
@@ -76,6 +62,11 @@
   :focus-visible {
     outline: 3px solid var(--focus);
     outline-offset: 2px;
+  }
+  /* Headings/regions focused programmatically (tabIndex=-1) only move the screen reader cursor:
+     they are not interactive, so no ring. Controls keep :focus-visible above. */
+  [tabindex='-1']:focus {
+    outline: none;
   }
   input,
   textarea,
@@ -120,4 +111,9 @@
 }
 @utility arm-bar {
   animation: falae-arm 0.4s linear forwards;
+}
+
+/* Mascot halo (transparent in light theme, soft light ring in dark). */
+@utility tuca-glow {
+  filter: drop-shadow(0 0 3px var(--tuca-glow));
 }

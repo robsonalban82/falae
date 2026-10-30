@@ -22,6 +22,7 @@ type Hooks = {
   setNow: (v: string) => void;
   advanceDays: (d: number) => void;
   today: () => string;
+  iso: () => string;
   importForTest: (file: unknown) => Promise<void>;
   notificationPermission: (state: string) => void;
 };
@@ -61,7 +62,8 @@ export async function seed(page: Page, data: Seed) {
   if (page.url() === 'about:blank') await page.goto('/');
   await page.evaluate(async (d) => {
     const hooks = (window as unknown as { __falae: Hooks }).__falae;
-    const now = new Date().toISOString();
+    // Simulated clock, so heartsUpdatedAt is never in the app's future.
+    const now = hooks.iso();
     const file = {
       app: 'falae',
       schemaVersion: 1,

@@ -63,4 +63,12 @@ describe('hearts', () => {
       2,
     );
   });
+
+  it('next heart is never more than one refill period away (future timestamp)', () => {
+    // Regression: heartsUpdatedAt ~23 h in the future showed "próximo em 27 h".
+    const r = refillHearts({ hearts: 3, heartsUpdatedAt: iso(T0 + 23 * 3_600_000) }, T0);
+    expect(r.hearts).toBe(3);
+    expect(r.nextHeartInMs).toBe(HEART_REFILL_MS);
+    expect(r.heartsUpdatedAt).toBe(iso(T0));
+  });
 });

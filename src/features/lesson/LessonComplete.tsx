@@ -134,7 +134,7 @@ export function LessonComplete({
     : '';
 
   return (
-    <section className="mx-auto flex min-h-dvh max-w-lg flex-col items-center justify-center gap-5 px-4 py-8 text-center">
+    <section className="mx-auto flex min-h-dvh max-w-lg flex-col items-center justify-center gap-5 px-4 pt-8 pb-0 text-center sm:pb-8">
       {!reduce && commit && <Confetti />}
       <Tuca mood="celebrating" size={160} />
       <h1 className="text-4xl font-semibold" tabIndex={-1} ref={(el) => el?.focus()}>
@@ -271,15 +271,18 @@ export function LessonComplete({
         {saveError && <p className="font-bold text-danger">{t.lesson.complete.saveError}</p>}
         {spoken && <p className="sr-only">{spoken}</p>}
       </div>
-      {saveError ? (
-        <Button block onClick={onRetry}>
-          {t.lesson.complete.retry}
-        </Button>
-      ) : (
-        <Button block disabled={saving} onClick={onContinue} trailing={<ArrowRightIcon />}>
-          {t.lesson.continue}
-        </Button>
-      )}
+      {/* Sticky on mobile: the main action never falls below the fold. */}
+      <div className="sticky bottom-0 -mx-4 w-[calc(100%+2rem)] border-t-2 border-line bg-bg px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:static sm:mx-0 sm:w-full sm:border-0 sm:bg-transparent sm:p-0">
+        {saveError ? (
+          <Button block onClick={onRetry}>
+            {t.lesson.complete.retry}
+          </Button>
+        ) : (
+          <Button block disabled={saving} onClick={onContinue} trailing={<ArrowRightIcon />}>
+            {t.lesson.continue}
+          </Button>
+        )}
+      </div>
     </section>
   );
 }

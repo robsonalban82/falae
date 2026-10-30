@@ -108,7 +108,8 @@ export const screens: Screen[] = [
         lessonProgress: progress([...unit1.slice(0, 7)]),
         daily: [{ day: DAY, xp: 12, lessons: 1, goalMet: false }],
       });
-      await expect(page.getByRole('link', { name: /atual$/ })).toBeVisible();
+      // The path scrolls the current node into view (also on mobile).
+      await expect(page.getByRole('link', { name: /atual$/ })).toBeInViewport();
     },
   },
   {
@@ -160,7 +161,8 @@ export const screens: Screen[] = [
       await page.getByText('thanks', { exact: true }).click();
       await page.getByRole('button', { name: 'Verificar' }).click();
       await expect(page.getByRole('button', { name: 'Continuar' })).toBeVisible();
-      await page.waitForTimeout(500); // let the heart-loss animation finish
+      // Screenshots run with reducedMotion: 'reduce', so the heart loss is already settled.
+      await expect(page.getByRole('img', { name: '4 corações' })).toBeVisible();
     },
   },
   {
@@ -185,7 +187,7 @@ export const screens: Screen[] = [
       await page.getByRole('textbox').fill('muito obrigdo');
       await page.getByRole('button', { name: 'Verificar' }).click();
       await expect(page.locator('footer mark')).toBeVisible();
-      await page.waitForTimeout(500);
+      await expect(page.getByRole('button', { name: 'Continuar', exact: true })).toBeVisible();
     },
   },
   {
@@ -199,7 +201,9 @@ export const screens: Screen[] = [
   {
     name: 'erro-de-conteudo-offline',
     run: async (page) => {
-      // Simulates an unreachable unit chunk (offline before it was ever cached).
+      // Simulates an unreachable unit chunk (offline before it was ever cached). Units are lazy
+      // chunks (import.meta.glob('./units/*.json') in src/content/loader.ts), which Vite names
+      // after the file: u01-cumprimentos.json → /assets/u01-cumprimentos-<hash>.js.
       await page
         .context()
         .route(/\/assets\/u01-[^/]+\.js$/, (route) => route.abort('internetdisconnected'));
@@ -278,6 +282,12 @@ export const screens: Screen[] = [
       await seed(page, {
         profile: { ...veteran, hearts: 0, heartsUpdatedAt: `${DAY}T11:00:00` },
         srs: dueCards.map((id) => card(id)),
+        // A veteran (longest streak 9) already earned the streak badges: none may pop up as new.
+        achievements: [
+          { id: 'first-lesson', unlockedAt: '2026-10-12T15:00:00.000Z' },
+          { id: 'streak-3', unlockedAt: '2026-10-20T15:00:00.000Z' },
+          { id: 'streak-7', unlockedAt: '2026-10-24T15:00:00.000Z' },
+        ],
       });
       await page.goto('/praticar/sessao?from=outOfHearts');
       await playPractice(page);

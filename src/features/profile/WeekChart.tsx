@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { weekScale, type WeekDay } from '../../domain/stats/week';
 import { t } from '../../i18n/pt-BR';
 import { Link } from 'react-router';
@@ -14,6 +15,8 @@ const MIN_BAR = 2;
 
 /** Seven bars with the goal line. Screen readers get the table below, not the rectangles. */
 export function WeekChart({ days, goal }: Props) {
+  const titleId = useId();
+  const captionId = useId();
   const scale = weekScale(days, goal);
   const plot = H - TOP - BOTTOM;
   const slot = W / days.length;
@@ -26,10 +29,10 @@ export function WeekChart({ days, goal }: Props) {
   if (empty) {
     return (
       <section
-        aria-labelledby="week-title"
+        aria-labelledby={titleId}
         className="rounded-card border-2 border-line bg-surface p-4"
       >
-        <h2 id="week-title" className="mb-2 text-xl font-semibold">
+        <h2 id={titleId} className="mb-2 text-xl font-semibold">
           {t.profile.week}
         </h2>
         <p className="text-ink-muted">{t.profile.weekEmpty}</p>
@@ -45,15 +48,18 @@ export function WeekChart({ days, goal }: Props) {
 
   return (
     <figure className="rounded-card border-2 border-line bg-surface p-4">
-      <figcaption id="week-title" className="mb-2 text-xl font-semibold">
+      <figcaption id={titleId} className="mb-2 text-xl font-semibold">
         {t.profile.week}
       </figcaption>
-      <p className="sr-only">{t.profile.weekCaption(goal)}</p>
+      <p id={captionId} className="sr-only">
+        {t.profile.weekCaption(goal)}
+      </p>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="h-auto w-full"
         role="list"
-        aria-labelledby="week-title"
+        aria-labelledby={titleId}
+        aria-describedby={captionId}
       >
         {days.map((d, i) => {
           const h = Math.max(MIN_BAR, (d.xp / scale) * plot);

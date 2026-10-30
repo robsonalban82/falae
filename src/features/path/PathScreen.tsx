@@ -52,7 +52,10 @@ export function PathScreen() {
     (el: HTMLElement | null) => {
       if (!el || scrolled.current) return;
       scrolled.current = true;
-      el.scrollIntoView?.({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+      // Wait for layout (fonts, unit sections below) so centering is right on tall mobile pages.
+      requestAnimationFrame(() =>
+        el.scrollIntoView?.({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' }),
+      );
     },
     [reduceMotion],
   );

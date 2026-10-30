@@ -17,9 +17,10 @@ for (const theme of ['light', 'dark'] as const) {
       await screen.run(page);
       await page.waitForLoadState('networkidle');
       const base = `e2e/screenshots/${info.project.name}-${theme}-${screen.name}`;
-      await page.screenshot({ path: `${base}.png`, fullPage: screen.full ?? false });
-      // Full-page shots put the fixed nav mid-page; also capture what the viewport really shows.
+      // Viewport shot first: a full-page capture resizes the viewport and loses the scroll
+      // position (the path's scroll to the current node), so "-tela" must come before it.
       if (screen.full) await page.screenshot({ path: `${base}-tela.png` });
+      await page.screenshot({ path: `${base}.png`, fullPage: screen.full ?? false });
     });
   }
 }

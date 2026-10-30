@@ -50,6 +50,8 @@ declare global {
       reset: () => void;
       /** Local day key of the (simulated) clock. */
       today: () => string;
+      /** ISO timestamp of the (simulated) clock. */
+      iso: () => string;
       /** E2E only: replaces all data with a validated export file. */
       importForTest?: (file: unknown) => Promise<void>;
       /** E2E only: replaces the SRS cards (through the same import path). */
@@ -101,5 +103,6 @@ export function exposeClockForTesting(): void {
     advanceHours: persisting((hours: number) => clock.advance(hours * 3_600_000)),
     reset: persisting(clock.reset),
     today: clock.today,
+    iso: clock.iso,
   };
 }

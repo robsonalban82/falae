@@ -11,8 +11,10 @@ export function refillHearts(
   nowMs: number,
 ): HeartsState & { nextHeartInMs: number | null } {
   if (state.hearts >= MAX_HEARTS) return { ...state, hearts: MAX_HEARTS, nextHeartInMs: null };
-  const since = Date.parse(state.heartsUpdatedAt);
-  const elapsed = Math.max(0, nowMs - since);
+  // A timestamp in the future (clock change, bad import) would push the wait past one period:
+  // treat it as "now" so the next heart is never more than HEART_REFILL_MS away.
+  const since = Math.min(Date.parse(state.heartsUpdatedAt), nowMs);
+  const elapsed = nowMs - since;
   const gained = Math.floor(elapsed / HEART_REFILL_MS);
   const hearts = Math.min(MAX_HEARTS, state.hearts + gained);
   if (hearts >= MAX_HEARTS) {
