@@ -52,6 +52,14 @@ describe('pickEnglishVoice', () => {
     expect(pickEnglishVoice(voices)?.name).toBe('Samantha');
   });
 
+  it('Chrome online: Google US English beats compact Samantha, but not an enhanced voice', () => {
+    const voices = [v('en-US', true, 'Samantha'), v('en-US', false, 'Google US English')];
+    expect(pickEnglishVoice(voices, true)?.name).toBe('Google US English');
+    expect(pickEnglishVoice([...voices, v('en-US', true, 'Ava (Premium)')], true)?.name).toBe(
+      'Ava (Premium)',
+    );
+  });
+
   it('no English voice → undefined', () => {
     expect(pickEnglishVoice([v('pt-BR'), v('es-ES')])).toBeUndefined();
     expect(pickEnglishVoice([])).toBeUndefined();

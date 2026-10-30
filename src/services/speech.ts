@@ -29,15 +29,19 @@ const goodRank = (v: VoiceLike) => GOOD_VOICES.findIndex((re) => re.test(v.name)
 const nice = (v: VoiceLike) => /natural|enhanced|premium/i.test(v.name);
 
 /**
- * Pure: best known-good voice (en-US first; natural/enhanced, then local, then list order). On
+ * Pure: best known-good voice (en-US first; natural/enhanced, then local unless `online` (network
+ * voices like Google US English sound better than compact local ones), then list order). On
  * Apple, nothing else (undefined = browser default for `lang`). Elsewhere, falls back to
  * en-US local → en-US any → other en-* (local first).
  */
-export function pickEnglishVoice<V extends VoiceLike>(voices: readonly V[]): V | undefined {
+export function pickEnglishVoice<V extends VoiceLike>(
+  voices: readonly V[],
+  online = false,
+): V | undefined {
   const isEn = (v: VoiceLike) => langOf(v) === 'en' || langOf(v).startsWith('en-');
   const isUs = (v: VoiceLike) => langOf(v) === 'en-us';
   const score = (v: V) =>
-    (isUs(v) ? 0 : 1000) + (nice(v) ? 0 : 100) + (v.localService ? 0 : 10) + goodRank(v);
+    (isUs(v) ? 0 : 1000) + (nice(v) ? 0 : 100) + (v.localService || online ? 0 : 10) + goodRank(v);
   const good = voices
     .filter((v) => isEn(v) && goodRank(v) >= 0)
     .sort((x, y) => score(x) - score(y));
@@ -60,7 +64,7 @@ let cachedVoice: SpeechSynthesisVoice | undefined;
 let voicesListener: (() => void) | null = null;
 
 function refreshVoice() {
-  cachedVoice = pickEnglishVoice(window.speechSynthesis.getVoices());
+  cachedVoice = pickEnglishVoice(window.speechSynthesis.getVoices(), navigator.onLine);
 }
 
 function ensureVoices() {
@@ -82,7 +86,7 @@ export function disposeSpeech(): void {
 /** Voice speak() would use now (undefined = `lang` only). */
 export function currentVoice(): SpeechSynthesisVoice | undefined {
   ensureVoices();
-  if (!cachedVoice) refreshVoice();
+  refreshVoice(); // cheap; also follows online/offline changes
   return cachedVoice;
 }
 
