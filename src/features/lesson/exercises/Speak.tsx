@@ -48,7 +48,7 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
         {ttsSupported() && <SpeakerButton text={exercise.textEn} label={t.lesson.listen} />}
         <En className="text-xl font-bold">{exercise.textEn}</En>
       </div>
-      <NoVoiceNotice />
+      {ttsSupported() && <NoVoiceNotice />}
 
       <div className="flex flex-col items-center gap-3">
         <button

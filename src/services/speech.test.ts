@@ -1,5 +1,7 @@
 import {
   NO_VOICE_TIMEOUT_MS,
+  SPEAK_DELAY_MS,
+  stopSpeaking,
   currentVoice,
   disposeSpeech,
   hasNoVoice,
@@ -129,18 +131,51 @@ describe('speak() and voiceschanged', () => {
     silent = true;
     const result = speak('hello');
     const assertion = expect(result).rejects.toThrow('no-voice');
-    vi.advanceTimersByTime(NO_VOICE_TIMEOUT_MS);
+    vi.advanceTimersByTime(SPEAK_DELAY_MS + NO_VOICE_TIMEOUT_MS);
     await assertion;
     expect(hasNoVoice()).toBe(true);
     vi.useRealTimers();
   });
 
-  it('keeps waiting when voices exist but start is slow', async () => {
+  it('resolves quietly (no flag) when voices exist but speech never starts', async () => {
     vi.useFakeTimers();
     silent = true;
     voices = [v('en-US')];
-    void speak('hello');
-    vi.advanceTimersByTime(NO_VOICE_TIMEOUT_MS);
+    const result = speak('hello');
+    vi.advanceTimersByTime(SPEAK_DELAY_MS + NO_VOICE_TIMEOUT_MS);
+    await expect(result).resolves.toBeUndefined();
+    expect(hasNoVoice()).toBe(false);
+    vi.useRealTimers();
+  });
+
+  it('only the latest of rapid calls plays; earlier ones resolve without speaking', async () => {
+    vi.useFakeTimers();
+    const all = [speak('a'), speak('b'), speak('c')];
+    vi.advanceTimersByTime(SPEAK_DELAY_MS);
+    await Promise.all(all);
+    expect(spoken.map((u) => (u as unknown as { text: string }).text)).toEqual(['c']); // fake keeps text
+    vi.useRealTimers();
+  });
+
+  it('stopSpeaking() during the delay prevents the pending speech', async () => {
+    vi.useFakeTimers();
+    const result = speak('a');
+    stopSpeaking();
+    vi.advanceTimersByTime(SPEAK_DELAY_MS);
+    await result;
+    expect(spoken).toHaveLength(0);
+    vi.useRealTimers();
+  });
+
+  it('clears the no-voice flag once voices arrive', async () => {
+    vi.useFakeTimers();
+    silent = true;
+    const result = speak('hello').catch(() => {});
+    vi.advanceTimersByTime(SPEAK_DELAY_MS + NO_VOICE_TIMEOUT_MS);
+    await result;
+    expect(hasNoVoice()).toBe(true);
+    voices = [v('en-US', true, 'Samantha')];
+    listeners.forEach((l) => l());
     expect(hasNoVoice()).toBe(false);
     vi.useRealTimers();
   });

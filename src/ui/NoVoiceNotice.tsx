@@ -6,7 +6,7 @@ import { hasNoVoice, subscribeNoVoice } from '../services/speech';
 export function NoVoiceNotice() {
   const noVoice = useSyncExternalStore(subscribeNoVoice, hasNoVoice);
   return (
-    <p role="status" aria-live="polite" className={noVoice ? 'text-sm text-ink-muted' : 'sr-only'}>
+    <p role="status" className={noVoice ? 'text-sm text-ink-muted' : 'sr-only'}>
       {noVoice ? t.lesson.noVoice : ''}
     </p>
   );

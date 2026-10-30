@@ -247,7 +247,7 @@ export const screens: Screen[] = [
     name: 'praticar-vazio',
     run: async (page) => {
       await page.goto('/praticar');
-      await expect(page.getByText('Nada vencido — pratique para reforçar')).toBeVisible();
+      await expect(page.getByText('Tudo em dia! Quer reforçar mesmo assim?')).toBeVisible();
     },
   },
   {

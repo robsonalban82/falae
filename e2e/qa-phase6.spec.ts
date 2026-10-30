@@ -375,7 +375,7 @@ test.describe('praticar — bordas', () => {
     await startAt(page, `${DAY}T12:00:00`);
     await seed(page, { srs: unit1Cards.map((i) => card(i, '2026-11-01')) });
     await page.goto('/praticar');
-    await expect(page.getByText('Nada vencido — pratique para reforçar')).toBeVisible();
+    await expect(page.getByText('Tudo em dia! Quer reforçar mesmo assim?')).toBeVisible();
     await page.evaluate(() =>
       (window as unknown as { __falae: { advanceDays: (d: number) => void } }).__falae.advanceDays(
         3,

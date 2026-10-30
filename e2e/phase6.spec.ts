@@ -228,7 +228,7 @@ test.describe('praticar', () => {
   }) => {
     await seed(page, { profile: { hearts: 0, heartsUpdatedAt: new Date().toISOString() } });
     await page.goto('/praticar');
-    await expect(page.getByText('Nada vencido — pratique para reforçar')).toBeVisible();
+    await expect(page.getByText('Tudo em dia! Quer reforçar mesmo assim?')).toBeVisible();
     await page.goto('/licao/u1-sk1-l1');
     await page.getByRole('link', { name: 'Praticar e ganhar coração' }).click();
     await playPractice(page);

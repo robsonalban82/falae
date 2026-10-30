@@ -58,13 +58,15 @@ export function pickEnglishVoice<V extends VoiceLike>(
   );
 }
 
-// Chrome returns [] from getVoices() until `voiceschanged`: keep one cached pick, refreshed by a
-// single listener. speak() never waits for voices; before they load it uses `lang` only.
+// Chrome returns [] from getVoices() until `voiceschanged`: one listener keeps the pick fresh, and
+// speak() re-picks too (online/offline changes). Before voices load it uses `lang` only.
 let cachedVoice: SpeechSynthesisVoice | undefined;
 let voicesListener: (() => void) | null = null;
 
 function refreshVoice() {
-  cachedVoice = pickEnglishVoice(window.speechSynthesis.getVoices(), navigator.onLine);
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length > 0) setNoVoice(false);
+  cachedVoice = pickEnglishVoice(voices, navigator.onLine);
 }
 
 function ensureVoices() {
@@ -111,17 +113,21 @@ function setNoVoice(value: boolean) {
 
 /** How long speak() waits for `start` before deciding there is no voice. */
 export const NO_VOICE_TIMEOUT_MS = 2500;
+/** Chrome silently ignores speak() issued right after cancel(), so every start is deferred. */
+export const SPEAK_DELAY_MS = 50;
 
-// Chrome drops an utterance whose object is garbage-collected before `end`: keep a reference.
+// Chrome drops an utterance whose object is garbage-collected before `end`: keep a reference to
+// the latest one (an older, interrupted one only needs its `error` event, which still fires).
 let activeUtterance: SpeechSynthesisUtterance | null = null;
+// A deferred start not yet run: superseding speak() or stopSpeaking() drops it and settles it.
+let cancelPending: (() => void) | null = null;
 
 export function speak(text: string, options: { slow?: boolean } = {}): Promise<void> {
   if (!ttsSupported()) return Promise.reject(new Error('tts-unsupported'));
   return new Promise((resolve, reject) => {
     const synth = window.speechSynthesis;
-    // Chrome silently ignores speak() issued right after cancel(): only cancel when busy, then defer.
-    const busy = synth.speaking || synth.pending;
-    if (busy) synth.cancel();
+    cancelPending?.();
+    synth.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     activeUtterance = utterance;
     utterance.lang = 'en-US';
@@ -129,42 +135,49 @@ export function speak(text: string, options: { slow?: boolean } = {}): Promise<v
     const voice = currentVoice();
     if (voice) utterance.voice = voice;
     let watchdog: ReturnType<typeof setTimeout> | undefined;
-    const done = () => {
+    let settled = false;
+    const finish = (error?: Error) => {
+      if (settled) return;
+      settled = true;
       clearTimeout(watchdog);
       if (activeUtterance === utterance) activeUtterance = null;
+      if (error) reject(error);
+      else resolve();
     };
     utterance.onstart = () => {
+      if (settled) return;
       clearTimeout(watchdog);
       setNoVoice(false);
+      // Safety net: some engines never fire `end`; don't leave callers waiting forever.
+      watchdog = setTimeout(() => finish(), 5000 + text.length * 200);
     };
-    utterance.onend = () => {
-      done();
-      resolve();
-    };
-    utterance.onerror = (e) => {
-      done();
-      if (e.error === 'interrupted' || e.error === 'canceled') resolve();
-      else reject(new Error(e.error));
-    };
-    const start = () => {
+    utterance.onend = () => finish();
+    utterance.onerror = (e) =>
+      finish(e.error === 'interrupted' || e.error === 'canceled' ? undefined : new Error(e.error));
+    const startTimer = setTimeout(() => {
+      cancelPending = null;
       // Chrome/Safari can leave the queue paused (e.g. after the tab was hidden).
       if (synth.paused) synth.resume();
       watchdog = setTimeout(() => {
-        if (synth.getVoices().length > 0) return; // voices exist: just slow, keep waiting
-        done();
+        if (synth.getVoices().length > 0) return finish(); // voices exist: give up quietly
         synth.cancel();
         setNoVoice(true);
-        reject(new Error('no-voice'));
+        finish(new Error('no-voice'));
       }, NO_VOICE_TIMEOUT_MS);
       synth.speak(utterance);
+    }, SPEAK_DELAY_MS);
+    cancelPending = () => {
+      clearTimeout(startTimer);
+      cancelPending = null;
+      finish();
     };
-    if (busy) setTimeout(start, 50);
-    else start();
   });
 }
 
 export function stopSpeaking(): void {
-  if (ttsSupported()) window.speechSynthesis.cancel();
+  if (!ttsSupported()) return;
+  cancelPending?.();
+  window.speechSynthesis.cancel();
 }
 
 // Minimal typings: SpeechRecognition is still prefixed in some browsers.

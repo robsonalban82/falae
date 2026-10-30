@@ -289,7 +289,7 @@ export const t = {
       n === 1
         ? 'Você tem 1 palavra ou frase para revisar hoje'
         : `Você tem ${n} palavras e frases para revisar hoje`,
-    nothingDue: 'Nada vencido — pratique para reforçar',
+    nothingDue: 'Tudo em dia! Quer reforçar mesmo assim?',
     intro: 'Praticar não gasta corações. Ao terminar, você ganha +1 coração.',
     start: 'Começar a praticar',
     empty: 'Ainda não há nada para praticar. Comece uma lição na trilha.',
