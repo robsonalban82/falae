@@ -1,4 +1,11 @@
-import { currentVoice, disposeSpeech, pickEnglishVoice, speak } from './speech';
+import {
+  NO_VOICE_TIMEOUT_MS,
+  currentVoice,
+  disposeSpeech,
+  hasNoVoice,
+  pickEnglishVoice,
+  speak,
+} from './speech';
 
 const v = (lang: string, localService = true, name = lang) =>
   ({ lang, localService, name }) as SpeechSynthesisVoice; // test double: only these fields are read
@@ -28,11 +35,13 @@ describe('speak() and voiceschanged', () => {
   let voices: SpeechSynthesisVoice[];
   let listeners: (() => void)[];
   let spoken: SpeechSynthesisUtterance[];
+  let silent: boolean;
 
   beforeEach(() => {
     voices = [];
     listeners = [];
     spoken = [];
+    silent = false;
     class FakeUtterance {
       lang = '';
       rate = 1;
@@ -47,7 +56,7 @@ describe('speak() and voiceschanged', () => {
       cancel: () => {},
       speak: (u: SpeechSynthesisUtterance) => {
         spoken.push(u);
-        u.onend?.(new Event('end') as SpeechSynthesisEvent); // test double event
+        if (!silent) u.onend?.(new Event('end') as SpeechSynthesisEvent); // test double event
       },
       addEventListener: (_: string, fn: () => void) => listeners.push(fn),
       removeEventListener: (_: string, fn: () => void) => {
@@ -78,5 +87,31 @@ describe('speak() and voiceschanged', () => {
     expect(listeners).toHaveLength(1);
     disposeSpeech();
     expect(listeners).toHaveLength(0);
+  });
+
+  it('rejects with no-voice and flags it when speech never starts without voices', async () => {
+    vi.useFakeTimers();
+    silent = true;
+    const result = speak('hello');
+    const assertion = expect(result).rejects.toThrow('no-voice');
+    vi.advanceTimersByTime(NO_VOICE_TIMEOUT_MS);
+    await assertion;
+    expect(hasNoVoice()).toBe(true);
+    vi.useRealTimers();
+  });
+
+  it('keeps waiting when voices exist but start is slow', async () => {
+    vi.useFakeTimers();
+    silent = true;
+    voices = [v('en-US')];
+    void speak('hello');
+    vi.advanceTimersByTime(NO_VOICE_TIMEOUT_MS);
+    expect(hasNoVoice()).toBe(false);
+    vi.useRealTimers();
+  });
+
+  it('does not flag no-voice when speech ends normally', async () => {
+    await speak('hello');
+    expect(hasNoVoice()).toBe(false);
   });
 });

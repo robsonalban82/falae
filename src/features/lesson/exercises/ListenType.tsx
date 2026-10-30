@@ -4,6 +4,7 @@ import { speak, stopSpeaking } from '../../../services/speech';
 import { SpeakerButton } from './SpeakerButton';
 import { TextAnswer } from './TextAnswer';
 import type { ExerciseProps } from './types';
+import { NoVoiceNotice } from '../../../ui/NoVoiceNotice';
 
 export function ListenType({
   exercise,
@@ -34,6 +35,7 @@ export function ListenType({
           </span>
         </div>
       </div>
+      <NoVoiceNotice />
       <TextAnswer
         lang="en"
         disabled={disabled}

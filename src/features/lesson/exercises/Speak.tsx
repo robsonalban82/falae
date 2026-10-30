@@ -5,6 +5,7 @@ import { Button } from '../../../ui/Button';
 import { En } from '../../../ui/En';
 import { SpeakerButton } from './SpeakerButton';
 import type { ExerciseProps } from './types';
+import { NoVoiceNotice } from '../../../ui/NoVoiceNotice';
 
 type Phase = 'idle' | 'listening' | 'heard' | 'nothing' | 'denied';
 
@@ -47,6 +48,7 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
         {ttsSupported() && <SpeakerButton text={exercise.textEn} label={t.lesson.listen} />}
         <En className="text-xl font-bold">{exercise.textEn}</En>
       </div>
+      <NoVoiceNotice />
 
       <div className="flex flex-col items-center gap-3">
         <button

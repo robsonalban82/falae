@@ -217,6 +217,8 @@ export const t = {
     listen: 'Ouvir',
     listenSlow: 'Ouvir devagar',
     slowShort: 'Devagar',
+    noVoice:
+      'Seu navegador não tem voz em inglês, então o áudio não toca. Abra o Falaê no Chrome ou no Safari, ou instale uma voz em inglês nos ajustes do sistema.',
     wordBankAnswer: 'Sua frase',
     wordBankBank: 'Palavras disponíveis',
     wordBankEmpty: 'Toque nas palavras abaixo para montar a frase.',

@@ -4,6 +4,7 @@ import { SpeakerButton } from './SpeakerButton';
 import { TextAnswer } from './TextAnswer';
 import type { ExerciseProps } from './types';
 import { ttsSupported } from '../../../services/speech';
+import { NoVoiceNotice } from '../../../ui/NoVoiceNotice';
 
 export function TranslateTyping({
   exercise,
@@ -18,6 +19,7 @@ export function TranslateTyping({
         {ttsSupported() && <SpeakerButton text={exercise.promptEn} label={t.lesson.listen} />}
         <En className="text-xl font-bold">{exercise.promptEn}</En>
       </div>
+      <NoVoiceNotice />
       <TextAnswer
         lang="pt"
         disabled={disabled}

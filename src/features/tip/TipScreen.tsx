@@ -11,6 +11,7 @@ import { ContentError } from '../../ui/ContentError';
 import { ContentSkeleton } from '../../ui/ContentSkeleton';
 import { useAsync } from '../../ui/useAsync';
 import { SpeakerButton } from '../lesson/exercises/SpeakerButton';
+import { NoVoiceNotice } from '../../ui/NoVoiceNotice';
 
 type Block = Skill['tip']['blocks'][number];
 
@@ -112,6 +113,7 @@ function TipArticle({ skill }: { skill: Skill }) {
           {skill.tip.title}
         </h1>
       </header>
+      {tts && <NoVoiceNotice />}
       {skill.tip.blocks.map((block, i) => (
         <TipBlock key={i} block={block} tts={tts} />
       ))}

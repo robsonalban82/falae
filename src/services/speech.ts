@@ -54,6 +54,7 @@ export function disposeSpeech(): void {
     window.speechSynthesis.removeEventListener?.('voiceschanged', voicesListener);
   voicesListener = null;
   cachedVoice = undefined;
+  setNoVoice(false);
 }
 
 /** Voice speak() would use now (undefined = `lang` only). */
@@ -63,20 +64,76 @@ export function currentVoice(): SpeechSynthesisVoice | undefined {
   return cachedVoice;
 }
 
+// Set once speech never starts with no voices installed (e.g. some embedded browsers).
+let noVoice = false;
+const noVoiceListeners = new Set<() => void>();
+
+export function hasNoVoice(): boolean {
+  return noVoice;
+}
+
+export function subscribeNoVoice(listener: () => void): () => void {
+  noVoiceListeners.add(listener);
+  return () => noVoiceListeners.delete(listener);
+}
+
+function setNoVoice(value: boolean) {
+  if (noVoice === value) return;
+  noVoice = value;
+  noVoiceListeners.forEach((l) => l());
+}
+
+/** How long speak() waits for `start` before deciding there is no voice. */
+export const NO_VOICE_TIMEOUT_MS = 2500;
+
+// Chrome drops an utterance whose object is garbage-collected before `end`: keep a reference.
+let activeUtterance: SpeechSynthesisUtterance | null = null;
+
 export function speak(text: string, options: { slow?: boolean } = {}): Promise<void> {
   if (!ttsSupported()) return Promise.reject(new Error('tts-unsupported'));
   return new Promise((resolve, reject) => {
     const synth = window.speechSynthesis;
-    synth.cancel();
+    // Chrome silently ignores speak() issued right after cancel(): only cancel when busy, then defer.
+    const busy = synth.speaking || synth.pending;
+    if (busy) synth.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
+    activeUtterance = utterance;
     utterance.lang = 'en-US';
     utterance.rate = options.slow ? 0.6 : 1;
     const voice = currentVoice();
     if (voice) utterance.voice = voice;
-    utterance.onend = () => resolve();
-    utterance.onerror = (e) =>
-      e.error === 'interrupted' || e.error === 'canceled' ? resolve() : reject(new Error(e.error));
-    synth.speak(utterance);
+    let watchdog: ReturnType<typeof setTimeout> | undefined;
+    const done = () => {
+      clearTimeout(watchdog);
+      if (activeUtterance === utterance) activeUtterance = null;
+    };
+    utterance.onstart = () => {
+      clearTimeout(watchdog);
+      setNoVoice(false);
+    };
+    utterance.onend = () => {
+      done();
+      resolve();
+    };
+    utterance.onerror = (e) => {
+      done();
+      if (e.error === 'interrupted' || e.error === 'canceled') resolve();
+      else reject(new Error(e.error));
+    };
+    const start = () => {
+      // Chrome/Safari can leave the queue paused (e.g. after the tab was hidden).
+      if (synth.paused) synth.resume();
+      watchdog = setTimeout(() => {
+        if (synth.getVoices().length > 0) return; // voices exist: just slow, keep waiting
+        done();
+        synth.cancel();
+        setNoVoice(true);
+        reject(new Error('no-voice'));
+      }, NO_VOICE_TIMEOUT_MS);
+      synth.speak(utterance);
+    };
+    if (busy) setTimeout(start, 50);
+    else start();
   });
 }
 
