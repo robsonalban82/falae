@@ -15,14 +15,36 @@ type VoiceLike = Pick<SpeechSynthesisVoice, 'lang' | 'localService' | 'name'>;
 
 const langOf = (v: VoiceLike) => v.lang.toLowerCase().replace('_', '-');
 
+// Known natural English voices. Apple also ships novelty voices tagged en-US (Albert, Zarvox,
+// Bahh…, with localized names), so on Apple only these are trusted.
+const GOOD_VOICES = [
+  /^Google US English/i,
+  /^Microsoft (Aria|Jenny|Guy|Ava|Andrew|Emma|Brian).*Natural/i,
+  /^(Samantha|Ava|Allison|Susan|Zoe|Nicky|Joelle|Noelle|Evan|Nathan|Tom|Alex|Aaron)\b/i,
+  /^(Daniel|Kate|Serena|Oliver|Karen|Moira|Tessa)\b/i,
+];
+const APPLE_MARKERS = /^(Samantha|Daniel|Karen|Moira|Tessa|Alex|Fred|Albert|Zarvox)\b/i;
+
+const goodRank = (v: VoiceLike) => GOOD_VOICES.findIndex((re) => re.test(v.name));
+const nice = (v: VoiceLike) => /natural|enhanced|premium/i.test(v.name);
+
 /**
- * Pure: en-US local (natural/enhanced first) → en-US any → other en-* (local first) → undefined
- * (then the utterance relies on `lang = 'en-US'` alone).
+ * Pure: best known-good voice (en-US first; natural/enhanced, then local, then list order). On
+ * Apple, nothing else (undefined = browser default for `lang`). Elsewhere, falls back to
+ * en-US local → en-US any → other en-* (local first).
  */
 export function pickEnglishVoice<V extends VoiceLike>(voices: readonly V[]): V | undefined {
-  const us = voices.filter((v) => langOf(v) === 'en-us');
-  const en = voices.filter((v) => langOf(v) === 'en' || langOf(v).startsWith('en-'));
-  const nice = (v: VoiceLike) => /natural|enhanced|premium/i.test(v.name);
+  const isEn = (v: VoiceLike) => langOf(v) === 'en' || langOf(v).startsWith('en-');
+  const isUs = (v: VoiceLike) => langOf(v) === 'en-us';
+  const score = (v: V) =>
+    (isUs(v) ? 0 : 1000) + (nice(v) ? 0 : 100) + (v.localService ? 0 : 10) + goodRank(v);
+  const good = voices
+    .filter((v) => isEn(v) && goodRank(v) >= 0)
+    .sort((x, y) => score(x) - score(y));
+  if (good[0]) return good[0];
+  if (voices.some((v) => APPLE_MARKERS.test(v.name))) return undefined;
+  const us = voices.filter(isUs);
+  const en = voices.filter(isEn);
   return (
     us.find((v) => v.localService && nice(v)) ??
     us.find((v) => v.localService) ??

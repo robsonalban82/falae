@@ -25,6 +25,33 @@ describe('pickEnglishVoice', () => {
     expect(pickEnglishVoice(voices)?.name).toBe(expected);
   });
 
+  it('Apple: skips novelty voices and picks Samantha', () => {
+    const mac = ['Albert', 'Bahh', 'Zarvox', 'Eddy (English (US))', 'Samantha'].map((n) =>
+      v('en-US', true, n),
+    );
+    expect(pickEnglishVoice([v('en-GB', true, 'Daniel'), ...mac])?.name).toBe('Samantha');
+  });
+
+  it('Apple: enhanced voice beats compact, en-US beats en-GB', () => {
+    const voices = [
+      v('en-GB', true, 'Daniel'),
+      v('en-US', true, 'Samantha'),
+      v('en-US', true, 'Ava (Enhanced)'),
+    ];
+    expect(pickEnglishVoice(voices)?.name).toBe('Ava (Enhanced)');
+  });
+
+  it('Apple with only novelty voices → undefined (browser default)', () => {
+    expect(
+      pickEnglishVoice([v('en-US', true, 'Albert'), v('en-US', true, 'Zarvox')]),
+    ).toBeUndefined();
+  });
+
+  it('Chrome: local Samantha beats network Google US English', () => {
+    const voices = [v('en-US', false, 'Google US English'), v('en-US', true, 'Samantha')];
+    expect(pickEnglishVoice(voices)?.name).toBe('Samantha');
+  });
+
   it('no English voice → undefined', () => {
     expect(pickEnglishVoice([v('pt-BR'), v('es-ES')])).toBeUndefined();
     expect(pickEnglishVoice([])).toBeUndefined();
