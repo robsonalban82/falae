@@ -79,3 +79,9 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 **Contexto:** com os vendors em chunks próprios (react, router, motion, dexie, zod), o chunk de entrada caiu para ~48 kB minificado, então o limite de 250 kB da entrada sozinho deixou de proteger o carregamento inicial.
 **Decisão:** `scripts/check-prod-bundle.ts` também soma o JS inicial (entrada + `modulepreload` do `index.html`, qualquer `base`) e falha acima de **260 kB gzip**. Medido na Fase 7: 718 kB minificado / 226 kB gzip; Lighthouse mobile 100 em `/` e `/boas-vindas`. Mantidos: entrada ≤ 250 kB minificado, nenhum chunk > 300 kB, nenhum JSON de unidade no JS inicial.
 **Consequências:** ~34 kB gzip de folga; nova dependência pesada no caminho inicial exige lazy loading ou rever este ADR. `npm run build:pages-check` confere o mesmo com `VITE_BASE=/falae/`.
+
+## ADR-014 — Tuca em imagens por humor (aceita, pós-v1)
+
+**Contexto:** o usuário redesenhou o Tuca fora do app (ilustração com contorno, preto e amarelo); o SVG animado em código não reproduz o estilo.
+**Decisão:** um WebP 512×512 com fundo transparente por humor (`src/ui/Mascot/img/`, ~30–45 kB cada, carregado só onde o Tuca aparece); a animação passa a ser só do corpo inteiro (pulinho, balanço) e respeita `useReducedMotion()`. Tema escuro: halo claro via token `--tuca-glow`. Ícones do PWA e favicon gerados da mesma arte. Fontes 1024 px e scripts de recorte (`sharp`, rodado fora do projeto) em `docs/mascote/`; `scripts/make-icons.ts` removido.
+**Consequências:** sem novas dependências no app; trocar a arte = substituir os WebP e rodar `docs/mascote/icons.mjs`. Fundo dos recortes removido por preenchimento a partir das bordas + sementes manuais para vãos fechados (ver `cut.mjs`).

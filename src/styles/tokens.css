@@ -86,23 +86,10 @@
   color-scheme: dark;
 }
 
-/* Mascot (Tuca) — same art in both themes, body lifted slightly in dark mode. */
+/* Mascot (Tuca) — raster art; a soft light halo keeps the dark body readable on dark themes. */
 :root {
-  --tuca-body: #2f33a3;
-  --tuca-body-shade: #22257d;
-  --tuca-chest: #ffd23f;
-  --tuca-bib: #fff4d6;
-  --tuca-beak-ridge: #ffb36b;
-  --tuca-beak-top: #ff8a1f;
-  --tuca-beak-bottom: #2fb36b;
-  --tuca-beak-tip: #1b1c33;
-  --tuca-eye: #ffffff;
-  --tuca-pupil: #1b1c33;
-  --tuca-ring: #7fd3ff;
-  --tuca-feet: #ff8a1f;
-  --tuca-cheek: #ff7a9a;
+  --tuca-glow: transparent;
 }
 .dark {
-  --tuca-body: #6a6ff0;
-  --tuca-body-shade: #4c51cc;
+  --tuca-glow: rgb(255 255 255 / 0.35);
 }

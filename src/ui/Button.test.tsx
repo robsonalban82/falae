@@ -33,6 +33,6 @@ describe('ui primitives', () => {
     expect(screen.getByRole('img', { name: /triste/ })).toHaveAttribute('data-mood', 'sad');
     rerender(<Tuca mood="happy" decorative />);
     expect(screen.queryByRole('img')).toBeNull();
-    expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    expect(container.querySelector('img')).toHaveAttribute('alt', '');
   });
 });

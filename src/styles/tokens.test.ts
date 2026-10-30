@@ -57,8 +57,6 @@ const pairs: [string, string, number, string][] = [
   ['progress-fill', 'progress-track', 3, 'progress bar'],
   ['line-strong', 'bg', 3, 'ghost button / radio borders'],
   ['line-strong', 'surface', 3, 'ghost button / radio borders on cards'],
-  ['tuca-body', 'surface', 3, 'mascot on cards'],
-  ['tuca-body', 'bg', 3, 'mascot on page'],
   ['focus', 'bg', 3, 'focus ring'],
   ['focus', 'surface', 3, 'focus ring on cards'],
   ['focus', 'surface-2', 3, 'focus ring on active nav pill'],
