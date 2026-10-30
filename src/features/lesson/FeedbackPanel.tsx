@@ -61,7 +61,7 @@ export function FeedbackPanel({
       : grade.correctAnswer;
   const answer = answerLang === 'en' ? <En>{marked}</En> : marked;
   const mood =
-    grade.verdict === 'correct' ? 'happy' : grade.verdict === 'almost' ? 'thinking' : 'sad';
+    grade.verdict === 'correct' ? 'happy' : grade.verdict === 'almost' ? 'encouraging' : 'sad';
   const iconBg =
     grade.verdict === 'correct'
       ? 'bg-success text-on-success'
@@ -73,21 +73,24 @@ export function FeedbackPanel({
     <div className={`rounded-3xl p-5 ${tone}`}>
       {/* Announced via the player's persistent live region and via aria-describedby on focus. */}
       <div className="flex items-start gap-3">
-        <Tuca mood={mood} size={56} decorative className="shrink-0" />
+        {/* Status icon sits on Tuca, so the title gets the full width on mobile. */}
+        <div className="relative shrink-0">
+          <Tuca mood={mood} size={56} decorative />
+          <span
+            aria-hidden="true"
+            className={`absolute -right-1 -bottom-1 flex h-7 w-7 ring-2 ring-surface items-center justify-center rounded-full ${iconBg}`}
+          >
+            {grade.verdict === 'correct' ? (
+              <CheckIcon size={18} />
+            ) : grade.verdict === 'almost' ? (
+              <AlmostIcon size={18} />
+            ) : (
+              <CrossIcon size={18} />
+            )}
+          </span>
+        </div>
         <div id={detailsId} className="min-w-0 flex-1 space-y-1">
-          <p className="flex items-center gap-2 font-display text-2xl font-semibold">
-            <span
-              aria-hidden="true"
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${iconBg}`}
-            >
-              {grade.verdict === 'correct' ? (
-                <CheckIcon size={20} />
-              ) : grade.verdict === 'almost' ? (
-                <AlmostIcon size={20} />
-              ) : (
-                <CrossIcon size={20} />
-              )}
-            </span>
+          <p className="font-display text-xl font-semibold sm:text-2xl">
             {grade.verdict === 'correct'
               ? praise
               : grade.verdict === 'almost'

@@ -25,6 +25,29 @@ function readNotice(state: unknown): PathNotice | null {
   return null;
 }
 
+/**
+ * Centers the whole node (badges and "start" label included) in the area below the sticky
+ * header; if the unit heading fits on screen together with the node, it is kept visible too.
+ */
+function scrollToNode(el: HTMLElement, behavior: ScrollBehavior) {
+  const target = el.closest('li') ?? el;
+  if (typeof window.scrollTo !== 'function') return;
+  const headerH =
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--path-header-h')) ||
+    72; // 4.5rem, same fallback as the CSS
+  const view = window.innerHeight - headerH;
+  const rect = target.getBoundingClientRect();
+  const nodeTop = rect.top + window.scrollY;
+  let top = nodeTop - headerH - Math.max(0, (view - rect.height) / 2);
+  const section = target.closest('section');
+  if (section) {
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerH - 8;
+    // Unit heading would be hidden: show it if the node still fits below it.
+    if (sectionTop > top && nodeTop + rect.height - sectionTop - headerH <= view) top = sectionTop;
+  }
+  window.scrollTo({ top: Math.max(0, top), behavior });
+}
+
 /** Route / — the course path with the real state of every lesson. */
 export function PathScreen() {
   const location = useLocation();
@@ -53,9 +76,7 @@ export function PathScreen() {
       if (!el || scrolled.current) return;
       scrolled.current = true;
       // Wait for layout (fonts, unit sections below) so centering is right on tall mobile pages.
-      requestAnimationFrame(() =>
-        el.scrollIntoView?.({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' }),
-      );
+      requestAnimationFrame(() => scrollToNode(el, reduceMotion ? 'auto' : 'smooth'));
     },
     [reduceMotion],
   );

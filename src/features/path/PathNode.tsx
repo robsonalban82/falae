@@ -75,7 +75,9 @@ export function PathNode({
   );
 
   return (
-    <li className={`relative flex flex-col items-center ${offsetClass}`}>
+    <li
+      className={`relative flex scroll-mt-[var(--path-header-h,4.5rem)] flex-col items-center ${offsetClass}`}
+    >
       {isCurrent && (
         <span
           aria-hidden="true"

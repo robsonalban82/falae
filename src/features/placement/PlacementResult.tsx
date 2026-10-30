@@ -1,6 +1,7 @@
 import type { Exercise } from '../../content/schema';
 import { correctAnswerOf } from '../../domain/grading/grade';
 import { t } from '../../i18n/pt-BR';
+import { StickyActionBar } from '../../ui/StickyActionBar';
 import { Button } from '../../ui/Button';
 import { En } from '../../ui/En';
 import { ArrowRightIcon } from '../../ui/icons';
@@ -94,7 +95,7 @@ export function PlacementResult({
         {saveError && <p className="font-bold text-danger">{t.placement.saveError}</p>}
       </div>
       {/* Sticky on mobile: the main action never falls below the fold. */}
-      <div className="sticky bottom-0 -mx-4 w-[calc(100%+2rem)] border-t-2 border-line bg-bg px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:static sm:mx-0 sm:w-full sm:border-0 sm:bg-transparent sm:p-0">
+      <StickyActionBar>
         {saveError ? (
           <Button block onClick={onRetry}>
             {t.placement.retry}
@@ -104,7 +105,7 @@ export function PlacementResult({
             {t.placement.goToPath}
           </Button>
         )}
-      </div>
+      </StickyActionBar>
     </section>
   );
 }

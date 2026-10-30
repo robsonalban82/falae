@@ -357,6 +357,8 @@ export const t = {
     reminder: 'Lembrete diário',
     reminderSwitch: 'Lembrar de estudar',
     reminderTime: 'Horário do lembrete',
+    reminderHour: 'Hora',
+    reminderMinute: 'Minutos',
     reminderUnsupported: 'Seu navegador não permite lembretes.',
     reminderDenied: 'Permissão negada. Você pode liberar nas configurações do navegador.',
     reminderOn: (time: string) => `Lembrete ligado para as ${time}.`,

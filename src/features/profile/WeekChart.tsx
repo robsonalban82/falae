@@ -61,6 +61,17 @@ export function WeekChart({ days, goal }: Props) {
         aria-labelledby={titleId}
         aria-describedby={captionId}
       >
+        {/* Drawn first so bars and labels paint over it. */}
+        <line
+          aria-hidden="true"
+          x1={0}
+          x2={W}
+          y1={goalY}
+          y2={goalY}
+          strokeDasharray="6 5"
+          strokeWidth={2}
+          className="stroke-line-strong"
+        />
         {days.map((d, i) => {
           const h = Math.max(MIN_BAR, (d.xp / scale) * plot);
           const x = i * slot + (slot - barW) / 2;
@@ -89,7 +100,11 @@ export function WeekChart({ days, goal }: Props) {
                 y={y - 5}
                 textAnchor="middle"
                 aria-hidden="true"
-                className="fill-ink text-[12px] font-bold tabular-nums"
+                // Surface-colored halo keeps the value readable over the dashed goal line.
+                paintOrder="stroke"
+                strokeWidth={4}
+                strokeLinejoin="round"
+                className="fill-ink stroke-surface font-display text-[13px] font-semibold tabular-nums"
               >
                 {d.xp}
               </text>
@@ -116,16 +131,6 @@ export function WeekChart({ days, goal }: Props) {
             </g>
           );
         })}
-        <line
-          aria-hidden="true"
-          x1={0}
-          x2={W}
-          y1={goalY}
-          y2={goalY}
-          strokeDasharray="6 5"
-          strokeWidth={2}
-          className="stroke-line-strong"
-        />
       </svg>
       <p className="mt-1 flex items-center gap-2 text-sm text-ink-muted" aria-hidden="true">
         <span className="inline-block w-6 border-t-2 border-dashed border-line-strong" />

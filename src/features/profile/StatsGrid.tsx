@@ -14,8 +14,8 @@ type Props = {
 function Stat({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
   return (
     // dt/dd must be direct children of the group div (axe: definition-list / dlitem).
-    <div className="relative min-w-0 rounded-card border-2 border-line bg-surface p-3 pl-16">
-      <dt className="text-sm text-ink-muted">
+    <div className="relative flex min-w-0 flex-col rounded-card border-2 border-line bg-surface p-3 pl-16">
+      <dt className="text-sm leading-tight text-ink-muted">
         <span
           aria-hidden="true"
           className="absolute top-1/2 left-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center"
@@ -24,7 +24,7 @@ function Stat({ icon, label, value }: { icon: ReactNode; label: string; value: s
         </span>
         {label}
       </dt>
-      <dd className="tabular font-display text-2xl font-semibold text-ink">{value}</dd>
+      <dd className="tabular mt-auto pt-1 font-display text-2xl font-semibold text-ink">{value}</dd>
     </div>
   );
 }

@@ -330,7 +330,9 @@ test.describe('ajustes', () => {
     const sw = page.getByRole('switch', { name: 'Lembrar de estudar' });
     await sw.click();
     await expect(sw).toHaveAttribute('aria-checked', 'true');
-    await page.getByLabel('Horário do lembrete').fill('07:30');
+    const time = page.getByRole('group', { name: 'Horário do lembrete' });
+    await time.getByLabel('Hora').selectOption('07');
+    await time.getByLabel('Minutos').selectOption('30');
     await expect
       .poll(async () => (await dump(page)).settings?.reminder)
       .toEqual({
@@ -338,7 +340,8 @@ test.describe('ajustes', () => {
         time: '07:30',
       });
     await page.reload();
-    await expect(page.getByLabel('Horário do lembrete')).toHaveValue('07:30');
+    await expect(time.getByLabel('Hora')).toHaveValue('07');
+    await expect(time.getByLabel('Minutos')).toHaveValue('30');
   });
 
   test('sem suporte a notificações → só o aviso', async ({ page }) => {
