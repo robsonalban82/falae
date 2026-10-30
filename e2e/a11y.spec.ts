@@ -64,14 +64,7 @@ const extraScreens: (Screen & { speech?: boolean })[] = [
     speech: true,
     run: (page: Page) => demoAt(page, i),
   })),
-  {
-    name: 'sem-coracoes',
-    run: async (page) => {
-      await seed(page, { profile: { hearts: 0, heartsUpdatedAt: `${DAY}T11:00:00.000Z` } });
-      await page.goto('/licao/u1-sk1-l1');
-      await expect(page.getByRole('heading', { name: 'Seus corações acabaram' })).toBeVisible();
-    },
-  },
+  // 'sem-coracoes' now lives in the shared screens list.
   {
     name: 'sessao-de-pratica',
     run: async (page) => {

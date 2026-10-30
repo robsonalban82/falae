@@ -42,7 +42,9 @@ function useCountUp(target: number, reduce: boolean): number {
   return reduce ? target : value;
 }
 
-const MAX_VISIBLE_ACHIEVEMENTS = 3;
+/** Up to this many are shown in full; beyond it, the list collapses. */
+const MAX_FULL_ACHIEVEMENTS = 4;
+const COLLAPSED_ACHIEVEMENTS = 3;
 
 type AchievementKey = keyof typeof t.achievements.list;
 const achievementText = (id: string) =>
@@ -88,6 +90,12 @@ export function LessonComplete({
     const text = achievementText(id);
     return def && text ? [{ id, icon: def.icon, ...text }] : [];
   });
+  const [showAllAchievements, setShowAllAchievements] = useState(false);
+  const collapsible = achievements.length > MAX_FULL_ACHIEVEMENTS;
+  const visibleAchievements =
+    collapsible && !showAllAchievements
+      ? achievements.slice(0, COLLAPSED_ACHIEVEMENTS)
+      : achievements;
 
   const stats = [
     { label: t.lesson.complete.xp, value: `+${xpShown}`, tone: 'bg-xp text-on-xp' },
@@ -223,18 +231,12 @@ export function LessonComplete({
               <h2 id="new-achievements" className="mb-2 text-xl font-semibold">
                 {t.achievements.heading}
               </h2>
-              {/* At most ~3 visible: a long list scrolls instead of pushing "Continuar" off-screen. */}
               <ul
                 aria-labelledby="new-achievements"
-                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable list must be keyboard-reachable (WCAG 2.1.1)
-                tabIndex={achievements.length > MAX_VISIBLE_ACHIEVEMENTS ? 0 : undefined}
-                className={`space-y-2 ${
-                  achievements.length > MAX_VISIBLE_ACHIEVEMENTS
-                    ? 'max-h-48 overflow-y-auto overscroll-contain pr-1'
-                    : ''
-                }`}
+                id="new-achievements-list"
+                className="space-y-2"
               >
-                {achievements.map((a) => (
+                {visibleAchievements.map((a) => (
                   <li key={a.id} className="flex items-center gap-3">
                     <span aria-hidden="true" className="text-3xl">
                       {a.icon}
@@ -246,10 +248,18 @@ export function LessonComplete({
                   </li>
                 ))}
               </ul>
-              {achievements.length > MAX_VISIBLE_ACHIEVEMENTS && (
-                <p className="mt-2 text-sm font-bold text-ink-muted">
-                  {t.achievements.andMore(achievements.length - MAX_VISIBLE_ACHIEVEMENTS)}
-                </p>
+              {collapsible && (
+                <button
+                  type="button"
+                  aria-expanded={showAllAchievements}
+                  aria-controls="new-achievements-list"
+                  onClick={() => setShowAllAchievements((v) => !v)}
+                  className="mt-2 min-h-11 rounded-lg px-2 font-bold text-ink underline underline-offset-4"
+                >
+                  {showAllAchievements
+                    ? t.achievements.showLess
+                    : t.achievements.showAll(achievements.length)}
+                </button>
               )}
             </div>
           )}

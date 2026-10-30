@@ -35,7 +35,7 @@ export function UnitSection({
   // Future locked units are collapsed to their header + a short summary.
   if (!state.unlocked && !anyCompleted) {
     return (
-      <section aria-labelledby={headingId} className="mb-6">
+      <section aria-labelledby={headingId} className="mb-6 scroll-mt-[var(--path-header-h,4.5rem)]">
         <header className="flex items-center gap-4 rounded-card border-2 border-line-strong bg-surface-2 px-5 py-4 text-ink">
           <LockIcon size={24} className="shrink-0 text-ink-muted" />
           <div>
@@ -62,7 +62,7 @@ export function UnitSection({
         : t.path.lockedReasonLesson;
 
   return (
-    <section aria-labelledby={headingId} className="mb-10">
+    <section aria-labelledby={headingId} className="mb-10 scroll-mt-[var(--path-header-h,4.5rem)]">
       <header className={`mb-6 rounded-card px-5 py-4 shadow-sm ${theme.band}`}>
         <p className="text-sm font-bold tracking-wide uppercase">{t.path.unit(number)}</p>
         <h2 id={headingId} className="text-2xl font-semibold">
@@ -85,11 +85,8 @@ export function UnitSection({
               <Link
                 to={paths.tip(skill.id)}
                 aria-label={t.path.tipFor(skill.title)}
-                className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 px-4 hover:bg-surface-2 ${
-                  skillState.unlocked
-                    ? 'border-line-strong bg-surface font-bold text-ink'
-                    : 'border-line bg-transparent font-normal text-ink-muted'
-                }`}
+                // Tips are readable even for locked skills, so the link looks the same everywhere.
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 border-line-strong bg-surface px-4 font-bold text-ink hover:bg-surface-2"
               >
                 <BulbIcon />
                 {t.path.tip}

@@ -151,10 +151,14 @@ export function WelcomeScreen() {
               block
               variant="secondary"
               disabled={busy}
+              aria-describedby="placement-hint"
               onClick={() => void navigate(paths.placement)}
             >
               {t.welcome.placement}
             </Button>
+            <p id="placement-hint" className="-mt-1 text-center text-sm text-ink-muted">
+              {t.welcome.placementHint}
+            </p>
           </>
         )}
       </div>

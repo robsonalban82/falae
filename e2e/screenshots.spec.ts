@@ -16,10 +16,10 @@ for (const theme of ['light', 'dark'] as const) {
       await startAt(page, `${DAY}T12:00:00`);
       await screen.run(page);
       await page.waitForLoadState('networkidle');
-      await page.screenshot({
-        path: `e2e/screenshots/${info.project.name}-${theme}-${screen.name}.png`,
-        fullPage: screen.full ?? false,
-      });
+      const base = `e2e/screenshots/${info.project.name}-${theme}-${screen.name}`;
+      await page.screenshot({ path: `${base}.png`, fullPage: screen.full ?? false });
+      // Full-page shots put the fixed nav mid-page; also capture what the viewport really shows.
+      if (screen.full) await page.screenshot({ path: `${base}-tela.png` });
     });
   }
 }

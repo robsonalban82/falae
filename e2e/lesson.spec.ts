@@ -608,7 +608,7 @@ test.describe('corretor na tela', () => {
     await playRight(page, ['e01', 'e02', 'e03']);
     await page.getByRole('textbox').fill('muito obrigdo');
     await verify(page).click();
-    await expect(feedback(page)).toContainText('Quase! Atenção à digitação.');
+    await expect(feedback(page)).toContainText('Quase! Confira a digitação.');
     await expect(feedback(page)).toContainText('Resposta certa:');
     // Fase 5: the differing letter is highlighted (and named for screen readers).
     await expect(feedback(page).locator('mark')).toHaveText('a (letra diferente)');

@@ -74,7 +74,7 @@ test('jornada completa §15', async ({ page }) => {
   await page.getByRole('button', { name: 'Começar' }).click();
   await page.locator('label').filter({ hasText: '20 XP por dia' }).click();
   await page.getByRole('button', { name: 'Continuar' }).click();
-  await page.getByRole('button', { name: /fazer teste de nível/ }).click();
+  await page.getByRole('button', { name: 'Já sei um pouco' }).click();
   await expect(page).toHaveURL(/\/nivelamento$/);
   await playPlacement(page, false);
   await page.getByRole('button', { name: 'Ir para a trilha' }).click();
@@ -132,11 +132,9 @@ test('jornada completa §15', async ({ page }) => {
   await finishToPath(page);
   await expect(streakLabel(page)).toHaveAccessibleName(/^Ofensiva: 2 dias/);
   await page.getByRole('link', { name: 'Perfil' }).click();
-  const activeDays = page
-    .locator('table tbody tr')
-    .filter({ has: page.locator('td:text-is("0")') });
-  await expect(page.locator('table tbody tr')).toHaveCount(7);
-  await expect(activeDays).toHaveCount(5);
+  const bars = page.getByRole('list', { name: 'Últimos 7 dias' }).getByRole('listitem');
+  await expect(bars).toHaveCount(7);
+  await expect(page.getByRole('listitem', { name: /: 0 XP$/ })).toHaveCount(5);
 
   // 6. Persistence: reload on the path, mid-lesson and on the profile.
   await page.goto('/');

@@ -71,7 +71,7 @@ export function ResetSection() {
       >
         {t.settings.resetButton}
       </Button>
-      <p role="alert" className="min-h-6 font-bold text-danger">
+      <p role="alert" className="font-bold text-danger empty:sr-only">
         {error ? t.settings.resetError : ''}
       </p>
 
@@ -91,7 +91,7 @@ export function ResetSection() {
         }
         field={
           <>
-            <p role="status" aria-live="polite" className="min-h-6 font-bold text-success">
+            <p role="status" aria-live="polite" className="font-bold text-success empty:sr-only">
               {exportMessage?.ok ? exportMessage.text : ''}
             </p>
             <p role="alert" className="font-bold text-danger empty:hidden">

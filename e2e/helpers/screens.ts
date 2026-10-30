@@ -160,6 +160,7 @@ export const screens: Screen[] = [
       await page.getByText('thanks', { exact: true }).click();
       await page.getByRole('button', { name: 'Verificar' }).click();
       await expect(page.getByRole('button', { name: 'Continuar' })).toBeVisible();
+      await page.waitForTimeout(500); // let the heart-loss animation finish
     },
   },
   {
@@ -184,6 +185,26 @@ export const screens: Screen[] = [
       await page.getByRole('textbox').fill('muito obrigdo');
       await page.getByRole('button', { name: 'Verificar' }).click();
       await expect(page.locator('footer mark')).toBeVisible();
+      await page.waitForTimeout(500);
+    },
+  },
+  {
+    name: 'sem-coracoes',
+    run: async (page) => {
+      await seed(page, { profile: { hearts: 0, heartsUpdatedAt: `${DAY}T11:00:00.000Z` } });
+      await page.goto('/licao/u1-sk1-l1');
+      await expect(page.getByRole('heading', { name: 'Seus corações acabaram' })).toBeVisible();
+    },
+  },
+  {
+    name: 'erro-de-conteudo-offline',
+    run: async (page) => {
+      // Simulates an unreachable unit chunk (offline before it was ever cached).
+      await page
+        .context()
+        .route(/\/assets\/u01-[^/]+\.js$/, (route) => route.abort('internetdisconnected'));
+      await page.goto('/licao/u1-sk1-l1');
+      await expect(page.getByRole('button', { name: 'Tentar de novo' })).toBeVisible();
     },
   },
   {

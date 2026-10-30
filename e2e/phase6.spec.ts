@@ -115,7 +115,7 @@ test.describe('boas-vindas e nivelamento', () => {
     await page.goto('/boas-vindas');
     await page.getByRole('button', { name: 'Começar' }).click();
     await page.getByRole('button', { name: 'Continuar' }).click();
-    await page.getByRole('button', { name: /fazer teste de nível/ }).click();
+    await page.getByRole('button', { name: 'Já sei um pouco' }).click();
     await expect(page).toHaveURL(/\/nivelamento$/);
     await expect(page.getByText('1 de 15')).toBeVisible();
     await playPlacement(page, true);
@@ -386,7 +386,7 @@ test.describe('teclado e foco', () => {
   test('perfil e ajustes navegáveis só por teclado', async ({ page }) => {
     await page.goto('/perfil');
     await expect(page.getByRole('heading', { level: 1, name: 'Perfil' })).toBeVisible();
-    await expect(page.getByRole('table')).toBeAttached(); // chart data for screen readers
+    await expect(page.getByText('Sem XP nesta semana ainda')).toBeVisible(); // empty week: no bars
     await expect(page.getByRole('listitem', { name: /Primeira lição, bloqueada/ })).toBeVisible();
     await page.goto('/config');
     await expect(page.getByRole('heading', { level: 1, name: 'Ajustes' })).toBeVisible();

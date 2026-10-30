@@ -1,12 +1,14 @@
 import { weekScale, type WeekDay } from '../../domain/stats/week';
 import { t } from '../../i18n/pt-BR';
+import { Link } from 'react-router';
+import { paths } from '../../app/routes';
 import { formatDayMonth } from '../../ui/formatTime';
 
 type Props = { days: WeekDay[]; goal: number };
 
 const W = 320;
 const H = 160;
-const TOP = 22; // room for the ✓ above the bars
+const TOP = 36; // room for the XP value and the ✓ above the bars
 const BOTTOM = 24; // weekday labels
 const MIN_BAR = 2;
 
@@ -21,17 +23,53 @@ export function WeekChart({ days, goal }: Props) {
   const label = (d: WeekDay, i: number) =>
     i === days.length - 1 ? t.profile.today : (t.weekdays[d.weekdayIndex] ?? '');
 
+  if (empty) {
+    return (
+      <section
+        aria-labelledby="week-title"
+        className="rounded-card border-2 border-line bg-surface p-4"
+      >
+        <h2 id="week-title" className="mb-2 text-xl font-semibold">
+          {t.profile.week}
+        </h2>
+        <p className="text-ink-muted">{t.profile.weekEmpty}</p>
+        <Link
+          to={paths.path}
+          className="mt-2 inline-flex min-h-11 items-center font-bold text-ink underline underline-offset-4"
+        >
+          {t.profile.weekStart}
+        </Link>
+      </section>
+    );
+  }
+
   return (
     <figure className="rounded-card border-2 border-line bg-surface p-4">
-      <figcaption className="mb-2 text-xl font-semibold">{t.profile.week}</figcaption>
-      <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" aria-hidden="true">
+      <figcaption id="week-title" className="mb-2 text-xl font-semibold">
+        {t.profile.week}
+      </figcaption>
+      <p className="sr-only">{t.profile.weekCaption(goal)}</p>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className="h-auto w-full"
+        role="list"
+        aria-labelledby="week-title"
+      >
         {days.map((d, i) => {
           const h = Math.max(MIN_BAR, (d.xp / scale) * plot);
           const x = i * slot + (slot - barW) / 2;
           const y = TOP + plot - h;
           const isToday = i === days.length - 1;
           return (
-            <g key={d.day}>
+            <g
+              key={d.day}
+              role="listitem"
+              aria-label={t.profile.weekBar(
+                `${label(d, i)} ${formatDayMonth(d.day)}`,
+                d.xp,
+                d.goalMet,
+              )}
+            >
               <rect
                 x={x}
                 y={y}
@@ -40,19 +78,19 @@ export function WeekChart({ days, goal }: Props) {
                 rx={Math.min(6, barW / 3)}
                 className={isToday ? 'fill-progress-fill' : 'fill-secondary'}
               />
-              {d.xp === 0 && (
-                <text
-                  x={x + barW / 2}
-                  y={y - 5}
-                  textAnchor="middle"
-                  className="fill-ink-muted text-[12px]"
-                >
-                  0
-                </text>
-              )}
+              <text
+                x={x + barW / 2}
+                y={y - 5}
+                textAnchor="middle"
+                aria-hidden="true"
+                className="fill-ink text-[12px] font-bold tabular-nums"
+              >
+                {d.xp}
+              </text>
               {d.goalMet && (
                 <path
-                  d={`M${x + barW / 2 - 6} ${y - 10} l4 4 l8 -8`}
+                  aria-hidden="true"
+                  d={`M${x + barW / 2 - 6} ${y - 26} l4 4 l8 -8`}
                   fill="none"
                   strokeWidth={2.6}
                   strokeLinecap="round"
@@ -64,6 +102,7 @@ export function WeekChart({ days, goal }: Props) {
                 x={x + barW / 2}
                 y={H - 6}
                 textAnchor="middle"
+                aria-hidden="true"
                 className={`fill-ink-muted text-[12px] ${isToday ? 'font-bold' : ''}`}
               >
                 {label(d, i)}
@@ -72,6 +111,7 @@ export function WeekChart({ days, goal }: Props) {
           );
         })}
         <line
+          aria-hidden="true"
           x1={0}
           x2={W}
           y1={goalY}
@@ -85,26 +125,6 @@ export function WeekChart({ days, goal }: Props) {
         <span className="inline-block w-6 border-t-2 border-dashed border-line-strong" />
         {t.profile.goalLine(goal)}
       </p>
-      {empty && <p className="mt-2 text-center text-ink-muted">{t.profile.weekEmpty}</p>}
-      <table className="sr-only">
-        <caption>{t.profile.weekCaption(goal)}</caption>
-        <thead>
-          <tr>
-            <th scope="col">{t.profile.weekDay}</th>
-            <th scope="col">{t.profile.weekXp}</th>
-            <th scope="col">{t.profile.weekGoal}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {days.map((d, i) => (
-            <tr key={d.day}>
-              <th scope="row">{`${label(d, i)} ${formatDayMonth(d.day)}`}</th>
-              <td>{d.xp}</td>
-              <td>{d.goalMet ? t.profile.yes : t.profile.no}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </figure>
   );
 }

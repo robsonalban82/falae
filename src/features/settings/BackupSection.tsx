@@ -25,6 +25,8 @@ const failureText: Record<ImportFailure, string> = {
 /** Export to a JSON file and import one back (summary + confirmation before replacing). */
 export function BackupSection() {
   const currentXp = useProfile((s) => s.profile.totalXp);
+  const currentStreak = useProfile((s) => s.profile.streak.current);
+  const currentLongest = useProfile((s) => s.profile.streak.longest);
   const input = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState<Message | null>(null);
   const [pending, setPending] = useState<{ file: ExportFile; summary: ImportSummary } | null>(null);
@@ -104,14 +106,14 @@ export function BackupSection() {
         </label>
       </div>
       {/* Successes are polite; errors interrupt (role="alert"). One region per kind, so nothing is announced twice. */}
-      <div role="status" aria-live="polite" className="min-h-6">
+      <div role="status" aria-live="polite" className="empty:sr-only">
         {message?.kind === 'ok' && (
           <div className="text-success">
             <p className="font-bold">{message.text}</p>
           </div>
         )}
       </div>
-      <div role="alert">
+      <div role="alert" className="empty:sr-only">
         {message?.kind === 'error' && (
           <div className="text-danger">
             <p className="font-bold">{message.text}</p>
@@ -138,18 +140,36 @@ export function BackupSection() {
       >
         <p>{t.settings.importBody}</p>
         {s && (
-          <div className="rounded-2xl bg-surface-2 p-3 text-ink">
-            <p className="font-bold">{t.settings.importSummary}</p>
-            <ul className="mt-1 space-y-0.5">
-              <li>{t.settings.importXp(s.totalXp)}</li>
-              <li>{t.settings.importStreak(s.streak, s.longest)}</li>
-              <li>{t.settings.importLessons(s.lessons)}</li>
-              <li>{t.settings.importAchievements(s.achievements)}</li>
-              <li>{t.settings.importDate(formatDate(s.exportedAt))}</li>
-            </ul>
-          </div>
+          <>
+            {(s.totalXp < currentXp || s.streak < currentStreak) && (
+              <p className="rounded-2xl border-2 border-danger bg-danger-soft p-3 font-bold text-danger">
+                {t.settings.importLoss(
+                  Math.max(0, currentXp - s.totalXp),
+                  Math.max(0, currentStreak - s.streak),
+                )}
+              </p>
+            )}
+            <div className="grid grid-cols-2 gap-2 text-ink">
+              <div className="rounded-2xl bg-surface-2 p-3">
+                <p className="font-bold">{t.settings.importCurrentTitle}</p>
+                <ul className="mt-1 space-y-0.5">
+                  <li>{t.settings.importXp(currentXp)}</li>
+                  <li>{t.settings.importStreak(currentStreak, currentLongest)}</li>
+                </ul>
+              </div>
+              <div className="rounded-2xl bg-surface-2 p-3">
+                <p className="font-bold">{t.settings.importSummary}</p>
+                <ul className="mt-1 space-y-0.5">
+                  <li>{t.settings.importXp(s.totalXp)}</li>
+                  <li>{t.settings.importStreak(s.streak, s.longest)}</li>
+                  <li>{t.settings.importLessons(s.lessons)}</li>
+                  <li>{t.settings.importAchievements(s.achievements)}</li>
+                  <li>{t.settings.importDate(formatDate(s.exportedAt))}</li>
+                </ul>
+              </div>
+            </div>
+          </>
         )}
-        <p className="font-bold text-ink">{t.settings.importCurrent(currentXp)}</p>
       </ConfirmDialog>
     </section>
   );

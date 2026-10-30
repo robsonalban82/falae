@@ -125,8 +125,8 @@ export const t = {
     loading: 'Carregando a dica…',
   },
   achievements: {
-    andMore: (n: number) =>
-      `e mais ${n} — role a lista para ver ${n === 1 ? 'a outra' : 'as outras'}`,
+    showAll: (n: number) => `Ver todas (${n})`,
+    showLess: 'Ver menos',
     heading: 'Conquistas novas',
     title: 'Conquistas',
     list: {
@@ -238,7 +238,7 @@ export const t = {
     translationLabel: 'Tradução:',
     feedback: {
       correct: ['Isso aí!', 'Mandou bem!', 'Perfeito!', 'Arrasou!', 'Boa!'],
-      almost: 'Quase! Atenção à digitação.',
+      almost: 'Quase! Confira a digitação.',
       wrong: 'Não foi dessa vez.',
       correctAnswer: 'Resposta certa:',
       meaning: 'Significado:',
@@ -326,11 +326,9 @@ export const t = {
     week: 'Últimos 7 dias',
     weekCaption: (goal: number) => `XP por dia nos últimos 7 dias. Meta: ${goal} XP.`,
     weekEmpty: 'Sem XP nesta semana ainda',
-    weekDay: 'Dia',
-    weekXp: 'XP',
-    weekGoal: 'Meta batida',
-    yes: 'sim',
-    no: 'não',
+    weekStart: 'Faça uma lição e veja suas barras crescerem',
+    weekBar: (day: string, xp: number, goalMet: boolean) =>
+      `${day}: ${xp} XP${goalMet ? ', meta batida' : ''}`,
     today: 'hoje',
     goalLine: (goal: number) => `Meta ${goal} XP`,
     achievements: 'Conquistas',
@@ -383,7 +381,16 @@ export const t = {
     importTitle: 'Substituir seu progresso?',
     importBody: 'O progresso deste aparelho será trocado pelo do arquivo.',
     importSummary: 'Neste backup',
-    importCurrent: (xp: number) => `Seu progresso atual: ${xp} XP`,
+    importCurrentTitle: 'Agora',
+    importLoss: (xp: number, streakDays: number) => {
+      const parts = [
+        ...(xp > 0 ? [`${xp} XP`] : []),
+        ...(streakDays > 0
+          ? [`${streakDays} ${streakDays === 1 ? 'dia' : 'dias'} de ofensiva`]
+          : []),
+      ];
+      return `Atenção: você vai perder ${parts.join(' e ')}.`;
+    },
     importXp: (xp: number) => `${xp} XP`,
     importStreak: (current: number, longest: number) =>
       `Ofensiva de ${current} ${current === 1 ? 'dia' : 'dias'} (recorde ${longest})`,
@@ -433,7 +440,8 @@ export const t = {
     levelTitle: 'Você já sabe um pouco de inglês?',
     levelBody: 'Se já sabe o básico, faça um teste rápido e pule a primeira unidade.',
     beginner: 'Sou iniciante',
-    placement: 'Já sei um pouco — fazer teste de nível',
+    placement: 'Já sei um pouco',
+    placementHint: 'Faça um teste de nível rápido e pule o que já sabe.',
     saveError: 'Não deu para salvar. Tente de novo.',
   },
   placement: {
