@@ -1,5 +1,5 @@
 /** Achievements (docs/ARQUITETURA.md §8). Titles live in i18n (t.achievements[id]). */
-import type { SessionKind } from './xp';
+import { sessionProvesAccuracy, type SessionKind } from './xp';
 
 export type AchievementStats = {
   totalXp: number;
@@ -30,7 +30,11 @@ export type AchievementDef = {
 
 export const achievements = [
   { id: 'first-lesson', icon: '🎉', check: (s) => s.lessonsCompleted >= 1 },
-  { id: 'perfect-lesson', icon: '💎', check: (s) => s.last.perfect && s.last.kind !== 'placement' },
+  {
+    id: 'perfect-lesson',
+    icon: '💎',
+    check: (s) => s.last.perfect && sessionProvesAccuracy(s.last.kind),
+  },
   { id: 'streak-3', icon: '🔥', check: (s) => s.streakLongest >= 3 },
   { id: 'streak-7', icon: '📅', check: (s) => s.streakLongest >= 7 },
   { id: 'streak-30', icon: '🏆', check: (s) => s.streakLongest >= 30 },

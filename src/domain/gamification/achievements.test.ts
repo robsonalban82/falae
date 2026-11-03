@@ -54,6 +54,14 @@ describe('achievements', () => {
     expect(unlocks({ last: { ...zero.last, perfect: false } })).not.toContain('perfect-lesson');
   });
 
+  it('cards and map sessions never light perfect-lesson or persistent (self-graded)', () => {
+    for (const kind of ['cards', 'map'] as const) {
+      const got = unlocks({ last: { ...zero.last, perfect: true, kind, heartsBefore: 0 } });
+      expect(got).not.toContain('perfect-lesson');
+      expect(got).not.toContain('persistent');
+    }
+  });
+
   describe('persistent (ADR-010)', () => {
     const practice = (heartsBefore: number) => ({
       last: { ...zero.last, kind: 'practice' as const, heartsBefore },

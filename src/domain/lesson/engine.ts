@@ -1,6 +1,12 @@
 import type { Exercise } from '../../content/schema';
 import type { GradeResult } from '../grading/grade';
-import { COMBO_STEP, MAX_COMBO_BONUS, sessionXp, type SessionKind } from '../gamification/xp';
+import {
+  COMBO_STEP,
+  MAX_COMBO_BONUS,
+  sessionUsesHearts,
+  sessionXp,
+  type SessionKind,
+} from '../gamification/xp';
 
 /**
  * Pure lesson state machine (docs/ARQUITETURA.md §6). The UI dispatches answers and
@@ -12,9 +18,13 @@ export type LessonStatus = 'answering' | 'feedback' | 'finished' | 'outOfHearts'
 
 type ItemStat = { wrong: number; almost: boolean; finallyCorrect: boolean };
 
+/** Where a map/cards session came from (persisted on the result). */
+export type LessonContext = { mapId?: string; deckKey?: string; planDay?: number };
+
 export type LessonState = {
   lessonId: string;
   kind: SessionKind;
+  context?: LessonContext;
   exercises: Exercise[];
   /** Indexes into `exercises`; head is the current exercise. */
   queue: number[];
@@ -51,12 +61,14 @@ export function startLesson(input: {
   exercises: Exercise[];
   hearts: number;
   nowMs: number;
+  context?: LessonContext;
 }): LessonState {
   if (input.exercises.length === 0) throw new Error('Lesson has no exercises');
-  const usesHearts = input.kind === 'lesson' || input.kind === 'review';
+  const usesHearts = sessionUsesHearts(input.kind);
   return {
     lessonId: input.lessonId,
     kind: input.kind,
+    ...(input.context ? { context: input.context } : {}),
     exercises: input.exercises,
     queue: input.exercises.map((_, i) => i),
     retried: [],

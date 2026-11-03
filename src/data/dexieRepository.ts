@@ -7,6 +7,10 @@ import {
   EXPORT_SCHEMA_VERSION,
   exportFileSchema,
   lessonResultSchema,
+  MAX_USER_CARDS,
+  mapProgressSchema,
+  planProgressSchema,
+  userCardSchema,
   profileSchema,
   settingsSchema,
   srsCardSchema,
@@ -14,12 +18,25 @@ import {
   type DailyStats,
   type ExportFile,
   type LessonProgress,
+  type MapProgress,
+  type PlanProgress,
+  type UserCard,
   type Profile,
   type Settings,
   type SrsCard,
 } from './models';
 import { isLearned } from '../domain/srs/sm2';
-import type { CommitResult, LessonOutcome, Repository } from './repository';
+import {
+  UserCardLimitError,
+  type CommitResult,
+  type LessonOutcome,
+  type Repository,
+} from './repository';
+import {
+  sessionCompletesLesson,
+  sessionCountsAsStudy,
+  sessionStudiesMap,
+} from '../domain/gamification/xp';
 import { emitDataReplaced } from './events';
 
 export class DexieRepository implements Repository {
@@ -109,7 +126,16 @@ export class DexieRepository implements Repository {
 
     return db.transaction(
       'rw',
-      [db.results, db.lessonProgress, db.daily, db.profile, db.srs, db.achievements, db.quarantine],
+      [
+        db.results,
+        db.lessonProgress,
+        db.daily,
+        db.profile,
+        db.srs,
+        db.achievements,
+        db.quarantine,
+        db.mapProgress,
+      ],
       async (): Promise<CommitResult<M>> => {
         // Idempotent: the same lesson run is never counted twice (profile and achievements included).
         // This `get` is the only read of `results` (the one table that grows without limit).
@@ -136,10 +162,27 @@ export class DexieRepository implements Repository {
         );
         const dayRow = await db.daily.get(validResult.day);
 
+        const mapId = validResult.context?.mapId;
+        let prevMap: MapProgress | undefined;
+        if (mapId !== undefined && sessionStudiesMap(validResult.kind)) {
+          const rawMap = await db.mapProgress.get(mapId);
+          if (rawMap !== undefined) {
+            const parsedMap = mapProgressSchema.safeParse(rawMap);
+            if (parsedMap.success) prevMap = parsedMap.data;
+            else {
+              // Keep the bad row in quarantine and treat the map as never studied.
+              const issues = formatIssues(parsedMap.error);
+              console.error('[falae] Invalid map progress row moved to quarantine:', issues);
+              await db.quarantine.add({ table: 'mapProgress', raw: rawMap, at: nowIso, issues });
+            }
+          }
+        }
+
         let nextProfile = profile;
         let nextAchievements = newAchievements;
         let nextCards = srsCards;
         let meta: M | undefined;
+        let finalXp = validResult.xp;
         if (apply) {
           const itemIds = [
             ...new Set([...validResult.itemOutcomes.map((o) => o.itemId), ...(extraItemIds ?? [])]),
@@ -163,7 +206,9 @@ export class DexieRepository implements Repository {
             // O(n) cursor over `srs`, acceptable: the table is bounded by the course items
             // (hundreds), not by usage. A boolean "learned" cannot be indexed in IndexedDB.
             wordsLearnedBefore: await db.srs.filter(isLearned).count(),
+            ...(prevMap ? { mapProgress: prevMap } : {}),
           });
+          if (out.xp !== undefined) finalXp = out.xp;
           nextProfile = out.profile;
           nextAchievements = out.newAchievements;
           nextCards = out.srsCards;
@@ -177,8 +222,10 @@ export class DexieRepository implements Repository {
           .parse(nextAchievements)
           .filter((a) => !unlockedIds.has(a.id));
 
-        await db.results.put(validResult);
-        if (result.kind === 'lesson' || result.kind === 'review') {
+        // The stored result carries the final XP (a repeated map earns 0).
+        const storedResult = lessonResultSchema.parse({ ...validResult, xp: finalXp });
+        await db.results.put(storedResult);
+        if (sessionCompletesLesson(result.kind)) {
           const prev = await db.lessonProgress.get(result.lessonId);
           await db.lessonProgress.put({
             lessonId: result.lessonId,
@@ -187,19 +234,34 @@ export class DexieRepository implements Repository {
             firstCompletedAt: prev?.firstCompletedAt ?? result.finishedAt,
           });
         }
+        if (mapId !== undefined && sessionStudiesMap(result.kind)) {
+          await db.mapProgress.put({
+            mapId,
+            firstStudiedAt: prevMap?.firstStudiedAt ?? result.finishedAt,
+            // A clock that went back never moves the last day backwards.
+            lastStudiedDay:
+              prevMap && prevMap.lastStudiedDay > result.day ? prevMap.lastStudiedDay : result.day,
+            timesStudied: (prevMap?.timesStudied ?? 0) + 1,
+          });
+        }
 
         // Placement is not study: it never shows in the chart nor counts as today's activity.
-        if (result.kind !== 'placement') {
+        if (sessionCountsAsStudy(result.kind)) {
           // Clock went back (a day before the last activity): XP counts, but no new goal day.
           const last = storedProfile.streak.lastActiveDay;
           const clockBack = last !== undefined && validResult.day < last;
-          const xp = (dayRow?.xp ?? 0) + result.xp;
+          const xp = (dayRow?.xp ?? 0) + finalXp;
+          const cardsToday =
+            result.kind === 'cards'
+              ? (dayRow?.cards ?? 0) + new Set(result.itemOutcomes.map((o) => o.itemId)).size
+              : dayRow?.cards;
           await db.daily.put({
             day: result.day,
             xp,
             lessons: (dayRow?.lessons ?? 0) + 1,
             // Once met, a day stays met even if the goal is raised later.
             goalMet: (dayRow?.goalMet ?? false) || (!clockBack && xp >= dailyGoalXp),
+            ...(cardsToday !== undefined ? { cards: cardsToday } : {}),
           });
         }
 
@@ -209,6 +271,61 @@ export class DexieRepository implements Repository {
         return { applied: true, profile: validProfile, newAchievements: fresh, meta };
       },
     );
+  }
+
+  async listUserCards(): Promise<UserCard[]> {
+    const rows = await this.db.userCards.orderBy('updatedAt').reverse().toArray();
+    return rows.flatMap((row) => {
+      const parsed = userCardSchema.safeParse(row);
+      if (parsed.success) return [parsed.data];
+      console.error('[falae] Invalid user card skipped:', formatIssues(parsed.error));
+      return [];
+    });
+  }
+
+  countUserCards(): Promise<number> {
+    return this.db.userCards.count();
+  }
+
+  async saveUserCard(card: UserCard): Promise<void> {
+    const valid = userCardSchema.parse(card);
+    const db = this.db;
+    await db.transaction('rw', db.userCards, async () => {
+      if (!(await db.userCards.get(valid.id)) && (await db.userCards.count()) >= MAX_USER_CARDS)
+        throw new UserCardLimitError();
+      await db.userCards.put(valid);
+    });
+  }
+
+  async deleteUserCard(id: string): Promise<void> {
+    const db = this.db;
+    await db.transaction('rw', [db.userCards, db.srs], async () => {
+      await db.userCards.delete(id);
+      await db.srs.delete(id); // a card's SrsCard has the card id as itemId
+    });
+  }
+
+  async getMapProgress(): Promise<MapProgress[]> {
+    const rows = await this.db.mapProgress.toArray();
+    return rows.flatMap((row) => {
+      const parsed = mapProgressSchema.safeParse(row);
+      if (parsed.success) return [parsed.data];
+      console.error('[falae] Invalid map progress skipped:', formatIssues(parsed.error));
+      return [];
+    });
+  }
+
+  async getPlanProgress(planId: string): Promise<PlanProgress | undefined> {
+    const row = await this.db.planProgress.get(planId);
+    if (row === undefined) return undefined;
+    const parsed = planProgressSchema.safeParse(row);
+    if (parsed.success) return parsed.data;
+    console.error('[falae] Invalid plan progress skipped:', formatIssues(parsed.error));
+    return undefined;
+  }
+
+  async savePlanProgress(progress: PlanProgress): Promise<void> {
+    await this.db.planProgress.put(planProgressSchema.parse(progress));
   }
 
   getRecentResults(limit: number) {

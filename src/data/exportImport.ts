@@ -41,8 +41,12 @@ export function upgradeExportV1(file: ExportFileV1): ExportFile {
 }
 
 /** Importing replaces everything: warn when the student's own cards would vanish. */
-export function importDropsUserCards(currentUserCards: number, summary: ImportSummary): boolean {
-  return currentUserCards > 0 && summary.userCards === 0;
+export function importDropsUserCards(
+  currentUserCards: number | null,
+  summary: ImportSummary,
+): boolean {
+  // null = the count failed: unknown counts as "may have cards" (err on the side of warning).
+  return (currentUserCards === null || currentUserCards > 0) && summary.userCards === 0;
 }
 
 /** Parses and validates an exported progress file. Pure; never throws. */

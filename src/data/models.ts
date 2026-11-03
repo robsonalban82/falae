@@ -83,7 +83,8 @@ export const dailyStatsSchema = z.object({
   xp: z.number().int().nonnegative(),
   lessons: z.number().int().nonnegative(),
   goalMet: z.boolean(),
-  // Distinct cards reviewed in card sessions that day; absent (v1 rows) means 0.
+  // Sum of the distinct cards of each card session that day (a card reviewed in two sessions
+  // counts twice); absent (v1 rows) means 0.
   cards: z.number().int().nonnegative().optional(),
 });
 
@@ -141,14 +142,32 @@ export const exportFileV1Schema = z.object({
   data: exportDataV1,
 });
 
+/** Rows of a keyed table must be unique: duplicates in a file mean a corrupt export. */
+const uniqueKeys =
+  <T>(key: (row: T) => string) =>
+  (rows: T[]) =>
+    new Set(rows.map(key)).size === rows.length;
+
 export const exportFileSchema = z.object({
   app: z.literal('falae'),
   schemaVersion: z.literal(EXPORT_SCHEMA_VERSION),
   exportedAt: isoDate,
   data: exportDataV1.extend({
-    userCards: z.array(userCardSchema).max(MAX_USER_CARDS),
-    mapProgress: z.array(mapProgressSchema),
-    planProgress: z.array(planProgressSchema),
+    userCards: z
+      .array(userCardSchema)
+      .max(MAX_USER_CARDS)
+      .refine(
+        uniqueKeys((c: { id: string }) => c.id),
+        'Cartas com id repetido.',
+      ),
+    mapProgress: z.array(mapProgressSchema).refine(
+      uniqueKeys((m: { mapId: string }) => m.mapId),
+      'Mapas repetidos.',
+    ),
+    planProgress: z.array(planProgressSchema).refine(
+      uniqueKeys((p: { planId: string }) => p.planId),
+      'Planos repetidos.',
+    ),
   }),
 });
 

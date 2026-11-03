@@ -12,7 +12,7 @@ vi.mock('../../data', () => ({
   repository: {
     getLessonProgress: () => Promise.resolve([]),
     getAchievements: () => Promise.resolve([]),
-    exportAll: () => Promise.resolve({ data: { userCards: new Array(mocks.userCards).fill(0) } }),
+    countUserCards: () => Promise.resolve(mocks.userCards),
     importAll: vi.fn(() => Promise.resolve()),
   },
 }));

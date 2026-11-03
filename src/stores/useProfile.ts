@@ -18,6 +18,12 @@ import {
 } from '../domain/gamification/dailyGoal';
 import { gainHeart, loseHeart, MAX_HEARTS, refillHearts } from '../domain/gamification/hearts';
 import { applyActivity, type StreakChange } from '../domain/gamification/streak';
+import {
+  finalSessionXp,
+  sessionCountsAsStudy,
+  sessionGainsHeart,
+  sessionCompletesLesson,
+} from '../domain/gamification/xp';
 import type { LessonState, LessonSummary } from '../domain/lesson/engine';
 import { learnedAfter } from '../domain/srs/selection';
 import { applyOutcomes, seedTestedOut } from '../domain/srs/sm2';
@@ -136,12 +142,13 @@ export const useProfile = create<ProfileState>((set, get) => ({
     const now = clock.now();
     const today = clock.today();
     const current = get().profile;
-    const isStudy = state.kind !== 'placement';
+    const isStudy = sessionCountsAsStudy(state.kind);
     const result: LessonResult = {
       // Deterministic id: re-committing the same lesson run (reload mid-save) is a no-op.
       id: `${state.lessonId}-${state.startedAt}`,
       lessonId: state.lessonId,
       kind: state.kind,
+      ...(state.context ? { context: state.context } : {}),
       day: today,
       finishedAt: new Date(now).toISOString(),
       xp: summary.xp,
@@ -159,22 +166,25 @@ export const useProfile = create<ProfileState>((set, get) => ({
       streak: StreakChange | null;
       celebrate: boolean;
       xpAfter: number;
+      xp: number;
       heartGained: boolean;
     };
     // Pure rules, run by the repository inside the transaction on freshly read data.
     const apply = (ctx: CommitContext): AppliedCommit<Meta> => {
       const stored = ctx.profile;
-      const xpAfter = (ctx.dailyBefore?.xp ?? 0) + result.xp;
+      // Final XP is decided here, on fresh data (a map studied twice a day earns 0).
+      const xp = finalSessionXp(result.kind, result.xp, ctx.mapProgress?.lastStudiedDay, today);
+      const xpAfter = (ctx.dailyBefore?.xp ?? 0) + xp;
       const lastActive = stored.streak.lastActiveDay;
       const clockBack = lastActive !== undefined && today < lastActive;
       const refilled = refillHearts(stored, now);
       const heartsBefore = refilled.hearts;
       // Practice: refill first, then +1 (cap 5; a full bar keeps its timestamp).
       const hearts =
-        result.kind === 'practice' && heartsBefore < MAX_HEARTS
+        sessionGainsHeart(result.kind) && heartsBefore < MAX_HEARTS
           ? gainHeart(refilled, now)
           : { hearts: refilled.hearts, heartsUpdatedAt: refilled.heartsUpdatedAt };
-      const streak = isStudy ? applyActivity(stored.streak, today, result.xp) : null;
+      const streak = isStudy ? applyActivity(stored.streak, today, xp) : null;
       const celebrate =
         isStudy &&
         shouldCelebrateGoal(xpAfter, dailyGoalXp, stored.lastGoalCelebratedDay, today, lastActive);
@@ -182,7 +192,7 @@ export const useProfile = create<ProfileState>((set, get) => ({
         ...stored,
         hearts: hearts.hearts,
         heartsUpdatedAt: hearts.heartsUpdatedAt,
-        totalXp: stored.totalXp + result.xp,
+        totalXp: stored.totalXp + xp,
         streak: streak?.streak ?? stored.streak,
         ...(celebrate ? { lastGoalCelebratedDay: today } : {}),
         ...(placement
@@ -202,7 +212,7 @@ export const useProfile = create<ProfileState>((set, get) => ({
           : []
         : applyOutcomes(ctx.srsCards, result.itemOutcomes, today);
       const completedIds = new Set(ctx.completedLessonIds);
-      if (result.kind === 'lesson' || result.kind === 'review') completedIds.add(result.lessonId);
+      if (sessionCompletesLesson(result.kind)) completedIds.add(result.lessonId);
       const metNow = ctx.goalMetToday || (isStudy && !clockBack && xpAfter >= dailyGoalXp);
       const stats: AchievementStats = {
         totalXp: profile.totalXp,
@@ -211,28 +221,21 @@ export const useProfile = create<ProfileState>((set, get) => ({
         unitsCompleted: [...completedIds].filter(isReview).length,
         goalDaysMet: ctx.goalMetCount + (metNow ? 1 : 0),
         wordsLearned: learnedAfter(ctx.wordsLearnedBefore, ctx.srsCards, srsCards),
-        // TODO(etapa 7): 'cards'/'map' sessions get their own XP/achievement rules; until then they
-        // count as practice for achievements (nothing writes them yet).
-        last: {
-          perfect: result.perfect,
-          localHour,
-          kind: result.kind === 'cards' || result.kind === 'map' ? 'practice' : result.kind,
-          heartsBefore,
-        },
+        last: { perfect: result.perfect, localHour, kind: result.kind, heartsBefore },
       };
       // Placement is an assessment, not study: it unlocks no achievement.
-      const newAchievements: UnlockedAchievement[] =
-        result.kind === 'placement'
-          ? []
-          : newlyUnlocked(stats, ctx.unlockedIds).map((id) => ({
-              id,
-              unlockedAt: result.finishedAt,
-            }));
+      const newAchievements: UnlockedAchievement[] = !isStudy
+        ? []
+        : newlyUnlocked(stats, ctx.unlockedIds).map((id) => ({
+            id,
+            unlockedAt: result.finishedAt,
+          }));
       return {
         profile,
         newAchievements,
         srsCards,
-        meta: { streak, celebrate, xpAfter, heartGained: hearts.hearts > heartsBefore },
+        xp,
+        meta: { streak, celebrate, xpAfter, xp, heartGained: hearts.hearts > heartsBefore },
       };
     };
 
@@ -254,7 +257,8 @@ export const useProfile = create<ProfileState>((set, get) => ({
       set({ profile: stored });
       commitListeners.forEach((l) => l());
       return {
-        result,
+        // Nothing new was earned by this duplicate call.
+        result: { ...result, xp: 0 },
         streak: null,
         goal: { progress: goalProgress(rows[0]?.xp ?? 0, dailyGoalXp), celebrate: false },
         newAchievements: [],
@@ -262,11 +266,11 @@ export const useProfile = create<ProfileState>((set, get) => ({
       };
     }
 
-    const { streak, celebrate, xpAfter, heartGained } = saved.meta;
+    const { streak, celebrate, xpAfter, xp, heartGained } = saved.meta;
     set({ profile: saved.profile });
     commitListeners.forEach((l) => l());
     return {
-      result,
+      result: { ...result, xp },
       streak,
       goal: { progress: goalProgress(xpAfter, dailyGoalXp), celebrate },
       newAchievements: saved.newAchievements.map((a) => a.id),

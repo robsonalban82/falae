@@ -76,7 +76,7 @@ export function PathNode({
 
   return (
     <li
-      className={`relative flex scroll-mt-[var(--path-header-h,4.5rem)] flex-col items-center ${offsetClass}`}
+      className={`relative flex scroll-mt-[calc(var(--notice-h,0px)+var(--path-header-h,4.5rem))] flex-col items-center ${offsetClass}`}
     >
       {isCurrent && (
         <span

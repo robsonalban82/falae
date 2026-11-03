@@ -32,9 +32,10 @@ function readNotice(state: unknown): PathNotice | null {
 function scrollToNode(el: HTMLElement, behavior: ScrollBehavior) {
   const target = el.closest('li') ?? el;
   if (typeof window.scrollTo !== 'function') return;
-  const headerH =
-    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--path-header-h')) ||
-    72; // 4.5rem, same fallback as the CSS
+  const cssPx = (name: string) =>
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
+  // Pinned bars above the content: the update notice (when shown) plus the stats header.
+  const headerH = cssPx('--notice-h') + (cssPx('--path-header-h') || 72); // 4.5rem fallback
   const view = window.innerHeight - headerH;
   const rect = target.getBoundingClientRect();
   const nodeTop = rect.top + window.scrollY;

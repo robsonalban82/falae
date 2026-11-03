@@ -4,10 +4,13 @@ import type {
   ExportFile,
   LessonProgress,
   LessonResult,
+  MapProgress,
+  PlanProgress,
   Profile,
   Settings,
   SrsCard,
   UnlockedAchievement,
+  UserCard,
 } from './models';
 
 /** Data read inside the commit transaction, handed to `apply` (no full-table reads, ADR-011). */
@@ -27,6 +30,8 @@ export type CommitContext = {
   srsCards: SrsCard[];
   /** Learned cards in the whole table before this commit. */
   wordsLearnedBefore: number;
+  /** Progress of `result.context.mapId` before this result (map and practice sessions). */
+  mapProgress?: MapProgress;
 };
 
 export type AppliedCommit<M> = {
@@ -34,8 +39,21 @@ export type AppliedCommit<M> = {
   newAchievements: UnlockedAchievement[];
   /** Cards to write (created or changed). */
   srsCards: SrsCard[];
+  /**
+   * Final XP of the result (e.g. a map studied twice in a day earns 0). The repository stores
+   * it in `result.xp` and in `daily`; when absent, `result.xp` is used.
+   */
+  xp?: number;
   meta: M;
 };
+
+/** Thrown by saveUserCard when a new card would exceed MAX_USER_CARDS. */
+export class UserCardLimitError extends Error {
+  constructor() {
+    super('User card limit reached');
+    this.name = 'UserCardLimitError';
+  }
+}
 
 /** Everything that changes when a lesson/practice ends, written in one transaction. */
 export type LessonOutcome<M = undefined> = {
@@ -89,6 +107,17 @@ export interface Repository {
   upsertSrsCards(cards: SrsCard[]): Promise<void>;
   getDailyStats(fromDay: string, toDay: string): Promise<DailyStats[]>;
   getAchievements(): Promise<UnlockedAchievement[]>;
+  /** Student cards, newest edit first. Invalid stored rows are skipped (and logged). */
+  listUserCards(): Promise<UserCard[]>;
+  /** Cheap count (no row reads); use it where only the number matters. */
+  countUserCards(): Promise<number>;
+  /** Validates and upserts. Throws UserCardLimitError when adding the 501st card. */
+  saveUserCard(card: UserCard): Promise<void>;
+  /** Deletes the card and its SrsCard in one transaction (no orphan). */
+  deleteUserCard(id: string): Promise<void>;
+  getMapProgress(): Promise<MapProgress[]>;
+  getPlanProgress(planId: string): Promise<PlanProgress | undefined>;
+  savePlanProgress(progress: PlanProgress): Promise<void>;
   exportAll(): Promise<ExportFile>;
   /** Replaces all data atomically. The file must already be validated. */
   importAll(file: ExportFile): Promise<void>;

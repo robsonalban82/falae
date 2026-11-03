@@ -36,7 +36,15 @@ export function BackupSection() {
   const [message, setMessage] = useState<Message | null>(null);
   const [pending, setPending] = useState<{ file: ExportFile; summary: ImportSummary } | null>(null);
   const [busy, setBusy] = useState(false);
-  const [currentCounts, setCurrentCounts] = useState({ lessons: 0, achievements: 0, userCards: 0 });
+  const [currentCounts, setCurrentCounts] = useState<{
+    lessons: number;
+    achievements: number;
+    userCards: number | null;
+  }>({
+    lessons: 0,
+    achievements: 0,
+    userCards: 0,
+  });
 
   const onExport = async () => {
     try {
@@ -69,19 +77,21 @@ export function BackupSection() {
       });
       return;
     }
+    // The card count is read apart: if it fails it is "unknown" and the warning is shown
+    // (erring on the side of warning, since the import would erase the student's cards).
+    const userCards = await repository.countUserCards().catch((err: unknown) => {
+      console.error('[falae] Could not count user cards', err);
+      return null;
+    });
     try {
-      const [lessons, achievements, current] = await Promise.all([
+      const [lessons, achievements] = await Promise.all([
         repository.getLessonProgress(),
         repository.getAchievements(),
-        repository.exportAll(),
       ]);
-      setCurrentCounts({
-        lessons: lessons.length,
-        achievements: achievements.length,
-        userCards: current.data.userCards.length,
-      });
+      setCurrentCounts({ lessons: lessons.length, achievements: achievements.length, userCards });
     } catch (err) {
       console.error('[falae] Could not read current progress', err);
+      setCurrentCounts((c) => ({ ...c, userCards }));
     }
     setPending({ file: parsed.file, summary: parsed.summary });
   };

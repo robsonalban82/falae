@@ -118,3 +118,8 @@ As checagens do `pdf.mjs` viram testes `page.pdf()`. **Revisão de 2026-11-03:**
 - A vista do app é só a árvore vertical do protótipo. A vista radial com pan/zoom saiu do escopo (decisão 9 revista pelo usuário em 2026-11-03), e com ela o `d3-hierarchy` como plano B e a exportação PNG.
 
 **Consequências:** o conteúdo aprovado entra quase sem edição, e a revisão linguística cobre só o que mudou. As linhas trocadas por `ref` passam a exibir o texto do item, e o relatório do port lista cada diferença. Os volumes da Fase 5 caem (cerca de 27 mapas e ~210 itens restantes), mas entra o custo das cenas (~10 por mapa). As cartas continuam com emoji; quando o usuário desenhar as ilustrações, entra um campo `art?` nos itens, que é nova mudança de formato. Aprovado pelo usuário em 2026-11-03 (formato do conteúdo e corte da vista radial).
+
+## ADR-018 — Regras de XP e contexto de sessão de cartas e mapas (aceita, Fase 2 etapa 7)
+
+**Decisão:** (a) "Mínimo de 5 cartas, ou todas as vencidas se houver menos" é regra do **montador de sessão** (Fase 4), não do XP: `sessionXp('cards')` paga 8 + perfeita + combo sempre. O teste do seletor fica pendente para a Fase 4. (b) `LessonState` e `startLesson` ganham `context?` (`mapId`, `deckKey`, `planDay`), copiado para `LessonResult.context`; é o único caminho do `mapId` até o commit. (c) `practice` com `mapId` conta como estudo do mapa no dia (`mapProgress`), então um `map` depois, no mesmo dia, vale 0 XP (o Praticar já pagou 8). Com o relógio voltando, um mapa já estudado em dia posterior também vale 0.
+**Consequências:** sem mudança de schema persistido além do já aprovado; `AppliedCommit.xp` decide o XP final dentro da transação (ADR-008).

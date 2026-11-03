@@ -35,7 +35,10 @@ export function UnitSection({
   // Future locked units are collapsed to their header + a short summary.
   if (!state.unlocked && !anyCompleted) {
     return (
-      <section aria-labelledby={headingId} className="mb-6 scroll-mt-[var(--path-header-h,4.5rem)]">
+      <section
+        aria-labelledby={headingId}
+        className="mb-6 scroll-mt-[calc(var(--notice-h,0px)+var(--path-header-h,4.5rem))]"
+      >
         <header className="flex items-center gap-4 rounded-card border-2 border-line-strong bg-surface-2 px-5 py-4 text-ink">
           <LockIcon size={24} className="shrink-0 text-ink-muted" />
           <div>
@@ -62,7 +65,10 @@ export function UnitSection({
         : t.path.lockedReasonLesson;
 
   return (
-    <section aria-labelledby={headingId} className="mb-10 scroll-mt-[var(--path-header-h,4.5rem)]">
+    <section
+      aria-labelledby={headingId}
+      className="mb-10 scroll-mt-[calc(var(--notice-h,0px)+var(--path-header-h,4.5rem))]"
+    >
       <header className={`mb-6 rounded-card px-5 py-4 shadow-sm ${theme.band}`}>
         <p className="text-sm font-bold tracking-wide uppercase">{t.path.unit(number)}</p>
         <h2 id={headingId} className="text-2xl font-semibold">

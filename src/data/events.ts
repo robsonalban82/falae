@@ -43,6 +43,7 @@ export function getDbNotice(): DbNotice | null {
   return dbNotice;
 }
 
+/** Whether any notice is active (kept for tests; the UI reads `getDbNotice`). */
 export function isDbOutdated(): boolean {
   return dbNotice !== null;
 }

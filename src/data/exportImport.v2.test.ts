@@ -104,6 +104,27 @@ describe('rejections leave the database untouched', () => {
       }),
     ],
     [
+      'repeated userCard ids',
+      (f) => ({
+        ...f,
+        data: { ...f.data, userCards: [card('uc-abcdefgh'), card('uc-abcdefgh')] },
+      }),
+    ],
+    [
+      'repeated mapIds',
+      (f) => {
+        const m = { mapId: 'mm-1', firstStudiedAt: NOW, lastStudiedDay: TODAY, timesStudied: 1 };
+        return { ...f, data: { ...f.data, mapProgress: [m, m] } };
+      },
+    ],
+    [
+      'repeated planIds',
+      (f) => {
+        const p = { planId: 'p', startedDay: TODAY, manualDone: [1] };
+        return { ...f, data: { ...f.data, planProgress: [p, p] } };
+      },
+    ],
+    [
       'repeated manualDone days',
       (f) => ({
         ...f,
@@ -158,5 +179,8 @@ describe('importDropsUserCards', () => {
     expect(importDropsUserCards(3, summary(2))).toBe(false);
     expect(importDropsUserCards(0, summary(0))).toBe(false);
     expect(importDropsUserCards(0, summary(2))).toBe(false);
+    // Unknown count (read failed): warn if the file has no cards.
+    expect(importDropsUserCards(null, summary(0))).toBe(true);
+    expect(importDropsUserCards(null, summary(2))).toBe(false);
   });
 });

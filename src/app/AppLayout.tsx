@@ -25,7 +25,7 @@ export function AppLayout() {
       </a>
       <nav
         aria-label={t.nav.main}
-        className="fixed inset-x-0 bottom-0 z-10 border-t-2 border-line bg-surface pb-[env(safe-area-inset-bottom)] lg:sticky lg:top-0 lg:h-dvh lg:w-60 lg:border-t-0 lg:border-r-2 lg:pb-0"
+        className="fixed inset-x-0 bottom-0 z-10 border-t-2 border-line bg-surface pb-[env(safe-area-inset-bottom)] lg:sticky lg:top-[var(--notice-h,0px)] lg:h-[calc(100dvh-var(--notice-h,0px))] lg:w-60 lg:border-t-0 lg:border-r-2 lg:pb-0"
       >
         <p className="hidden px-6 pt-6 pb-4 font-display text-3xl font-semibold text-primary-shade lg:block dark:text-primary">
           {t.appName}
