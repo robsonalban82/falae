@@ -1,7 +1,7 @@
 import Dexie from 'dexie';
 import { FalaeDb } from './db';
 import { DexieRepository } from './dexieRepository';
-import { isDbOutdated, onDbOutdated, resetDbOutdated } from './events';
+import { getDbNotice, isDbOutdated, onDbOutdated, resetDbOutdated } from './events';
 import { exportFileSchema } from './models';
 
 const NOW = '2026-10-28T12:00:00.000Z';
@@ -169,7 +169,7 @@ describe('versionchange / blocked', () => {
 
     // A "newer app" in another tab opens a higher version.
     const newer = new Dexie(name);
-    newer.version(2).stores({
+    newer.version(3).stores({
       profile: 'id',
       settings: 'id',
       lessonProgress: 'lessonId',
@@ -187,8 +187,39 @@ describe('versionchange / blocked', () => {
 
     expect(db.isOpen()).toBe(false);
     expect(seen).toHaveBeenCalledTimes(1);
-    expect(isDbOutdated()).toBe(true);
+    expect(getDbNotice()).toBe('updated');
+    // Dexie's default handler would reopen on demand; ours must not.
+    await expect(db.profile.get('me')).rejects.toMatchObject({ name: 'DatabaseClosedError' });
+    expect(db.isOpen()).toBe(false);
     newer.close();
     off();
+  });
+
+  it('deleteDatabase from another connection raises the "deleted" notice', async () => {
+    const name = nextName();
+    const db = new FalaeDb(name);
+    await db.open();
+    await Dexie.delete(name);
+    expect(getDbNotice()).toBe('deleted');
+    expect(db.isOpen()).toBe(false);
+  });
+
+  it('blocked: the waiting tab keeps its request, shows its own notice and clears it once opened', async () => {
+    const name = nextName();
+    const old = openV1(name);
+    old.on('versionchange', () => false); // an old tab that ignores the upgrade request
+    await old.open();
+
+    const db = new FalaeDb(name);
+    const opening = db.open();
+    await vi.waitFor(() => expect(getDbNotice()).toBe('blocked'));
+    expect(db.isOpen()).toBe(false); // still waiting, not closed by us
+
+    old.close(); // the student closes the other tab
+    await opening;
+    expect(db.isOpen()).toBe(true);
+    expect(db.verno).toBe(2);
+    expect(getDbNotice()).toBeNull();
+    db.close();
   });
 });

@@ -5,10 +5,21 @@ import { UpdateNotice } from './UpdateNotice';
 
 afterEach(() => resetDbOutdated());
 
-it('shows nothing until the DB is outdated, then an alert with a reload button', () => {
+it('shows nothing until the DB needs attention', () => {
   render(<UpdateNotice />);
   expect(screen.queryByRole('alert')).toBeNull();
-  act(() => emitDbOutdated());
-  expect(screen.getByRole('alert')).toHaveTextContent(t.updateNotice.text);
-  expect(screen.getByRole('button', { name: t.updateNotice.reload })).toBeInTheDocument();
 });
+
+it.each([
+  ['updated', t.updateNotice.updated, true],
+  ['deleted', t.updateNotice.deleted, true],
+  ['blocked', t.updateNotice.blocked, false],
+] as const)(
+  '%s: own text; reload button only when the connection was closed',
+  (reason, text, reload) => {
+    render(<UpdateNotice />);
+    act(() => emitDbOutdated(reason));
+    expect(screen.getByRole('alert')).toHaveTextContent(text);
+    expect(screen.queryByRole('button', { name: t.updateNotice.reload }) !== null).toBe(reload);
+  },
+);

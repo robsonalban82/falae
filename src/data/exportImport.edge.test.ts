@@ -35,8 +35,8 @@ describe('parseExportFile — hostile files', () => {
       reason: 'notFalae',
     });
   });
-  it('newer version → newerVersion; older/garbage version → invalid', () => {
-    expect(parseExportFile(JSON.stringify({ ...valid(), schemaVersion: 2 }), D)).toMatchObject({
+  it('newer version (3) → newerVersion; older/garbage version → invalid', () => {
+    expect(parseExportFile(JSON.stringify({ ...valid(), schemaVersion: 3 }), D)).toMatchObject({
       reason: 'newerVersion',
     });
     expect(parseExportFile(JSON.stringify({ ...valid(), schemaVersion: 0 }), D)).toMatchObject({

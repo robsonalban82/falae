@@ -11,7 +11,9 @@ export const t = {
     skip: 'Pular para o conteúdo',
   },
   updateNotice: {
-    text: 'O Falaê foi atualizado em outra aba. Recarregue a página para continuar.',
+    updated: 'O Falaê foi atualizado em outra aba. Recarregue a página para continuar.',
+    deleted: 'Os dados do Falaê foram apagados em outra aba. Recarregue a página para continuar.',
+    blocked: 'Feche as outras abas do Falaê para continuar.',
     reload: 'Recarregar',
   },
   comingSoon: {
@@ -413,6 +415,7 @@ export const t = {
     importLessons: (n: number) => (n === 1 ? '1 lição concluída' : `${n} lições concluídas`),
     importAchievements: (n: number) => (n === 1 ? '1 conquista' : `${n} conquistas`),
     importDate: (date: string) => `Backup de ${date}`,
+    importDropsCards: 'Este arquivo não tem suas cartas; elas serão apagadas.',
     importConfirm: 'Substituir meu progresso',
     imported: 'Progresso restaurado.',
     cancel: 'Cancelar',

@@ -70,6 +70,10 @@ test.describe('migration v1 -> v2 (real physical database)', () => {
     expect(exported.data['profile']).toEqual(profile);
     expect(exported.data['lessonProgress']).toEqual(lessonProgress);
     expect(exported.data['daily']).toEqual(daily);
+    // The export is v2 now and includes the new tables, empty after the migration.
+    expect(exported.data['userCards']).toEqual([]);
+    expect(exported.data['mapProgress']).toEqual([]);
+    expect(exported.data['planProgress']).toEqual([]);
 
     // The new tables exist (physical version 20) and are empty.
     const physical = await page.evaluate(

@@ -206,6 +206,8 @@ describe('parseExportFile summary and safety (Fase 6)', () => {
       longest: 9,
       lessons: 1,
       achievements: 1,
+      userCards: 0,
+      mapsStudied: 0,
       exportedAt: NOW,
     });
   });

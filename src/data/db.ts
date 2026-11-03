@@ -11,7 +11,7 @@ import type {
   UnlockedAchievement,
   UserCard,
 } from './models';
-import { emitDbOutdated } from './events';
+import { clearDbBlocked, emitDbOutdated } from './events';
 
 /** Raw rows that failed validation, kept so progress is never silently lost. */
 export type QuarantinedRow = {
@@ -56,16 +56,18 @@ export class FalaeDb extends Dexie {
       mapProgress: 'mapId',
       planProgress: 'planId',
     });
-    // Another tab running newer/older code wants to change the schema (or we are blocked by one):
-    // close our connection so it can proceed, and ask the student to reload.
-    this.on('versionchange', () => {
+    // Another tab wants to change (or delete) the schema: close our connection so it can
+    // proceed, and ask the student to reload. close() without options also disables auto-reopen,
+    // so later operations reject with DatabaseClosedError instead of silently reopening on the
+    // old version. Returning false skips Dexie's default handler (log + close with auto-reopen).
+    this.on('versionchange', (event) => {
       this.close();
-      emitDbOutdated();
-      return false; // skip Dexie's default handler (it only logs and closes)
+      emitDbOutdated(event.newVersion === null ? 'deleted' : 'updated');
+      return false;
     });
-    this.on('blocked', () => {
-      this.close();
-      emitDbOutdated();
-    });
+    // We are the newer tab and an older one keeps the DB open: do NOT close (we are the one
+    // waiting). Ask to close the other tabs; the open proceeds once they do.
+    this.on('blocked', () => emitDbOutdated('blocked'));
+    this.on('ready', () => clearDbBlocked());
   }
 }

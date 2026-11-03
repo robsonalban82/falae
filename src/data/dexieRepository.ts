@@ -249,6 +249,9 @@ export class DexieRepository implements Repository {
         srs: await db.srs.toArray(),
         daily: await db.daily.toArray(),
         achievements: await db.achievements.toArray(),
+        userCards: await db.userCards.toArray(),
+        mapProgress: await db.mapProgress.toArray(),
+        planProgress: await db.planProgress.toArray(),
       },
     }));
   }
@@ -267,6 +270,9 @@ export class DexieRepository implements Repository {
       await db.srs.bulkPut(data.srs);
       await db.daily.bulkPut(data.daily);
       await db.achievements.bulkPut(data.achievements);
+      await db.userCards.bulkPut(data.userCards);
+      await db.mapProgress.bulkPut(data.mapProgress);
+      await db.planProgress.bulkPut(data.planProgress);
     });
     emitDataReplaced();
   }

@@ -151,7 +151,7 @@ test.describe('importar — arquivos ruins não mudam nada', () => {
       ['b.json', '', /não é um JSON válido/],
       ['c.json', JSON.stringify({ app: 'other', schemaVersion: 1 }), /não é um progresso do Falaê/],
       ['d.json', JSON.stringify([1, 2]), /não é um progresso do Falaê/],
-      ['e.json', JSON.stringify({ app: 'falae', schemaVersion: 2, data: {} }), /versão mais nova/],
+      ['e.json', JSON.stringify({ app: 'falae', schemaVersion: 3, data: {} }), /versão mais nova/],
       ['f.json', JSON.stringify({ app: 'falae', schemaVersion: 0, data: {} }), /inválido/],
       ['g.json', exported, /inválido/],
     ];

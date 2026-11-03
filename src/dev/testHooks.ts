@@ -1,5 +1,12 @@
 import { repository } from '../data';
-import { exportFileSchema } from '../data/models';
+import { upgradeExportV1 } from '../data/exportImport';
+import { exportFileSchema, exportFileV1Schema, type ExportFile } from '../data/models';
+
+/** Specs may seed with v1 or v2 files; both go through the real validation. */
+function toExportFile(file: unknown): ExportFile {
+  const v1 = exportFileV1Schema.safeParse(file);
+  return v1.success ? upgradeExportV1(v1.data) : exportFileSchema.parse(file);
+}
 
 type FakePermission = NotificationPermission | 'unsupported';
 const NOTIFICATION_KEY = 'falae-test-notification';
@@ -31,14 +38,12 @@ export function exposeImportForTesting(): void {
   const hooks = window.__falae;
   if (!hooks) return;
   hooks.importForTest = async (file: unknown) => {
-    await repository.importAll(exportFileSchema.parse(file));
+    await repository.importAll(toExportFile(file));
   };
   hooks.exportForTest = () => repository.exportAll();
   hooks.seedSrs = async (cards: unknown) => {
     const current = await repository.exportAll();
-    await repository.importAll(
-      exportFileSchema.parse({ ...current, data: { ...current.data, srs: cards } }),
-    );
+    await repository.importAll(toExportFile({ ...current, data: { ...current.data, srs: cards } }));
   };
   hooks.notificationPermission = (state: FakePermission) => {
     try {

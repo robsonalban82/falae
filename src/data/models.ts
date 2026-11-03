@@ -114,25 +114,41 @@ export const mapProgressSchema = z.object({
 export const planProgressSchema = z.object({
   planId: z.string().min(1),
   startedDay: dayKey,
-  manualDone: z.array(z.number().int().min(1).max(30)),
+  manualDone: z
+    .array(z.number().int().min(1).max(30))
+    .refine((days) => new Set(days).size === days.length, 'Dias repetidos.'),
 });
 
 export const unlockedAchievementSchema = z.object({ id: z.string().min(1), unlockedAt: isoDate });
 
-export const EXPORT_SCHEMA_VERSION = 1;
+export const EXPORT_SCHEMA_VERSION = 2;
+
+const exportDataV1 = z.object({
+  profile: profileSchema,
+  settings: settingsSchema,
+  lessonProgress: z.array(lessonProgressSchema),
+  results: z.array(lessonResultSchema),
+  srs: z.array(srsCardSchema),
+  daily: z.array(dailyStatsSchema),
+  achievements: z.array(unlockedAchievementSchema),
+});
+
+/** Backups written before maps and cards (schemaVersion 1). Read-only: upgraded on import. */
+export const exportFileV1Schema = z.object({
+  app: z.literal('falae'),
+  schemaVersion: z.literal(1),
+  exportedAt: isoDate,
+  data: exportDataV1,
+});
 
 export const exportFileSchema = z.object({
   app: z.literal('falae'),
   schemaVersion: z.literal(EXPORT_SCHEMA_VERSION),
   exportedAt: isoDate,
-  data: z.object({
-    profile: profileSchema,
-    settings: settingsSchema,
-    lessonProgress: z.array(lessonProgressSchema),
-    results: z.array(lessonResultSchema),
-    srs: z.array(srsCardSchema),
-    daily: z.array(dailyStatsSchema),
-    achievements: z.array(unlockedAchievementSchema),
+  data: exportDataV1.extend({
+    userCards: z.array(userCardSchema).max(MAX_USER_CARDS),
+    mapProgress: z.array(mapProgressSchema),
+    planProgress: z.array(planProgressSchema),
   }),
 });
 
@@ -147,6 +163,7 @@ export type UnlockedAchievement = z.infer<typeof unlockedAchievementSchema>;
 export type UserCard = z.infer<typeof userCardSchema>;
 export type MapProgress = z.infer<typeof mapProgressSchema>;
 export type PlanProgress = z.infer<typeof planProgressSchema>;
+export type ExportFileV1 = z.infer<typeof exportFileV1Schema>;
 export type ExportFile = z.infer<typeof exportFileSchema>;
 
 export function defaultProfile(nowIso: string): Profile {

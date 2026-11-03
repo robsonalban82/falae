@@ -1,6 +1,11 @@
 import { useRef, useState } from 'react';
 import { repository } from '../../data';
-import { parseExportFile, type ImportFailure, type ImportSummary } from '../../data/exportImport';
+import {
+  importDropsUserCards,
+  parseExportFile,
+  type ImportFailure,
+  type ImportSummary,
+} from '../../data/exportImport';
 import type { ExportFile } from '../../data/models';
 import { t } from '../../i18n/pt-BR';
 import { readTextFile } from '../../services/backup';
@@ -31,7 +36,7 @@ export function BackupSection() {
   const [message, setMessage] = useState<Message | null>(null);
   const [pending, setPending] = useState<{ file: ExportFile; summary: ImportSummary } | null>(null);
   const [busy, setBusy] = useState(false);
-  const [currentCounts, setCurrentCounts] = useState({ lessons: 0, achievements: 0 });
+  const [currentCounts, setCurrentCounts] = useState({ lessons: 0, achievements: 0, userCards: 0 });
 
   const onExport = async () => {
     try {
@@ -65,11 +70,16 @@ export function BackupSection() {
       return;
     }
     try {
-      const [lessons, achievements] = await Promise.all([
+      const [lessons, achievements, current] = await Promise.all([
         repository.getLessonProgress(),
         repository.getAchievements(),
+        repository.exportAll(),
       ]);
-      setCurrentCounts({ lessons: lessons.length, achievements: achievements.length });
+      setCurrentCounts({
+        lessons: lessons.length,
+        achievements: achievements.length,
+        userCards: current.data.userCards.length,
+      });
     } catch (err) {
       console.error('[falae] Could not read current progress', err);
     }
@@ -149,6 +159,11 @@ export function BackupSection() {
         onCancel={() => setPending(null)}
       >
         <p>{t.settings.importBody}</p>
+        {s && importDropsUserCards(currentCounts.userCards, s) && (
+          <p className="rounded-2xl border-2 border-danger bg-danger-soft p-3 font-bold text-danger">
+            {t.settings.importDropsCards}
+          </p>
+        )}
         {s && (
           <>
             {(() => {
