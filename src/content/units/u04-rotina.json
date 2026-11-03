@@ -1,6 +1,7 @@
 {
   "id": "u4-unit",
   "order": 4,
+  "level": "A1",
   "title": "Rotina e horas",
   "description": "Diga as horas, conte sua rotina, use os dias da semana e fale do que você fez ontem.",
   "color": "acerola",

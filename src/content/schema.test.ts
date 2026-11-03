@@ -1,5 +1,14 @@
 import { buildCourse } from './course';
-import { exerciseSchema, tokenizeForBank, unitSchema } from './schema';
+import {
+  bankSentenceSchema,
+  bankVocabSchema,
+  exerciseSchema,
+  formatIssues,
+  sentenceSchema,
+  tokenizeForBank,
+  unitSchema,
+  vocabItemSchema,
+} from './schema';
 import { buildUnit } from '../test/fixtures/buildUnit';
 
 type AnyRecord = Record<string, unknown>;
@@ -133,5 +142,131 @@ describe('buildCourse', () => {
     ex.itemIds = ['nao-existe'];
     const { errors } = buildCourse([unit]);
     expect(errors.join('\n')).toMatch(/nao-existe/);
+  });
+});
+
+const vocab = {
+  id: 'x-word',
+  en: 'actually',
+  pt: ['na verdade'],
+  example: { en: 'Actually, I am tired.', pt: 'Na verdade, estou cansado.' },
+  difficulty: 1,
+};
+const sentence = { id: 'x-s-hi', en: 'Hi, Ana!', pt: 'Oi, Ana!', difficulty: 1 };
+const messages = (r: { success: boolean; error?: Parameters<typeof formatIssues>[0] }) =>
+  r.error ? formatIssues(r.error).join('\n') : '';
+
+describe('content schema — CEFR level and optional item fields', () => {
+  it('rejects a unit without level with a helpful message', () => {
+    const unit = buildUnit() as AnyRecord;
+    delete unit.level;
+    const r = unitSchema.safeParse(unit);
+    expect(r.success).toBe(false);
+    expect(messages(r)).toMatch(
+      /^level: Informe o nível CEFR \(level\): A1, A2, B1, B2, C1, C2\.$/m,
+    );
+  });
+
+  it('accepts every CEFR level on a unit and rejects unknown ones', () => {
+    for (const level of ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']) {
+      expect(unitSchema.safeParse(buildUnit(1, { level })).success, level).toBe(true);
+    }
+    const r = unitSchema.safeParse(buildUnit(1, { level: 'B3' }));
+    expect(r.success).toBe(false);
+    expect(messages(r)).toMatch(/^level: Nível CEFR inválido/m);
+  });
+
+  it('accepts pronunciation on vocab and sentences', () => {
+    expect(vocabItemSchema.safeParse({ ...vocab, pronunciation: 'ÉK-tchu-a-li' }).success).toBe(
+      true,
+    );
+    expect(sentenceSchema.safeParse({ ...sentence, pronunciation: 'rai, ÉNA' }).success).toBe(true);
+  });
+
+  it('accepts a sentence with example and emoji', () => {
+    const r = sentenceSchema.safeParse({
+      ...sentence,
+      emoji: '👋',
+      example: { en: 'Hi, Ana! How are you?', pt: 'Oi, Ana! Tudo bem?' },
+    });
+    expect(r.success).toBe(true);
+    expect(r.success && r.data.example?.pt).toBe('Oi, Ana! Tudo bem?');
+  });
+
+  it('rejects level on unit items (they inherit the unit level)', () => {
+    expect(vocabItemSchema.safeParse({ ...vocab, level: 'A2' }).success).toBe(false);
+    expect(sentenceSchema.safeParse({ ...sentence, level: 'A2' }).success).toBe(false);
+    const unit = buildUnit() as AnyRecord;
+    const skill = (unit.skills as AnyRecord[])[0]!;
+    (skill.vocab as AnyRecord[])[0]!.level = 'B1';
+    const r = unitSchema.safeParse(unit);
+    expect(r.success).toBe(false);
+    expect(messages(r)).toBe(
+      'skills › 0 › vocab › 0: Itens de unidade herdam o nível da unidade; "level" por item só vale nos bancos.',
+    );
+  });
+
+  it('explains level and lists other unknown keys on unit items in PT-BR', () => {
+    const r = sentenceSchema.safeParse({ ...sentence, level: 'A1', foo: 1 });
+    expect(messages(r)).toBe(
+      '(raiz): Itens de unidade herdam o nível da unidade; "level" por item só vale nos bancos. Campo desconhecido: "foo".',
+    );
+    expect(messages(vocabItemSchema.safeParse({ ...vocab, foo: 1 }))).toBe(
+      '(raiz): Campo desconhecido: "foo".',
+    );
+  });
+
+  it('accepts an optional level on bank items', () => {
+    expect(bankVocabSchema.safeParse(vocab).success).toBe(true);
+    expect(bankVocabSchema.safeParse({ ...vocab, level: 'B1' }).success).toBe(true);
+    expect(bankSentenceSchema.safeParse({ ...sentence, level: 'A2' }).success).toBe(true);
+    expect(bankSentenceSchema.safeParse({ ...sentence, level: 'Z9' }).success).toBe(false);
+  });
+
+  it('rejects a false friend without notes, in units and banks', () => {
+    const falseFriend = { ...vocab, focus: 'falso-cognato' };
+    for (const schema of [vocabItemSchema, bankVocabSchema]) {
+      const r = schema.safeParse(falseFriend);
+      expect(r.success).toBe(false);
+      expect(messages(r)).toBe('notes: Falso cognato precisa de "notes" com o aviso de cuidado.');
+      expect(
+        schema.safeParse({ ...falseFriend, notes: '"Actually" não é "atualmente".' }).success,
+      ).toBe(true);
+    }
+  });
+
+  it('reports the false-friend rule together with type errors on other fields', () => {
+    const r = vocabItemSchema.safeParse({ ...vocab, focus: 'falso-cognato', difficulty: 9 });
+    const lines = messages(r).split('\n');
+    expect(lines).toHaveLength(2);
+    expect(lines[0]).toMatch(/^difficulty: /);
+    expect(lines[1]).toBe('notes: Falso cognato precisa de "notes" com o aviso de cuidado.');
+  });
+
+  it('does not crash or duplicate errors when focus, notes or the item are malformed', () => {
+    expect(messages(vocabItemSchema.safeParse({ ...vocab, focus: 5 }))).toMatch(/^focus: /);
+    const badNotes = messages(
+      vocabItemSchema.safeParse({ ...vocab, focus: 'falso-cognato', notes: 5 }),
+    );
+    expect(badNotes.split('\n')).toHaveLength(1);
+    expect(badNotes).toMatch(/^notes: /);
+    for (const v of [null, 'x', 1, []]) {
+      expect(bankVocabSchema.safeParse(v).success, String(v)).toBe(false);
+    }
+  });
+
+  it('rejects empty emoji on vocab and sentences', () => {
+    expect(vocabItemSchema.safeParse({ ...vocab, emoji: '' }).success).toBe(false);
+    expect(sentenceSchema.safeParse({ ...sentence, emoji: '  ' }).success).toBe(false);
+    expect(sentenceSchema.safeParse({ ...sentence, emoji: '👋' }).success).toBe(true);
+  });
+
+  it('reports a false friend without notes inside a unit', () => {
+    const unit = buildUnit() as AnyRecord;
+    const item = ((unit.skills as AnyRecord[])[2]!.vocab as AnyRecord[])[0]!;
+    item.focus = 'falso-cognato';
+    const r = unitSchema.safeParse(unit);
+    expect(r.success).toBe(false);
+    expect(messages(r)).toMatch(/^skills › 2 › vocab › 0 › notes: Falso cognato/m);
   });
 });

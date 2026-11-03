@@ -1,5 +1,13 @@
 import { buildCourse } from './course';
-import { exerciseSchema, formatIssues, unitSchema, vocabItemSchema } from './schema';
+import {
+  MAX_PRONUNCIATION,
+  bankVocabSchema,
+  exerciseSchema,
+  formatIssues,
+  sentenceSchema,
+  unitSchema,
+  vocabItemSchema,
+} from './schema';
 import { buildUnit } from '../test/fixtures/buildUnit';
 
 type AnyRecord = Record<string, unknown>;
@@ -237,5 +245,80 @@ describe('buildCourse — edge inputs', () => {
     expect(course.lessons.get('t1-review')).toMatchObject({ index: -1, skill: null });
     // 4 skills × (1 vocab + 1 sentence)
     expect(course.items.size).toBe(8);
+  });
+});
+
+describe('content schema — level and pronunciation edges', () => {
+  const vocab = {
+    id: 'x',
+    en: 'pretend',
+    pt: ['fingir'],
+    example: { en: 'He pretends to work.', pt: 'Ele finge que trabalha.' },
+    difficulty: 2,
+  };
+  const sentence = { id: 'x-s', en: 'Hi!', pt: 'Oi!', difficulty: 1 };
+
+  it('rejects pronunciation over 40 characters with the limit in the message', () => {
+    expect(MAX_PRONUNCIATION).toBe(40);
+    const ok = 'a'.repeat(40);
+    const tooLong = 'a'.repeat(41);
+    expect(vocabItemSchema.safeParse({ ...vocab, pronunciation: ok }).success).toBe(true);
+    expect(sentenceSchema.safeParse({ ...sentence, pronunciation: ok }).success).toBe(true);
+    for (const schema of [vocabItemSchema, sentenceSchema]) {
+      const r = schema.safeParse({
+        ...(schema === sentenceSchema ? sentence : vocab),
+        pronunciation: tooLong,
+      });
+      expect(r.success).toBe(false);
+      if (r.success) return;
+      expect(formatIssues(r.error)).toEqual([
+        'pronunciation: A pronúncia tem no máximo 40 caracteres.',
+      ]);
+    }
+  });
+
+  it('trims pronunciation before measuring and rejects blank pronunciation', () => {
+    const padded = `  ${'a'.repeat(40)}  `;
+    const r = vocabItemSchema.safeParse({ ...vocab, pronunciation: padded });
+    expect(r.success && r.data.pronunciation).toBe('a'.repeat(40));
+    expect(vocabItemSchema.safeParse({ ...vocab, pronunciation: '   ' }).success).toBe(false);
+    expect(vocabItemSchema.safeParse({ ...vocab, pronunciation: 7 }).success).toBe(false);
+  });
+
+  it('rejects line breaks and control characters inside pronunciation', () => {
+    for (const bad of ['rai\nÉNA', 'rai\tÉNA', 'rai\u0000', 'rai\u2028ÉNA', 'a\r\nb']) {
+      const r = vocabItemSchema.safeParse({ ...vocab, pronunciation: bad });
+      expect(r.success, JSON.stringify(bad)).toBe(false);
+      if (r.success) return;
+      expect(formatIssues(r.error)).toEqual([
+        'pronunciation: A pronúncia não pode ter quebra de linha nem caracteres de controle.',
+      ]);
+    }
+    expect(vocabItemSchema.safeParse({ ...vocab, pronunciation: 'PRI-tend\n' }).success).toBe(true);
+  });
+
+  it('rejects lowercase, null and numeric levels', () => {
+    for (const level of ['a1', 'A 1', '', null, 1]) {
+      expect(unitSchema.safeParse(buildUnit(1, { level })).success, String(level)).toBe(false);
+      expect(bankVocabSchema.safeParse({ ...vocab, level }).success, String(level)).toBe(false);
+    }
+  });
+
+  it('treats whitespace-only notes on a false friend as missing', () => {
+    const r = vocabItemSchema.safeParse({ ...vocab, focus: 'falso-cognato', notes: '   ' });
+    expect(r.success).toBe(false);
+  });
+
+  it('does not require notes for other focus tags or for sentences', () => {
+    expect(vocabItemSchema.safeParse({ ...vocab, focus: 'th' }).success).toBe(true);
+    expect(sentenceSchema.safeParse({ ...sentence, focus: 'falso-cognato' }).success).toBe(true);
+  });
+
+  it('rejects a malformed sentence example', () => {
+    expect(sentenceSchema.safeParse({ ...sentence, example: { en: 'Hi!' } }).success).toBe(false);
+    expect(
+      sentenceSchema.safeParse({ ...sentence, example: { en: 'Hi!', pt: 'Oi!', extra: 1 } })
+        .success,
+    ).toBe(false);
   });
 });

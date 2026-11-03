@@ -1,6 +1,7 @@
 {
   "id": "u3-unit",
   "order": 3,
+  "level": "A1",
   "title": "Comida e restaurante",
   "description": "Peça comida e bebida com educação, se vire no restaurante e diga do que você gosta.",
   "color": "folha",

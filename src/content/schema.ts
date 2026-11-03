@@ -48,28 +48,102 @@ export const focusTagSchema = z.enum(focusTags);
 
 const difficulty = z.union([z.literal(1), z.literal(2), z.literal(3)]);
 
-export const vocabItemSchema = z.strictObject({
+/** CEFR levels; the UI only shows the ones that have content (MAPAS-E-CARTAS §2.2). */
+export const cefrLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
+export const levelSchema = z.enum(cefrLevels, {
+  error: (issue) =>
+    issue.input === undefined
+      ? `Informe o nível CEFR (level): ${cefrLevels.join(', ')}.`
+      : `Nível CEFR inválido; use ${cefrLevels.join(', ')}.`,
+});
+
+export const MAX_PRONUNCIATION = 40;
+/** Respelling for Brazilians (convention in the prototype's conteudo/LEIA-ME.md). */
+const pronunciation = z
+  .string()
+  .trim()
+  .min(1, 'Pronúncia vazia.')
+  .max(MAX_PRONUNCIATION, `A pronúncia tem no máximo ${MAX_PRONUNCIATION} caracteres.`)
+  .regex(
+    /^[^\p{Cc}\p{Zl}\p{Zp}]*$/u,
+    'A pronúncia não pode ter quebra de linha nem caracteres de controle.',
+  );
+
+const example = z.strictObject({ en: text, pt: text });
+
+/** Unit items inherit the unit's level; explain that instead of a bare "unrecognized key". */
+const unitItemKeys = {
+  error: (issue: z.core.$ZodRawIssue) => {
+    if (issue.code !== 'unrecognized_keys') return undefined;
+    const others = issue.keys.filter((key) => key !== 'level');
+    const parts = issue.keys.includes('level')
+      ? ['Itens de unidade herdam o nível da unidade; "level" por item só vale nos bancos.']
+      : [];
+    if (others.length) parts.push(`Campo desconhecido: ${others.map((k) => `"${k}"`).join(', ')}.`);
+    return parts.join(' ');
+  },
+};
+
+const vocabShape = {
   id,
   en: text,
   pt: z.array(text).min(1),
   acceptedPt: z.array(pattern).optional(),
   acceptedEn: z.array(pattern).optional(),
-  example: z.strictObject({ en: text, pt: text }),
-  emoji: z.string().optional(),
+  example,
+  emoji: text.optional(),
   icon: z.string().optional(),
+  pronunciation: pronunciation.optional(),
   difficulty,
   focus: focusTagSchema.optional(),
   notes: z.string().optional(),
-});
+};
 
-export const sentenceSchema = z.strictObject({
+const sentenceShape = {
   id,
   en: text,
   pt: text,
   acceptedEn: z.array(pattern).optional(),
   acceptedPt: z.array(pattern).optional(),
+  example: example.optional(),
+  emoji: text.optional(),
+  pronunciation: pronunciation.optional(),
   difficulty,
   focus: focusTagSchema.optional(),
+};
+
+const vocabObject = z.strictObject(vocabShape, unitItemKeys);
+type FalseFriendFields = Pick<z.infer<typeof vocabObject>, 'focus' | 'notes'>;
+
+/** The false-friend warning is the item's `notes`, so a false friend without it is incomplete. */
+const hasFalseFriendNotes = (item: FalseFriendFields) =>
+  item.focus !== 'falso-cognato' || Boolean(item.notes?.trim());
+
+const falseFriendNotesCheck = {
+  path: ['notes'],
+  message: 'Falso cognato precisa de "notes" com o aviso de cuidado.',
+  // Run even when other fields failed, so authors see every problem at once.
+  // Skip only when the value is not an object or focus/notes themselves are malformed.
+  when: (payload: z.core.ParsePayload) =>
+    !payload.issues.some((issue) => {
+      const head = issue.path?.[0];
+      return head === undefined
+        ? issue.code === 'invalid_type'
+        : head === 'focus' || head === 'notes';
+    }),
+};
+
+/** Unit items have no `level` field (strict rejects it with an explanation). */
+export const vocabItemSchema = vocabObject.refine(hasFalseFriendNotes, falseFriendNotesCheck);
+export const sentenceSchema = z.strictObject(sentenceShape, unitItemKeys);
+
+/** Bank items may carry their own level when it differs from the bank's. */
+export const bankVocabSchema = z
+  .strictObject({ ...vocabShape, level: levelSchema.optional() })
+  .refine(hasFalseFriendNotes, falseFriendNotesCheck);
+export const bankSentenceSchema = z.strictObject({
+  ...sentenceShape,
+  level: levelSchema.optional(),
 });
 
 export const tipBlockSchema = z.discriminatedUnion('kind', [
@@ -242,6 +316,7 @@ export const unitColors = ['manga', 'anil', 'folha', 'acerola'] as const;
 export const unitSchema = z.strictObject({
   id,
   order: z.number().int().positive(),
+  level: levelSchema,
   title: text,
   description: text,
   color: z.enum(unitColors),
@@ -300,8 +375,11 @@ export const courseSchema = z.array(unitSchema).superRefine((units, ctx) => {
 });
 
 export type FocusTag = z.infer<typeof focusTagSchema>;
+export type CefrLevel = z.infer<typeof levelSchema>;
 export type VocabItem = z.infer<typeof vocabItemSchema>;
 export type Sentence = z.infer<typeof sentenceSchema>;
+export type BankVocabItem = z.infer<typeof bankVocabSchema>;
+export type BankSentence = z.infer<typeof bankSentenceSchema>;
 export type Tip = z.infer<typeof tipSchema>;
 export type TipBlock = z.infer<typeof tipBlockSchema>;
 export type Exercise = z.infer<typeof exerciseSchema>;

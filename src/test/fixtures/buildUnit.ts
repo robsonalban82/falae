@@ -51,6 +51,7 @@ export function buildUnit(n = 1, overrides: Record<string, unknown> = {}) {
   return {
     id: `${p}-unit`,
     order: n,
+    level: 'A1',
     title: `Unidade ${n}`,
     description: 'Unidade de teste',
     color: 'manga',
