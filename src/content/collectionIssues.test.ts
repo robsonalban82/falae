@@ -1,5 +1,5 @@
 import { unitSchema } from './schema';
-import { bankSchema } from './schemas/bank';
+import { bankSchema } from './schemas/course';
 import {
   collectionSchema,
   deckSchema,

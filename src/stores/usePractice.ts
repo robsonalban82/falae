@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { StudyItem } from '../content/course';
-import { getCourseManifest, loadItemIndex, manifestItemIds, pathUnits } from '../content/loader';
+import { getCourseManifest, loadItems, manifestItemIds, pathUnits } from '../content/loader';
 import { repository } from '../data';
 import { onDataReplaced } from '../data/events';
 import type { SrsCard } from '../data/models';
@@ -82,7 +82,8 @@ export async function buildPracticeSession(
   const owners = pathUnits()
     .filter((u) => u.skills.some((s) => s.itemIds.some((id) => ids.includes(id))))
     .map((u) => u.id);
-  const index = await loadItemIndex([...new Set([...unlocked, ...owners])]);
+  // Bank items among `ids` load their bank; unit items come with their whole unit.
+  const index = await loadItems([...ids, ...manifestItemIds([...unlocked, ...owners])]);
   const unlockedItems = manifestItemIds(unlocked);
   const items = ids
     .map((id) => index.items.get(id))

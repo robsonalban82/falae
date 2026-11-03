@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { parseBold } from '../../domain/mindmap/richText';
 import { BLANK, idSchema, levelSchema, patternSchema, strictPt, textSchema } from '../schema';
+import { mapRefs, nodeCount } from '../mapStats';
 import { sizedArray, whenParsed } from './refine';
 
 /** Mind map format (MAPAS-E-CARTAS §2.5): center → branches → cards (nodes) → lines. */
@@ -186,17 +187,4 @@ export type MapBranch = z.infer<typeof mapBranchSchema>;
 export type MapQuiz = z.infer<typeof mapQuizSchema>;
 export type MindMap = z.infer<typeof mindMapSchema>;
 
-type MapShape = { branches: readonly MapBranch[] };
-
-/** Number of cards (nodes) in the map. */
-export function nodeCount(map: MapShape): number {
-  return map.branches.reduce((n, b) => n + b.nodes.length, 0);
-}
-
-/** Distinct item ids referenced by the map's lines, in order of appearance. */
-export function mapRefs(map: MapShape): string[] {
-  const refs = new Set<string>();
-  for (const b of map.branches)
-    for (const n of b.nodes) for (const line of n.lines) if ('ref' in line) refs.add(line.ref);
-  return [...refs];
-}
+export { mapRefs, nodeCount };

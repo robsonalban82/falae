@@ -1,7 +1,7 @@
 import { normalize } from '../domain/grading/normalize';
 import { stripBold } from '../domain/mindmap/richText';
 import { levelRank, type CefrLevel, type Unit } from './schema';
-import type { Bank } from './schemas/bank';
+import type { Bank } from './schemas/course';
 import type { MindMap } from './schemas/mindmap';
 
 /** Above these a card or branch is hard to read (warning, not error; GRAMATICA-VISUAL.md). */

@@ -105,6 +105,7 @@ export const DEMO_UNIT_ID = 'demo-unit';
 export const demoUnit = {
   id: DEMO_UNIT_ID,
   order: 99,
+  level: 'A1',
   title: 'Demo do motor de lição',
   description: 'Unidade de desenvolvimento com todos os tipos de exercício.',
   color: 'anil',

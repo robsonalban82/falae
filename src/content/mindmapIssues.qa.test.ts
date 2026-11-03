@@ -1,5 +1,5 @@
 import { unitSchema } from './schema';
-import { bankSchema } from './schemas/bank';
+import { bankSchema } from './schemas/course';
 import { mindMapSchema, type MindMap } from './schemas/mindmap';
 import { buildMindMapContext, mindMapIssues, mindMapSetIssues, unusedArt } from './mindmapIssues';
 import { buildUnit } from '../test/fixtures/buildUnit';

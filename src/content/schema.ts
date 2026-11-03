@@ -16,7 +16,7 @@ export const MAX_EXERCISES = 15;
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'Use ids em kebab-case (ex.: u1-hello).');
 const text = z.string().trim().min(1, 'Texto vazio.');
 
-/** PT-BR message for unknown keys in strict objects (Zod's default is English). */
+/** Unknown keys named in PT-BR (the Zod locale reports them without the list of names). */
 export const unknownKeysMessage = (keys: readonly string[]) =>
   `Campo desconhecido: ${keys.map((k) => `"${k}"`).join(', ')}.`;
 export const strictPt = {

@@ -9,7 +9,7 @@ import {
   unitSchema,
   vocabItemSchema,
 } from './schema';
-import { bankSchema, courseIssues } from './schemas/bank';
+import { bankSchema, courseIssues } from './schemas/course';
 import { buildUnit } from '../test/fixtures/buildUnit';
 import { buildBank, buildFalseFriendsBank } from '../test/fixtures/content/buildBank';
 

@@ -1,38 +1,51 @@
-import { buildManifest, crossUnitReferences } from './buildManifest';
-import { buildCourse, knownWordsOf } from './course';
+import { assembleContent, type RawFile } from './assemble';
+import { crossUnitReferences } from './buildManifest';
+import { buildCourse } from './course';
 import { knownWords } from './knownWords.generated';
 import { courseManifest } from './manifest.generated';
 
-// Eager glob is fine here: tests compare the generated index with the real JSON.
-const files = import.meta.glob<{ default: unknown }>('./units/*.json', { eager: true });
-const entries = Object.entries(files).map(([path, mod]) => ({
-  file: path.replace('./units/', ''),
-  raw: mod.default,
-}));
-const { course, errors } = buildCourse(entries.map((e) => e.raw));
-const fileOf = (id: string) =>
-  entries.find((e) => (e.raw as { id?: unknown }).id === id)?.file ?? ''; // raw JSON, id checked by buildCourse
+// Eager globs are fine here: tests compare the generated index with the real JSON.
+type Mod = { default: unknown };
+const read = (mods: Record<string, Mod>, folder: string): RawFile[] =>
+  Object.entries(mods).map(([path, mod]) => ({
+    file: path.replace(`./${folder}/`, ''),
+    raw: mod.default,
+  }));
+const units = read(import.meta.glob<Mod>('./units/*.json', { eager: true }), 'units');
+const banks = read(import.meta.glob<Mod>('./banks/*.json', { eager: true }), 'banks');
+const maps = read(import.meta.glob<Mod>('./mindmaps/*.json', { eager: true }), 'mindmaps');
+const plans = read(import.meta.glob<Mod>('./plans/*.json', { eager: true }), 'plans');
+const single = (mods: Record<string, Mod>) => Object.values(mods)[0]?.default;
+const collections = single(import.meta.glob<Mod>('./collections.json', { eager: true }));
+const decks = single(import.meta.glob<Mod>('./decks.json', { eager: true }));
+const art = Object.keys(import.meta.glob('./art/*.svg')).map((p) =>
+  p.replace('./art/', '').replace(/\.svg$/, ''),
+);
 
-describe('course manifest (ADR-012)', () => {
+const assembled = assembleContent({ units, banks, maps, plans, collections, decks, art });
+const { course } = buildCourse(units.map((u) => u.raw));
+
+describe('course manifest (ADR-012, MAPAS-E-CARTAS §2.7)', () => {
   it('content is valid', () => {
-    expect(errors).toEqual([]);
+    expect(assembled.errors).toEqual([]);
   });
 
   it('matches the real content (run `npm run validate:content` to regenerate)', () => {
-    const expected = buildManifest(course.units.map((unit) => ({ unit, file: fileOf(unit.id) })));
-    expect(courseManifest).toEqual(expected);
+    expect(courseManifest).toEqual(assembled.manifest);
   });
 
-  it('lists every unit file exactly once, in order', () => {
-    expect(courseManifest.units.map((u) => u.file).sort()).toEqual(
-      entries.map((e) => e.file).sort(),
-    );
+  it('lists every unit, bank, map and plan file exactly once, units in order', () => {
+    const files = (list: readonly { file: string }[]) => list.map((x) => x.file).sort();
+    expect(files(courseManifest.units)).toEqual(files(units));
+    expect(files(courseManifest.banks)).toEqual(files(banks));
+    expect(files(courseManifest.maps)).toEqual(files(maps));
+    expect(files(courseManifest.plans)).toEqual(files(plans));
     const orders = courseManifest.units.map((u) => u.order);
     expect(orders).toEqual([...orders].sort((a, b) => a - b));
   });
 
-  it('known words list matches the content', () => {
-    expect(knownWords).toEqual(knownWordsOf(course.units));
+  it('known words list matches the content (units and banks)', () => {
+    expect(knownWords).toEqual(assembled.knownWords);
   });
 
   it('units are self-contained (a lesson only cites items of its own unit)', () => {
@@ -42,6 +55,7 @@ describe('course manifest (ADR-012)', () => {
   it('counts match the content', () => {
     for (const unit of course.units) {
       const m = courseManifest.units.find((u) => u.id === unit.id);
+      expect(m?.level).toBe(unit.level);
       expect(m?.skills.map((s) => s.lessons.map((l) => l.exerciseCount))).toEqual(
         unit.skills.map((s) => s.lessons.map((l) => l.exercises.length)),
       );

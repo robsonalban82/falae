@@ -1,16 +1,17 @@
 import { collectKnownWords } from '../domain/grading/grade';
-import { courseIssues } from './schemas/bank';
+import { courseIssues, type Bank } from './schemas/course';
 import {
   formatIssues,
   unitSchema,
   type Lesson,
-  type Sentence,
+  type BankSentence,
+  type BankVocabItem,
   type Skill,
   type Unit,
-  type VocabItem,
 } from './schema';
 
-export type StudyItem = ({ kind: 'vocab' } & VocabItem) | ({ kind: 'sentence' } & Sentence);
+/** A unit or bank item (bank items may carry their own `level`; unit items never do). */
+export type StudyItem = ({ kind: 'vocab' } & BankVocabItem) | ({ kind: 'sentence' } & BankSentence);
 
 export type LessonRef = {
   lesson: Lesson;
@@ -67,9 +68,19 @@ function indexCourse(units: Unit[]): Course {
   return { ...indexUnits(units), units, knownWords: new Set(knownWordsOf(units)) };
 }
 
-/** Normalized words of the given units (sorted, deduplicated). */
-export function knownWordsOf(units: readonly Unit[]): string[] {
-  return [...collectKnownWords(courseTexts(units))].sort();
+/** Normalized words of the given units and banks (sorted, deduplicated). */
+export function knownWordsOf(units: readonly Unit[], banks: readonly Bank[] = []): string[] {
+  return [...collectKnownWords(courseTexts(units, banks))].sort();
+}
+
+/** Items of already-validated banks (no cross-file checks). */
+export function indexBanks(banks: readonly Bank[]): Map<string, StudyItem> {
+  const items = new Map<string, StudyItem>();
+  for (const bank of banks) {
+    bank.vocab.forEach((v) => items.set(v.id, { kind: 'vocab', ...v }));
+    bank.sentences.forEach((s) => items.set(s.id, { kind: 'sentence', ...s }));
+  }
+  return items;
 }
 
 /** Item and lesson indexes of already-validated units (no cross-unit checks). */
@@ -89,20 +100,33 @@ export function indexUnits(units: readonly Unit[]): Pick<Course, 'items' | 'less
   return { items, lessons };
 }
 
-function* courseTexts(units: readonly Unit[]): Generator<{ text: string; lang: 'en' | 'pt' }> {
-  for (const unit of units) {
-    for (const skill of unit.skills) {
-      for (const v of skill.vocab) {
-        yield { text: v.en, lang: 'en' };
-        for (const pt of v.pt) yield { text: pt, lang: 'pt' };
-        yield { text: v.example.en, lang: 'en' };
-        yield { text: v.example.pt, lang: 'pt' };
-      }
-      for (const s of skill.sentences) {
-        yield { text: s.en, lang: 'en' };
-        yield { text: s.pt, lang: 'pt' };
-      }
+function* itemTexts(
+  vocab: readonly BankVocabItem[],
+  sentences: readonly BankSentence[],
+): Generator<{ text: string; lang: 'en' | 'pt' }> {
+  for (const v of vocab) {
+    yield { text: v.en, lang: 'en' };
+    for (const pt of v.pt) yield { text: pt, lang: 'pt' };
+    yield { text: v.example.en, lang: 'en' };
+    yield { text: v.example.pt, lang: 'pt' };
+  }
+  for (const s of sentences) {
+    yield { text: s.en, lang: 'en' };
+    yield { text: s.pt, lang: 'pt' };
+    if (s.example) {
+      yield { text: s.example.en, lang: 'en' };
+      yield { text: s.example.pt, lang: 'pt' };
     }
+  }
+}
+
+function* courseTexts(
+  units: readonly Unit[],
+  banks: readonly Bank[],
+): Generator<{ text: string; lang: 'en' | 'pt' }> {
+  for (const bank of banks) yield* itemTexts(bank.vocab, bank.sentences);
+  for (const unit of units) {
+    for (const skill of unit.skills) yield* itemTexts(skill.vocab, skill.sentences);
     for (const lesson of [...unit.skills.flatMap((s) => s.lessons), unit.reviewLesson]) {
       for (const ex of lesson.exercises) {
         if (ex.type === 'multiple-choice')

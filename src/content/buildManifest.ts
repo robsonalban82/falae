@@ -1,4 +1,10 @@
-import type { Lesson, Unit } from './schema';
+import { normalize } from '../domain/grading/normalize';
+import { stripBold } from '../domain/mindmap/richText';
+import { levelRank, type CefrLevel, type Lesson, type Unit } from './schema';
+import type { Collection, Deck, StudyPlan } from './schemas/collection';
+import type { Bank, BankId } from './schemas/course';
+import { mapRefs, nodeCount } from './mapStats';
+import type { MapIcon, MapKind, MindMap } from './schemas/mindmap';
 
 /**
  * Light course index (ADR-012): enough to draw the path, guard routes and count due cards
@@ -25,6 +31,7 @@ export type ManifestSkill = {
 export type ManifestUnit = {
   id: string;
   order: number;
+  level: CefrLevel;
   title: string;
   color: Unit['color'];
   /** File name inside src/content/units (key of the lazy glob). */
@@ -33,15 +40,78 @@ export type ManifestUnit = {
   reviewLesson: ManifestLesson;
 };
 
-export type CourseManifest = { units: ManifestUnit[] };
+export type ManifestBank = {
+  id: BankId;
+  level: CefrLevel;
+  /** File name inside src/content/banks. */
+  file: string;
+  itemIds: string[];
+};
 
-/** Builds the manifest from validated units (`files[i]` is the JSON file of `units[i]`). */
-export function buildManifest(units: readonly { unit: Unit; file: string }[]): CourseManifest {
-  const sorted = [...units].sort((a, b) => a.unit.order - b.unit.order);
+export type ManifestMap = {
+  id: string;
+  title: string;
+  level: CefrLevel;
+  kind: MapKind;
+  icon: MapIcon;
+  unitId?: string;
+  skillId?: string;
+  /** File name inside src/content/mindmaps. */
+  file: string;
+  /** Cards (nodes). */
+  nodeCount: number;
+  /** Distinct refs, in order of appearance. */
+  itemIds: string[];
+  hasQuiz: boolean;
+  /** Title, labels and lines, normalized and deduplicated: search without loading the map. */
+  search: string;
+};
+
+/** A shelf cover: no entries, only counts, topics and levels. */
+export type ManifestCollection = Pick<
+  Collection,
+  'id' | 'order' | 'kind' | 'title' | 'subtitle' | 'cover' | 'mapIds' | 'planId'
+> & {
+  entryCount: number;
+  topics?: { id: string; title: string; icon: MapIcon; entryCount: number }[];
+  /** Levels present among the entries, A1 first. */
+  levels: CefrLevel[];
+};
+
+export type ManifestDeck = Pick<Deck, 'id' | 'title' | 'icon' | 'level' | 'itemIds'>;
+export type ManifestPlan = { id: string; file: string; title: string };
+
+export type CourseManifest = {
+  units: ManifestUnit[];
+  banks: ManifestBank[];
+  maps: ManifestMap[];
+  collections: ManifestCollection[];
+  decks: ManifestDeck[];
+  plans: ManifestPlan[];
+};
+
+export type ManifestInput = {
+  units: readonly { unit: Unit; file: string }[];
+  banks?: readonly { bank: Bank; file: string }[];
+  maps?: readonly { map: MindMap; file: string }[];
+  collections?: readonly Collection[];
+  decks?: readonly Deck[];
+  plans?: readonly { plan: StudyPlan; file: string }[];
+};
+
+/** Builds the manifest from validated content (each entry carries its JSON file name). */
+export function buildManifest(input: ManifestInput): CourseManifest {
+  const { banks = [], maps = [], collections = [], decks = [], plans = [] } = input;
+  const units = [...input.units].sort((a, b) => a.unit.order - b.unit.order);
+  const items = itemTexts(
+    units.map((u) => u.unit),
+    banks.map((b) => b.bank),
+  );
   return {
-    units: sorted.map(({ unit, file }) => ({
+    units: units.map(({ unit, file }) => ({
       id: unit.id,
       order: unit.order,
+      level: unit.level,
       title: unit.title,
       color: unit.color,
       file,
@@ -54,6 +124,121 @@ export function buildManifest(units: readonly { unit: Unit; file: string }[]): C
       })),
       reviewLesson: manifestLesson(unit.reviewLesson),
     })),
+    banks: [...banks]
+      .sort((a, b) => a.bank.id.localeCompare(b.bank.id))
+      .map(({ bank, file }) => ({
+        id: bank.id,
+        level: bank.level,
+        file,
+        itemIds: [...bank.vocab, ...bank.sentences].map((i) => i.id),
+      })),
+    maps: [...maps]
+      .sort((a, b) => a.map.id.localeCompare(b.map.id))
+      .map(({ map, file }) => ({
+        id: map.id,
+        title: map.title,
+        level: map.level,
+        kind: map.kind,
+        icon: map.icon,
+        ...(map.unitId !== undefined ? { unitId: map.unitId } : {}),
+        ...(map.skillId !== undefined ? { skillId: map.skillId } : {}),
+        file,
+        nodeCount: nodeCount(map),
+        itemIds: mapRefs(map),
+        hasQuiz: map.quiz !== undefined,
+        search: mapSearch(map, items),
+      })),
+    collections: [...collections]
+      .sort((a, b) => a.order - b.order)
+      .map((c) => manifestCollection(c, items)),
+    decks: decks.map(({ id, title, icon, level, itemIds }) => ({
+      id,
+      title,
+      icon,
+      level,
+      itemIds,
+    })),
+    plans: [...plans]
+      .sort((a, b) => a.plan.id.localeCompare(b.plan.id))
+      .map(({ plan, file }) => ({ id: plan.id, file, title: plan.title })),
+  };
+}
+
+type ItemText = { texts: string[]; level: CefrLevel };
+
+/** Searchable texts and effective level of every unit and bank item. */
+function itemTexts(units: readonly Unit[], banks: readonly Bank[]): Map<string, ItemText> {
+  const out = new Map<string, ItemText>();
+  for (const unit of units) {
+    for (const skill of unit.skills) {
+      for (const v of skill.vocab) out.set(v.id, { texts: [v.en, ...v.pt], level: unit.level });
+      for (const s of skill.sentences) out.set(s.id, { texts: [s.en, s.pt], level: unit.level });
+    }
+  }
+  for (const bank of banks) {
+    for (const v of bank.vocab) {
+      out.set(v.id, { texts: [v.en, ...v.pt], level: v.level ?? bank.level });
+    }
+    for (const s of bank.sentences) {
+      out.set(s.id, { texts: [s.en, s.pt], level: s.level ?? bank.level });
+    }
+  }
+  return out;
+}
+
+/** Normalized, deduplicated words (accents and punctuation dropped, so "voce" finds "você"). */
+export function searchText(texts: Iterable<string>): string {
+  const words = new Set<string>();
+  for (const text of texts) {
+    for (const w of normalize(stripBold(text), 'pt').split(' ')) if (w) words.add(w);
+  }
+  return [...words].join(' ');
+}
+
+function mapSearch(map: MindMap, items: ReadonlyMap<string, ItemText>): string {
+  const texts = [map.title, map.center.en, map.center.pt];
+  for (const branch of map.branches) {
+    texts.push(branch.label);
+    for (const node of branch.nodes) {
+      if (node.title) texts.push(node.title);
+      for (const line of node.lines) {
+        if ('ref' in line) {
+          texts.push(...(items.get(line.ref)?.texts ?? []));
+          if (line.hint) texts.push(line.hint);
+        } else texts.push(...Object.values(line));
+      }
+    }
+  }
+  return searchText(texts);
+}
+
+function manifestCollection(
+  c: Collection,
+  items: ReadonlyMap<string, ItemText>,
+): ManifestCollection {
+  const entries = c.entries ?? [];
+  const levels = [...new Set(entries.flatMap((e) => items.get(e.itemId)?.level ?? []))].sort(
+    (a, b) => levelRank(a) - levelRank(b),
+  );
+  return {
+    id: c.id,
+    order: c.order,
+    kind: c.kind,
+    title: c.title,
+    subtitle: c.subtitle,
+    cover: c.cover,
+    ...(c.mapIds !== undefined ? { mapIds: c.mapIds } : {}),
+    ...(c.planId !== undefined ? { planId: c.planId } : {}),
+    entryCount: entries.length,
+    ...(c.topics !== undefined
+      ? {
+          topics: c.topics.map((t) => ({
+            ...t,
+            entryCount: entries.filter((e) => e.topic === t.id).length,
+          })),
+        }
+      : {}),
+    levels,
   };
 }
 

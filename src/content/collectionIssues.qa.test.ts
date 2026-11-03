@@ -1,5 +1,5 @@
 import { unitSchema, type CefrLevel } from './schema';
-import { bankSchema } from './schemas/bank';
+import { bankSchema } from './schemas/course';
 import { collectionSchema, studyPlanSchema, type Collection } from './schemas/collection';
 import {
   buildItemFacts,

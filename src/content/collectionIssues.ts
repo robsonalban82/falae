@@ -1,5 +1,5 @@
 import { levelRank, type CefrLevel, type FocusTag, type Unit } from './schema';
-import type { Bank } from './schemas/bank';
+import type { Bank } from './schemas/course';
 import type { Collection, Deck, StudyPlan } from './schemas/collection';
 
 /** At most this share of a collection may be B1 or above (decision 13). */

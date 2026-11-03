@@ -6,6 +6,7 @@ export const courseManifest: CourseManifest = {
     {
       id: 'u1-unit',
       order: 1,
+      level: 'A1',
       title: 'Cumprimentos e apresentações',
       color: 'manga',
       file: 'u01-cumprimentos.json',
@@ -327,6 +328,7 @@ export const courseManifest: CourseManifest = {
     {
       id: 'u2-unit',
       order: 2,
+      level: 'A1',
       title: 'Família, números e idade',
       color: 'anil',
       file: 'u02-familia.json',
@@ -673,6 +675,7 @@ export const courseManifest: CourseManifest = {
     {
       id: 'u3-unit',
       order: 3,
+      level: 'A1',
       title: 'Comida e restaurante',
       color: 'folha',
       file: 'u03-comida.json',
@@ -968,6 +971,7 @@ export const courseManifest: CourseManifest = {
     {
       id: 'u4-unit',
       order: 4,
+      level: 'A1',
       title: 'Rotina e horas',
       color: 'acerola',
       file: 'u04-rotina.json',
@@ -1300,4 +1304,9 @@ export const courseManifest: CourseManifest = {
       },
     },
   ],
+  banks: [],
+  maps: [],
+  collections: [],
+  decks: [],
+  plans: [],
 };

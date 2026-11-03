@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import '../lib/zodLocale';
 import { isValidDayKey } from '../domain/time';
 import { MAX_HEARTS } from '../domain/gamification/hearts';
 export { MAX_HEARTS };

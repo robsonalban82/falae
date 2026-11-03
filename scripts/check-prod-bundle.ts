@@ -1,11 +1,13 @@
 /**
  * Fails the production build if E2E/dev-only code leaked into dist/
  * (test hooks, simulated clock storage, design showcase route, demo unit),
- * if the bundle budget is blown (Phase 7) or if unit JSON landed in the entry chunk.
+ * if the bundle budget is blown (Phase 7) or if content JSON (units, banks, maps, plans,
+ * collections) or a scene landed in the initial JS.
  */
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
+import { containsMarker, contentMarkers, pairMarkers, sceneLeaks } from './lib/contentLeaks';
 import { initialScripts } from './lib/htmlEntries';
 
 const ENTRY_BUDGET = 250 * 1024; // minified bytes (~80 kB gzip)
@@ -75,6 +77,45 @@ for (const file of readdirSync(unitsDir).filter((f) => f.endsWith('.json'))) {
   if (marker && initialCode.includes(JSON.stringify(marker).slice(1, -1)))
     problems.push(`conteúdo de ${file} no JS inicial`);
 }
+// Banks, maps, plans and collections are lazy too (MAPAS-E-CARTAS §2.7), and so are the scenes.
+const contentDir = join('src', 'content');
+// What legitimately is in the initial JS: the manifest and the UI copy (avoid false positives).
+const initialTexts = [
+  readFileSync(join(contentDir, 'manifest.generated.ts'), 'utf8'),
+  readFileSync(join('src', 'i18n', 'pt-BR.ts'), 'utf8'),
+].join('\n');
+const lazyFiles = [
+  ...['banks', 'mindmaps', 'plans'].flatMap((folder) => {
+    const dir = join(contentDir, folder);
+    return existsSync(dir)
+      ? readdirSync(dir)
+          .filter((f) => f.endsWith('.json'))
+          .map((f) => join(dir, f))
+      : [];
+  }),
+  ...[join(contentDir, 'collections.json')].filter((f) => existsSync(f)),
+];
+for (const path of lazyFiles) {
+  const raw: unknown = JSON.parse(readFileSync(path, 'utf8'));
+  const long = contentMarkers(raw, initialTexts);
+  const needles = long.length > 0 ? long : pairMarkers(raw, initialTexts);
+  if (needles.length === 0)
+    problems.push(`sem marcador para conferir ${path} (textos curtos demais)`);
+  if (needles.some((needle) => containsMarker(initialCode, needle))) {
+    problems.push(`conteúdo de ${path} no JS inicial`);
+  }
+}
+const artDir = join(contentDir, 'art');
+const sceneNames = existsSync(artDir)
+  ? readdirSync(artDir)
+      .filter((f) => f.endsWith('.svg'))
+      .map((f) => f.slice(0, -4))
+  : [];
+problems.push(...sceneLeaks(initialCode, sceneNames));
+console.log(
+  `\nConteúdo lazy conferido: ${lazyFiles.length} arquivos JSON, ${sceneNames.length} cenas.`,
+);
+
 const initialSize = rows.filter((r) => initial.includes(r.file));
 console.log(
   `\nJS inicial (entrada + modulepreload): ${kb(initialSize.reduce((n, r) => n + r.size, 0))} minificado, ${kb(initialSize.reduce((n, r) => n + r.gzip, 0))} gzip.`,
