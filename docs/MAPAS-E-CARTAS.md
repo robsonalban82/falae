@@ -1,6 +1,6 @@
 # Mapas mentais e cartas — plano técnico
 
-> Status: **proposta (Fase 1 do recurso)**, aguardando aprovação do usuário (lista no §11).
+> Status: **aprovado em 2026-11-03** (respostas no §11). A decisão 1 mudou: a aba se chama **Mapas**, e o §5.1 deve ser ajustado antes da implementação.
 > Dono: agente `arquiteto`. Complementa `docs/ARQUITETURA.md`. Quando aprovado, as seções viram parte da arquitetura (§4, §7, §8, §11, §13).
 > Referência de formato: um kit comercial de mapas mentais de inglês com estética de caderno, usado **só** como ideia de formato e público. Nenhum texto, nome, ilustração ou layout é copiado. Os revisores conferem isso.
 
@@ -599,3 +599,21 @@ Os planos ficam em `docs/fases/mapas-e-cartas/FASE-N.md`, porque `docs/fases/FAS
 11. **Pronúncia simplificada**: incluir como campo opcional, com convenção do pedagogo e sem transcrever sons sem equivalente. _Recomendo incluir;_ a alternativa é ficar só com o áudio.
 12. **Nome do plano de 30 dias** (original): "Caderno de 30 dias", "30 dias com o Tuca" ou "Rota 30". _Recomendo "30 dias com o Tuca"._
 13. **Itens B1 nas coleções da v1** (alguns phrasal verbs e gírias são B1): permitir com selo honesto? _Recomendo permitir, com no máximo 20% por coleção._
+
+### Respostas do usuário (2026-11-03)
+
+| # | Decisão | Resposta |
+|---|---|---|
+| 1 | Navegação | **Alternativa**: aba **"Mapas"**, com as demais coleções dentro dela |
+| 2 | Cartas dentro de Praticar | Aprovado |
+| 3 | Formato do conteúdo | Aprovado |
+| 4 | Dados persistidos (Dexie v2, backup v2) | Aprovado |
+| 5 | Notas Errei 1 · Difícil 3 · Bom 4 · Fácil 5 | Aprovado |
+| 6 | XP | Aprovado ("mesmo teto e bônus" = os das sessões atuais) |
+| 7 | "Meus erros" derivado | Aprovado |
+| 8 | PDF via impressão do navegador | Aprovado |
+| 9 | Layout e pan/zoom próprios | Aprovado |
+| 10 | Fonte manuscrita | **Patrick Hand** (a mesma do protótipo), no lugar de Shantell Sans |
+| 11 | Pronúncia simplificada | Aprovado |
+| 12 | Nome do plano | **"30 dias com o Tuca"** |
+| 13 | Itens B1 (máx. 20% por coleção, com selo) | Aprovado |
