@@ -4,6 +4,7 @@ import { router } from './router';
 import { useSettings } from '../stores/useSettings';
 import { applyTheme } from '../services/theme';
 import { useReminderScheduler } from './useReminderScheduler';
+import { UpdateNotice } from './UpdateNotice';
 
 export function App() {
   const load = useSettings((s) => s.load);
@@ -16,5 +17,10 @@ export function App() {
   useEffect(() => applyTheme(theme), [theme]);
   useReminderScheduler();
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <UpdateNotice />
+      <RouterProvider router={router} />
+    </>
+  );
 }

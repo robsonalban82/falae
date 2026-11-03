@@ -54,6 +54,8 @@ declare global {
       iso: () => string;
       /** E2E only: replaces all data with a validated export file. */
       importForTest?: (file: unknown) => Promise<void>;
+      /** E2E only: current data as an export file (what the backup would contain). */
+      exportForTest?: () => Promise<unknown>;
       /** E2E only: replaces the SRS cards (through the same import path). */
       seedSrs?: (cards: unknown) => Promise<void>;
       /** E2E only: simulates the notification permission (survives reloads). */

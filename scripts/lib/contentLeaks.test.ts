@@ -48,6 +48,16 @@ describe('pairMarkers (fallback for files with only short texts)', () => {
     expect(pairMarkers(bank, manifest)).toEqual(['en:"Hi, Ana."', 'pt:"Oi, Ana."', 'pt:"Tchau!"']);
   });
 
+  it('prefers nested pairs over top-level ones and also uses strings inside arrays', () => {
+    const file = {
+      id: 'banco-longo-demais',
+      items: [{ en: 'Hi, Ana', accepted: ['Hello there', 'Hey you'] }],
+    };
+    expect(pairMarkers(file, '')).toEqual(['Hello there', 'Hey you', 'en:"Hi, Ana"']);
+    expect(pairMarkers(file, '', 4)).toContain('id:"banco-longo-demais"');
+    expect(pairMarkers(file, '', 4).at(-1)).toBe('id:"banco-longo-demais"');
+  });
+
   it('skips values found in the UI copy and returns nothing when no value is safe', () => {
     expect(pairMarkers(bank, 'fr-001 fr-002 frases Hi, Ana. Oi, Ana. Tchau! Bye!')).toEqual([]);
   });

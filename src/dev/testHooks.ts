@@ -33,6 +33,7 @@ export function exposeImportForTesting(): void {
   hooks.importForTest = async (file: unknown) => {
     await repository.importAll(exportFileSchema.parse(file));
   };
+  hooks.exportForTest = () => repository.exportAll();
   hooks.seedSrs = async (cards: unknown) => {
     const current = await repository.exportAll();
     await repository.importAll(

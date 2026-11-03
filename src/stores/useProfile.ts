@@ -211,7 +211,14 @@ export const useProfile = create<ProfileState>((set, get) => ({
         unitsCompleted: [...completedIds].filter(isReview).length,
         goalDaysMet: ctx.goalMetCount + (metNow ? 1 : 0),
         wordsLearned: learnedAfter(ctx.wordsLearnedBefore, ctx.srsCards, srsCards),
-        last: { perfect: result.perfect, localHour, kind: result.kind, heartsBefore },
+        // TODO(etapa 7): 'cards'/'map' sessions get their own XP/achievement rules; until then they
+        // count as practice for achievements (nothing writes them yet).
+        last: {
+          perfect: result.perfect,
+          localHour,
+          kind: result.kind === 'cards' || result.kind === 'map' ? 'practice' : result.kind,
+          heartsBefore,
+        },
       };
       // Placement is an assessment, not study: it unlocks no achievement.
       const newAchievements: UnlockedAchievement[] =

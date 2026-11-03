@@ -10,6 +10,10 @@ export const t = {
     main: 'Navegação principal',
     skip: 'Pular para o conteúdo',
   },
+  updateNotice: {
+    text: 'O Falaê foi atualizado em outra aba. Recarregue a página para continuar.',
+    reload: 'Recarregar',
+  },
   comingSoon: {
     title: 'Em construção',
     body: 'Esta tela chega nas próximas fases.',

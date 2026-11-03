@@ -27,33 +27,47 @@ export function contentMarkers(raw: unknown, exclude: string, count = 3): string
     .slice(0, count);
 }
 
-/** `key:"value"` pairs of a JSON value (how the minifier writes an object literal). */
-function* pairs(value: unknown): Generator<[string, string]> {
-  if (Array.isArray(value)) for (const v of value) yield* pairs(v);
-  else if (value && typeof value === 'object') {
+type Leaf = { marker: string; value: string; depth: number };
+
+/**
+ * Candidate needles of a JSON value: `key:"value"` for object string values (how the minifier
+ * writes an object literal) and the bare text for strings inside arrays. `depth` is the object
+ * nesting level (0 = top-level fields such as id/title; array items count one level deeper, which are the most likely to repeat).
+ */
+function* leaves(value: unknown, depth = 0): Generator<Leaf> {
+  if (Array.isArray(value)) {
+    for (const v of value) {
+      if (typeof v === 'string') yield { marker: v, value: v, depth: depth + 1 };
+      else yield* leaves(v, depth + 1);
+    }
+  } else if (value && typeof value === 'object') {
     for (const [k, v] of Object.entries(value)) {
-      if (typeof v === 'string') yield [k, v];
-      else yield* pairs(v);
+      if (typeof v === 'string') {
+        if (/^[A-Za-z_$][\w$]*$/.test(k)) yield { marker: `${k}:"${v}"`, value: v, depth };
+      } else yield* leaves(v, depth + 1);
     }
   }
 }
 
 /**
- * Fallback for files with only short texts: up to `count` `key:"value"` needles whose value
- * is in no initial text. Longer values first. Empty = the file cannot be checked.
+ * Fallback for files with only short texts: up to `count` needles whose value is in no initial
+ * text. Nested values come first (top-level ones tend to repeat in initial code), then longer
+ * ones. Empty = the file cannot be checked.
  */
 export function pairMarkers(raw: unknown, exclude: string, count = 3): string[] {
-  return [
-    ...new Set(
-      [...pairs(raw)]
-        .filter(([k, v]) => /^[A-Za-z_$][\w$]*$/.test(k) && v.length >= 3)
-        .filter(([, v]) => !UNSTABLE.test(v) && !exclude.includes(v))
-        .sort(
-          ([ka, a], [kb, b]) => b.length - a.length || a.localeCompare(b) || ka.localeCompare(kb),
-        )
-        .map(([k, v]) => `${k}:"${v}"`),
-    ),
-  ].slice(0, count);
+  const seen = new Set<string>();
+  return [...leaves(raw)]
+    .filter((l) => l.value.length >= 3 && !UNSTABLE.test(l.value) && !exclude.includes(l.value))
+    .sort(
+      (a, b) =>
+        Number(b.depth >= 1) - Number(a.depth >= 1) ||
+        b.value.length - a.value.length ||
+        a.value.localeCompare(b.value) ||
+        a.marker.localeCompare(b.marker),
+    )
+    .map((l) => l.marker)
+    .filter((m) => !seen.has(m) && seen.add(m))
+    .slice(0, count);
 }
 
 /**

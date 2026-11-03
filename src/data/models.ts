@@ -49,7 +49,7 @@ export const lessonProgressSchema = z.object({
 export const lessonResultSchema = z.object({
   id: z.string().min(1),
   lessonId: z.string().min(1),
-  kind: z.enum(['lesson', 'review', 'practice', 'placement']),
+  kind: z.enum(['lesson', 'review', 'practice', 'placement', 'cards', 'map']),
   day: dayKey,
   finishedAt: isoDate,
   xp: z.number().int().nonnegative(),
@@ -58,6 +58,14 @@ export const lessonResultSchema = z.object({
   mistakes: z.number().int().nonnegative(),
   perfect: z.boolean(),
   itemOutcomes: z.array(z.object({ itemId: z.string().min(1), q: z.number().int().min(0).max(5) })),
+  // Optional: v1 rows have no context.
+  context: z
+    .object({
+      mapId: z.string().min(1).optional(),
+      deckKey: z.string().min(1).optional(),
+      planDay: z.number().int().min(1).max(30).optional(),
+    })
+    .optional(),
 });
 
 export const srsCardSchema = z.object({
@@ -75,6 +83,38 @@ export const dailyStatsSchema = z.object({
   xp: z.number().int().nonnegative(),
   lessons: z.number().int().nonnegative(),
   goalMet: z.boolean(),
+  // Distinct cards reviewed in card sessions that day; absent (v1 rows) means 0.
+  cards: z.number().int().nonnegative().optional(),
+});
+
+/** The answer checker treats ( ) [ ] | as pattern syntax, so student cards cannot contain them. */
+const NO_PATTERN_CHARS = /^[^()[\]|]*$/;
+const cardText = z.string().trim().min(1).max(120).regex(NO_PATTERN_CHARS);
+
+export const MAX_USER_CARDS = 500;
+
+export const userCardSchema = z.object({
+  id: z.string().regex(/^uc-[a-z0-9]{8,}$/),
+  en: cardText,
+  pt: cardText,
+  example: z.object({ en: cardText, pt: cardText }).optional(),
+  notes: z.string().trim().max(280).optional(),
+  emoji: z.string().max(16).optional(),
+  createdAt: isoDate,
+  updatedAt: isoDate,
+});
+
+export const mapProgressSchema = z.object({
+  mapId: z.string().min(1),
+  firstStudiedAt: isoDate,
+  lastStudiedDay: dayKey,
+  timesStudied: z.number().int().positive(),
+});
+
+export const planProgressSchema = z.object({
+  planId: z.string().min(1),
+  startedDay: dayKey,
+  manualDone: z.array(z.number().int().min(1).max(30)),
 });
 
 export const unlockedAchievementSchema = z.object({ id: z.string().min(1), unlockedAt: isoDate });
@@ -104,6 +144,9 @@ export type LessonResult = z.infer<typeof lessonResultSchema>;
 export type SrsCard = z.infer<typeof srsCardSchema>;
 export type DailyStats = z.infer<typeof dailyStatsSchema>;
 export type UnlockedAchievement = z.infer<typeof unlockedAchievementSchema>;
+export type UserCard = z.infer<typeof userCardSchema>;
+export type MapProgress = z.infer<typeof mapProgressSchema>;
+export type PlanProgress = z.infer<typeof planProgressSchema>;
 export type ExportFile = z.infer<typeof exportFileSchema>;
 
 export function defaultProfile(nowIso: string): Profile {

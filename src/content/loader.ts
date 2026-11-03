@@ -96,7 +96,7 @@ export function getCourseManifest(): CourseManifest {
 
 /** The demo unit (VITE_DEMO builds only) is not part of the path and its lessons always open. */
 export function isDemoUnit(unitId: string): boolean {
-  return demoEnabled && unitId === DEMO_UNIT_ID;
+  return demoEnabled && unitId === DEMO_UNIT_ID && demo() !== null;
 }
 
 /** Units shown on the path (sorted by order). */
@@ -413,6 +413,10 @@ export function loadKnownWords(): Promise<ReadonlySet<string>> {
     const demoUnit = demoEnabled ? demo() : null;
     if (demoUnit) for (const w of knownWordsOf([demoUnit])) words.add(w);
     return words;
+  });
+  // A failed chunk load must not stay cached: the next call retries.
+  knownWordsCache.catch(() => {
+    knownWordsCache = null;
   });
   return knownWordsCache;
 }

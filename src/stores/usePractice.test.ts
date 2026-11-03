@@ -67,8 +67,8 @@ describe('practice with bank items (MAPAS-E-CARTAS §3)', () => {
 
   it('the session loads the bank and practices its item', async () => {
     const session = await buildPracticeSession([card('fr-001')], path, caps);
-    expect(session).not.toBeNull();
-    const practiced = new Set(session!.exercises.flatMap((e) => e.itemIds));
+    if (!session) throw new Error('expected a practice session');
+    const practiced = new Set(session.exercises.flatMap((e) => e.itemIds));
     expect(practiced.has('fr-001')).toBe(true);
   });
 });
