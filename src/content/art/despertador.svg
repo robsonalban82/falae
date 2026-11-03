@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Despertador tocando: estou atrasado</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M52 128 L42 146 M108 128 L118 146" stroke-width="5"/>
+<path d="M36 54 Q30 28 56 26 Q72 26 72 44 Z" fill="#F5C518"/>
+<path d="M124 54 Q130 28 104 26 Q88 26 88 44 Z" fill="#F5C518"/>
+<path d="M40 50 Q38 36 52 33" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<path d="M80 38 L80 26 M68 24 L92 24" stroke-width="4"/>
+<circle cx="80" cy="88" r="52" fill="#B42318"/>
+<path d="M120 52 Q140 86 118 122 Q96 148 62 138 Q108 138 120 52Z" fill="#8A1A12" stroke="none"/>
+<path d="M118 84 L126 90 M116 98 L124 104 M110 110 L116 118 M102 120 L108 126" stroke-width="1.6" stroke-opacity=".5"/>
+<circle cx="80" cy="88" r="52"/>
+<circle cx="80" cy="88" r="38" fill="#FFFDF8"/>
+<path d="M104 62 Q122 88 106 116 Q92 128 70 124 Q100 116 104 62Z" fill="#E8DFCB" stroke="none"/>
+<circle cx="80" cy="88" r="38"/>
+<path d="M80 56 L80 62 M80 114 L80 120 M48 88 L54 88 M106 88 L112 88" stroke-width="3"/>
+<path d="M96 60 L94 64 M110 72 L106 74 M62 60 L64 64 M50 72 L54 74 M50 104 L54 102 M110 104 L106 102 M62 116 L64 112 M96 116 L94 112" stroke-width="2"/>
+<path d="M80 88 L96 70" stroke-width="4.5"/><path d="M80 88 L64 100" stroke-width="5.5"/>
+<path d="M80 88 L78 118" stroke="#B42318" stroke-width="2"/>
+<circle cx="80" cy="88" r="4.5" fill="#1B1C33"/>
+<path d="M40 70 Q44 62 52 58" stroke="#fff" stroke-opacity=".7" stroke-width="3.5"/>
+<path d="M18 38 Q10 48 16 58 M10 30 Q0 46 8 62 M142 38 Q150 48 144 58 M150 30 Q160 46 152 62" stroke-width="3" stroke="#B42318"/>
+<path d="M28 100 q-8 4 -6 12 M134 104 q8 4 6 12" stroke-width="0"/>
+</g></svg>

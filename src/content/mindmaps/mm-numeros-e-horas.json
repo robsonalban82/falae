@@ -1,0 +1,326 @@
+{
+  "id": "mm-numeros-e-horas",
+  "title": "Números e horas",
+  "level": "A1",
+  "kind": "vocabulario",
+  "icon": "hash",
+  "center": {
+    "en": "numbers & time",
+    "pt": "números e horas"
+  },
+  "centerArt": "numeros-e-horas-centro",
+  "intro": "Preço, idade, telefone e horário: os números que você mais vai usar.",
+  "doodle": "o'clock só na hora cheia!",
+  "branches": [
+    {
+      "label": "Números",
+      "icon": "hash",
+      "color": "folha",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "-teen × -ty",
+          "lines": [
+            {
+              "en": "thir**teen** · 13",
+              "pt": "força no fim: thir-TEEN"
+            },
+            {
+              "en": "**thir**ty · 30",
+              "pt": "força no começo: THIR-ty"
+            },
+            {
+              "note": "Vale para 14/40, 15/50… até 19/90."
+            },
+            {
+              "note": "Nos EUA, o t de thirty soa quase \"thír-di\"."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "Dezenas",
+          "lines": [
+            {
+              "en": "twenty · thirty",
+              "pt": "20 · 30"
+            },
+            {
+              "en": "**forty** · fifty",
+              "pt": "40 · 50"
+            },
+            {
+              "note": "Forty se escreve sem u (não é fourty)."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "Números grandes",
+          "art": "numeros-e-horas-dinheiro",
+          "lines": [
+            {
+              "ref": "u2-one-hundred",
+              "hint": "100"
+            },
+            {
+              "ref": "xa-a-thousand",
+              "hint": "em inglês: 1,000"
+            },
+            {
+              "ref": "xa-two-thousand-five-hundred",
+              "hint": "em inglês: 2,500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Horas",
+      "icon": "clock",
+      "color": "anil",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Perguntar e responder",
+          "art": "numeros-e-horas-relogio-pulso",
+          "lines": [
+            {
+              "ref": "u4-s-what-time-is-it"
+            },
+            {
+              "en": "It's **three o'clock**.",
+              "pt": "São três horas."
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Jeito fácil (o mais usado nos EUA)",
+          "art": "numeros-e-horas-relogio-730",
+          "lines": [
+            {
+              "en": "7:15 = seven **fifteen**"
+            },
+            {
+              "en": "7:30 = seven **thirty**"
+            },
+            {
+              "en": "7:05 = seven **oh five**"
+            },
+            {
+              "note": "De 1 a 9 minutos, diga oh antes do número."
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Também se ouve",
+          "art": "numeros-e-horas-relogio-745",
+          "lines": [
+            {
+              "en": "7:15 = a quarter **past** / **after** seven"
+            },
+            {
+              "en": "7:30 = **half past** seven"
+            },
+            {
+              "en": "7:45 = a **quarter to** eight",
+              "pt": "quinze para as oito"
+            },
+            {
+              "note": "to = \"para\", igual ao português."
+            }
+          ]
+        },
+        {
+          "tag": "excecao",
+          "art": "numeros-e-horas-hora-cheia",
+          "lines": [
+            {
+              "wrong": "It's 7:30 o'clock.",
+              "right": "It's 7:30.",
+              "note": "O'clock só com hora cheia: 7 o'clock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "a.m. e p.m.",
+      "icon": "calendar",
+      "color": "manga",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Relógio de 12 horas",
+          "art": "numeros-e-horas-sol-e-lua",
+          "lines": [
+            {
+              "en": "**a.m.**",
+              "pt": "da meia-noite ao meio-dia"
+            },
+            {
+              "en": "**p.m.**",
+              "pt": "do meio-dia à meia-noite"
+            },
+            {
+              "en": "3 p.m.",
+              "pt": "15h"
+            },
+            {
+              "note": "Em inglês, quase não se fala \"15h\"."
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "numeros-e-horas-loja",
+          "lines": [
+            {
+              "en": "The store opens **at 9 a.m.**",
+              "pt": "A loja abre às 9h."
+            },
+            {
+              "en": "Dinner is **at 8 p.m.**",
+              "pt": "O jantar é às 20h."
+            },
+            {
+              "en": "noon · midnight",
+              "pt": "meio-dia · meia-noite"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "No dia a dia",
+      "icon": "chat",
+      "color": "jabuticaba",
+      "nodes": [
+        {
+          "tag": "exemplo",
+          "title": "Preço",
+          "art": "numeros-e-horas-etiqueta-preco",
+          "lines": [
+            {
+              "en": "$9.99 = **nine ninety-nine**",
+              "pt": "nove e noventa e nove"
+            },
+            {
+              "en": "$25 = **twenty-five dollars**",
+              "pt": "vinte e cinco dólares"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "title": "Telefone",
+          "art": "numeros-e-horas-telefone",
+          "lines": [
+            {
+              "en": "555-0193 = five five five, **oh** one nine three",
+              "pt": "cinco cinco cinco, zero um nove três"
+            },
+            {
+              "note": "Zero no telefone costuma virar \"oh\"."
+            },
+            {
+              "note": "Dizer zero também vale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "art": "numeros-e-horas-aniversario",
+          "lines": [
+            {
+              "wrong": "I have 25 years.",
+              "right": "I'm 25.",
+              "note": "Idade usa to be."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "numeros-e-horas-ampulheta",
+          "lines": [
+            {
+              "wrong": "It's three hours.",
+              "right": "It's three o'clock.",
+              "note": "\"São três horas\" no relógio: o'clock."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "$1.500,00",
+              "right": "$1,500.00",
+              "note": "Em inglês: vírgula no mil, ponto no centavo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Dica",
+      "icon": "bulb",
+      "color": "maracuja",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "13 ou 30?",
+          "art": "numeros-e-horas-ouvido",
+          "lines": [
+            {
+              "note": "Na dúvida, peça os números um a um:"
+            },
+            {
+              "en": "Sorry, **one-three** or **three-zero**?",
+              "pt": "Desculpe, 1-3 ou 3-0?"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "instruction": "Complete com a palavra que falta.",
+    "items": [
+      {
+        "prompt": "Excuse me, do you have the ___?",
+        "accepted": ["time"],
+        "hintPt": "Você tem as horas? (= What time is it?)"
+      },
+      {
+        "prompt": "I get up at six ___ in the morning.",
+        "accepted": ["o'clock", "o clock"],
+        "hintPt": "(hora cheia)"
+      },
+      {
+        "prompt": "8:30 = eight ___",
+        "accepted": ["thirty"],
+        "hintPt": "jeito fácil: hora + minuto"
+      },
+      {
+        "prompt": "9:45 = a quarter ___ ten",
+        "accepted": ["to", "of", "till", "til"],
+        "hintPt": "quinze para as dez"
+      },
+      {
+        "prompt": "The bank closes at 4 ___.",
+        "accepted": ["p.m.", "pm", "in the afternoon"],
+        "hintPt": "a.m. ou p.m.? (da tarde)"
+      }
+    ]
+  }
+}

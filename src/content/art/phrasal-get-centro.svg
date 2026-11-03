@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Mão pegando uma estrela, com setas para cima, para trás e para a frente</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M80 28 L80 10" stroke="#0F7A37" stroke-width="4.5"/><path d="M75.8 14.8 L80 8 L84.2 14.8" stroke="#0F7A37" stroke-width="4.5"/>
+<path d="M38 62 Q20 60 20 80" stroke="#3B3FB6" stroke-width="4.5"/><path d="M24.2 75.2 L20 82 L15.8 75.2" stroke="#3B3FB6" stroke-width="4.5"/>
+<path d="M122 62 L144 62" stroke="#6F2A91" stroke-width="4.5"/><path d="M139.2 57.8 L146 62 L139.2 66.2" stroke="#6F2A91" stroke-width="4.5"/>
+<path d="M84 146 L82 118" stroke-width="20"/><path d="M84 146 L82 118" stroke="#3B3FB6" stroke-width="14"/>
+<path d="M58 102 Q56 124 80 124 Q104 124 106 102 Q94 110 80 110 Q66 110 58 102Z" fill="#D9965F"/>
+<path d="M92 108 Q104 106 106 102 Q104 122 86 124Z" fill="#B87440" stroke="none"/>
+<path d="M58 102 Q56 124 80 124 Q104 124 106 102 Q94 110 80 110 Q66 110 58 102Z"/>
+<path d="M80.0 36.0 L87.6 55.5 L108.5 56.7 L92.4 70.0 L97.6 90.3 L80.0 79.0 L62.4 90.3 L67.6 70.0 L51.5 56.7 L72.4 55.5Z" fill="#F5C518"/>
+<path d="M80 66 L108.5 56.7 L92.4 70 L97.6 90.3 L80 79Z" fill="#D9A800" stroke="none"/>
+<path d="M92 78 L97 73 M88 86 L93 81" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M80.0 36.0 L87.6 55.5 L108.5 56.7 L92.4 70.0 L97.6 90.3 L80.0 79.0 L62.4 90.3 L67.6 70.0 L51.5 56.7 L72.4 55.5Z"/>
+<path d="M62 58 L72 52" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>
+<path d="M104 104 Q114 100 114 92 Q112 86 106 90 Q104 96 98 100" fill="#D9965F" stroke-width="3"/>
+<path d="M36 30 L40 36 M124 30 L120 36 M30 100 L38 98 M130 100 L122 98" stroke="#FF8A1F" stroke-width="3"/>
+</g></svg>

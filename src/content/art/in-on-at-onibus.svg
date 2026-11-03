@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Passageiros dentro do ônibus: on the bus</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 52 Q12 40 24 40 L134 40 Q146 40 148 52 L150 118 Q150 126 142 126 L18 126 Q12 126 12 118Z" fill="#FF8A1F"/>
+<path d="M13 110 L149 110 L149 118 Q149 125 142 125 L18 125 Q13 125 13 118Z" fill="#D96A00" stroke="none"/>
+<path d="M60 124 L66 116 M76 124 L82 116 M92 124 L98 116" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M12 52 Q12 40 24 40 L134 40 Q146 40 148 52 L150 118 Q150 126 142 126 L18 126 Q12 126 12 118Z"/>
+<path d="M13 94 L149 94 L149 102 L13 102Z" fill="#3B3FB6" stroke-width="2.5"/>
+<path d="M20 46 L58 46" stroke="#fff" stroke-opacity=".6" stroke-width="3.5"/>
+<rect x="20" y="52" width="28" height="32" rx="3" fill="#CFD1FF"/>
+<rect x="54" y="52" width="28" height="32" rx="3" fill="#CFD1FF"/>
+<rect x="88" y="52" width="28" height="32" rx="3" fill="#CFD1FF"/>
+<path d="M122 52 L138 52 Q144 52 145 58 L146 84 L122 84Z" fill="#CFD1FF"/>
+<path d="M24 84 Q25 77 34 77 Q43 77 44 84Z" fill="#0F7A37" stroke-width="3"/>
+<circle cx="34" cy="68" r="10" fill="#8D5A3B" stroke-width="3"/>
+<g fill="#3A2A2A" stroke-width="2.5"><circle cx="27" cy="61" r="4.5"/><circle cx="34" cy="57.5" r="5"/><circle cx="41" cy="61" r="4.5"/></g>
+<circle cx="31" cy="69" r="2.6" fill="#FFFDF8" stroke-width="2"/><circle cx="31" cy="69" r="1.5" fill="#1B1C33" stroke="none"/><circle cx="38" cy="69" r="2.6" fill="#FFFDF8" stroke-width="2"/><circle cx="38" cy="69" r="1.5" fill="#1B1C33" stroke="none"/>
+<path d="M31 73.5 Q34.5 79.5 38 73.5Z" fill="#FFFDF8" stroke-width="2.2"/>
+<path d="M92 84 Q93 77 102 77 Q111 77 112 84Z" fill="#6F2A91" stroke-width="3"/>
+<path d="M90 76 Q88 56 102 56 Q116 56 114 76Z" fill="#7A4A2A" stroke-width="3"/>
+<circle cx="102" cy="68" r="9.5" fill="#D9965F" stroke-width="3"/>
+<path d="M92.5 66 Q94 57 102 57 Q110 57 111.5 66 Q104 62 92.5 66Z" fill="#7A4A2A" stroke-width="2.5"/>
+<circle cx="99" cy="69" r="1.6" fill="#1B1C33" stroke="none"/><circle cx="106" cy="69" r="1.6" fill="#1B1C33" stroke="none"/>
+<path d="M99 73 Q102.5 76 106 73" stroke-width="2"/>
+<path d="M60 84 L60 74 Q60 70 64 70 L72 70 Q76 70 76 74 L76 84" fill="#B42318" stroke-width="2.5"/>
+<g stroke-width="3"><rect x="20" y="52" width="28" height="32" rx="3"/><rect x="54" y="52" width="28" height="32" rx="3"/><rect x="88" y="52" width="28" height="32" rx="3"/><path d="M122 52 L138 52 Q144 52 145 58 L146 84 L122 84Z"/></g>
+<path d="M58 58 L62 54 M92 58 L96 54 M126 60 L132 54" stroke="#fff" stroke-opacity=".8" stroke-width="2.5"/>
+<circle cx="144" cy="114" r="4" fill="#F5C518" stroke-width="2.5"/>
+<circle cx="40" cy="126" r="14" fill="#1B1C33"/><circle cx="40" cy="126" r="5" fill="#E8DFCB" stroke-width="2.5"/>
+<circle cx="120" cy="126" r="14" fill="#1B1C33"/><circle cx="120" cy="126" r="5" fill="#E8DFCB" stroke-width="2.5"/>
+</g></svg>

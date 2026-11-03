@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Telefone tocando: hello é o alô</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M30 124 L44 86 Q46 80 54 80 L106 80 Q114 80 116 86 L130 124 Q132 136 120 136 L40 136 Q28 136 30 124Z" fill="#B42318"/>
+<path d="M104 82 Q114 82 116 88 L130 124 Q132 136 120 136 L84 136 Q120 126 104 82Z" fill="#8A1A12" stroke="none"/>
+<path d="M114 106 L120 100 M116 118 L124 110 M110 130 L122 120" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M30 124 L44 86 Q46 80 54 80 L106 80 Q114 80 116 86 L130 124 Q132 136 120 136 L40 136 Q28 136 30 124Z"/>
+<path d="M40 120 L50 92" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<circle cx="80" cy="110" r="18" fill="#FFFDF8"/>
+<path d="M92 98 Q102 112 90 124 Q82 128 72 126 Q92 120 92 98Z" fill="#E8DFCB" stroke="none"/>
+<circle cx="80" cy="110" r="18"/>
+<circle cx="80" cy="97" r="2.6" fill="#1B1C33" stroke="none"/><circle cx="91" cy="102" r="2.6" fill="#1B1C33" stroke="none"/><circle cx="93" cy="114" r="2.6" fill="#1B1C33" stroke="none"/><circle cx="68" cy="102" r="2.6" fill="#1B1C33" stroke="none"/><circle cx="66" cy="114" r="2.6" fill="#1B1C33" stroke="none"/><circle cx="74" cy="122" r="2.6" fill="#1B1C33" stroke="none"/>
+<circle cx="80" cy="110" r="5" fill="#F5C518" stroke-width="2.5"/>
+<path d="M30 70 Q28 52 44 50 L116 50 Q132 52 130 70 L118 76 Q112 76 110 70 L108 64 L52 64 L50 70 Q48 76 42 76Z" fill="#B42318"/>
+<path d="M108 52 L116 50 Q132 52 130 70 L118 76 Q126 64 108 52Z" fill="#8A1A12" stroke="none"/>
+<path d="M30 70 Q28 52 44 50 L116 50 Q132 52 130 70 L118 76 Q112 76 110 70 L108 64 L52 64 L50 70 Q48 76 42 76Z"/>
+<path d="M40 60 Q42 56 50 56" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M52 64 Q50 74 54 80 M108 64 Q110 74 106 80" stroke-width="3"/>
+<path d="M18 40 Q10 52 16 64 M10 32 Q0 50 8 70 M142 40 Q150 52 144 64 M150 32 Q160 50 152 70" stroke="#3B3FB6" stroke-width="3"/>
+<path d="M66 26 L66 30 M80 20 L80 28 M94 26 L94 30" stroke="#FF8A1F" stroke-width="3"/>
+</g></svg>

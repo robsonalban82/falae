@@ -1,0 +1,130 @@
+{
+  "id": "extra-a1",
+  "title": "Extras A1: gramática e números",
+  "level": "A1",
+  "vocab": [
+    {
+      "id": "xa-happy",
+      "en": "happy",
+      "pt": ["feliz"],
+      "acceptedPt": ["[contente|alegre]"],
+      "example": {
+        "en": "I'm happy today.",
+        "pt": "Estou feliz hoje."
+      },
+      "emoji": "😊",
+      "pronunciation": "hépi",
+      "difficulty": 1
+    },
+    {
+      "id": "xa-friend",
+      "en": "friend",
+      "pt": ["amigo", "amiga"],
+      "example": {
+        "en": "Are we friends?",
+        "pt": "Somos amigos?"
+      },
+      "emoji": "🤝",
+      "pronunciation": "frénd",
+      "difficulty": 1
+    },
+    {
+      "id": "xa-late",
+      "en": "late",
+      "pt": ["atrasado", "atrasada"],
+      "acceptedPt": ["tarde"],
+      "example": {
+        "en": "Sorry, I'm late.",
+        "pt": "Desculpa, estou atrasado."
+      },
+      "emoji": "⏰",
+      "pronunciation": "lêit",
+      "difficulty": 1
+    },
+    {
+      "id": "xa-ready",
+      "en": "ready",
+      "pt": ["pronto", "pronta"],
+      "acceptedPt": ["[preparado|preparada]"],
+      "example": {
+        "en": "I'm ready.",
+        "pt": "Estou pronto."
+      },
+      "emoji": "👍",
+      "pronunciation": "rédi",
+      "difficulty": 1
+    },
+    {
+      "id": "xa-a-thousand",
+      "en": "a thousand",
+      "pt": ["mil"],
+      "acceptedEn": ["[a|one] thousand", "1,000", "1000"],
+      "example": {
+        "en": "The phone costs a thousand dollars.",
+        "pt": "O celular custa mil dólares."
+      },
+      "emoji": "💵",
+      "pronunciation": "a tháuzand",
+      "difficulty": 1,
+      "acceptedPt": ["1.000", "1000"]
+    },
+    {
+      "id": "xa-two-thousand-five-hundred",
+      "en": "two thousand five hundred",
+      "pt": ["dois mil e quinhentos"],
+      "acceptedPt": ["dois mil (e) quinhentos", "2.500", "2500"],
+      "example": {
+        "en": "It costs two thousand five hundred dollars.",
+        "pt": "Custa dois mil e quinhentos dólares."
+      },
+      "emoji": "💰",
+      "difficulty": 2,
+      "pronunciation": "tú tháuzand fáiv hândred",
+      "acceptedEn": ["2,500", "2500", "twenty-five hundred"]
+    }
+  ],
+  "sentences": [
+    {
+      "id": "xa-s-i-live-in-sao-paulo",
+      "en": "I live in São Paulo.",
+      "pt": "Eu moro em São Paulo.",
+      "acceptedPt": ["(Eu) [moro|vivo] em São Paulo"],
+      "emoji": "🏙️",
+      "difficulty": 2,
+      "focus": "in-on-at",
+      "pronunciation": "ái lív in sáu páulo"
+    },
+    {
+      "id": "xa-s-see-you-on-friday",
+      "en": "See you on Friday!",
+      "pt": "Até sexta!",
+      "acceptedEn": ["(I'll) see you (on) Friday"],
+      "acceptedPt": ["Até (a) sexta(-feira)", "[Te vejo|Nos vemos|Vejo você] na sexta(-feira)"],
+      "emoji": "👋",
+      "difficulty": 1,
+      "focus": "in-on-at",
+      "pronunciation": "sí iú án fráidei"
+    },
+    {
+      "id": "xa-s-im-at-work",
+      "en": "I'm at work.",
+      "pt": "Estou no trabalho.",
+      "acceptedPt": ["(Eu) [estou|tô] [no|lá no] trabalho"],
+      "emoji": "💼",
+      "difficulty": 1,
+      "focus": "in-on-at",
+      "pronunciation": "áim at uérk"
+    },
+    {
+      "id": "xa-s-the-class-is-at-8",
+      "en": "The class is at 8.",
+      "pt": "A aula é às 8.",
+      "acceptedEn": ["The class is at [8|eight] (o'clock)", "The class is at 8:00"],
+      "acceptedPt": ["A aula é às [8|oito] (horas)", "A aula é às 8h", "A aula é às 8:00"],
+      "emoji": "🕗",
+      "difficulty": 2,
+      "focus": "in-on-at",
+      "pronunciation": "tha klés iz at êit"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Celular tocando, com teclado de números na tela</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="44" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<path d="M52 30 Q52 20 62 20 L98 20 Q108 20 108 30 L108 132 Q108 142 98 142 L62 142 Q52 142 52 132Z" fill="#3B3FB6"/>
+<path d="M92 21 L98 21 Q107 21 107 30 L107 132 Q107 141 98 141 L84 141 Q100 136 98 120Z" fill="#2B2F8A" stroke="none"/>
+<path d="M52 30 Q52 20 62 20 L98 20 Q108 20 108 30 L108 132 Q108 142 98 142 L62 142 Q52 142 52 132Z"/>
+<rect x="58" y="32" width="44" height="98" rx="4" fill="#CFD1FF" stroke-width="2.5"/>
+<rect x="62" y="40" width="36" height="12" rx="3" fill="#FFFDF8" stroke-width="2"/>
+<path d="M66 46 L72 46 M76 46 L80 46 M84 46 L90 46" stroke-width="2"/>
+<circle cx="68" cy="68" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="80" cy="68" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="92" cy="68" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="68" cy="81" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="80" cy="81" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="92" cy="81" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="68" cy="94" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="80" cy="94" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="92" cy="94" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="68" cy="107" r="4.2" fill="#9A9DFF" stroke-width="2"/><circle cx="80" cy="107" r="4.2" fill="#FFFDF8" stroke-width="2"/><circle cx="92" cy="107" r="4.2" fill="#9A9DFF" stroke-width="2"/>
+<circle cx="80" cy="121" r="5" fill="#0F7A37" stroke-width="2"/>
+<path d="M72 26 L88 26" stroke-width="2.5"/>
+<path d="M56 36 L56 60" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M36 56 Q28 70 36 84 M24 48 Q12 70 24 92 M124 56 Q132 70 124 84 M136 48 Q148 70 136 92" stroke="#B42318" stroke-width="3"/>
+
+</g></svg>

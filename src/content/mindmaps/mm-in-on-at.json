@@ -1,0 +1,323 @@
+{
+  "id": "mm-in-on-at",
+  "title": "In, on, at",
+  "level": "A1",
+  "kind": "gramatica",
+  "icon": "pin",
+  "center": {
+    "en": "in · on · at",
+    "pt": "em, no, na, às…"
+  },
+  "centerArt": "in-on-at-centro",
+  "intro": "Em português quase tudo é \"em\". Em inglês, depende do tamanho do tempo ou do lugar.",
+  "doodle": "in > on > at: do maior pro menor",
+  "branches": [
+    {
+      "label": "IN: o maior",
+      "icon": "home",
+      "color": "folha",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Tempo",
+          "art": "in-on-at-manha",
+          "lines": [
+            {
+              "en": "**in** July · **in** 2026",
+              "pt": "meses e anos"
+            },
+            {
+              "en": "**in** the morning",
+              "pt": "de manhã"
+            },
+            {
+              "en": "**in** the afternoon",
+              "pt": "à tarde"
+            },
+            {
+              "en": "**in** the evening",
+              "pt": "à noite (fim da tarde até a hora de dormir)"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Lugar",
+          "art": "in-on-at-carro",
+          "lines": [
+            {
+              "en": "**in** Brazil · **in** Recife",
+              "pt": "países e cidades"
+            },
+            {
+              "en": "**in** the kitchen",
+              "pt": "dentro de um lugar"
+            },
+            {
+              "en": "**in** the car",
+              "pt": "no carro"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "in-on-at-cidade",
+          "lines": [
+            {
+              "ref": "xa-s-i-live-in-sao-paulo",
+              "hint": "cidade: in"
+            },
+            {
+              "en": "My birthday is **in** May.",
+              "pt": "Meu aniversário é em maio."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ON: o do meio",
+      "icon": "calendar",
+      "color": "anil",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Tempo",
+          "art": "in-on-at-calendario-dia",
+          "lines": [
+            {
+              "en": "**on** Monday",
+              "pt": "dias da semana"
+            },
+            {
+              "en": "**on** May 5th",
+              "pt": "datas"
+            },
+            {
+              "en": "**on** the weekend",
+              "pt": "no fim de semana"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Lugar",
+          "art": "in-on-at-mesa-parede",
+          "lines": [
+            {
+              "en": "**on** the table",
+              "pt": "em cima de algo"
+            },
+            {
+              "en": "**on** the wall",
+              "pt": "na parede"
+            },
+            {
+              "en": "**on** Paulista Avenue",
+              "pt": "nome de rua"
+            },
+            {
+              "en": "**on** the bus · train · plane",
+              "pt": "ônibus, trem, avião"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "ref": "xa-s-see-you-on-friday",
+              "hint": "dia da semana: on"
+            },
+            {
+              "en": "Your phone is **on** the table.",
+              "pt": "Seu celular está na mesa."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "AT: o ponto exato",
+      "icon": "clock",
+      "color": "manga",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Tempo",
+          "art": "in-on-at-relogio",
+          "lines": [
+            {
+              "en": "**at** 7 o'clock",
+              "pt": "horas"
+            },
+            {
+              "en": "**at** noon",
+              "pt": "ao meio-dia"
+            },
+            {
+              "en": "**at** night",
+              "pt": "à noite, de noite (no geral, mais tarde)"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Lugar",
+          "art": "in-on-at-ponto-de-onibus",
+          "lines": [
+            {
+              "en": "**at** home · **at** work",
+              "pt": "em casa · no trabalho"
+            },
+            {
+              "en": "**at** school",
+              "pt": "na escola"
+            },
+            {
+              "en": "**at** the bus stop",
+              "pt": "um ponto específico"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "in-on-at-trabalho",
+          "lines": [
+            {
+              "ref": "xa-s-im-at-work",
+              "hint": "lugar do dia a dia: at"
+            },
+            {
+              "ref": "xa-s-the-class-is-at-8",
+              "hint": "hora: at"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Sem preposição",
+      "icon": "ban",
+      "color": "jabuticaba",
+      "nodes": [
+        {
+          "tag": "excecao",
+          "title": "next, last, this, every",
+          "lines": [
+            {
+              "en": "See you **next** Monday.",
+              "pt": "Até segunda que vem."
+            },
+            {
+              "en": "I work **every** day.",
+              "pt": "Eu trabalho todo dia."
+            },
+            {
+              "wrong": "on next Monday",
+              "right": "next Monday"
+            },
+            {
+              "note": "Também: today, tonight, tomorrow, yesterday."
+            }
+          ]
+        },
+        {
+          "tag": "excecao",
+          "title": "Ir para casa",
+          "art": "in-on-at-indo-pra-casa",
+          "lines": [
+            {
+              "wrong": "I go to home at 6.",
+              "right": "I go home at 6.",
+              "note": "Com home, o verbo de movimento vai sem to."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "in Monday",
+              "right": "on Monday",
+              "note": "Dia da semana: on."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "in-on-at-noite",
+          "lines": [
+            {
+              "wrong": "in the night",
+              "right": "at night",
+              "note": "Mas: in the morning, in the afternoon."
+            },
+            {
+              "note": "In the middle of the night = de madrugada."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "in-on-at-em-casa",
+          "lines": [
+            {
+              "wrong": "I'm in home.",
+              "right": "I'm at home.",
+              "note": "\"Em casa\" = at home."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "in-on-at-onibus",
+          "lines": [
+            {
+              "wrong": "I'm in the bus.",
+              "right": "I'm on the bus.",
+              "note": "Ônibus, trem, avião: on. Carro: in."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "instruction": "Complete com in, on ou at.",
+    "items": [
+      {
+        "prompt": "My brother lives ___ Canada.",
+        "accepted": ["in"],
+        "hintPt": "países e cidades"
+      },
+      {
+        "prompt": "The party is ___ Saturday.",
+        "accepted": ["on"],
+        "hintPt": "dia da semana"
+      },
+      {
+        "prompt": "I have lunch ___ noon.",
+        "accepted": ["at"],
+        "hintPt": "ao meio-dia"
+      },
+      {
+        "prompt": "She's ___ work now.",
+        "accepted": ["at"],
+        "hintPt": "Ela está no trabalho agora."
+      },
+      {
+        "prompt": "We're ___ the train.",
+        "accepted": ["on"],
+        "hintPt": "Estamos no trem."
+      }
+    ]
+  }
+}

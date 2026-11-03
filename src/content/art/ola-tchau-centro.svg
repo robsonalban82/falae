@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pessoa acenando com sol e lua: oi e tchau o dia todo</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M130 50 Q150 62 138 80" stroke="#1B1C33" stroke-width="2.5" stroke-dasharray="1 7"/>
+<path d="M134 72 L138 82 L146 76" stroke-width="2.5"/>
+<path d="M113.3 23.5 L107.2 20 M125 15.3 L123.8 8.4 M138.9 19 L143.4 13.6 M145 32 L152 32 M138.9 45 L143.4 50.4 M111 32 L104 32" stroke="#FF8A1F" stroke-width="3.5"/>
+<circle cx="128" cy="32" r="13" fill="#F5C518"/>
+<path d="M138 24 Q144 36 136 42 Q130 46 122 44 Q138 38 138 24Z" fill="#D9A800" stroke="none"/>
+<circle cx="128" cy="32" r="13"/>
+<path d="M136 85 A11 11 0 1 0 146.45 99.3 A8.58 8.58 0 0 1 136 85Z" fill="#F5C518"/>
+<path d="M129.18 97.1 Q130.5 102.82 136 104.58" stroke="#D9A800" stroke-width="2.5"/>
+<rect x="70" y="84" width="20" height="20" rx="6" fill="#D9965F" stroke-width="3"/>
+<path d="M40 142 Q40 108 60 100 L100 100 Q120 108 120 142 Z" fill="#3B3FB6"/>
+<path d="M96 102 Q118 110 118 140 L94 140 Q104 120 96 102Z" fill="#2B2F8A" stroke="none"/>
+<path d="M104 120 L110 114 M102 130 L110 122 M100 138 L110 130" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M40 142 Q40 108 60 100 L100 100 Q120 108 120 142 Z"/>
+<path d="M48 126 Q48 112 60 106" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M66 100 L80 112 L94 100" stroke-width="2.5" fill="#FFFDF8"/>
+<path transform="translate(160 0) scale(-1 1)" d="M106 112 Q126 104 132 72" stroke="#1B1C33" stroke-width="15"/>
+<path transform="translate(160 0) scale(-1 1)" d="M106 112 Q126 104 132 72" stroke="#D9965F" stroke-width="9"/>
+<path transform="translate(160 0) scale(-1 1)" d="M102 112 Q114 110 120 101" stroke="#1B1C33" stroke-width="19"/>
+<path transform="translate(160 0) scale(-1 1)" d="M102 112 Q114 110 120 101" stroke="#3B3FB6" stroke-width="12"/>
+<path transform="translate(160 0) scale(-1 1)" d="M124 72 Q118 58 122 48 Q125 42 129 47 L129 38 Q130 32 135 34 Q138 36 138 40 Q141 34 145 37 Q148 40 146 50 L147 52 Q151 47 155 50 Q154 60 146 70 Q136 80 124 72Z" fill="#D9965F" stroke-width="3"/>
+<path transform="translate(160 0) scale(-1 1)" d="M150 26 Q158 34 157 44" stroke="#FF8A1F" stroke-width="3"/>
+<path d="M100 42 Q118 46 116 66 Q114 80 104 84 Q110 66 100 56Z" fill="#7A4A2A"/>
+<circle cx="102" cy="44" r="5" fill="#F5C518" stroke-width="2.5"/>
+<circle cx="80" cy="60" r="26" fill="#D9965F"/>
+<path d="M94 38 Q110 60 96 80 Q88 86 78 86 Q100 70 94 38Z" fill="#B87440" stroke="none"/>
+<circle cx="80" cy="60" r="26"/>
+<path d="M54 60 Q50 32 80 32 Q108 32 106 56 Q98 42 84 42 Q80 48 70 46 Q60 48 54 60Z" fill="#7A4A2A"/>
+<circle cx="71" cy="62" r="2.4" fill="#1B1C33" stroke="none"/><circle cx="89" cy="62" r="2.4" fill="#1B1C33" stroke="none"/>
+<path d="M66 54 Q71 51 75 54 M85 54 Q89 51 94 54" stroke-width="2.2"/>
+<path d="M70 70 Q80 82 90 70 Q80 73 70 70Z" fill="#8A1A12" stroke-width="2.5"/>
+<circle cx="64" cy="70" r="3.5" fill="#E8604C" fill-opacity=".5" stroke="none"/><circle cx="96" cy="70" r="3.5" fill="#E8604C" fill-opacity=".5" stroke="none"/>
+</g></svg>

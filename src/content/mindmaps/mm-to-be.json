@@ -1,0 +1,341 @@
+{
+  "id": "mm-to-be",
+  "title": "Verbo to be",
+  "level": "A1",
+  "kind": "gramatica",
+  "icon": "book",
+  "center": {
+    "en": "to be",
+    "pt": "ser / estar"
+  },
+  "centerArt": "to-be-centro",
+  "intro": "O verbo mais usado do inglês. Comece pela afirmativa e vá girando o mapa.",
+  "branches": [
+    {
+      "label": "Afirmativa",
+      "icon": "check",
+      "color": "folha",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Cada pessoa, uma forma",
+          "lines": [
+            {
+              "ref": "u1-im",
+              "hint": "ser ou estar"
+            },
+            {
+              "en": "you **are**",
+              "pt": "você é / está"
+            },
+            {
+              "en": "he / she / it **is**",
+              "pt": "ele, ela é / está"
+            },
+            {
+              "en": "we / you / they **are**",
+              "pt": "nós somos/estamos, vocês/elas/eles são/estão"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "She **is** happy.",
+              "pt": "Ela está feliz."
+            },
+            {
+              "en": "We **are** friends.",
+              "pt": "Nós somos amigos."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "ref": "xa-happy"
+            },
+            {
+              "ref": "xa-friend"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Contrações",
+      "icon": "quote",
+      "color": "manga",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Pronome + to be, juntinhos",
+          "lines": [
+            {
+              "en": "**I'm** · **you're**"
+            },
+            {
+              "en": "**he's** · **she's** · **it's**"
+            },
+            {
+              "en": "**we're** · **they're**"
+            },
+            {
+              "note": "Na conversa, quase sempre contraído."
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "escola",
+          "lines": [
+            {
+              "en": "**I'm** Brazilian.",
+              "pt": "Eu sou brasileiro(a)."
+            },
+            {
+              "en": "**They're** at school.",
+              "pt": "Eles estão na escola."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Negativa",
+      "icon": "ban",
+      "color": "jabuticaba",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "to be + not",
+          "lines": [
+            {
+              "en": "I am not = **I'm not**"
+            },
+            {
+              "en": "is not = **isn't**"
+            },
+            {
+              "en": "are not = **aren't**"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "braco-forte",
+          "lines": [
+            {
+              "en": "He **isn't** tired.",
+              "pt": "Ele não está cansado."
+            },
+            {
+              "en": "They **aren't** here.",
+              "pt": "Eles não estão aqui."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Perguntas",
+      "icon": "question",
+      "color": "anil",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "O verbo vem primeiro",
+          "art": "casa",
+          "lines": [
+            {
+              "en": "She **is** at home.",
+              "pt": "Ela está em casa."
+            },
+            {
+              "en": "**Is** she at home?",
+              "pt": "Ela está em casa?"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "despertador",
+          "lines": [
+            {
+              "en": "**Am** I late?",
+              "pt": "Estou atrasado(a)?"
+            },
+            {
+              "en": "**Is** it cold?",
+              "pt": "Está frio?"
+            },
+            {
+              "en": "**Are** you ready?",
+              "pt": "Você está pronto(a)?"
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "ref": "xa-late"
+            },
+            {
+              "ref": "xa-ready"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Respostas curtas",
+          "lines": [
+            {
+              "en": "Are you ready? Yes, I **am**.",
+              "pt": "Sim, estou."
+            },
+            {
+              "en": "Is she here? No, she **isn't**.",
+              "pt": "Não, não está."
+            }
+          ]
+        },
+        {
+          "tag": "excecao",
+          "lines": [
+            {
+              "wrong": "Yes, I'm.",
+              "right": "Yes, I am."
+            },
+            {
+              "note": "Resposta curta afirmativa: verbo inteiro."
+            },
+            {
+              "en": "Yes, I **am**. · Yes, she **is**."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "art": "bolo-idade",
+          "lines": [
+            {
+              "wrong": "I have 20 years.",
+              "right": "I'm 20 years old.",
+              "note": "Idade usa to be, não have."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "rosto-frio",
+          "lines": [
+            {
+              "wrong": "Is cold today.",
+              "right": "It's cold today.",
+              "note": "Frase em inglês sempre tem sujeito."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "professora",
+          "lines": [
+            {
+              "wrong": "She is teacher.",
+              "right": "She's a teacher.",
+              "note": "Profissão pede a / an."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "aperto-de-mao",
+          "lines": [
+            {
+              "wrong": "I am agree.",
+              "right": "I agree."
+            },
+            {
+              "wrong": "I'm not agree.",
+              "right": "I don't agree."
+            },
+            {
+              "note": "Agree é verbo: sem am; negativa com don't."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Dica",
+      "icon": "bulb",
+      "color": "maracuja",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Ser e estar",
+          "lines": [
+            {
+              "note": "Português tem dois verbos: ser e estar."
+            },
+            {
+              "note": "Inglês tem um só: to be."
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "I **am** Brazilian.",
+              "pt": "Eu sou brasileiro(a)."
+            },
+            {
+              "ref": "u1-s-im-tired"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "instruction": "Complete com a forma certa do verbo to be.",
+    "items": [
+      {
+        "prompt": "I ___ 30 years old.",
+        "accepted": ["am"],
+        "hintPt": "Eu tenho 30 anos."
+      },
+      {
+        "prompt": "My mom ___ at work.",
+        "accepted": ["is"],
+        "hintPt": "Minha mãe está no trabalho."
+      },
+      {
+        "prompt": "Ana and João ___ Brazilian.",
+        "accepted": ["are"],
+        "hintPt": "Ana e João são brasileiros."
+      },
+      {
+        "prompt": "The coffee ___ hot.",
+        "accepted": ["isn't", "is not"],
+        "hintPt": "negativa: o café não está quente."
+      },
+      {
+        "prompt": "___ he at school?",
+        "accepted": ["Is"],
+        "hintPt": "pergunta: ele está na escola?"
+      }
+    ]
+  }
+}

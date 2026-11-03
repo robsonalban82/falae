@@ -1,0 +1,149 @@
+{
+  "id": "phrasal",
+  "title": "Phrasal verbs essenciais",
+  "level": "A2",
+  "vocab": [
+    {
+      "id": "pv-002",
+      "en": "get on",
+      "pt": ["entrar", "subir"],
+      "example": {
+        "en": "We got on the wrong bus!",
+        "pt": "A gente pegou o ônibus errado!"
+      },
+      "emoji": "🚌",
+      "pronunciation": "guét án",
+      "difficulty": 2,
+      "acceptedPt": ["[entrar|subir] [no|num] [ônibus|trem|avião]"]
+    },
+    {
+      "id": "pv-003",
+      "en": "get off",
+      "pt": ["descer"],
+      "example": {
+        "en": "Get off at the next stop.",
+        "pt": "Desça no próximo ponto."
+      },
+      "emoji": "🚏",
+      "pronunciation": "guét óf",
+      "difficulty": 2,
+      "acceptedPt": ["descer [do|de um] [ônibus|trem|avião]"]
+    },
+    {
+      "id": "pv-004",
+      "en": "get along with",
+      "pt": ["se dar bem com"],
+      "example": {
+        "en": "Do you get along with your sister?",
+        "pt": "Você se dá bem com a sua irmã?"
+      },
+      "emoji": "👫",
+      "pronunciation": "guét alóng uíth",
+      "difficulty": 2
+    },
+    {
+      "id": "pv-005",
+      "en": "take off",
+      "pt": ["tirar", "decolar"],
+      "example": {
+        "en": "Please take off your shoes. / The plane takes off at 8.",
+        "pt": "Por favor, tire os sapatos. / O avião decola às 8."
+      },
+      "emoji": "👟",
+      "pronunciation": "têik óf",
+      "difficulty": 2,
+      "acceptedPt": ["tirar [roupa|a roupa|sapato|o sapato]"]
+    },
+    {
+      "id": "pv-006",
+      "en": "take out",
+      "pt": ["levar para fora", "tirar"],
+      "example": {
+        "en": "Can you take out the trash?",
+        "pt": "Você pode levar o lixo para fora?"
+      },
+      "emoji": "🗑️",
+      "pronunciation": "têik áut",
+      "difficulty": 2
+    },
+    {
+      "id": "pv-007",
+      "en": "look for",
+      "pt": ["procurar"],
+      "example": {
+        "en": "I'm looking for the train station.",
+        "pt": "Estou procurando a estação de trem."
+      },
+      "emoji": "🔍",
+      "pronunciation": "lúk fór",
+      "difficulty": 1,
+      "level": "A1"
+    },
+    {
+      "id": "pv-008",
+      "en": "look out",
+      "pt": ["tomar cuidado", "cuidado"],
+      "example": {
+        "en": "Look out! / Watch out! There's a car coming!",
+        "pt": "Cuidado! Vem vindo um carro!"
+      },
+      "emoji": "⚠️",
+      "pronunciation": "lúk áut",
+      "difficulty": 2
+    },
+    {
+      "id": "pv-009",
+      "en": "put on",
+      "pt": ["vestir", "colocar"],
+      "example": {
+        "en": "Put on your jacket. It's cold!",
+        "pt": "Coloca o casaco. Está frio!"
+      },
+      "emoji": "🧥",
+      "pronunciation": "pút án · rápido: púrán",
+      "difficulty": 2,
+      "acceptedPt": ["[vestir|colocar|pôr] [roupa|a roupa|sapato|o sapato]"]
+    },
+    {
+      "id": "pv-010",
+      "en": "put away",
+      "pt": ["guardar"],
+      "example": {
+        "en": "Put your phone away, please.",
+        "pt": "Guarde o celular, por favor."
+      },
+      "emoji": "📦",
+      "pronunciation": "pút auêi",
+      "difficulty": 2,
+      "acceptedPt": ["guardar no lugar"]
+    },
+    {
+      "id": "pv-011",
+      "en": "go out",
+      "pt": ["sair"],
+      "example": {
+        "en": "Do you want to go out tonight?",
+        "pt": "Você quer sair hoje à noite?"
+      },
+      "emoji": "🎉",
+      "pronunciation": "gôu áut",
+      "difficulty": 1,
+      "level": "A1",
+      "acceptedPt": ["sair para se divertir"]
+    },
+    {
+      "id": "pv-012",
+      "en": "go back",
+      "pt": ["voltar"],
+      "example": {
+        "en": "I want to go back to Brazil in May.",
+        "pt": "Quero voltar para o Brasil em maio."
+      },
+      "emoji": "↩️",
+      "pronunciation": "gôu bék",
+      "difficulty": 1,
+      "level": "A1"
+    }
+  ],
+  "sentences": []
+}

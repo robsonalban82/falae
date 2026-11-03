@@ -1,0 +1,372 @@
+[
+  {
+    "id": "phrasal",
+    "order": 1,
+    "kind": "phrasal-verbs",
+    "title": "Phrasal verbs essenciais",
+    "subtitle": "Verbo + partícula",
+    "description": "12 phrasal verbs com get, take, look, put e go que aparecem em toda conversa.",
+    "cover": {
+      "icon": "swap",
+      "color": "jabuticaba",
+      "paper": "pautado"
+    },
+    "entries": [
+      {
+        "itemId": "u4-get-up",
+        "baseVerb": "get"
+      },
+      {
+        "itemId": "pv-002",
+        "baseVerb": "get"
+      },
+      {
+        "itemId": "pv-003",
+        "baseVerb": "get"
+      },
+      {
+        "itemId": "pv-004",
+        "baseVerb": "get"
+      },
+      {
+        "itemId": "pv-005",
+        "baseVerb": "take"
+      },
+      {
+        "itemId": "pv-006",
+        "baseVerb": "take"
+      },
+      {
+        "itemId": "pv-007",
+        "baseVerb": "look"
+      },
+      {
+        "itemId": "pv-008",
+        "baseVerb": "look"
+      },
+      {
+        "itemId": "pv-009",
+        "baseVerb": "put"
+      },
+      {
+        "itemId": "pv-010",
+        "baseVerb": "put"
+      },
+      {
+        "itemId": "pv-011",
+        "baseVerb": "go"
+      },
+      {
+        "itemId": "pv-012",
+        "baseVerb": "go"
+      }
+    ],
+    "mapIds": ["mm-phrasal-get"]
+  },
+  {
+    "id": "frases",
+    "order": 2,
+    "kind": "phrases",
+    "title": "Frases do dia a dia",
+    "subtitle": "Prontas para usar",
+    "description": "24 frases prontas para cumprimentar, pedir comida, comprar, trabalhar, viajar e pedir ajuda.",
+    "cover": {
+      "icon": "chat",
+      "color": "folha",
+      "paper": "quadriculado"
+    },
+    "topics": [
+      {
+        "id": "cumprimentos",
+        "title": "Cumprimentos",
+        "icon": "chat"
+      },
+      {
+        "id": "restaurante",
+        "title": "Restaurante",
+        "icon": "book"
+      },
+      {
+        "id": "compras",
+        "title": "Compras",
+        "icon": "hash"
+      },
+      {
+        "id": "trabalho",
+        "title": "Trabalho",
+        "icon": "clock"
+      },
+      {
+        "id": "viagem",
+        "title": "Viagem",
+        "icon": "pin"
+      },
+      {
+        "id": "emergencia",
+        "title": "Emergência",
+        "icon": "question"
+      }
+    ],
+    "entries": [
+      {
+        "itemId": "u1-s-nice-to-meet-you",
+        "topic": "cumprimentos",
+        "situation": "quando alguém é apresentado a você."
+      },
+      {
+        "itemId": "fr-002",
+        "topic": "cumprimentos",
+        "situation": "com alguém que você já conhece."
+      },
+      {
+        "itemId": "fr-003",
+        "topic": "cumprimentos",
+        "situation": "entre amigos, bem informal."
+      },
+      {
+        "itemId": "fr-004",
+        "topic": "cumprimentos",
+        "situation": "ao se despedir, durante o dia (em lojas, no trabalho)."
+      },
+      {
+        "itemId": "fr-005",
+        "topic": "restaurante",
+        "situation": "ao chegar, para pedir uma mesa."
+      },
+      {
+        "itemId": "fr-006",
+        "topic": "restaurante",
+        "situation": "quando você senta e ainda não tem o cardápio."
+      },
+      {
+        "itemId": "fr-007",
+        "topic": "restaurante",
+        "situation": "para fazer o pedido com educação."
+      },
+      {
+        "itemId": "fr-008",
+        "topic": "restaurante",
+        "situation": "quando você termina de comer e quer pagar. Nos EUA é check; na Inglaterra, bill. Também se diz: \"Can I get the check?\""
+      },
+      {
+        "itemId": "fr-009",
+        "topic": "compras",
+        "situation": "para perguntar o preço de algo."
+      },
+      {
+        "itemId": "fr-010",
+        "topic": "compras",
+        "situation": "quando o vendedor oferece ajuda e você só quer olhar."
+      },
+      {
+        "itemId": "fr-011",
+        "topic": "compras",
+        "situation": "antes de pagar, numa loja ou num táxi."
+      },
+      {
+        "itemId": "fr-012",
+        "topic": "compras",
+        "situation": "numa loja de roupas ou sapatos."
+      },
+      {
+        "itemId": "fr-013",
+        "topic": "trabalho",
+        "situation": "para perguntar a profissão de alguém."
+      },
+      {
+        "itemId": "fr-014",
+        "topic": "trabalho",
+        "situation": "no fim de uma conversa ou reunião, para combinar o próximo passo."
+      },
+      {
+        "itemId": "fr-015",
+        "topic": "trabalho",
+        "situation": "para avisar que você vai chegar atrasado(a)."
+      },
+      {
+        "itemId": "fr-016",
+        "topic": "trabalho",
+        "situation": "numa reunião ou ligação, quando você não entendeu. Serve em qualquer lugar."
+      },
+      {
+        "itemId": "fr-017",
+        "topic": "viagem",
+        "situation": "em restaurante, loja ou aeroporto. Em lugar público também se diz restroom."
+      },
+      {
+        "itemId": "fr-018",
+        "topic": "viagem",
+        "situation": "ao chegar no hotel ou no restaurante."
+      },
+      {
+        "itemId": "fr-019",
+        "topic": "viagem",
+        "situation": "para pedir informação na rua ou no hotel."
+      },
+      {
+        "itemId": "fr-020",
+        "topic": "viagem",
+        "situation": "na imigração, quando perguntam o motivo da viagem."
+      },
+      {
+        "itemId": "fr-021",
+        "topic": "emergencia",
+        "situation": "quando você precisa de ajuda, em qualquer situação."
+      },
+      {
+        "itemId": "fr-022",
+        "topic": "emergencia",
+        "situation": "Nos EUA e no Canadá: polícia, bombeiros e ambulância num número só. No Brasil são 190, 192 e 193. Fala-se \"nine one one\"."
+      },
+      {
+        "itemId": "fr-023",
+        "topic": "emergencia",
+        "situation": "quando você ou alguém está passando mal."
+      },
+      {
+        "itemId": "fr-024",
+        "topic": "emergencia",
+        "situation": "no hotel, na polícia ou no consulado."
+      }
+    ]
+  },
+  {
+    "id": "expressoes",
+    "order": 3,
+    "kind": "expressions",
+    "title": "Expressões e gírias",
+    "subtitle": "Fale como nativo",
+    "description": "12 jeitos de falar que soam naturais, do neutro à gíria, e quando é melhor não usar cada um.",
+    "cover": {
+      "icon": "star",
+      "color": "manga",
+      "paper": "pontilhado"
+    },
+    "entries": [
+      {
+        "itemId": "ex-001",
+        "situation": "Para encerrar o assunto.",
+        "formality": "neutro",
+        "avoidWhen": "Para responder a \"thank you\" (aí é \"You're welcome\")."
+      },
+      {
+        "itemId": "ex-002",
+        "situation": "Quando você deixa a outra pessoa escolher.",
+        "formality": "neutro",
+        "avoidWhen": "Quando pedem mesmo a sua opinião (ex.: o chefe): soa como descaso."
+      },
+      {
+        "itemId": "ex-003",
+        "situation": "Quando você já saiu e está indo.",
+        "formality": "neutro",
+        "avoidWhen": "Se você ainda nem saiu de casa. Não é o nosso \"tô chegando\"!"
+      },
+      {
+        "itemId": "ex-004",
+        "situation": "Para a pessoa ir com calma.",
+        "formality": "neutro",
+        "avoidWhen": "Se há pressa: soa como \"pode demorar\"."
+      },
+      {
+        "itemId": "ex-005",
+        "situation": "Resposta a um obrigado ou a desculpas.",
+        "formality": "informal",
+        "avoidWhen": "Em situação bem formal. Aí: \"You're welcome.\" (obrigado) ou \"No problem at all.\" (desculpas)."
+      },
+      {
+        "itemId": "ex-006",
+        "situation": "Para concordar com um plano ou uma ideia.",
+        "formality": "neutro",
+        "avoidWhen": "Para uma notícia triste ou um problema. Aí é \"I'm sorry\" ou \"Oh no!\"."
+      },
+      {
+        "itemId": "ex-007",
+        "situation": "Para assumir um errinho pequeno, entre amigos ou colegas.",
+        "formality": "informal",
+        "avoidWhen": "Com cliente, chefe ou num erro sério. Diga \"I'm sorry, that was my mistake.\""
+      },
+      {
+        "itemId": "ex-008",
+        "situation": "Para se despedir rápido, falando ou por mensagem.",
+        "formality": "informal",
+        "avoidWhen": "Em texto formal ou para sair de uma reunião. Diga \"I'm sorry, I have to go.\""
+      },
+      {
+        "itemId": "ex-009",
+        "situation": "Para dizer que você está muito cansado(a).",
+        "formality": "giria",
+        "avoidWhen": "Em situação formal (entrevista, cliente). Lá, diga \"I'm very tired.\""
+      },
+      {
+        "itemId": "ex-010",
+        "situation": "Para algo ou alguém tranquilo, ou para relaxar.",
+        "formality": "giria",
+        "avoidWhen": "Em texto formal. Cuidado: \"a chill\" = friozinho, arrepio."
+      },
+      {
+        "itemId": "ex-011",
+        "situation": "Para topar um convite entre amigos.",
+        "formality": "giria",
+        "avoidWhen": "Fora de conversa entre amigos. E não confunda com \"I feel down\", que é \"estou pra baixo\"."
+      },
+      {
+        "itemId": "ex-012",
+        "situation": "Para uma notícia ruim, mas pequena.",
+        "formality": "giria",
+        "avoidWhen": "Para algo grave (doença, morte, demissão). Aí diga \"I'm so sorry.\""
+      }
+    ]
+  },
+  {
+    "id": "falsos-cognatos",
+    "order": 4,
+    "kind": "false-friends",
+    "title": "Falsos cognatos",
+    "subtitle": "Parece, mas não é",
+    "description": "12 palavras que parecem português, mas enganam. Vire a carta e veja o \"cuidado\".",
+    "cover": {
+      "icon": "ban",
+      "color": "acerola",
+      "paper": "pautado"
+    },
+    "entries": [
+      {
+        "itemId": "u1-actually"
+      },
+      {
+        "itemId": "u4-pretend"
+      },
+      {
+        "itemId": "u3-push"
+      },
+      {
+        "itemId": "fc-004"
+      },
+      {
+        "itemId": "u2-parents"
+      },
+      {
+        "itemId": "fc-006"
+      },
+      {
+        "itemId": "fc-007"
+      },
+      {
+        "itemId": "fc-008"
+      },
+      {
+        "itemId": "fc-009"
+      },
+      {
+        "itemId": "fc-010"
+      },
+      {
+        "itemId": "fc-011"
+      },
+      {
+        "itemId": "fc-012"
+      }
+    ],
+    "mapIds": ["mm-falsos-cognatos-1"]
+  }
+]

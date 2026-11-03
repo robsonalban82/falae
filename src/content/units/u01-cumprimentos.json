@@ -935,7 +935,9 @@
             "(É um) prazer [em|de] [te conhecer|conhecer você|conhecer vocês|conhecê-lo|conhecê-la|lhe conhecer].",
             "Muito prazer em [te conhecer|conhecer você|conhecer vocês]."
           ],
-          "difficulty": 2
+          "difficulty": 2,
+          "pronunciation": "náis ta mít iú",
+          "emoji": "🤝"
         },
         {
           "id": "u1-s-nice-to-meet-you-too",
@@ -2396,7 +2398,8 @@
           "emoji": "💡",
           "difficulty": 3,
           "focus": "falso-cognato",
-          "notes": "Actually NÃO é \"atualmente\" (= now / currently)."
+          "notes": "Actually NÃO é \"atualmente\" (= now / currently).",
+          "pronunciation": "éktchuali"
         }
       ],
       "sentences": [

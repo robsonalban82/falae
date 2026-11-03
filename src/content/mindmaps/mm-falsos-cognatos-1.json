@@ -1,0 +1,301 @@
+{
+  "id": "mm-falsos-cognatos-1",
+  "title": "Falsos cognatos (1)",
+  "level": "A2",
+  "kind": "vocabulario",
+  "icon": "swap",
+  "center": {
+    "en": "false friends",
+    "pt": "falsos cognatos"
+  },
+  "centerArt": "falsos-cognatos-centro",
+  "intro": "Parecem palavras do português, mas querem dizer outra coisa. Estes 10 aparecem toda hora.",
+  "doodle": "parece, mas não é!",
+  "branches": [
+    {
+      "label": "Família e casa",
+      "icon": "home",
+      "color": "folha",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "parents",
+          "art": "falsos-cognatos-pais",
+          "lines": [
+            {
+              "ref": "u2-parents",
+              "hint": "pai e mãe"
+            },
+            {
+              "note": "Parentes = relatives."
+            },
+            {
+              "en": "My **parents** live in Bahia.",
+              "pt": "Meus pais moram na Bahia."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "lunch",
+          "art": "falsos-cognatos-almoco",
+          "lines": [
+            {
+              "ref": "fc-008"
+            },
+            {
+              "note": "Lanche = snack."
+            },
+            {
+              "en": "Let's have **lunch** at noon.",
+              "pt": "Vamos almoçar ao meio-dia."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Estudos",
+      "icon": "book",
+      "color": "anil",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "college",
+          "art": "falsos-cognatos-faculdade",
+          "lines": [
+            {
+              "ref": "fc-006"
+            },
+            {
+              "note": "Colégio = school / high school."
+            },
+            {
+              "en": "My sister is in **college**.",
+              "pt": "Minha irmã faz faculdade."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "library",
+          "art": "falsos-cognatos-biblioteca",
+          "lines": [
+            {
+              "ref": "fc-007"
+            },
+            {
+              "note": "Livraria = bookstore."
+            },
+            {
+              "en": "I study at the **library**.",
+              "pt": "Eu estudo na biblioteca."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Placas",
+      "icon": "pin",
+      "color": "manga",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "push",
+          "art": "falsos-cognatos-empurrar",
+          "lines": [
+            {
+              "ref": "u3-push"
+            },
+            {
+              "note": "Parece \"puxe\", mas puxe = pull."
+            },
+            {
+              "en": "**Push** the door.",
+              "pt": "Empurre a porta."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "exit",
+          "art": "falsos-cognatos-saida",
+          "lines": [
+            {
+              "ref": "fc-004"
+            },
+            {
+              "note": "Êxito = success."
+            },
+            {
+              "en": "Where's the **exit**?",
+              "pt": "Onde fica a saída?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Verbos",
+      "icon": "swap",
+      "color": "jabuticaba",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "pretend",
+          "art": "falsos-cognatos-fingir",
+          "lines": [
+            {
+              "ref": "u4-pretend"
+            },
+            {
+              "note": "Pretender = plan to / intend to."
+            },
+            {
+              "en": "He's **pretending** to be asleep.",
+              "pt": "Ele está fingindo que está dormindo."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "realize",
+          "art": "falsos-cognatos-perceber",
+          "lines": [
+            {
+              "ref": "fc-009"
+            },
+            {
+              "note": "Realizar um sonho = make a dream come true."
+            },
+            {
+              "en": "I **realized** I was late.",
+              "pt": "Percebi que estava atrasado(a)."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "attend",
+          "lines": [
+            {
+              "ref": "fc-010"
+            },
+            {
+              "note": "Atender o telefone = answer."
+            },
+            {
+              "en": "She **attended** the meeting.",
+              "pt": "Ela foi à reunião."
+            },
+            {
+              "note": "É formal. No dia a dia: go to the meeting."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Na conversa",
+      "icon": "chat",
+      "color": "maracuja",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "actually",
+          "lines": [
+            {
+              "ref": "u1-actually"
+            },
+            {
+              "note": "Atualmente = currently, nowadays."
+            },
+            {
+              "en": "**Actually**, I'm from Recife.",
+              "pt": "Na verdade, eu sou de Recife."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "art": "falsos-cognatos-viagem-plano",
+          "lines": [
+            {
+              "wrong": "I pretend to travel in July.",
+              "right": "I plan to travel in July.",
+              "note": "Pretend é fingir!"
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "title": "Para dizer \"Atualmente, moro no Rio\"",
+          "lines": [
+            {
+              "wrong": "Actually, I live in Rio.",
+              "right": "I currently live in Rio."
+            },
+            {
+              "en": "These days, I live in Rio."
+            },
+            {
+              "note": "Actually = na verdade."
+            },
+            {
+              "note": "Atualmente = currently, these days."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "falsos-cognatos-atender-telefone",
+          "lines": [
+            {
+              "wrong": "Can you attend the phone?",
+              "right": "Can you answer the phone?",
+              "note": "Atender o telefone = answer."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "instruction": "Complete com a palavra em inglês.",
+    "items": [
+      {
+        "prompt": "My ___ are from Minas.",
+        "accepted": ["parents"],
+        "hintPt": "pai e mãe"
+      },
+      {
+        "prompt": "The ___ opens at 9 a.m.",
+        "accepted": ["library"],
+        "hintPt": "biblioteca"
+      },
+      {
+        "prompt": "Don't pull the door. ___ it!",
+        "accepted": ["Push"],
+        "hintPt": "empurre"
+      },
+      {
+        "prompt": "She's ___ to be sick.",
+        "accepted": ["pretending"],
+        "hintPt": "fingindo"
+      },
+      {
+        "prompt": "___, my name is Lucas, not Luiz.",
+        "accepted": ["Actually", "In fact"],
+        "hintPt": "na verdade"
+      }
+    ]
+  }
+}

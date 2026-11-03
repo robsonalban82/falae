@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Bolo de aniversário com velinhas</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="147" rx="60" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M22 134 Q22 126 40 126 L122 126 Q140 126 140 134 Q140 144 120 144 L42 144 Q22 144 22 134Z" fill="#CFD1FF"/>
+<path d="M92 140 Q110 142 124 140 Q136 138 138 133" stroke-width="2" stroke-opacity=".5"/>
+<path d="M28 98 Q28 94 34 94 L126 94 Q132 94 132 98 L132 130 Q132 136 124 136 L36 136 Q28 136 28 130Z" fill="#FF8A1F" stroke="none"/>
+<path d="M104 96 L130 96 L130 130 Q130 134 124 134 L104 134Z" fill="#D96A00" stroke="none"/>
+<path d="M110 102 L120 112 M110 112 L120 122 M118 102 L126 110 M118 114 L126 122 M110 124 L116 130" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M28 98 Q28 94 34 94 L126 94 Q132 94 132 98 L132 130 Q132 136 124 136 L36 136 Q28 136 28 130Z"/>
+<path d="M43 112 Q43 106 49 106 Q55 106 55 112 Q55 118 49 118 Q43 118 43 112Z M68 120 Q68 115 73 115 Q78 115 78 120 Q78 125 73 125 Q68 125 68 120Z M86 108 Q86 103 91 103 Q96 103 96 108 Q96 113 91 113 Q86 113 86 108Z" fill="#F5C518" stroke-width="2"/>
+<path d="M27 100 Q27 86 42 86 L118 86 Q133 86 133 100 Q133 110 126 110 Q119 110 119 102 Q119 114 109 114 Q99 114 99 104 Q95 109 89 109 Q81 109 79 103 Q74 114 64 114 Q54 114 54 104 Q50 111 42 111 Q33 111 33 106 Q27 108 27 100Z" fill="#FFFDF8"/>
+<path d="M104 88 L128 88 Q132 90 132 100 Q132 108 126 109 Q119 109 119 102 Q119 112 112 113 Q103 113 101 105Z" fill="#E8DFCB" stroke="none"/>
+<path d="M27 100 Q27 86 42 86 L118 86 Q133 86 133 100 Q133 110 126 110 Q119 110 119 102 Q119 114 109 114 Q99 114 99 104 Q95 109 89 109 Q81 109 79 103 Q74 114 64 114 Q54 114 54 104 Q50 111 42 111 Q33 111 33 106 Q27 108 27 100Z"/>
+<path d="M34 92 Q38 89 50 89" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<rect x="43" y="62" width="8" height="26" rx="2.5" fill="#3B3FB6"/><rect x="62" y="58" width="8" height="30" rx="2.5" fill="#F5C518"/><rect x="77" y="64" width="8" height="24" rx="2.5" fill="#0F7A37"/><rect x="95" y="59" width="8" height="29" rx="2.5" fill="#B42318"/><rect x="113" y="63" width="8" height="25" rx="2.5" fill="#9A9DFF"/>
+<path d="M44 70 L50 66 M44 78 L50 74 M63 66 L69 62 M63 74 L69 70 M96 67 L102 63 M96 75 L102 71 M114 71 L120 67" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>
+<path d="M47 40 Q54 50 47 58 Q40 50 47 40Z M66 34 Q73 44 66 54 Q59 44 66 34Z M81 42 Q88 52 81 60 Q74 52 81 42Z M99 36 Q106 46 99 55 Q92 46 99 36Z M117 41 Q124 51 117 59 Q110 51 117 41Z" fill="#F5C518" stroke-width="2.5"/>
+<path d="M47 50 Q50 54 47 57 Q44 54 47 50Z M66 46 Q69 50 66 53 Q63 50 66 46Z M99 47 Q102 51 99 54 Q96 51 99 47Z" fill="#FF8A1F" stroke="none"/>
+<path d="M20 70 L24 62 L28 70 L20 66 L28 66Z" fill="#B42318" stroke-width="2"/>
+<path d="M134 74 L138 66 L142 74 L134 70 L142 70Z" fill="#3B3FB6" stroke-width="2"/>
+<circle cx="24" cy="38" r="4" fill="#9A9DFF" stroke-width="2"/><circle cx="138" cy="44" r="4" fill="#5BE08C" stroke-width="2"/><path d="M32 100 l5 -4" stroke-width="0"/>
+<path d="M12 90 q5 -6 10 0 M138 94 q5 -6 10 0" stroke="#B42318" stroke-width="2"/>
+</g></svg>

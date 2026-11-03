@@ -1,0 +1,127 @@
+{
+  "id": "falsos-cognatos",
+  "title": "Falsos cognatos",
+  "level": "A2",
+  "vocab": [
+    {
+      "id": "fc-004",
+      "en": "exit",
+      "pt": ["saída"],
+      "example": {
+        "en": "The exit is on the left.",
+        "pt": "A saída fica à esquerda."
+      },
+      "emoji": "🚶",
+      "pronunciation": "égzit",
+      "difficulty": 1,
+      "focus": "falso-cognato",
+      "notes": "Exit NÃO é \"êxito\". Êxito = success.",
+      "level": "A1"
+    },
+    {
+      "id": "fc-006",
+      "en": "college",
+      "pt": ["faculdade"],
+      "example": {
+        "en": "My sister is in college.",
+        "pt": "Minha irmã faz faculdade."
+      },
+      "emoji": "🎓",
+      "pronunciation": "kálidj",
+      "difficulty": 2,
+      "focus": "falso-cognato",
+      "notes": "College NÃO é \"colégio\". Colégio = school, high school."
+    },
+    {
+      "id": "fc-007",
+      "en": "library",
+      "pt": ["biblioteca"],
+      "example": {
+        "en": "I study at the library on Saturdays.",
+        "pt": "Eu estudo na biblioteca aos sábados."
+      },
+      "emoji": "📚",
+      "pronunciation": "láibreri",
+      "difficulty": 1,
+      "focus": "falso-cognato",
+      "notes": "Library NÃO é \"livraria\". Livraria = bookstore.",
+      "level": "A1"
+    },
+    {
+      "id": "fc-008",
+      "en": "lunch",
+      "pt": ["almoço"],
+      "example": {
+        "en": "What time is lunch?",
+        "pt": "A que horas é o almoço?"
+      },
+      "emoji": "🍛",
+      "pronunciation": "lântch",
+      "difficulty": 1,
+      "focus": "falso-cognato",
+      "notes": "Lunch NÃO é \"lanche\". Lanche = snack.",
+      "level": "A1"
+    },
+    {
+      "id": "fc-009",
+      "en": "realize",
+      "pt": ["perceber", "se dar conta"],
+      "example": {
+        "en": "I just realized it's Monday!",
+        "pt": "Acabei de perceber que é segunda!"
+      },
+      "emoji": "😮",
+      "pronunciation": "ríalaiz",
+      "difficulty": 2,
+      "focus": "falso-cognato",
+      "notes": "Realize NÃO é \"realizar\". Realizar um sonho = make a dream come true."
+    },
+    {
+      "id": "fc-010",
+      "en": "attend",
+      "pt": ["ir a", "frequentar"],
+      "example": {
+        "en": "Did you attend the meeting?",
+        "pt": "Você foi à reunião?"
+      },
+      "emoji": "🗓️",
+      "pronunciation": "aténd",
+      "difficulty": 2,
+      "focus": "falso-cognato",
+      "notes": "Attend NÃO é \"atender\". Atender o telefone = answer the phone. Attend é mais formal: no dia a dia, diga \"Did you go to the meeting?\"",
+      "acceptedPt": [
+        "[ir a|frequentar] [uma aula|a aula|um evento|o evento]",
+        "[ir à|assistir (a)] [reunião|uma reunião|a reunião|uma aula|a aula]"
+      ]
+    },
+    {
+      "id": "fc-011",
+      "en": "costume",
+      "pt": ["fantasia (roupa)"],
+      "example": {
+        "en": "What's your costume for Carnival?",
+        "pt": "Qual é a sua fantasia de Carnaval?"
+      },
+      "emoji": "🦸",
+      "pronunciation": "kástum",
+      "difficulty": 2,
+      "focus": "falso-cognato",
+      "notes": "Em inglês, costume NÃO é \"costume\" (hábito). Hábito = habit, custom."
+    },
+    {
+      "id": "fc-012",
+      "en": "novel",
+      "pt": ["romance (livro)"],
+      "example": {
+        "en": "I'm reading a novel by Jorge Amado.",
+        "pt": "Estou lendo um romance do Jorge Amado."
+      },
+      "emoji": "📕",
+      "pronunciation": "nável",
+      "difficulty": 2,
+      "focus": "falso-cognato",
+      "notes": "Novel NÃO é \"novela\". Novela = soap opera."
+    }
+  ],
+  "sentences": []
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Ampulheta com selo de errado e relógio marcando três horas: horário, não duração</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="86" cy="148" rx="64" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<path d="M14 40 L50 40 M14 112 L50 112" stroke-width="5" stroke="#7A4A2A"/>
+<path d="M18 44 Q18 70 32 76 Q18 82 18 108 L46 108 Q46 82 32 76 Q46 70 46 44Z" fill="#CFD1FF"/>
+<path d="M22 56 Q26 68 32 72 Q38 68 42 56Z" fill="#F5C518" stroke="none"/>
+<path d="M22 106 Q26 92 32 88 Q38 92 42 106Z" fill="#F5C518" stroke-width="2"/>
+<path d="M32 76 L32 92" stroke="#D9A800" stroke-width="2"/>
+<path d="M18 44 Q18 70 32 76 Q18 82 18 108 L46 108 Q46 82 32 76 Q46 70 46 44Z"/>
+<path d="M22 48 Q22 62 28 68" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/>
+<circle cx="50" cy="32" r="15" fill="#B42318"/>
+<path d="M58.6 19.7 A15 15 0 0 1 43.7 45.6 Q55.5 35.2 58.6 19.7Z" fill="#8A1A12" stroke="none"/>
+<circle cx="50" cy="32" r="15"/>
+<path d="M44 26 L56 38 M56 26 L44 38" stroke="#FFFDF8" stroke-width="4"/>
+<path d="M76 132 L70 146 M128 132 L134 146" stroke-width="6"/>
+<circle cx="102" cy="92" r="44" fill="#FF8A1F"/><path d="M127.2 56 A44 44 0 0 1 83.4 131.9 Q118 101.2 127.2 56Z" fill="#D96A00" stroke="none"/><path d="M137.5 98.5 L143.7 92.3 M130.6 117.3 L136.8 111.1 M115.3 130.2 L121.5 124" stroke-width="1.6" stroke-opacity=".5"/><circle cx="102" cy="92" r="44"/><circle cx="102" cy="92" r="32.56" fill="#FFFDF8"/><path d="M122.9 67.1 A32.56 32.56 0 0 1 90.9 122.6 Q119.5 102.1 122.9 67.1Z" fill="#E8DFCB" stroke="none"/><circle cx="102" cy="92" r="32.56"/><path d="M102 62.7 L102 68.6 M131.3 92 L125.4 92 M102 121.3 L102 115.4 M72.7 92 L78.6 92" stroke-width="3"/><path d="M116.7 66.6 L115 69.4 M127.4 77.3 L124.6 79 M127.4 106.7 L124.6 105 M116.7 117.4 L115 114.6 M87.3 117.4 L89 114.6 M76.6 106.7 L79.4 105 M76.6 77.3 L79.4 79 M87.3 66.6 L89 69.4" stroke-width="2"/><path d="M102 92 L102 67.3" stroke-width="4"/><path d="M102 92 L118.3 92" stroke-width="5.5"/><circle cx="102" cy="92" r="3.9" fill="#1B1C33"/><path d="M66 78.9 A38.3 38.3 0 0 1 82.9 58.8" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<circle cx="136" cy="40" r="15" fill="#0F7A37"/>
+<path d="M144.6 27.7 A15 15 0 0 1 129.7 53.6 Q141.5 43.2 144.6 27.7Z" fill="#0A5A28" stroke="none"/>
+<circle cx="136" cy="40" r="15"/>
+<path d="M128 40 L134 46 L144 34" stroke="#FFFDF8" stroke-width="4"/>
+
+</g></svg>

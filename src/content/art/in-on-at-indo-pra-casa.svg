@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pessoa voltando para casa: go home</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="100" y="88" width="46" height="50" rx="2" fill="#FFE3B3"/>
+<path d="M130 90 L144 90 L144 136 L130 136Z" fill="#F2C27A" stroke="none"/>
+<path d="M134 100 L140 106 M134 116 L140 122" stroke-width="1.6" stroke-opacity=".45"/>
+<rect x="100" y="88" width="46" height="50" rx="2"/>
+<path d="M94 92 L123 62 L152 92Z" fill="#B42318"/>
+<path d="M123 62 L152 92 L134 92Z" fill="#8A1A12" stroke="none"/>
+<path d="M94 92 L123 62 L152 92Z"/>
+<path d="M101 86 L118 69" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<rect x="104" y="98" width="12" height="12" rx="2" fill="#F5C518" stroke-width="2.5"/>
+<rect x="122" y="110" width="15" height="28" rx="3" fill="#3B3FB6" stroke-width="3"/>
+<circle cx="133" cy="125" r="1.5" fill="#F5C518" stroke-width="1.5"/>
+<path d="M88 142 L118 140" stroke-width="3" stroke-opacity=".45" stroke-dasharray="3 7"/>
+<path d="M12 62 L26 62 M8 78 L24 78 M14 94 L26 94" stroke-width="3" stroke-opacity=".45"/>
+<path d="M50 100 L40 135 M62 100 L74 133" stroke-width="11"/>
+<path d="M50 101 L40.5 134 M62 101 L73.5 132" stroke="#3B3FB6" stroke-width="5.5"/>
+<path d="M33 139 L45 139 M70 137 L83 137" stroke-width="6"/>
+<path d="M46 70 Q38 84 33 92" stroke-width="11"/><path d="M46 70.5 Q38.4 84 33.6 91.5" stroke="#4E1B69" stroke-width="5.5"/>
+<path d="M42 72 Q42 64 50 64 L62 64 Q70 64 70 72 L70 101 L42 101Z" fill="#6F2A91"/>
+<path d="M60 65 L62 65 Q69 65 69 72 L69 100 L60 100Z" fill="#4E1B69" stroke="none"/>
+<path d="M42 72 Q42 64 50 64 L62 64 Q70 64 70 72 L70 101 L42 101Z"/>
+<path d="M46 70 L46 84" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+<path d="M66 70 Q76 82 82 88" stroke-width="11"/><path d="M66 70.5 Q75.6 82 81.5 87.5" stroke="#6F2A91" stroke-width="5.5"/>
+<rect x="78" y="94" width="16" height="14" rx="3" fill="#FF8A1F" stroke-width="3"/>
+<path d="M82 94 Q86 86 90 94" stroke-width="2.5"/>
+<circle cx="32" cy="94" r="4.5" fill="#D9965F" stroke-width="3"/><circle cx="84" cy="90" r="4.5" fill="#D9965F" stroke-width="3"/>
+<rect x="50" y="56" width="12" height="10" rx="3" fill="#D9965F" stroke-width="3"/>
+<circle cx="57" cy="44" r="16" fill="#D9965F"/>
+<path d="M66 32 Q78 46 66 58 Q62 56 66 32Z" fill="#B87440" stroke="none"/>
+<circle cx="57" cy="44" r="16"/>
+<path d="M41 42 Q40 26 58 27 Q74 28 73 40 Q66 34 56 34 Q48 35 41 42Z" fill="#7A4A2A"/>
+<circle cx="59" cy="46" r="1.8" fill="#1B1C33" stroke="none"/><circle cx="69" cy="46" r="1.8" fill="#1B1C33" stroke="none"/>
+<path d="M60 52 Q64.5 56 69 52" stroke-width="2.5"/>
+<circle cx="55" cy="51" r="2.5" fill="#E8604C" fill-opacity=".5" stroke="none"/>
+</g></svg>

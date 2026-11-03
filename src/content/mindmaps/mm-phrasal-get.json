@@ -1,0 +1,270 @@
+{
+  "id": "mm-phrasal-get",
+  "title": "Phrasal verbs com get",
+  "level": "A2",
+  "kind": "vocabulario",
+  "icon": "arrow",
+  "center": {
+    "en": "get + …",
+    "pt": "um verbo, muitos sentidos"
+  },
+  "centerArt": "phrasal-get-centro",
+  "intro": "Get + uma palavrinha (up, on, off, back…) muda o sentido. Aprenda em blocos, como se fosse uma palavra só.",
+  "doodle": "aprenda o bloco inteiro: get + up",
+  "branches": [
+    {
+      "label": "Rotina",
+      "icon": "clock",
+      "color": "folha",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "get up",
+          "art": "phrasal-get-levantar",
+          "lines": [
+            {
+              "ref": "u4-get-up",
+              "hint": "da cama"
+            },
+            {
+              "ref": "u4-s-i-get-up-at-six-thirty"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "wake up × get up",
+          "lines": [
+            {
+              "ref": "u4-wake-up",
+              "hint": "abrir os olhos"
+            },
+            {
+              "ref": "u4-get-up",
+              "hint": "sair da cama"
+            },
+            {
+              "en": "I **wake up** at 6 and **get up** at 6:30.",
+              "pt": "Acordo às 6 e levanto às 6h30."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "get back",
+          "art": "phrasal-get-voltar",
+          "lines": [
+            {
+              "en": "**get back**",
+              "pt": "voltar"
+            },
+            {
+              "en": "I **get back** from work at 7.",
+              "pt": "Eu volto do trabalho às 7."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Transporte",
+      "icon": "arrow",
+      "color": "anil",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Entrar e sair",
+          "art": "phrasal-get-onibus-subir",
+          "lines": [
+            {
+              "en": "**get on** / **get off**",
+              "pt": "ônibus, trem, avião"
+            },
+            {
+              "en": "**get in** / **get out of**",
+              "pt": "carro, táxi"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "phrasal-get-carro",
+          "lines": [
+            {
+              "en": "**Get on** the bus here.",
+              "pt": "Entre no ônibus aqui."
+            },
+            {
+              "en": "We **get off** at the next stop.",
+              "pt": "A gente desce no próximo ponto."
+            },
+            {
+              "en": "**Get in** the car!",
+              "pt": "Entra no carro!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Pessoas",
+      "icon": "chat",
+      "color": "jabuticaba",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "get along with",
+          "art": "phrasal-get-amigos",
+          "lines": [
+            {
+              "ref": "pv-004"
+            },
+            {
+              "en": "I **get along with** my boss.",
+              "pt": "Eu me dou bem com meu chefe."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "get together",
+          "art": "phrasal-get-encontro",
+          "lines": [
+            {
+              "en": "**get together**",
+              "pt": "se reunir, se encontrar"
+            },
+            {
+              "en": "Let's **get together** on Friday.",
+              "pt": "Vamos nos encontrar na sexta."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Superar",
+      "icon": "star",
+      "color": "manga",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "get over",
+          "art": "phrasal-get-superar",
+          "lines": [
+            {
+              "en": "**get over**",
+              "pt": "superar, se recuperar de"
+            },
+            {
+              "en": "She **got over** the flu.",
+              "pt": "Ela se recuperou da gripe."
+            },
+            {
+              "en": "**Get over** it!",
+              "pt": "Supera! (informal)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I got in the bus.",
+              "right": "I got on the bus.",
+              "note": "Ônibus, trem, avião: get on."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "art": "phrasal-get-onibus-descer",
+          "lines": [
+            {
+              "wrong": "I get down from the bus here.",
+              "right": "I get off the bus here. / I get off here.",
+              "note": "Descer do ônibus = get off."
+            }
+          ]
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I get along my sister.",
+              "right": "I get along with my sister.",
+              "note": "Com a pessoa, use with."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Dica",
+      "icon": "bulb",
+      "color": "maracuja",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Get sozinho é coringa",
+          "art": "phrasal-get-coringa",
+          "lines": [
+            {
+              "en": "**get** tired",
+              "pt": "ficar cansado(a)"
+            },
+            {
+              "en": "**get** home",
+              "pt": "chegar em casa"
+            },
+            {
+              "en": "**get** a job",
+              "pt": "conseguir um emprego"
+            },
+            {
+              "en": "I don't **get** it.",
+              "pt": "Não entendi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "instruction": "Complete o phrasal verb. A dica em português ajuda.",
+    "items": [
+      {
+        "prompt": "Kids, get ___! It's 7 o'clock.",
+        "accepted": ["up"],
+        "hintPt": "levantem da cama"
+      },
+      {
+        "prompt": "Get ___ the train at the next station.",
+        "accepted": ["off"],
+        "hintPt": "Desça do trem na próxima estação."
+      },
+      {
+        "prompt": "Let's get ___ the bus.",
+        "accepted": ["on"],
+        "hintPt": "Vamos entrar no ônibus."
+      },
+      {
+        "prompt": "Do you get along ___ your neighbors?",
+        "accepted": ["with"],
+        "hintPt": "Você se dá bem com seus vizinhos?"
+      },
+      {
+        "prompt": "He's sad, but he'll get ___ it.",
+        "accepted": ["over"],
+        "hintPt": "Ele está triste, mas vai superar."
+      }
+    ]
+  }
+}

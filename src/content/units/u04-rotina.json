@@ -779,7 +779,8 @@
             "pt": "Eu me levanto às seis e meia."
           },
           "emoji": "🛏️",
-          "difficulty": 1
+          "difficulty": 1,
+          "pronunciation": "guét âp · rápido: guérâp"
         },
         {
           "id": "u4-take-a-shower",
@@ -2487,7 +2488,8 @@
           "emoji": "🎭",
           "difficulty": 3,
           "focus": "falso-cognato",
-          "notes": "Falso cognato! Pretend = fingir. \"Pretender\" (ter intenção) é plan to ou intend to."
+          "notes": "Falso cognato! Pretend = fingir. \"Pretender\" (ter intenção) é plan to ou intend to.",
+          "pronunciation": "priténd"
         }
       ],
       "sentences": [

@@ -165,7 +165,8 @@
           "emoji": "👫",
           "difficulty": 3,
           "focus": "falso-cognato",
-          "notes": "Parents = pais (mãe e pai). Parentes = relatives."
+          "notes": "Parents = pais (mãe e pai). Parentes = relatives.",
+          "pronunciation": "pérents"
         },
         {
           "id": "u2-relatives",

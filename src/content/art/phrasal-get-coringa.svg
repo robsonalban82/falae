@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Carta de coringa na frente de outras cartas</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="34" width="58" height="88" rx="7" fill="#3B3FB6" transform="rotate(-18 69 78)"/>
+<rect x="46" y="36" width="58" height="88" rx="7" fill="#0F7A37" transform="rotate(-7 75 80)"/>
+<path d="M58 50 L92 50 M58 60 L92 60" stroke="#5BE08C" stroke-width="2" transform="rotate(-7 75 80)"/>
+<g transform="rotate(8 86 80)">
+<rect x="56" y="34" width="62" height="92" rx="7" fill="#FFFDF8"/>
+<path d="M104 36 L111 36 Q116 36 116 42 L116 118 Q116 124 110 124 L104 124Z" fill="#E8DFCB" stroke="none"/>
+<rect x="56" y="34" width="62" height="92" rx="7"/>
+<path d="M70 104 Q68 84 58 72 Q74 76 79 90 Q80 68 87 56 Q94 68 95 90 Q100 76 116 72 Q106 84 104 104Z" fill="#6F2A91" stroke-width="3"/>
+<path d="M87 56 Q94 68 95 90 Q100 76 116 72 Q106 84 104 104 L92 104Z" fill="#4E1B69" stroke="none"/>
+<path d="M70 104 Q68 84 58 72 Q74 76 79 90 Q80 68 87 56 Q94 68 95 90 Q100 76 116 72 Q106 84 104 104Z" stroke-width="3"/>
+<path d="M68 102 L106 102 L105 112 L69 112Z" fill="#B42318" stroke-width="3"/>
+<circle cx="58" cy="70" r="5" fill="#F5C518" stroke-width="2.5"/><circle cx="87" cy="53" r="5" fill="#F5C518" stroke-width="2.5"/><circle cx="114" cy="70" r="5" fill="#F5C518" stroke-width="2.5"/>
+<path d="M66 40 L67.5 44 L71.5 44 L68.3 46.5 L69.5 50.5 L66 48 L62.5 50.5 L63.7 46.5 L60.5 44 L64.5 44Z" fill="#F5C518" stroke-width="2"/>
+<path d="M61 48 L61 70" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>
+</g>
+<path d="M30 30 L34 22 M24 40 L16 38 M138 36 L146 30 M140 48 L148 50" stroke="#F5C518" stroke-width="3.5"/>
+</g></svg>

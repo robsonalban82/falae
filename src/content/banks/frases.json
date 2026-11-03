@@ -1,0 +1,251 @@
+{
+  "id": "frases",
+  "title": "Frases do dia a dia",
+  "level": "A1",
+  "vocab": [],
+  "sentences": [
+    {
+      "id": "fr-002",
+      "en": "How are you doing?",
+      "pt": "Como você está?",
+      "example": {
+        "en": "— How are you doing? — Pretty good, thanks!",
+        "pt": "— Tudo bem? — Tudo certo, obrigado!"
+      },
+      "emoji": "🙂",
+      "pronunciation": "háu ar iú dúing",
+      "difficulty": 1,
+      "acceptedPt": ["Tudo bem"]
+    },
+    {
+      "id": "fr-003",
+      "en": "What's up?",
+      "pt": "E aí?",
+      "example": {
+        "en": "— What's up? — Not much. You?",
+        "pt": "— E aí? — Nada de mais. E você?"
+      },
+      "emoji": "✌️",
+      "pronunciation": "uâts âp",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-004",
+      "en": "Have a nice day!",
+      "pt": "Tenha um bom dia!",
+      "example": {
+        "en": "— Have a nice day! — You too!",
+        "pt": "— Tenha um bom dia! — Você também!"
+      },
+      "emoji": "☀️",
+      "pronunciation": "hév a náis dêi",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-005",
+      "en": "Table for two, please.",
+      "pt": "Mesa para dois, por favor.",
+      "emoji": "🍽️",
+      "pronunciation": "têibol fer tú, plíz",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-006",
+      "en": "Can I see the menu?",
+      "pt": "Posso ver o cardápio?",
+      "emoji": "📖",
+      "pronunciation": "kan ái sí tha méniu",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-007",
+      "en": "I'd like the chicken, please.",
+      "pt": "Eu queria o frango, por favor.",
+      "example": {
+        "en": "— Ready to order? — I'd like the chicken, please.",
+        "pt": "— Já escolheu? — Eu queria o frango, por favor."
+      },
+      "emoji": "🍗",
+      "pronunciation": "áid láik tha tchíken, plíz",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-008",
+      "en": "Can I have the check, please?",
+      "pt": "Pode me trazer a conta, por favor?",
+      "emoji": "🧾",
+      "pronunciation": "kan ái hév tha tchék, plíz",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-009",
+      "en": "How much is this?",
+      "pt": "Quanto custa isso?",
+      "example": {
+        "en": "— How much is this? — It's $15.",
+        "pt": "— Quanto custa isso? — Custa 15 dólares."
+      },
+      "emoji": "🏷️",
+      "pronunciation": "háu mâtch iz thís",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-010",
+      "en": "I'm just looking, thanks.",
+      "pt": "Só estou dando uma olhada, obrigado(a).",
+      "example": {
+        "en": "— Can I help you? — I'm just looking, thanks.",
+        "pt": "— Posso ajudar? — Só estou dando uma olhada, obrigado."
+      },
+      "emoji": "👀",
+      "pronunciation": "áim djâst lúking, thénks",
+      "difficulty": 2,
+      "level": "A2"
+    },
+    {
+      "id": "fr-011",
+      "en": "Do you take credit cards?",
+      "pt": "Vocês aceitam cartão de crédito?",
+      "emoji": "💳",
+      "pronunciation": "da iú têik krédit kárdz",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-012",
+      "en": "Can I try this on?",
+      "pt": "Posso experimentar?",
+      "example": {
+        "en": "— Can I try this on? — Sure, the fitting room is over there.",
+        "pt": "— Posso experimentar? — Claro, o provador fica ali."
+      },
+      "emoji": "👕",
+      "pronunciation": "kan ái trái thís án",
+      "difficulty": 2,
+      "level": "A2"
+    },
+    {
+      "id": "fr-013",
+      "en": "What do you do?",
+      "pt": "Você trabalha com quê?",
+      "example": {
+        "en": "— What do you do? — I'm a nurse.",
+        "pt": "— Você trabalha com quê? — Sou enfermeira."
+      },
+      "emoji": "💼",
+      "pronunciation": "uât da iú dú",
+      "difficulty": 1,
+      "acceptedPt": ["O que você faz"]
+    },
+    {
+      "id": "fr-014",
+      "en": "I'll send you an email.",
+      "pt": "Vou te mandar um e-mail.",
+      "emoji": "📧",
+      "pronunciation": "áil sénd iú an ímeil",
+      "difficulty": 2,
+      "level": "A2"
+    },
+    {
+      "id": "fr-015",
+      "en": "Sorry, I'm running late.",
+      "pt": "Desculpa, estou atrasado(a).",
+      "example": {
+        "en": "Sorry, I'm running late. I'll be there in ten minutes.",
+        "pt": "Desculpa, estou atrasado. Chego em dez minutos."
+      },
+      "emoji": "⏰",
+      "pronunciation": "sári, áim râning lêit",
+      "difficulty": 2,
+      "level": "A2"
+    },
+    {
+      "id": "fr-016",
+      "en": "Could you repeat that, please?",
+      "pt": "Você pode repetir, por favor?",
+      "emoji": "🔁",
+      "pronunciation": "kúd iú ripít thét, plíz",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-017",
+      "en": "Where's the bathroom?",
+      "pt": "Onde fica o banheiro?",
+      "emoji": "🚻",
+      "pronunciation": "uérz tha béthrum",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-018",
+      "en": "I have a reservation.",
+      "pt": "Eu tenho uma reserva.",
+      "example": {
+        "en": "Hi, I have a reservation under Silva.",
+        "pt": "Oi, eu tenho uma reserva no nome de Silva."
+      },
+      "emoji": "🏨",
+      "pronunciation": "ái hév a rezervêichan",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-019",
+      "en": "How do I get to the airport?",
+      "pt": "Como eu chego ao aeroporto?",
+      "emoji": "✈️",
+      "pronunciation": "háu da ái guét ta thi érport",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-020",
+      "en": "I'm here on vacation.",
+      "pt": "Estou aqui de férias.",
+      "example": {
+        "en": "— What's the purpose of your visit? — I'm here on vacation.",
+        "pt": "— Qual é o motivo da sua visita? — Estou aqui de férias."
+      },
+      "emoji": "🏖️",
+      "pronunciation": "áim hír án veikêichan",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-021",
+      "en": "Can you help me?",
+      "pt": "Você pode me ajudar?",
+      "emoji": "🙋",
+      "pronunciation": "kan iú hélp mí",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-022",
+      "en": "Call 911!",
+      "pt": "Ligue para o 911!",
+      "example": {
+        "en": "Someone call 911!",
+        "pt": "Alguém liga para o 911!"
+      },
+      "emoji": "🚨",
+      "pronunciation": "kól náin uán uán",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-023",
+      "en": "I need a doctor.",
+      "pt": "Eu preciso de um médico.",
+      "emoji": "🩺",
+      "pronunciation": "ái níd a dákter",
+      "difficulty": 1
+    },
+    {
+      "id": "fr-024",
+      "en": "I lost my passport.",
+      "pt": "Eu perdi meu passaporte.",
+      "example": {
+        "en": "Excuse me, I lost my passport. Can you help me?",
+        "pt": "Com licença, eu perdi meu passaporte. Você pode me ajudar?"
+      },
+      "emoji": "🛂",
+      "pronunciation": "ái lóst mái pésport",
+      "difficulty": 2,
+      "level": "A2"
+    }
+  ]
+}

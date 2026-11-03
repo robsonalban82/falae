@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Mão empurrando uma porta para abrir</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="56" y="14" width="82" height="132" rx="3" fill="#7A4A2A"/>
+<rect x="63" y="21" width="68" height="125" fill="#FFFDF8" stroke-width="2.5"/>
+<path d="M112 21 L131 21 L131 146 L112 146Z" fill="#FFF1D6" stroke="none"/>
+<path d="M63 21 L114 30 L114 138 L63 146Z" fill="#3B3FB6"/>
+<path d="M96 27 L114 30 L114 138 L96 141Z" fill="#2B2F8A" stroke="none"/>
+<path d="M100 40 L110 32 M100 58 L110 50 M100 76 L110 68 M100 94 L110 86" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M63 21 L114 30 L114 138 L63 146Z"/>
+<path d="M70 32 L88 35" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M70 56 L90 58 L90 98 L70 99Z" fill="#CFD1FF" stroke-width="2.5"/>
+<path d="M8 50 L30 50 L30 38 L52 58 L30 78 L30 66 L8 66Z" fill="#0F7A37"/>
+<path d="M8 58 L41 58 L52 58 L30 78 L30 66 L8 66Z" fill="#0A5A28" stroke="none"/>
+<path d="M8 50 L30 50 L30 38 L52 58 L30 78 L30 66 L8 66Z"/>
+<path d="M12 54 L26 54" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M24 134 L54 112" stroke-width="24"/><path d="M24 134 L54 112" stroke="#FF8A1F" stroke-width="17"/>
+<path d="M27 139 L55 119" stroke="#D96A00" stroke-width="6"/>
+<path d="M22 130 L34 121" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M56 112 L54 90 Q54 85 58 85 Q61 85 61 90 L62 98 L62 76 Q62 72 66 72 Q70 72 70 76 L70 92 L71 72 Q71 68 75 68 Q79 68 79 72 L78 92 L80 78 Q80 74 84 74 Q88 74 87 79 L85 104 Q82 116 72 118 Q60 120 56 112Z" fill="#8D5A3B"/>
+<path d="M80 92 L87 79 L85 104 Q82 116 72 118 Q82 108 80 92Z" fill="#6E4229" stroke="none"/>
+<path d="M56 112 L54 90 Q54 85 58 85 Q61 85 61 90 L62 98 L62 76 Q62 72 66 72 Q70 72 70 76 L70 92 L71 72 Q71 68 75 68 Q79 68 79 72 L78 92 L80 78 Q80 74 84 74 Q88 74 87 79 L85 104 Q82 116 72 118 Q60 120 56 112Z" stroke-width="3"/>
+<path d="M140 52 L150 52 M138 64 L152 64 M140 76 L150 76" stroke="#3B3FB6" stroke-width="3"/>
+</g></svg>

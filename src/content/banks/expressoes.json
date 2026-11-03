@@ -1,0 +1,161 @@
+{
+  "id": "expressoes",
+  "title": "Expressões e gírias",
+  "level": "A2",
+  "vocab": [],
+  "sentences": [
+    {
+      "id": "ex-001",
+      "en": "Never mind.",
+      "pt": "Deixa pra lá.",
+      "example": {
+        "en": "— Sorry, what did you say? — Never mind, it's not important.",
+        "pt": "— Desculpa, o que você disse? — Deixa pra lá, não é importante."
+      },
+      "emoji": "🤷",
+      "pronunciation": "néver máind",
+      "difficulty": 2
+    },
+    {
+      "id": "ex-002",
+      "en": "It's up to you.",
+      "pt": "Você que sabe.",
+      "example": {
+        "en": "— Pizza or sushi? — It's up to you.",
+        "pt": "— Pizza ou sushi? — Você que sabe."
+      },
+      "emoji": "👉",
+      "pronunciation": "íts âp ta iú",
+      "difficulty": 2,
+      "acceptedPt": ["Você decide"]
+    },
+    {
+      "id": "ex-003",
+      "en": "I'm on my way.",
+      "pt": "Estou a caminho.",
+      "example": {
+        "en": "I'm on my way. See you in 15 minutes!",
+        "pt": "Estou a caminho. Te vejo em 15 minutos!"
+      },
+      "emoji": "🏃",
+      "pronunciation": "áim án mái uêi",
+      "difficulty": 1,
+      "level": "A1"
+    },
+    {
+      "id": "ex-004",
+      "en": "Take your time.",
+      "pt": "Sem pressa.",
+      "example": {
+        "en": "— Sorry, I'm still looking at the menu. — Take your time.",
+        "pt": "— Desculpa, ainda estou vendo o cardápio. — Sem pressa."
+      },
+      "emoji": "🐢",
+      "pronunciation": "têik iór táim",
+      "difficulty": 2,
+      "acceptedPt": ["[Fica|Fique] à vontade"]
+    },
+    {
+      "id": "ex-005",
+      "en": "No worries.",
+      "pt": "Imagina.",
+      "example": {
+        "en": "— Sorry I'm late! — No worries.",
+        "pt": "— Desculpa o atraso! — Imagina."
+      },
+      "emoji": "😌",
+      "pronunciation": "nôu uâriz",
+      "difficulty": 2,
+      "acceptedPt": ["Sem problema"]
+    },
+    {
+      "id": "ex-006",
+      "en": "Sounds good!",
+      "pt": "Beleza!",
+      "example": {
+        "en": "— Let's meet at 7. — Sounds good!",
+        "pt": "— Vamos nos ver às 7. — Fechado!"
+      },
+      "emoji": "👍",
+      "pronunciation": "sáundz gúd",
+      "difficulty": 2,
+      "acceptedPt": ["Fechado"]
+    },
+    {
+      "id": "ex-007",
+      "en": "My bad.",
+      "pt": "Foi mal.",
+      "example": {
+        "en": "— That's my coffee! — Oh, my bad!",
+        "pt": "— Esse café é meu! — Ah, foi mal!"
+      },
+      "emoji": "🙈",
+      "pronunciation": "mái béd",
+      "difficulty": 2
+    },
+    {
+      "id": "ex-008",
+      "en": "Gotta go!",
+      "pt": "Tenho que ir!",
+      "example": {
+        "en": "Gotta go! Talk to you later.",
+        "pt": "Tenho que ir! A gente se fala depois."
+      },
+      "emoji": "👋",
+      "pronunciation": "gáta gôu · rápido: gára gôu",
+      "difficulty": 2
+    },
+    {
+      "id": "ex-009",
+      "en": "I'm beat.",
+      "pt": "Tô morto(a) de cansaço.",
+      "example": {
+        "en": "I worked 12 hours today. I'm beat.",
+        "pt": "Trabalhei 12 horas hoje. Tô morto(a)."
+      },
+      "emoji": "😩",
+      "pronunciation": "áim bít",
+      "difficulty": 2
+    },
+    {
+      "id": "ex-010",
+      "en": "chill",
+      "pt": "de boa",
+      "example": {
+        "en": "My new boss is pretty chill. / Let's just chill.",
+        "pt": "Meu chefe novo é bem de boa. / Vamos só relaxar."
+      },
+      "emoji": "😎",
+      "pronunciation": "tchíl",
+      "difficulty": 2,
+      "acceptedPt": ["tranquilo", "relaxar"]
+    },
+    {
+      "id": "ex-011",
+      "en": "I'm down.",
+      "pt": "Tô dentro!",
+      "example": {
+        "en": "— Pizza tonight? — I'm down!",
+        "pt": "— Pizza hoje à noite? — Tô dentro!"
+      },
+      "emoji": "🙌",
+      "pronunciation": "áim dáun",
+      "difficulty": 3,
+      "level": "B1"
+    },
+    {
+      "id": "ex-012",
+      "en": "That's a bummer.",
+      "pt": "Que pena.",
+      "example": {
+        "en": "— The concert was canceled. — Oh, that's a bummer.",
+        "pt": "— O show foi cancelado. — Ah, que chato."
+      },
+      "emoji": "😕",
+      "pronunciation": "théts a bâmer",
+      "difficulty": 3,
+      "level": "B1",
+      "acceptedPt": ["Que chato"]
+    }
+  ]
+}

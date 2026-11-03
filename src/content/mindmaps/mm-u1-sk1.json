@@ -1,0 +1,235 @@
+{
+  "id": "mm-u1-sk1",
+  "title": "Olá e tchau",
+  "level": "A1",
+  "kind": "conversacao",
+  "icon": "chat",
+  "unitId": "u1-unit",
+  "skillId": "u1-sk1",
+  "center": {
+    "en": "hi & bye",
+    "pt": "olá e tchau"
+  },
+  "centerArt": "ola-tchau-centro",
+  "intro": "Resumo da habilidade 1 da Unidade 1: cumprimentos ao longo do dia.",
+  "doodle": "good night = tchau!",
+  "branches": [
+    {
+      "label": "Oi",
+      "icon": "star",
+      "color": "folha",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "art": "ola-tchau-aceno",
+          "lines": [
+            {
+              "ref": "u1-hi"
+            },
+            {
+              "ref": "u1-hello"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "art": "ola-tchau-telefone",
+          "lines": [
+            {
+              "note": "Hi é mais informal."
+            },
+            {
+              "note": "Hello serve para tudo."
+            },
+            {
+              "note": "Hello também é o \"alô\" do telefone."
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "Hi, Ana!",
+              "pt": "Oi, Ana!"
+            },
+            {
+              "en": "Hello! Good morning!",
+              "pt": "Olá! Bom dia!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Ao longo do dia",
+      "icon": "clock",
+      "color": "manga",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "good morning",
+          "art": "ola-tchau-manha",
+          "lines": [
+            {
+              "ref": "u1-good-morning",
+              "hint": "até o meio-dia"
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "good afternoon",
+          "art": "ola-tchau-tarde",
+          "lines": [
+            {
+              "ref": "u1-good-afternoon",
+              "hint": "até umas 18h"
+            },
+            {
+              "note": "Afternoon = after (depois) + noon (meio-dia)."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "good evening",
+          "art": "ola-tchau-chegada",
+          "lines": [
+            {
+              "ref": "u1-good-evening",
+              "hint": "ao chegar, à noite"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Tchau",
+      "icon": "arrow",
+      "color": "anil",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "art": "ola-tchau-saindo",
+          "lines": [
+            {
+              "ref": "u1-bye"
+            },
+            {
+              "en": "Bye, João!",
+              "pt": "Tchau, João!"
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "ref": "u1-see-you-later"
+            },
+            {
+              "ref": "u1-see-you-tomorrow"
+            },
+            {
+              "en": "Bye, Ana! See you later!",
+              "pt": "Tchau, Ana! Até mais tarde!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Good night",
+      "icon": "home",
+      "color": "jabuticaba",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "art": "ola-tchau-dormir",
+          "lines": [
+            {
+              "ref": "u1-good-night"
+            },
+            {
+              "note": "Só para se despedir ou ir dormir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "title": "Chegando numa festa às 21h",
+          "art": "ola-tchau-festa",
+          "lines": [
+            {
+              "wrong": "Good night!",
+              "right": "Hi! / Good evening!",
+              "note": "Good night é tchau."
+            },
+            {
+              "note": "Good evening é mais formal que hi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Frases",
+      "icon": "chat",
+      "color": "maracuja",
+      "nodes": [
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "ref": "u1-s-good-morning-ana"
+            },
+            {
+              "ref": "u1-s-bye-see-you-later"
+            },
+            {
+              "ref": "u1-s-good-night-see-you-tomorrow"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "instruction": "Complete o cumprimento.",
+    "items": [
+      {
+        "prompt": "Good ___, Carla!",
+        "accepted": ["evening"],
+        "hintPt": "21h, chegando"
+      },
+      {
+        "prompt": "Good ___, Pedro!",
+        "accepted": ["morning"],
+        "hintPt": "7h da manhã"
+      },
+      {
+        "prompt": "Good ___, Mrs. Silva!",
+        "accepted": ["afternoon"],
+        "hintPt": "14h"
+      },
+      {
+        "prompt": "Good ___! Sleep well.",
+        "accepted": ["night"],
+        "hintPt": "indo dormir"
+      },
+      {
+        "prompt": "See you ___, Lucas!",
+        "accepted": ["tomorrow"],
+        "hintPt": "até amanhã"
+      }
+    ]
+  }
+}

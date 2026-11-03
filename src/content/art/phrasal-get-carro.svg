@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Carro com motorista sorrindo e seta entrando no banco de trás</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M10 54 Q26 32 58 62" stroke="#0F7A37" stroke-width="4.5"/><path d="M58.2 56.2 L60 64 L52.2 62.1" stroke="#0F7A37" stroke-width="4.5"/>
+<path d="M48 90 L64 50 Q68 42 78 42 L114 42 Q124 42 130 50 L150 90Z" fill="#B42318"/>
+<path d="M120 42 Q126 43 130 50 L150 90 L136 90Z" fill="#8A1A12" stroke="none"/>
+<path d="M48 90 L64 50 Q68 42 78 42 L114 42 Q124 42 130 50 L150 90Z"/>
+<path d="M60 88 L71 56 Q73 50 79 50 L87 50 L87 88Z" fill="#CFD1FF" stroke-width="3"/>
+<path d="M95 50 L114 50 Q120 50 123 56 L138 88 L95 88Z" fill="#CFD1FF" stroke-width="3"/>
+<path d="M66 80 L78 56" stroke="#fff" stroke-opacity=".8" stroke-width="3"/>
+<path d="M98 92 Q100 82 111 82 Q122 82 124 92Z" fill="#F5C518" stroke-width="3"/>
+<circle cx="111" cy="68" r="12" fill="#8D5A3B"/>
+<path d="M116.4 59.6 Q123.6 68 117 77.84 Q113.4 74 116.4 59.6Z" fill="#6E4229" stroke="none"/>
+<circle cx="111" cy="68" r="12"/>
+<path d="M99 66 Q98 54 111 54 Q124 54 123 66 Q118 59 111 60 Q103 60 99 66Z" fill="#3A2A2A" stroke-width="3"/>
+<circle cx="120" cy="56" r="5" fill="#3A2A2A" stroke-width="3"/>
+<circle cx="105" cy="69" r="3.0" fill="#FFFDF8" stroke-width="2"/><circle cx="105" cy="69" r="1.7" fill="#1B1C33" stroke="none"/><circle cx="115" cy="69" r="3.0" fill="#FFFDF8" stroke-width="2"/><circle cx="115" cy="69" r="1.7" fill="#1B1C33" stroke="none"/>
+<path d="M101 63 Q105 61 108 62.5 M112 62.5 Q115 61 119 63" stroke-width="2"/>
+<path d="M106 74.5 Q110 81 114 74.5Z" fill="#FFFDF8" stroke-width="2.2"/>
+<path d="M95 50 L114 50 Q120 50 123 56 L138 88 L95 88Z" stroke-width="3"/>
+<path d="M8 116 L8 100 Q10 90 26 88 L148 88 Q157 92 155 106 L155 116 Q155 124 147 124 L16 124 Q8 124 8 116Z" fill="#B42318"/>
+<path d="M10 112 L155 108 L155 116 Q155 124 147 124 L16 124 Q10 124 10 118Z" fill="#8A1A12" stroke="none"/>
+<path d="M62 122 L70 112 M78 122 L86 112 M94 122 L102 112" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M8 116 L8 100 Q10 90 26 88 L148 88 Q157 92 155 106 L155 116 Q155 124 147 124 L16 124 Q8 124 8 116Z"/>
+<path d="M91 88 L91 118 M56 92 L56 116" stroke-width="2.5"/>
+<path d="M70 98 L80 98 M100 98 L110 98" stroke-width="3"/>
+<path d="M16 98 Q20 93 34 93" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>
+<path d="M148 94 L155 96 L155 102 L148 102Z" fill="#F5C518" stroke-width="2.5"/>
+<rect x="8" y="94" width="6" height="9" rx="1.5" fill="#FF8A1F" stroke-width="2.5"/>
+<circle cx="40" cy="126" r="14" fill="#1B1C33"/><circle cx="40" cy="126" r="5.5" fill="#E8DFCB" stroke-width="2"/>
+<circle cx="124" cy="126" r="14" fill="#1B1C33"/><circle cx="124" cy="126" r="5.5" fill="#E8DFCB" stroke-width="2"/>
+</g></svg>
