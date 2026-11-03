@@ -13,7 +13,7 @@ Um arquivo por unidade: `src/content/units/u01-cumprimentos.json`, `u02-familia.
 
 ```
 Unit
- ├─ id, order, title, description, color (token), reviewLesson
+ ├─ id, order, level (A1…C2, obrigatório), title, description, color (token), reviewLesson
  └─ skills[4]
      ├─ id, title, icon (emoji), tip (dica de gramática)
      ├─ vocab[]      ← itens rastreados pela repetição espaçada

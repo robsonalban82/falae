@@ -41,10 +41,11 @@ npm run screenshots       # capturas para o revisor-ux
 
 Agentes em `.claude/agents/`, skills em `.claude/skills/`. **Ninguém aprova o próprio trabalho.**
 
-- Conteúdo: `autor-de-conteudo` → `revisor-linguistico` → correção → reconfirmação.
+- Conteúdo: `autor-de-conteudo` → `revisor-linguistico` → correção → reconfirmação. Mapas, bancos, coleções e plano: `revisor-linguistico` + `pedagogo` em paralelo; cenas SVG e visual de mapas/cartas/PDF: `designer-de-mapas`.
+- Mapas e cartas: conteúdo novo só em `src/content/` (mapas em `mindmaps/`, bancos em `banks/`, cenas em `art/`). `prototipo/` está congelado; guia das cenas em `docs/ESTILO-CENAS.md`.
 - Código: `desenvolvedor` → `revisor-de-codigo` + `qa-tester` (em paralelo) → correção → nova verificação.
 - Interface: `revisor-ux` com screenshots (390×844 e desktop) ao fim de cada fase visual.
-- **Modelo por agente** (economia de tokens): cada agente define `model:` no frontmatter — `opus` para `arquiteto` e `revisor-de-codigo` (decisões estruturais e portão de qualidade), `sonnet` para os demais. O agente principal pode sobrescrever com o parâmetro `model` ao delegar: `haiku` para tarefas mecânicas (buscas, renomear, rodar comandos e resumir saída, conferir checklist simples); `opus` quando a tarefa for difícil (bug sutil, refatoração grande, revisão de dados persistidos). Portões de revisão (`revisor-de-codigo`, `revisor-linguistico`, `revisor-ux`) nunca descem para `haiku`. Na dúvida, fique no padrão do agente.
+- **Modelo por agente** (economia de tokens): cada agente define `model:` no frontmatter — `opus` para `arquiteto` e `revisor-de-codigo` (decisões estruturais e portão de qualidade), `sonnet` para os demais (incluindo `designer-de-mapas` e `pedagogo`). **Sempre passe `model` explicitamente ao delegar** — o frontmatter sozinho não foi respeitado. O agente principal pode sobrescrever com o parâmetro `model` ao delegar: `haiku` para tarefas mecânicas (buscas, renomear, rodar comandos e resumir saída, conferir checklist simples); `opus` quando a tarefa for difícil (bug sutil, refatoração grande, revisão de dados persistidos). Portões de revisão (`revisor-de-codigo`, `revisor-linguistico`, `revisor-ux`) nunca descem para `haiku`. Na dúvida, fique no padrão do agente.
 - Severidades: **bloqueante / importante / sugestão**. Fase só avança com 0 bloqueantes e lint/typecheck/test/e2e verdes.
 - Cada fase tem plano em `docs/fases/FASE-N.md`; decisões em `docs/DECISOES.md`.
 
