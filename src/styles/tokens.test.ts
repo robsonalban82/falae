@@ -68,6 +68,31 @@ const pairs: [string, string, number, string][] = [
   ['success', 'surface', 3, 'weekly chart: goal ✓'],
 ];
 
+const branches = ['folha', 'jabuticaba', 'anil', 'manga', 'acerola', 'maracuja'] as const;
+// Notebook pairs (GRAMATICA-VISUAL §2 and §8). paper-line and paper-dot are texture: not checked.
+for (const n of branches) {
+  pairs.push(
+    [`map-${n}-on`, `map-${n}-fill`, 4.5, 'text on branch title fill'],
+    [`map-${n}-stroke`, 'paper', 3, 'branch stroke on paper'],
+    [`map-${n}-stroke`, 'paper-card', 3, 'branch stroke on card'],
+    [`map-${n}-key`, 'paper-card', 4.5, 'key text on card'],
+    [`map-${n}-key`, `map-${n}-tint`, 4.5, 'key text on tint'],
+    ['ink', `map-${n}-tint`, 4.5, 'ink on tint'],
+    ['ink-muted', `map-${n}-tint`, 4.5, 'translation on tint'],
+  );
+}
+pairs.push(
+  ['ink', 'paper', 4.5, 'ink on paper'],
+  ['ink', 'paper-card', 4.5, 'ink on card'],
+  ['ink-muted', 'paper', 4.5, 'translation on paper'],
+  ['ink-muted', 'paper-card', 4.5, 'translation on card'],
+  ['mark-wrong', 'paper-card', 4.5, 'wrong mark on card'],
+  ['mark-right', 'paper-card', 4.5, 'right mark on card'],
+  ['ink', 'marker', 4.5, 'title highlighter'],
+  ['ink', 'postit', 4.5, 'kraft post-it text'],
+  ['postit-edge', 'paper', 3, 'post-it edge'],
+);
+
 describe.each([
   ['claro', light],
   ['escuro', dark],

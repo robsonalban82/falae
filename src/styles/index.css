@@ -33,6 +33,47 @@
   --color-on-xp: var(--on-xp);
   --color-focus: var(--focus);
 
+  /* notebook */
+  --color-paper: var(--paper);
+  --color-paper-card: var(--paper-card);
+  --color-paper-line: var(--paper-line);
+  --color-paper-dot: var(--paper-dot);
+  --color-marker: var(--marker);
+  --color-postit: var(--postit);
+  --color-postit-edge: var(--postit-edge);
+  --color-mark-wrong: var(--mark-wrong);
+  --color-mark-right: var(--mark-right);
+  --color-map-folha-fill: var(--map-folha-fill);
+  --color-map-folha-on: var(--map-folha-on);
+  --color-map-folha-stroke: var(--map-folha-stroke);
+  --color-map-folha-key: var(--map-folha-key);
+  --color-map-folha-tint: var(--map-folha-tint);
+  --color-map-jabuticaba-fill: var(--map-jabuticaba-fill);
+  --color-map-jabuticaba-on: var(--map-jabuticaba-on);
+  --color-map-jabuticaba-stroke: var(--map-jabuticaba-stroke);
+  --color-map-jabuticaba-key: var(--map-jabuticaba-key);
+  --color-map-jabuticaba-tint: var(--map-jabuticaba-tint);
+  --color-map-anil-fill: var(--map-anil-fill);
+  --color-map-anil-on: var(--map-anil-on);
+  --color-map-anil-stroke: var(--map-anil-stroke);
+  --color-map-anil-key: var(--map-anil-key);
+  --color-map-anil-tint: var(--map-anil-tint);
+  --color-map-manga-fill: var(--map-manga-fill);
+  --color-map-manga-on: var(--map-manga-on);
+  --color-map-manga-stroke: var(--map-manga-stroke);
+  --color-map-manga-key: var(--map-manga-key);
+  --color-map-manga-tint: var(--map-manga-tint);
+  --color-map-acerola-fill: var(--map-acerola-fill);
+  --color-map-acerola-on: var(--map-acerola-on);
+  --color-map-acerola-stroke: var(--map-acerola-stroke);
+  --color-map-acerola-key: var(--map-acerola-key);
+  --color-map-acerola-tint: var(--map-acerola-tint);
+  --color-map-maracuja-fill: var(--map-maracuja-fill);
+  --color-map-maracuja-on: var(--map-maracuja-on);
+  --color-map-maracuja-stroke: var(--map-maracuja-stroke);
+  --color-map-maracuja-key: var(--map-maracuja-key);
+  --color-map-maracuja-tint: var(--map-maracuja-tint);
+
   --font-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
   --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
 

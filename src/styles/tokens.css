@@ -93,3 +93,87 @@
 .dark {
   --tuca-glow: rgb(255 255 255 / 0.35);
 }
+
+/* Notebook aesthetic (maps and cards). Values from prototipo/mapas-e-cartas/styles.css. */
+:root {
+  --paper: #fff8ef;
+  --paper-card: #fffdf8;
+  --paper-line: #e8dcca;
+  --paper-dot: #d6c6aa;
+  --marker: #f5c518;
+  --postit: #e8d2ad;
+  --postit-edge: #8c6a3f;
+  --mark-wrong: #8a1a12;
+  --mark-right: #0a5c29;
+  --map-folha-fill: #0f7a37;
+  --map-folha-on: #ffffff;
+  --map-folha-stroke: #0f7a37;
+  --map-folha-key: #0a5c29;
+  --map-folha-tint: #ddf5e3;
+  --map-jabuticaba-fill: #6f2a91;
+  --map-jabuticaba-on: #ffffff;
+  --map-jabuticaba-stroke: #6f2a91;
+  --map-jabuticaba-key: #5a2077;
+  --map-jabuticaba-tint: #f1e3f8;
+  --map-anil-fill: #3b3fb6;
+  --map-anil-on: #ffffff;
+  --map-anil-stroke: #3b3fb6;
+  --map-anil-key: #262987;
+  --map-anil-tint: #e3e4fb;
+  --map-manga-fill: #ff8a1f;
+  --map-manga-on: #1b1c33;
+  --map-manga-stroke: #a84e00;
+  --map-manga-key: #8f4300;
+  --map-manga-tint: #fff0d6;
+  --map-acerola-fill: #b42318;
+  --map-acerola-on: #ffffff;
+  --map-acerola-stroke: #b42318;
+  --map-acerola-key: #8a1a12;
+  --map-acerola-tint: #fde4e2;
+  --map-maracuja-fill: #f5c518;
+  --map-maracuja-on: #1b1c33;
+  --map-maracuja-stroke: #8a6a00;
+  --map-maracuja-key: #6e5200;
+  --map-maracuja-tint: #fff3b8;
+}
+.dark {
+  --paper: #14152b;
+  --paper-card: #1e2040;
+  --paper-line: #2a2c52;
+  --paper-dot: #3a3d68;
+  --marker: #856600;
+  --postit: #4a3a28;
+  --postit-edge: #d2b285;
+  --mark-wrong: #ff8f8a;
+  --mark-right: #5be08c;
+  --map-folha-fill: #5be08c;
+  --map-folha-on: #14152b;
+  --map-folha-stroke: #5be08c;
+  --map-folha-key: #5be08c;
+  --map-folha-tint: #1d3a39;
+  --map-jabuticaba-fill: #c58cf0;
+  --map-jabuticaba-on: #14152b;
+  --map-jabuticaba-stroke: #c58cf0;
+  --map-jabuticaba-key: #c58cf0;
+  --map-jabuticaba-tint: #352f5d;
+  --map-anil-fill: #9a9dff;
+  --map-anil-on: #14152b;
+  --map-anil-stroke: #9a9dff;
+  --map-anil-key: #9a9dff;
+  --map-anil-tint: #2e3163;
+  --map-manga-fill: #ff9a3d;
+  --map-manga-on: #14152b;
+  --map-manga-stroke: #ff9a3d;
+  --map-manga-key: #ff9a3d;
+  --map-manga-tint: #3c3044;
+  --map-acerola-fill: #ff8f8a;
+  --map-acerola-on: #14152b;
+  --map-acerola-stroke: #ff8f8a;
+  --map-acerola-key: #ff8f8a;
+  --map-acerola-tint: #3c2d4c;
+  --map-maracuja-fill: #f5c518;
+  --map-maracuja-on: #14152b;
+  --map-maracuja-stroke: #f5c518;
+  --map-maracuja-key: #f5c518;
+  --map-maracuja-tint: #39383a;
+}

@@ -812,3 +812,7 @@ As capas seguem o protótipo: Frases (`chat`, folha), Phrasal verbs (`swap`, jab
 - **`topic` da entrada precisa constar em `topics`** da coleção (regra mais rígida que o §2.6, aceita).
 - **Linha só com `right`** em `falsos-cognatos-1` (ramo 6, cartão 2): no port vira `{ en }`; o schema continua com as 4 formas do §2.5.
 - **Mínimo de 4 `ref`:** `mm-to-be`, `mm-numeros-e-horas` e `mm-in-on-at` ganham itens novos em `extra-a1`/`extra-a2` na etapa 10, revisados pelo `revisor-linguistico` e pelo `pedagogo`.
+
+### Ajustes da etapa 8 (2026-11-03)
+
+- `--marker` no tema escuro: `#856600` em vez do `#8a6a00` do protótipo, porque a tinta sobre ele dava 4,49:1 (mínimo 4,5). O valor de traço `#8a6a00` do maracujá no tema claro (§8) não muda.
