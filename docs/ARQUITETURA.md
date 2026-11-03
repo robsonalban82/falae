@@ -2,6 +2,7 @@
 
 > Status: **proposta (Fase 1)** — aguardando aprovação do usuário.
 > Dono: agente `arquiteto`. Qualquer mudança em modelo de dados persistido ou stack exige aprovação do usuário.
+> Extensão aprovada em 2026-11-03: **mapas mentais e cartas** (`docs/MAPAS-E-CARTAS.md`, fases em `docs/fases/mapas-e-cartas/`). Ela muda a navegação (Trilha · Mapas · Praticar · Perfil · Ajustes), o conteúdo (§4) e o banco (Dexie v2, backup v2). As seções deste documento são atualizadas à medida que cada fase é entregue; até lá, vale o que está aqui para o código existente.
 
 ## 1. Identidade (original)
 

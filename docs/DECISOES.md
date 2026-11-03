@@ -89,11 +89,32 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 ## ADR-015 — Mapas mentais e cartas sobre um SRS único (aprovado em 2026-11-03)
 
 **Contexto:** o recurso de mapas mentais e cartas (`docs/MAPAS-E-CARTAS.md`) poderia criar um segundo histórico de revisão e duplicar vocabulário em mapas e baralhos, além de exigir dados novos no IndexedDB e no backup.
-**Decisão:** itens estudáveis existem só nas unidades ou em bancos (`src/content/banks/`). Mapas, coleções, baralhos e plano apenas referenciam `itemId`. Carta = item = um `SrsCard` (cartas do aluno com `uc-`). As notas Errei/Difícil/Bom/Fácil viram `q` 1/3/4/5 no mesmo SM-2. "Meus erros" é derivado (`lapses ≥ 1 && reps < 2`). Dexie v2 só acrescenta tabelas (`userCards`, `mapProgress`, `planProgress`). `LessonResult` ganha os `kind` `cards`/`map` e `context?`, e `DailyStats` ganha `cards?`. O backup passa a `schemaVersion: 2` e lê v1. As sessões entram pelo `recordLessonResult` existente, e `AppliedCommit` ganha `xp?`.
-**Consequências:** um só algoritmo e um só caminho de escrita. Exige teste de migração v1→v2, aviso de `versionchange` para abas antigas e aviso no import de arquivo v1 que apagaria cartas do aluno. Exige aprovação do usuário (modelo persistido e formato de conteúdo).
+**Decisão:** itens estudáveis existem só nas unidades ou em bancos (`src/content/banks/`: frases, phrasal, expressões, falsos cognatos, extras A1/A2). Mapas (pelas linhas com `ref`), coleções, baralhos e plano apenas referenciam `itemId`. Carta = item = um `SrsCard` (cartas do aluno com `uc-`). As notas Errei/Difícil/Bom/Fácil viram `q` 1/3/4/5 no mesmo SM-2. "Meus erros" é derivado (`lapses ≥ 1 && reps < 2`). Dexie v2 só acrescenta tabelas (`userCards`, `mapProgress`, `planProgress`). `LessonResult` ganha os `kind` `cards`/`map` e `context?`, e `DailyStats` ganha `cards?`. O backup passa a `schemaVersion: 2` e lê v1. As sessões entram pelo `recordLessonResult` existente, e `AppliedCommit` ganha `xp?`.
+**Consequências:** um só algoritmo e um só caminho de escrita. Exige teste de migração v1→v2, aviso de `versionchange` para abas antigas e aviso no import de arquivo v1 que apagaria cartas do aluno. Exige aprovação do usuário (modelo persistido e formato de conteúdo). Plano de implementação em `docs/fases/mapas-e-cartas/FASE-2.md`; os ajustes de formato do conteúdo vindos do protótipo estão no ADR-017. A navegação aprovada é Trilha · Mapas · Praticar · Perfil · Ajustes, com as cartas dentro de Praticar.
 
 ## ADR-016 — PDF pela impressão do navegador, sem biblioteca (aprovado em 2026-11-03)
 
 **Contexto:** mapas, cartas (frente e verso) e apostilas precisam de PDF A4 offline. jsPDF/pdf-lib somam ~70–150 kB gzip, não desenham emojis e exigem fontes TTF embutidas.
-**Decisão:** rotas `/imprimir/*` com páginas paginadas pelo app (mm fixos, `break-after: page`, números e sumário calculados em `domain/print/`), `@page` com margem zero e `window.print()`. PNG por SVG → canvas com fontes embutidas. Aceite no CI por `page.pdf()` do Playwright.
+**Decisão:** rotas `/imprimir/*` com páginas paginadas pelo app (mm fixos, `break-after: page`, números e sumário calculados em `domain/print/`), `@page` com margem zero e `window.print()`. PNG por SVG → canvas com fontes embutidas (retirado em 2026-11-03, ver abaixo). Aceite no CI por `page.pdf()` do Playwright.
 **Consequências:** 0 kB de dependência e texto vetorial. Depende de o usuário imprimir a 100%. A impressão no PWA do iOS precisa de teste em aparelho; se falhar, jsPDF lazy na rota de impressão (nova aprovação).
+**Layouts aprovados no protótipo** (`prototipo/mapas-e-cartas/print.js`, 2026-11-03), que viram a especificação da Fase 7:
+
+- **Mapa**: A4 paisagem, 1 a 2 páginas, corpo de 10,5 pt a ≥ 10 pt (mínimo 9 pt), com o teste rápido na página seguinte e o gabarito de cabeça para baixo.
+- **Cartas**: A4 retrato, 8 por folha (95 × 67 mm), verso espelhado para a borda longa, alinhamento ≤ 0,1 mm. A fonte do verso nunca diminui: um verso que não cabe é erro de conteúdo.
+- **Margem segura** de 8 mm em tudo.
+
+As checagens do `pdf.mjs` viram testes `page.pdf()`. **Revisão de 2026-11-03:** a exportação PNG saiu do escopo junto com a vista radial (`MAPAS-E-CARTAS.md` §6.2); continua só o PDF.
+
+## ADR-017 — Protótipo aprovado como ponto de partida do conteúdo (aprovado em 2026-11-03)
+
+**Contexto:** o usuário aprovou o protótipo `prototipo/mapas-e-cartas/` (6 mapas, 60 cartas, 65 cenas SVG e layouts de impressão), cujo formato difere do plano original em quatro pontos. O mapa é ramo → cartão → linha, e não uma árvore de nós com `ref`. As cartas têm nível por carta. As frases têm exemplo e emoji. E há uma coleção de falsos cognatos. Sem ajustar o formato, o port perderia conteúdo aprovado ou exigiria reescrevê-lo.
+**Decisão:**
+
+- `mindMapSchema` segue a estrutura do protótipo, e as linhas podem ser `{ ref, hint? }`, que é o que liga o mapa ao SRS (no mínimo 4 `ref` por mapa). O teste do mapa vira `quiz`, com `accepted` em padrões ADR-004.
+- Item de banco aceita `level?`. Frase aceita `example?` e `emoji?`.
+- Coleção `falsos-cognatos` com banco próprio (`fc-`).
+- As cenas ficam em `src/content/art/*.svg`, carregadas como arquivos (URL com hash, `<img>` decorativo) só nas rotas lazy, com precache pelo SW.
+- O port é feito por script descartável. Depois dele, `src/content/` é a fonte da verdade e `prototipo/` fica congelado.
+- A vista do app é só a árvore vertical do protótipo. A vista radial com pan/zoom saiu do escopo (decisão 9 revista pelo usuário em 2026-11-03), e com ela o `d3-hierarchy` como plano B e a exportação PNG.
+
+**Consequências:** o conteúdo aprovado entra quase sem edição, e a revisão linguística cobre só o que mudou. As linhas trocadas por `ref` passam a exibir o texto do item, e o relatório do port lista cada diferença. Os volumes da Fase 5 caem (cerca de 27 mapas e ~210 itens restantes), mas entra o custo das cenas (~10 por mapa). As cartas continuam com emoji; quando o usuário desenhar as ilustrações, entra um campo `art?` nos itens, que é nova mudança de formato. Aprovado pelo usuário em 2026-11-03 (formato do conteúdo e corte da vista radial).
