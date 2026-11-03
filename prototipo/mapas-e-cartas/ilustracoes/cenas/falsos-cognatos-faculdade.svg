@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Prédio de faculdade com colunas e capelo de formatura</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="26" y="66" width="108" height="64" fill="#FFE3B3"/>
+<path d="M110 68 L132 68 L132 128 L110 128Z" fill="#F2C27A" stroke="none"/>
+<rect x="26" y="66" width="108" height="64"/>
+<path d="M66 130 L66 102 Q80 88 94 102 L94 130Z" fill="#3B3FB6"/>
+<path d="M80 95 Q90 96 94 102 L94 130 L84 130Z" fill="#2B2F8A" stroke="none"/>
+<path d="M80 94 L80 130" stroke-width="2.5"/>
+<path d="M66 130 L66 102 Q80 88 94 102 L94 130Z"/>
+<rect x="30" y="68" width="12" height="62" fill="#FFFDF8"/><path d="M37 70 L42 70 L42 128 L37 128Z" fill="#E8DFCB" stroke="none"/><rect x="30" y="68" width="12" height="62"/>
+<rect x="48" y="68" width="12" height="62" fill="#FFFDF8"/><path d="M55 70 L60 70 L60 128 L55 128Z" fill="#E8DFCB" stroke="none"/><rect x="48" y="68" width="12" height="62"/>
+<rect x="100" y="68" width="12" height="62" fill="#FFFDF8"/><path d="M107 70 L112 70 L112 128 L107 128Z" fill="#E8DFCB" stroke="none"/><rect x="100" y="68" width="12" height="62"/>
+<rect x="118" y="68" width="12" height="62" fill="#FFFDF8"/><path d="M125 70 L130 70 L130 128 L125 128Z" fill="#E8DFCB" stroke="none"/><rect x="118" y="68" width="12" height="62"/>
+<rect x="22" y="58" width="116" height="11" rx="2" fill="#FFFDF8"/>
+<rect x="22" y="58" width="116" height="11" rx="2"/>
+<path d="M18 59 L80 28 L142 59Z" fill="#3B3FB6"/>
+<path d="M80 28 L142 59 L98 59Z" fill="#2B2F8A" stroke="none"/>
+<path d="M108 48 L114 42 M116 54 L122 48 M126 56 L130 52" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M18 59 L80 28 L142 59Z"/>
+<path d="M34 53 L66 37" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<circle cx="80" cy="47" r="6.5" fill="#CFD1FF" stroke-width="2.5"/>
+<rect x="18" y="130" width="124" height="8" rx="2" fill="#FFFDF8"/>
+<rect x="12" y="138" width="136" height="8" rx="2" fill="#E8DFCB"/>
+<path d="M60 22 L60 15 Q80 22 100 15 L100 22 Q80 30 60 22Z" fill="#2B2F8A" stroke-width="3"/>
+<path d="M50 12 L80 2 L110 12 L80 22Z" fill="#3B3FB6" stroke-width="3"/>
+<path d="M80 12 L104 16 L104 28" stroke="#F5C518" stroke-width="2.5"/>
+<circle cx="104" cy="30" r="3" fill="#F5C518" stroke-width="2"/>
+<path d="M10 140 L10 124" stroke="#7A4A2A" stroke-width="5"/><circle cx="11" cy="116" r="9" fill="#0F7A37"/>
+<path d="M150 140 L150 124" stroke="#7A4A2A" stroke-width="5"/><circle cx="149" cy="116" r="9" fill="#0F7A37"/>
+</g></svg>

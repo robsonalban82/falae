@@ -1,0 +1,277 @@
+{
+  "id": "skill-u1-sk1",
+  "title": "Olá e tchau",
+  "level": "A1",
+  "collection": "mapas",
+  "figureStyle": "art",
+  "icon": "chat",
+  "center": {
+    "en": "hi & bye",
+    "pt": "olá e tchau"
+  },
+  "centerFigure": "👋🚶",
+  "centerArt": "ola-tchau-centro",
+  "intro": "Resumo da habilidade 1 da Unidade 1: cumprimentos ao longo do dia.",
+  "branches": [
+    {
+      "label": "Oi",
+      "icon": "star",
+      "color": "folha",
+      "figure": "👋",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "en": "**hi**",
+              "pt": "oi",
+              "emoji": "👋"
+            },
+            {
+              "en": "**hello**",
+              "pt": "olá, oi",
+              "emoji": "😃"
+            }
+          ],
+          "art": "ola-tchau-aceno"
+        },
+        {
+          "tag": "regra",
+          "lines": [
+            {
+              "note": "Hi é mais informal."
+            },
+            {
+              "note": "Hello serve para tudo."
+            },
+            {
+              "note": "Hello também é o \"alô\" do telefone."
+            }
+          ],
+          "figure": "📞",
+          "art": "ola-tchau-telefone"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "Hi, Ana!",
+              "pt": "Oi, Ana!",
+              "emoji": "👩"
+            },
+            {
+              "en": "Hello! Good morning!",
+              "pt": "Olá! Bom dia!",
+              "emoji": "☕"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Ao longo do dia",
+      "icon": "clock",
+      "color": "manga",
+      "figure": "🌅🌆",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "good morning",
+          "lines": [
+            {
+              "en": "**good morning**",
+              "pt": "bom dia (até o meio-dia)",
+              "emoji": "🌅"
+            }
+          ],
+          "art": "ola-tchau-manha"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "good afternoon",
+          "lines": [
+            {
+              "en": "**good afternoon**",
+              "pt": "boa tarde (do meio-dia até umas 18h)",
+              "emoji": "☀️"
+            },
+            {
+              "en": "Good afternoon, João!",
+              "pt": "Boa tarde, João!",
+              "emoji": "👨"
+            },
+            {
+              "note": "Afternoon = after (depois) + noon (meio-dia)."
+            }
+          ],
+          "art": "ola-tchau-tarde"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "good evening",
+          "lines": [
+            {
+              "en": "**good evening**",
+              "pt": "boa noite (ao chegar, à noite)",
+              "emoji": "🌆"
+            },
+            {
+              "en": "Good evening, Thiago!",
+              "pt": "Boa noite, Thiago!",
+              "emoji": "🧑"
+            }
+          ],
+          "art": "ola-tchau-chegada"
+        }
+      ]
+    },
+    {
+      "label": "Tchau",
+      "icon": "arrow",
+      "color": "anil",
+      "figure": "🚶",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "en": "**bye**",
+              "pt": "tchau",
+              "emoji": "🚶"
+            },
+            {
+              "en": "Bye, João!",
+              "pt": "Tchau, João!"
+            }
+          ],
+          "art": "ola-tchau-saindo"
+        },
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "en": "**see you later**",
+              "pt": "até mais tarde, até logo",
+              "emoji": "⏳"
+            },
+            {
+              "en": "**see you tomorrow**",
+              "pt": "até amanhã",
+              "emoji": "📅"
+            },
+            {
+              "en": "Bye, Ana! See you later!",
+              "pt": "Tchau, Ana! Até mais tarde!",
+              "emoji": "😉"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Good night",
+      "icon": "home",
+      "color": "jabuticaba",
+      "figure": "🌙",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "en": "**good night**",
+              "pt": "boa noite",
+              "emoji": "🌙"
+            },
+            {
+              "note": "Só para se despedir ou ir dormir."
+            }
+          ],
+          "art": "ola-tchau-dormir"
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "figure": "⚠️",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "title": "Chegando numa festa às 21h",
+          "lines": [
+            {
+              "wrong": "Good night!",
+              "right": "Hi! / Good evening!",
+              "note": "Good night é tchau."
+            },
+            {
+              "note": "Good evening é mais formal que hi."
+            }
+          ],
+          "figure": "🎉🌙",
+          "art": "ola-tchau-festa"
+        }
+      ]
+    },
+    {
+      "label": "Frases",
+      "icon": "chat",
+      "color": "maracuja",
+      "figure": "💬",
+      "nodes": [
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "Good morning, Ana!",
+              "pt": "Bom dia, Ana!",
+              "emoji": "🌄"
+            },
+            {
+              "en": "Bye! See you later!",
+              "pt": "Tchau! Até mais tarde!",
+              "emoji": "👋"
+            },
+            {
+              "en": "Good night! See you tomorrow.",
+              "pt": "Boa noite! Até amanhã.",
+              "emoji": "🛌"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "doodle": "good night = tchau!",
+  "exercise": {
+    "instruction": "Complete o cumprimento.",
+    "items": [
+      {
+        "prompt": "Good ___, Carla!",
+        "answer": "evening",
+        "hintPt": "21h, chegando"
+      },
+      {
+        "prompt": "Good ___, Pedro!",
+        "answer": "morning",
+        "hintPt": "7h da manhã"
+      },
+      {
+        "prompt": "Good ___, Mrs. Silva!",
+        "answer": "afternoon",
+        "hintPt": "14h"
+      },
+      {
+        "prompt": "Good ___! Sleep well.",
+        "answer": "night",
+        "hintPt": "indo dormir"
+      },
+      {
+        "prompt": "See you ___, Lucas!",
+        "answer": "tomorrow",
+        "hintPt": "até amanhã"
+      }
+    ]
+  }
+}

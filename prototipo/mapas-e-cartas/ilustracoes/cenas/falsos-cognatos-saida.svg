@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pessoa saindo pela porta de saída, sob a placa verde de seta</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="50" y="34" width="70" height="112" rx="3" fill="#7A4A2A"/>
+<rect x="57" y="41" width="56" height="105" fill="#CFD1FF" stroke-width="2.5"/>
+<circle cx="96" cy="64" r="9" fill="#F5C518" stroke-width="2.5"/>
+<path d="M57 118 Q78 104 113 112 L113 146 L57 146Z" fill="#5BE08C" stroke-width="2.5"/>
+<path d="M90 120 Q96 116 100 124 L104 146 L84 146Z" fill="#0F7A37" stroke="none" fill-opacity=".35"/>
+<rect x="57" y="41" width="56" height="105" stroke-width="2.5"/>
+<path d="M80 118 L76 140" stroke-width="10"/><path d="M80 118 L76 140" stroke="#2B2F8A" stroke-width="5"/>
+<path d="M90 118 L96 136" stroke-width="10"/><path d="M90 118 L96 136" stroke="#2B2F8A" stroke-width="5"/>
+<path d="M70 142 Q70 138 76 138 Q82 138 82 142Z" fill="#3A2A2A" stroke-width="2.5"/>
+<path d="M92 138 Q93 133 98 134 Q103 136 101 140Z" fill="#3A2A2A" stroke-width="2.5"/>
+<path d="M75 100 Q68 110 69 119" stroke-width="10"/><path d="M75 100 Q68 110 69 119" stroke="#B42318" stroke-width="5"/>
+<circle cx="69" cy="121" r="4" fill="#D9965F" stroke-width="2.5"/>
+<path d="M95 100 Q102 108 103 116" stroke-width="10"/><path d="M95 100 Q102 108 103 116" stroke="#8A1A12" stroke-width="5"/>
+<circle cx="103" cy="118" r="4" fill="#D9965F" stroke-width="2.5"/>
+<path d="M73 122 L74 102 Q75 94 85 94 Q95 94 96 102 L97 122Z" fill="#B42318" stroke-width="3"/>
+<path d="M88 95 Q95 96 96 104 L97 122 L88 122Z" fill="#8A1A12" stroke="none"/>
+<path d="M90 106 L95 101 M90 116 L96 110" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M73 122 L74 102 Q75 94 85 94 Q95 94 96 102 L97 122Z" stroke-width="3"/>
+<path d="M78 112 L78 104 Q78 99 82 98" stroke="#fff" stroke-opacity=".6" stroke-width="2.5"/>
+<circle cx="75" cy="85" r="3" fill="#D9965F" stroke-width="2.5"/><circle cx="95" cy="85" r="3" fill="#D9965F" stroke-width="2.5"/>
+<circle cx="85" cy="83" r="11" fill="#3A2A2A" stroke-width="3"/>
+<path d="M78 78 Q81 74 86 74" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+<path d="M57 41 L28 32 L28 154 L57 146Z" fill="#FF8A1F"/>
+<path d="M28 32 L40 36 L40 151 L28 154Z" fill="#D96A00" stroke="none"/>
+<path d="M30 52 L38 46 M30 72 L38 66 M30 92 L38 86 M30 112 L38 106" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M57 41 L28 32 L28 154 L57 146Z"/>
+<circle cx="35" cy="96" r="3.5" fill="#F5C518" stroke-width="2.5"/>
+<path d="M50 54 L50 44" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M85 34 L85 28" stroke-width="2.5"/>
+<rect x="60" y="6" width="50" height="24" rx="4" fill="#0F7A37"/>
+<path d="M94 8 L106 8 Q108 8 108 12 L108 26 Q108 28 104 28 L94 28Z" fill="#0A5A28" stroke="none"/>
+<rect x="60" y="6" width="50" height="24" rx="4"/>
+<path d="M70 18 L96 18 M88 11 L96 18 L88 25" stroke="#fff" stroke-width="3.5"/>
+<path d="M126 56 L134 50 M126 70 L136 70 M126 84 L134 90" stroke="#F5C518" stroke-width="3"/>
+</g></svg>

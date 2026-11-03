@@ -1,0 +1,341 @@
+{
+  "id": "falsos-cognatos-1",
+  "title": "Falsos cognatos (1)",
+  "level": "A2",
+  "figureStyle": "art",
+  "collection": "mapas",
+  "icon": "swap",
+  "center": {
+    "en": "false friends",
+    "pt": "falsos cognatos"
+  },
+  "centerFigure": "🤝🎭",
+  "centerArt": "falsos-cognatos-centro",
+  "intro": "Parecem palavras do português, mas querem dizer outra coisa. Estes 10 aparecem toda hora.",
+  "branches": [
+    {
+      "label": "Família e casa",
+      "icon": "home",
+      "color": "folha",
+      "figure": "🏡",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "parents",
+          "lines": [
+            {
+              "en": "**parents**",
+              "pt": "pais (pai e mãe)",
+              "emoji": "👫"
+            },
+            {
+              "note": "Parentes = relatives."
+            },
+            {
+              "en": "My **parents** live in Bahia.",
+              "pt": "Meus pais moram na Bahia.",
+              "emoji": "🏡"
+            }
+          ],
+          "art": "falsos-cognatos-pais"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "lunch",
+          "lines": [
+            {
+              "en": "**lunch**",
+              "pt": "almoço",
+              "emoji": "🍛"
+            },
+            {
+              "note": "Lanche = snack."
+            },
+            {
+              "en": "Let's have **lunch** at noon.",
+              "pt": "Vamos almoçar ao meio-dia.",
+              "emoji": "🕛"
+            }
+          ],
+          "art": "falsos-cognatos-almoco"
+        }
+      ]
+    },
+    {
+      "label": "Estudos",
+      "icon": "book",
+      "color": "anil",
+      "figure": "🎓",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "college",
+          "lines": [
+            {
+              "en": "**college**",
+              "pt": "faculdade",
+              "emoji": "🎓"
+            },
+            {
+              "note": "Colégio = school / high school."
+            },
+            {
+              "en": "My sister is in **college**.",
+              "pt": "Minha irmã faz faculdade.",
+              "emoji": "🏛️"
+            }
+          ],
+          "art": "falsos-cognatos-faculdade"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "library",
+          "lines": [
+            {
+              "en": "**library**",
+              "pt": "biblioteca",
+              "emoji": "📚"
+            },
+            {
+              "note": "Livraria = bookstore."
+            },
+            {
+              "en": "I study at the **library**.",
+              "pt": "Eu estudo na biblioteca.",
+              "emoji": "🤫"
+            }
+          ],
+          "art": "falsos-cognatos-biblioteca"
+        }
+      ]
+    },
+    {
+      "label": "Placas",
+      "icon": "pin",
+      "color": "manga",
+      "figure": "🚪",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "push",
+          "lines": [
+            {
+              "en": "**push**",
+              "pt": "empurre, empurrar",
+              "emoji": "✋"
+            },
+            {
+              "note": "Parece \"puxe\", mas puxe = pull."
+            },
+            {
+              "en": "**Push** the door.",
+              "pt": "Empurre a porta.",
+              "emoji": "🚪"
+            }
+          ],
+          "art": "falsos-cognatos-empurrar"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "exit",
+          "lines": [
+            {
+              "en": "**exit**",
+              "pt": "saída",
+              "emoji": "🏃"
+            },
+            {
+              "note": "Êxito = success."
+            },
+            {
+              "en": "Where's the **exit**?",
+              "pt": "Onde fica a saída?",
+              "emoji": "🗺️"
+            }
+          ],
+          "art": "falsos-cognatos-saida"
+        }
+      ]
+    },
+    {
+      "label": "Verbos",
+      "icon": "swap",
+      "color": "jabuticaba",
+      "figure": "🎭",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "pretend",
+          "lines": [
+            {
+              "en": "**pretend**",
+              "pt": "fingir",
+              "emoji": "🎭"
+            },
+            {
+              "note": "Pretender = plan to / intend to."
+            },
+            {
+              "en": "He's **pretending** to be asleep.",
+              "pt": "Ele está fingindo que está dormindo.",
+              "emoji": "😴"
+            }
+          ],
+          "art": "falsos-cognatos-fingir"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "realize",
+          "lines": [
+            {
+              "en": "**realize**",
+              "pt": "perceber, se dar conta",
+              "emoji": "💡"
+            },
+            {
+              "note": "Realizar um sonho = make a dream come true."
+            },
+            {
+              "en": "I **realized** I was late.",
+              "pt": "Percebi que estava atrasado(a).",
+              "emoji": "😳"
+            }
+          ],
+          "art": "falsos-cognatos-perceber"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "attend",
+          "lines": [
+            {
+              "en": "**attend**",
+              "pt": "ir a, frequentar (aula, evento)",
+              "emoji": "🎟️"
+            },
+            {
+              "note": "Atender o telefone = answer."
+            },
+            {
+              "en": "She **attended** the meeting.",
+              "pt": "Ela foi à reunião.",
+              "emoji": "💼"
+            },
+            {
+              "note": "É formal. No dia a dia: go to the meeting."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Na conversa",
+      "icon": "chat",
+      "color": "maracuja",
+      "figure": "💬",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "actually",
+          "lines": [
+            {
+              "en": "**actually**",
+              "pt": "na verdade",
+              "emoji": "☝️"
+            },
+            {
+              "note": "Atualmente = currently, nowadays."
+            },
+            {
+              "en": "**Actually**, I'm from Recife.",
+              "pt": "Na verdade, eu sou de Recife.",
+              "emoji": "🏖️"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "figure": "⚠️",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I pretend to travel in July.",
+              "right": "I plan to travel in July.",
+              "note": "Pretend é fingir!"
+            }
+          ],
+          "figure": "✈️",
+          "art": "falsos-cognatos-viagem-plano"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "Actually, I live in Rio.",
+              "right": "I currently live in Rio."
+            },
+            {
+              "right": "These days, I live in Rio."
+            },
+            {
+              "note": "Actually = na verdade."
+            },
+            {
+              "note": "Atualmente = currently, these days."
+            }
+          ],
+          "title": "Para dizer \"Atualmente, moro no Rio\"",
+          "figure": "🏙️"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "Can you attend the phone?",
+              "right": "Can you answer the phone?",
+              "note": "Atender o telefone = answer."
+            }
+          ],
+          "figure": "📞",
+          "art": "falsos-cognatos-atender-telefone"
+        }
+      ]
+    }
+  ],
+  "doodle": "parece, mas não é!",
+  "exercise": {
+    "instruction": "Complete com a palavra em inglês.",
+    "items": [
+      {
+        "prompt": "My ___ are from Minas.",
+        "answer": "parents",
+        "hintPt": "pai e mãe"
+      },
+      {
+        "prompt": "The ___ opens at 9 a.m.",
+        "answer": "library",
+        "hintPt": "biblioteca"
+      },
+      {
+        "prompt": "Don't pull the door. ___ it!",
+        "answer": "Push",
+        "hintPt": "empurre"
+      },
+      {
+        "prompt": "She's ___ to be sick.",
+        "answer": "pretending",
+        "hintPt": "fingindo"
+      },
+      {
+        "prompt": "___, my name is Lucas, not Luiz.",
+        "answer": "Actually|In fact",
+        "hintPt": "na verdade"
+      }
+    ]
+  }
+}

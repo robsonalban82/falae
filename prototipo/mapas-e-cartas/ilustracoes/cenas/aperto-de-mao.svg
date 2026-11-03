@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Aperto de mão: estou de acordo</title><path d="M14 54 Q16 14 62 13 Q114 10 142 30 Q160 52 157 96 Q160 146 82 151 Q0 150 2 100 Q2 72 14 54Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M10 80 Q22 74 38 76 L42 120 Q26 124 13 122Z" fill="#3B3FB6"/>
+<path d="M12 108 Q26 111 41 107 L42 120 Q26 124 13 122Z" fill="#2B2F8A" stroke="none"/>
+<path d="M14 112 L18 118 M22 112 L26 118 M30 111 L34 117" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M10 80 Q22 74 38 76 L42 120 Q26 124 13 122Z"/>
+<path d="M15 84 Q23 80 30 80" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M38 76 L46 77 L49 119 L42 120Z" fill="#FFFDF8" stroke-width="3"/>
+<path d="M47 80 Q62 76 78 78 L100 80 Q110 82 108 96 L106 110 Q100 118 88 118 L49 118Z" fill="#D9965F"/>
+<path d="M50 110 L104 110 L106 108 Q104 118 88 118 L49 118Z" fill="#B87440" stroke="none"/>
+<path d="M47 80 Q62 76 78 78 L100 80 Q110 82 108 96 L106 110 Q100 118 88 118 L49 118Z"/>
+<path d="M54 92 Q56 100 56 106" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M150 78 Q138 72 122 74 L118 118 Q134 122 147 122Z" fill="#FF8A1F"/>
+<path d="M119 106 Q134 110 148.5 106 L147 122 Q134 122 118 118Z" fill="#D96A00" stroke="none"/>
+<path d="M126 111 L130 117 M134 111 L138 117 M141 110 L144 115" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M150 78 Q138 72 122 74 L118 118 Q134 122 147 122Z"/>
+<path d="M134 79 Q141 79 145 82" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M122 74 L114 74 L111 117 L118 118Z" fill="#FFFDF8" stroke-width="3"/>
+<rect x="76" y="81" width="30" height="10" rx="5" fill="#8D5A3B" stroke-width="3"/>
+<rect x="72" y="90" width="34" height="10" rx="5" fill="#8D5A3B" stroke-width="3"/>
+<rect x="74" y="99" width="32" height="10" rx="5" fill="#8D5A3B" stroke-width="3"/>
+<rect x="80" y="108" width="26" height="9" rx="4.5" fill="#6E4229" stroke-width="3"/>
+<path d="M113 74 L100 73 Q92 74 93 82 L93 110 Q95 118 104 118 L112 118Z" fill="#8D5A3B"/>
+<path d="M104 76 L113 75 L111 118 L104 118 Q100 104 104 76Z" fill="#6E4229" stroke="none"/>
+<path d="M113 74 L100 73 Q92 74 93 82 L93 110 Q95 118 104 118 L112 118Z"/>
+<path d="M56 86 Q58 72 74 70 L96 69 Q103 70 103 75 Q102 80 95 80 L70 83Z" fill="#D9965F"/>
+<path d="M76 79 L95 79 Q101 78 102 76 Q102 81 95 81 L76 81Z" fill="#B87440" stroke="none"/>
+<path d="M56 86 Q58 72 74 70 L96 69 Q103 70 103 75 Q102 80 95 80 L70 83Z"/>
+<path d="M92 71 Q98 71 98 76" stroke-width="2"/>
+<circle cx="80" cy="36" r="16" fill="#0F7A37"/>
+<path d="M89 24 Q100 38 88 50 Q96 38 89 24Z" fill="#0A5A28" stroke="none"/>
+<circle cx="80" cy="36" r="16"/>
+<path d="M71 37 L78 44 L90 29" stroke="#FFFDF8" stroke-width="4.5"/>
+<path d="M56 30 L48 26 M104 30 L112 26 M60 46 L52 50 M100 46 L108 50" stroke="#F5C518" stroke-width="3.5"/>
+</g></svg>

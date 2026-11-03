@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Calendário com um dia marcado: on Monday</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="26" y="36" width="108" height="102" rx="6" fill="#FFFDF8"/>
+<path d="M118 62 L134 62 L134 132 Q134 138 128 138 L118 138Z" fill="#E8DFCB" stroke="none"/>
+<path d="M26 62 L26 42 Q26 36 32 36 L128 36 Q134 36 134 42 L134 62Z" fill="#3B3FB6"/>
+<path d="M112 37 L128 37 Q133 37 133 42 L133 61 L108 61Z" fill="#2B2F8A" stroke="none"/>
+<path d="M116 42 L122 48 M124 44 L130 50" stroke-width="1.6" stroke-opacity=".5"/>
+<rect x="26" y="36" width="108" height="102" rx="6"/>
+<path d="M26 62 L134 62"/>
+<path d="M62 49 L98 49" stroke="#fff" stroke-opacity=".85" stroke-width="4"/>
+<path d="M32 44 L32 54" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M52 26 L52 42 M108 26 L108 42" stroke-width="5"/>
+<path d="M62 62 L62 138 M98 62 L98 138 M26 87 L134 87 M26 112 L134 112" stroke-width="2"/>
+<path d="M68 70 L76 70 M104 70 L112 70 M32 95 L40 95 M68 95 L76 95 M104 95 L112 95 M32 120 L40 120 M68 120 L76 120" stroke-width="2.5" stroke-opacity=".5"/>
+<path d="M29 76 Q28 63 45 63 Q63 63 62 75 Q62 89 44 88 Q28 88 29 76Z" stroke="#B42318" stroke-width="5"/>
+<path d="M120 134 L124 124 L146 102 L152 108 L130 130Z" fill="#FF8A1F" stroke-width="3"/>
+<path d="M120 134 L124 124 L130 130Z" fill="#FFE3B3" stroke-width="2.5"/>
+<path d="M120 134 L122 129" stroke-width="3"/>
+</g></svg>

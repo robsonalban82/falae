@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img"><title>Lua crescente</title><defs><filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><feMorphology in="SourceAlpha" operator="dilate" radius="1.3" result="d"/><feFlood flood-color="#fff"/><feComposite in2="d" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#halo)" fill="none" stroke="#1B1C33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M38 7 C22 9 10 21 10 36 C10 50 21 59 35 59 C44 59 52 54 56 47 C42 50 28 42 28 29 C28 20 32 12 38 7 Z" fill="#F5C518"/>
+<path d="M50 14 L52 20 L58 22 L52 24 L50 30 L48 24 L42 22 L48 20 Z" fill="#FFFDF8" stroke-width="2.5"/>
+<circle cx="45" cy="42" r="1.2" fill="#1B1C33" stroke-width="1.5"/>
+<path d="M16 30 C17 24 21 19 26 15.5 L27.5 18 C23.5 21 20.5 25 19 31 Z" fill="#fff" fill-opacity=".55" stroke="none"/></g></svg>

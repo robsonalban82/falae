@@ -1,0 +1,965 @@
+/* Print layouts (used by print.html + pdf.mjs). Sizes in mm/pt. Light paper only. */
+
+html.print,
+html.print body {
+  background: #ffffff;
+  background-image: none;
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+  overflow: visible;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+html.print {
+  /* ink-friendly paper: white page, warm cards */
+  --bg: #ffffff;
+}
+@media screen {
+  html.print body {
+    background: #8c7c66;
+    padding: 10mm 0;
+  }
+  .sheet {
+    margin: 0 auto 10mm;
+    box-shadow: 0 2mm 6mm rgb(0 0 0 / 0.35);
+  }
+}
+
+.sheet {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  break-after: page;
+  page-break-after: always;
+  font-size: var(--fs, 10.5pt);
+  line-height: 1.32;
+}
+.sheet:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+.sheet.land {
+  width: 297mm;
+  height: 210mm;
+  /* nothing closer than 8 mm to the edge (printers clip there); footer sits in the bottom band */
+  padding: 8mm 9mm 13mm;
+}
+.sheet.port {
+  width: 210mm;
+  height: 297mm;
+}
+
+.pfoot {
+  position: absolute;
+  left: 10mm;
+  right: 10mm;
+  bottom: 8mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8pt;
+  color: var(--ink-muted);
+}
+.pfoot .num {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 9pt;
+  color: var(--ink);
+}
+
+/* ---------- Covers ---------- */
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22mm 26mm !important;
+}
+.cover-page > * {
+  position: relative;
+}
+.cover-page > .ruled {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.cover-page .kicker {
+  font-family: var(--font-hand);
+  font-size: 18pt;
+  color: var(--ink-muted);
+}
+.cover-page h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 40pt;
+  line-height: 1.1;
+  margin-top: 2mm;
+}
+.cover-page .lead {
+  margin-top: 6mm;
+  max-width: 150mm;
+  font-size: 13pt;
+  color: var(--ink-muted);
+}
+.cover-page .levels {
+  display: flex;
+  gap: 3mm;
+  margin-top: 8mm;
+}
+.cover-page .seal {
+  width: 14mm;
+  height: 14mm;
+  font-size: 12pt;
+}
+.cover-page .howto {
+  margin-top: 10mm;
+  max-width: 190mm;
+  padding: 5mm 6mm;
+  border: 0.5mm solid var(--ink);
+  border-radius: 2mm;
+  background: var(--card);
+  font-size: 11pt;
+}
+.cover-page .howto h2 {
+  font-size: 13pt;
+  margin-bottom: 2mm;
+}
+.cover-page .howto ol {
+  margin: 0;
+  padding-left: 5mm;
+}
+.cover-page .howto li + li {
+  margin-top: 1mm;
+}
+.cover-page > .doodle-pencil {
+  position: absolute;
+  right: 22mm;
+  top: 20mm;
+  width: 42mm;
+}
+.cover-page > .doodle-star {
+  position: absolute;
+  right: 70mm;
+  top: 20mm;
+  width: 12mm;
+}
+.cover-page > .brandmark {
+  position: absolute;
+  right: 22mm;
+  bottom: 14mm;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20pt;
+}
+
+/* ---------- TOC ---------- */
+.toc-page {
+  padding: 16mm 22mm 14mm !important;
+}
+.toc-page h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26pt;
+  margin-bottom: 6mm;
+}
+.toc-page h2 {
+  font-size: 14pt;
+  margin: 5mm 0 2mm;
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+.toc-page h2 .ico {
+  width: 6mm;
+  height: 6mm;
+}
+.toc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.toc li {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+  padding: 1.4mm 0;
+  font-size: 12pt;
+}
+.toc .seal {
+  width: 9mm;
+  height: 9mm;
+  font-size: 8.5pt;
+  align-self: center;
+}
+.toc .t {
+  font-weight: 700;
+}
+.toc .sub {
+  color: var(--ink-muted);
+  font-size: 10pt;
+}
+.toc .dots {
+  flex: 1;
+  border-bottom: 0.45mm dotted var(--line-strong);
+  transform: translateY(-1mm);
+}
+.toc .pg {
+  font-family: var(--font-title);
+  font-weight: 600;
+  min-width: 10mm;
+  text-align: right;
+}
+.toc-legend {
+  margin-top: 8mm;
+  padding-top: 4mm;
+  border-top: 0.4mm dashed var(--line-strong);
+}
+.toc-legend .hand {
+  font-size: 14pt;
+}
+.toc-legend .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3mm 4mm;
+  margin-top: 2mm;
+}
+.toc-legend dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5mm 4mm;
+  margin: 3mm 0 0;
+  font-size: 10pt;
+  align-items: center;
+}
+.toc-legend .fl {
+  display: inline-flex;
+  align-items: center;
+  gap: 1mm;
+  font-weight: 700;
+  font-size: 9.5pt;
+}
+.toc-legend .fl .ico {
+  width: 4mm;
+  height: 4mm;
+}
+.toc-tip {
+  margin-top: 6mm;
+  font-size: 10pt;
+  color: var(--ink-muted);
+}
+.toc-legend dd {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+/* ---------- Map page (layout A) ---------- */
+.map-page {
+  display: flex;
+  flex-direction: column;
+}
+.mhead {
+  display: flex;
+  align-items: flex-end;
+  gap: 5mm;
+  padding-bottom: 2mm;
+}
+.mhead h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 22pt;
+  line-height: 1.05;
+}
+.mhead .hand {
+  font-size: 13pt;
+  padding-bottom: 0.6mm;
+}
+.mhead .chips {
+  margin-left: auto;
+  display: flex;
+  gap: 2mm;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 120mm;
+  padding-bottom: 1mm;
+}
+.print .tag {
+  font-size: 8pt;
+  min-height: 0;
+  padding: 0.8mm 2.2mm;
+  gap: 1.2mm;
+}
+.print .tag .ico {
+  width: 3.2mm;
+  height: 3.2mm;
+}
+.print .tag-vocabulario {
+  padding-right: 4mm;
+}
+.mgrid {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr var(--mid, 45mm) 1fr;
+  gap: 0 3mm;
+}
+.mcol {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bgap, 3mm);
+  min-height: 0;
+}
+.mmid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3mm;
+  padding: 0 5mm;
+  text-align: center;
+}
+.mmid .start {
+  font-family: var(--font-hand);
+  font-size: 12pt;
+  color: var(--ink-muted);
+  line-height: 1.1;
+}
+.mmid .center-node {
+  max-width: 100%;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 4mm 5mm 4.5mm;
+  border-radius: 9mm 11mm 8mm 12mm / 11mm 8mm 12mm 9mm;
+  box-shadow: none;
+}
+.mmid .center-node .en {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: var(--cfs, 24pt);
+  line-height: 1.05;
+}
+.mmid .center-node .pt {
+  font-size: 13pt;
+  margin-top: 1mm;
+}
+.mmid .intro {
+  font-size: 8.5pt;
+  color: var(--ink-muted);
+  line-height: 1.3;
+}
+.mmid .note {
+  font-family: var(--font-hand);
+  font-size: 12pt;
+  color: var(--ink-muted);
+  line-height: 1.15;
+}
+.mmid .note .ico {
+  display: block;
+  margin: 0 auto 1mm;
+  width: 7mm;
+  height: 7mm;
+  color: var(--maracuja-stroke);
+}
+.mmid .doodle-star {
+  width: 7mm;
+}
+
+.pbranch {
+  break-inside: avoid;
+}
+.pbranch .pribbon {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  min-height: 8mm;
+  padding: 0.8mm 5mm;
+  color: var(--c-on);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 13pt;
+  line-height: 1.1;
+}
+.pbranch .pribbon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--c);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 2.5mm) 50%, 100% 100%, 0 100%, 2.5mm 50%);
+}
+.pbranch .pribbon::after {
+  content: '';
+  position: absolute;
+  inset: 1.4mm 3.6mm;
+  z-index: -1;
+  border-left: 0.4mm dashed currentColor;
+  border-right: 0.4mm dashed currentColor;
+  opacity: 0.5;
+}
+.pbranch .pribbon .ico {
+  width: 5mm;
+  height: 5mm;
+}
+.pcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.4mm;
+  align-items: start;
+}
+.pcards.one {
+  grid-template-columns: 1fr;
+}
+.pcol {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6mm;
+  padding-top: 2.7mm;
+  min-width: 0;
+}
+.pcards.one .pcol:empty {
+  display: none;
+}
+.print .node {
+  break-inside: avoid;
+  margin: 0;
+  border-width: 0.45mm;
+  border-radius: 1mm;
+  box-shadow: none;
+  background-image: none;
+}
+.print .node::before {
+  display: none;
+}
+.print .node-tagrow {
+  left: 1.8mm;
+  top: -2.4mm;
+}
+.print .node-body {
+  padding: 2.8mm 2.2mm 1.4mm;
+}
+.print .ln + .ln {
+  margin-top: 0.3mm;
+}
+.print .ln-pt.is-trans {
+  margin-top: -0.4mm;
+  margin-bottom: 0.6mm;
+}
+.print .ln-note {
+  margin-top: 0.6mm;
+}
+.print .ln .ico {
+  width: 1em;
+  height: 1em;
+}
+.print .ln {
+  gap: 0 1.2mm;
+}
+.mlinks {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.notes {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 0.4mm dashed var(--line-strong);
+  border-radius: 1.5mm;
+  padding: 2mm 3mm;
+  overflow: hidden;
+}
+.notes .rule {
+  display: block;
+  height: 7mm;
+  flex: none;
+  border-bottom: 0.3mm solid #dccbb0;
+}
+.notes .hand {
+  font-size: 12pt;
+  line-height: 1;
+}
+
+/* ---------- Flashcards (A4 portrait, 2 x 4) ---------- */
+.chead {
+  position: absolute;
+  left: 10mm;
+  right: 10mm;
+  top: 8mm;
+  height: 7mm;
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  font-size: 9pt;
+  color: var(--ink-muted);
+}
+.chead strong {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 12pt;
+  color: var(--ink);
+}
+.chead .side {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5mm;
+  font-weight: 700;
+  color: var(--ink);
+}
+.chead .side .ico {
+  width: 4mm;
+  height: 4mm;
+}
+.cell {
+  position: absolute;
+  width: 95mm;
+  height: 67mm;
+  padding: 3mm;
+}
+.cutlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pcard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 0.4mm solid var(--c-stroke);
+  border-radius: 3mm;
+  background: var(--card);
+  overflow: hidden;
+  font-size: 10.5pt;
+  line-height: 1.25;
+}
+.pcard.is-overflowing {
+  /* only visible in print.html preview / the PDF while the text is too long */
+  outline: 0.8mm solid #b42318;
+}
+.pcard .ptop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2mm;
+  padding: 2mm 2.5mm 0;
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+.pcard .seal {
+  width: 6.5mm;
+  height: 6.5mm;
+  font-size: 7pt;
+  border-width: 0.35mm;
+  outline: none;
+}
+.pcard.front .pmain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5mm;
+  padding: 0 5mm 3mm;
+  text-align: center;
+}
+.pcard.front .pic {
+  display: grid;
+  place-items: center;
+  width: 24mm;
+  height: 24mm;
+  border-radius: 50%;
+  background: var(--c-tint);
+  border: 0.4mm dashed var(--c-stroke);
+  font-family: var(--font-emoji);
+  font-size: 34pt;
+  line-height: 1;
+}
+.pcard.front .phrase {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: var(--pfs, 16pt);
+  line-height: 1.12;
+}
+.pcard.front .bv {
+  font-size: 8pt;
+  color: var(--ink-muted);
+}
+.pcard.back {
+  background: var(--c-tint);
+  line-height: 1.18;
+}
+.pcard.back .pmain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9mm;
+  padding: 2.2mm 3mm 2mm;
+  min-height: 0;
+}
+.pcard.back .ans-t {
+  flex: 1;
+  min-width: 0;
+}
+.pcard.back .ans-m {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1mm;
+  flex: none;
+}
+.pcard.back .ans {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+.pcard.back .ans .emo {
+  font-family: var(--font-emoji);
+  font-size: 16pt;
+  line-height: 1;
+}
+.pcard.back .ans .big {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 13pt;
+  line-height: 1.1;
+}
+.pcard.back .ans .small {
+  font-size: 9.5pt;
+  color: var(--ink);
+}
+.pcard .f {
+  border-top: 0.3mm dashed color-mix(in srgb, var(--c-stroke) 45%, transparent);
+  padding-top: 1mm;
+}
+.pcard .fl {
+  display: inline-flex;
+  align-items: center;
+  gap: 1mm;
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-right: 1.2mm;
+}
+.pcard .fl .ico {
+  width: 3mm;
+  height: 3mm;
+}
+.pcard .ex-en {
+  font-weight: 700;
+}
+.pcard .ex-pt {
+  color: var(--ink-muted);
+}
+.pcard .pron {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.2;
+}
+.pcard .pbox {
+  border: 0.35mm solid var(--c-stroke);
+  border-radius: 1.5mm;
+  padding: 0.8mm 1.6mm;
+  background: #ffffff;
+}
+.pcard .pbox .fl {
+  color: var(--c-key);
+}
+.pcard .formal {
+  font-size: 7pt;
+  padding: 0.2mm 2mm;
+  border-width: 0.35mm;
+}
+.pcard .formal-giria {
+  border-width: 0.5mm;
+}
+.pcard .brand {
+  position: absolute;
+  right: 2.5mm;
+  bottom: 1.5mm;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 6.5pt;
+  padding: 0;
+  color: var(--ink-muted);
+}
+
+/* Map page below 10 pt: translations and notes in a darker ink */
+.small-type .node .ln-pt,
+.small-type .node .pt,
+.small-type .node .ln-note,
+.small-type .node .node-title {
+  color: #3e3d52;
+}
+.mkicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5mm;
+}
+.mkicker .ico {
+  width: 5mm;
+  height: 5mm;
+}
+.toc .ticon {
+  width: 5mm;
+  height: 5mm;
+  align-self: center;
+  color: var(--ink-muted);
+}
+
+/* ---------- Figures on paper ---------- */
+.print .fig-line {
+  font-size: 1.3em;
+}
+.print .lg {
+  grid-template-columns: 1.45em minmax(0, 1fr);
+  column-gap: 1mm;
+}
+.print .lg + .lg {
+  margin-top: 0.6mm;
+}
+.print .fig-node {
+  top: -3.8mm;
+  right: 3mm;
+  height: 6.4mm;
+  min-width: 6.4mm;
+  font-size: 9.5pt;
+  border-width: 0.35mm;
+}
+.print .fig-node.fig-n1 {
+  width: 6.4mm;
+  font-size: 11pt;
+}
+.print .fig-branch {
+  margin-left: 1.5mm;
+  height: 6mm;
+  font-size: 10pt;
+}
+.mmid .center-node .fig-center {
+  font-size: 19pt;
+  margin-bottom: 1.5mm;
+}
+
+/* ---------- Quick test on paper (always its own page) ---------- */
+.quiz-page {
+  display: flex;
+  flex-direction: column;
+}
+.qgrid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 7mm;
+  padding: 3mm 0 0;
+}
+.pquiz {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 0.45mm solid var(--ink);
+  border-radius: 1.5mm;
+  padding: 5mm 6mm 6mm;
+  background: var(--card);
+  font-size: 16pt;
+}
+.pq-h {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  font-size: 1.3em;
+}
+.pq-h .ico {
+  width: 1.05em;
+  height: 1.05em;
+}
+.pq-ins {
+  color: var(--ink-muted);
+  margin-top: 0.6mm;
+}
+.pquiz ol {
+  margin: 3mm 0 0;
+  padding-left: 1.5em;
+}
+.pquiz li {
+  line-height: 2.6;
+}
+.pquiz li::marker {
+  font-family: var(--font-title);
+  font-weight: 600;
+}
+.pquiz .blank {
+  display: inline-block;
+  height: 1em;
+  margin: 0 1.2mm;
+  border-bottom: 0.35mm solid var(--ink);
+  vertical-align: baseline;
+}
+.pq-hint {
+  color: var(--ink-muted);
+  font-size: 0.8em;
+  white-space: nowrap;
+}
+/* answer key: inside the box, bottom right corner, upside down, wraps instead of cutting */
+.answers {
+  margin: auto 0 0 auto;
+  max-width: 70%;
+  padding-top: 3mm;
+  transform: rotate(180deg);
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: var(--ink);
+  text-align: left;
+}
+.own {
+  display: flex;
+  flex-direction: column;
+  border: 0.45mm solid var(--ink);
+  border-radius: 1.5mm;
+  padding: 5mm 6mm;
+  background: var(--card);
+  font-size: 12pt;
+}
+.own .pq-h {
+  font-size: 1.35em;
+}
+.own-lines {
+  margin: 2mm 0 4mm;
+  padding-left: 1.4em;
+}
+.own-lines li::marker {
+  font-family: var(--font-title);
+  font-weight: 600;
+}
+.own-lines .rule {
+  display: block;
+  height: 9mm;
+  border-bottom: 0.35mm solid var(--line-strong);
+}
+.own .notes {
+  margin-top: auto;
+}
+
+/* ---------- Scene illustration on paper ---------- */
+.print .node-body.has-art {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  column-gap: 1mm;
+  padding-bottom: 0.6mm;
+}
+.print .node-body.has-art .node-main {
+  min-width: 0;
+  align-self: start;
+  padding-bottom: 0.8mm;
+}
+.print .art {
+  display: block;
+  width: 18.5mm;
+  height: 18.5mm;
+  margin: 0 -1mm -0.6mm 0;
+}
+.print .art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Illustrated map (figureStyle "art"): one sheet, big scenes, compact grid ---------- */
+.is-art .art {
+  width: 25mm;
+  height: 25mm;
+  margin: -2mm -1.2mm -0.8mm 0;
+}
+.is-art .mcol {
+  --bgap: 2mm;
+}
+.is-art .pcol {
+  gap: 2.2mm;
+  padding-top: 2.4mm;
+}
+.is-art .node-body {
+  padding: 2.3mm 1.8mm 1mm;
+}
+.is-art .pbranch .pribbon {
+  min-height: 7.4mm;
+}
+.is-art .mhead {
+  padding-bottom: 1mm;
+}
+.is-art .mmid .art-center {
+  width: 22mm;
+  height: 22mm;
+  margin: 0 auto 1mm;
+  padding: 1mm;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+/* scene floats bottom right (see settleArt in common.js) */
+.print .node-body.has-art {
+  display: flow-root;
+}
+.print .art-spacer {
+  float: right;
+  width: 0;
+  height: 0;
+}
+.print .node-body.has-art > .art {
+  float: right;
+  clear: right;
+  margin: 0 -4px 0 6px;
+  shape-outside: margin-box;
+}
+
+.is-art .node-body.has-art > .art {
+  width: var(--art, 24mm);
+  height: var(--art, 24mm);
+  margin: 0 0.4mm -0.6mm 1.2mm;
+}
+/* half-width cards: smaller scene so the text keeps its width; full width keeps --art */
+.is-art .pcards:not(.one) .node-body.has-art > .art {
+  width: min(18mm, var(--art, 24mm));
+  height: min(18mm, var(--art, 24mm));
+}
+
+/* big scene on the booklet cover (decorative) */
+.cover-page > .art-cover {
+  position: absolute;
+  right: 24mm;
+  top: 46mm;
+  width: 62mm;
+  height: 62mm;
+}
+
+/* a short English block that does not fit its line wraps again, balanced */
+.nwb.nwb-off {
+  white-space: normal;
+}
+.ln-balance {
+  text-wrap: balance;
+}
+
+/* English lines that wrap break into even lines ("…five five five, / oh one nine three") */
+.ln-en,
+.ln-right,
+.ln-wrong {
+  text-wrap: balance;
+}

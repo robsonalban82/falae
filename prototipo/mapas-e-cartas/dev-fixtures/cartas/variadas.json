@@ -1,0 +1,47 @@
+{
+  "id": "variadas",
+  "title": "Amostra variada",
+  "collection": "falsos-cognatos",
+  "level": "A2",
+  "description": "Um phrasal verb, uma gíria e um falso cognato para testar o verso das cartas.",
+  "cards": [
+    {
+      "id": "pv-give-up",
+      "en": "give up",
+      "emoji": "🏳️",
+      "pt": "desistir",
+      "example": { "en": "Don't give up now!", "pt": "Não desista agora!" },
+      "pronunciation": "guiv âp",
+      "situation": "Quando alguém para de tentar alguma coisa.",
+      "level": "A2",
+      "formality": "neutro",
+      "baseVerb": "give"
+    },
+    {
+      "id": "ex-awesome",
+      "en": "That's awesome!",
+      "emoji": "🤩",
+      "pt": "Que demais!",
+      "example": {
+        "en": "You got the job? That's awesome!",
+        "pt": "Você conseguiu o emprego? Que demais!"
+      },
+      "pronunciation": "dét's ósam",
+      "situation": "Para reagir com empolgação a uma boa notícia.",
+      "level": "A2",
+      "formality": "giria",
+      "dontUse": "Numa reunião formal ou num e-mail de trabalho."
+    },
+    {
+      "id": "fc-pretend",
+      "en": "pretend",
+      "emoji": "🎭",
+      "pt": "fingir",
+      "example": { "en": "He pretends to be asleep.", "pt": "Ele finge que está dormindo." },
+      "pronunciation": "pri-ténd",
+      "level": "A2",
+      "formality": "neutro",
+      "falseFriend": "Não é \"pretender\". Para \"pretender\", use intend ou plan."
+    }
+  ]
+}

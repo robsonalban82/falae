@@ -1,0 +1,306 @@
+{
+  "id": "phrasal-get",
+  "title": "Phrasal verbs com get",
+  "level": "A2",
+  "figureStyle": "art",
+  "collection": "phrasal",
+  "icon": "arrow",
+  "center": {
+    "en": "get + …",
+    "pt": "um verbo, muitos sentidos"
+  },
+  "centerFigure": "🃏",
+  "centerArt": "phrasal-get-centro",
+  "intro": "Get + uma palavrinha (up, on, off, back…) muda o sentido. Aprenda em blocos, como se fosse uma palavra só.",
+  "branches": [
+    {
+      "label": "Rotina",
+      "icon": "clock",
+      "color": "folha",
+      "figure": "🛏️",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "get up",
+          "lines": [
+            {
+              "en": "**get up**",
+              "pt": "levantar (da cama)",
+              "emoji": "🛏️"
+            },
+            {
+              "en": "I **get up** at 6:30.",
+              "pt": "Eu levanto às 6h30.",
+              "emoji": "🕡"
+            }
+          ],
+          "art": "phrasal-get-levantar"
+        },
+        {
+          "tag": "regra",
+          "title": "wake up × get up",
+          "lines": [
+            {
+              "en": "**wake up**",
+              "pt": "acordar (abrir os olhos)",
+              "emoji": "⏰"
+            },
+            {
+              "en": "**get up**",
+              "pt": "sair da cama",
+              "emoji": "🧍"
+            },
+            {
+              "en": "I **wake up** at 6 and **get up** at 6:30.",
+              "pt": "Acordo às 6 e levanto às 6h30.",
+              "emoji": "🕕"
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "get back",
+          "lines": [
+            {
+              "en": "**get back**",
+              "pt": "voltar",
+              "emoji": "↩️"
+            },
+            {
+              "en": "I **get back** from work at 7.",
+              "pt": "Eu volto do trabalho às 7.",
+              "emoji": "🏠"
+            }
+          ],
+          "art": "phrasal-get-voltar"
+        }
+      ]
+    },
+    {
+      "label": "Transporte",
+      "icon": "arrow",
+      "color": "anil",
+      "figure": "🚌",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Entrar e sair",
+          "lines": [
+            {
+              "en": "**get on** / **get off**",
+              "pt": "ônibus, trem, avião",
+              "emoji": "🚌"
+            },
+            {
+              "en": "**get in** / **get out of**",
+              "pt": "carro, táxi",
+              "emoji": "🚕"
+            }
+          ],
+          "art": "phrasal-get-onibus-subir"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "**Get on** the bus here.",
+              "pt": "Entre no ônibus aqui.",
+              "emoji": "🚍"
+            },
+            {
+              "en": "We **get off** at the next stop.",
+              "pt": "A gente desce no próximo ponto.",
+              "emoji": "🚏"
+            },
+            {
+              "en": "**Get in** the car!",
+              "pt": "Entra no carro!",
+              "emoji": "🚗"
+            }
+          ],
+          "art": "phrasal-get-carro"
+        }
+      ]
+    },
+    {
+      "label": "Pessoas",
+      "icon": "chat",
+      "color": "jabuticaba",
+      "figure": "🤝",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "get along with",
+          "lines": [
+            {
+              "en": "**get along with**",
+              "pt": "se dar bem com",
+              "emoji": "🤝"
+            },
+            {
+              "en": "I **get along with** my boss.",
+              "pt": "Eu me dou bem com meu chefe.",
+              "emoji": "👔"
+            }
+          ],
+          "art": "phrasal-get-amigos"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "get together",
+          "lines": [
+            {
+              "en": "**get together**",
+              "pt": "se reunir, se encontrar",
+              "emoji": "👫"
+            },
+            {
+              "en": "Let's **get together** on Friday.",
+              "pt": "Vamos nos encontrar na sexta.",
+              "emoji": "🎉"
+            }
+          ],
+          "art": "phrasal-get-encontro"
+        }
+      ]
+    },
+    {
+      "label": "Superar",
+      "icon": "star",
+      "color": "manga",
+      "figure": "💪",
+      "nodes": [
+        {
+          "tag": "vocabulario",
+          "title": "get over",
+          "lines": [
+            {
+              "en": "**get over**",
+              "pt": "superar, se recuperar de",
+              "emoji": "💪"
+            },
+            {
+              "en": "She **got over** the flu.",
+              "pt": "Ela se recuperou da gripe.",
+              "emoji": "😌"
+            },
+            {
+              "en": "**Get over** it!",
+              "pt": "Supera! (informal)",
+              "emoji": "🙄"
+            }
+          ],
+          "art": "phrasal-get-superar"
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "figure": "⚠️",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I got in the bus.",
+              "right": "I got on the bus.",
+              "note": "Ônibus, trem, avião: get on."
+            }
+          ],
+          "figure": "🚌"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I get down from the bus here.",
+              "right": "I get off the bus here. / I get off here.",
+              "note": "Descer do ônibus = get off."
+            }
+          ],
+          "figure": "🚏",
+          "art": "phrasal-get-onibus-descer"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I get along my sister.",
+              "right": "I get along with my sister.",
+              "note": "Com a pessoa, use with."
+            }
+          ],
+          "figure": "👭"
+        }
+      ]
+    },
+    {
+      "label": "Dica",
+      "icon": "bulb",
+      "color": "maracuja",
+      "figure": "🃏",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Get sozinho é coringa",
+          "lines": [
+            {
+              "en": "**get** tired",
+              "pt": "ficar cansado(a)",
+              "emoji": "😩"
+            },
+            {
+              "en": "**get** home",
+              "pt": "chegar em casa",
+              "emoji": "🏠"
+            },
+            {
+              "en": "**get** a job",
+              "pt": "conseguir um emprego",
+              "emoji": "💼"
+            },
+            {
+              "en": "I don't **get** it.",
+              "pt": "Não entendi.",
+              "emoji": "🤷"
+            }
+          ],
+          "art": "phrasal-get-coringa"
+        }
+      ]
+    }
+  ],
+  "doodle": "aprenda o bloco inteiro: get + up",
+  "exercise": {
+    "instruction": "Complete o phrasal verb. A dica em português ajuda.",
+    "items": [
+      {
+        "prompt": "Kids, get ___! It's 7 o'clock.",
+        "answer": "up",
+        "hintPt": "levantem da cama"
+      },
+      {
+        "prompt": "Get ___ the train at the next station.",
+        "answer": "off",
+        "hintPt": "Desça do trem na próxima estação."
+      },
+      {
+        "prompt": "Let's get ___ the bus.",
+        "answer": "on",
+        "hintPt": "Vamos entrar no ônibus."
+      },
+      {
+        "prompt": "Do you get along ___ your neighbors?",
+        "answer": "with",
+        "hintPt": "Você se dá bem com seus vizinhos?"
+      },
+      {
+        "prompt": "He's sad, but he'll get ___ it.",
+        "answer": "over",
+        "hintPt": "Ele está triste, mas vai superar."
+      }
+    ]
+  }
+}

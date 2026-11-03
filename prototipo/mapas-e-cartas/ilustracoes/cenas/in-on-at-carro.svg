@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pessoa dentro do carro: in the car</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 120 Q12 104 26 102 L42 100 L54 70 Q58 62 68 62 L112 62 Q120 62 124 70 L136 100 L140 101 Q150 103 150 116 L150 124 Q150 130 144 130 L18 130 Q12 130 12 124Z" fill="#FF8A1F"/>
+<path d="M14 116 L150 116 L150 124 Q150 130 144 130 L18 130 Q12 130 12 124Z" fill="#D96A00" stroke="none"/>
+<path d="M118 64 Q122 64 124 70 L136 100 L128 100 L116 66Z" fill="#D96A00" stroke="none"/>
+<path d="M68 119 L74 127 M82 119 L88 127 M96 119 L102 127" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M12 120 Q12 104 26 102 L42 100 L54 70 Q58 62 68 62 L112 62 Q120 62 124 70 L136 100 L140 101 Q150 103 150 116 L150 124 Q150 130 144 130 L18 130 Q12 130 12 124Z"/>
+<path d="M60 100 L66 74 Q68 68 74 68 L108 68 Q114 68 116 74 L126 100Z" fill="#CFD1FF"/>
+<path d="M69 100 Q71 90 88 90 Q105 90 107 100Z" fill="#6F2A91"/>
+<circle cx="88" cy="81" r="12" fill="#8D5A3B"/>
+<path d="M95 72 Q102 80 98 90 Q92 90 95 72Z" fill="#6E4229" stroke="none"/>
+<circle cx="88" cy="81" r="12"/>
+<g fill="#3A2A2A" stroke-width="2.5"><circle cx="79" cy="73" r="5"/><circle cx="87" cy="69" r="6"/><circle cx="96" cy="72" r="5"/></g>
+<circle cx="84" cy="82" r="2.8" fill="#FFFDF8" stroke-width="2"/><circle cx="84" cy="82" r="1.6" fill="#1B1C33" stroke="none"/><circle cx="93" cy="82" r="2.8" fill="#FFFDF8" stroke-width="2"/><circle cx="93" cy="82" r="1.6" fill="#1B1C33" stroke="none"/>
+<path d="M84.5 87.5 Q88.5 94 92.5 87.5Z" fill="#FFFDF8" stroke-width="2.2"/>
+<circle cx="80.5" cy="87" r="2.5" fill="#E8604C" fill-opacity=".5" stroke="none"/>
+<path d="M110 99 Q116 90 111 81" stroke-width="3.5"/>
+<circle cx="108" cy="92" r="4" fill="#8D5A3B" stroke-width="3"/>
+<path d="M60 100 L66 74 Q68 68 74 68 L108 68 Q114 68 116 74 L126 100Z"/>
+<path d="M66 94 L71 77" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<path d="M90 102 L91 126" stroke-width="2.5"/><path d="M98 108 L106 108" stroke-width="3"/>
+<path d="M24 107 L42 105" stroke="#fff" stroke-opacity=".6" stroke-width="3.5"/>
+<circle cx="145" cy="109" r="4" fill="#F5C518" stroke-width="2.5"/><circle cx="17" cy="110" r="3" fill="#B42318" stroke-width="2.5"/>
+<circle cx="44" cy="130" r="14" fill="#3A2A2A"/><circle cx="44" cy="130" r="5" fill="#E8DFCB" stroke-width="2.5"/>
+<circle cx="120" cy="130" r="14" fill="#3A2A2A"/><circle cx="120" cy="130" r="5" fill="#E8DFCB" stroke-width="2.5"/>
+</g></svg>

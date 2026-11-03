@@ -1,0 +1,358 @@
+{
+  "id": "numeros-e-horas",
+  "title": "Números e horas",
+  "level": "A1",
+  "figureStyle": "art",
+  "collection": "mapas",
+  "icon": "hash",
+  "center": {
+    "en": "numbers & time",
+    "pt": "números e horas"
+  },
+  "centerFigure": "🔢⏰",
+  "centerArt": "numeros-e-horas-centro",
+  "intro": "Preço, idade, telefone e horário: os números que você mais vai usar.",
+  "branches": [
+    {
+      "label": "Números",
+      "icon": "hash",
+      "color": "folha",
+      "figure": "🔢",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "-teen × -ty",
+          "lines": [
+            {
+              "en": "thir**teen** · 13",
+              "pt": "força no fim: thir-TEEN"
+            },
+            {
+              "en": "**thir**ty · 30",
+              "pt": "força no começo: THIR-ty"
+            },
+            {
+              "note": "Vale para 14/40, 15/50… até 19/90."
+            },
+            {
+              "note": "Nos EUA, o t de thirty soa quase \"thír-di\"."
+            }
+          ],
+          "figure": "🗣️"
+        },
+        {
+          "tag": "vocabulario",
+          "title": "Dezenas",
+          "lines": [
+            {
+              "en": "twenty · thirty",
+              "pt": "20 · 30"
+            },
+            {
+              "en": "**forty** · fifty",
+              "pt": "40 · 50",
+              "emoji": "✍️"
+            },
+            {
+              "note": "Forty se escreve sem u (não é fourty)."
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "title": "Números grandes",
+          "lines": [
+            {
+              "en": "a hundred",
+              "pt": "100",
+              "emoji": "💯"
+            },
+            {
+              "en": "a thousand",
+              "pt": "1.000 (mil) · em inglês: 1,000",
+              "emoji": "💰"
+            },
+            {
+              "en": "two thousand five hundred",
+              "pt": "2.500 · em inglês: 2,500",
+              "emoji": "🔢"
+            }
+          ],
+          "art": "numeros-e-horas-dinheiro"
+        }
+      ]
+    },
+    {
+      "label": "Horas",
+      "icon": "clock",
+      "color": "anil",
+      "figure": "🕒",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Perguntar e responder",
+          "lines": [
+            {
+              "en": "What time is it?",
+              "pt": "Que horas são?",
+              "emoji": "⌚"
+            },
+            {
+              "en": "It's **three o'clock**.",
+              "pt": "São três horas.",
+              "emoji": "🕒"
+            }
+          ],
+          "art": "numeros-e-horas-relogio-pulso"
+        },
+        {
+          "tag": "regra",
+          "title": "Jeito fácil (o mais usado nos EUA)",
+          "lines": [
+            {
+              "en": "7:15 = seven **fifteen**"
+            },
+            {
+              "en": "7:30 = seven **thirty**",
+              "emoji": "🕢"
+            },
+            {
+              "en": "7:05 = seven **oh five**"
+            },
+            {
+              "note": "De 1 a 9 minutos, diga oh antes do número."
+            }
+          ],
+          "art": "numeros-e-horas-relogio-730"
+        },
+        {
+          "tag": "regra",
+          "title": "Também se ouve",
+          "lines": [
+            {
+              "en": "7:15 = a quarter **past** / **after** seven"
+            },
+            {
+              "en": "7:30 = **half past** seven",
+              "emoji": "🕢"
+            },
+            {
+              "en": "7:45 = a **quarter to** eight",
+              "pt": "quinze para as oito"
+            },
+            {
+              "note": "to = \"para\", igual ao português."
+            }
+          ],
+          "art": "numeros-e-horas-relogio-745"
+        },
+        {
+          "tag": "excecao",
+          "lines": [
+            {
+              "wrong": "It's 7:30 o'clock.",
+              "right": "It's 7:30.",
+              "note": "O'clock só com hora cheia: 7 o'clock."
+            }
+          ],
+          "figure": "🕢",
+          "art": "numeros-e-horas-hora-cheia"
+        }
+      ]
+    },
+    {
+      "label": "a.m. e p.m.",
+      "icon": "calendar",
+      "color": "manga",
+      "figure": "🌅🌇",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Relógio de 12 horas",
+          "lines": [
+            {
+              "en": "**a.m.**",
+              "pt": "da meia-noite ao meio-dia",
+              "emoji": "🌅"
+            },
+            {
+              "en": "**p.m.**",
+              "pt": "do meio-dia à meia-noite",
+              "emoji": "🌇"
+            },
+            {
+              "en": "3 p.m.",
+              "pt": "15h",
+              "emoji": "🕒"
+            },
+            {
+              "note": "Em inglês, quase não se fala \"15h\"."
+            }
+          ],
+          "art": "numeros-e-horas-sol-e-lua"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "The store opens **at 9 a.m.**",
+              "pt": "A loja abre às 9h.",
+              "emoji": "🏪"
+            },
+            {
+              "en": "Dinner is **at 8 p.m.**",
+              "pt": "O jantar é às 20h.",
+              "emoji": "🍝"
+            },
+            {
+              "en": "noon · midnight",
+              "pt": "meio-dia · meia-noite",
+              "emoji": "🕛"
+            }
+          ],
+          "art": "numeros-e-horas-loja"
+        }
+      ]
+    },
+    {
+      "label": "No dia a dia",
+      "icon": "chat",
+      "color": "jabuticaba",
+      "figure": "💵📞",
+      "nodes": [
+        {
+          "tag": "exemplo",
+          "title": "Preço",
+          "lines": [
+            {
+              "en": "$9.99 = **nine ninety-nine**",
+              "pt": "nove e noventa e nove",
+              "emoji": "🏷️"
+            },
+            {
+              "en": "$25 = **twenty-five dollars**",
+              "pt": "vinte e cinco dólares",
+              "emoji": "💵"
+            }
+          ],
+          "art": "numeros-e-horas-etiqueta-preco"
+        },
+        {
+          "tag": "exemplo",
+          "title": "Telefone",
+          "lines": [
+            {
+              "en": "555-0193 = five five five, **oh** one nine three",
+              "pt": "cinco cinco cinco, zero um nove três",
+              "emoji": "📞"
+            },
+            {
+              "note": "Zero no telefone costuma virar \"oh\"."
+            },
+            {
+              "note": "Dizer zero também vale."
+            }
+          ],
+          "art": "numeros-e-horas-telefone"
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "figure": "⚠️",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I have 25 years.",
+              "right": "I'm 25.",
+              "note": "Idade usa to be."
+            }
+          ],
+          "figure": "🎂",
+          "art": "numeros-e-horas-aniversario"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "It's three hours.",
+              "right": "It's three o'clock.",
+              "note": "\"São três horas\" no relógio: o'clock."
+            }
+          ],
+          "figure": "🕒",
+          "art": "numeros-e-horas-ampulheta"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "$1.500,00",
+              "right": "$1,500.00",
+              "note": "Em inglês: vírgula no mil, ponto no centavo."
+            }
+          ],
+          "figure": "💲"
+        }
+      ]
+    },
+    {
+      "label": "Dica",
+      "icon": "bulb",
+      "color": "maracuja",
+      "figure": "👂",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "13 ou 30?",
+          "lines": [
+            {
+              "note": "Na dúvida, peça os números um a um:"
+            },
+            {
+              "en": "Sorry, **one-three** or **three-zero**?",
+              "pt": "Desculpe, 1-3 ou 3-0?",
+              "emoji": "👂"
+            }
+          ],
+          "art": "numeros-e-horas-ouvido"
+        }
+      ]
+    }
+  ],
+  "doodle": "o'clock só na hora cheia!",
+  "exercise": {
+    "instruction": "Complete com a palavra que falta.",
+    "items": [
+      {
+        "prompt": "Excuse me, do you have the ___?",
+        "answer": "time",
+        "hintPt": "Você tem as horas? (= What time is it?)"
+      },
+      {
+        "prompt": "I get up at six ___ in the morning.",
+        "answer": "o'clock|o clock",
+        "hintPt": "(hora cheia)"
+      },
+      {
+        "prompt": "8:30 = eight ___",
+        "answer": "thirty",
+        "hintPt": "jeito fácil: hora + minuto"
+      },
+      {
+        "prompt": "9:45 = a quarter ___ ten",
+        "answer": "to|of|till|til",
+        "hintPt": "quinze para as dez"
+      },
+      {
+        "prompt": "The bank closes at 4 ___.",
+        "answer": "p.m.|pm|in the afternoon",
+        "hintPt": "a.m. ou p.m.? (da tarde)"
+      }
+    ]
+  }
+}

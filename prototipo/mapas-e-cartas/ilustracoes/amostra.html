@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Piloto de estilo: figuras do Falaê</title>
+    <style>
+      :root {
+        --bg: #fff8ef;
+        --surface: #fffdf8;
+        --ink: #1b1c33;
+        --muted: #5b5a6e;
+        --line: #e8dcca;
+        --mark: #f5c518;
+      }
+      :root[data-theme='dark'] {
+        --bg: #14152b;
+        --surface: #1e2040;
+        --ink: #f4f1ea;
+        --muted: #b6b4c8;
+        --line: #3a3d68;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.5 'Atkinson Hyperlegible',
+          system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.7rem;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 1.1rem;
+        margin: 28px 0 8px;
+      }
+      p {
+        max-width: 70ch;
+        color: var(--muted);
+      }
+      button {
+        font: inherit;
+        border: 2px solid var(--ink);
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 4px 14px;
+        cursor: pointer;
+      }
+      .panel {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+      }
+      .panel.claro {
+        background: #fff8ef;
+        color: #1b1c33;
+      }
+      .panel.escuro {
+        background: #14152b;
+        color: #f4f1ea;
+      }
+      .panel.pb {
+        background: #fff8ef;
+        color: #1b1c33;
+      }
+      .panel.pb .grid img {
+        filter: grayscale(1) contrast(1.15);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .tile {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        padding: 8px;
+        border: 1px dashed rgba(128, 128, 128, 0.4);
+        border-radius: 10px;
+        position: relative;
+      }
+      .tile span {
+        position: absolute;
+        top: 2px;
+        right: 6px;
+        font-size: 11px;
+        opacity: 0.7;
+      }
+      .s24 {
+        width: 24px;
+        height: 24px;
+      }
+      .s48 {
+        width: 48px;
+        height: 48px;
+      }
+      .s128 {
+        width: 128px;
+        height: 128px;
+      }
+      .ctx {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .line {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        font-size: 1rem;
+        padding: 0.3em 0;
+      }
+      .line img {
+        width: 1.4em;
+        height: 1.4em;
+      }
+      .line small {
+        color: var(--muted);
+      }
+      .card {
+        background: var(--surface);
+        border: 2px solid var(--ink);
+        border-radius: 12px;
+        padding: 12px;
+      }
+      .card .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 6px 0;
+      }
+      .circle {
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 2px solid var(--line);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .circle img {
+        width: 1.5em;
+        height: 1.5em;
+      }
+      .center {
+        background: #1b1c33;
+        color: #fff8ef;
+        border-radius: 16px;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 700;
+        font-size: 1.4rem;
+      }
+      .center img {
+        width: 84px;
+        height: 84px;
+      }
+      .sub {
+        font-weight: 400;
+        font-size: 1rem;
+        color: var(--mark);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Piloto de estilo: figuras do Falaê</h1>
+      <p>
+        <button id="tema" type="button">Alternar tema da página</button>
+      </p>
+      <p>
+        <strong>Regras do estilo "adesivo de caderno":</strong> grade 64×64; contorno navy
+        <code>#1B1C33</code> de 3 unidades, pontas arredondadas, sem degradê; 2 a 3 tons chapados da
+        paleta do app (Manga, Anil, Folha, Acerola, Maracujá, Jabuticaba e neutros); um único realce
+        branco a 55% de opacidade em cada desenho; halo branco fino por fora do contorno para
+        funcionar em fundo escuro; sem texto dentro do desenho; detalhes internos com 2,5 de traço;
+        tamanho mínimo 24 px na tela e 8 mm impressos.
+      </p>
+
+      <h2>Fundo claro</h2>
+      <section class="panel claro"><div class="grid" id="g1"></div></section>
+      <h2>Fundo escuro</h2>
+      <section class="panel escuro"><div class="grid" id="g2"></div></section>
+      <h2>Preto e branco (grayscale + contraste)</h2>
+      <section class="panel pb"><div class="grid" id="g3"></div></section>
+
+      <h2>No contexto (muda com o tema da página)</h2>
+      <div class="ctx">
+        <div class="card">
+          <div class="line">
+            <img src="cozinha.svg" alt="" /> <b lang="en">in the kitchen</b>
+            <small>dentro de um lugar</small>
+          </div>
+          <div class="line">
+            <img src="casa.svg" alt="" /> <b lang="en">at home</b> <small>em casa</small>
+          </div>
+          <div class="line">
+            <img src="onibus.svg" alt="" /> <b lang="en">on the bus</b> <small>no ônibus</small>
+          </div>
+          <div class="line">
+            <img src="lua.svg" alt="" /> <b lang="en">at night</b> <small>à noite</small>
+          </div>
+          <div class="line">
+            <img src="relogio.svg" alt="" /> <b lang="en">at 3 o'clock</b> <small>às 3 horas</small>
+          </div>
+          <div class="line"><img src="x-erro.svg" alt="" /> <s lang="en">I'm in home.</s></div>
+          <div class="line"><img src="check.svg" alt="" /> <b lang="en">I'm at home.</b></div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <span class="circle"><img src="mundo.svg" alt="" /></span><b lang="en">in Brazil</b>
+          </div>
+          <div class="row">
+            <span class="circle"><img src="lampada.svg" alt="" /></span><b>Dica</b>
+          </div>
+          <div class="row">
+            <span class="circle"><img src="alerta.svg" alt="" /></span><b>Cuidado</b>
+          </div>
+          <div class="row">
+            <span class="circle"><img src="pessoa-acenando.svg" alt="" /></span
+            ><span lang="en">Hi! Nice to meet you.</span>
+          </div>
+          <div class="row">
+            <span class="circle"><img src="coringa.svg" alt="" /></span><b>Carta coringa</b>
+          </div>
+          <div class="center" style="margin-top: 10px">
+            <img src="casal-amigos.svg" alt="" />
+            <div><span lang="en">friends</span><br /><span class="sub">amigos</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const names = [
+        'casa',
+        'onibus',
+        'livro',
+        'relogio',
+        'cafe',
+        'cozinha',
+        'mundo',
+        'lua',
+        'pessoa-acenando',
+        'casal-amigos',
+        'ombros',
+        'check',
+        'x-erro',
+        'lampada',
+        'alerta',
+        'coringa',
+      ];
+      const tile = (n) =>
+        `<div class="tile"><span>${n}</span><img class="s128" src="${n}.svg" alt="" /><img class="s48" src="${n}.svg" alt="" /><img class="s24" src="${n}.svg" alt="" /></div>`;
+      for (const id of ['g1', 'g2', 'g3'])
+        document.getElementById(id).innerHTML = names.map(tile).join('');
+      const root = document.documentElement;
+      const q = new URLSearchParams(location.search).get('tema');
+      const dark = q ? q === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) root.dataset.theme = 'dark';
+      document.getElementById('tema').addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pessoa atendendo o telefone que estava tocando</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M26 146 L28 120 Q28 106 42 106 L98 106 Q112 106 112 120 L114 146Z" fill="#0F7A37"/>
+<path d="M94 108 Q112 108 112 122 L114 146 L96 146Z" fill="#0A5A28" stroke="none"/>
+<path d="M98 124 L106 116 M98 138 L108 128" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M26 146 L28 120 Q28 106 42 106 L98 106 Q112 106 112 120 L114 146Z"/>
+<path d="M34 122 Q34 112 42 111" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M44 60 Q36 40 70 36 Q102 38 98 66 L102 110 Q90 112 84 102 L56 102 Q48 112 38 110Z" fill="#3A2A2A"/>
+<rect x="62" y="92" width="16" height="16" rx="5" fill="#D9965F" stroke-width="3"/>
+<circle cx="70" cy="70" r="24" fill="#D9965F"/>
+<path d="M84 52 Q98 68 88 88 Q78 96 70 94 Q94 84 84 52Z" fill="#B87440" stroke="none"/>
+<circle cx="70" cy="70" r="24"/>
+<path d="M46 66 Q46 44 70 44 Q94 44 94 66 Q86 52 70 54 Q58 54 52 60 Q48 62 46 66Z" fill="#3A2A2A"/>
+<path d="M56 64 Q60 61 64 64 M74 64 Q78 61 82 64" stroke-width="2"/>
+<circle cx="60" cy="71" r="2" fill="#1B1C33" stroke="none"/><circle cx="78" cy="71" r="2" fill="#1B1C33" stroke="none"/>
+<path d="M60 81 Q68 88 76 80" stroke-width="2.5"/>
+<circle cx="54" cy="78" r="3" fill="#E8604C" fill-opacity=".5" stroke="none"/>
+<path d="M104 136 Q114 112 100 92" stroke-width="15"/><path d="M104 136 Q114 112 100 92" stroke="#0F7A37" stroke-width="9"/>
+<g transform="rotate(14 96 69)"><rect x="88" y="51" width="16" height="34" rx="4.5" fill="#F5C518" stroke-width="3"/><path d="M98 53 L100 53 Q102 53 102 56 L102 80 Q102 83 99 83 L98 83Z" fill="#D9A800" stroke="none"/><rect x="88" y="51" width="16" height="34" rx="4.5" stroke-width="3"/><rect x="91.5" y="57" width="9" height="16" rx="1.5" fill="#FFFDF8" stroke-width="2"/><path d="M92 77 L100 77" stroke-width="2"/></g>
+<circle cx="98" cy="88" r="7" fill="#D9965F" stroke-width="3"/>
+<path d="M112 52 Q120 62 114 74 M120 44 Q132 62 122 82" stroke="#B42318" stroke-width="3"/>
+<path d="M116 16 Q116 8 124 8 L148 8 Q156 8 156 16 L156 30 Q156 38 148 38 L132 38 L122 46 L124 38 Q116 38 116 30Z" fill="#FFFDF8" stroke-width="3"/>
+<circle cx="126" cy="23" r="2.5" fill="#1B1C33" stroke="none"/><circle cx="136" cy="23" r="2.5" fill="#1B1C33" stroke="none"/><circle cx="146" cy="23" r="2.5" fill="#1B1C33" stroke="none"/>
+</g></svg>

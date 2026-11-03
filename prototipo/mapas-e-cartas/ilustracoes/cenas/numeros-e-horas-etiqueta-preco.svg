@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Etiqueta de preço pendurada numa nota de dinheiro</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="82" cy="148" rx="62" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<path d="M20 108 L92 96 Q100 95 101 102 L106 130 Q107 137 100 138 L28 148 Q21 149 20 142 L14 116 Q13 109 20 108Z" fill="#0F7A37"/>
+<path d="M80 98 L92 96 Q100 95 101 102 L106 130 Q107 137 100 138 L76 141Z" fill="#0A5A28" stroke="none"/>
+<path d="M20 108 L92 96 Q100 95 101 102 L106 130 Q107 137 100 138 L28 148 Q21 149 20 142 L14 116 Q13 109 20 108Z"/>
+<path d="M22 114 L94 102 L99 130 L27 141Z" stroke="#5BE08C" stroke-width="2"/>
+<ellipse cx="60" cy="122" rx="11" ry="9" fill="#5BE08C" stroke-width="2.5" transform="rotate(-9 60 122)"/>
+<path d="M58 117 Q55 120 59 122 Q64 124 61 127" stroke-width="2"/>
+<path d="M78 60 Q72 44 80 32 Q90 20 104 26" stroke="#7A4A2A" stroke-width="2.5"/>
+<path d="M86 66 L118 34 Q122 30 128 30 L146 32 Q150 33 150 38 L152 56 Q152 62 148 66 L116 98 Q110 104 104 98 L86 80 Q80 74 86 66Z" fill="#F5C518"/>
+<path d="M150 46 L152 56 Q152 62 148 66 L116 98 Q110 104 104 98 L100 94Z" fill="#D9A800" stroke="none"/>
+<path d="M132 70 L140 64 M124 80 L132 74 M116 88 L124 82" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M86 66 L118 34 Q122 30 128 30 L146 32 Q150 33 150 38 L152 56 Q152 62 148 66 L116 98 Q110 104 104 98 L86 80 Q80 74 86 66Z"/>
+<circle cx="138" cy="44" r="5" fill="#FFF1D6" stroke-width="2.5"/>
+<path d="M138 44 Q120 30 104 26" stroke="#7A4A2A" stroke-width="2.5"/>
+<path d="M102 70 L120 52 M108 78 L126 60 M114 86 L124 76" stroke-width="3"/>
+<path d="M92 66 L114 44" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+
+</g></svg>

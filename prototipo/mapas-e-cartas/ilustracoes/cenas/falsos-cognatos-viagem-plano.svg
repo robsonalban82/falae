@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Planejando a viagem: mala, calendário com dia marcado e avião</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M14 40 Q30 30 44 38" stroke-width="2.5" stroke-dasharray="4 6" stroke-opacity=".6"/>
+<path d="M44 38 L70 26 Q78 22 80 28 Q80 32 74 34 L48 46Z" fill="#FFFDF8" stroke-width="3"/>
+<path d="M60 31 L52 18 L58 16 L70 27 M58 40 L56 52 L62 50 L66 37 M46 39 L40 32 L44 30 L50 36" fill="#3B3FB6" stroke-width="2.5"/>
+<rect x="92" y="44" width="56" height="64" rx="4" fill="#FFFDF8"/>
+<path d="M136 46 Q146 46 146 56 L146 104 Q146 106 142 106 L120 106Z" fill="#E8DFCB" stroke="none"/>
+<rect x="92" y="44" width="56" height="64" rx="4"/>
+<path d="M92 48 Q92 44 96 44 L144 44 Q148 44 148 48 L148 60 L92 60Z" fill="#B42318"/>
+<path d="M92 48 Q92 44 96 44 L144 44 Q148 44 148 48 L148 60 L92 60Z"/>
+<path d="M104 40 L104 50 M136 40 L136 50" stroke-width="3.5"/>
+<path d="M102 70 L104 70 M114 70 L116 70 M126 70 L128 70 M138 70 L140 70 M102 82 L104 82 M114 82 L116 82 M138 82 L140 82 M102 94 L104 94 M114 94 L116 94 M126 94 L128 94 M138 94 L140 94" stroke-width="3"/>
+<circle cx="127" cy="82" r="7" stroke="#0F7A37" stroke-width="3"/>
+<rect x="38" y="70" width="24" height="16" rx="5" stroke-width="4"/>
+<rect x="18" y="82" width="64" height="56" rx="8" fill="#FF8A1F"/>
+<path d="M66 84 Q80 84 80 98 L80 130 Q80 136 72 136 L60 136Z" fill="#D96A00" stroke="none"/>
+<path d="M68 100 L76 92 M68 114 L78 104 M68 128 L78 118" stroke-width="1.6" stroke-opacity=".5"/>
+<rect x="18" y="82" width="64" height="56" rx="8"/>
+<path d="M36 84 L36 136 M64 84 L64 136" stroke-width="2.5"/>
+<path d="M24 96 Q24 88 30 88" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<circle cx="50" cy="104" r="6" fill="#F5C518" stroke-width="2.5"/>
+<path d="M44 118 L56 118 L56 126 L44 126Z" fill="#9A9DFF" stroke-width="2.5"/>
+<circle cx="28" cy="142" r="4.5" fill="#1B1C33" stroke-width="2"/><circle cx="72" cy="142" r="4.5" fill="#1B1C33" stroke-width="2"/>
+</g></svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Quadro na parede e caneca na mesa: on the wall, on the table</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M24 13 Q80 10 136 13 Q146 14 146 24 L146 120 L14 120 L14 26 Q14 14 24 13Z" fill="#FFE3B3" stroke-width="2.5"/>
+<path d="M30 15 L30 108 M50 13 L50 108 M70 13 L70 108 M90 13 L90 108 M110 13 L110 108 M130 14 L130 108" stroke="#F2C27A" stroke-width="3"/>
+<path d="M15 108 L145 108 L145 119 L15 119Z" fill="#E8DFCB" stroke="none"/>
+<path d="M14 108 L146 108" stroke-width="2.5"/>
+<path d="M24 13 Q80 10 136 13 Q146 14 146 24 L146 120 L14 120 L14 26 Q14 14 24 13Z" stroke-width="2.5"/>
+<path d="M80 16 L58 31 M80 16 L102 31" stroke-width="2"/><circle cx="80" cy="16" r="2.5" fill="#1B1C33"/>
+<rect x="50" y="30" width="60" height="44" rx="3" fill="#7A4A2A"/>
+<rect x="57" y="37" width="46" height="30" rx="1" fill="#CFD1FF" stroke-width="2.5"/>
+<path d="M58 59 Q72 47 84 57 Q94 51 102 57 L102 66 L58 66Z" fill="#0F7A37" stroke-width="2"/>
+<circle cx="92" cy="45" r="4.5" fill="#F5C518" stroke-width="2"/>
+<path d="M54 36 L54 50" stroke="#fff" stroke-opacity=".6" stroke-width="2.5"/>
+<path d="M26 104 L24 142 M134 104 L136 142" stroke-width="9"/>
+<path d="M26 106 L24.2 140 M134 106 L135.8 140" stroke="#D96A00" stroke-width="3.5"/>
+<rect x="14" y="92" width="132" height="12" rx="3" fill="#FF8A1F"/>
+<path d="M16 99 L144 99 L144 102 L16 102Z" fill="#D96A00" stroke="none"/>
+<rect x="14" y="92" width="132" height="12" rx="3"/>
+<path d="M22 95 L60 95" stroke="#fff" stroke-opacity=".6" stroke-width="2.5"/>
+<path d="M34 70 L36 90 Q36 92 38 92 L52 92 Q54 92 54 90 L56 70Z" fill="#B42318"/>
+<path d="M48 71 L55 71 L53.5 90 Q53 91.5 51 91.5 L46 91.5Z" fill="#8A1A12" stroke="none"/>
+<path d="M34 70 L36 90 Q36 92 38 92 L52 92 Q54 92 54 90 L56 70Z"/>
+<path d="M56 75 Q66 78 54.5 86" stroke-width="3"/>
+<path d="M42 64 q-4 -6 0 -12 M50 64 q-4 -6 0 -12" stroke-width="2.5" stroke-opacity=".5"/>
+<rect x="68" y="87" width="24" height="5" rx="2" fill="#3B3FB6" stroke-width="2.5"/>
+<path d="M116 76 Q102 58 108 46 Q122 56 116 76Z" fill="#0F7A37" stroke-width="2.5"/>
+<path d="M116 76 Q126 54 138 54 Q136 70 116 76Z" fill="#0F7A37" stroke-width="2.5"/>
+<path d="M104 75 L128 75 L124 92 L108 92Z" fill="#FFE3B3"/>
+<path d="M118 76 L127 76 L123.5 91 L116 91Z" fill="#F2C27A" stroke="none"/>
+<path d="M104 75 L128 75 L124 92 L108 92Z"/>
+</g></svg>

@@ -1,0 +1,363 @@
+{
+  "id": "in-on-at",
+  "title": "In, on, at",
+  "level": "A1",
+  "figureStyle": "art",
+  "collection": "mapas",
+  "icon": "pin",
+  "center": {
+    "en": "in · on · at",
+    "pt": "em, no, na, às…"
+  },
+  "centerFigure": "🌎🛣️📍",
+  "centerArt": "in-on-at-centro",
+  "intro": "Em português quase tudo é \"em\". Em inglês, depende do tamanho do tempo ou do lugar.",
+  "branches": [
+    {
+      "label": "IN: o maior",
+      "icon": "home",
+      "color": "folha",
+      "figure": "🌎",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Tempo",
+          "lines": [
+            {
+              "en": "**in** July · **in** 2026",
+              "pt": "meses e anos",
+              "emoji": "📅"
+            },
+            {
+              "en": "**in** the morning",
+              "pt": "de manhã",
+              "emoji": "🌅"
+            },
+            {
+              "en": "**in** the afternoon",
+              "pt": "à tarde",
+              "emoji": "☀️"
+            },
+            {
+              "en": "**in** the evening",
+              "pt": "à noite (fim da tarde até a hora de dormir)",
+              "emoji": "🌆"
+            }
+          ],
+          "art": "in-on-at-manha"
+        },
+        {
+          "tag": "regra",
+          "title": "Lugar",
+          "lines": [
+            {
+              "en": "**in** Brazil · **in** Recife",
+              "pt": "países e cidades",
+              "emoji": "🇧🇷"
+            },
+            {
+              "en": "**in** the kitchen",
+              "pt": "dentro de um lugar",
+              "emoji": "🍳"
+            },
+            {
+              "en": "**in** the car",
+              "pt": "no carro",
+              "emoji": "🚗"
+            }
+          ],
+          "art": "in-on-at-carro"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "I live **in** São Paulo.",
+              "pt": "Eu moro em São Paulo.",
+              "emoji": "🏙️"
+            },
+            {
+              "en": "My birthday is **in** May.",
+              "pt": "Meu aniversário é em maio.",
+              "emoji": "🎂"
+            }
+          ],
+          "art": "in-on-at-cidade"
+        }
+      ]
+    },
+    {
+      "label": "ON: o do meio",
+      "icon": "calendar",
+      "color": "anil",
+      "figure": "🛣️",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Tempo",
+          "lines": [
+            {
+              "en": "**on** Monday",
+              "pt": "dias da semana",
+              "emoji": "🗓️"
+            },
+            {
+              "en": "**on** May 5th",
+              "pt": "datas",
+              "emoji": "📆"
+            },
+            {
+              "en": "**on** the weekend",
+              "pt": "no fim de semana",
+              "emoji": "🛋️"
+            }
+          ],
+          "art": "in-on-at-calendario-dia"
+        },
+        {
+          "tag": "regra",
+          "title": "Lugar",
+          "lines": [
+            {
+              "en": "**on** the table",
+              "pt": "em cima de algo",
+              "emoji": "🍽️"
+            },
+            {
+              "en": "**on** the wall",
+              "pt": "na parede",
+              "emoji": "🖼️"
+            },
+            {
+              "en": "**on** Paulista Avenue",
+              "pt": "nome de rua",
+              "emoji": "🛣️"
+            },
+            {
+              "en": "**on** the bus · train · plane",
+              "pt": "ônibus, trem, avião",
+              "emoji": "🚌"
+            }
+          ],
+          "art": "in-on-at-mesa-parede"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "See you **on** Friday!",
+              "pt": "Até sexta!",
+              "emoji": "👋"
+            },
+            {
+              "en": "Your phone is **on** the table.",
+              "pt": "Seu celular está na mesa.",
+              "emoji": "📱"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "AT: o ponto exato",
+      "icon": "clock",
+      "color": "manga",
+      "figure": "📍",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Tempo",
+          "lines": [
+            {
+              "en": "**at** 7 o'clock",
+              "pt": "horas",
+              "emoji": "🕖"
+            },
+            {
+              "en": "**at** noon",
+              "pt": "ao meio-dia",
+              "emoji": "🕛"
+            },
+            {
+              "en": "**at** night",
+              "pt": "à noite, de noite (no geral, mais tarde)",
+              "emoji": "🌙"
+            }
+          ],
+          "art": "in-on-at-relogio"
+        },
+        {
+          "tag": "regra",
+          "title": "Lugar",
+          "lines": [
+            {
+              "en": "**at** home · **at** work",
+              "pt": "em casa · no trabalho",
+              "emoji": "🏠"
+            },
+            {
+              "en": "**at** school",
+              "pt": "na escola",
+              "emoji": "🏫"
+            },
+            {
+              "en": "**at** the bus stop",
+              "pt": "um ponto específico",
+              "emoji": "🚏"
+            }
+          ],
+          "art": "in-on-at-ponto-de-onibus"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "I'm **at** work.",
+              "pt": "Estou no trabalho.",
+              "emoji": "💼"
+            },
+            {
+              "en": "The class is **at** 8.",
+              "pt": "A aula é às 8.",
+              "emoji": "🕗"
+            }
+          ],
+          "art": "in-on-at-trabalho"
+        }
+      ]
+    },
+    {
+      "label": "Sem preposição",
+      "icon": "ban",
+      "color": "jabuticaba",
+      "figure": "🚫",
+      "nodes": [
+        {
+          "tag": "excecao",
+          "title": "next, last, this, every",
+          "lines": [
+            {
+              "en": "See you **next** Monday.",
+              "pt": "Até segunda que vem.",
+              "emoji": "➡️"
+            },
+            {
+              "en": "I work **every** day.",
+              "pt": "Eu trabalho todo dia.",
+              "emoji": "🔁"
+            },
+            {
+              "wrong": "on next Monday",
+              "right": "next Monday"
+            },
+            {
+              "note": "Também: today, tonight, tomorrow, yesterday."
+            }
+          ]
+        },
+        {
+          "tag": "excecao",
+          "title": "Ir para casa",
+          "lines": [
+            {
+              "wrong": "I go to home at 6.",
+              "right": "I go home at 6.",
+              "note": "Com home, o verbo de movimento vai sem to."
+            }
+          ],
+          "figure": "🏠🚶",
+          "art": "in-on-at-indo-pra-casa"
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "figure": "⚠️",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "in Monday",
+              "right": "on Monday",
+              "note": "Dia da semana: on."
+            }
+          ],
+          "figure": "🗓️"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "in the night",
+              "right": "at night",
+              "note": "Mas: in the morning, in the afternoon."
+            },
+            {
+              "note": "In the middle of the night = de madrugada."
+            }
+          ],
+          "figure": "🌙",
+          "art": "in-on-at-noite"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I'm in home.",
+              "right": "I'm at home.",
+              "note": "\"Em casa\" = at home."
+            }
+          ],
+          "figure": "🏠",
+          "art": "in-on-at-em-casa"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I'm in the bus.",
+              "right": "I'm on the bus.",
+              "note": "Ônibus, trem, avião: on. Carro: in."
+            }
+          ],
+          "figure": "🚌",
+          "art": "in-on-at-onibus"
+        }
+      ]
+    }
+  ],
+  "doodle": "in > on > at: do maior pro menor",
+  "exercise": {
+    "instruction": "Complete com in, on ou at.",
+    "items": [
+      {
+        "prompt": "My brother lives ___ Canada.",
+        "answer": "in",
+        "hintPt": "países e cidades"
+      },
+      {
+        "prompt": "The party is ___ Saturday.",
+        "answer": "on",
+        "hintPt": "dia da semana"
+      },
+      {
+        "prompt": "I have lunch ___ noon.",
+        "answer": "at",
+        "hintPt": "ao meio-dia"
+      },
+      {
+        "prompt": "She's ___ work now.",
+        "answer": "at",
+        "hintPt": "Ela está no trabalho agora."
+      },
+      {
+        "prompt": "We're ___ the train.",
+        "answer": "on",
+        "hintPt": "Estamos no trem."
+      }
+    ]
+  }
+}

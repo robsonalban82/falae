@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Porta acesa à noite: chegando e dizendo good evening</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M40 144 L104 144 L128 152 L18 152Z" fill="#F5C518" fill-opacity=".45" stroke="none"/>
+<rect x="38" y="38" width="68" height="108" rx="5" fill="#7A4A2A"/>
+<path d="M96 40 L104 40 L104 144 L96 144Z" fill="#4E2F1A" fill-opacity=".6" stroke="none"/>
+<rect x="38" y="38" width="68" height="108" rx="5"/>
+<rect x="47" y="47" width="50" height="99" fill="#F5C518"/>
+<path d="M80 47 L97 47 L97 146 L70 146 Q90 100 80 47Z" fill="#D9A800" stroke="none"/>
+<path d="M97 47 L124 56 L124 140 L97 146Z" fill="#3B3FB6"/>
+<path d="M112 54 L124 56 L124 140 L110 143Z" fill="#2B2F8A" stroke="none"/>
+<path d="M97 47 L124 56 L124 140 L97 146Z"/>
+<circle cx="104" cy="98" r="3" fill="#F5C518" stroke-width="2"/>
+<path d="M60 146 Q58 118 72 112 L80 112 Q94 118 92 146" fill="#B42318"/>
+<path d="M82 113 Q94 120 92 146 L84 146 Q88 128 82 113Z" fill="#8A1A12" stroke="none"/>
+<path d="M60 146 Q58 118 72 112 L80 112 Q94 118 92 146"/>
+<path d="M62 120 Q54 104 56 86" stroke="#1B1C33" stroke-width="11"/><path d="M62 120 Q54 104 56 86" stroke="#D9965F" stroke-width="5.5"/>
+<circle cx="56" cy="82" r="6" fill="#D9965F" stroke-width="2.5"/>
+<circle cx="76" cy="94" r="15" fill="#D9965F"/>
+<path d="M84 82 Q94 96 84 108 Q78 110 72 109 Q88 100 84 82Z" fill="#B87440" stroke="none"/>
+<circle cx="76" cy="94" r="15"/>
+<path d="M61 92 Q60 76 76 78 Q92 78 91 92 Q86 84 76 85 Q66 84 61 92Z" fill="#7A4A2A"/>
+<circle cx="71" cy="95" r="1.8" fill="#1B1C33" stroke="none"/><circle cx="81" cy="95" r="1.8" fill="#1B1C33" stroke="none"/>
+<path d="M71 101 Q76 105 81 101" stroke-width="2"/>
+<path d="M8 74 L14 74 M10 86 L16 84" stroke-width="0"/>
+<path d="M136 16 A14 14 0 1 0 149.3 34.2 A10.92 10.92 0 0 1 136 16Z" fill="#F5C518"/>
+<path d="M127.32 31.4 Q129 38.68 136 40.92" stroke="#D9A800" stroke-width="2.5"/>
+<path d="M20 27.6 L21.6 32.4 L26.4 34 L21.6 35.6 L20 40.4 L18.4 35.6 L13.6 34 L18.4 32.4Z" fill="#F5C518" stroke-width="2"/>
+<path d="M140 77.2 L141.2 80.8 L144.8 82 L141.2 83.2 L140 86.8 L138.8 83.2 L135.2 82 L138.8 80.8Z" fill="#F5C518" stroke-width="2"/>
+<path d="M24 91.6 L25.1 94.9 L28.4 96 L25.1 97.1 L24 100.4 L22.9 97.1 L19.6 96 L22.9 94.9Z" fill="#F5C518" stroke-width="2"/>
+</g></svg>

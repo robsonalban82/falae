@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Do maior pro menor: a região (in), a rua (on) e o ponto exato (at)</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M22 78 Q22 30 76 27 Q134 25 138 78 Q141 134 82 138 Q23 140 22 78Z" fill="#0F7A37"/>
+<path d="M120 42 Q144 78 128 116 Q110 138 78 136 Q126 120 120 42Z" fill="#0A5A28" stroke="none"/>
+<path d="M22 78 Q22 30 76 27 Q134 25 138 78 Q141 134 82 138 Q23 140 22 78Z"/>
+<path d="M30 70 Q34 46 54 36" stroke="#fff" stroke-opacity=".55" stroke-width="3.5"/>
+<g fill="#5BE08C" stroke-width="2.5"><circle cx="44" cy="58" r="7"/><circle cx="56" cy="46" r="6"/><circle cx="114" cy="110" r="7"/><circle cx="38" cy="96" r="6"/></g>
+<rect x="96" y="40" width="18" height="14" rx="2" fill="#FFE3B3" stroke-width="2.5"/>
+<path d="M93 42 L105 32 L117 42Z" fill="#B42318" stroke-width="2.5"/>
+<path d="M14 116 Q70 94 148 58" stroke-width="22"/>
+<path d="M14 116 Q70 94 148 58" stroke="#3B3FB6" stroke-width="15"/>
+<path d="M14 116 Q70 94 148 58" stroke="#FFFDF8" stroke-width="2.5" stroke-dasharray="7 8"/>
+<ellipse cx="75" cy="92" rx="9" ry="3.5" fill="#1B1C33" fill-opacity=".35" stroke="none"/>
+<path d="M75 91 Q57 68 57 55 Q57 36 75 36 Q93 36 93 55 Q93 68 75 91Z" fill="#FF8A1F"/>
+<path d="M82 38 Q93 42 93 55 Q93 68 75 91 Q86 66 82 38Z" fill="#D96A00" stroke="none"/>
+<path d="M75 91 Q57 68 57 55 Q57 36 75 36 Q93 36 93 55 Q93 68 75 91Z"/>
+<circle cx="75" cy="55" r="7" fill="#FFFDF8" stroke-width="3"/>
+<path d="M62 56 Q62 46 68 41" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+</g></svg>

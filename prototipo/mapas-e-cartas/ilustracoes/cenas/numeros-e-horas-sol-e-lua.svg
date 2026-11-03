@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Janela dividida: sol nascendo de manhã e lua à noite</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="62" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<rect x="16" y="28" width="128" height="104" rx="8" fill="#7A4A2A"/>
+<rect x="24" y="36" width="54" height="88" rx="3" fill="#CFD1FF"/>
+<rect x="82" y="36" width="54" height="88" rx="3" fill="#2B2F8A"/>
+<circle cx="51" cy="100" r="17" fill="#F5C518"/>
+<path d="M51 70 L51 76 M30 79 L35 84 M72 79 L67 84 M24 98 L30 98 M78 98 L72 98" stroke="#FF8A1F" stroke-width="3"/>
+<path d="M24 108 Q42 96 60 104 Q70 108 78 104 L78 124 L24 124Z" fill="#0F7A37"/>
+<path d="M56 106 Q70 110 78 104 L78 124 L50 124Z" fill="#0A5A28" stroke="none"/>
+<path d="M60 116 L66 110 M68 118 L74 112" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M24 108 Q42 96 60 104 Q70 108 78 104" stroke-width="3"/>
+<path d="M118 50 Q100 54 102 72 Q106 88 124 86 Q108 82 108 68 Q108 56 118 50Z" fill="#F5C518" stroke-width="3"/>
+<path d="M95 52 l0 6 M92 55 l6 0 M126 98 l0 6 M123 101 l6 0 M92 86 l0 4 M90 88 l4 0" stroke="#FFFDF8" stroke-width="2"/>
+<path d="M82 108 Q100 100 116 106 Q128 110 136 104 L136 124 L82 124Z" fill="#0A5A28"/>
+<path d="M82 108 Q100 100 116 106 Q128 110 136 104" stroke-width="3"/>
+<rect x="24" y="36" width="54" height="88" rx="3" stroke-width="3"/>
+<rect x="82" y="36" width="54" height="88" rx="3" stroke-width="3"/>
+<path d="M120 30 L142 30 L142 130 L126 130Z" fill="#1B1C33" fill-opacity=".18" stroke="none"/>
+<rect x="16" y="28" width="128" height="104" rx="8"/>
+<path d="M30 44 L30 62" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<path d="M10 132 L150 132 L150 140 L10 140Z" fill="#FFE3B3" stroke-width="3"/>
+
+</g></svg>

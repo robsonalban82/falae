@@ -1,0 +1,281 @@
+{
+  "id": "frases-dia-a-dia",
+  "title": "Frases do dia a dia",
+  "collection": "frases",
+  "level": "A1",
+  "description": "24 frases prontas para cumprimentar, pedir comida, comprar, trabalhar, viajar e pedir ajuda.",
+  "cards": [
+    {
+      "id": "fr-001",
+      "en": "Nice to meet you.",
+      "emoji": "🤝",
+      "pt": "Prazer em te conhecer.",
+      "example": {
+        "en": "— I'm Ana. — Nice to meet you, Ana!",
+        "pt": "— Eu sou a Ana. — Prazer, Ana!"
+      },
+      "pronunciation": "náis ta mít iú",
+      "situation": "Cumprimentos: quando alguém é apresentado a você.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-002",
+      "en": "How are you doing?",
+      "emoji": "🙂",
+      "pt": "Como você está? / Tudo bem?",
+      "example": {
+        "en": "— How are you doing? — Pretty good, thanks!",
+        "pt": "— Tudo bem? — Tudo certo, obrigado!"
+      },
+      "pronunciation": "háu ar iú dúing",
+      "situation": "Cumprimentos: com alguém que você já conhece.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-003",
+      "en": "What's up?",
+      "emoji": "✌️",
+      "pt": "E aí?",
+      "example": {
+        "en": "— What's up? — Not much. You?",
+        "pt": "— E aí? — Nada de mais. E você?"
+      },
+      "pronunciation": "uâts âp",
+      "situation": "Cumprimentos: entre amigos, bem informal.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-004",
+      "en": "Have a nice day!",
+      "emoji": "☀️",
+      "pt": "Tenha um bom dia!",
+      "example": {
+        "en": "— Have a nice day! — You too!",
+        "pt": "— Tenha um bom dia! — Você também!"
+      },
+      "pronunciation": "hév a náis dêi",
+      "situation": "Cumprimentos: ao se despedir, durante o dia (em lojas, no trabalho).",
+      "level": "A1"
+    },
+    {
+      "id": "fr-005",
+      "en": "Table for two, please.",
+      "emoji": "🍽️",
+      "pt": "Mesa para dois, por favor.",
+      "pronunciation": "têibol fer tú, plíz",
+      "situation": "Restaurante: ao chegar, para pedir uma mesa.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-006",
+      "en": "Can I see the menu?",
+      "emoji": "📖",
+      "pt": "Posso ver o cardápio?",
+      "pronunciation": "kan ái sí tha méniu",
+      "situation": "Restaurante: quando você senta e ainda não tem o cardápio.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-007",
+      "en": "I'd like the chicken, please.",
+      "emoji": "🍗",
+      "pt": "Eu queria o frango, por favor.",
+      "example": {
+        "en": "— Ready to order? — I'd like the chicken, please.",
+        "pt": "— Já escolheu? — Eu queria o frango, por favor."
+      },
+      "pronunciation": "áid láik tha tchíken, plíz",
+      "situation": "Restaurante: para fazer o pedido com educação.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-008",
+      "en": "Can I have the check, please?",
+      "emoji": "🧾",
+      "pt": "Pode me trazer a conta, por favor?",
+      "pronunciation": "kan ái hév tha tchék, plíz",
+      "situation": "Restaurante: quando você termina de comer e quer pagar. Nos EUA é check; na Inglaterra, bill. Também se diz: \"Can I get the check?\"",
+      "level": "A1"
+    },
+    {
+      "id": "fr-009",
+      "en": "How much is this?",
+      "emoji": "🏷️",
+      "pt": "Quanto custa isso?",
+      "example": {
+        "en": "— How much is this? — It's $15.",
+        "pt": "— Quanto custa isso? — Custa 15 dólares."
+      },
+      "pronunciation": "háu mâtch íz this",
+      "situation": "Compras: para perguntar o preço de algo.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-010",
+      "en": "I'm just looking, thanks.",
+      "emoji": "👀",
+      "pt": "Só estou dando uma olhada, obrigado(a).",
+      "example": {
+        "en": "— Can I help you? — I'm just looking, thanks.",
+        "pt": "— Posso ajudar? — Só estou dando uma olhada, obrigado."
+      },
+      "pronunciation": "áim djâst lúking, thénks",
+      "situation": "Compras: quando o vendedor oferece ajuda e você só quer olhar.",
+      "level": "A2"
+    },
+    {
+      "id": "fr-011",
+      "en": "Do you take credit cards?",
+      "emoji": "💳",
+      "pt": "Vocês aceitam cartão de crédito?",
+      "pronunciation": "da iú têik krédit kárdz",
+      "situation": "Compras: antes de pagar, numa loja ou num táxi.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-012",
+      "en": "Can I try this on?",
+      "emoji": "👕",
+      "pt": "Posso experimentar?",
+      "example": {
+        "en": "— Can I try this on? — Sure, the fitting room is over there.",
+        "pt": "— Posso experimentar? — Claro, o provador fica ali."
+      },
+      "pronunciation": "kan ái trái this án",
+      "situation": "Compras: numa loja de roupas ou sapatos.",
+      "level": "A2"
+    },
+    {
+      "id": "fr-013",
+      "en": "What do you do?",
+      "emoji": "💼",
+      "pt": "Você trabalha com quê? / O que você faz?",
+      "example": {
+        "en": "— What do you do? — I'm a nurse.",
+        "pt": "— Você trabalha com quê? — Sou enfermeira."
+      },
+      "pronunciation": "uât da iú dú",
+      "situation": "Trabalho: para perguntar a profissão de alguém.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-014",
+      "en": "I'll send you an email.",
+      "emoji": "📧",
+      "pt": "Vou te mandar um e-mail.",
+      "pronunciation": "áil sénd iú an ímeil",
+      "situation": "Trabalho: no fim de uma conversa ou reunião, para combinar o próximo passo.",
+      "level": "A2"
+    },
+    {
+      "id": "fr-015",
+      "en": "Sorry, I'm running late.",
+      "emoji": "⏰",
+      "pt": "Desculpa, estou atrasado(a).",
+      "example": {
+        "en": "Sorry, I'm running late. I'll be there in ten minutes.",
+        "pt": "Desculpa, estou atrasado. Chego em dez minutos."
+      },
+      "pronunciation": "sári, áim râning lêit",
+      "situation": "Trabalho: para avisar que você vai chegar atrasado(a).",
+      "level": "A2"
+    },
+    {
+      "id": "fr-016",
+      "en": "Could you repeat that, please?",
+      "emoji": "🔁",
+      "pt": "Você pode repetir, por favor?",
+      "pronunciation": "kúd iú ripít thét, plíz",
+      "situation": "Trabalho: numa reunião ou ligação, quando você não entendeu. Serve em qualquer lugar.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-017",
+      "en": "Where's the bathroom?",
+      "emoji": "🚻",
+      "pt": "Onde fica o banheiro?",
+      "pronunciation": "uérz tha béthrum",
+      "situation": "Viagem: em restaurante, loja ou aeroporto. Em lugar público também se diz restroom.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-018",
+      "en": "I have a reservation.",
+      "emoji": "🏨",
+      "pt": "Eu tenho uma reserva.",
+      "example": {
+        "en": "Hi, I have a reservation under Silva.",
+        "pt": "Oi, eu tenho uma reserva no nome de Silva."
+      },
+      "pronunciation": "ái hév a rezervêichan",
+      "situation": "Viagem: ao chegar no hotel ou no restaurante.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-019",
+      "en": "How do I get to the airport?",
+      "emoji": "✈️",
+      "pt": "Como eu chego ao aeroporto?",
+      "pronunciation": "háu da ái guét ta thi érport",
+      "situation": "Viagem: para pedir informação na rua ou no hotel.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-020",
+      "en": "I'm here on vacation.",
+      "emoji": "🏖️",
+      "pt": "Estou aqui de férias.",
+      "example": {
+        "en": "— What's the purpose of your visit? — I'm here on vacation.",
+        "pt": "— Qual é o motivo da sua visita? — Estou aqui de férias."
+      },
+      "pronunciation": "áim hír án veikêichan",
+      "situation": "Viagem: na imigração, quando perguntam o motivo da viagem.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-021",
+      "en": "Can you help me?",
+      "emoji": "🙋",
+      "pt": "Você pode me ajudar?",
+      "pronunciation": "kan iú hélp mí",
+      "situation": "Emergência: quando você precisa de ajuda, em qualquer situação.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-022",
+      "en": "Call 911!",
+      "emoji": "🚨",
+      "pt": "Ligue para o 911!",
+      "example": {
+        "en": "Someone call 911!",
+        "pt": "Alguém liga para o 911!"
+      },
+      "pronunciation": "kól náin uán uán",
+      "situation": "Emergência nos EUA: polícia, bombeiros e ambulância num número só. Fala-se \"nine one one\".",
+      "level": "A1"
+    },
+    {
+      "id": "fr-023",
+      "en": "I need a doctor.",
+      "emoji": "🩺",
+      "pt": "Eu preciso de um médico.",
+      "pronunciation": "ái níd a dákter",
+      "situation": "Emergência: quando você ou alguém está passando mal.",
+      "level": "A1"
+    },
+    {
+      "id": "fr-024",
+      "en": "I lost my passport.",
+      "emoji": "🛂",
+      "pt": "Eu perdi meu passaporte.",
+      "example": {
+        "en": "Excuse me, I lost my passport. Can you help me?",
+        "pt": "Com licença, eu perdi meu passaporte. Você pode me ajudar?"
+      },
+      "pronunciation": "ái lóst mái pésport",
+      "situation": "Emergência: no hotel, na polícia ou no consulado.",
+      "level": "A2"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pilha de notas e moedas: muito dinheiro</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="82" cy="148" rx="64" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<path d="M18 128 Q17 120 26 120 L96 119 Q104 120 104 128 L104 136 Q104 144 95 144 L26 144 Q18 144 18 136Z" fill="#0F7A37"/>
+<path d="M78 120 L96 120 Q103 121 103 128 L103 136 Q103 143 95 143 L72 143Z" fill="#0A5A28" stroke="none"/>
+<path d="M18 128 Q17 120 26 120 L96 119 Q104 120 104 128 L104 136 Q104 144 95 144 L26 144 Q18 144 18 136Z"/>
+<path d="M20 132 L102 131" stroke-width="2"/>
+<path d="M22 104 L92 98 Q100 98 101 105 L102 114 Q102 121 94 121 L24 124 Q17 124 16 117 L16 110 Q16 104 22 104Z" fill="#5BE08C"/>
+<path d="M76 100 L92 98 Q100 98 101 105 L102 114 Q102 121 94 121 L70 122Z" fill="#0F7A37" fill-opacity=".45" stroke="none"/>
+<path d="M22 104 L92 98 Q100 98 101 105 L102 114 Q102 121 94 121 L24 124 Q17 124 16 117 L16 110 Q16 104 22 104Z"/>
+<path d="M30 78 L98 72 Q106 72 107 79 L108 94 Q109 101 101 102 L32 108 Q24 108 23 101 L22 86 Q22 79 30 78Z" fill="#0F7A37"/>
+<path d="M82 74 L98 72 Q106 72 107 79 L108 94 Q109 101 101 102 L76 104Z" fill="#0A5A28" stroke="none"/>
+<path d="M90 80 L98 76 M92 88 L102 82 M94 96 L104 90" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M30 78 L98 72 Q106 72 107 79 L108 94 Q109 101 101 102 L32 108 Q24 108 23 101 L22 86 Q22 79 30 78Z"/>
+<path d="M31 84 L98 78 L99 96 L33 102Z" stroke="#5BE08C" stroke-width="2"/>
+<ellipse cx="65" cy="90" rx="11" ry="9" fill="#5BE08C" stroke-width="2.5"/>
+<path d="M63 85 Q60 88 64 90 Q69 92 66 95" stroke-width="2"/>
+<path d="M30 84 Q44 82 54 81" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M110 140 L110 132 Q110 128 128 128 Q146 128 146 132 L146 140 Q146 145 128 145 Q110 145 110 140Z" fill="#F5C518"/>
+<path d="M134 129 Q146 129 146 133 L146 140 Q146 144 132 145Z" fill="#D9A800" stroke="none"/>
+<path d="M110 140 L110 132 Q110 128 128 128 Q146 128 146 132 L146 140 Q146 145 128 145 Q110 145 110 140Z"/>
+<path d="M112 128 L112 118 Q112 114 129 114 Q146 114 146 118 L146 128 Q146 132 129 132 Q112 132 112 128Z" fill="#F5C518"/>
+<path d="M135 115 Q146 115 146 119 L146 128 Q146 131 133 132Z" fill="#D9A800" stroke="none"/>
+<path d="M112 128 L112 118 Q112 114 129 114 Q146 114 146 118 L146 128 Q146 132 129 132 Q112 132 112 128Z"/>
+<path d="M114 114 L114 104 Q114 100 130 100 Q146 100 146 104 L146 114 Q146 118 130 118 Q114 118 114 114Z" fill="#F5C518"/>
+<path d="M136 101 Q146 101 146 105 L146 114 Q146 117 134 118Z" fill="#D9A800" stroke="none"/>
+<path d="M140 104 L144 100 M140 112 L145 107" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M114 114 L114 104 Q114 100 130 100 Q146 100 146 104 L146 114 Q146 118 130 118 Q114 118 114 114Z"/>
+<ellipse cx="130" cy="104" rx="16" ry="4" fill="#F5C518" stroke-width="2.5"/>
+<path d="M118 108 L118 114" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<circle cx="118" cy="66" r="13" fill="#F5C518"/>
+<path d="M125.5 55.4 A13 13 0 0 1 112.5 77.8 Q122.7 68.7 125.5 55.4Z" fill="#D9A800" stroke="none"/>
+<circle cx="118" cy="66" r="13"/>
+<circle cx="118" cy="66" r="7.5" stroke-width="2"/>
+<path d="M110 60 Q112 56 116 55" stroke="#fff" stroke-opacity=".7" stroke-width="2.5"/>
+<path d="M134 46 L134 54 M130 50 L138 50 M40 54 L40 62 M36 58 L44 58" stroke="#FF8A1F" stroke-width="2.5"/>
+<path d="M98 54 l4 -4 M144 72 l5 -1" stroke="#FF8A1F" stroke-width="2.5"/>
+
+</g></svg>

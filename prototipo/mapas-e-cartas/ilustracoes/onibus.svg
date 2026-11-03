@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img"><title>Ônibus</title><defs><filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><feMorphology in="SourceAlpha" operator="dilate" radius="1.3" result="d"/><feFlood flood-color="#fff"/><feComposite in2="d" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#halo)" fill="none" stroke="#1B1C33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="6" y="14" width="52" height="38" rx="8" fill="#FF8A1F"/>
+<rect x="11" y="19" width="42" height="15" rx="3.5" fill="#CFD1FF"/>
+<path d="M25.5 19 V34 M39.5 19 V34" stroke-width="2.5"/>
+<circle cx="13" cy="42" r="2.6" fill="#F5C518" stroke-width="2"/><circle cx="51" cy="42" r="2.6" fill="#F5C518" stroke-width="2"/>
+<circle cx="18" cy="53" r="6.5" fill="#5B5A6E"/><circle cx="46" cy="53" r="6.5" fill="#5B5A6E"/>
+<circle cx="18" cy="53" r="1.8" fill="#fff" stroke="none"/><circle cx="46" cy="53" r="1.8" fill="#fff" stroke="none"/>
+<path d="M19 39 H31 a2 2 0 0 1 0 4 H19 a2 2 0 0 1 0 -4 Z" fill="#fff" fill-opacity=".55" stroke="none"/></g></svg>

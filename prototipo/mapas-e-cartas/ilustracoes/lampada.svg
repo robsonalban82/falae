@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img"><title>Lâmpada, dica</title><defs><filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><feMorphology in="SourceAlpha" operator="dilate" radius="1.3" result="d"/><feFlood flood-color="#fff"/><feComposite in2="d" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#halo)" fill="none" stroke="#1B1C33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M7 14 L12 17 M57 14 L52 17" stroke-width="3"/>
+<path d="M32 7 C20 7 14 16 14 25 C14 33 20 36 22 42 V46 H42 V42 C44 36 50 33 50 25 C50 16 44 7 32 7 Z" fill="#F5C518"/>
+<path d="M25 28 L32 37 L39 28" stroke-width="2.8"/><path d="M32 37 V46" stroke-width="2.8"/>
+<rect x="22.5" y="46" width="19" height="7" rx="2.5" fill="#8C8AA3"/>
+<rect x="26" y="53" width="12" height="6" rx="3" fill="#5B5A6E"/>
+<path d="M19 24 C19 18 23 13 28 11.5 L29 14 C25 15.5 22.5 19 22.5 24 Z" fill="#fff" fill-opacity=".55" stroke="none"/></g></svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Relógio de parede marcando 7 horas: at 7 o'clock</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M80 26 L80 18" stroke-width="3"/>
+<circle cx="80" cy="80" r="52" fill="#3B3FB6"/>
+<path d="M120 46 Q142 82 118 122 Q98 140 64 132 Q108 130 120 46Z" fill="#2B2F8A" stroke="none"/>
+<path d="M120 78 L128 84 M118 94 L126 100 M112 108 L118 116 M102 120 L108 126" stroke-width="1.6" stroke-opacity=".5"/>
+<circle cx="80" cy="80" r="52"/>
+<circle cx="80" cy="80" r="40" fill="#FFFDF8"/>
+<path d="M104 52 Q124 82 106 112 Q92 124 70 120 Q102 110 104 52Z" fill="#E8DFCB" stroke="none"/>
+<circle cx="80" cy="80" r="40"/>
+<path d="M80 44 L80 51 M116 80 L109 80 M80 116 L80 109 M44 80 L51 80" stroke-width="3"/>
+<path d="M98 49 L95 54 M111 62 L106 65 M111 98 L106 95 M98 111 L95 106 M49 98 L54 95 M49 62 L54 65 M62 49 L65 54" stroke-width="2"/>
+<circle cx="62" cy="111" r="5.5" fill="#FF8A1F" stroke-width="2.5"/>
+<path d="M80 80 L80 50" stroke-width="4.5"/><path d="M80 80 L68 101" stroke-width="5.5"/>
+<circle cx="80" cy="80" r="4.5" fill="#1B1C33"/>
+<path d="M36 64 Q42 46 56 38" stroke="#fff" stroke-opacity=".7" stroke-width="3.5"/>
+<path d="M24 30 L16 22 M18 44 L8 42 M136 30 L144 22 M142 44 L152 42" stroke="#FF8A1F" stroke-width="3.5"/>
+</g></svg>

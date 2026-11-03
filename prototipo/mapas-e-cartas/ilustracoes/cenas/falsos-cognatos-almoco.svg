@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Prato de almoço com arroz, feijão e ovo</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="134" cy="28" r="10" fill="#F5C518"/>
+<path d="M134 10 L134 6 M150 28 L154 28 M146 16 L149 13 M118 16 L115 13 M146 40 L149 43" stroke="#D96A00" stroke-width="2.5"/>
+<path d="M62 80 q-6 -8 0 -15 q6 -8 0 -15 M80 76 q-6 -8 0 -15 q6 -8 0 -15 M98 80 q-6 -8 0 -15 q6 -8 0 -15" stroke-width="2.5" stroke-opacity=".45"/>
+<ellipse cx="80" cy="112" rx="56" ry="28" fill="#FFFDF8"/>
+<path d="M132 104 Q138 126 106 136 Q76 142 50 136 Q100 136 132 104Z" fill="#E8DFCB" stroke="none"/>
+<ellipse cx="80" cy="112" rx="56" ry="28"/>
+<ellipse cx="80" cy="110" rx="42" ry="19" stroke-width="2" stroke-opacity=".5"/>
+<path d="M34 110 Q30 96 44 94 Q48 104 44 112Z" fill="#0F7A37" stroke-width="2.5"/>
+<path d="M40 100 L42 108" stroke="#5BE08C" stroke-width="2"/>
+<path d="M46 108 Q44 92 60 90 Q74 86 80 98 Q82 110 64 113 Q50 114 46 108Z" fill="#FFFDF8" stroke-width="3"/>
+<path d="M72 92 Q82 100 76 110 Q70 112 64 113 Q78 104 72 92Z" fill="#E8DFCB" stroke="none"/>
+<path d="M56 98 L58 99 M64 95 L66 96 M60 105 L62 106 M70 101 L72 102" stroke-width="2"/>
+<path d="M82 104 Q82 90 98 90 Q114 90 114 104 Q110 114 98 114 Q84 114 82 104Z" fill="#7A4A2A" stroke-width="3"/>
+<path d="M108 94 Q116 104 108 112 Q102 114 96 114 Q110 106 108 94Z" fill="#4E2E18" stroke="none"/>
+<path d="M90 98 L92 98 M98 96 L100 96 M94 104 L96 104 M102 102 L104 102" stroke="#fff" stroke-opacity=".6" stroke-width="2.5"/>
+<path d="M118 108 Q120 100 126 102 Q132 106 126 112 Q120 114 118 108Z" fill="#B42318" stroke-width="2.5"/>
+<path d="M60 124 Q54 114 68 112 Q84 108 92 114 Q100 124 84 128 Q66 132 60 124Z" fill="#FFFDF8" stroke-width="3"/>
+<circle cx="77" cy="119" r="6" fill="#F5C518" stroke-width="2.5"/>
+<path d="M74 117 Q75 115 77 115" stroke="#fff" stroke-opacity=".8" stroke-width="2"/>
+<path d="M36 102 Q40 92 52 90" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<rect x="9" y="100" width="8" height="44" rx="3.5" fill="#CFD1FF" stroke-width="3"/>
+<path d="M7 76 L7 90 Q7 96 13 96 Q19 96 19 90 L19 76 M13 76 L13 92" stroke-width="2.5"/>
+<path d="M13 96 L13 100" stroke-width="3"/>
+<path d="M144 72 Q154 82 152 104 L144 104Z" fill="#CFD1FF" stroke-width="3"/>
+<rect x="143" y="104" width="8" height="40" rx="3.5" fill="#9A9DFF" stroke-width="3"/>
+</g></svg>

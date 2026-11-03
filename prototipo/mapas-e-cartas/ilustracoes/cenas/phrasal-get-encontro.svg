@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Três canecas se encontrando num brinde</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 132 Q30 112 44 96" stroke-width="16"/><path d="M12 132 Q30 112 44 96" stroke="#0F7A37" stroke-width="10"/>
+<path d="M148 132 Q130 112 116 96" stroke-width="16"/><path d="M148 132 Q130 112 116 96" stroke="#3B3FB6" stroke-width="10"/>
+<path d="M80 148 L80 100" stroke-width="16"/><path d="M80 148 L80 100" stroke="#FF8A1F" stroke-width="10"/>
+<g transform="rotate(-18 52 76)">
+<path d="M65 68 Q78 67 76 79 Q74 88 64 86" stroke-width="5"/>
+<path d="M38 58 L66 58 L64 93 Q64 98 59 98 L45 98 Q40 98 40 93Z" fill="#B42318"/>
+<path d="M55 58 L66 58 L64 93 Q64 98 59 98 L54 98Z" fill="#8A1A12" stroke="none"/>
+<path d="M57 80 L62 75 M57 90 L62 85" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M38 58 L66 58 L64 93 Q64 98 59 98 L45 98 Q40 98 40 93Z"/>
+<path d="M43 64 L43 80" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>
+</g>
+<g transform="rotate(18 108 76)">
+<path d="M121 68 Q134 67 132 79 Q130 88 120 86" stroke-width="5"/>
+<path d="M94 58 L122 58 L120 93 Q120 98 115 98 L101 98 Q96 98 96 93Z" fill="#F5C518"/>
+<path d="M111 58 L122 58 L120 93 Q120 98 115 98 L110 98Z" fill="#D9A800" stroke="none"/>
+<path d="M113 80 L118 75 M113 90 L118 85" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M94 58 L122 58 L120 93 Q120 98 115 98 L101 98 Q96 98 96 93Z"/>
+<path d="M99 64 L99 80" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>
+</g>
+<g transform="rotate(0 80 68)">
+<path d="M93 60 Q106 59 104 71 Q102 80 92 78" stroke-width="5"/>
+<path d="M66 50 L94 50 L92 85 Q92 90 87 90 L73 90 Q68 90 68 85Z" fill="#FFFDF8"/>
+<path d="M83 50 L94 50 L92 85 Q92 90 87 90 L82 90Z" fill="#E8DFCB" stroke="none"/>
+<path d="M85 72 L90 67 M85 82 L90 77" stroke-width="1.6" stroke-opacity=".45"/>
+<path d="M66 50 L94 50 L92 85 Q92 90 87 90 L73 90 Q68 90 68 85Z"/>
+<path d="M71 56 L71 72" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>
+</g>
+<ellipse cx="46" cy="98" rx="9" ry="7" fill="#8D5A3B" stroke-width="3"/>
+<ellipse cx="114" cy="98" rx="9" ry="7" fill="#D9965F" stroke-width="3"/>
+<ellipse cx="80" cy="96" rx="9" ry="7" fill="#B87440" stroke-width="3"/>
+<path d="M80 36 L80 26 M64 40 L58 32 M96 40 L102 32 M52 50 L44 46 M108 50 L116 46" stroke="#FF8A1F" stroke-width="3.5"/>
+<circle cx="70" cy="24" r="2.5" fill="#3B3FB6" stroke="none"/><circle cx="92" cy="22" r="2.5" fill="#0F7A37" stroke="none"/>
+</g></svg>

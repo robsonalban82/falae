@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Sol nascendo atrás dos morros: de manhã</title><path d="M5 44 Q4 4 56 3 Q118 0 152 16 Q163 40 159 92 Q162 144 142 155 Q110 159 78 157 Q26 161 8 152 Q-2 134 1 92 Q0 62 5 44Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M80 54 L80 40 M103 60 L110 49 M120 77 L131 71 M57 60 L50 49 M40 77 L29 71 M126 100 L140 100 M34 100 L20 100" stroke="#FF8A1F" stroke-width="4"/>
+<circle cx="80" cy="100" r="40" fill="#F5C518"/>
+<path d="M108 72 Q126 98 112 128 L98 128 Q116 100 108 72Z" fill="#D9A800" stroke="none"/>
+<path d="M112 84 L118 90 M114 98 L120 104 M110 110 L116 116" stroke-width="1.6" stroke-opacity=".5"/>
+<circle cx="80" cy="100" r="40"/>
+<path d="M52 92 Q54 76 66 68" stroke="#fff" stroke-opacity=".7" stroke-width="3.5"/>
+<path d="M6 116 Q44 89 84 112 Q118 91 154 108 L153 137 L7 136Z" fill="#5BE08C"/>
+<path d="M8 128 Q56 107 104 126 Q130 115 152 124 Q155 138 146 142 Q80 150 14 142 Q6 138 8 128Z" fill="#0F7A37"/>
+<path d="M108 134 Q132 124 150 128 L148 140 Q120 146 92 146 Q104 140 108 134Z" fill="#0A5A28" stroke="none"/>
+<path d="M118 132 L124 138 M130 130 L136 136 M106 138 L111 143" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M8 128 Q56 107 104 126 Q130 115 152 124 Q155 138 146 142 Q80 150 14 142 Q6 138 8 128Z"/>
+<path d="M20 127 Q38 119 56 118" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+<path d="M22 38 q5 -5 10 0 q5 -5 10 0 M118 26 q4 -4 8 0 q4 -4 8 0" stroke="#3B3FB6" stroke-width="2.5"/>
+</g></svg>

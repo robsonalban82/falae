@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img"><title>Relógio</title><defs><filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><feMorphology in="SourceAlpha" operator="dilate" radius="1.3" result="d"/><feFlood flood-color="#fff"/><feComposite in2="d" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#halo)" fill="none" stroke="#1B1C33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="32" cy="32" r="25" fill="#F5C518"/>
+<circle cx="32" cy="32" r="17.5" fill="#FFFDF8"/>
+<path d="M32 32 V19 M32 32 H43" stroke-width="3.5"/>
+<circle cx="32" cy="32" r="2" fill="#1B1C33"/>
+<circle cx="32" cy="23.5" r=".5" stroke-width="2"/><circle cx="32" cy="40.5" r=".5" stroke-width="2"/><circle cx="23.5" cy="32" r=".5" stroke-width="2"/>
+<path d="M13 25 C15 17 22 11 30 9 L31 11.5 C24 14 18 19 15.5 26 Z" fill="#fff" fill-opacity=".55" stroke="none"/></g></svg>

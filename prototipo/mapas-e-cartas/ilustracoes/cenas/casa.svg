@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Casa com jardim</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="80" cy="140" rx="68" ry="12" fill="#5BE08C"/>
+<path d="M90 146 Q130 148 146 138 Q140 130 130 136 Z" fill="#0F7A37" stroke="none" fill-opacity=".5"/>
+<path d="M12 140 Q80 154 148 140" stroke-width="2" stroke-opacity=".5"/>
+<rect x="84" y="22" width="14" height="24" rx="2" fill="#6F2A91"/>
+<path d="M92 22 L98 22 L98 46 L92 46Z" fill="#4E1B69" stroke="none"/>
+<circle cx="94" cy="14" r="5" fill="#FFFDF8" stroke-width="2.5"/><circle cx="103" cy="6.5" r="3.5" fill="#FFFDF8" stroke-width="2.5"/>
+<rect x="28" y="70" width="86" height="64" rx="4" fill="#FFE3B3"/>
+<path d="M92 72 L112 72 L112 132 L92 132Z" fill="#F2C27A" stroke="none"/>
+<path d="M96 80 L108 92 M96 94 L108 106 M96 108 L108 120 M100 124 L108 130" stroke-width="1.6" stroke-opacity=".45"/>
+<rect x="28" y="70" width="86" height="64" rx="4"/>
+<path d="M16 76 L70 22 L124 76Z" fill="#B42318"/>
+<path d="M70 22 L124 76 L96 76Z" fill="#8A1A12" stroke="none"/>
+<path d="M104 56 L116 68 M98 52 L110 64 M92 46 L100 54" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M16 76 L70 22 L124 76Z"/>
+<path d="M24 70 L60 33" stroke="#fff" stroke-opacity=".6" stroke-width="3.5"/>
+<rect x="55" y="94" width="22" height="40" rx="4" fill="#3B3FB6"/>
+<path d="M70 96 L75 96 L75 132 L70 132Z" fill="#2B2F8A" stroke="none"/>
+<rect x="55" y="94" width="22" height="40" rx="4"/>
+<circle cx="71" cy="116" r="1.6" fill="#F5C518" stroke-width="1.5"/>
+<rect x="36" y="84" width="14" height="14" rx="2" fill="#CFD1FF"/><path d="M43 84 L43 98 M36 91 L50 91" stroke-width="2"/>
+<rect x="84" y="84" width="14" height="14" rx="2" fill="#CFD1FF"/><path d="M91 84 L91 98 M84 91 L98 91" stroke-width="2"/>
+<path d="M33 100 L53 100 M81 100 L101 100" stroke="#7A4A2A" stroke-width="3"/>
+<path d="M36 86 L40 86" stroke="#fff" stroke-width="2.5" stroke-opacity=".8"/>
+<path d="M52 140 Q66 144 80 140" stroke="#9A9DFF" stroke-width="5"/>
+<path d="M128 136 L128 106" stroke="#7A4A2A" stroke-width="7"/>
+<path d="M112 100 Q108 74 130 70 Q154 72 148 100 Q146 114 128 112 Q116 112 112 100Z" fill="#0F7A37"/>
+<path d="M134 78 Q150 82 146 102 Q142 112 130 112 Q144 100 134 78Z" fill="#0A5A28" stroke="none"/>
+<path d="M112 100 Q108 74 130 70 Q154 72 148 100 Q146 114 128 112 Q116 112 112 100Z"/>
+<path d="M118 90 Q120 80 128 77" stroke="#fff" stroke-opacity=".55" stroke-width="3.5"/>
+<circle cx="125" cy="94" r="3" fill="#B42318" stroke-width="2"/><circle cx="137" cy="86" r="3" fill="#B42318" stroke-width="2"/>
+<path d="M10 130 L10 112 L16 106 L22 112 L22 130 M22 130 L22 112 L28 106 L34 112 L34 130" stroke-width="2.5" fill="#FFFDF8"/>
+<path d="M8 120 L36 120" stroke-width="2.5"/>
+<g stroke-width="2"><path d="M42 136 L42 128 M46 138 L46 130"/><circle cx="42" cy="126" r="3.5" fill="#F5C518"/><circle cx="48" cy="128" r="3.5" fill="#FF8A1F"/></g>
+<path d="M130 28 q6 -6 12 0 q6 -6 12 0" stroke="#3B3FB6" stroke-width="2.5"/>
+</g></svg>

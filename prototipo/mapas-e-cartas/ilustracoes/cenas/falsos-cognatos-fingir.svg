@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Pessoa fingindo dormir, com um olho aberto</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="8" y="70" width="14" height="72" rx="4" fill="#7A4A2A"/>
+<path d="M22 132 L22 142 M146 132 L146 142" stroke-width="5"/>
+<rect x="18" y="110" width="132" height="22" rx="5" fill="#FFFDF8"/>
+<path d="M18 122 L150 122 L150 128 Q150 132 146 132 L22 132 Q18 132 18 128Z" fill="#E8DFCB" stroke="none"/>
+<rect x="18" y="110" width="132" height="22" rx="5"/>
+<path d="M24 108 Q20 92 34 90 L60 90 Q72 92 70 106 Q60 114 24 108Z" fill="#FFFDF8"/>
+<path d="M24 108 Q20 92 34 90 L60 90 Q72 92 70 106 Q60 114 24 108Z"/>
+<circle cx="46" cy="80" r="20" fill="#8D5A3B"/>
+<path d="M58 66 Q70 80 60 96 Q52 100 46 100 Q64 92 58 66Z" fill="#6E4229" stroke="none"/>
+<circle cx="46" cy="80" r="20"/>
+<path d="M26 82 Q22 58 46 58 Q70 58 66 78 Q60 66 46 66 Q32 66 26 82Z" fill="#3A2A2A"/>
+<path d="M31 82 Q37 87 43 82" stroke-width="2.8"/>
+<path d="M32 76 Q37 74 42 76" stroke-width="2"/>
+<circle cx="55" cy="81" r="5" fill="#fff" stroke-width="2.5"/>
+<circle cx="57" cy="81" r="2.2" fill="#1B1C33" stroke="none"/>
+<path d="M50 72 Q55 68 61 71" stroke-width="2.5"/>
+<path d="M41 91 Q48 97 55 89 Q48 92 41 91Z" fill="#FFFDF8" stroke-width="2.2"/>
+<path d="M60 104 Q76 88 104 90 Q136 92 146 104 L148 122 Q100 126 58 120Z" fill="#3B3FB6"/>
+<path d="M112 92 Q138 94 146 104 L148 122 Q120 124 100 124 Q132 112 112 92Z" fill="#2B2F8A" stroke="none"/>
+<path d="M118 108 L126 100 M128 114 L136 106 M136 118 L144 110" stroke-width="1.6" stroke-opacity=".5"/>
+<path d="M60 104 Q76 88 104 90 Q136 92 146 104 L148 122 Q100 126 58 120Z"/>
+<path d="M68 102 Q80 94 94 94" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<path d="M80 100 Q96 104 112 100" stroke="#F5C518" stroke-width="2.5"/>
+<path d="M78 34 L90 34 L78 48 L90 48" stroke="#3B3FB6" stroke-width="3"/>
+<path d="M98 18 L114 18 L98 36 L114 36" stroke="#3B3FB6" stroke-width="3.5"/>
+<path d="M124 52 L132 52 L124 62 L132 62" stroke="#3B3FB6" stroke-width="2.5"/>
+</g></svg>

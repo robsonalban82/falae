@@ -1,0 +1,381 @@
+{
+  "id": "to-be",
+  "title": "Verbo to be",
+  "level": "A1",
+  "figureStyle": "art",
+  "collection": "mapas",
+  "icon": "book",
+  "center": {
+    "en": "to be",
+    "pt": "ser / estar"
+  },
+  "centerFigure": "🙋😊🏠",
+  "centerArt": "to-be-centro",
+  "intro": "O verbo mais usado do inglês. Comece pela afirmativa e vá girando o mapa.",
+  "branches": [
+    {
+      "label": "Afirmativa",
+      "icon": "check",
+      "color": "folha",
+      "figure": "😊",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Cada pessoa, uma forma",
+          "lines": [
+            {
+              "en": "I **am**",
+              "pt": "eu sou / estou",
+              "emoji": "🙋"
+            },
+            {
+              "en": "you **are**",
+              "pt": "você é / está",
+              "emoji": "👉"
+            },
+            {
+              "en": "he / she / it **is**",
+              "pt": "ele, ela é / está",
+              "emoji": "🧍"
+            },
+            {
+              "en": "we / you / they **are**",
+              "pt": "nós somos/estamos, vocês/elas/eles são/estão",
+              "emoji": "👫"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "She **is** happy.",
+              "pt": "Ela está feliz.",
+              "emoji": "😊"
+            },
+            {
+              "en": "We **are** friends.",
+              "pt": "Nós somos amigos.",
+              "emoji": "🤝"
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "en": "happy",
+              "pt": "feliz",
+              "emoji": "😄"
+            },
+            {
+              "en": "friend",
+              "pt": "amigo, amiga",
+              "emoji": "👫"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Contrações",
+      "icon": "quote",
+      "color": "manga",
+      "figure": "✂️",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Pronome + to be, juntinhos",
+          "lines": [
+            {
+              "en": "**I'm** · **you're**"
+            },
+            {
+              "en": "**he's** · **she's** · **it's**"
+            },
+            {
+              "en": "**we're** · **they're**"
+            },
+            {
+              "note": "Na conversa, quase sempre contraído."
+            }
+          ],
+          "figure": "✂️💬"
+        },
+        {
+          "tag": "exemplo",
+          "art": "escola",
+          "lines": [
+            {
+              "en": "**I'm** Brazilian.",
+              "pt": "Eu sou brasileiro(a).",
+              "emoji": "🇧🇷"
+            },
+            {
+              "en": "**They're** at school.",
+              "pt": "Eles estão na escola.",
+              "emoji": "🏫"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Negativa",
+      "icon": "ban",
+      "color": "jabuticaba",
+      "figure": "🚫",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "to be + not",
+          "lines": [
+            {
+              "en": "I am not = **I'm not**"
+            },
+            {
+              "en": "is not = **isn't**"
+            },
+            {
+              "en": "are not = **aren't**"
+            }
+          ],
+          "figure": "🚫"
+        },
+        {
+          "tag": "exemplo",
+          "art": "braco-forte",
+          "lines": [
+            {
+              "en": "He **isn't** tired.",
+              "pt": "Ele não está cansado.",
+              "emoji": "💪"
+            },
+            {
+              "en": "They **aren't** here.",
+              "pt": "Eles não estão aqui.",
+              "emoji": "🪑"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Perguntas",
+      "icon": "question",
+      "color": "anil",
+      "figure": "🤔",
+      "nodes": [
+        {
+          "tag": "regra",
+          "art": "casa",
+          "title": "O verbo vem primeiro",
+          "lines": [
+            {
+              "en": "She **is** at home.",
+              "pt": "Ela está em casa.",
+              "emoji": "🏠"
+            },
+            {
+              "en": "**Is** she at home?",
+              "pt": "Ela está em casa?",
+              "emoji": "🤔"
+            }
+          ]
+        },
+        {
+          "tag": "exemplo",
+          "art": "despertador",
+          "lines": [
+            {
+              "en": "**Am** I late?",
+              "pt": "Estou atrasado(a)?",
+              "emoji": "⏰"
+            },
+            {
+              "en": "**Is** it cold?",
+              "pt": "Está frio?",
+              "emoji": "🥶"
+            },
+            {
+              "en": "**Are** you ready?",
+              "pt": "Você está pronto(a)?",
+              "emoji": "🎒"
+            }
+          ]
+        },
+        {
+          "tag": "vocabulario",
+          "lines": [
+            {
+              "en": "late",
+              "pt": "atrasado(a)",
+              "emoji": "⌛"
+            },
+            {
+              "en": "ready",
+              "pt": "pronto(a)",
+              "emoji": "👍"
+            }
+          ]
+        },
+        {
+          "tag": "regra",
+          "title": "Respostas curtas",
+          "lines": [
+            {
+              "en": "Are you ready? Yes, I **am**.",
+              "pt": "Sim, estou.",
+              "emoji": "🙆"
+            },
+            {
+              "en": "Is she here? No, she **isn't**.",
+              "pt": "Não, não está.",
+              "emoji": "🙅"
+            }
+          ]
+        },
+        {
+          "tag": "excecao",
+          "lines": [
+            {
+              "wrong": "Yes, I'm.",
+              "right": "Yes, I am."
+            },
+            {
+              "note": "Resposta curta afirmativa: verbo inteiro."
+            },
+            {
+              "en": "Yes, I **am**. · Yes, she **is**."
+            }
+          ],
+          "figure": "⚠️"
+        }
+      ]
+    },
+    {
+      "label": "Erro comum",
+      "icon": "x",
+      "color": "acerola",
+      "figure": "⚠️",
+      "nodes": [
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I have 20 years.",
+              "right": "I'm 20 years old.",
+              "note": "Idade usa to be, não have."
+            }
+          ],
+          "art": "bolo-idade"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "Is cold today.",
+              "right": "It's cold today.",
+              "note": "Frase em inglês sempre tem sujeito."
+            }
+          ],
+          "art": "rosto-frio"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "She is teacher.",
+              "right": "She's a teacher.",
+              "note": "Profissão pede a / an."
+            }
+          ],
+          "art": "professora"
+        },
+        {
+          "tag": "erro-comum",
+          "lines": [
+            {
+              "wrong": "I am agree.",
+              "right": "I agree."
+            },
+            {
+              "wrong": "I'm not agree.",
+              "right": "I don't agree."
+            },
+            {
+              "note": "Agree é verbo: sem am; negativa com don't."
+            }
+          ],
+          "art": "aperto-de-mao"
+        }
+      ]
+    },
+    {
+      "label": "Dica",
+      "icon": "bulb",
+      "color": "maracuja",
+      "figure": "💡",
+      "nodes": [
+        {
+          "tag": "regra",
+          "title": "Ser e estar",
+          "lines": [
+            {
+              "note": "Português tem dois verbos: ser e estar."
+            },
+            {
+              "note": "Inglês tem um só: to be."
+            }
+          ],
+          "figure": "2️⃣➡️1️⃣"
+        },
+        {
+          "tag": "exemplo",
+          "lines": [
+            {
+              "en": "I **am** Brazilian.",
+              "pt": "Eu sou brasileiro(a).",
+              "emoji": "🇧🇷"
+            },
+            {
+              "en": "I **am** tired.",
+              "pt": "Eu estou cansado(a).",
+              "emoji": "🥱"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercise": {
+    "instruction": "Complete com a forma certa do verbo to be.",
+    "items": [
+      {
+        "prompt": "I ___ 30 years old.",
+        "answer": "am",
+        "hintPt": "Eu tenho 30 anos."
+      },
+      {
+        "prompt": "My mom ___ at work.",
+        "answer": "is",
+        "hintPt": "Minha mãe está no trabalho."
+      },
+      {
+        "prompt": "Ana and João ___ Brazilian.",
+        "answer": "are",
+        "hintPt": "Ana e João são brasileiros."
+      },
+      {
+        "prompt": "The coffee ___ hot.",
+        "answer": "isn't|is not",
+        "hintPt": "negativa: o café não está quente."
+      },
+      {
+        "prompt": "___ he at school?",
+        "answer": "Is",
+        "hintPt": "pergunta: ele está na escola?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Relógio de mesa marcando sete e meia, com sinal de certo</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<path d="M44 128 L38 146 M108 128 L114 146" stroke-width="6"/>
+<circle cx="76" cy="82" r="50" fill="#6F2A91"/><path d="M104.7 41 A50 50 0 0 1 54.9 127.3 Q94.2 92.5 104.7 41Z" fill="#4E1B69" stroke="none"/><path d="M116.3 89.3 L123.3 82.3 M108.5 110.7 L115.5 103.7 M91.1 125.4 L98.1 118.4" stroke-width="1.6" stroke-opacity=".5"/><circle cx="76" cy="82" r="50"/><circle cx="76" cy="82" r="37" fill="#FFFDF8"/><path d="M99.8 53.7 A37 37 0 0 1 63.3 116.8 Q95.9 93.5 99.8 53.7Z" fill="#E8DFCB" stroke="none"/><circle cx="76" cy="82" r="37"/><path d="M76 48.7 L76 55.4 M109.3 82 L102.6 82 M76 115.3 L76 108.6 M42.7 82 L49.4 82" stroke-width="3"/><path d="M92.7 53.2 L90.8 56.4 M104.8 65.4 L101.6 67.2 M104.8 98.6 L101.6 96.8 M92.7 110.8 L90.8 107.6 M59.4 110.8 L61.2 107.6 M47.2 98.7 L50.4 96.8 M47.2 65.4 L50.4 67.2 M59.3 53.2 L61.2 56.4" stroke-width="2"/><path d="M76 82 L76 110.1" stroke-width="4"/><path d="M76 82 L62.9 95.1" stroke-width="5.5"/><circle cx="76" cy="82" r="4.4" fill="#1B1C33"/><path d="M35.1 67.1 A43.5 43.5 0 0 1 54.2 44.3" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<path d="M66 34 Q76 26 86 34" stroke-width="5"/>
+<circle cx="126" cy="36" r="19" fill="#0F7A37"/>
+<path d="M136.9 20.4 A19 19 0 0 1 118 53.2 Q132.9 40 136.9 20.4Z" fill="#0A5A28" stroke="none"/>
+<circle cx="126" cy="36" r="19"/>
+<path d="M116 36 L123 44 L137 28" stroke="#FFFDF8" stroke-width="5"/>
+<path d="M112 30 Q114 22 122 20" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+
+</g></svg>

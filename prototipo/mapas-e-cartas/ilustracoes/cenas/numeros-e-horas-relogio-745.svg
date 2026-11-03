@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Relógio marcando quinze para as oito, com o quarto que falta pintado</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="86" cy="148" rx="62" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+
+<circle cx="70" cy="74" r="52" fill="#0F7A37"/><path d="M99.8 31.4 A52 52 0 0 1 48 121.1 Q88.9 84.9 99.8 31.4Z" fill="#0A5A28" stroke="none"/><path d="M112 81.6 L119.2 74.4 M103.9 103.8 L111.1 96.6 M85.7 119.1 L92.9 111.9" stroke-width="1.6" stroke-opacity=".5"/><circle cx="70" cy="74" r="52"/><circle cx="70" cy="74" r="38.48" fill="#FFFDF8"/><path d="M70 74 L31.5 74 A38.48 38.48 0 0 1 70 35.5Z" fill="#FF8A1F" fill-opacity=".55" stroke="none"/><path d="M94.7 44.5 A38.48 38.48 0 0 1 56.8 110.2 Q90.7 85.9 94.7 44.5Z" fill="#E8DFCB" stroke="none"/><circle cx="70" cy="74" r="38.48"/><path d="M70 39.4 L70 46.3 M104.6 74 L97.7 74 M70 108.6 L70 101.7 M35.4 74 L42.3 74" stroke-width="3"/><path d="M87.3 44 L85.4 47.3 M100 56.7 L96.7 58.6 M100 91.3 L96.7 89.4 M87.3 104 L85.4 100.7 M52.7 104 L54.6 100.7 M40 91.3 L43.3 89.4 M40 56.7 L43.3 58.6 M52.7 44 L54.6 47.3" stroke-width="2"/><path d="M70 74 L40.8 74" stroke-width="4"/><path d="M70 74 L54.7 85.7" stroke-width="5.5"/><circle cx="70" cy="74" r="4.6" fill="#1B1C33"/><path d="M27.5 58.5 A45.2 45.2 0 0 1 47.4 34.8" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+<path d="M8 76.2 A62 62 0 0 1 61.4 12.6" stroke="#FF8A1F" stroke-width="4"/><path d="M49.8 8 L61.4 12.6 L53.9 21.4" stroke="#FF8A1F" stroke-width="4"/>
+<circle cx="132" cy="122" r="18" fill="#FFFDF8"/>
+<path d="M132 122 L114 122 A18 18 0 0 1 132 104Z" fill="#FF8A1F" stroke="none"/>
+<path d="M132 104 L132 122 L114 122" stroke-width="2.5"/>
+<circle cx="132" cy="122" r="18"/>
+
+</g></svg>

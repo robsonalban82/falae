@@ -1,0 +1,165 @@
+{
+  "id": "falsos-cognatos",
+  "title": "Falsos cognatos",
+  "collection": "falsos-cognatos",
+  "level": "A2",
+  "description": "12 palavras que parecem português, mas enganam. Vire a carta e veja o \"cuidado\".",
+  "cards": [
+    {
+      "id": "fc-001",
+      "en": "actually",
+      "emoji": "☝️",
+      "pt": "na verdade",
+      "example": {
+        "en": "Actually, I'm from Recife, not Rio.",
+        "pt": "Na verdade, eu sou de Recife, não do Rio."
+      },
+      "pronunciation": "éktchuali",
+      "level": "A2",
+      "falseFriend": "Actually NÃO é \"atualmente\". Atualmente = currently, nowadays."
+    },
+    {
+      "id": "fc-002",
+      "en": "pretend",
+      "emoji": "🎭",
+      "pt": "fingir",
+      "example": {
+        "en": "He's pretending to be asleep.",
+        "pt": "Ele está fingindo que está dormindo."
+      },
+      "pronunciation": "priténd",
+      "level": "A2",
+      "falseFriend": "Pretend NÃO é \"pretender\". Pretender = plan to, intend to."
+    },
+    {
+      "id": "fc-003",
+      "en": "push",
+      "emoji": "🚪",
+      "pt": "empurrar",
+      "example": {
+        "en": "You have to push the door.",
+        "pt": "Você tem que empurrar a porta."
+      },
+      "pronunciation": "púch",
+      "level": "A1",
+      "falseFriend": "PUSH na porta NÃO é \"puxe\": é empurre. Puxe = pull."
+    },
+    {
+      "id": "fc-004",
+      "en": "exit",
+      "emoji": "🚶",
+      "pt": "saída",
+      "example": {
+        "en": "The exit is on the left.",
+        "pt": "A saída fica à esquerda."
+      },
+      "pronunciation": "égzit",
+      "level": "A1",
+      "falseFriend": "Exit NÃO é \"êxito\". Êxito = success."
+    },
+    {
+      "id": "fc-005",
+      "en": "parents",
+      "emoji": "👫",
+      "pt": "pais (pai e mãe)",
+      "example": {
+        "en": "My parents live in Salvador.",
+        "pt": "Meus pais moram em Salvador."
+      },
+      "pronunciation": "pérents",
+      "level": "A1",
+      "falseFriend": "Parents NÃO é \"parentes\". Parentes = relatives."
+    },
+    {
+      "id": "fc-006",
+      "en": "college",
+      "emoji": "🎓",
+      "pt": "faculdade",
+      "example": {
+        "en": "My sister is in college.",
+        "pt": "Minha irmã faz faculdade."
+      },
+      "pronunciation": "kálidj",
+      "level": "A2",
+      "falseFriend": "College NÃO é \"colégio\". Colégio = school, high school."
+    },
+    {
+      "id": "fc-007",
+      "en": "library",
+      "emoji": "📚",
+      "pt": "biblioteca",
+      "example": {
+        "en": "I study at the library on Saturdays.",
+        "pt": "Eu estudo na biblioteca aos sábados."
+      },
+      "pronunciation": "láibreri",
+      "level": "A1",
+      "falseFriend": "Library NÃO é \"livraria\". Livraria = bookstore."
+    },
+    {
+      "id": "fc-008",
+      "en": "lunch",
+      "emoji": "🍛",
+      "pt": "almoço",
+      "example": {
+        "en": "What time is lunch?",
+        "pt": "A que horas é o almoço?"
+      },
+      "pronunciation": "lântch",
+      "level": "A1",
+      "falseFriend": "Lunch NÃO é \"lanche\". Lanche = snack."
+    },
+    {
+      "id": "fc-009",
+      "en": "realize",
+      "emoji": "😮",
+      "pt": "perceber, se dar conta",
+      "example": {
+        "en": "I just realized it's Monday!",
+        "pt": "Acabei de perceber que é segunda!"
+      },
+      "pronunciation": "ríalaiz",
+      "level": "A2",
+      "falseFriend": "Realize NÃO é \"realizar\". Realizar um sonho = make a dream come true."
+    },
+    {
+      "id": "fc-010",
+      "en": "attend",
+      "emoji": "🗓️",
+      "pt": "ir a, frequentar (aula, evento)",
+      "example": {
+        "en": "Did you attend the meeting?",
+        "pt": "Você foi à reunião?"
+      },
+      "pronunciation": "aténd",
+      "level": "A2",
+      "falseFriend": "Attend NÃO é \"atender\". Atender o telefone = answer the phone. Attend é mais formal: no dia a dia, diga \"Did you go to the meeting?\""
+    },
+    {
+      "id": "fc-011",
+      "en": "costume",
+      "emoji": "🦸",
+      "pt": "fantasia (roupa)",
+      "example": {
+        "en": "What's your costume for Carnival?",
+        "pt": "Qual é a sua fantasia de Carnaval?"
+      },
+      "pronunciation": "kástum",
+      "level": "A2",
+      "falseFriend": "Em inglês, costume NÃO é \"costume\" (hábito). Hábito = habit, custom."
+    },
+    {
+      "id": "fc-012",
+      "en": "novel",
+      "emoji": "📕",
+      "pt": "romance (livro)",
+      "example": {
+        "en": "I'm reading a novel by Jorge Amado.",
+        "pt": "Estou lendo um romance do Jorge Amado."
+      },
+      "pronunciation": "nável",
+      "level": "A2",
+      "falseFriend": "Novel NÃO é \"novela\". Novela = soap opera."
+    }
+  ]
+}

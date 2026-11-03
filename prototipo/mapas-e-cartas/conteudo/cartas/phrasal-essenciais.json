@@ -1,0 +1,165 @@
+{
+  "id": "phrasal-essenciais",
+  "title": "Phrasal verbs essenciais",
+  "collection": "phrasal",
+  "level": "A2",
+  "description": "12 phrasal verbs com get, take, look, put e go que aparecem em toda conversa.",
+  "cards": [
+    {
+      "id": "pv-001",
+      "en": "get up",
+      "emoji": "🛏️",
+      "pt": "levantar (da cama)",
+      "example": {
+        "en": "I get up at six every day.",
+        "pt": "Eu levanto às seis todo dia."
+      },
+      "pronunciation": "guét âp · rápido: guérâp",
+      "level": "A1",
+      "baseVerb": "get"
+    },
+    {
+      "id": "pv-002",
+      "en": "get on",
+      "emoji": "🚌",
+      "pt": "entrar, subir (em ônibus, trem, avião)",
+      "example": {
+        "en": "We got on the wrong bus!",
+        "pt": "A gente pegou o ônibus errado!"
+      },
+      "pronunciation": "guét án",
+      "level": "A2",
+      "baseVerb": "get"
+    },
+    {
+      "id": "pv-003",
+      "en": "get off",
+      "emoji": "🚏",
+      "pt": "descer (de ônibus, trem, avião)",
+      "example": {
+        "en": "Get off at the next stop.",
+        "pt": "Desça no próximo ponto."
+      },
+      "pronunciation": "guét óf",
+      "level": "A2",
+      "baseVerb": "get"
+    },
+    {
+      "id": "pv-004",
+      "en": "get along with",
+      "emoji": "👫",
+      "pt": "se dar bem com",
+      "example": {
+        "en": "Do you get along with your sister?",
+        "pt": "Você se dá bem com a sua irmã?"
+      },
+      "pronunciation": "guét alóng uíth",
+      "level": "A2",
+      "baseVerb": "get"
+    },
+    {
+      "id": "pv-005",
+      "en": "take off",
+      "emoji": "👟",
+      "pt": "tirar (roupa, sapato); decolar",
+      "example": {
+        "en": "Please take off your shoes. / The plane takes off at 8.",
+        "pt": "Por favor, tire os sapatos. / O avião decola às 8."
+      },
+      "pronunciation": "têik óf",
+      "level": "A2",
+      "baseVerb": "take"
+    },
+    {
+      "id": "pv-006",
+      "en": "take out",
+      "emoji": "🗑️",
+      "pt": "tirar, levar para fora",
+      "example": {
+        "en": "Can you take out the trash?",
+        "pt": "Você pode levar o lixo para fora?"
+      },
+      "pronunciation": "têik áut",
+      "level": "A2",
+      "baseVerb": "take"
+    },
+    {
+      "id": "pv-007",
+      "en": "look for",
+      "emoji": "🔍",
+      "pt": "procurar",
+      "example": {
+        "en": "I'm looking for the train station.",
+        "pt": "Estou procurando a estação de trem."
+      },
+      "pronunciation": "lúk fór",
+      "level": "A1",
+      "baseVerb": "look"
+    },
+    {
+      "id": "pv-008",
+      "en": "look out",
+      "emoji": "⚠️",
+      "pt": "tomar cuidado; \"Cuidado!\"",
+      "example": {
+        "en": "Look out! / Watch out! There's a car coming!",
+        "pt": "Cuidado! Vem vindo um carro!"
+      },
+      "pronunciation": "lúk áut",
+      "level": "A2",
+      "baseVerb": "look"
+    },
+    {
+      "id": "pv-009",
+      "en": "put on",
+      "emoji": "🧥",
+      "pt": "vestir, colocar (roupa, sapato)",
+      "example": {
+        "en": "Put on your jacket. It's cold!",
+        "pt": "Coloca o casaco. Está frio!"
+      },
+      "pronunciation": "pút án · rápido: púrán",
+      "level": "A2",
+      "baseVerb": "put"
+    },
+    {
+      "id": "pv-010",
+      "en": "put away",
+      "emoji": "📦",
+      "pt": "guardar (no lugar)",
+      "example": {
+        "en": "Put your phone away, please.",
+        "pt": "Guarde o celular, por favor."
+      },
+      "pronunciation": "pút auêi",
+      "level": "A2",
+      "baseVerb": "put"
+    },
+    {
+      "id": "pv-011",
+      "en": "go out",
+      "emoji": "🎉",
+      "pt": "sair (para se divertir)",
+      "example": {
+        "en": "Do you want to go out tonight?",
+        "pt": "Você quer sair hoje à noite?"
+      },
+      "pronunciation": "gôu áut",
+      "level": "A1",
+      "baseVerb": "go"
+    },
+    {
+      "id": "pv-012",
+      "en": "go back",
+      "emoji": "↩️",
+      "pt": "voltar",
+      "example": {
+        "en": "I want to go back to Brazil in May.",
+        "pt": "Quero voltar para o Brasil em maio."
+      },
+      "pronunciation": "gôu bék",
+      "level": "A1",
+      "baseVerb": "go"
+    }
+  ]
+}

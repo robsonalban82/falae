@@ -1,0 +1,46 @@
+{
+  "id": "frases-basicas",
+  "title": "Frases para o dia a dia",
+  "collection": "frases",
+  "level": "A1",
+  "description": "Frases curtas para cumprimentar, agradecer e pedir ajuda.",
+  "cards": [
+    {
+      "id": "fr-how-are-you",
+      "en": "How are you doing?",
+      "emoji": "👋",
+      "pt": "Como você está?",
+      "example": { "en": "Hey, Ana! How are you doing?", "pt": "Oi, Ana! Como você está?" },
+      "pronunciation": "rau ar iu dúin",
+      "situation": "Para cumprimentar alguém que você já conhece.",
+      "level": "A1",
+      "formality": "neutro"
+    },
+    {
+      "id": "fr-could-you-help",
+      "en": "Could you help me, please?",
+      "emoji": "🙋",
+      "pt": "Você poderia me ajudar, por favor?",
+      "example": {
+        "en": "Excuse me. Could you help me, please?",
+        "pt": "Com licença. Você poderia me ajudar, por favor?"
+      },
+      "pronunciation": "cúd iu rélp mi, plíz",
+      "situation": "Para pedir ajuda a um desconhecido, com educação.",
+      "level": "A1",
+      "formality": "neutro"
+    },
+    {
+      "id": "fr-no-worries",
+      "en": "No worries!",
+      "emoji": "😌",
+      "pt": "Sem problema! / Imagina!",
+      "example": { "en": "Sorry I'm late. — No worries!", "pt": "Desculpe o atraso. — Imagina!" },
+      "pronunciation": "nôu uârriz",
+      "situation": "Resposta leve a um pedido de desculpas ou a um obrigado.",
+      "level": "A2",
+      "formality": "informal",
+      "dontUse": "Em situações sérias ou muito formais, prefira \"That's all right.\""
+    }
+  ]
+}

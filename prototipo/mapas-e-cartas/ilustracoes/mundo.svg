@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img"><title>Mundo, Américas</title><defs><filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><feMorphology in="SourceAlpha" operator="dilate" radius="1.3" result="d"/><feFlood flood-color="#fff"/><feComposite in2="d" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#halo)" fill="none" stroke="#1B1C33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<clipPath id="cp"><circle cx="32" cy="32" r="25"/></clipPath>
+<circle cx="32" cy="32" r="25" fill="#9A9DFF"/>
+<g clip-path="url(#cp)"><path d="M10 18 C16 11 29 9 36 13 C42 16 38 23 31 25 C30 30 24 32 21 28 C16 27 10 25 10 18 Z" fill="#5BE08C" stroke-width="2.5"/>
+<path d="M26 34 C33 31 41 35 39 42 C37 48 33 52 31 60 C25 54 23 42 26 34 Z" fill="#5BE08C" stroke-width="2.5"/>
+</g>
+<circle cx="32" cy="32" r="25" />
+<path d="M12 26 C13 18 20 11 28 8.5 L29 11 C22 13.5 16 19 14.5 26.5 Z" fill="#fff" fill-opacity=".55" stroke="none"/></g></svg>

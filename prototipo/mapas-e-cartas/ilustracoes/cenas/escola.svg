@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img"><title>Prédio da escola com bandeirinha</title><path d="M20 52 Q18 18 62 14 Q112 8 140 36 Q156 66 144 110 Q132 148 82 150 Q24 154 14 106 Q10 78 20 52Z" fill="#FFF1D6" stroke="none"/><ellipse cx="80" cy="148" rx="58" ry="6" fill="#1B1C33" fill-opacity=".18" stroke="none"/><g fill="none" stroke="#1B1C33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M80 22 L80 4" stroke-width="3"/>
+<path d="M80 5 Q92 2 102 8 Q92 14 80 12Z" fill="#B42318" stroke-width="2.5"/>
+<rect x="16" y="76" width="128" height="58" rx="3" fill="#F5C518"/>
+<path d="M112 78 L142 78 L142 132 L112 132Z" fill="#D9A800" stroke="none"/>
+<path d="M118 84 L136 100 M118 100 L136 116 M124 118 L136 130 M122 84 L132 94" stroke-width="1.6" stroke-opacity=".45"/>
+<rect x="16" y="76" width="128" height="58" rx="3"/>
+<rect x="12" y="70" width="136" height="9" rx="3" fill="#3B3FB6"/>
+<rect x="12" y="70" width="136" height="9" rx="3"/>
+<rect x="56" y="44" width="48" height="90" rx="3" fill="#FFE3B3"/>
+<path d="M88 46 L102 46 L102 132 L88 132Z" fill="#F2C27A" stroke="none"/>
+<rect x="56" y="44" width="48" height="90" rx="3"/>
+<path d="M50 48 L80 20 L110 48Z" fill="#3B3FB6"/>
+<path d="M80 20 L110 48 L92 48Z" fill="#2B2F8A" stroke="none"/>
+<path d="M50 48 L80 20 L110 48Z"/>
+<circle cx="80" cy="62" r="10" fill="#FFFDF8"/><path d="M80 55 L80 62 L85 65" stroke-width="2.5"/><circle cx="80" cy="62" r="10"/>
+<path d="M66 82 L94 82" stroke-width="2" stroke-opacity=".5"/>
+<path d="M68 134 L68 108 Q80 94 92 108 L92 134Z" fill="#3B3FB6"/>
+<path d="M80 100 L80 134" stroke-width="2.5"/><circle cx="76" cy="120" r="1.5" fill="#F5C518" stroke="none"/><circle cx="84" cy="120" r="1.5" fill="#F5C518" stroke="none"/>
+<path d="M68 134 L68 108 Q80 94 92 108 L92 134Z"/>
+<rect x="24" y="90" width="16" height="22" rx="2" fill="#CFD1FF"/><path d="M32 90 L32 112 M24 101 L40 101" stroke-width="2"/>
+<rect x="46" y="90" width="0" height="0"/>
+<rect x="120" y="90" width="16" height="22" rx="2" fill="#CFD1FF"/><path d="M128 90 L128 112 M120 101 L136 101" stroke-width="2"/>
+<path d="M26 94 L30 94" stroke="#fff" stroke-width="2.5" stroke-opacity=".8"/>
+<rect x="60" y="134" width="40" height="8" rx="2" fill="#CFD1FF"/><path d="M66 138 L94 138" stroke-width="0"/>
+<path d="M44 90 l0 0" stroke-width="0"/>
+<path d="M20 84 Q22 82 38 82" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+<path d="M10 140 L10 126" stroke="#7A4A2A" stroke-width="5"/><circle cx="11" cy="118" r="9" fill="#0F7A37"/>
+<path d="M150 140 L150 126" stroke="#7A4A2A" stroke-width="5"/><circle cx="149" cy="118" r="9" fill="#0F7A37"/>
+</g></svg>
