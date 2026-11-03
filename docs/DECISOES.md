@@ -85,3 +85,15 @@ Formato: contexto → decisão → consequências. Status: proposta · aceita ·
 **Contexto:** o usuário redesenhou o Tuca fora do app (ilustração com contorno, preto e amarelo); o SVG animado em código não reproduz o estilo.
 **Decisão:** um WebP 512×512 com fundo transparente por humor (`src/ui/Mascot/img/`, ~30–45 kB cada, carregado só onde o Tuca aparece); a animação passa a ser só do corpo inteiro (pulinho, balanço) e respeita `useReducedMotion()`. Tema escuro: halo claro via token `--tuca-glow`. Ícones do PWA e favicon gerados da mesma arte. Fontes 1024 px e scripts de recorte (`sharp`, rodado fora do projeto) em `docs/mascote/`; `scripts/make-icons.ts` removido.
 **Consequências:** sem novas dependências no app; trocar a arte = substituir os WebP e rodar `docs/mascote/icons.mjs`. Fundo dos recortes removido por preenchimento a partir das bordas + sementes manuais para vãos fechados (ver `cut.mjs`).
+
+## ADR-015 — Mapas mentais e cartas sobre um SRS único (proposta)
+
+**Contexto:** o recurso de mapas mentais e cartas (`docs/MAPAS-E-CARTAS.md`) poderia criar um segundo histórico de revisão e duplicar vocabulário em mapas e baralhos, além de exigir dados novos no IndexedDB e no backup.
+**Decisão:** itens estudáveis existem só nas unidades ou em bancos (`src/content/banks/`). Mapas, coleções, baralhos e plano apenas referenciam `itemId`. Carta = item = um `SrsCard` (cartas do aluno com `uc-`). As notas Errei/Difícil/Bom/Fácil viram `q` 1/3/4/5 no mesmo SM-2. "Meus erros" é derivado (`lapses ≥ 1 && reps < 2`). Dexie v2 só acrescenta tabelas (`userCards`, `mapProgress`, `planProgress`). `LessonResult` ganha os `kind` `cards`/`map` e `context?`, e `DailyStats` ganha `cards?`. O backup passa a `schemaVersion: 2` e lê v1. As sessões entram pelo `recordLessonResult` existente, e `AppliedCommit` ganha `xp?`.
+**Consequências:** um só algoritmo e um só caminho de escrita. Exige teste de migração v1→v2, aviso de `versionchange` para abas antigas e aviso no import de arquivo v1 que apagaria cartas do aluno. Exige aprovação do usuário (modelo persistido e formato de conteúdo).
+
+## ADR-016 — PDF pela impressão do navegador, sem biblioteca (proposta)
+
+**Contexto:** mapas, cartas (frente e verso) e apostilas precisam de PDF A4 offline. jsPDF/pdf-lib somam ~70–150 kB gzip, não desenham emojis e exigem fontes TTF embutidas.
+**Decisão:** rotas `/imprimir/*` com páginas paginadas pelo app (mm fixos, `break-after: page`, números e sumário calculados em `domain/print/`), `@page` com margem zero e `window.print()`. PNG por SVG → canvas com fontes embutidas. Aceite no CI por `page.pdf()` do Playwright.
+**Consequências:** 0 kB de dependência e texto vetorial. Depende de o usuário imprimir a 100%. A impressão no PWA do iOS precisa de teste em aparelho; se falhar, jsPDF lazy na rota de impressão (nova aprovação).
