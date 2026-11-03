@@ -1,0 +1,459 @@
+{
+  "app": "falae",
+  "schemaVersion": 1,
+  "exportedAt": "2026-10-29T11:15:14.844Z",
+  "data": {
+    "profile": {
+      "id": "me",
+      "createdAt": "2026-10-28T22:30:00.399Z",
+      "onboardingDone": true,
+      "totalXp": 68,
+      "hearts": 4,
+      "heartsUpdatedAt": "2026-10-29T11:15:08.301Z",
+      "streak": {
+        "current": 2,
+        "longest": 2,
+        "lastActiveDay": "2026-10-29",
+        "freezes": 0,
+        "xpTowardFreeze": 68
+      },
+      "lastGoalCelebratedDay": "2026-10-29"
+    },
+    "settings": {
+      "id": "me",
+      "dailyGoalXp": 20,
+      "sound": true,
+      "haptics": true,
+      "theme": "system",
+      "reminder": {
+        "enabled": false,
+        "time": "19:00"
+      }
+    },
+    "lessonProgress": [
+      {
+        "lessonId": "u1-sk1-l1",
+        "completedCount": 1,
+        "bestAccuracy": 1,
+        "firstCompletedAt": "2026-10-28T22:30:08.003Z"
+      },
+      {
+        "lessonId": "u1-sk1-l2",
+        "completedCount": 1,
+        "bestAccuracy": 0.9230769230769231,
+        "firstCompletedAt": "2026-10-28T22:30:16.248Z"
+      },
+      {
+        "lessonId": "u1-sk1-l3",
+        "completedCount": 1,
+        "bestAccuracy": 0.8333333333333334,
+        "firstCompletedAt": "2026-10-28T22:30:24.487Z"
+      },
+      {
+        "lessonId": "u1-sk2-l1",
+        "completedCount": 1,
+        "bestAccuracy": 0.9166666666666666,
+        "firstCompletedAt": "2026-10-29T11:15:14.692Z"
+      }
+    ],
+    "results": [
+      {
+        "id": "practice-1793272500120",
+        "lessonId": "practice",
+        "kind": "practice",
+        "day": "2026-10-29",
+        "finishedAt": "2026-10-29T11:15:07.075Z",
+        "xp": 15,
+        "accuracy": 1,
+        "durationMs": 6952,
+        "mistakes": 0,
+        "perfect": true,
+        "itemOutcomes": [
+          {
+            "itemId": "u1-good-evening",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-bye-see-you-later",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-good-morning-ana",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-good-night-see-you-tomorrow",
+            "q": 5
+          },
+          {
+            "itemId": "u1-see-you-later",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-night",
+            "q": 5
+          },
+          {
+            "itemId": "u1-see-you-tomorrow",
+            "q": 5
+          },
+          {
+            "itemId": "u1-bye",
+            "q": 5
+          }
+        ]
+      },
+      {
+        "id": "u1-sk1-l1-1793226600489",
+        "lessonId": "u1-sk1-l1",
+        "kind": "lesson",
+        "day": "2026-10-28",
+        "finishedAt": "2026-10-28T22:30:08.003Z",
+        "xp": 17,
+        "accuracy": 1,
+        "durationMs": 7512,
+        "mistakes": 0,
+        "perfect": true,
+        "itemOutcomes": [
+          {
+            "itemId": "u1-hi",
+            "q": 5
+          },
+          {
+            "itemId": "u1-bye",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-morning",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-afternoon",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-good-morning-ana",
+            "q": 5
+          }
+        ]
+      },
+      {
+        "id": "u1-sk1-l2-1793226608109",
+        "lessonId": "u1-sk1-l2",
+        "kind": "lesson",
+        "day": "2026-10-28",
+        "finishedAt": "2026-10-28T22:30:16.248Z",
+        "xp": 12,
+        "accuracy": 0.9230769230769231,
+        "durationMs": 8133,
+        "mistakes": 1,
+        "perfect": false,
+        "itemOutcomes": [
+          {
+            "itemId": "u1-hello",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-evening",
+            "q": 2
+          },
+          {
+            "itemId": "u1-good-night",
+            "q": 2
+          },
+          {
+            "itemId": "u1-see-you-later",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-afternoon",
+            "q": 5
+          },
+          {
+            "itemId": "u1-bye",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-bye-see-you-later",
+            "q": 5
+          }
+        ]
+      },
+      {
+        "id": "u1-sk1-l3-1793226616348",
+        "lessonId": "u1-sk1-l3",
+        "kind": "lesson",
+        "day": "2026-10-28",
+        "finishedAt": "2026-10-28T22:30:24.487Z",
+        "xp": 12,
+        "accuracy": 0.8333333333333334,
+        "durationMs": 8136,
+        "mistakes": 2,
+        "perfect": false,
+        "itemOutcomes": [
+          {
+            "itemId": "u1-see-you-tomorrow",
+            "q": 2
+          },
+          {
+            "itemId": "u1-hi",
+            "q": 5
+          },
+          {
+            "itemId": "u1-bye",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-morning",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-afternoon",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-night",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-good-night-see-you-tomorrow",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-evening",
+            "q": 5
+          },
+          {
+            "itemId": "u1-see-you-later",
+            "q": 5
+          }
+        ]
+      },
+      {
+        "id": "u1-sk2-l1-1793272507156",
+        "lessonId": "u1-sk2-l1",
+        "kind": "lesson",
+        "day": "2026-10-29",
+        "finishedAt": "2026-10-29T11:15:14.692Z",
+        "xp": 12,
+        "accuracy": 0.9166666666666666,
+        "durationMs": 7530,
+        "mistakes": 1,
+        "perfect": false,
+        "itemOutcomes": [
+          {
+            "itemId": "u1-name",
+            "q": 5
+          },
+          {
+            "itemId": "u1-my",
+            "q": 5
+          },
+          {
+            "itemId": "u1-im",
+            "q": 2
+          },
+          {
+            "itemId": "u1-hi",
+            "q": 5
+          },
+          {
+            "itemId": "u1-bye",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-my-name-is-ana",
+            "q": 5
+          },
+          {
+            "itemId": "u1-s-im-joao",
+            "q": 5
+          },
+          {
+            "itemId": "u1-good-morning",
+            "q": 5
+          }
+        ]
+      }
+    ],
+    "srs": [
+      {
+        "itemId": "u1-bye",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-good-afternoon",
+        "ease": 2.6,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 0,
+        "dueDay": "2026-10-29",
+        "lastReviewDay": "2026-10-28"
+      },
+      {
+        "itemId": "u1-good-evening",
+        "ease": 2.28,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 1,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-good-morning",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-good-night",
+        "ease": 2.28,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 1,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-hello",
+        "ease": 2.6,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 0,
+        "dueDay": "2026-10-29",
+        "lastReviewDay": "2026-10-28"
+      },
+      {
+        "itemId": "u1-hi",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-im",
+        "ease": 2.18,
+        "intervalDays": 1,
+        "reps": 0,
+        "lapses": 1,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-my",
+        "ease": 2.6,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 0,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-name",
+        "ease": 2.6,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 0,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-s-bye-see-you-later",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-s-good-morning-ana",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-s-good-night-see-you-tomorrow",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-s-im-joao",
+        "ease": 2.6,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 0,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-s-my-name-is-ana",
+        "ease": 2.6,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 0,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-see-you-later",
+        "ease": 2.7,
+        "intervalDays": 3,
+        "reps": 2,
+        "lapses": 0,
+        "dueDay": "2026-11-01",
+        "lastReviewDay": "2026-10-29"
+      },
+      {
+        "itemId": "u1-see-you-tomorrow",
+        "ease": 2.28,
+        "intervalDays": 1,
+        "reps": 1,
+        "lapses": 1,
+        "dueDay": "2026-10-30",
+        "lastReviewDay": "2026-10-29"
+      }
+    ],
+    "daily": [
+      {
+        "day": "2026-10-28",
+        "xp": 41,
+        "lessons": 3,
+        "goalMet": true
+      },
+      {
+        "day": "2026-10-29",
+        "xp": 27,
+        "lessons": 2,
+        "goalMet": true
+      }
+    ],
+    "achievements": [
+      {
+        "id": "first-lesson",
+        "unlockedAt": "2026-10-28T22:30:08.003Z"
+      },
+      {
+        "id": "perfect-lesson",
+        "unlockedAt": "2026-10-28T22:30:08.003Z"
+      }
+    ]
+  }
+}
