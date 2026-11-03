@@ -9,7 +9,9 @@ import {
   unitSchema,
   vocabItemSchema,
 } from './schema';
+import { bankSchema, courseIssues } from './schemas/bank';
 import { buildUnit } from '../test/fixtures/buildUnit';
+import { buildBank, buildFalseFriendsBank } from '../test/fixtures/content/buildBank';
 
 type AnyRecord = Record<string, unknown>;
 const clone = <T>(v: T): T => structuredClone(v);
@@ -268,5 +270,88 @@ describe('content schema — CEFR level and optional item fields', () => {
     const r = unitSchema.safeParse(unit);
     expect(r.success).toBe(false);
     expect(messages(r)).toMatch(/^skills › 2 › vocab › 0 › notes: Falso cognato/m);
+  });
+});
+
+describe('bankSchema and courseIssues with banks', () => {
+  const units = () => [unitSchema.parse(buildUnit(1))];
+  const bank = (overrides: Record<string, unknown> = {}) => bankSchema.parse(buildBank(overrides));
+
+  it('accepts the fixture banks', () => {
+    expect(bankSchema.safeParse(buildBank()).success).toBe(true);
+    expect(bankSchema.safeParse(buildFalseFriendsBank()).success).toBe(true);
+    expect(courseIssues({ units: units(), banks: [bank()] })).toEqual([]);
+  });
+
+  it('rejects an unknown bank id, a missing level and unknown keys in PT-BR', () => {
+    const r = bankSchema.safeParse({
+      ...buildBank({ id: 'girias', collection: 'x' }),
+      level: undefined,
+    });
+    expect(messages(r).split('\n')).toEqual([
+      'id: Banco desconhecido; use frases, phrasal, expressoes, falsos-cognatos, extra-a1, extra-a2.',
+      'level: Informe o nível CEFR (level): A1, A2, B1, B2, C1, C2.',
+      '(raiz): Campo desconhecido: "collection".',
+    ]);
+  });
+
+  it('applies the false-friend rule to bank vocab', () => {
+    const raw = buildFalseFriendsBank();
+    delete (raw.vocab[0] as Record<string, unknown>).notes;
+    expect(messages(bankSchema.safeParse(raw))).toBe(
+      'vocab › 0 › notes: Falso cognato precisa de "notes" com o aviso de cuidado.',
+    );
+  });
+
+  it('rejects an item id without the bank prefix', () => {
+    const b = bank();
+    b.sentences[0]!.id = 'pv-001';
+    expect(courseIssues({ units: units(), banks: [b] })).toEqual([
+      'Item "pv-001" do banco frases precisa começar com "fr-".',
+    ]);
+  });
+
+  it('rejects ids repeated between a unit and a bank, and repeated banks', () => {
+    const b = bank();
+    b.sentences[0]!.id = 'fr-t1';
+    const unit = units();
+    unit[0]!.skills[1]!.sentences.push({ ...unit[0]!.skills[1]!.sentences[0]!, id: 'fr-t1' });
+    expect(courseIssues({ units: unit, banks: [b] })).toEqual([
+      'Id duplicado "fr-t1" (item em t1-sk2 e item no banco frases).',
+    ]);
+    expect(courseIssues({ units: units(), banks: [bank(), bank()] })).toEqual([
+      'Banco repetido: "frases".',
+    ]);
+  });
+
+  it('rejects a bank item with the same normalized en as a unit item or another bank item', () => {
+    const b = bank();
+    b.sentences[0]!.en = 'I am thirty years old!'; // = t1-sk1-s-hello ("I'm thirty years old.")
+    b.sentences[1]!.en = "that's a BUMMER"; // = fr-003 in the same bank
+    expect(courseIssues({ units: units(), banks: [b] })).toEqual([
+      'Item "fr-001" do banco frases repete "I am thirty years old!", que já é o item "t1-sk1-s-hello". Remova-o do banco e faça a coleção apontar para "t1-sk1-s-hello".',
+      'Item "fr-003" do banco frases repete "That\'s a bummer.", que já é o item "fr-002". Remova-o do banco e faça a coleção apontar para "fr-002".',
+    ]);
+    const other = bankSchema.parse(
+      buildBank({
+        id: 'expressoes',
+        sentences: [{ id: 'ex-001', en: 'Nice to meet you!', pt: 'Prazer!', difficulty: 1 }],
+      }),
+    );
+    expect(courseIssues({ units: units(), banks: [bank(), other] })).toEqual([
+      'Item "ex-001" do banco expressoes repete "Nice to meet you!", que já é o item "fr-001". Remova-o do banco e faça a coleção apontar para "fr-001".',
+    ]);
+  });
+
+  it('lets unit exercises cite bank items and rejects the reserved "uc-" prefix', () => {
+    const unit = units();
+    unit[0]!.skills[0]!.lessons[0]!.exercises[0]!.itemIds = ['fr-001'];
+    expect(courseIssues({ units: unit, banks: [bank()] })).toEqual([]);
+    const b = bank();
+    b.sentences.push({ ...b.sentences[0]!, id: 'uc-abc', en: 'See you soon.' });
+    expect(courseIssues({ units: units(), banks: [b] })).toEqual([
+      'O id "uc-abc" (item no banco frases) usa o prefixo "uc-", reservado para as cartas do aluno.',
+      'Item "uc-abc" do banco frases precisa começar com "fr-".',
+    ]);
   });
 });

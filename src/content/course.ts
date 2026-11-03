@@ -1,6 +1,6 @@
 import { collectKnownWords } from '../domain/grading/grade';
+import { courseIssues } from './schemas/bank';
 import {
-  courseIssues,
   formatIssues,
   unitSchema,
   type Lesson,
@@ -46,7 +46,7 @@ export function buildCourse(rawUnits: readonly unknown[]): BuildResult {
       errors.push(...formatIssues(parsed.error).map((line) => `[${label}] ${line}`));
       return;
     }
-    const issues = courseIssues([...accepted, parsed.data]);
+    const issues = courseIssues({ units: [...accepted, parsed.data], banks: [] });
     if (issues.length > 0) {
       errors.push(...issues.map((line) => `[${parsed.data.id}] ${line}`));
       return;

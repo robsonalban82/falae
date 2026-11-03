@@ -1,8 +1,10 @@
 import { z } from 'zod';
+import '../lib/zodLocale';
 import { expandPattern, PatternError } from '../domain/grading/patterns';
 export { formatIssues } from '../lib/zodIssues';
 import { BLANK } from '../domain/grading/blank';
 import { tokenizeForBank } from '../domain/grading/tokenize';
+import { whenParsed } from './schemas/refine';
 export { BLANK, tokenizeForBank };
 
 /** MVP shape: every unit has 4 skills × 3 lessons, lessons have 10–15 exercises. */
@@ -14,8 +16,17 @@ export const MAX_EXERCISES = 15;
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'Use ids em kebab-case (ex.: u1-hello).');
 const text = z.string().trim().min(1, 'Texto vazio.');
 
+/** PT-BR message for unknown keys in strict objects (Zod's default is English). */
+export const unknownKeysMessage = (keys: readonly string[]) =>
+  `Campo desconhecido: ${keys.map((k) => `"${k}"`).join(', ')}.`;
+export const strictPt = {
+  error: (issue: z.core.$ZodRawIssue) =>
+    issue.code === 'unrecognized_keys' ? unknownKeysMessage(issue.keys) : undefined,
+};
+
 /** An answer pattern using (optional) and [a|b] syntax; must parse and stay under the limit. */
 const pattern = text.superRefine((value, ctx) => {
+  if (!value) return; // already reported as "Texto vazio."
   try {
     if (expandPattern(value).length === 0) {
       ctx.addIssue({ code: 'custom', message: `O padrão "${value}" não gera nenhuma resposta.` });
@@ -25,6 +36,9 @@ const pattern = text.superRefine((value, ctx) => {
     ctx.addIssue({ code: 'custom', message: err.message });
   }
 });
+
+/** Shared primitives for the other content schemas (src/content/schemas/). */
+export { id as idSchema, text as textSchema, pattern as patternSchema };
 
 export const focusTags = [
   'falso-cognato',
@@ -79,7 +93,7 @@ const unitItemKeys = {
     const parts = issue.keys.includes('level')
       ? ['Itens de unidade herdam o nível da unidade; "level" por item só vale nos bancos.']
       : [];
-    if (others.length) parts.push(`Campo desconhecido: ${others.map((k) => `"${k}"`).join(', ')}.`);
+    if (others.length) parts.push(unknownKeysMessage(others));
     return parts.join(' ');
   },
 };
@@ -122,15 +136,7 @@ const hasFalseFriendNotes = (item: FalseFriendFields) =>
 const falseFriendNotesCheck = {
   path: ['notes'],
   message: 'Falso cognato precisa de "notes" com o aviso de cuidado.',
-  // Run even when other fields failed, so authors see every problem at once.
-  // Skip only when the value is not an object or focus/notes themselves are malformed.
-  when: (payload: z.core.ParsePayload) =>
-    !payload.issues.some((issue) => {
-      const head = issue.path?.[0];
-      return head === undefined
-        ? issue.code === 'invalid_type'
-        : head === 'focus' || head === 'notes';
-    }),
+  when: whenParsed(['focus'], ['notes']),
 };
 
 /** Unit items have no `level` field (strict rejects it with an explanation). */
@@ -326,53 +332,8 @@ export const unitSchema = z.strictObject({
   reviewLesson: lessonSchema,
 });
 
-/**
- * Cross-unit checks on already-parsed units: unique ids, valid item references, unique order.
- * Pure function so the runtime loader can run it without re-parsing everything.
- */
-export function courseIssues(units: readonly Unit[]): string[] {
-  const issues: string[] = [];
-  const seen = new Map<string, string>();
-  const itemIds = new Set<string>();
-  const claim = (value: string, where: string) => {
-    const previous = seen.get(value);
-    if (previous) issues.push(`Id duplicado "${value}" (${previous} e ${where}).`);
-    else seen.set(value, where);
-  };
-
-  const orders = new Set<number>();
-  for (const unit of units) {
-    claim(unit.id, 'unidade');
-    if (orders.has(unit.order)) issues.push(`Ordem de unidade repetida: ${unit.order}.`);
-    orders.add(unit.order);
-    for (const skill of unit.skills) {
-      claim(skill.id, `habilidade em ${unit.id}`);
-      for (const item of [...skill.vocab, ...skill.sentences]) {
-        claim(item.id, `item em ${skill.id}`);
-        itemIds.add(item.id);
-      }
-    }
-  }
-
-  for (const unit of units) {
-    for (const lesson of [...unit.skills.flatMap((s) => s.lessons), unit.reviewLesson]) {
-      claim(lesson.id, `lição em ${unit.id}`);
-      for (const ex of lesson.exercises) {
-        claim(ex.id, `exercício em ${lesson.id}`);
-        for (const ref of ex.itemIds) {
-          if (!itemIds.has(ref))
-            issues.push(`Exercício ${ex.id} cita o item "${ref}", que não existe.`);
-        }
-      }
-    }
-  }
-  return issues;
-}
-
-/** Whole course schema (used by tests and tooling). */
-export const courseSchema = z.array(unitSchema).superRefine((units, ctx) => {
-  for (const message of courseIssues(units)) ctx.addIssue({ code: 'custom', message });
-});
+/** Position of a level in A1…C2, for "at most" comparisons. */
+export const levelRank = (level: CefrLevel): number => cefrLevels.indexOf(level);
 
 export type FocusTag = z.infer<typeof focusTagSchema>;
 export type CefrLevel = z.infer<typeof levelSchema>;

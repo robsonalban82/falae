@@ -754,7 +754,7 @@ O port é feito por um script descartável (`scripts/port-prototype.ts`), rodado
 
 | Protótipo (`conteudo/mapas/`)                                                         | App (`src/content/mindmaps/`)                                                                                                                                                        |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| arquivo `<slug>.json`, `id: <slug>`                                                   | `mm-<slug>.json`, `id: mm-<slug>`; `skill-u1-sk1` → `mm-u1-sk1` com `unitId: "u1"` e `skillId: "u1-sk1"`                                                                             |
+| arquivo `<slug>.json`, `id: <slug>`                                                   | `mm-<slug>.json`, `id: mm-<slug>`; `skill-u1-sk1` → `mm-u1-sk1` com `unitId: "u1-unit"` e `skillId: "u1-sk1"`                                                                        |
 | —                                                                                     | `kind` (novo, obrigatório): `to-be` e `in-on-at` → `gramatica`; `numeros-e-horas`, `falsos-cognatos-1` e `phrasal-get` → `vocabulario`; `u1-sk1` → `conversacao` (pedagogo confirma) |
 | `collection: "mapas"`                                                                 | removido (todo mapa aparece na aba Mapas)                                                                                                                                            |
 | `collection: "phrasal"`                                                               | removido; o id entra em `mapIds` da coleção `phrasal` (`mm-falsos-cognatos-1` entra em `falsos-cognatos`)                                                                            |
@@ -805,3 +805,10 @@ As capas seguem o protótipo: Frases (`chat`, folha), Phrasal verbs (`swap`, jab
 - **Offline**: `svg` já está em `globPatterns` do `vite-plugin-pwa`, então as cenas entram no precache.
 - **Garantias**: `validate:content` falha se um `art` não tem arquivo e avisa se um arquivo não é usado. Um teste confere que cada SVG segue as regras do `ESTILO.md` (sem `<text>`, `<defs>`, `filter`, `id=`, `<script>`, nem atributos `on*`), porque as cenas entram no site. O `check-prod-bundle` falha se alguma cena (ou `data:image/svg+xml`) aparecer no JS inicial.
 - Os 16 SVGs 64×64 do piloto (`ilustracoes/*.svg`) não são portados agora. Eles voltam a ser avaliados com as ilustrações das cartas (trabalho futuro).
+
+### Ajustes da etapa 3 (2026-11-03)
+
+- **Um lugar para cada item (§2.1):** um item de banco não pode ter o mesmo `en` normalizado de um item de unidade; a entrada de coleção aponta para o item da unidade. No port, `fc-001`, `fc-002`, `fc-003`, `fc-005`, `fr-001` e `pv-001` viram referências a `u1-actually`, `u4-pretend`, `u3-push`, `u2-parents`, `u1-s-nice-to-meet-you` e `u4-get-up`.
+- **`topic` da entrada precisa constar em `topics`** da coleção (regra mais rígida que o §2.6, aceita).
+- **Linha só com `right`** em `falsos-cognatos-1` (ramo 6, cartão 2): no port vira `{ en }`; o schema continua com as 4 formas do §2.5.
+- **Mínimo de 4 `ref`:** `mm-to-be`, `mm-numeros-e-horas` e `mm-in-on-at` ganham itens novos em `extra-a1`/`extra-a2` na etapa 10, revisados pelo `revisor-linguistico` e pelo `pedagogo`.
