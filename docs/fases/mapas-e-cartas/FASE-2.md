@@ -168,7 +168,7 @@ Nenhuma etapa avança com bloqueante. Commit ao fim de cada etapa aprovada.
 
 ## Pendências para a Fase 3
 
-Registradas na etapa 4 (não há `FASE-3.md` ainda; mover para lá quando o plano for escrito):
+**Movidas para `docs/fases/mapas-e-cartas/FASE-3.md`, etapa 6** (pendências herdadas 1 a 3). Mantidas aqui só como histórico:
 
 - A tela que mostra cenas trata `artUrl(nome)` igual a `undefined` (cena ausente ou renomeada): não renderiza o `<img>` e não quebra o cartão. O `validate:content` já reprova `art` inexistente, mas a tela não deve depender disso.
 - O primeiro importador de `src/features/mindmap/art.ts` tem de ser uma rota lazy; o `check-prod-bundle` falha se o mapa de cenas ou uma cena chegar ao JS inicial.
