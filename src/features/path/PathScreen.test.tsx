@@ -8,10 +8,13 @@ import { useProfile } from '../../stores/useProfile';
 import { useProgress } from '../../stores/useProgress';
 import { useSettings } from '../../stores/useSettings';
 import { PathScreen } from './PathScreen';
+import { StatsBar } from './StatsBar';
 
 function renderPath(state?: unknown) {
   return render(
     <MemoryRouter initialEntries={[{ pathname: '/', state }]}>
+      {/* The app layout puts the stats bar above the path. */}
+      <StatsBar />
       <PathScreen />
     </MemoryRouter>,
   );

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { goalProgress } from '../../domain/gamification/dailyGoal';
 import { refillHearts } from '../../domain/gamification/hearts';
 import { displayStreak } from '../../domain/gamification/streak';
@@ -14,15 +15,31 @@ import { GoalRing } from './GoalRing';
 import { StreakBadge } from './StreakBadge';
 
 const REFRESH_MS = 30_000;
-/** Sticky stats bar: streak, XP, hearts (with live refill countdown) and daily goal. */
-export function PathHeader() {
+/** Sticky stats bar shown on the main tabs: streak, XP, hearts (with live refill countdown) and daily goal. */
+export function StatsBar() {
   const profile = useProfile((s) => s.profile);
+  const profileLoaded = useProfile((s) => s.loaded);
+  const loadProfile = useProfile((s) => s.load);
+  const progressLoaded = useProgress((s) => s.loaded);
+  const loadProgress = useProgress((s) => s.load);
+  const settingsLoaded = useSettings((s) => s.loaded);
   const xpToday = useProgress((s) => s.xpToday);
   const goal = useSettings((s) => s.settings.dailyGoalXp);
   const now = useNow(REFRESH_MS);
+  const ready = profileLoaded && progressLoaded && settingsLoaded;
+  // Active only once the bar exists, so the variable is published when it first appears.
+  const ref = useHeightVar('--path-header-h', ready);
+
+  // Safety net: the onboarding gate normally loads both before the layout mounts.
+  useEffect(() => {
+    if (!profileLoaded) void loadProfile();
+    if (!progressLoaded) void loadProgress();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps -- once per mount
+
+  // Nothing until real numbers exist: no flash of a zero streak or empty goal.
+  if (!ready) return null;
   const streak = displayStreak(profile.streak, dayKey(now));
   const hearts = refillHearts(profile, now);
-  const ref = useHeightVar('--path-header-h');
 
   return (
     <div

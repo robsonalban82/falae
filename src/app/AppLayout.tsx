@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import { NavLink, Outlet, useMatches } from 'react-router';
+import { StatsBar } from '../features/path/StatsBar';
 import { t } from '../i18n/pt-BR';
 import { MapsIcon, PathIcon, PracticeIcon, ProfileIcon, SettingsIcon } from '../ui/icons';
 import { paths } from './routes';
@@ -12,8 +13,8 @@ type Item = {
   nested?: boolean;
 };
 
-/** Routes may ask for a different frame through `handle`. */
-export type LayoutHandle = { hideBottomNav?: boolean; wide?: boolean };
+/** Routes may ask for a different frame through `handle`. `statsBar`: show the streak/XP/hearts/goal bar on top. */
+export type LayoutHandle = { hideBottomNav?: boolean; wide?: boolean; statsBar?: boolean };
 
 const items: Item[] = [
   { to: paths.path, label: t.nav.path, Icon: PathIcon },
@@ -83,6 +84,7 @@ export function AppLayout() {
             : 'pb-[calc(4rem+env(safe-area-inset-bottom)+1.5rem)] lg:pb-10'
         }`}
       >
+        {handle?.statsBar && <StatsBar />}
         <Outlet />
       </main>
     </div>

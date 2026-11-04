@@ -1,6 +1,13 @@
 import { render, screen, within } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router';
+import { repository } from '../data';
+import { defaultProfile, defaultSettings } from '../data/models';
+import { clock } from '../services/clock';
+import { useProfile } from '../stores/useProfile';
+import { useProgress } from '../stores/useProgress';
+import { useSettings } from '../stores/useSettings';
 import { AppLayout } from './AppLayout';
+import { act } from 'react';
 
 function renderAt(path: string, handle?: unknown) {
   const router = createMemoryRouter(
@@ -14,6 +21,8 @@ function renderAt(path: string, handle?: unknown) {
   );
   return render(<RouterProvider router={router} />);
 }
+
+afterEach(() => clock.reset());
 
 describe('AppLayout navigation', () => {
   it('has 5 items in order', () => {
@@ -42,5 +51,32 @@ describe('AppLayout navigation', () => {
     renderAt('/perfil');
     expect(screen.getByRole('navigation')).not.toHaveClass('hidden');
     expect(screen.getByRole('main')).toHaveClass('max-w-2xl');
+  });
+
+  it('shows the stats bar only when the route asks', async () => {
+    clock.setNow('2026-10-29T12:00:00');
+    await repository.resetAll();
+    useProfile.setState({ profile: defaultProfile(clock.iso()), loaded: false });
+    useProgress.setState({ loaded: false, progress: [], xpToday: 0 });
+    useSettings.setState({ settings: defaultSettings(), loaded: true });
+    const { unmount } = renderAt('/mapas', { statsBar: true });
+    expect(await screen.findByRole('img', { name: 'Meta diária: 0 de 20 XP' })).toBeInTheDocument();
+    unmount();
+    renderAt('/config');
+    expect(screen.queryByRole('img', { name: /Meta diária/ })).not.toBeInTheDocument();
+  });
+
+  it('publishes the bar height once late settings arrive', async () => {
+    clock.setNow('2026-10-29T12:00:00');
+    useProfile.setState({ profile: defaultProfile(clock.iso()), loaded: true });
+    useProgress.setState({ loaded: true, progress: [], xpToday: 0 });
+    useSettings.setState({ settings: defaultSettings(), loaded: false });
+    const root = document.documentElement.style;
+    root.removeProperty('--path-header-h');
+    renderAt('/', { statsBar: true });
+    expect(root.getPropertyValue('--path-header-h')).toBe('');
+    act(() => useSettings.setState({ loaded: true }));
+    expect(await screen.findByRole('img', { name: /Meta diária/ })).toBeInTheDocument();
+    expect(root.getPropertyValue('--path-header-h')).not.toBe('');
   });
 });

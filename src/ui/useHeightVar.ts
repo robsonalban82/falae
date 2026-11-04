@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 /**
  * Publishes the height of the returned element as a CSS variable on <html> while `active`, so
@@ -6,7 +6,8 @@ import { useEffect, useRef } from 'react';
  */
 export function useHeightVar(name: string, active = true) {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  // Layout effect: the value is there before any rAF-scheduled scroll reads it.
+  useLayoutEffect(() => {
     const el = ref.current;
     if (!active || !el) return;
     const root = document.documentElement;

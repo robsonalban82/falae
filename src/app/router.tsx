@@ -1,10 +1,13 @@
 import { createBrowserRouter, type RouteObject } from 'react-router';
-import { AppLayout } from './AppLayout';
+import { AppLayout, type LayoutHandle } from './AppLayout';
 import { ComingSoon } from './ComingSoon';
 import { OnboardingGate } from './OnboardingGate';
 import { t } from '../i18n/pt-BR';
 import { paths } from './routes';
 import { PathScreen } from '../features/path/PathScreen';
+
+/** Main tabs carry the stats bar (Settings and inner screens do not). */
+const tab: LayoutHandle = { statsBar: true };
 
 /** Dev-only design showcase (also in E2E builds for the UX screenshots); never in the production bundle. */
 const devRoutes: RouteObject[] =
@@ -33,9 +36,10 @@ export const router = createBrowserRouter(
         {
           element: <AppLayout />,
           children: [
-            { path: paths.path, element: <PathScreen /> },
+            { path: paths.path, element: <PathScreen />, handle: tab },
             {
               path: paths.practice,
+              handle: tab,
               lazy: async () => ({
                 Component: (await import('../features/practice/PracticeScreen')).PracticeScreen,
               }),
@@ -43,6 +47,7 @@ export const router = createBrowserRouter(
             // Fixed segments before :mapId (MAPAS-E-CARTAS §5.2).
             {
               path: paths.maps,
+              handle: tab,
               lazy: async () => ({
                 Component: (await import('../features/maps/MapsScreen')).MapsScreen,
               }),
@@ -62,6 +67,7 @@ export const router = createBrowserRouter(
             },
             {
               path: paths.profile,
+              handle: tab,
               lazy: async () => ({
                 Component: (await import('../features/profile/ProfileScreen')).ProfileScreen,
               }),

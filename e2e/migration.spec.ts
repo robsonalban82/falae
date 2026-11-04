@@ -105,7 +105,9 @@ test.describe('migration v1 -> v2 (real physical database)', () => {
     expect(physical.counts).toEqual({ userCards: 0, mapProgress: 0, planProgress: 0 });
 
     await page.goto('/perfil');
-    await expect(page.getByText('120', { exact: true })).toBeVisible();
-    await expect(page.getByText('3 dias', { exact: true })).toBeVisible();
+    // Scoped to the profile stats: the stats bar on top shows the same XP.
+    const stats = page.locator('dl');
+    await expect(stats.getByText('120', { exact: true })).toBeVisible();
+    await expect(stats.getByText('3 dias', { exact: true })).toBeVisible();
   });
 });

@@ -8,7 +8,6 @@ import { t } from '../../i18n/pt-BR';
 import { useProfile } from '../../stores/useProfile';
 import { useProgress } from '../../stores/useProgress';
 import { useSettings } from '../../stores/useSettings';
-import { PathHeader } from './PathHeader';
 import { UnitSection } from './UnitSection';
 
 const notices: Record<PathNotice, string> = {
@@ -126,7 +125,6 @@ export function PathScreen() {
         </div>
       ) : (
         <>
-          <PathHeader />
           {units.map((unit, i) => {
             const state = pathState.units[i];
             if (!state) return null;
