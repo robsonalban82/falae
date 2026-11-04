@@ -1403,7 +1403,7 @@ export const courseManifest: CourseManifest = {
       title: 'Falsos cognatos (1)',
       level: 'A2',
       kind: 'vocabulario',
-      icon: 'swap',
+      icon: 'ban',
       file: 'mm-falsos-cognatos-1.json',
       nodeCount: 13,
       itemIds: [

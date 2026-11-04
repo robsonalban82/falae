@@ -54,15 +54,17 @@ export function SettingsIcon({ filled, className }: IconProps) {
   );
 }
 
+/** Mind map: a big central node with four branches ending in small nodes. */
 export function MapsIcon({ filled, className }: IconProps) {
   const fill = filled ? 'currentColor' : 'none';
   return (
     <svg {...base(filled)} className={className}>
-      <circle cx="12" cy="12" r="3" fill={fill} />
-      <circle cx="4.8" cy="5.8" r="1.8" fill={fill} />
-      <circle cx="19.2" cy="5.8" r="1.8" fill={fill} />
-      <circle cx="12" cy="20" r="1.8" fill={fill} />
-      <path d="M6.2 7.1 9.9 10M17.8 7.1 14.1 10M12 15v3.2" />
+      <circle cx="12" cy="12" r="4" fill={fill} />
+      <circle cx="4" cy="5" r="1.6" fill={fill} />
+      <circle cx="20" cy="5" r="1.6" fill={fill} />
+      <circle cx="4" cy="19" r="1.6" fill={fill} />
+      <circle cx="20" cy="19" r="1.6" fill={fill} />
+      <path d="M5.2 6.2 9.2 9.4M18.8 6.2 14.8 9.4M5.2 17.8 9.2 14.6M18.8 17.8 14.8 14.6" />
     </svg>
   );
 }

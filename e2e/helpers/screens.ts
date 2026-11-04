@@ -396,6 +396,51 @@ export const screens: Screen[] = [
     },
   },
   {
+    name: 'mapas',
+    full: true,
+    run: async (page) => {
+      await page.goto('/mapas');
+      await expect(page.getByRole('heading', { level: 1, name: 'Mapas' })).toBeVisible();
+      await expect(page.getByRole('link', { name: /Verbo to be/ })).toBeVisible();
+    },
+  },
+  {
+    name: 'mapas-estudados',
+    full: true,
+    run: async (page) => {
+      await page.evaluate(async () => {
+        type Hooks = {
+          exportForTest: () => Promise<{ data: Record<string, unknown> }>;
+          importForTest: (f: unknown) => Promise<void>;
+        };
+        const h = (window as unknown as { __falae: Hooks }).__falae;
+        const cur = await h.exportForTest();
+        const row = (mapId: string, day: string) => ({
+          mapId,
+          firstStudiedAt: `${day}T12:00:00.000Z`,
+          lastStudiedDay: day,
+          timesStudied: 1,
+        });
+        await h.importForTest({
+          ...cur,
+          data: {
+            ...cur.data,
+            mapProgress: [row('mm-to-be', '2026-10-28'), row('mm-in-on-at', '2026-10-29')],
+          },
+        });
+      });
+      await page.goto('/mapas');
+      await expect(page.getByText('Já estudado', { exact: true }).first()).toBeVisible();
+    },
+  },
+  {
+    name: 'mapas-filtros-sem-resultado',
+    run: async (page) => {
+      await page.goto('/mapas?nivel=A2&tipo=gramatica');
+      await expect(page.getByText('Nenhum mapa com esses filtros.')).toBeVisible();
+    },
+  },
+  {
     name: 'vitrine',
     full: true,
     run: async (page) => {

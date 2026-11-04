@@ -1,13 +1,23 @@
 import type { ComponentType } from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, useMatches } from 'react-router';
 import { t } from '../i18n/pt-BR';
-import { PathIcon, PracticeIcon, ProfileIcon, SettingsIcon } from '../ui/icons';
+import { MapsIcon, PathIcon, PracticeIcon, ProfileIcon, SettingsIcon } from '../ui/icons';
 import { paths } from './routes';
 
-type Item = { to: string; label: string; Icon: ComponentType<{ filled?: boolean }> };
+type Item = {
+  to: string;
+  label: string;
+  Icon: ComponentType<{ filled?: boolean }>;
+  /** Active for every nested route (/mapas/*), not only the exact path. */
+  nested?: boolean;
+};
+
+/** Routes may ask for a different frame through `handle`. */
+export type LayoutHandle = { hideBottomNav?: boolean; wide?: boolean };
 
 const items: Item[] = [
   { to: paths.path, label: t.nav.path, Icon: PathIcon },
+  { to: paths.maps, label: t.nav.maps, Icon: MapsIcon, nested: true },
   { to: paths.practice, label: t.nav.practice, Icon: PracticeIcon },
   { to: paths.profile, label: t.nav.profile, Icon: ProfileIcon },
   { to: paths.settings, label: t.nav.settings, Icon: SettingsIcon },
@@ -15,6 +25,8 @@ const items: Item[] = [
 
 /** Bottom navigation on phones, side rail on wide screens. Active item: pill + filled icon + bold, not color alone. */
 export function AppLayout() {
+  // Only the deepest matched route's `handle` counts. It is typed unknown by the router; routes only ever set LayoutHandle.
+  const handle = useMatches().at(-1)?.handle as LayoutHandle | undefined;
   return (
     <div className="min-h-dvh lg:flex">
       <a
@@ -25,17 +37,17 @@ export function AppLayout() {
       </a>
       <nav
         aria-label={t.nav.main}
-        className="fixed inset-x-0 bottom-0 z-10 border-t-2 border-line bg-surface pb-[env(safe-area-inset-bottom)] lg:sticky lg:top-[var(--notice-h,0px)] lg:h-[calc(100dvh-var(--notice-h,0px))] lg:w-60 lg:border-t-0 lg:border-r-2 lg:pb-0"
+        className={`${handle?.hideBottomNav ? 'hidden lg:block' : ''} fixed inset-x-0 bottom-0 z-10 border-t-2 border-line bg-surface pb-[env(safe-area-inset-bottom)] lg:sticky lg:top-[var(--notice-h,0px)] lg:h-[calc(100dvh-var(--notice-h,0px))] lg:w-60 lg:border-t-0 lg:border-r-2 lg:pb-0`}
       >
         <p className="hidden px-6 pt-6 pb-4 font-display text-3xl font-semibold text-primary-shade lg:block dark:text-primary">
           {t.appName}
         </p>
-        <ul className="grid grid-cols-4 lg:flex lg:flex-col lg:gap-1 lg:px-3">
-          {items.map(({ to, label, Icon }) => (
+        <ul className="grid grid-cols-5 lg:flex lg:flex-col lg:gap-1 lg:px-3">
+          {items.map(({ to, label, Icon, nested }) => (
             <li key={to}>
               <NavLink
                 to={to}
-                end
+                end={!nested}
                 className={({ isActive }) =>
                   [
                     'group flex min-h-16 flex-col items-center justify-center gap-0.5 rounded-2xl px-2 text-xs lg:min-h-12 lg:flex-row lg:justify-start lg:gap-3 lg:px-4 lg:text-base',
@@ -65,7 +77,11 @@ export function AppLayout() {
       <main
         id="conteudo"
         tabIndex={-1}
-        className="mx-auto w-full max-w-2xl px-4 pt-6 pb-[calc(4rem+env(safe-area-inset-bottom)+1.5rem)] lg:pb-10"
+        className={`mx-auto w-full ${handle?.wide ? 'max-w-3xl' : 'max-w-2xl'} px-4 pt-6 ${
+          handle?.hideBottomNav
+            ? 'pb-10'
+            : 'pb-[calc(4rem+env(safe-area-inset-bottom)+1.5rem)] lg:pb-10'
+        }`}
       >
         <Outlet />
       </main>

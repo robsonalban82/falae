@@ -2,9 +2,9 @@ import { searchWords } from '../text/search';
 
 /** Map list filters, kept in the URL (`nivel`, `unidade`, `tipo`, `estudado`, `q`). */
 export type MapFilters = {
-  level?: string;
+  level?: FilterLevel;
   unitId?: string;
-  kind?: string;
+  kind?: FilterKind;
   studied?: boolean;
   q: string;
 };
@@ -22,6 +22,9 @@ export type MapListShape = {
 export const FILTER_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
 export const FILTER_KINDS = ['gramatica', 'vocabulario', 'conversacao'] as const;
 
+export type FilterLevel = (typeof FILTER_LEVELS)[number];
+export type FilterKind = (typeof FILTER_KINDS)[number];
+
 export const emptyFilters = (): MapFilters => ({ q: '' });
 
 export const hasFilters = (f: MapFilters): boolean =>
@@ -32,9 +35,9 @@ export const hasFilters = (f: MapFilters): boolean =>
   f.q.trim() !== '';
 
 export type FilterOptions = {
-  levels: string[];
+  levels: FilterLevel[];
   unitIds: string[];
-  kinds: string[];
+  kinds: FilterKind[];
 };
 
 const pick = <T extends string>(value: string | null, allowed: readonly T[]): T | undefined =>
@@ -44,7 +47,10 @@ const pick = <T extends string>(value: string | null, allowed: readonly T[]): T 
  * Reads filters from the URL. Unknown values are ignored, never an error. When `options`
  * is given, level, unit and kind must also exist in the list.
  */
-export function parseMapFilters(params: URLSearchParams, options?: FilterOptions): MapFilters {
+export function parseMapFilters(
+  params: URLSearchParams,
+  options?: { levels: readonly string[]; unitIds: readonly string[]; kinds: readonly string[] },
+): MapFilters {
   const filters: MapFilters = { q: (params.get('q') ?? '').trim() };
   const level = pick(params.get('nivel'), FILTER_LEVELS);
   const kind = pick(params.get('tipo'), FILTER_KINDS);

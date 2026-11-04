@@ -47,3 +47,18 @@ for (const theme of ['light', 'dark'] as const) {
     });
   });
 }
+
+// The 5-item navigation at 390px (touch targets and spacing); clipped to the bar, with Maps active.
+for (const theme of ['light', 'dark'] as const) {
+  test(`@screens navegacao-5-itens (${theme})`, async ({ page }, info) => {
+    await page.emulateMedia({ colorScheme: theme, reducedMotion: 'reduce' });
+    await noRecognition(page);
+    await startAt(page, `${DAY}T12:00:00`);
+    await page.goto('/mapas');
+    const nav = page.getByRole('navigation', { name: 'Navegação principal' });
+    await nav.waitFor();
+    await nav.screenshot({
+      path: `e2e/screenshots/${info.project.name}-${theme}-navegacao-5-itens.png`,
+    });
+  });
+}

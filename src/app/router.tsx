@@ -2,6 +2,7 @@ import { createBrowserRouter, type RouteObject } from 'react-router';
 import { AppLayout } from './AppLayout';
 import { ComingSoon } from './ComingSoon';
 import { OnboardingGate } from './OnboardingGate';
+import { t } from '../i18n/pt-BR';
 import { paths } from './routes';
 import { PathScreen } from '../features/path/PathScreen';
 
@@ -38,6 +39,26 @@ export const router = createBrowserRouter(
               lazy: async () => ({
                 Component: (await import('../features/practice/PracticeScreen')).PracticeScreen,
               }),
+            },
+            // Fixed segments before :mapId (MAPAS-E-CARTAS §5.2).
+            {
+              path: paths.maps,
+              lazy: async () => ({
+                Component: (await import('../features/maps/MapsScreen')).MapsScreen,
+              }),
+            },
+            // Map viewer, practice and collection screens arrive in later steps.
+            {
+              path: paths.collection(),
+              element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
+            },
+            {
+              path: paths.map(),
+              element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
+            },
+            {
+              path: paths.mapPractice(),
+              element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
             },
             {
               path: paths.profile,
