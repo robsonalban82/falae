@@ -3,9 +3,21 @@ import { t } from '../../i18n/pt-BR';
 import { useSettings } from '../../stores/useSettings';
 import { Button } from '../../ui/Button';
 import { En } from '../../ui/En';
-import { ArrowRightIcon } from '../../ui/icons';
+import {
+  ArrowRightIcon,
+  MapsIcon,
+  PathIcon,
+  PracticeIcon,
+  ProfileIcon,
+  SettingsIcon,
+} from '../../ui/icons';
 import { ProgressBar } from '../../ui/ProgressBar';
 import { Tuca, type TucaMood } from '../../ui/Mascot/Tuca';
+import { mapIcons, mapTags } from '../../content/schemas/mindmap';
+import { Marker } from '../../ui/notebook/Marker';
+import { NotebookIcon } from '../../ui/notebook/NotebookIcon';
+import { PaperSheet } from '../../ui/notebook/PaperSheet';
+import { TagChip } from '../../ui/notebook/TagChip';
 import type { Settings } from '../../data/models';
 
 const swatches = [
@@ -149,6 +161,52 @@ export function Showcase() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="sc-notebook" className="space-y-4">
+        <h2 id="sc-notebook" className="text-2xl font-semibold">
+          {t.showcase.notebook}
+        </h2>
+        <h3 className="text-lg font-semibold">{t.showcase.notebookIcons}</h3>
+        <ul className="grid grid-cols-4 gap-3 sm:grid-cols-8">
+          {mapIcons.map((name) => (
+            <li
+              key={name}
+              className="flex items-center justify-center rounded-2xl bg-surface p-3 text-ink"
+            >
+              <NotebookIcon name={name} size={32} />
+            </li>
+          ))}
+        </ul>
+        <h3 className="text-lg font-semibold">{t.showcase.navIcons}</h3>
+        <ul className="flex flex-wrap gap-3">
+          {[PathIcon, PracticeIcon, ProfileIcon, SettingsIcon, MapsIcon].flatMap((Icon, i) =>
+            [false, true].map((filled) => (
+              <li
+                key={`${i}-${filled}`}
+                className={`flex items-center justify-center rounded-2xl p-3 ${filled ? 'bg-primary text-on-primary' : 'bg-surface text-ink'}`}
+              >
+                <Icon filled={filled} />
+              </li>
+            )),
+          )}
+        </ul>
+        <h3 className="text-lg font-semibold">{t.showcase.notebookTags}</h3>
+        <ul className="flex flex-wrap gap-3">
+          {mapTags.map((tag) => (
+            <li key={tag}>
+              <TagChip tag={tag} />
+            </li>
+          ))}
+        </ul>
+        <h3 className="text-lg font-semibold">{t.showcase.notebookMarker}</h3>
+        <PaperSheet className="space-y-2 p-4">
+          <p className="font-display text-2xl font-semibold">
+            <Marker>{t.showcase.markerSample}</Marker>
+          </p>
+          <p className="font-hand">{t.showcase.handSample}</p>
+          <p>{t.showcase.paperSample}</p>
+        </PaperSheet>
       </section>
     </div>
   );

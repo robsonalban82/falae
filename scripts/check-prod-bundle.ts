@@ -116,6 +116,16 @@ console.log(
   `\nConteúdo lazy conferido: ${lazyFiles.length} arquivos JSON, ${sceneNames.length} cenas.`,
 );
 
+// The notebook layer (Patrick Hand + .nb-*) belongs to the lazy map routes only.
+for (const href of html.matchAll(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)) {
+  const name = /([^/]+\.css)$/.exec(href[1] ?? '')?.[1];
+  const cssPath = name ? join(dir, name) : null;
+  if (!cssPath || !existsSync(cssPath)) continue;
+  const css = readFileSync(cssPath, 'utf8');
+  if (css.includes('Patrick Hand') || css.includes('.nb-'))
+    problems.push(`CSS de entrada ${name} contém o caderno (Patrick Hand ou .nb-)`);
+}
+
 const initialSize = rows.filter((r) => initial.includes(r.file));
 console.log(
   `\nJS inicial (entrada + modulepreload): ${kb(initialSize.reduce((n, r) => n + r.size, 0))} minificado, ${kb(initialSize.reduce((n, r) => n + r.gzip, 0))} gzip.`,

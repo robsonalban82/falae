@@ -54,6 +54,19 @@ export function SettingsIcon({ filled, className }: IconProps) {
   );
 }
 
+export function MapsIcon({ filled, className }: IconProps) {
+  const fill = filled ? 'currentColor' : 'none';
+  return (
+    <svg {...base(filled)} className={className}>
+      <circle cx="12" cy="12" r="3" fill={fill} />
+      <circle cx="4.8" cy="5.8" r="1.8" fill={fill} />
+      <circle cx="19.2" cy="5.8" r="1.8" fill={fill} />
+      <circle cx="12" cy="20" r="1.8" fill={fill} />
+      <path d="M6.2 7.1 9.9 10M17.8 7.1 14.1 10M12 15v3.2" />
+    </svg>
+  );
+}
+
 export function ArrowRightIcon({ className }: IconProps) {
   return (
     <svg {...base(false)} width={22} height={22} strokeWidth={2.6} className={className}>
