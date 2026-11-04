@@ -24,6 +24,16 @@ const MIN_TYPO_WORD_LENGTH = 5;
 type Accepted = { lang: Lang; displays: string[]; byNormalized: Map<string, string> };
 const cache = new WeakMap<Exercise, Accepted>();
 
+function buildAccepted(patterns: readonly string[], lang: Lang): Accepted {
+  const displays = expandPatterns(patterns);
+  const byNormalized = new Map<string, string>();
+  for (const d of displays) {
+    const n = normalize(d, lang);
+    if (!byNormalized.has(n)) byNormalized.set(n, d);
+  }
+  return { lang, displays, byNormalized };
+}
+
 /** Accepted answers for free-text exercises, expanded and normalized once per exercise. */
 export function acceptedFor(exercise: Exercise): Accepted | null {
   const cached = cache.get(exercise);
@@ -50,13 +60,7 @@ export function acceptedFor(exercise: Exercise): Accepted | null {
     default:
       return null;
   }
-  const displays = expandPatterns(patterns);
-  const byNormalized = new Map<string, string>();
-  for (const d of displays) {
-    const n = normalize(d, lang);
-    if (!byNormalized.has(n)) byNormalized.set(n, d);
-  }
-  const result = { lang, displays, byNormalized };
+  const result = buildAccepted(patterns, lang);
   cache.set(exercise, result);
   return result;
 }
@@ -107,18 +111,48 @@ export function gradeExercise(
       if (response.kind !== 'text') return wrong;
       const accepted = acceptedFor(exercise);
       if (!accepted) return wrong;
-      const input = normalize(response.value, accepted.lang);
-      if (!input) return wrong;
-      const exact = accepted.byNormalized.get(input) ?? matchWithoutApostrophe(input, accepted);
-      if (exact !== undefined) return { verdict: 'correct', correctAnswer: exact };
       // Tiles can't have typos, so "almost" only applies to typed answers.
-      if (exercise.type !== 'word-bank') {
-        const near = findTypoMatch(input, accepted.byNormalized, ctx.knownWords);
-        if (near !== null) return { verdict: 'almost', correctAnswer: near, note: 'typo' };
-      }
-      return wrong;
+      return gradeAccepted(response.value, accepted, ctx, exercise.type !== 'word-bank') ?? wrong;
     }
   }
+}
+
+/**
+ * Grades free text against answer patterns (ADR-004); the first pattern is the displayed answer.
+ * Patterns come from validated content; a malformed one throws PatternError.
+ */
+export function gradeText(
+  value: string,
+  patterns: readonly string[],
+  lang: Lang,
+  ctx: GradeContext,
+  opts: { allowTypo?: boolean } = {},
+): GradeResult {
+  const accepted = buildAccepted(patterns, lang);
+  return (
+    gradeAccepted(value, accepted, ctx, opts.allowTypo ?? true) ?? {
+      verdict: 'wrong',
+      correctAnswer: accepted.displays[0] ?? '',
+    }
+  );
+}
+
+/** Correct/almost result, or null when the text matches nothing. */
+function gradeAccepted(
+  value: string,
+  accepted: Accepted,
+  ctx: GradeContext,
+  allowTypo: boolean,
+): GradeResult | null {
+  const input = normalize(value, accepted.lang);
+  if (!input) return null;
+  const exact = accepted.byNormalized.get(input) ?? matchWithoutApostrophe(input, accepted);
+  if (exact !== undefined) return { verdict: 'correct', correctAnswer: exact };
+  if (allowTypo) {
+    const near = findTypoMatch(input, accepted.byNormalized, ctx.knownWords);
+    if (near !== null) return { verdict: 'almost', correctAnswer: near, note: 'typo' };
+  }
+  return null;
 }
 
 /**

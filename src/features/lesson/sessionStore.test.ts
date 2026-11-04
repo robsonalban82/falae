@@ -46,3 +46,33 @@ describe('sessionStore heartsSpentPending', () => {
     expect(readHeartsPending('l1')).toBeNull();
   });
 });
+
+describe('sessionStore context and kinds', () => {
+  const withMap = startLesson({
+    lessonId: 'm1',
+    kind: 'practice',
+    exercises: [exercise],
+    hearts: 5,
+    nowMs: 0,
+    context: { mapId: 'map-greetings' },
+  });
+
+  it('round-trips context.mapId', () => {
+    saveSession(withMap);
+    expect(loadSession('m1')).toEqual(withMap);
+    expect(loadSession('m1')?.context).toEqual({ mapId: 'map-greetings' });
+  });
+
+  it('loads a saved session that has no context', () => {
+    saveSession(state);
+    const loaded = loadSession('l1');
+    expect(loaded).not.toBeNull();
+    expect(loaded && 'context' in loaded).toBe(false);
+  });
+
+  it.each(['cards', 'map'] as const)('accepts kind %s', (kind) => {
+    const s = { ...state, lessonId: `k-${kind}`, kind };
+    saveSession(s);
+    expect(loadSession(s.lessonId)?.kind).toBe(kind);
+  });
+});

@@ -1,4 +1,4 @@
-import { expandPattern, expandPatterns, PatternError } from './patterns';
+import { displayPattern, expandPattern, expandPatterns, PatternError } from './patterns';
 
 describe('expandPattern', () => {
   it('returns plain text unchanged', () => {
@@ -37,5 +37,17 @@ describe('expandPattern', () => {
     const huge = Array.from({ length: 7 }, () => '[a|b]').join(' ');
     expect(() => expandPattern(huge)).toThrow(/mais de 64/);
     expect(expandPattern(huge, 200)).toHaveLength(128);
+  });
+});
+
+describe('displayPattern', () => {
+  it('returns the first concrete form', () => {
+    expect(displayPattern("(I'm) fine")).toBe("I'm fine");
+    expect(displayPattern('[hi|hello]')).toBe('hi');
+  });
+
+  it('returns plain and malformed patterns as is', () => {
+    expect(displayPattern('Good morning')).toBe('Good morning');
+    expect(displayPattern('(broken')).toBe('(broken');
   });
 });

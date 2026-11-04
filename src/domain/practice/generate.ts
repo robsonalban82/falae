@@ -4,7 +4,7 @@
  */
 import type { Exercise, ExerciseOf } from '../../content/schema';
 import { normalize } from '../grading/normalize';
-import { expandPattern } from '../grading/patterns';
+import { displayPattern as display, expandPattern } from '../grading/patterns';
 import { tokenizeForBank } from '../grading/tokenize';
 import type { Capabilities } from '../lesson/fallbacks';
 import { seededRandom, shuffle } from '../random';
@@ -44,15 +44,6 @@ const PAIRS = 4;
 const MAX_MC_DISTRACTORS = 3;
 const MIN_DISTRACTORS = 2;
 const MAX_BANK_DISTRACTORS = 4;
-
-/** First concrete text of a pattern (display form). */
-function display(pattern: string): string {
-  try {
-    return expandPattern(pattern)[0] ?? pattern;
-  } catch {
-    return pattern;
-  }
-}
 
 function expansions(patterns: readonly string[]): string[] {
   return patterns.flatMap((p) => {

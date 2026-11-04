@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { exerciseSchema } from '../../content/schema';
-import type { LessonState } from '../../domain/lesson/engine';
+import { SESSION_KINDS } from '../../domain/gamification/xp';
+import type { LessonContext, LessonState } from '../../domain/lesson/engine';
 
 /**
  * Keeps the lesson in progress across reloads (sessionStorage: per tab, cleared on close).
@@ -10,9 +11,16 @@ const KEY = 'falae-lesson-session';
 const SESSION_VERSION = 1;
 
 const index = z.number().int().nonnegative();
+// Same shape as LessonContext; optional keys so old sessions stay valid (no version bump).
+const contextSchema = z.object({
+  mapId: z.string().optional(),
+  deckKey: z.string().optional(),
+  planDay: index.optional(),
+}) satisfies z.ZodType<LessonContext>;
 const stateSchema = z.object({
   lessonId: z.string(),
-  kind: z.enum(['lesson', 'review', 'practice', 'placement']),
+  kind: z.enum(SESSION_KINDS),
+  context: contextSchema.optional(),
   exercises: z.array(exerciseSchema).min(1),
   queue: z.array(index),
   retried: z.array(index),

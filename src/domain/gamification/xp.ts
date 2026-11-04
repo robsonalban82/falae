@@ -1,6 +1,7 @@
 /** XP rules (docs/ARQUITETURA.md §8, docs/MAPAS-E-CARTAS.md §4.5). */
 
-export type SessionKind = 'lesson' | 'review' | 'practice' | 'placement' | 'cards' | 'map';
+export const SESSION_KINDS = ['lesson', 'review', 'practice', 'placement', 'cards', 'map'] as const;
+export type SessionKind = (typeof SESSION_KINDS)[number];
 
 export const PERFECT_BONUS = 5;
 export const COMBO_STEP = 5;

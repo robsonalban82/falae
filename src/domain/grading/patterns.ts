@@ -97,3 +97,12 @@ export function expandPatterns(
 ): string[] {
   return [...new Set(patterns.flatMap((p) => expandPattern(p, limit)))];
 }
+
+/** First concrete text of a pattern (display form); a malformed pattern is returned as is. */
+export function displayPattern(pattern: string): string {
+  try {
+    return expandPattern(pattern)[0] ?? pattern;
+  } catch {
+    return pattern;
+  }
+}

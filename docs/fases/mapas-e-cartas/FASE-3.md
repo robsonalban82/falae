@@ -50,12 +50,20 @@ Arquivos: `src/domain/mindmap/{lines,reveal,quiz,filter}.ts`, `src/domain/cards/
     | { kind: 'text'; en: RichSegment[]; speakText: string; pt?: string }
     | { kind: 'fix'; wrong: string; right: string; note?: string }
     | { kind: 'note'; text: string };
-  export function lineView(line: MapLineShape, tag: MapTagShape, lookup: ItemLookup): LineView | null;
+  export function lineView(
+    line: MapLineShape,
+    tag: MapTagShape,
+    lookup: ItemLookup,
+  ): LineView | null;
   ```
   `item`: `en` por `displayPattern`, `pt` = sentidos juntados por ", ", `strong` nos cartões `vocabulario` (§2.5). `text`: `parseBold`, `speakText` sem `**`. `ref` que não está no `lookup` → `null` (a tela pula a linha e registra no console; o loader já rejeita `ref` inexistente, mas a tela não depende disso).
 - **`reveal.ts`** ("Esconder o inglês", §6.1): `hideableChunks(map, lookup)` lista os trechos cobertos na ordem do JSON, com chave estável (`b{i}.n{j}.l{k}`). Ficam cobertos: `en` de linhas `item` e `text` e o `right` de `fix`; continuam visíveis o centro, títulos, português, `wrong` e `note`. Estado e ações:
   ```ts
-  type RevealState = { on: boolean; revealed: string[]; ratings: Record<string, 'remembered' | 'forgot'> };
+  type RevealState = {
+    on: boolean;
+    revealed: string[];
+    ratings: Record<string, 'remembered' | 'forgot'>;
+  };
   // toggle, reveal(key), rate(key, itemId, r), reset
   export const isComplete = (s: RevealState, total: number) => s.on && s.revealed.length >= total;
   export function revealOutcomes(s, chunks): { itemId: string; q: 4 | 1 }[]; // §3: Lembrei 4, Não lembrei 1
@@ -187,16 +195,16 @@ Antes da etapa 4, o agente principal ajusta em `.claude/` (fora do alcance do ar
 
 ## Testes exigidos (resumo)
 
-| Área                 | Teste                                                                                                     |
-| -------------------- | --------------------------------------------------------------------------------------------------------- |
-| Helpers extraídos    | `gradeText`, `displayPattern`, `searchWords` sem mudança de comportamento; testes antigos verdes sem edição |
-| Sessão em andamento  | `context.mapId` sobrevive a reload; sessões antigas continuam válidas                                     |
-| Domínio do mapa      | `lineView`, `hideableChunks`, `revealOutcomes`, `mapStudySummary`, `quiz`, `filterMaps`, `toFlashcard`    |
-| Commit do mapa       | 5 + 0 XP no mesmo dia, `mapProgress`, `q` 4/1, corações intactos, id determinístico, `practice` → `map` = 0 |
-| Telas                | lista, filtros na URL, vazio, não encontrado, erro com tentar de novo, cena ausente, sem TTS, painel, quiz |
-| Acessibilidade       | teclado em tudo, `aria-expanded`, `aria-pressed`, `aria-live`, foco do painel, `lang="en"`, reduced motion |
-| Bundle               | nada de mapa, cena, `art.ts`, fonte ou CSS do caderno no inicial; cada cena um `.svg`; zero `data:image/svg+xml` |
-| E2E                  | `maps.spec.ts` mobile + desktop; offline do mapa; suíte atual verde                                       |
+| Área                | Teste                                                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Helpers extraídos   | `gradeText`, `displayPattern`, `searchWords` sem mudança de comportamento; testes antigos verdes sem edição      |
+| Sessão em andamento | `context.mapId` sobrevive a reload; sessões antigas continuam válidas                                            |
+| Domínio do mapa     | `lineView`, `hideableChunks`, `revealOutcomes`, `mapStudySummary`, `quiz`, `filterMaps`, `toFlashcard`           |
+| Commit do mapa      | 5 + 0 XP no mesmo dia, `mapProgress`, `q` 4/1, corações intactos, id determinístico, `practice` → `map` = 0      |
+| Telas               | lista, filtros na URL, vazio, não encontrado, erro com tentar de novo, cena ausente, sem TTS, painel, quiz       |
+| Acessibilidade      | teclado em tudo, `aria-expanded`, `aria-pressed`, `aria-live`, foco do painel, `lang="en"`, reduced motion       |
+| Bundle              | nada de mapa, cena, `art.ts`, fonte ou CSS do caderno no inicial; cada cena um `.svg`; zero `data:image/svg+xml` |
+| E2E                 | `maps.spec.ts` mobile + desktop; offline do mapa; suíte atual verde                                              |
 
 ## Critérios de aceite
 
@@ -214,15 +222,15 @@ Antes da etapa 4, o agente principal ajusta em `.claude/` (fora do alcance do ar
 
 ## Portões
 
-| Etapas         | Revisão                                                                                                                       |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| 2, 3, 5, 6, 8, 9, 10 | `revisor-de-codigo` + `qa-tester` (paralelo) → correção → nova verificação                                              |
-| **7**          | `revisor-de-codigo` com **`model: opus`** (refatoração do caminho de commit, escreve `results`/`mapProgress`/`srs`) + `qa-tester` |
-| 4              | `revisor-de-codigo` + `qa-tester`; **`designer-de-mapas`** (ícones, chips, fonte no showcase)                                |
-| 5, 6, 7, 8     | `designer-de-mapas` confere cada tela nova por capturas parciais antes do commit (claro, escuro, escala de cinza)             |
-| 11             | `revisor-de-codigo` nos testes; capturas finais para o portão de fase                                                         |
-| **Fim da fase** | `revisor-ux` com screenshots 390×844 e desktop (claro e escuro) + `designer-de-mapas` (mesmas capturas + escala de cinza), em paralelo |
-| 1, 12          | o usuário vê o diff dos docs no commit                                                                                        |
+| Etapas               | Revisão                                                                                                                                |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 2, 3, 5, 6, 8, 9, 10 | `revisor-de-codigo` + `qa-tester` (paralelo) → correção → nova verificação                                                             |
+| **7**                | `revisor-de-codigo` com **`model: opus`** (refatoração do caminho de commit, escreve `results`/`mapProgress`/`srs`) + `qa-tester`      |
+| 4                    | `revisor-de-codigo` + `qa-tester`; **`designer-de-mapas`** (ícones, chips, fonte no showcase)                                          |
+| 5, 6, 7, 8           | `designer-de-mapas` confere cada tela nova por capturas parciais antes do commit (claro, escuro, escala de cinza)                      |
+| 11                   | `revisor-de-codigo` nos testes; capturas finais para o portão de fase                                                                  |
+| **Fim da fase**      | `revisor-ux` com screenshots 390×844 e desktop (claro e escuro) + `designer-de-mapas` (mesmas capturas + escala de cinza), em paralelo |
+| 1, 12                | o usuário vê o diff dos docs no commit                                                                                                 |
 
 Nenhuma etapa avança com bloqueante. Commit ao fim de cada etapa aprovada. Ao delegar, o agente principal passa `model` explicitamente (`opus` só no revisor da etapa 7; `sonnet` nos demais).
 

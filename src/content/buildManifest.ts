@@ -1,5 +1,4 @@
-import { normalize } from '../domain/grading/normalize';
-import { stripBold } from '../domain/mindmap/richText';
+import { searchWords } from '../domain/text/search';
 import { levelRank, type CefrLevel, type Lesson, type Unit } from './schema';
 import type { Collection, Deck, StudyPlan } from './schemas/collection';
 import type { Bank, BankId } from './schemas/course';
@@ -186,13 +185,9 @@ function itemTexts(units: readonly Unit[], banks: readonly Bank[]): Map<string, 
   return out;
 }
 
-/** Normalized, deduplicated words (accents and punctuation dropped, so "voce" finds "você"). */
+/** Facade over the domain search normalization (kept for the content pipeline). */
 export function searchText(texts: Iterable<string>): string {
-  const words = new Set<string>();
-  for (const text of texts) {
-    for (const w of normalize(stripBold(text), 'pt').split(' ')) if (w) words.add(w);
-  }
-  return [...words].join(' ');
+  return searchWords(texts);
 }
 
 function mapSearch(map: MindMap, items: ReadonlyMap<string, ItemText>): string {
