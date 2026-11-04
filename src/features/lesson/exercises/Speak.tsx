@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { t } from '../../../i18n/pt-BR';
+import { matchSpokenWords } from '../../../domain/grading/spokenWords';
 import { noteSpeakTurn, startRecording, type Recording } from '../../../services/recorder';
 import { listen, stopSpeaking, ttsSupported, type Listening } from '../../../services/speech';
 import { Button } from '../../../ui/Button';
@@ -13,6 +14,10 @@ type Phase = 'idle' | 'listening' | 'heard' | 'nothing' | 'denied';
 export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'speak'>) {
   const [phase, setPhase] = useState<Phase>('idle');
   const [heard, setHeard] = useState('');
+  const heardWords = useMemo(
+    () => matchSpokenWords(exercise.textEn, heard),
+    [exercise.textEn, heard],
+  );
   const session = useRef<Listening | null>(null);
   // The learner's own voice for this turn (memory only, never saved).
   const recording = useRef<Promise<Recording> | null>(null);
@@ -95,7 +100,10 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
           onChange(null);
           return;
         }
-        setHeard(transcripts[0] ?? '');
+        // Show the alternative closest to the sentence (recognizers often rank it second).
+        const score = (x: string) =>
+          matchSpokenWords(exercise.textEn, x).filter((w) => w.heard).length;
+        setHeard(transcripts.reduce((best, x) => (score(x) > score(best) ? x : best)));
         setPhase('heard');
         onChange({ kind: 'speech', transcripts });
       })
@@ -116,7 +124,9 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
       {/* The model voice and the learner's own recording never play together. */}
       <div
         className="flex items-center gap-3 rounded-2xl bg-surface-2 p-4"
-        onClickCapture={stopVoice}
+        onClickCapture={() => {
+          if (player.current) stopVoice();
+        }}
       >
         {ttsSupported() && (
           <SpeakerButton
@@ -168,6 +178,31 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
           {phase === 'nothing' && t.lesson.speakNothing}
           {phase === 'denied' && t.lesson.speakDenied}
         </p>
+        {phase === 'heard' && (
+          <div className="text-center">
+            <p className="text-xl leading-relaxed">
+              <En>
+                {heardWords.map((w, i) => (
+                  <span key={i}>
+                    {i > 0 && ' '}
+                    {w.heard ? (
+                      <span className="font-bold text-success">{w.text}</span>
+                    ) : (
+                      <mark className="rounded bg-danger-soft px-0.5 font-bold text-danger underline decoration-wavy">
+                        {w.text}
+                        <span lang="pt-BR" className="sr-only">
+                          {' '}
+                          ({t.lesson.speakWordMissed})
+                        </span>
+                      </mark>
+                    )}
+                  </span>
+                ))}
+              </En>
+            </p>
+            <p className="mt-1 text-sm text-ink-muted">{t.lesson.speakWordsLegend}</p>
+          </div>
+        )}
         {voiceUrl && phase !== 'listening' && (
           // Stays enabled after checking: hearing yourself is the point.
           <Button variant="ghost" onClick={playVoice} aria-pressed={playingVoice}>

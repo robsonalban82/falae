@@ -240,6 +240,8 @@ export const t = {
     speakStop: 'Toque para terminar',
     speakPlayMine: 'Ouvir minha voz',
     speakStopMine: 'Parar minha voz',
+    speakWordMissed: 'não entendi',
+    speakWordsLegend: 'Em verde, o que eu entendi. Sublinhado, o que não entendi.',
     speakHeard: 'Entendi:',
     speakNothing: 'Não ouvi nada. Tente de novo.',
     speakDenied: 'Sem acesso ao microfone. Você pode pular este exercício.',
