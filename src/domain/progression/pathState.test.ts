@@ -29,11 +29,12 @@ describe('computePathState', () => {
     expect(canOpenLesson(state, 'anything')).toBe(false);
   });
 
-  it('first open: only the first lesson is current, everything else locked', () => {
+  it('first open: the first skill is open (first lesson current), everything else locked', () => {
     const state = computePathState(course, []);
     expect(state.currentLessonId).toBe('u1-s1-l1');
     expect(status(state, 'u1-s1-l1')).toBe('current');
-    expect(status(state, 'u1-s1-l2')).toBe('locked');
+    expect(status(state, 'u1-s1-l2')).toBe('available');
+    expect(status(state, 'u1-s1-l3')).toBe('available');
     expect(status(state, 'u1-s2-l1')).toBe('locked');
     expect(status(state, 'u1-review')).toBe('locked');
     expect(status(state, 'u2-s1-l1')).toBe('locked');
@@ -45,11 +46,12 @@ describe('computePathState', () => {
     expect(current).toHaveLength(1);
   });
 
-  it('middle of a skill: next lesson becomes current', () => {
+  it('middle of a skill: next lesson becomes current, the rest stay available', () => {
     const state = computePathState(course, done('u1-s1-l1'));
     expect(status(state, 'u1-s1-l1')).toBe('completed');
     expect(state.currentLessonId).toBe('u1-s1-l2');
-    expect(status(state, 'u1-s1-l3')).toBe('locked');
+    expect(status(state, 'u1-s1-l3')).toBe('available');
+    expect(status(state, 'u1-s2-l1')).toBe('locked');
     expect(state.units[0]?.skills[0]?.crowned).toBe(false);
   });
 
@@ -78,7 +80,17 @@ describe('computePathState', () => {
     expect(state.units[1]?.unlocked).toBe(true);
     expect(state.currentLessonId).toBe('u2-s1-l1');
     expect(canOpenLesson(state, 'u2-s1-l1')).toBe(true);
-    expect(canOpenLesson(state, 'u2-s1-l2')).toBe(false);
+    expect(canOpenLesson(state, 'u2-s1-l2')).toBe(true);
+    expect(canOpenLesson(state, 'u2-s2-l1')).toBe(false);
+  });
+
+  it('lessons of an open skill can be done in any order; the skill crowns when all are done', () => {
+    const state = computePathState(course, done('u1-s1-l3'));
+    expect(state.currentLessonId).toBe('u1-s1-l1');
+    expect(status(state, 'u1-s1-l2')).toBe('available');
+    expect(state.units[0]?.skills[1]?.unlocked).toBe(false);
+    const crowned = computePathState(course, done('u1-s1-l3', 'u1-s1-l1', 'u1-s1-l2'));
+    expect(crowned.units[0]?.skills[1]?.unlocked).toBe(true);
   });
 
   it('placement that skipped unit 1 marks it tested and opens unit 2', () => {

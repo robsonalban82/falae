@@ -27,12 +27,16 @@ beforeEach(async () => {
 afterEach(() => clock.reset());
 
 describe('PathScreen', () => {
-  it('new user: first lesson current (link), the rest locked (focusable buttons)', async () => {
+  it('new user: first skill open (first lesson current), the rest locked (focusable buttons)', async () => {
     renderPath();
     const current = await screen.findByRole('link', { name: /^Lição 1 de 3, .*, atual$/ });
     expect(current).toHaveAttribute('href', '/licao/u1-sk1-l1');
+    expect(screen.getByRole('link', { name: /^Lição 2 de 3, / })).toHaveAttribute(
+      'href',
+      '/licao/u1-sk1-l2',
+    );
     const locked = screen.getAllByRole('button', { name: /bloqueada/ });
-    expect(locked.length).toBeGreaterThan(10);
+    expect(locked.length).toBeGreaterThan(5);
     locked.forEach((b) => expect(b).toHaveAttribute('aria-disabled', 'true'));
     expect(
       screen.getByRole('button', {
@@ -50,7 +54,7 @@ describe('PathScreen', () => {
     if (!first) throw new Error('no locked lesson');
     await user.click(first);
     expect(screen.getByRole('status')).toHaveTextContent(
-      'Termine a lição anterior para abrir esta.',
+      'Conclua todas as lições da habilidade anterior para abrir esta.',
     );
   });
 

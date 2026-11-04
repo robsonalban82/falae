@@ -166,7 +166,7 @@ test.describe('gravação única', () => {
 });
 
 test.describe('guarda de rota', () => {
-  for (const id of ['u1-sk2-l1', 'u1-review', 'u4-sk1-l1']) {
+  for (const id of ['u1-sk2-l1', 'u1-sk2-l2', 'u1-review', 'u4-sk1-l1']) {
     test(`locked ${id} by URL redirects and writes nothing`, async ({ page }) => {
       const before = await dbDump(page);
       await page.goto(`/licao/${id}`);
@@ -184,14 +184,14 @@ test.describe('guarda de rota', () => {
   });
 
   test('back after redirect does not land on the locked lesson', async ({ page }) => {
-    await page.goto('/licao/u1-sk1-l3');
+    await page.goto('/licao/u1-sk2-l3');
     await expect(page).toHaveURL(/\/$/);
     await page.goBack();
-    await expect(page).not.toHaveURL(/u1-sk1-l3/);
+    await expect(page).not.toHaveURL(/u1-sk2-l3/);
   });
 
   test('notice does not persist after reload', async ({ page }) => {
-    await page.goto('/licao/u1-sk1-l2');
+    await page.goto('/licao/u1-sk2-l1');
     await expect(page.getByRole('status').first()).toHaveText(/bloqueada/);
     await page.reload();
     await expect(page.getByText(/ainda está bloqueada/)).toHaveCount(0);
@@ -204,16 +204,27 @@ test.describe('guarda de rota', () => {
       .first()
       .click({ force: true });
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.getByText(/Termine a lição anterior/)).toBeVisible();
+    await expect(page.getByText(/Conclua todas as lições da habilidade anterior/)).toBeVisible();
+  });
+
+  test('tapping a lesson of a locked unit explains the unit rule', async ({ page }) => {
+    // A completed Unit 2 lesson expands the unit while Unit 1 is still incomplete.
+    await seed(page, { lessonProgress: [{ lessonId: 'u2-sk1-l1' }] });
+    const node = page.getByRole('button', { name: /bloqueada — conclua a Unidade 1$/ }).first();
+    await node.click({ force: true });
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByText('Conclua a Unidade 1 para abrir esta lição.')).toBeVisible();
   });
 
   test('session saved for a lesson that later becomes locked is discarded', async ({ page }) => {
-    await seed(page, { lessonProgress: [{ lessonId: 'u1-sk1-l1' }] });
-    await page.goto('/licao/u1-sk1-l2');
+    await seed(page, {
+      lessonProgress: ['u1-sk1-l1', 'u1-sk1-l2', 'u1-sk1-l3'].map((lessonId) => ({ lessonId })),
+    });
+    await page.goto('/licao/u1-sk2-l1');
     await expect(page.getByRole('button', { name: 'Verificar' })).toBeVisible();
     await page.goto('/');
     await seed(page, {});
-    await page.goto('/licao/u1-sk1-l2');
+    await page.goto('/licao/u1-sk2-l1');
     await expect(page).toHaveURL(/\/$/);
     expect(await page.evaluate(() => sessionStorage.getItem('falae-lesson-session'))).toBeNull();
   });
@@ -239,7 +250,7 @@ test.describe('teclado e acessibilidade', () => {
       .first()
       .focus();
     await page.keyboard.press('Enter');
-    await expect(page.getByText(/Termine a lição anterior/)).toBeVisible();
+    await expect(page.getByText(/Conclua todas as lições da habilidade anterior/)).toBeVisible();
     await expect(page).toHaveURL(/\/$/);
   });
 

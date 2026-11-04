@@ -19,18 +19,28 @@ test('the simulated clock survives reloads', async ({ page }) => {
   expect(await today(page)).toBe(DAY);
 });
 
-test('new user: first lesson is current, the rest locked; locked URL redirects with a notice', async ({
+test('new user: first lesson is current, later skills locked; locked URL redirects with a notice', async ({
   page,
 }) => {
   await expect(node(page, /^Lição 1 de 3, .*, atual$/)).toHaveAttribute('href', '/licao/u1-sk1-l1');
   const locked = page.getByRole('button', { name: /bloqueada/ });
-  expect(await locked.count()).toBeGreaterThan(10);
-  await expect(locked.first()).toHaveAccessibleName(/bloqueada — termine a lição anterior$/);
+  expect(await locked.count()).toBeGreaterThan(5);
+  await expect(locked.first()).toHaveAccessibleName(
+    /bloqueada — conquiste a coroa da habilidade anterior$/,
+  );
   // Future units are collapsed with a summary.
   await expect(page.getByText('4 habilidades · conclua a Unidade 1 para abrir')).toBeVisible();
-  await page.goto('/licao/u1-sk1-l2');
+  await page.goto('/licao/u1-sk2-l1');
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole('status').first()).toHaveText(/ainda está bloqueada/);
+});
+
+test('new user can open lesson 2 of skill 1 straight from the path', async ({ page }) => {
+  const second = node(page, /^Lição 2 de 3, /);
+  await expect(second).toHaveAttribute('href', '/licao/u1-sk1-l2');
+  await second.click();
+  await expect(page).toHaveURL(/\/licao\/u1-sk1-l2$/);
+  await expect(page.getByRole('button', { name: 'Verificar' })).toBeVisible();
 });
 
 test('finishing a lesson shows XP, streak +1, and the path moves on', async ({ page }) => {

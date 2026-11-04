@@ -129,3 +129,9 @@ As checagens do `pdf.mjs` viram testes `page.pdf()`. **Revisão de 2026-11-03:**
 **Contexto:** a Fase 3 grava a primeira sessão que não é uma lista de exercícios (`kind: 'map'`), e `commitLesson` só aceita `LessonState`. Também é preciso decidir se ler o mapa conta.
 **Decisão:** (a) um mapa é **estudado** quando o aluno revela todos os trechos em "Esconder o inglês", ou termina "Praticar este mapa" (ADR-018 c). Abrir ou rolar o mapa não grava nada e não dá XP. (b) "Lembrei / Não lembrei" é opcional por linha com `ref` e vira `q` 4 / 1 no SM-2; linha sem nota não toca o SRS. (c) `useProfile` ganha `commitSession`, com o mesmo `apply` transacional; `commitLesson` vira fachada. (d) O id do resultado é `map:<mapId>-<startedAt>`, determinístico. (e) `toFlashcard` nasce na Fase 3 para o painel da linha e é estendida na Fase 4.
 **Consequências:** nenhum campo ou tabela novos; o selo "já estudado" usa só `mapProgress`. "Mapa visto" não é registrado (decisão do usuário em 2026-11-04); registrá-lo exigiria campo novo em `mapProgress`, com migração e nova aprovação. Plano em `docs/fases/mapas-e-cartas/FASE-3.md`.
+
+## ADR-020 — Trilha aberta por habilidade (aprovado em 2026-11-04)
+
+**Contexto:** as lições de uma habilidade abriam uma de cada vez. O usuário pediu que a trilha abra por "sessão" (habilidade): "Olá e tchau" aberta inteira; "Meu nome é…" só depois de tudo feito.
+**Decisão:** em `computePathState`, uma habilidade desbloqueada abre todas as suas lições; a ordem é livre e o nó "atual" continua sendo a primeira lição não concluída. A habilidade seguinte, a revisão e a próxima unidade seguem as regras de antes (coroa, 4 coroas, revisão concluída).
+**Consequências:** nenhuma mudança de dados (o estado da trilha é derivado). O aviso de nó bloqueado passa a falar da habilidade anterior, não da lição anterior.

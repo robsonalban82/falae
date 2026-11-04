@@ -57,12 +57,10 @@ export function UnitSection({
     );
   }
 
-  const lockedReason = (skillUnlocked: boolean) =>
-    !state.unlocked
-      ? t.path.lockedReasonUnit(number - 1)
-      : !skillUnlocked
-        ? t.path.lockedReasonSkill
-        : t.path.lockedReasonLesson;
+  // An open skill opens all its lessons, so a locked lesson always waits for a skill or unit.
+  const lockedReason = !state.unlocked
+    ? t.path.lockedReasonUnit(number - 1)
+    : t.path.lockedReasonSkill;
 
   return (
     <section
@@ -117,7 +115,7 @@ export function UnitSection({
                       total,
                       lesson?.title ?? skill.title,
                       node.status === 'locked'
-                        ? `${t.path.status.locked} — ${lockedReason(skillState.unlocked)}`
+                        ? `${t.path.status.locked} — ${lockedReason}`
                         : t.path.status[node.status],
                       extra,
                     )}

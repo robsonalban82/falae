@@ -79,10 +79,11 @@ export const t = {
   path: {
     title: 'Sua trilha',
     loading: 'Carregando sua trilha…',
-    lessonLocked: 'Essa lição ainda está bloqueada. Termine as anteriores para abrir.',
+    lessonLocked: 'Essa lição ainda está bloqueada. Conclua a habilidade anterior para abrir.',
     lessonNotFound: 'Não encontramos essa lição. Que tal continuar daqui?',
     tipNotFound: 'Não encontramos essa dica.',
-    nodeLocked: 'Termine a lição anterior para abrir esta.',
+    nodeLocked: 'Conclua todas as lições da habilidade anterior para abrir esta.',
+    nodeLockedUnit: (prev: number) => `Conclua a Unidade ${prev} para abrir esta lição.`,
     reviewLocked: (crowns: number) => `Conquiste as ${crowns} coroas para abrir a revisão.`,
     start: 'Começar',
     tip: 'Dica',
@@ -97,7 +98,6 @@ export const t = {
     },
     lessonLabel: (i: number, total: number, title: string, status: string, extra?: string) =>
       `Lição ${i} de ${total}, ${title}, ${status}${extra ? `, ${extra}` : ''}`,
-    lockedReasonLesson: 'termine a lição anterior',
     lockedReasonSkill: 'conquiste a coroa da habilidade anterior',
     lockedReasonUnit: (prev: number) => `conclua a Unidade ${prev}`,
     lockedUnitSummary: (skills: number, prev: number) =>

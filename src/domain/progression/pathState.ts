@@ -86,12 +86,10 @@ export function computePathState(
     let previousSkillCrowned = true;
     const skills: SkillState[] = unit.skills.map((skill, skillIndex) => {
       const skillUnlocked = unitUnlocked && (skillIndex === 0 || previousSkillCrowned);
-      let previousLessonDone = true;
-      const nodes = skill.lessons.map((lesson, i) => {
-        const node = makeNode(lesson.id, skill.id, i, skillUnlocked && previousLessonDone);
-        previousLessonDone = node.status === 'completed';
-        return node;
-      });
+      // An open skill opens all its lessons, in any order; "current" is the first one not done.
+      const nodes = skill.lessons.map((lesson, i) =>
+        makeNode(lesson.id, skill.id, i, skillUnlocked),
+      );
       const crowned = nodes.length > 0 && nodes.every((n) => n.status === 'completed');
       previousSkillCrowned = crowned;
       return { skillId: skill.id, crowned, unlocked: skillUnlocked, nodes };

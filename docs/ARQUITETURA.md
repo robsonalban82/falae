@@ -364,7 +364,7 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, e
 
 ## 12. Progressão e trilha (`src/domain/progression/`)
 
-- Desbloqueio linear: lição N+1 da habilidade abre após concluir a N; habilidade seguinte abre quando a anterior ganha a **coroa** (3 lições concluídas); **revisão da unidade** abre com as 4 coroas; a próxima unidade abre ao concluir a revisão.
+- Desbloqueio por habilidade (ADR-020): quando a habilidade abre, todas as lições dela ficam disponíveis, em qualquer ordem (o nó "atual" é a primeira não concluída); a habilidade seguinte abre quando a anterior ganha a **coroa** (todas as lições concluídas); **revisão da unidade** abre com as 4 coroas; a próxima unidade abre ao concluir a revisão.
 - Lições concluídas podem ser refeitas (dão XP e alimentam SRS).
 - **Nivelamento** (opcional, no onboarding): 15 exercícios do conteúdo da unidade 1 (sem corações, sem feedback de certo/errado até o fim). ≥ 80% → unidade 1 marcada como "testada" (todas as lições contam como concluídas, sem coroas de ouro) e unidade 2 desbloqueada; os itens da unidade 1 entram no SRS com intervalo inicial de 3 dias.
 - Estado da trilha é **derivado** (`computePathState(course, lessonProgress, placement)`) — nunca persistido. Como `domain` não importa `content`, recebe um tipo estrutural mínimo (`PathCourseInput`: unidades → habilidades → ids de lições + revisão). Lição concluída nunca volta a ficar bloqueada (progresso importado fora de ordem vence). Lição bloqueada aberta por URL → redireciona para `/` com aviso.

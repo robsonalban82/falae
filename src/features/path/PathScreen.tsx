@@ -82,12 +82,20 @@ export function PathScreen() {
     [reduceMotion],
   );
 
-  const onLockedPress = useCallback((node: LessonNode) => {
-    const unit = pathUnits().find((u) => u.id === node.unitId);
-    setLockedMessage(
-      node.skillId === null ? t.path.reviewLocked(unit?.skills.length ?? 0) : t.path.nodeLocked,
-    );
-  }, []);
+  const onLockedPress = useCallback(
+    (node: LessonNode) => {
+      const index = pathUnits().findIndex((u) => u.id === node.unitId);
+      const unit = pathUnits()[index];
+      // A locked unit explains itself first (same reason the node's label gives).
+      if (pathState.units[index]?.unlocked === false)
+        setLockedMessage(t.path.nodeLockedUnit(index));
+      else
+        setLockedMessage(
+          node.skillId === null ? t.path.reviewLocked(unit?.skills.length ?? 0) : t.path.nodeLocked,
+        );
+    },
+    [pathState],
+  );
 
   // The redirect notice is shown once: keep it locally and drop it from history state,
   // so a reload does not bring it back.
