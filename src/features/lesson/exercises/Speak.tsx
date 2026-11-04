@@ -14,15 +14,28 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
   const [heard, setHeard] = useState('');
   const session = useRef<Listening | null>(null);
 
-  useEffect(() => () => session.current?.abort(), []);
+  useEffect(
+    () => () => {
+      const s = session.current;
+      session.current = null; // ignore the abort's rejection after unmount
+      s?.abort();
+    },
+    [],
+  );
 
   const start = () => {
+    // Tapping while listening ends the turn with what was heard (iOS may never end on its own).
+    if (phase === 'listening') {
+      session.current?.stop();
+      return;
+    }
     session.current?.abort();
     setPhase('listening');
     const s = listen();
     session.current = s;
     s.result
       .then((transcripts) => {
+        if (session.current !== s) return;
         if (transcripts.length === 0) {
           setPhase('nothing');
           onChange(null);
@@ -33,6 +46,7 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
         onChange({ kind: 'speech', transcripts });
       })
       .catch((err: Error) => {
+        if (session.current !== s) return;
         const denied = err.message === 'not-allowed' || err.message === 'service-not-allowed';
         setPhase(denied ? 'denied' : 'nothing');
         onChange(null);
@@ -45,7 +59,14 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
     <div className="space-y-6">
       <h2 className="text-2xl font-semibold">{t.lesson.instructions.speak}</h2>
       <div className="flex items-center gap-3 rounded-2xl bg-surface-2 p-4">
-        {ttsSupported() && <SpeakerButton text={exercise.textEn} label={t.lesson.listen} />}
+        {ttsSupported() && (
+          <SpeakerButton
+            text={exercise.textEn}
+            label={t.lesson.listen}
+            // the microphone would hear the app's own voice
+            disabled={phase === 'listening'}
+          />
+        )}
         <En className="text-xl font-bold">{exercise.textEn}</En>
       </div>
       {ttsSupported() && <NoVoiceNotice />}
@@ -54,8 +75,9 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
         <button
           type="button"
           onClick={start}
-          disabled={disabled || phase === 'listening'}
-          aria-label={phase === 'listening' ? t.lesson.speakListening : t.lesson.speakStart}
+          disabled={disabled}
+          aria-pressed={phase === 'listening'}
+          aria-label={phase === 'listening' ? t.lesson.speakStop : t.lesson.speakStart}
           className={`flex h-24 w-24 items-center justify-center rounded-full shadow-[0_6px_16px_-6px_rgb(var(--shadow)/0.45)] transition-transform active:scale-95 ${
             phase === 'listening'
               ? 'animate-pulse bg-danger text-on-danger motion-reduce:animate-none'

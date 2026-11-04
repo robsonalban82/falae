@@ -1,4 +1,7 @@
 import {
+  LISTEN_MAX_MS,
+  LISTEN_SILENCE_MS,
+  listen,
   NO_VOICE_TIMEOUT_MS,
   SPEAK_DELAY_MS,
   stopSpeaking,
@@ -183,5 +186,106 @@ describe('speak() and voiceschanged', () => {
   it('does not flag no-voice when speech ends normally', async () => {
     await speak('hello');
     expect(hasNoVoice()).toBe(false);
+  });
+});
+
+describe('listen()', () => {
+  type Alt = { transcript: string };
+  type Result = Alt[] & { isFinal?: boolean };
+  class FakeRecognition {
+    static last: FakeRecognition | null = null;
+    static throwOnStart = false;
+    interimResults = false;
+    onresult: ((e: { results: Result[] }) => void) | null = null;
+    onerror: ((e: { error: string }) => void) | null = null;
+    onend: (() => void) | null = null;
+    onaudiostart: (() => void) | null = null;
+    aborted = false;
+    constructor() {
+      FakeRecognition.last = this;
+    }
+    start() {
+      if (FakeRecognition.throwOnStart) throw new Error('InvalidStateError');
+    }
+    abort() {
+      this.aborted = true;
+    }
+  }
+  const rec = () => FakeRecognition.last!; // set by the constructor inside listen()
+  const result = (texts: string[], isFinal?: boolean): Result =>
+    Object.assign(
+      texts.map((transcript) => ({ transcript })),
+      isFinal === undefined ? {} : { isFinal },
+    );
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+    FakeRecognition.throwOnStart = false;
+    (window as unknown as { SpeechRecognition: unknown }).SpeechRecognition = FakeRecognition;
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+    delete (window as unknown as { SpeechRecognition?: unknown }).SpeechRecognition;
+  });
+
+  it('asks for interim results and resolves on a final result', async () => {
+    const l = listen();
+    expect(rec().interimResults).toBe(true);
+    rec().onresult!({ results: [result(['hello Ana', 'hello Anna'], true)] });
+    await expect(l.result).resolves.toEqual(['hello Ana', 'hello Anna']);
+    expect(rec().aborted).toBe(true);
+  });
+
+  it('iOS: interim results only, then silence → resolves with the latest', async () => {
+    const l = listen();
+    rec().onresult!({ results: [result(['good'], false)] });
+    vi.advanceTimersByTime(LISTEN_SILENCE_MS - 1);
+    rec().onresult!({ results: [result(['good morning Ana'], false)] });
+    vi.advanceTimersByTime(LISTEN_SILENCE_MS);
+    await expect(l.result).resolves.toEqual(['good morning Ana']);
+  });
+
+  it('never hangs: no event at all → resolves [] after the cap', async () => {
+    const l = listen();
+    vi.advanceTimersByTime(LISTEN_MAX_MS);
+    await expect(l.result).resolves.toEqual([]);
+    expect(rec().aborted).toBe(true);
+  });
+
+  it('the cap restarts when audio starts (after the iOS permission prompt)', async () => {
+    const l = listen();
+    vi.advanceTimersByTime(LISTEN_MAX_MS - 1);
+    rec().onaudiostart!();
+    vi.advanceTimersByTime(LISTEN_MAX_MS - 1);
+    rec().onresult!({ results: [result(['hello'], true)] });
+    await expect(l.result).resolves.toEqual(['hello']);
+  });
+
+  it('stop() resolves right away with what was heard', async () => {
+    const l = listen();
+    rec().onresult!({ results: [result(['good morning'], false)] });
+    l.stop();
+    await expect(l.result).resolves.toEqual(['good morning']);
+  });
+
+  it('start() throwing rejects instead of hanging', async () => {
+    FakeRecognition.throwOnStart = true;
+    await expect(listen().result).rejects.toThrow('InvalidStateError');
+  });
+
+  it('no-speech after an interim result keeps it; without one it rejects', async () => {
+    const a = listen();
+    rec().onresult!({ results: [result(['hi'], false)] });
+    rec().onerror!({ error: 'no-speech' });
+    await expect(a.result).resolves.toEqual(['hi']);
+    const b = listen();
+    rec().onerror!({ error: 'not-allowed' });
+    await expect(b.result).rejects.toThrow('not-allowed');
+  });
+
+  it('joins several results into one transcript', async () => {
+    const l = listen();
+    rec().onresult!({ results: [result(['good morning']), result([' Ana'], true)] });
+    await expect(l.result).resolves.toEqual(['good morning Ana']);
   });
 });

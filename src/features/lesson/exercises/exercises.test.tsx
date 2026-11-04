@@ -322,7 +322,7 @@ describe('speak', () => {
     (window as unknown as { SpeechRecognition: unknown }).SpeechRecognition = FakeRecognition;
     const { user, onChange } = setup(sp);
     await user.click(screen.getByRole('button', { name: 'Toque para falar' }));
-    expect(screen.getByRole('button', { name: 'Ouvindo… fale agora' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Toque para terminar' })).toBeEnabled();
     await act(async () => {
       last!.onresult!({
         results: [

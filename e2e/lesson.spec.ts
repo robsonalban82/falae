@@ -695,6 +695,44 @@ test.describe('sem Web Speech', () => {
     expect(errors).toEqual([]);
   });
 
+  test('reconhecedor que nunca responde (iOS): sai de "Ouvindo" e a lição não trava', async ({
+    page,
+  }) => {
+    test.setTimeout(60_000);
+    await page.addInitScript(() => {
+      class Silent {
+        lang = '';
+        maxAlternatives = 1;
+        interimResults = false;
+        continuous = false;
+        onresult = null;
+        onerror = null;
+        onend = null;
+        start() {}
+        abort() {}
+      }
+      const w = window as unknown as Record<string, unknown>;
+      w.SpeechRecognition = Silent;
+      w.webkitSpeechRecognition = Silent;
+    });
+    await page.goto(LESSON);
+    await playRight(page, ['e01', 'e02', 'e03', 'e04', 'e05', 'e06']);
+    await expect(page.getByRole('heading', { name: 'Fale esta frase em inglês' })).toBeVisible();
+    await page.getByRole('button', { name: 'Toque para falar' }).click();
+    await expect(page.getByRole('button', { name: 'Toque para terminar' })).toBeVisible();
+    await expect(page.getByText('Ouvindo… fale agora')).toBeVisible();
+    // the cap (10 s) ends the turn on its own
+    await expect(page.getByText(/Não ouvi nada/)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole('button', { name: 'Toque para falar' })).toBeEnabled();
+    // second turn: tapping the mic ends it at once
+    await page.getByRole('button', { name: 'Toque para falar' }).click();
+    await page.getByRole('button', { name: 'Toque para terminar' }).click();
+    await expect(page.getByText(/Não ouvi nada/)).toBeVisible();
+    // and the learner can still move on
+    await page.getByRole('button', { name: 'Não posso falar agora' }).click();
+    await expect(page.getByText('Eu tenho trinta anos.')).toBeVisible();
+  });
+
   test('"Não posso falar agora" pula e pausa speak por 1 h (volta depois)', async ({ page }) => {
     await fakeSpeech(page);
     await page.goto(LESSON);

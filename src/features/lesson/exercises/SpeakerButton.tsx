@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { speak } from '../../../services/speech';
 
-type Props = { text: string; label: string; slow?: boolean; size?: 'lg' | 'sm' };
+type Props = {
+  text: string;
+  label: string;
+  slow?: boolean;
+  size?: 'lg' | 'sm';
+  disabled?: boolean;
+};
 
 /** Plays English text with TTS. */
-export function SpeakerButton({ text, label, slow = false, size = 'sm' }: Props) {
+export function SpeakerButton({ text, label, slow = false, size = 'sm', disabled }: Props) {
   const [playing, setPlaying] = useState(false);
   const play = () => {
     setPlaying(true);
@@ -17,9 +23,10 @@ export function SpeakerButton({ text, label, slow = false, size = 'sm' }: Props)
     <button
       type="button"
       onClick={play}
+      disabled={disabled}
       aria-label={label}
       aria-pressed={playing}
-      className={`inline-flex shrink-0 items-center justify-center rounded-full bg-secondary text-on-secondary shadow-[0_6px_16px_-6px_rgb(var(--shadow)/0.45)] transition-transform duration-150 active:scale-95 ${dims}`}
+      className={`inline-flex shrink-0 items-center justify-center rounded-full bg-secondary text-on-secondary shadow-[0_6px_16px_-6px_rgb(var(--shadow)/0.45)] transition-transform duration-150 active:scale-95 disabled:opacity-50 ${dims}`}
     >
       {slow ? (
         <svg

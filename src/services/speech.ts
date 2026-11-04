@@ -182,7 +182,8 @@ export function stopSpeaking(): void {
 
 // Minimal typings: SpeechRecognition is still prefixed in some browsers.
 type RecognitionAlternative = { transcript: string };
-type RecognitionResultEvent = { results: ArrayLike<ArrayLike<RecognitionAlternative>> };
+type RecognitionResult = ArrayLike<RecognitionAlternative> & { isFinal?: boolean };
+type RecognitionResultEvent = { results: ArrayLike<RecognitionResult> };
 type Recognition = {
   lang: string;
   maxAlternatives: number;
@@ -191,6 +192,7 @@ type Recognition = {
   onresult: ((e: RecognitionResultEvent) => void) | null;
   onerror: ((e: { error: string }) => void) | null;
   onend: (() => void) | null;
+  onaudiostart?: (() => void) | null;
   start(): void;
   abort(): void;
 };
@@ -209,35 +211,103 @@ export function sttSupported(): boolean {
   return recognitionCtor() !== null;
 }
 
-export type Listening = { result: Promise<string[]>; abort: () => void };
+export type Listening = {
+  result: Promise<string[]>;
+  /** Ends now with whatever was heard so far. */
+  stop: () => void;
+  abort: () => void;
+};
 
-/** Listens once in en-US and resolves with up to 5 alternative transcripts. */
-export function listen(): Listening {
+/** Hard cap on one listening turn: iOS Safari may never fire `result` or `end`. */
+export const LISTEN_MAX_MS = 10_000;
+/** Silence after the last interim result that ends the turn (iOS rarely sends a final one). */
+export const LISTEN_SILENCE_MS = 2_000;
+
+/** Alternatives of a single result, or alternative 0 of each result joined. */
+function transcriptsOf(results: ArrayLike<RecognitionResult>): string[] {
+  if (results.length === 1) {
+    const first = results[0];
+    const out: string[] = [];
+    if (first) for (let i = 0; i < first.length; i++) out.push(first[i]?.transcript ?? '');
+    return out.map((x) => x.trim()).filter(Boolean);
+  }
+  const joined = Array.from(results, (r) => r[0]?.transcript ?? '')
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return joined ? [joined] : [];
+}
+
+/**
+ * Listens once in en-US and resolves with up to 5 alternative transcripts ([] = heard nothing).
+ * Always settles: on a final result, on silence after interim results, on `end`, on `stop()`, or
+ * after LISTEN_MAX_MS, so the screen never stays stuck on "listening".
+ */
+export function listen(options: { maxMs?: number; silenceMs?: number } = {}): Listening {
   const Ctor = recognitionCtor();
-  if (!Ctor) return { result: Promise.reject(new Error('stt-unsupported')), abort: () => {} };
+  if (!Ctor)
+    return {
+      result: Promise.reject(new Error('stt-unsupported')),
+      stop: () => {},
+      abort: () => {},
+    };
+  // iOS shares one audio session: speech output still playing blocks the microphone.
+  stopSpeaking();
   const rec = new Ctor();
   rec.lang = 'en-US';
   rec.maxAlternatives = 5;
-  rec.interimResults = false;
+  rec.interimResults = true;
   rec.continuous = false;
+  let latest: string[] = [];
+  let settle: (error?: Error) => void = () => {};
   const result = new Promise<string[]>((resolve, reject) => {
     let settled = false;
-    rec.onresult = (e) => {
+    let silence: ReturnType<typeof setTimeout> | undefined;
+    const maxMs = options.maxMs ?? LISTEN_MAX_MS;
+    let cap = setTimeout(() => settle(), maxMs);
+    settle = (error) => {
+      if (settled) return;
       settled = true;
-      const first = e.results[0];
-      const transcripts: string[] = [];
-      if (first)
-        for (let i = 0; i < first.length; i++) transcripts.push(first[i]?.transcript ?? '');
-      resolve(transcripts.filter(Boolean));
+      clearTimeout(cap);
+      clearTimeout(silence);
+      rec.onresult = rec.onerror = rec.onend = null;
+      rec.onaudiostart = null;
+      try {
+        rec.abort();
+      } catch {
+        /* already stopped */
+      }
+      if (error) reject(error);
+      else resolve(latest);
+    };
+    rec.onresult = (e) => {
+      const transcripts = transcriptsOf(e.results);
+      if (transcripts.length > 0) latest = transcripts;
+      const last = e.results[e.results.length - 1];
+      if (last?.isFinal !== false) return settle();
+      clearTimeout(silence);
+      silence = setTimeout(() => settle(), options.silenceMs ?? LISTEN_SILENCE_MS);
     };
     rec.onerror = (e) => {
-      settled = true;
-      reject(new Error(e.error)); // 'not-allowed', 'no-speech', 'aborted'…
+      // 'no-speech' / 'aborted' after something was heard: keep it.
+      if (latest.length > 0 && (e.error === 'no-speech' || e.error === 'aborted')) settle();
+      else settle(new Error(e.error)); // 'not-allowed', 'no-speech', 'aborted'…
     };
-    rec.onend = () => {
-      if (!settled) resolve([]);
+    rec.onend = () => settle();
+    // The first time, iOS asks for the microphone first: count the cap from when audio starts.
+    rec.onaudiostart = () => {
+      clearTimeout(cap);
+      cap = setTimeout(() => settle(), maxMs);
     };
   });
-  rec.start();
-  return { result, abort: () => rec.abort() };
+  try {
+    rec.start();
+  } catch (err) {
+    settle(err instanceof Error ? err : new Error('start-failed'));
+  }
+  return {
+    result,
+    stop: () => settle(),
+    abort: () => settle(new Error('aborted')),
+  };
 }

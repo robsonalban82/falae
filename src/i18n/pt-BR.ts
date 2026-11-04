@@ -237,6 +237,7 @@ export const t = {
     pairsDone: 'Todos os pares certos!',
     speakStart: 'Toque para falar',
     speakListening: 'Ouvindo… fale agora',
+    speakStop: 'Toque para terminar',
     speakHeard: 'Entendi:',
     speakNothing: 'Não ouvi nada. Tente de novo.',
     speakDenied: 'Sem acesso ao microfone. Você pode pular este exercício.',
