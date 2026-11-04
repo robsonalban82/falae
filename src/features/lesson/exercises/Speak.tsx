@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { t } from '../../../i18n/pt-BR';
-import { listen, ttsSupported, type Listening } from '../../../services/speech';
+import { noteSpeakTurn, startRecording, type Recording } from '../../../services/recorder';
+import { listen, stopSpeaking, ttsSupported, type Listening } from '../../../services/speech';
 import { Button } from '../../../ui/Button';
 import { En } from '../../../ui/En';
 import { SpeakerButton } from './SpeakerButton';
@@ -13,15 +14,62 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
   const [phase, setPhase] = useState<Phase>('idle');
   const [heard, setHeard] = useState('');
   const session = useRef<Listening | null>(null);
+  // The learner's own voice for this turn (memory only, never saved).
+  const recording = useRef<Promise<Recording> | null>(null);
+  const [voiceUrl, setVoiceUrl] = useState<string | null>(null);
+  const player = useRef<HTMLAudioElement | null>(null);
+  const [playingVoice, setPlayingVoice] = useState(false);
 
   useEffect(
     () => () => {
       const s = session.current;
       session.current = null; // ignore the abort's rejection after unmount
       s?.abort();
+      void recording.current?.then((r) => r.cancel());
+      player.current?.pause();
     },
     [],
   );
+
+  useEffect(
+    () => () => {
+      if (voiceUrl) URL.revokeObjectURL(voiceUrl);
+    },
+    [voiceUrl],
+  );
+
+  const keepVoice = (s: Listening, rec: Promise<Recording>, heardSomething: boolean) => {
+    void rec
+      .then((r) => {
+        noteSpeakTurn(heardSomething, r.active);
+        return r.stop();
+      })
+      .then((blob) => {
+        if (session.current === s && blob) setVoiceUrl(URL.createObjectURL(blob));
+      });
+  };
+
+  const stopVoice = () => {
+    player.current?.pause();
+    player.current = null;
+    setPlayingVoice(false);
+  };
+
+  const playVoice = () => {
+    if (!voiceUrl) return;
+    if (playingVoice) return stopVoice();
+    stopSpeaking();
+    player.current?.pause();
+    const audio = new Audio(voiceUrl);
+    player.current = audio;
+    audio.onended = () => {
+      if (player.current === audio) stopVoice();
+    };
+    setPlayingVoice(true);
+    audio.play().catch(() => {
+      if (player.current === audio) stopVoice();
+    });
+  };
 
   const start = () => {
     // Tapping while listening ends the turn with what was heard (iOS may never end on its own).
@@ -30,12 +78,18 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
       return;
     }
     session.current?.abort();
+    void recording.current?.then((r) => r.cancel());
+    stopVoice();
+    setVoiceUrl(null);
     setPhase('listening');
     const s = listen();
     session.current = s;
+    const rec = startRecording();
+    recording.current = rec;
     s.result
       .then((transcripts) => {
         if (session.current !== s) return;
+        keepVoice(s, rec, transcripts.length > 0);
         if (transcripts.length === 0) {
           setPhase('nothing');
           onChange(null);
@@ -47,6 +101,7 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
       })
       .catch((err: Error) => {
         if (session.current !== s) return;
+        keepVoice(s, rec, false);
         const denied = err.message === 'not-allowed' || err.message === 'service-not-allowed';
         setPhase(denied ? 'denied' : 'nothing');
         onChange(null);
@@ -58,7 +113,11 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-semibold">{t.lesson.instructions.speak}</h2>
-      <div className="flex items-center gap-3 rounded-2xl bg-surface-2 p-4">
+      {/* The model voice and the learner's own recording never play together. */}
+      <div
+        className="flex items-center gap-3 rounded-2xl bg-surface-2 p-4"
+        onClickCapture={stopVoice}
+      >
         {ttsSupported() && (
           <SpeakerButton
             text={exercise.textEn}
@@ -109,6 +168,12 @@ export function Speak({ exercise, disabled, onChange, onSkip }: ExerciseProps<'s
           {phase === 'nothing' && t.lesson.speakNothing}
           {phase === 'denied' && t.lesson.speakDenied}
         </p>
+        {voiceUrl && phase !== 'listening' && (
+          // Stays enabled after checking: hearing yourself is the point.
+          <Button variant="ghost" onClick={playVoice} aria-pressed={playingVoice}>
+            {playingVoice ? t.lesson.speakStopMine : t.lesson.speakPlayMine}
+          </Button>
+        )}
       </div>
 
       {!disabled && (

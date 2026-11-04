@@ -238,6 +238,8 @@ export const t = {
     speakStart: 'Toque para falar',
     speakListening: 'Ouvindo… fale agora',
     speakStop: 'Toque para terminar',
+    speakPlayMine: 'Ouvir minha voz',
+    speakStopMine: 'Parar minha voz',
     speakHeard: 'Entendi:',
     speakNothing: 'Não ouvi nada. Tente de novo.',
     speakDenied: 'Sem acesso ao microfone. Você pode pular este exercício.',
