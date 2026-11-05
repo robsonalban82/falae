@@ -9,3 +9,18 @@ describe('art (scene name → URL)', () => {
     expect(artUrl('cena-que-nao-existe')).toBeUndefined();
   });
 });
+
+describe('art.ts importers', () => {
+  it('is imported only by MapScene (a lazy route), never by eager app code', () => {
+    const sources = import.meta.glob<string>(['../../**/*.{ts,tsx}', '!../../**/*.test.*'], {
+      query: '?raw',
+      import: 'default',
+      eager: true,
+    });
+    const importers = Object.entries(sources)
+      .filter(([, code]) => /(?:from\s*|import\s*\(?\s*)['"][^'"]*\/art(?:\.ts)?['"]/.test(code))
+      .map(([path]) => path);
+    expect(importers.map((p) => p.slice(p.lastIndexOf('/') + 1))).toEqual(['MapScene.tsx']);
+    expect(Object.keys(sources).length).toBeGreaterThan(100); // the glob really covers src
+  });
+});

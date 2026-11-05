@@ -52,14 +52,17 @@ export const router = createBrowserRouter(
                 Component: (await import('../features/maps/MapsScreen')).MapsScreen,
               }),
             },
-            // Map viewer, practice and collection screens arrive in later steps.
+            // Practice and collection screens arrive in later steps.
             {
               path: paths.collection(),
               element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
             },
             {
               path: paths.map(),
-              element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
+              handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
+              lazy: async () => ({
+                Component: (await import('../features/mindmap/MapScreen')).MapScreen,
+              }),
             },
             {
               path: paths.mapPractice(),

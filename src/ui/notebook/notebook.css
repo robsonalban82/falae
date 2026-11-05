@@ -41,7 +41,7 @@
   gap: 5px;
   min-height: 26px;
   padding: 2px 10px;
-  font-size: 0.8125rem; /* 13px, never below 12px */
+  font-size: 0.875rem; /* 14px */
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;

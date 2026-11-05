@@ -97,3 +97,41 @@ export function sceneLeaks(initialCode: string, sceneNames: readonly string[] = 
   }
   return leaks;
 }
+
+/** Scenes that did not become their own hashed `.svg` in dist/assets (`?no-inline` not applied). */
+export function missingSceneFiles(assetFiles: readonly string[], sceneNames: readonly string[]) {
+  return sceneNames.filter((name) => {
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const file = new RegExp(`^${escaped}-[\\w-]{8}\\.svg$`);
+    return !assetFiles.some((f) => file.test(f));
+  });
+}
+
+/** Build files (JS or CSS, any chunk) that inline an SVG as a data URL. */
+export function inlinedSvgFiles(files: readonly { name: string; code: string }[]): string[] {
+  return files.filter((f) => f.code.includes('data:image/svg+xml')).map((f) => f.name);
+}
+
+/**
+ * Notebook layer (Patrick Hand font, `.nb-*` CSS) referenced by index.html: any preload/prefetch/
+ * stylesheet link to the font, or to a stylesheet whose text `readCss(href)` has the notebook.
+ */
+export function notebookInHtml(
+  html: string,
+  readCss: (href: string) => string | undefined,
+): string[] {
+  const problems: string[] = [];
+  for (const link of html.matchAll(/<link\b[^>]*>/gi)) {
+    const tag = link[0];
+    const href = /href="([^"]+)"/.exec(tag)?.[1];
+    if (!href) continue;
+    if (/patrick/i.test(href))
+      problems.push(`index.html pré-carrega a fonte Patrick Hand (${href})`);
+    else if (/rel="(?:stylesheet|preload|modulepreload|prefetch)"/i.test(tag)) {
+      const css = readCss(href);
+      if (css && (css.includes('Patrick Hand') || css.includes('.nb-')))
+        problems.push(`index.html carrega o CSS do caderno (${href})`);
+    }
+  }
+  return problems;
+}

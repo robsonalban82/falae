@@ -136,7 +136,7 @@ test('selo "Ja estudado" e contador atualizam ao vivo e apos reload; filtro Estu
   await expect(page.getByText(/^1 de \d+ mapas? estudados?$/)).toBeVisible();
 });
 
-test('rotas placeholder abrem sem erro e mantem Mapas ativo', async ({ page }) => {
+test('rotas placeholder abrem sem erro e mantem Mapas ativo', async ({ page }, info) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   const nav = page.getByRole('navigation', { name: 'Navegação principal' });
@@ -148,7 +148,15 @@ test('rotas placeholder abrem sem erro e mantem Mapas ativo', async ({ page }) =
   ]) {
     await page.goto(u);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    await expect(nav.getByRole('link', { name: 'Mapas' })).toHaveAttribute('aria-current', 'page');
+    // The map viewer hides the bottom bar on phones by design (FASE-3 step 6); the rail stays on desktop.
+    if (info.project.name === 'mobile' && /^\/mapas\/[^/]+$/.test(u)) {
+      await expect(nav).toBeHidden();
+    } else {
+      await expect(nav.getByRole('link', { name: 'Mapas' })).toHaveAttribute(
+        'aria-current',
+        'page',
+      );
+    }
   }
   expect(errors).toEqual([]);
 });

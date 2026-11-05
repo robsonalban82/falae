@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { containsMarker, contentMarkers, pairMarkers, sceneLeaks } from './contentLeaks';
+import {
+  containsMarker,
+  contentMarkers,
+  inlinedSvgFiles,
+  missingSceneFiles,
+  notebookInHtml,
+  pairMarkers,
+  sceneLeaks,
+} from './contentLeaks';
 
 describe('contentMarkers', () => {
   const map = {
@@ -98,5 +106,44 @@ describe('sceneLeaks', () => {
     expect(sceneLeaks('"/assets/escola-AbC123_x.svg"', ['escola'])).toEqual([
       'cena escola-AbC123_x.svg no JS inicial',
     ]);
+  });
+});
+
+describe('scene files and notebook leaks', () => {
+  it('reports scenes with no hashed .svg of their own', () => {
+    const files = ['casa-AbCd1234.svg', 'index-x.js'];
+    expect(missingSceneFiles(files, ['casa', 'escola'])).toEqual(['escola']);
+    // a scene whose name is a prefix of another must not match the longer file
+    expect(missingSceneFiles(['casa-grande-AbCd1234.svg'], ['casa'])).toEqual(['casa']);
+  });
+
+  it('lists JS/CSS files that inline an SVG data URL', () => {
+    expect(
+      inlinedSvgFiles([
+        { name: 'a.js', code: 'x="data:image/svg+xml;base64,AAA"' },
+        { name: 'b.css', code: 'a{b:url(x.svg)}' },
+      ]),
+    ).toEqual(['a.js']);
+  });
+
+  it('flags a Patrick Hand preload and a notebook stylesheet in index.html', () => {
+    const css: Record<string, string> = {
+      '/assets/index.css': 'body{color:red}',
+      '/assets/nb.css': '.nb-tag{color:red}',
+    };
+    const read = (href: string) => css[href];
+    expect(
+      notebookInHtml(
+        '<link rel="stylesheet" href="/assets/index.css"><link rel="modulepreload" href="/assets/x.js">',
+        read,
+      ),
+    ).toEqual([]);
+    expect(
+      notebookInHtml(
+        '<link rel="preload" as="font" href="/assets/patrick-hand-latin-400.woff2">',
+        read,
+      ),
+    ).toHaveLength(1);
+    expect(notebookInHtml('<link rel="stylesheet" href="/assets/nb.css">', read)).toHaveLength(1);
   });
 });

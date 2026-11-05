@@ -7,7 +7,15 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { containsMarker, contentMarkers, pairMarkers, sceneLeaks } from './lib/contentLeaks';
+import {
+  containsMarker,
+  contentMarkers,
+  inlinedSvgFiles,
+  missingSceneFiles,
+  notebookInHtml,
+  pairMarkers,
+  sceneLeaks,
+} from './lib/contentLeaks';
 import { initialScripts } from './lib/htmlEntries';
 
 const ENTRY_BUDGET = 250 * 1024; // minified bytes (~80 kB gzip)
@@ -116,15 +124,25 @@ console.log(
   `\nConteúdo lazy conferido: ${lazyFiles.length} arquivos JSON, ${sceneNames.length} cenas.`,
 );
 
+// Every scene is its own hashed .svg (`?no-inline`), and nothing in any JS/CSS inlines an SVG.
+const assetFiles = readdirSync(dir);
+for (const name of missingSceneFiles(assetFiles, sceneNames))
+  problems.push(`cena ${name} não virou um .svg próprio em assets/`);
+const inlined = inlinedSvgFiles(
+  assetFiles
+    .filter((f) => /\.(js|css)$/.test(f))
+    .map((f) => ({ name: f, code: readFileSync(join(dir, f), 'utf8') })),
+);
+for (const name of inlined) problems.push(`${name} contém data:image/svg+xml`);
+
 // The notebook layer (Patrick Hand + .nb-*) belongs to the lazy map routes only.
-for (const href of html.matchAll(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)) {
-  const name = /([^/]+\.css)$/.exec(href[1] ?? '')?.[1];
-  const cssPath = name ? join(dir, name) : null;
-  if (!cssPath || !existsSync(cssPath)) continue;
-  const css = readFileSync(cssPath, 'utf8');
-  if (css.includes('Patrick Hand') || css.includes('.nb-'))
-    problems.push(`CSS de entrada ${name} contém o caderno (Patrick Hand ou .nb-)`);
-}
+problems.push(
+  ...notebookInHtml(html, (href) => {
+    const name = /([^/]+\.css)$/.exec(href)?.[1];
+    const cssPath = name ? join(dir, name) : null;
+    return cssPath && existsSync(cssPath) ? readFileSync(cssPath, 'utf8') : undefined;
+  }),
+);
 
 const initialSize = rows.filter((r) => initial.includes(r.file));
 console.log(
