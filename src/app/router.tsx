@@ -52,7 +52,7 @@ export const router = createBrowserRouter(
                 Component: (await import('../features/maps/MapsScreen')).MapsScreen,
               }),
             },
-            // Practice and collection screens arrive in later steps.
+            // The collection screen arrives in a later step.
             {
               path: paths.collection(),
               element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
@@ -63,10 +63,6 @@ export const router = createBrowserRouter(
               lazy: async () => ({
                 Component: (await import('../features/mindmap/MapScreen')).MapScreen,
               }),
-            },
-            {
-              path: paths.mapPractice(),
-              element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
             },
             {
               path: paths.profile,
@@ -94,6 +90,12 @@ export const router = createBrowserRouter(
           path: paths.lesson(),
           lazy: async () => ({
             Component: (await import('../features/lesson/LessonScreen')).LessonScreen,
+          }),
+        },
+        {
+          path: paths.mapPractice(),
+          lazy: async () => ({
+            Component: (await import('../features/mindmap/MapPracticeSession')).MapPracticeSession,
           }),
         },
         {

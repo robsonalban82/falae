@@ -14,6 +14,7 @@ import { clock } from '../services/clock';
 import { onLessonCommitted } from './useProfile';
 
 export const PRACTICE_LESSON_ID = 'practice';
+export const mapPracticeLessonId = (mapId: string): string => `map-practice:${mapId}`;
 
 export function toPracticeItem(it: StudyItem): PracticeItem {
   return it.kind === 'vocab'
@@ -107,6 +108,42 @@ export async function buildPracticeSession(
     exercises,
     hearts: 0,
     nowMs: seed,
+  });
+}
+
+/**
+ * "Praticar este mapa": a practice session over the map's own items (null for an unknown map or
+ * nothing to practice). Distractors come from the same loaded files.
+ */
+export async function buildMapPracticeSession(
+  mapId: string,
+  caps: Capabilities,
+): Promise<LessonState | null> {
+  const entry = getCourseManifest().maps.find((m) => m.id === mapId);
+  if (!entry) return null;
+  const seed = clock.now();
+  const index = await loadItems(entry.itemIds);
+  const items = entry.itemIds
+    .map((id) => index.items.get(id))
+    .filter((i): i is StudyItem => i !== undefined)
+    .map(toPracticeItem);
+  const distractorPool = [...index.items.values()].map(toPracticeItem);
+  const generated = generatePractice({
+    items,
+    distractorPool,
+    caps,
+    seed,
+    choicePrompt: t.practice.choicePrompt,
+  });
+  const exercises = applyFallbacks(generated, caps, (id) => index.items.get(id));
+  if (exercises.length === 0) return null;
+  return startLesson({
+    lessonId: mapPracticeLessonId(mapId),
+    kind: 'practice',
+    exercises,
+    hearts: 0,
+    nowMs: seed,
+    context: { mapId },
   });
 }
 

@@ -140,12 +140,7 @@ test('rotas placeholder abrem sem erro e mantem Mapas ativo', async ({ page }, i
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   const nav = page.getByRole('navigation', { name: 'Navegação principal' });
-  for (const u of [
-    '/mapas/mm-in-on-at',
-    '/mapas/mm-in-on-at/praticar',
-    '/mapas/colecoes/qualquer',
-    '/mapas/nao-existe',
-  ]) {
+  for (const u of ['/mapas/mm-in-on-at', '/mapas/colecoes/qualquer', '/mapas/nao-existe']) {
     await page.goto(u);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     // The map viewer hides the bottom bar on phones by design (FASE-3 step 6); the rail stays on desktop.
