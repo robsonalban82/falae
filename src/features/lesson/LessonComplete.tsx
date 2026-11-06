@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { findAchievement } from '../../domain/gamification/achievements';
 import type { LessonSummary } from '../../domain/lesson/engine';
 import type { SessionKind } from '../../domain/gamification/xp';
 import { t } from '../../i18n/pt-BR';
@@ -11,6 +10,7 @@ import { formatDuration, formatDurationLong } from '../../ui/formatTime';
 import { ArrowRightIcon, FlameIcon, FreezeIcon, HeartIcon } from '../../ui/icons';
 import { Tuca } from '../../ui/Mascot/Tuca';
 import { GoalRing } from '../path/GoalRing';
+import { NewAchievements, resolveAchievements } from './NewAchievements';
 
 type Props = {
   kind?: SessionKind;
@@ -42,14 +42,6 @@ function useCountUp(target: number, reduce: boolean): number {
   }, [target, reduce]);
   return reduce ? target : value;
 }
-
-/** Up to this many are shown in full; beyond it, the list collapses. */
-const MAX_FULL_ACHIEVEMENTS = 4;
-const COLLAPSED_ACHIEVEMENTS = 3;
-
-type AchievementKey = keyof typeof t.achievements.list;
-const achievementText = (id: string) =>
-  id in t.achievements.list ? t.achievements.list[id as AchievementKey] : null; // `in` narrows the key
 
 const CONFETTI = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger', 'bg-xp'] as const;
 
@@ -86,17 +78,7 @@ export function LessonComplete({
   const accuracy = Math.round(summary.accuracy * 100);
   const streak = commit?.streak ?? null;
   const goal = commit?.goal ?? null;
-  const achievements = (commit?.newAchievements ?? []).flatMap((id) => {
-    const def = findAchievement(id);
-    const text = achievementText(id);
-    return def && text ? [{ id, icon: def.icon, ...text }] : [];
-  });
-  const [showAllAchievements, setShowAllAchievements] = useState(false);
-  const collapsible = achievements.length > MAX_FULL_ACHIEVEMENTS;
-  const visibleAchievements =
-    collapsible && !showAllAchievements
-      ? achievements.slice(0, COLLAPSED_ACHIEVEMENTS)
-      : achievements;
+  const achievements = resolveAchievements(commit?.newAchievements ?? []);
 
   const stats = [
     { label: t.lesson.complete.xp, value: `+${xpShown}`, tone: 'bg-xp text-on-xp' },
@@ -227,43 +209,7 @@ export function LessonComplete({
             </div>
           )}
 
-          {achievements.length > 0 && (
-            <div className="rounded-card border-2 border-line bg-surface p-3">
-              <h2 id="new-achievements" className="mb-2 text-xl font-semibold">
-                {t.achievements.heading}
-              </h2>
-              <ul
-                aria-labelledby="new-achievements"
-                id="new-achievements-list"
-                className="space-y-2"
-              >
-                {visibleAchievements.map((a) => (
-                  <li key={a.id} className="flex items-center gap-3">
-                    <span aria-hidden="true" className="text-3xl">
-                      {a.icon}
-                    </span>
-                    <span>
-                      <span className="block font-bold">{a.title}</span>
-                      <span className="text-sm text-ink-muted">{a.description}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              {collapsible && (
-                <button
-                  type="button"
-                  aria-expanded={showAllAchievements}
-                  aria-controls="new-achievements-list"
-                  onClick={() => setShowAllAchievements((v) => !v)}
-                  className="mt-2 min-h-11 rounded-lg px-2 font-bold text-ink underline underline-offset-4"
-                >
-                  {showAllAchievements
-                    ? t.achievements.showLess
-                    : t.achievements.showAll(achievements.length)}
-                </button>
-              )}
-            </div>
-          )}
+          <NewAchievements achievements={achievements} />
         </div>
       )}
 

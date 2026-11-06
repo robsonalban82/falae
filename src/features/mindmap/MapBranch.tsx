@@ -10,6 +10,8 @@ import { ChevronIcon } from './viewerIcons';
 
 type Props = {
   branch: Branch;
+  /** Position in the map (chunk keys start with `b{index}`). */
+  index: number;
   open: boolean;
   onToggle: () => void;
   lookup: ItemLookup;
@@ -17,7 +19,7 @@ type Props = {
 };
 
 /** Collapsible branch: a colored ribbon button (h2) over the panel of cards. */
-export function MapBranch({ branch, open, onToggle, lookup, onDetails }: Props) {
+export function MapBranch({ branch, index, open, onToggle, lookup, onDetails }: Props) {
   const reduce = useReducedMotion();
   const panelId = useId();
   const style = branchStyles[branch.color];
@@ -28,7 +30,14 @@ export function MapBranch({ branch, open, onToggle, lookup, onDetails }: Props) 
       className={`ml-1.5 grid items-start gap-x-5 border-l-4 pt-1 pb-1 pl-4 ${style.panel} ${count > 1 ? 'lg:grid-cols-2' : ''}`}
     >
       {branch.nodes.map((node, i) => (
-        <MapCard key={i} node={node} color={branch.color} lookup={lookup} onDetails={onDetails} />
+        <MapCard
+          key={i}
+          node={node}
+          keyPrefix={`b${index}.n${i}`}
+          color={branch.color}
+          lookup={lookup}
+          onDetails={onDetails}
+        />
       ))}
     </ul>
   );

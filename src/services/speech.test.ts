@@ -160,6 +160,21 @@ describe('speak() and voiceschanged', () => {
     vi.useRealTimers();
   });
 
+  it('a started utterance settles when superseded, even if the engine never reports it', async () => {
+    vi.useFakeTimers();
+    silent = true; // started but no end/error ever fires
+    voices = [v('en-US')];
+    let firstDone = false;
+    void speak('a').then(() => (firstDone = true));
+    vi.advanceTimersByTime(SPEAK_DELAY_MS);
+    expect(spoken).toHaveLength(1);
+    void speak('b');
+    await vi.advanceTimersByTimeAsync(0);
+    expect(firstDone).toBe(true);
+    stopSpeaking();
+    vi.useRealTimers();
+  });
+
   it('stopSpeaking() during the delay prevents the pending speech', async () => {
     vi.useFakeTimers();
     const result = speak('a');

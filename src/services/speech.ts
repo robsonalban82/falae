@@ -117,9 +117,10 @@ export const NO_VOICE_TIMEOUT_MS = 2500;
 export const SPEAK_DELAY_MS = 50;
 
 // Chrome drops an utterance whose object is garbage-collected before `end`: keep a reference to
-// the latest one (an older, interrupted one only needs its `error` event, which still fires).
+// the latest one (an older one is settled by the newer call and needs no event).
 let activeUtterance: SpeechSynthesisUtterance | null = null;
-// A deferred start not yet run: superseding speak() or stopSpeaking() drops it and settles it.
+// The current speak() call, started or not: superseding speak() or stopSpeaking() settles it
+// right away, since some engines never fire `error` for an utterance dropped by cancel().
 let cancelPending: (() => void) | null = null;
 
 export function speak(text: string, options: { slow?: boolean } = {}): Promise<void> {
@@ -140,6 +141,7 @@ export function speak(text: string, options: { slow?: boolean } = {}): Promise<v
       if (settled) return;
       settled = true;
       clearTimeout(watchdog);
+      if (cancelPending === supersede) cancelPending = null;
       if (activeUtterance === utterance) activeUtterance = null;
       if (error) reject(error);
       else resolve();
@@ -155,7 +157,6 @@ export function speak(text: string, options: { slow?: boolean } = {}): Promise<v
     utterance.onerror = (e) =>
       finish(e.error === 'interrupted' || e.error === 'canceled' ? undefined : new Error(e.error));
     const startTimer = setTimeout(() => {
-      cancelPending = null;
       // Chrome/Safari can leave the queue paused (e.g. after the tab was hidden).
       if (synth.paused) synth.resume();
       watchdog = setTimeout(() => {
@@ -166,11 +167,11 @@ export function speak(text: string, options: { slow?: boolean } = {}): Promise<v
       }, NO_VOICE_TIMEOUT_MS);
       synth.speak(utterance);
     }, SPEAK_DELAY_MS);
-    cancelPending = () => {
+    const supersede = () => {
       clearTimeout(startTimer);
-      cancelPending = null;
       finish();
     };
+    cancelPending = supersede;
   });
 }
 

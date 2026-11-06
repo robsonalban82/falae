@@ -27,6 +27,9 @@ export type RevealState = {
   ratings: Record<string, RevealRating>;
 };
 
+/** `lessonId` of a map study session; the result id adds `-<startedAt>` (ADR-019 d). */
+export const mapStudyLessonId = (mapId: string): string => `map:${mapId}`;
+
 export const SRS_REMEMBERED = 4;
 export const SRS_FORGOT = 1;
 

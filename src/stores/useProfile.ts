@@ -23,8 +23,9 @@ import {
   sessionCountsAsStudy,
   sessionGainsHeart,
   sessionCompletesLesson,
+  type SessionKind,
 } from '../domain/gamification/xp';
-import type { LessonState, LessonSummary } from '../domain/lesson/engine';
+import type { LessonContext, LessonState, LessonSummary } from '../domain/lesson/engine';
 import { learnedAfter } from '../domain/srs/selection';
 import { applyOutcomes, seedTestedOut } from '../domain/srs/sm2';
 import { clock } from '../services/clock';
@@ -48,6 +49,16 @@ export type PlacementCommit = {
   unitItemIds: string[];
 };
 
+/** A finished session of any kind (lesson, practice, map study, cards): what the commit needs. */
+export type SessionCommit = {
+  lessonId: string;
+  kind: SessionKind;
+  context?: LessonContext;
+  /** Run start; with `lessonId` it makes the deterministic result id. */
+  startedAt: number;
+  summary: LessonSummary;
+};
+
 type ProfileState = {
   profile: Profile;
   loaded: boolean;
@@ -63,6 +74,13 @@ type ProfileState = {
   reconcileHearts: (target: number) => Promise<void>;
   /** Marks the welcome flow as done (transactional read-modify-write). */
   completeOnboarding: () => Promise<void>;
+  /** The single write path of a finished session (ADR-015, ADR-019 c). */
+  commitSession: (
+    session: SessionCommit,
+    dailyGoalXp: DailyGoal,
+    placement?: PlacementCommit,
+  ) => Promise<CommitSummary>;
+  /** Facade over `commitSession` for the lesson player. */
   commitLesson: (
     state: LessonState,
     summary: LessonSummary,
@@ -138,17 +156,31 @@ export const useProfile = create<ProfileState>((set, get) => ({
     set({ profile, loaded: true });
   },
 
-  commitLesson: async (state, summary, dailyGoalXp, placement) => {
+  commitLesson: (state, summary, dailyGoalXp, placement) =>
+    get().commitSession(
+      {
+        lessonId: state.lessonId,
+        kind: state.kind,
+        ...(state.context ? { context: state.context } : {}),
+        startedAt: state.startedAt,
+        summary,
+      },
+      dailyGoalXp,
+      placement,
+    ),
+
+  commitSession: async (session, dailyGoalXp, placement) => {
+    const { summary } = session;
     const now = clock.now();
     const today = clock.today();
     const current = get().profile;
-    const isStudy = sessionCountsAsStudy(state.kind);
+    const isStudy = sessionCountsAsStudy(session.kind);
     const result: LessonResult = {
-      // Deterministic id: re-committing the same lesson run (reload mid-save) is a no-op.
-      id: `${state.lessonId}-${state.startedAt}`,
-      lessonId: state.lessonId,
-      kind: state.kind,
-      ...(state.context ? { context: state.context } : {}),
+      // Deterministic id: re-committing the same run (reload mid-save) is a no-op.
+      id: `${session.lessonId}-${session.startedAt}`,
+      lessonId: session.lessonId,
+      kind: session.kind,
+      ...(session.context ? { context: session.context } : {}),
       day: today,
       finishedAt: new Date(now).toISOString(),
       xp: summary.xp,

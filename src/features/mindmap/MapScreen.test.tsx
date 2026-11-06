@@ -75,6 +75,8 @@ afterEach(() => vi.restoreAllMocks());
 
 const manifestMap = getCourseManifest().maps.find((m) => m.id === 'mm-to-be');
 
+const LISTEN = new RegExp(`^${t.maps.viewer.listen}`);
+
 describe('MapScreen', () => {
   it('renders mm-to-be with all branches and cards', async () => {
     renderMap();
@@ -170,7 +172,7 @@ describe('MapScreen', () => {
     hoisted.speak.mockImplementation(() => new Promise<void>((r) => (finish = r)));
     renderMap();
     await screen.findByRole('heading', { level: 1 });
-    const button = screen.getAllByRole('button', { pressed: false })[0] as HTMLElement;
+    const button = screen.getAllByRole('button', { name: LISTEN })[0] as HTMLElement;
     await user.click(button);
     expect(hoisted.speak).toHaveBeenCalledTimes(1);
     expect(button).toHaveAttribute('aria-pressed', 'true');
@@ -182,7 +184,7 @@ describe('MapScreen', () => {
     hoisted.tts = false;
     renderMap();
     await screen.findByRole('heading', { level: 1 });
-    expect(document.querySelectorAll('button[aria-pressed]')).toHaveLength(0);
+    expect(screen.queryAllByRole('button', { name: LISTEN })).toHaveLength(0);
     expect(screen.getAllByText(t.maps.viewer.noVoice)).toHaveLength(1);
   });
 
@@ -190,16 +192,16 @@ describe('MapScreen', () => {
     const user = userEvent.setup();
     renderMap();
     await screen.findByRole('heading', { level: 1 });
-    const button = screen.getAllByRole('button', { pressed: false })[0] as HTMLElement;
+    const button = screen.getAllByRole('button', { name: LISTEN })[0] as HTMLElement;
     await user.click(button);
     expect(button).toHaveFocus();
     await act(async () => {
       hoisted.noVoice = true;
       hoisted.listeners.forEach((l) => l());
     });
-    expect(document.querySelectorAll('button[aria-pressed]')).toHaveLength(0);
-    const notice = screen.getByRole('status');
-    expect(notice).toHaveTextContent(t.maps.viewer.noVoice);
+    expect(screen.queryAllByRole('button', { name: LISTEN })).toHaveLength(0);
+    const notice = screen.getByText(t.maps.viewer.noVoice);
+    expect(notice).toHaveAttribute('role', 'status');
     expect(notice).toHaveFocus();
   });
 

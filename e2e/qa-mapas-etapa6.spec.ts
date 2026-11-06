@@ -78,6 +78,8 @@ function watchErrors(page: Page) {
 }
 
 const branchButtons = (p: Page) => p.locator('main h2 > button[aria-expanded]');
+// Speak buttons only (the "Esconder o inglês" toggle also uses aria-pressed).
+const speakButtons = (p: Page) => p.locator('main button[aria-pressed]', { hasText: 'Ouvir:' });
 
 for (const m of MAPS) {
   test(`abre ${m.id} pela lista e mostra ramos, cartoes e linhas`, async ({ page }) => {
@@ -203,7 +205,7 @@ test('com TTS simulado: tocar um trecho fala, marca aria-pressed e solta no fim'
   await fakeTts(page, 600);
   const errors = watchErrors(page);
   await page.goto('/mapas/mm-to-be');
-  const audio = page.locator('main button[aria-pressed]');
+  const audio = speakButtons(page);
   await expect(audio.first()).toBeVisible();
   expect(await audio.count()).toBeGreaterThan(5);
   await expect(page.getByText('Seu navegador não tem voz')).toHaveCount(0);
@@ -233,7 +235,7 @@ test('sair da tela com audio tocando nao deixa erro nem som preso', async ({ pag
   await fakeTts(page, 5000);
   const errors = watchErrors(page);
   await page.goto('/mapas/mm-to-be');
-  await page.locator('main button[aria-pressed]').first().click();
+  await speakButtons(page).first().click();
   await page.getByRole('link', { name: 'Voltar para os mapas' }).first().click();
   await expect(page.getByRole('heading', { level: 1, name: 'Mapas' })).toBeVisible();
   await page.waitForTimeout(300);
@@ -246,7 +248,7 @@ test('sem TTS: nenhum botao de audio e exatamente um aviso', async ({ page }) =>
   await page.goto('/mapas/mm-to-be');
   await expect(page.getByRole('heading', { level: 1, name: 'Verbo to be' })).toBeVisible();
   expect(await page.evaluate(() => 'speechSynthesis' in window)).toBe(false);
-  await expect(page.locator('main button[aria-pressed]')).toHaveCount(0);
+  await expect(speakButtons(page)).toHaveCount(0);
   await expect(page.getByText('Seu navegador não tem voz em inglês')).toHaveCount(1);
   // the English is still there, as plain text
   expect(await page.locator('main [lang="en"]').count()).toBeGreaterThan(20);
@@ -281,12 +283,12 @@ test('TTS sem voz (nunca inicia): vira texto simples com um aviso', async ({ pag
     });
   });
   await page.goto('/mapas/mm-to-be');
-  const first = page.locator('main button[aria-pressed]').first();
+  const first = speakButtons(page).first();
   await first.click();
   await expect(page.getByText('Seu navegador não tem voz em inglês')).toHaveCount(1, {
     timeout: 8000,
   });
-  await expect(page.locator('main button[aria-pressed]')).toHaveCount(0);
+  await expect(speakButtons(page)).toHaveCount(0);
 });
 
 test.describe('painel Ver detalhes', () => {

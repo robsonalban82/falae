@@ -3,6 +3,7 @@ import {
   hideableChunks,
   initialRevealState,
   isComplete,
+  mapStudyLessonId,
   mapStudySummary,
   rate as rateIn,
   reveal as revealIn,
@@ -101,5 +102,11 @@ describe('mapStudySummary', () => {
       { itemId: 'u1-im', q: 4 },
       { itemId: 'xa-happy', q: 1 },
     ]);
+  });
+});
+
+describe('mapStudyLessonId', () => {
+  it('prefixes the map id (the result id adds -<startedAt>)', () => {
+    expect(mapStudyLessonId('mm-to-be')).toBe('map:mm-to-be');
   });
 });

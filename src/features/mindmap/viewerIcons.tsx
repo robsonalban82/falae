@@ -26,3 +26,12 @@ export function ChevronIcon({ className, size = 22 }: IconProps) {
     </svg>
   );
 }
+
+export function EyeIcon({ className, size = 18 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} strokeWidth={2.2} className={className}>
+      <path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z" />
+      <circle cx="12" cy="12" r="2.8" />
+    </svg>
+  );
+}

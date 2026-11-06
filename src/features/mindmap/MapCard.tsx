@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { BranchColor, MapNode } from '../../content/schemas/mindmap';
 import { lineView, type ItemLookup } from '../../domain/mindmap/lines';
 import { parseBold, stripBold } from '../../domain/mindmap/richText';
@@ -9,17 +10,23 @@ import { RichText } from './RichText';
 
 type Props = {
   node: MapNode;
+  /** `b{i}.n{j}`: prefix of the chunk keys of this card's lines. */
+  keyPrefix: string;
   color: BranchColor;
   lookup: ItemLookup;
   onDetails: (itemId: string, trigger: HTMLElement) => void;
 };
 
 /** One card: tag chip on the corner, optional title, lines, and the scene at the bottom right. */
-export function MapCard({ node, color, lookup, onDetails }: Props) {
+function MapCardView({ node, keyPrefix, color, lookup, onDetails }: Props) {
   const style = branchStyles[color];
-  const views = node.lines.flatMap((line) => lineView(line, node.tag, lookup) ?? []);
+  // Keys keep the JSON line index, so they match `hideableChunks` even when a line is skipped.
+  const views = node.lines.flatMap((line, k) => {
+    const view = lineView(line, node.tag, lookup);
+    return view ? [{ view, key: `${keyPrefix}.l${k}` }] : [];
+  });
   // A title that only repeats the first English line adds nothing (common in vocabulary cards).
-  const first = views[0];
+  const first = views[0]?.view;
   const firstEn = first?.kind === 'item' ? first.en : first?.kind === 'text' ? first.speakText : '';
   const dup =
     node.title !== undefined &&
@@ -37,8 +44,14 @@ export function MapCard({ node, color, lookup, onDetails }: Props) {
             </p>
           )}
           <ul className="space-y-1">
-            {views.map((view, i) => (
-              <MapLine key={i} view={view} keyClass={style.key} onDetails={onDetails} />
+            {views.map(({ view, key }) => (
+              <MapLine
+                key={key}
+                view={view}
+                chunkKey={key}
+                keyClass={style.key}
+                onDetails={onDetails}
+              />
             ))}
           </ul>
         </div>
@@ -47,3 +60,5 @@ export function MapCard({ node, color, lookup, onDetails }: Props) {
     </li>
   );
 }
+
+export const MapCard = memo(MapCardView);
