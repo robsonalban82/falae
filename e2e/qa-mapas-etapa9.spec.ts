@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { noRecognition } from './helpers/playLesson';
 import { playPractice, sessionState } from './helpers/session';
 import { seed, startAt } from './helpers/seed';
+import { noTts } from './helpers/tts';
 
 /** QA (MAPAS-E-CARTAS Fase 3, etapa 9): "Praticar este mapa" (/mapas/:mapId/praticar). */
 
@@ -99,22 +100,6 @@ async function openPracticeFromMap(page: Page) {
     .locator('[data-testid="map-study-complete"]')
     .getByRole('link', { name: 'Praticar este mapa' })
     .click();
-}
-
-async function noTts(page: Page) {
-  await page.addInitScript(() => {
-    for (const name of ['speechSynthesis', 'SpeechSynthesisUtterance']) {
-      let o: object | null = window;
-      while (o) {
-        try {
-          Reflect.deleteProperty(o, name);
-        } catch {
-          /* ignore */
-        }
-        o = Object.getPrototypeOf(o) as object | null;
-      }
-    }
-  });
 }
 
 test.beforeEach(async ({ page }) => {

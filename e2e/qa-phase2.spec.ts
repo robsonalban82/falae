@@ -194,6 +194,16 @@ test.describe('vitrine', () => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/dev/showcase');
     const tuca = page.getByRole('img', { name: 'Tuca, o tucano, comemorando' });
+    // The mascot is a lazy-route <img decoding="async">: the first shot must not catch it
+    // mid-decode (blank/partial), or two shots differ although nothing animates.
+    await expect(tuca).toBeVisible();
+    await tuca.evaluate(async (el) => {
+      const img = el as HTMLImageElement;
+      await img.decode();
+      await document.fonts.ready;
+    });
+    // With reduced motion the mascot must not run any animation.
+    expect(await tuca.evaluate((el) => el.getAnimations().length)).toBe(0);
     const a = await tuca.screenshot();
     await page.waitForTimeout(400);
     const b = await tuca.screenshot();

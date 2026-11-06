@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fakeTts, noTts } from './helpers/tts';
 
 /** QA (MAPAS-E-CARTAS Fase 3, etapa 10): read-only collection screen /mapas/colecoes/:collectionId. */
 
@@ -59,63 +60,6 @@ for (const f of readdirSync(join(root, 'src/content/mindmaps')).filter((n) =>
 }
 const FORMALITY = { informal: 'Informal', neutro: 'Neutro', giria: 'Gíria' } as const;
 const norm = (s: string) => s.replace(/\s+/g, ' ').trim();
-
-/** Fake speechSynthesis (same shape as the map viewer specs). */
-async function fakeTts(page: Page, ms = 400) {
-  await page.addInitScript((delay) => {
-    const w = window as unknown as Record<string, unknown>;
-    w.__spoken = [] as string[];
-    class Utt {
-      text: string;
-      lang = '';
-      rate = 1;
-      voice = null;
-      onstart: (() => void) | null = null;
-      onend: (() => void) | null = null;
-      onerror: ((e: { error: string }) => void) | null = null;
-      constructor(text: string) {
-        this.text = text;
-      }
-    }
-    const voice = { lang: 'en-US', name: 'Fake', localService: true, default: true, voiceURI: 'f' };
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    const synth = {
-      paused: false,
-      speaking: false,
-      pending: false,
-      getVoices: () => [voice],
-      addEventListener() {},
-      removeEventListener() {},
-      resume() {},
-      cancel() {
-        clearTimeout(timer);
-      },
-      speak(u: Utt) {
-        (w.__spoken as string[]).push(u.text);
-        u.onstart?.();
-        timer = setTimeout(() => u.onend?.(), delay);
-      },
-    };
-    w.SpeechSynthesisUtterance = Utt;
-    Object.defineProperty(window, 'speechSynthesis', { value: synth, configurable: true });
-  }, ms);
-}
-
-async function noTts(page: Page) {
-  await page.addInitScript(() => {
-    for (const name of ['speechSynthesis', 'SpeechSynthesisUtterance']) {
-      let o: object | null = window;
-      while (o) {
-        try {
-          Reflect.deleteProperty(o, name);
-        } catch {
-          /* ignore */
-        }
-        o = Object.getPrototypeOf(o) as object | null;
-      }
-    }
-  });
-}
 
 function watchErrors(page: Page) {
   const errors: string[] = [];
@@ -210,7 +154,7 @@ for (const c of collections) {
       if (e.situation) parts.push('Quando usar:', e.situation);
       if (e.formality) parts.push(FORMALITY[e.formality]);
       if (e.avoidWhen) parts.push('Evite quando:', e.avoidWhen);
-      if (it.isVocab && it.notes) parts.push('Cuidado:', it.notes);
+      if (it.isVocab && it.notes) parts.push('Cuidado', it.notes);
       const hit = texts.some((tx) => parts.every((p) => tx.includes(norm(p))));
       expect(hit, `${c.id}/${e.itemId} faltando em: ${parts.join(' | ')}`).toBe(true);
       if (!e.avoidWhen) {
@@ -325,7 +269,7 @@ test('mapas da coleção no topo levam ao visualizador certo', async ({ page }) 
 });
 
 test('com TTS simulado: botoes com aria-pressed falam o EN certo; sem aviso', async ({ page }) => {
-  await fakeTts(page);
+  await fakeTts(page, 400);
   await page.goto('/mapas/colecoes/phrasal');
   const btns = main(page).locator('button[aria-pressed]');
   await expect(btns).toHaveCount(12);
@@ -334,8 +278,11 @@ test('com TTS simulado: botoes com aria-pressed falam o EN certo; sem aviso', as
   await expect(a).toHaveAttribute('aria-pressed', 'false');
   await a.click();
   await expect(a).toHaveAttribute('aria-pressed', 'true');
-  const spoken = await page.evaluate(() => (window as unknown as { __spoken: string[] }).__spoken);
-  expect(spoken).toHaveLength(1);
+  // speak() starts after a short delay (SPEAK_DELAY_MS): wait for it instead of reading at once.
+  const readSpoken = () =>
+    page.evaluate(() => (window as unknown as { __spoken: string[] }).__spoken);
+  await expect.poll(async () => (await readSpoken()).length).toBe(1);
+  const spoken = await readSpoken();
   expect(items.get('u4-get-up')!.en).toBe(spoken[0]);
   await expect(a).toHaveAttribute('aria-pressed', 'false', { timeout: 3000 });
   // double click and two entries in a row never leave a button stuck
@@ -479,7 +426,7 @@ test('somente leitura: nada gravado no IndexedDB', async ({ page }) => {
 });
 
 test('teclado: Tab percorre link voltar, mapas e botoes com foco visivel', async ({ page }) => {
-  await fakeTts(page);
+  await fakeTts(page, 400);
   await page.goto('/mapas/colecoes/falsos-cognatos');
   await expect(entryLis(page)).toHaveCount(12);
   await page.locator('body').click({ position: { x: 1, y: 1 } });
