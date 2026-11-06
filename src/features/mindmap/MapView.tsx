@@ -1,5 +1,5 @@
 import { useReducedMotion } from 'motion/react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { hideableChunks } from '../../domain/mindmap/reveal';
 import { t } from '../../i18n/pt-BR';
 import { Button } from '../../ui/Button';
@@ -12,14 +12,14 @@ import { MapStudyComplete } from './MapStudyComplete';
 import { MapToolbar } from './MapToolbar';
 import { QuickTest } from './QuickTest';
 import { PencilIcon } from './viewerIcons';
-import { useCanSpeak } from './useCanSpeak';
+import { useNoVoiceNotice } from './useNoVoiceNotice';
 import type { MapData } from './useMap';
 import { useMapStudy } from './useMapStudy';
 
 /** A loaded map: header, toolbar, collapsible branches, detail sheet and the single no-voice notice. */
 export function MapView({ data }: { data: MapData }) {
   const { map, lookup } = data;
-  const canSpeak = useCanSpeak();
+  const { canSpeak, noticeRef } = useNoVoiceNotice();
   const reduce = useReducedMotion();
   const [open, setOpen] = useState<boolean[]>(() => map.branches.map(() => true));
   const [detail, setDetail] = useState<{ itemId: string; trigger: HTMLElement } | null>(null);
@@ -27,8 +27,6 @@ export function MapView({ data }: { data: MapData }) {
   const item = detail ? lookup(detail.itemId) : undefined;
   const quizRef = useRef<HTMLHeadingElement>(null);
   const quiz = map.quiz;
-  const noticeRef = useRef<HTMLParagraphElement>(null);
-  const wasSpeaking = useRef(canSpeak);
   const chunks = useMemo(() => hideableChunks(map, lookup), [map, lookup]);
   const study = useMapStudy(map.id, chunks);
   const { state } = study;
@@ -72,16 +70,6 @@ export function MapView({ data }: { data: MapData }) {
     },
     [lookup],
   );
-
-  // Speech buttons turn into plain text when the voice fails: move focus to the notice
-  // instead of letting it fall to <body> (the open sheet handles its own case first).
-  useEffect(() => {
-    const lost = wasSpeaking.current && !canSpeak;
-    wasSpeaking.current = canSpeak;
-    if (!lost) return;
-    const active = document.activeElement;
-    if (!active || active === document.body) noticeRef.current?.focus();
-  }, [canSpeak]);
 
   return (
     <div className="space-y-6">

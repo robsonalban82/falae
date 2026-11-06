@@ -77,6 +77,16 @@ export const t = {
       'erro-comum': 'erro comum',
       vocabulario: 'vocabulário',
     },
+    collection: {
+      loading: 'Carregando a coleção…',
+      notFoundTitle: 'Coleção não encontrada',
+      notFoundBody: 'Não achamos essa coleção. Ela pode ter mudado de lugar.',
+      mapsTitle: 'Mapas desta coleção',
+      entriesLabel: 'Itens da coleção',
+      situation: 'Quando usar:',
+      avoidWhen: 'Evite quando:',
+      formality: { informal: 'Informal', neutro: 'Neutro', giria: 'Gíria' },
+    },
     viewer: {
       loading: 'Carregando o mapa…',
       notFoundTitle: 'Mapa não encontrado',

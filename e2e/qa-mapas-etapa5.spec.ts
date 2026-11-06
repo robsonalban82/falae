@@ -36,7 +36,7 @@ async function openFilters(p: Page) {
 
 const search = (p: Page) => p.getByLabel('Buscar mapa');
 const count = async (p: Page) =>
-  (await p.locator('main ul li a[href^="/mapas/"]').count()) as number;
+  (await p.locator('main ul li a[href^="/mapas/mm-"]').count()) as number;
 
 test('URLs invalidas ou combinadas nao quebram nem escondem a lista', async ({ page }) => {
   const errors: string[] = [];
@@ -117,7 +117,7 @@ test('selo "Ja estudado" e contador atualizam ao vivo e apos reload; filtro Estu
   await expect(page.getByText(/^0 de \d+ mapas estudados$/)).toBeVisible();
   await expect(page.getByText('Já estudado', { exact: true })).toHaveCount(0);
   const hrefs = await page
-    .locator('main ul li a[href^="/mapas/"]')
+    .locator('main ul li a[href^="/mapas/mm-"]')
     .evaluateAll((els) => els.map((e) => e.getAttribute('href')!.replace('/mapas/', '')));
   await markStudied(page, [hrefs[0]!]);
   await expect(page.getByText('Já estudado', { exact: true })).toHaveCount(1);
@@ -136,15 +136,22 @@ test('selo "Ja estudado" e contador atualizam ao vivo e apos reload; filtro Estu
   await expect(page.getByText(/^1 de \d+ mapas? estudados?$/)).toBeVisible();
 });
 
-test('rotas placeholder abrem sem erro e mantem Mapas ativo', async ({ page }, info) => {
+test('rotas de mapa, colecao e nao-encontrado abrem sem erro e mantem Mapas ativo', async ({
+  page,
+}, info) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   const nav = page.getByRole('navigation', { name: 'Navegação principal' });
-  for (const u of ['/mapas/mm-in-on-at', '/mapas/colecoes/qualquer', '/mapas/nao-existe']) {
+  for (const u of [
+    '/mapas/mm-in-on-at',
+    '/mapas/colecoes/frases',
+    '/mapas/colecoes/qualquer',
+    '/mapas/nao-existe',
+  ]) {
     await page.goto(u);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    // The map viewer hides the bottom bar on phones by design (FASE-3 step 6); the rail stays on desktop.
-    if (info.project.name === 'mobile' && /^\/mapas\/[^/]+$/.test(u)) {
+    // The map viewer and collection screen hide the bottom bar on phones by design (FASE-3 steps 6, 10); the rail stays on desktop.
+    if (info.project.name === 'mobile' && /^\/mapas\/(colecoes\/)?[^/]+$/.test(u)) {
       await expect(nav).toBeHidden();
     } else {
       await expect(nav.getByRole('link', { name: 'Mapas' })).toHaveAttribute(
@@ -158,7 +165,7 @@ test('rotas placeholder abrem sem erro e mantem Mapas ativo', async ({ page }, i
 
 test('clique num mapa e voltar preserva filtros', async ({ page }) => {
   await page.goto('/mapas?tipo=gramatica');
-  await page.locator('main ul li a[href^="/mapas/"]').first().click();
+  await page.locator('main ul li a[href^="/mapas/mm-"]').first().click();
   await expect(page).toHaveURL(/\/mapas\/mm-/);
   await page.goBack();
   await expect(page.getByLabel('Tipo')).toHaveValue('gramatica');
@@ -172,7 +179,7 @@ test('teclado: tab chega em busca, selects e links com foco visivel', async ({ p
   expect(outline).not.toBe('none');
   await page.keyboard.press('Tab');
   await expect(summary(page)).toBeFocused();
-  const link = page.locator('main ul li a[href^="/mapas/"]').first();
+  const link = page.locator('main ul li a[href^="/mapas/mm-"]').first();
   await link.focus();
   expect(await link.evaluate((e) => getComputedStyle(e).outlineStyle)).not.toBe('none');
   await page.keyboard.press('Enter');
@@ -235,7 +242,7 @@ test('modo escuro: texto da lista tem contraste legivel (sem fundo claro fixo)',
   });
   const page = await ctx.newPage();
   await page.goto('/mapas');
-  const first = page.locator('main ul li a[href^="/mapas/"]').first();
+  const first = page.locator('main ul li a[href^="/mapas/mm-"]').first();
   await expect(first).toBeVisible();
   const lum = (c: string) => {
     const m = c.match(/[\d.]+/g)!.map(Number);

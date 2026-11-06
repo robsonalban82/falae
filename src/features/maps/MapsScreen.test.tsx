@@ -77,7 +77,7 @@ describe('MapsScreen', () => {
   it('reads filters from the URL and writes them back', async () => {
     const user = userEvent.setup();
     renderMaps('/mapas?nivel=A2');
-    await screen.findByRole('link', { name: /Falsos cognatos/ });
+    await screen.findByRole('link', { name: /Falsos cognatos \(1\)/ });
     expect(screen.getByLabelText('Nível')).toHaveValue('A2');
     expect(screen.queryByRole('link', { name: /Verbo to be/ })).not.toBeInTheDocument();
 

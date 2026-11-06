@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+import { paths } from '../../app/routes';
 import type { ManifestCollection } from '../../content/buildManifest';
 import type { BranchColor } from '../../content/schemas/mindmap';
 import { t } from '../../i18n/pt-BR';
@@ -13,9 +15,33 @@ const coverColors: Record<BranchColor, string> = {
   maracuja: 'border-map-maracuja-stroke bg-map-maracuja-tint text-map-maracuja-key',
 };
 
+const coverBase =
+  'flex h-full min-h-11 flex-col gap-1 rounded-card border-2 p-3 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus';
+
+/** A study-plan collection has no entries of its own, so its cover is not a link. */
+function Cover({ collection: c }: { collection: ManifestCollection }) {
+  const className = `${coverBase} ${coverColors[c.cover.color]}`;
+  const body = (
+    <>
+      <span className="flex items-center justify-between gap-2">
+        <NotebookIcon name={c.cover.icon} size={26} />
+        <span className="text-sm font-bold text-ink">{t.maps.shelfCount(c.entryCount)}</span>
+      </span>
+      <span className="font-display text-lg leading-tight font-semibold text-ink">{c.title}</span>
+      <span className="hidden text-sm text-ink-muted sm:block">{c.subtitle}</span>
+    </>
+  );
+  if (c.kind === 'study-plan') return <div className={className}>{body}</div>;
+  return (
+    <Link to={paths.collection(c.id)} className={className}>
+      {body}
+    </Link>
+  );
+}
+
 /**
  * Compact covers of the collections in the manifest (2 columns on phones, one row on desktop).
- * The collection screen is read-only and arrives in a later step, so covers are not links yet.
+ * Each cover links to the read-only collection screen.
  */
 export function CollectionShelf({ collections }: { collections: readonly ManifestCollection[] }) {
   if (collections.length === 0) return null;
@@ -26,18 +52,8 @@ export function CollectionShelf({ collections }: { collections: readonly Manifes
       </h2>
       <ul className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
         {collections.map((c) => (
-          <li
-            key={c.id}
-            className={`flex flex-col gap-1 rounded-card border-2 p-3 ${coverColors[c.cover.color]}`}
-          >
-            <span className="flex items-center justify-between gap-2">
-              <NotebookIcon name={c.cover.icon} size={26} />
-              <span className="text-sm font-bold text-ink">{t.maps.shelfCount(c.entryCount)}</span>
-            </span>
-            <span className="font-display text-lg leading-tight font-semibold text-ink">
-              {c.title}
-            </span>
-            <span className="hidden text-sm text-ink-muted sm:block">{c.subtitle}</span>
+          <li key={c.id}>
+            <Cover collection={c} />
           </li>
         ))}
       </ul>

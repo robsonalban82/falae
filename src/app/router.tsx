@@ -2,7 +2,6 @@ import { createBrowserRouter, type RouteObject } from 'react-router';
 import { AppLayout, type LayoutHandle } from './AppLayout';
 import { ComingSoon } from './ComingSoon';
 import { OnboardingGate } from './OnboardingGate';
-import { t } from '../i18n/pt-BR';
 import { paths } from './routes';
 import { PathScreen } from '../features/path/PathScreen';
 
@@ -52,10 +51,12 @@ export const router = createBrowserRouter(
                 Component: (await import('../features/maps/MapsScreen')).MapsScreen,
               }),
             },
-            // The collection screen arrives in a later step.
             {
               path: paths.collection(),
-              element: <ComingSoon backTo={paths.maps} backLabel={t.maps.backToMaps} />,
+              handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
+              lazy: async () => ({
+                Component: (await import('../features/maps/CollectionScreen')).CollectionScreen,
+              }),
             },
             {
               path: paths.map(),
