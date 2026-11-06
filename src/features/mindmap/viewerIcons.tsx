@@ -35,3 +35,12 @@ export function EyeIcon({ className, size = 18 }: IconProps) {
     </svg>
   );
 }
+
+export function PencilIcon({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} strokeWidth={2.2} className={className}>
+      <path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z" />
+      <path d="M14.5 6.5l3 3" />
+    </svg>
+  );
+}

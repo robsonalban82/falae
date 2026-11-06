@@ -238,6 +238,15 @@ describe('Hide the English', () => {
     expect(screen.queryAllByRole('group', { name: h.rateLabel })).toHaveLength(0);
   });
 
+  it('"Teste rápido" in the final panel moves focus to the quick test heading', async () => {
+    await renderMap();
+    fireEvent.click(toggle());
+    await revealAll(userEvent.setup(), chunks.findLast((c) => !c.itemId)!.key);
+    const panel = await screen.findByTestId('map-study-complete');
+    fireEvent.click(within(panel).getByRole('button', { name: h.quickTest }));
+    expect(screen.getByRole('heading', { level: 2, name: h.quickTest })).toHaveFocus();
+  });
+
   it('shows "sem XP desta vez" when the commit says 0 XP (never recomputed)', async () => {
     commitSession.mockImplementation((s) => Promise.resolve(summaryOf(s, 0)));
     const user = userEvent.setup();

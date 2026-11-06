@@ -1,6 +1,8 @@
+import { useReducedMotion } from 'motion/react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { hideableChunks } from '../../domain/mindmap/reveal';
 import { t } from '../../i18n/pt-BR';
+import { Button } from '../../ui/Button';
 import { HideContext, type HideChunks } from './hideContext';
 import { HideEnglishBar } from './HideEnglishBar';
 import { LineDetailSheet } from './LineDetailSheet';
@@ -8,6 +10,8 @@ import { MapBranch } from './MapBranch';
 import { MapHeader } from './MapHeader';
 import { MapStudyComplete } from './MapStudyComplete';
 import { MapToolbar } from './MapToolbar';
+import { QuickTest } from './QuickTest';
+import { PencilIcon } from './viewerIcons';
 import { useCanSpeak } from './useCanSpeak';
 import type { MapData } from './useMap';
 import { useMapStudy } from './useMapStudy';
@@ -16,10 +20,13 @@ import { useMapStudy } from './useMapStudy';
 export function MapView({ data }: { data: MapData }) {
   const { map, lookup } = data;
   const canSpeak = useCanSpeak();
+  const reduce = useReducedMotion();
   const [open, setOpen] = useState<boolean[]>(() => map.branches.map(() => true));
   const [detail, setDetail] = useState<{ itemId: string; trigger: HTMLElement } | null>(null);
   const allOpen = open.every(Boolean);
   const item = detail ? lookup(detail.itemId) : undefined;
+  const quizRef = useRef<HTMLHeadingElement>(null);
+  const quiz = map.quiz;
   const noticeRef = useRef<HTMLParagraphElement>(null);
   const wasSpeaking = useRef(canSpeak);
   const chunks = useMemo(() => hideableChunks(map, lookup), [map, lookup]);
@@ -45,6 +52,12 @@ export function MapView({ data }: { data: MapData }) {
     // Covered chunks in closed branches would be unreachable: open everything.
     if (!state.on) setOpen(map.branches.map(() => true));
     study.toggle();
+  };
+
+  const goQuickTest = () => {
+    const h = quizRef.current;
+    h?.scrollIntoView?.({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    h?.focus({ preventScroll: true });
   };
 
   // An id that does not resolve must not leave a dead state behind: warn and ignore the tap.
@@ -80,6 +93,12 @@ export function MapView({ data }: { data: MapData }) {
           total={study.total}
           onToggle={toggleHide}
         />
+        {quiz && (
+          <Button compact variant="ghost" onClick={goQuickTest}>
+            <PencilIcon size={20} />
+            {t.maps.viewer.hide.quickTest}
+          </Button>
+        )}
       </MapToolbar>
       <HideContext value={hide}>
         <ul aria-label={t.maps.viewer.branchesLabel} className="space-y-6">
@@ -96,12 +115,21 @@ export function MapView({ data }: { data: MapData }) {
           ))}
         </ul>
       </HideContext>
+      {quiz && (
+        <QuickTest
+          quiz={quiz}
+          hideOn={on}
+          onHideEnglish={() => !on && toggleHide()}
+          headingRef={quizRef}
+        />
+      )}
       {study.complete && (
         <MapStudyComplete
           mapId={map.id}
           save={study.save}
           pendingRating={study.pendingRating}
           onFinish={study.finish}
+          onQuickTest={quiz ? goQuickTest : undefined}
         />
       )}
       {/* Always mounted so the live region announces the text when it appears and can take focus. */}
