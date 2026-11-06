@@ -10,6 +10,8 @@ Referências: `docs/MAPAS-E-CARTAS.md` (§3, §4.4, §4.5, §5.1, §5.2, §6.1, 
 
 **Sem bloqueios:** Q1–Q4 decididas pelo usuário em 2026-11-04 (fim do arquivo).
 
+**Status: concluída.** Etapas 1 a 12 entregues, uma por commit. Desvios e pendências em "Fechamento da fase", no fim do arquivo.
+
 ## Etapas (um commit por etapa)
 
 ### 1. `docs: plan mind maps phase 3` (arquiteto)
@@ -250,3 +252,40 @@ Nenhuma etapa avança com bloqueante. Commit ao fim de cada etapa aprovada. Ao d
 4. **Q4 — ADR-019:** **aprovada** e movida para `docs/DECISOES.md`.
 
 Sem outras pendências: nenhuma dependência nova além da Patrick Hand (aprovada), nenhuma tabela nova, backup inalterado.
+
+## Fechamento da fase
+
+### Etapas
+
+| Etapa | Commit                                               | Status    |
+| ----- | ---------------------------------------------------- | --------- |
+| 1     | `docs: plan mind maps phase 3`                       | concluída |
+| 2     | `refactor: extract pure helpers for map screens`     | concluída |
+| 3     | `feat: add pure mind map view model`                 | concluída |
+| 4     | `feat: add notebook icons, tag chips and hand font`  | concluída |
+| 5     | `feat: add maps tab and routes`                      | concluída |
+| 6     | `feat: add mind map viewer`                          | concluída |
+| 7     | `feat: add hide-english study and map commit`        | concluída |
+| 8     | `feat: add map quick test`                           | concluída |
+| 9     | `feat: add practice this map`                        | concluída |
+| 10    | `feat: add read-only collection screen`              | concluída |
+| 11    | `test: add maps e2e and screenshots` (+ `fix: polish maps screens after phase review`) | concluída |
+| 12    | `docs: update architecture for maps tab`             | concluída |
+
+### Desvios do plano
+
+- **Offline do mapa**: a cobertura ficou em `e2e/qa-mapas-etapa6.spec.ts`, e não em `e2e/offline.spec.ts`.
+- **JS inicial**: 239,6 kB gzip no fim da fase, dentro do limite de 240 kB (critério de aceite) e do teto de 260 kB (ADR-013).
+- **Barra de estatísticas**: virou `handle.statsBar` do `AppLayout` e aparece nas abas Trilha, Mapas, Praticar e Perfil (`ARQUITETURA.md` §13).
+- **`isComplete(state, chunks)`**: recebe os trechos, não o total.
+- **"Praticar este mapa"**: a montagem ficou em `stores/usePractice.ts` (`buildMapPracticeSession`, `mapPracticeLessonId`) e só retoma uma sessão salva do mesmo mapa.
+- **"Ver detalhes"** fica escondido enquanto o trecho da linha está coberto; **`useNoVoiceNotice`** é comum ao mapa e à coleção; **`speak()`** resolve a chamada anterior quando é substituída (`MAPAS-E-CARTAS.md` §5.2 e §6.1).
+
+### Pendências para depois
+
+- **Bug conhecido**: uma URL com escape malformado (ex. `/mapas/colecoes/%E0%A4%A`) deixa a tela em branco. Está coberto por `test.fail` em `e2e/qa-mapas-etapa10.spec.ts`; quando for corrigido, o teste vira `test`.
+- Atalho "Praticar este mapa" na barra do mapa (hoje só no painel de conclusão).
+- O campo da lacuna do Teste rápido corta palavras longas.
+- Espaçamento das linhas da regra no `mm-to-be` no celular.
+- O leitor de tela lê a meta diária duas vezes, porque o `GoalRing` fica ao lado do texto.
+- **Orçamento do JS inicial**: só restam 0,4 kB de folga sobre a meta de 240 kB. Planejar antes da Fase 4 (rever a meta ou tirar algo do inicial).

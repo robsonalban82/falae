@@ -532,6 +532,13 @@ O humor `triste` não aparece nas telas novas.
 
 Os segmentos fixos (`colecoes`, `plano`) têm prioridade sobre `:mapId` no `react-router`, e todo `mapId` começa com `mm-`, então não há colisão. Tudo em `/mapas/*` destaca a aba Mapas.
 
+**Como ficou na Fase 3** (detalhes em `ARQUITETURA.md` §13):
+
+- Entraram `/mapas`, `/mapas/colecoes/:collectionId`, `/mapas/:mapId` e `/mapas/:mapId/praticar`. `/mapas/plano` fica para a Fase 6.
+- `/mapas` usa `handle: { statsBar: true }`, como Trilha, Praticar e Perfil. O mapa e a coleção ficam dentro do `AppLayout` com `handle: { hideBottomNav: true, wide: true }`: a barra inferior some no celular, o trilho lateral continua no desktop e a coluna fica em ~760 px.
+- `/mapas/:mapId/praticar` fica em tela cheia, **fora** do `AppLayout`, como a lição. `lessonId` = `map-practice:<mapId>` (`mapPracticeLessonId` em `usePractice.ts`), `context: { mapId }`, `exitTo` = o mapa. Só retoma a sessão salva no `sessionStorage` se ela for do mesmo mapa (`saved.context.mapId === mapId`); senão gera uma nova. Mapa desconhecido ou sem itens → volta para `/mapas`.
+- A coleção é **só de leitura** ("Revisar com cartas" fica para a Fase 4). Na estante, a capa de uma coleção `study-plan` não é link, porque o plano não tem entradas próprias.
+
 Integrações com telas existentes:
 
 - **Trilha**: faixa "N cartas para revisar hoje" e "Dia 7 de 30 dias com o Tuca", se o plano foi iniciado. O contador usa o `usePractice` que já existe, sem import novo no caminho inicial.
@@ -573,6 +580,15 @@ A vista aprovada no protótipo é uma **árvore vertical em HTML**, na ordem do 
 - **Praticar este mapa**: `generatePractice` sobre os `ref` do mapa (`domain/mindmap/mapItems.ts`).
 - **Acessibilidade**: estrutura nativa (títulos, listas, botões), ordem de leitura = ordem do JSON, foco visível, alvos ≥ 44 px, `lang="en"` em todo trecho em inglês, reduced motion (abrir e fechar ramo sem animação).
 - **Desempenho**: rota, JSON do mapa e cenas são lazy (ADR-013). As cenas usam `loading="lazy"` e têm `width`/`height` fixos (sem salto de layout). Sem filtros SVG na tela.
+
+**Ajustes da implementação (Fase 3):**
+
+- **Painel da linha**: abre pelo botão "Ver detalhes", separado do botão de áudio. "Adicionar ao baralho de hoje" fica para a Fase 4. Com "Esconder o inglês" ligado, enquanto o trecho da linha está coberto, "Ver detalhes" fica escondido (o rótulo e o painel entregariam o inglês); o espaço dele é mantido, para a linha não mudar de lugar ao revelar.
+- **Esconder o inglês** (`useMapStudy` + `domain/mindmap/reveal.ts`): `isComplete(state, chunks)` recebe os trechos, não o total. Quando o último trecho revelado é um item (linha com `ref`), a gravação espera a nota "Lembrei / Não lembrei" ou o botão "Concluir" (sem nota). O resumo é congelado na hora de concluir, e "Tentar de novo" reenvia o mesmo resumo com o mesmo id (`map:<mapId>-<startedAt>`). Desligar e religar o modo começa outra rodada, com `startedAt` sempre crescente. Esta é a única gravação do mapa, via `commitSession`.
+- **Teste rápido**: não grava nada (nem resultado, nem XP, nem SRS). "Quase" conta como certo no placar e mostra a forma correta.
+- **Praticar este mapa**: `buildMapPracticeSession` em `stores/usePractice.ts` (não existe `domain/mindmap/mapItems.ts`). Ver §5.2 para o `lessonId` e a retomada.
+- **Sem voz**: o hook `useNoVoiceNotice` (`features/mindmap/`) é comum ao mapa e à coleção. Ele diz se pode falar e mostra **um** aviso por tela.
+- **TTS**: um `speak()` novo, ou `stopSpeaking()`, resolve na hora a promessa da chamada anterior que ele substitui, porque alguns motores não disparam `error` depois de `cancel()`. Assim o estado "falando" nunca fica preso.
 
 ### 6.2 Fora do escopo: vista radial, pan/zoom e PNG
 

@@ -60,24 +60,37 @@ Dependências extras além das pedidas: `vite-plugin-pwa`, `react-router`, `@fon
    │  ├─ progression/ # desbloqueio da trilha, nivelamento
    │  ├─ practice/    # geração de exercícios a partir de itens vencidos
    │  ├─ lesson/      # máquina de estados da lição (fila, repetição de erros)
+   │  ├─ mindmap/     # richText (parseBold), lines (lineView), reveal ("Esconder o inglês",
+   │  │               #   mapStudySummary), quiz (Teste rápido), filter (filtros/busca da aba Mapas)
+   │  ├─ cards/       # flashcard (toFlashcard; a Fase 4 estende)
+   │  ├─ text/        # search (searchWords: normalização da busca, usada pelo manifesto e pelos filtros)
    │  └─ time.ts      # dayKey, diffDays (fuso local)
    ├─ data/
    │  ├─ repository.ts       # interface Repository
    │  ├─ dexieRepository.ts  # implementação IndexedDB
    │  ├─ db.ts               # schema Dexie + migrações
    │  └─ exportImport.ts     # JSON versionado + validação Zod
-   ├─ stores/         # Zustand: useProfile, useSettings, useLessonSession…
+   ├─ stores/         # Zustand: useProfile, useSettings, useProgress, usePractice,
+   │                  #   useMapProgress (só rotas de mapa)…
    ├─ services/       # clock, speech (tts/stt), sound, haptics, notifications
    ├─ features/
    │  ├─ onboarding/  placement/  path/  lesson/  lesson/exercises/
    │  ├─ practice/    profile/    settings/  achievements/  tips/
+   │  ├─ maps/        # aba Mapas: MapsScreen, MapFilters, MapListItem, CollectionShelf,
+   │  │               #   CollectionScreen/CollectionEntry (coleção só de leitura), useCollection
+   │  └─ mindmap/     # visualizador: MapScreen/MapView, ramos, cartões, linhas, cenas (art.ts, só
+   │                  #   aqui), SpeakText, LineDetailSheet, "Esconder o inglês" (useMapStudy,
+   │                  #   HiddenChunk, MapStudyComplete), QuickTest, MapPracticeSession, useNoVoiceNotice
    ├─ ui/             # componentes base (Button, ProgressBar, Ring, Sheet…), Mascot/
+   │  └─ notebook/    # estética de caderno: NotebookIcon, TagChip, Marker, PaperSheet e
+   │                  #   notebook.css (Patrick Hand, importado pelos componentes), usados só em
+   │                  #   rotas lazy (mapas, coleção, showcase de dev): nada disso no JS inicial
    ├─ i18n/pt-BR.ts   # todos os textos da interface
    ├─ styles/         # tokens.css, index.css
    └─ test/           # setup do Vitest, helpers, fixtures
 ```
 
-Regra de dependência: `features → stores/services → domain`; `data` só é usado por stores. `domain` não importa nada de fora de `domain` (nem `content` em runtime — recebe dados por parâmetro).
+Regra de dependência: `features → stores/services → domain`; `data` só é usado por stores. `domain` não importa nada de fora de `domain` (nem `content` em runtime — recebe dados por parâmetro). Os tipos de entrada de `domain/mindmap` e `domain/cards` são estruturais e mínimos (o `MindMap` do `z.infer` é atribuível a eles). `content` pode importar `domain` (ex.: `searchText` do manifesto é fachada de `searchWords`), nunca o contrário.
 
 ## 4. Modelo de conteúdo (`src/content/schema.ts`)
 
@@ -358,6 +371,19 @@ Migrações futuras com `db.version(n).upgrade(...)` e teste de migração obrig
 
 **Fase 6 (interface, sem mudança de dados):** `CommitContext` = `{ profile, unlockedIds, dailyBefore, completedLessonIds, goalMetCount, goalMetToday, srsCards (só itens da sessão + extraItemIds), wordsLearnedBefore }`; `AppliedCommit` ganha `srsCards`; `LessonOutcome` ganha `extraItemIds?`. Perfil inválido lido no commit vai para `quarantine` na mesma transação. `placement` não grava `daily`. `resetAll` emite `emitDataReplaced`. Novo `updateProfile(mutate)` transacional.
 
+**Mapas e cartas, Fase 3 (interface, sem mudança de dados; ADR-019 c):** o único caminho de escrita de uma sessão concluída é `useProfile.commitSession`, que monta o `LessonOutcome` e chama `recordLessonResult` com o mesmo `apply` (XP final por `finalSessionXp`, ofensiva, meta, conquistas, corações por `sessionGainsHeart`). `commitLesson(state, summary, …)` virou fachada dele, usada pelo `LessonPlayer` e pelo nivelamento; o estudo do mapa ("Esconder o inglês") chama `commitSession` direto. Nenhum segundo caminho de escrita (ADR-015).
+
+```ts
+type SessionCommit = {
+  lessonId: string; // 'map:<mapId>' no estudo do mapa
+  kind: SessionKind;
+  context?: LessonContext; // { mapId } nas sessões de mapa
+  startedAt: number; // com lessonId forma o id determinístico do resultado
+  summary: LessonSummary;
+};
+commitSession(session: SessionCommit, dailyGoalXp: DailyGoal, placement?: PlacementCommit): Promise<CommitSummary>;
+```
+
 ### Exportar/Importar
 
 Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, exportedAt, data: {...todas as tabelas} }`. Import valida com Zod, mostra resumo (XP, ofensiva, data) e pede confirmação antes de substituir. Arquivo inválido → mensagem clara, nada é alterado.
@@ -376,16 +402,34 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, e
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `/boas-vindas`     | Onboarding: Tuca se apresenta → escolhe meta diária → "Sou iniciante" ou "Fazer teste de nível"                                    |
 | `/nivelamento`     | Teste de nível                                                                                                                     |
-| `/`                | **Trilha**: cabeçalho (ofensiva 🔥, XP, corações, anel da meta), unidades com nós em caminho sinuoso, botão da dica por habilidade |
+| `/`                | **Trilha**: barra de estatísticas (ofensiva 🔥, XP, corações, anel da meta), unidades com nós em caminho sinuoso, botão da dica por habilidade |
+| `/mapas?nivel=&unidade=&tipo=&estudado=&q=` | **Mapas**: estante de coleções + lista de mapas do manifesto, filtros e busca na URL, selo "já estudado" |
+| `/mapas/colecoes/:collectionId` | Coleção só de leitura (dentro do `AppLayout`, `handle` `hideBottomNav` + `wide`) |
+| `/mapas/:mapId`    | Visualizador do mapa (dentro do `AppLayout`, `handle` `hideBottomNav` + `wide`): ramos, "Esconder o inglês", Teste rápido |
+| `/mapas/:mapId/praticar` | "Praticar este mapa" (tela cheia, **fora** do `AppLayout`, `LessonPlayer` com `kind: 'practice'`; sai para o mapa) |
 | `/dica/:skillId`   | Dica de gramática                                                                                                                  |
 | `/licao/:lessonId` | Lição (tela cheia, sem barra inferior) → tela de fim (XP, precisão, tempo, ofensiva, Tuca comemorando)                             |
 | `/praticar`        | Praticar (itens vencidos; contador; botão iniciar)                                                                                 |
 | `/perfil`          | XP total, palavras aprendidas, ofensiva atual/recorde, gráfico 7 dias, conquistas                                                  |
 | `/config`          | Som, vibração, meta, tema, lembrete, exportar/importar, redefinir progresso (confirmação dupla)                                    |
-
 | `/praticar/sessao` | Sessão de prática (tela cheia, `LessonPlayer` com `kind: 'practice'`; `?from=outOfHearts`) |
 
-Barra inferior (celular) / lateral (desktop ≥ 1024px): Trilha · Praticar · Perfil · Ajustes. Primeiro acesso redireciona para `/boas-vindas` — "primeiro acesso" = `!onboardingDone && totalXp === 0 && sem lessonProgress` (perfis antigos com progresso não são redirecionados).
+Barra inferior (celular, `grid-cols-5`) / lateral (desktop ≥ 1024px), 5 itens: **Trilha · Mapas · Praticar · Perfil · Ajustes**. O item Mapas não usa `end` e fica ativo em todo `/mapas/*`; os outros usam `end`.
+
+**`handle` das rotas** (`LayoutHandle` em `src/app/AppLayout.tsx`, lido com `useMatches()`, só o da rota mais profunda conta):
+
+```ts
+type LayoutHandle = { hideBottomNav?: boolean; wide?: boolean; statsBar?: boolean };
+```
+
+- `statsBar`: o `AppLayout` mostra a `StatsBar` (ofensiva, XP, corações, meta) no topo. Ligado nas abas **Trilha, Mapas, Praticar e Perfil**; Ajustes e telas internas (dica, mapa, coleção) não têm.
+- `hideBottomNav`: esconde a barra inferior no celular (o trilho lateral continua no desktop). Usado no mapa e na coleção.
+- `wide`: coluna `max-w-3xl` (~760 px) em vez de `max-w-2xl`. Usado no mapa e na coleção.
+- Sem `handle`, a tela fica como antes. Tela cheia (lição, Praticar, "Praticar este mapa") fica fora do `AppLayout`.
+
+Em `router.tsx`, `/mapas/colecoes/:collectionId` vem antes de `/mapas/:mapId`; todas as rotas de mapa são `lazy`.
+
+Primeiro acesso redireciona para `/boas-vindas` — "primeiro acesso" = `!onboardingDone && totalXp === 0 && sem lessonProgress` (perfis antigos com progresso não são redirecionados).
 
 ## 14. Acessibilidade e desempenho
 
