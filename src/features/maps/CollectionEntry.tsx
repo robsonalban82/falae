@@ -5,9 +5,9 @@ import { SpeakText } from '../mindmap/SpeakText';
 
 // Text label plus a distinct border style, so the seal never depends on color.
 const sealStyles = {
-  informal: 'border-solid',
-  neutro: 'border-dashed',
-  giria: 'border-dotted',
+  informal: 'border-2 border-solid',
+  neutro: 'border-2 border-dashed',
+  giria: 'border-4 border-double',
 } as const;
 
 /** One entry of a collection: EN (with audio), PT, situation, formality seal, avoid-when and caution. */
@@ -15,14 +15,14 @@ export function CollectionEntry({ entry, item }: { entry: Entry; item: StudyItem
   const pt = typeof item.pt === 'string' ? item.pt : item.pt.join(' / ');
   const caution = item.kind === 'vocab' ? item.notes : undefined;
   return (
-    <li className="space-y-1 rounded-card border-2 border-line bg-surface p-3">
+    <li className="nb-paper space-y-1 p-3">
       <div className="flex flex-wrap items-center gap-2">
         <SpeakText text={item.en} className="font-display text-xl font-semibold text-ink">
           {item.en}
         </SpeakText>
         {entry.formality && (
           <span
-            className={`inline-flex min-h-6 items-center rounded-full border-2 border-line-strong px-2.5 text-sm font-bold text-ink ${sealStyles[entry.formality]}`}
+            className={`inline-flex min-h-6 items-center rounded-full border-line-strong px-2.5 text-sm font-bold text-ink ${sealStyles[entry.formality]}`}
           >
             {t.maps.collection.formality[entry.formality]}
           </span>

@@ -8,7 +8,9 @@ import { t } from '../../i18n/pt-BR';
 import { stopSpeaking } from '../../services/speech';
 import { ContentError } from '../../ui/ContentError';
 import { ContentSkeleton } from '../../ui/ContentSkeleton';
+import { Marker } from '../../ui/notebook/Marker';
 import { NotebookIcon } from '../../ui/notebook/NotebookIcon';
+import { branchStyles } from '../mindmap/branchStyles';
 import { MapNotFound } from '../mindmap/MapNotFound';
 import { useNoVoiceNotice } from '../mindmap/useNoVoiceNotice';
 import { CollectionEntry } from './CollectionEntry';
@@ -55,10 +57,14 @@ function CollectionView({ data }: { data: CollectionData }) {
       <Link to={paths.maps} className={link}>
         {t.maps.backToMaps}
       </Link>
-      <header className="space-y-1">
-        <h1 className="flex items-center gap-2 font-display text-3xl font-semibold">
-          <NotebookIcon name={collection.cover.icon} size={32} />
-          {collection.title}
+      <header className={`space-y-1 border-b-4 pb-3 ${branchStyles[collection.cover.color].panel}`}>
+        <h1 className="flex items-center gap-3 font-display text-3xl font-semibold">
+          <span
+            className={`flex size-12 shrink-0 items-center justify-center rounded-full ${branchStyles[collection.cover.color].ribbon}`}
+          >
+            <NotebookIcon name={collection.cover.icon} size={28} />
+          </span>
+          <Marker>{collection.title}</Marker>
         </h1>
         <p className="text-ink-muted">{collection.subtitle}</p>
         {collection.description && <p className="text-ink-muted">{collection.description}</p>}

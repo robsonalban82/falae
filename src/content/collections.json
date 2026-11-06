@@ -259,7 +259,7 @@
         "itemId": "ex-003",
         "situation": "Quando você já saiu e está indo.",
         "formality": "neutro",
-        "avoidWhen": "Se você ainda nem saiu de casa. Não é o nosso \"tô chegando\"!"
+        "avoidWhen": "Se você ainda nem saiu de casa: aqui não vale o nosso \"já tô saindo\". Só use quando já estiver no caminho."
       },
       {
         "itemId": "ex-004",

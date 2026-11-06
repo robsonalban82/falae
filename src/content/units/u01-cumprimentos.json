@@ -831,8 +831,8 @@
         {
           "id": "u1-im",
           "en": "I'm",
-          "pt": ["eu sou", "sou"],
-          "acceptedPt": ["(eu) estou"],
+          "pt": ["eu sou", "eu estou"],
+          "acceptedPt": ["sou", "estou"],
           "acceptedEn": ["I am"],
           "example": {
             "en": "I'm Ana.",

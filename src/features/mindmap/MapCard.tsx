@@ -39,7 +39,7 @@ function MapCardView({ node, keyPrefix, color, lookup, onDetails }: Props) {
       <div className="flex items-end gap-3 px-3.5 pt-5 pb-3.5">
         <div className="min-w-0 flex-1 space-y-1">
           {node.title && !dup && (
-            <p className="font-bold text-ink-muted">
+            <p className="font-bold text-ink">
               <RichText segments={parseBold(node.title).segments} boldClassName={style.key} />
             </p>
           )}

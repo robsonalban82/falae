@@ -2,10 +2,11 @@ import { Link } from 'react-router';
 import { paths } from '../../app/routes';
 import type { ManifestMap } from '../../content/buildManifest';
 import { t } from '../../i18n/pt-BR';
-import { BulbIcon, CheckIcon } from '../../ui/icons';
+import { CheckIcon } from '../../ui/icons';
 import { Marker } from '../../ui/notebook/Marker';
 import { NotebookIcon } from '../../ui/notebook/NotebookIcon';
 import { PaperSheet } from '../../ui/notebook/PaperSheet';
+import { PencilIcon } from '../mindmap/viewerIcons';
 
 type Props = { map: ManifestMap; unitTitle?: string; studied: boolean };
 
@@ -24,9 +25,7 @@ export function MapListItem({ map, unitTitle, studied }: Props) {
           <NotebookIcon name={map.icon} size={26} />
         </span>
         <span className="min-w-0 flex-1 space-y-1.5">
-          <span
-            className={`block font-display text-xl font-semibold text-ink ${map.hasQuiz ? 'pr-32' : ''}`}
-          >
+          <span className="block font-display text-xl font-semibold text-ink">
             <Marker>{map.title}</Marker>
           </span>
           {unitTitle && (
@@ -36,6 +35,12 @@ export function MapListItem({ map, unitTitle, studied }: Props) {
             <span className={chip}>{map.level}</span>
             <span className={chip}>{t.maps.kinds[map.kind]}</span>
             <span className={chip}>{t.maps.cards(map.nodeCount)}</span>
+            {map.hasQuiz && (
+              <span className={`${chip} gap-1`}>
+                <PencilIcon size={16} />
+                {t.maps.quickTest}
+              </span>
+            )}
             {studied && (
               <span className="inline-flex min-h-6 items-center gap-1 rounded-full bg-success-soft px-2.5 text-sm font-bold text-success-shade dark:text-success">
                 <CheckIcon size={16} />
@@ -44,12 +49,6 @@ export function MapListItem({ map, unitTitle, studied }: Props) {
             )}
           </span>
         </span>
-        {map.hasQuiz && (
-          <span className="pointer-events-none absolute top-3 right-4 inline-flex items-center gap-1 text-sm text-ink-muted">
-            <BulbIcon size={16} />
-            {t.maps.quickTest}
-          </span>
-        )}
       </Link>
     </PaperSheet>
   );

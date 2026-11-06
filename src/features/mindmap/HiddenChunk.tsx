@@ -30,7 +30,7 @@ export function HiddenChunk({ chunkKey, describedBy, children }: Props) {
   }, [hidden]);
 
   return (
-    <span data-chunk={chunkKey} className="relative inline-flex max-w-full min-w-0">
+    <span data-chunk={chunkKey} className="relative my-1 inline-flex max-w-full min-w-0">
       <span
         ref={contentRef}
         tabIndex={-1}

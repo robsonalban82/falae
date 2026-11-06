@@ -1,4 +1,4 @@
-/** Icons used only by the map viewer (kept out of the initial bundle with the lazy route). Same line style as `ui/icons`. */
+/** Icons of the maps screens (lazy routes only, kept out of the initial bundle). Same line style as `ui/icons`. */
 type IconProps = { className?: string; size?: number };
 
 const base = {

@@ -89,7 +89,7 @@ export function QuickTestItem({
         </span>
       </p>
       <div className="flex items-center justify-between gap-2">
-        <p id={`${id}-h`} className="text-sm text-ink-muted">
+        <p id={`${id}-h`} className="text-base text-ink-muted">
           {hintPt}
         </p>
         <Button

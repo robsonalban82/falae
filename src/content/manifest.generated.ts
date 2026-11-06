@@ -1482,7 +1482,7 @@ export const courseManifest: CourseManifest = {
       itemIds: ['u1-im', 'xa-happy', 'xa-friend', 'xa-late', 'xa-ready', 'u1-s-im-tired'],
       hasQuiz: true,
       search:
-        'verbo to be ser estar afirmativa cada pessoa 1 forma im eu sou ou you are voce e esta he she it is ele ela we they nos somos estamos voces elas eles sao estao happy feliz friends amigos friend amigo amiga contracoes pronome juntinhos youre hes shes its were theyre na conversa quase sempre contraido brazilian brasileiro a at school escola negativa not i am isnt arent tired nao cansado here aqui perguntas o vem primeiro home em casa late estou atrasado cold frio ready pronto atrasada pronta respostas curtas yes sim no resposta curta inteiro erro comum have 20 years old idade usa today frase ingles tem sujeito teacher profissao pede an agree dont sem com dica portugues 2 verbos so',
+        'verbo to be ser estar afirmativa cada pessoa 1 forma im eu sou estou ou you are voce e esta he she it is ele ela we they nos somos estamos voces elas eles sao estao happy feliz friends amigos friend amigo amiga contracoes pronome juntinhos youre hes shes its were theyre na conversa quase sempre contraido brazilian brasileiro a at school escola negativa not i am isnt arent tired nao cansado here aqui perguntas o vem primeiro home em casa late atrasado cold frio ready pronto atrasada pronta respostas curtas yes sim no resposta curta inteiro erro comum have 20 years old idade usa today frase ingles tem sujeito teacher profissao pede an agree dont sem com dica portugues 2 verbos so',
     },
     {
       id: 'mm-u1-sk1',

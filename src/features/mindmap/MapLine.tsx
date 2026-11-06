@@ -24,9 +24,9 @@ function MapLineView({ view, chunkKey, keyClass, onDetails }: Props) {
   switch (view.kind) {
     case 'item':
       return (
-        <li className="flex flex-wrap items-center gap-x-2 gap-y-1 leading-snug">
-          {/* One text group so the details button stays on the same line as the words. */}
-          <span className="min-w-0 flex-1 space-x-2">
+        <li className="flex flex-wrap items-start gap-x-2 leading-snug">
+          {/* English + translation are one block that wraps cleanly; the link has its own column. */}
+          <span className="min-w-0 flex-1 space-x-2 py-1.5 text-pretty">
             <HiddenChunk chunkKey={chunkKey} describedBy={`${chunkKey}-pt`}>
               <SpeakText text={view.en} className={view.strong ? 'font-bold' : ''}>
                 {view.en}
@@ -42,7 +42,7 @@ function MapLineView({ view, chunkKey, keyClass, onDetails }: Props) {
           {hide.on && !hide.isRevealed(chunkKey) ? (
             <span
               aria-hidden="true"
-              className="invisible inline-flex min-h-11 shrink-0 items-center px-2 text-sm font-bold underline"
+              className="invisible inline-flex min-h-11 shrink-0 self-start items-center px-2 text-sm font-bold underline"
             >
               {t.maps.viewer.details}
             </span>
@@ -51,7 +51,7 @@ function MapLineView({ view, chunkKey, keyClass, onDetails }: Props) {
               type="button"
               aria-label={t.maps.viewer.detailsOf(view.en)}
               onClick={(e) => onDetails(view.itemId, e.currentTarget)}
-              className="min-h-11 shrink-0 rounded-lg px-2 text-sm font-bold text-secondary-shade underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus dark:text-secondary"
+              className="min-h-11 shrink-0 self-start rounded-lg px-2 text-sm font-bold text-secondary-shade underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus dark:text-secondary"
             >
               {t.maps.viewer.details}
             </button>

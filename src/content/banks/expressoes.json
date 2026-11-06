@@ -32,10 +32,17 @@
     {
       "id": "ex-003",
       "en": "I'm on my way.",
-      "pt": "Estou a caminho.",
+      "pt": "Estou indo.",
+      "acceptedPt": [
+        "Tô indo",
+        "Estou a caminho",
+        "Tô a caminho",
+        "Já estou indo",
+        "Já estou a caminho"
+      ],
       "example": {
         "en": "I'm on my way. See you in 15 minutes!",
-        "pt": "Estou a caminho. Te vejo em 15 minutos!"
+        "pt": "Tô indo. Te vejo em 15 minutos!"
       },
       "emoji": "🏃",
       "pronunciation": "áim án mái uêi",

@@ -257,7 +257,7 @@ describe('Hide the English', () => {
     expect(screen.queryByText(h.xp(5))).toBeNull();
   });
 
-  it('shows the streak and the goal only when they changed', async () => {
+  it('shows the streak when it grew, and the goal as met when celebrated', async () => {
     commitSession.mockImplementation((s) =>
       Promise.resolve(
         summaryOf(s, 5, {
@@ -284,6 +284,17 @@ describe('Hide the English', () => {
     await revealAll(user, chunks.findLast((c) => !c.itemId)!.key);
     expect(await screen.findByText(t.header.streak(4))).toBeInTheDocument();
     expect(screen.getByText(t.lesson.complete.goalMetDetail(10, 10))).toBeInTheDocument();
+  });
+
+  it('always shows the daily goal progress, even without a celebration', async () => {
+    // summaryOf: 5 XP of a 10 XP goal, celebrate: false, no streak change.
+    const user = userEvent.setup();
+    await renderMap();
+    await user.click(toggle());
+    await revealAll(user, chunks.findLast((c) => !c.itemId)!.key);
+    expect(await screen.findByText(h.xp(5))).toBeInTheDocument();
+    expect(screen.getAllByText(t.header.goal(5, 10)).length).toBeGreaterThan(0);
+    expect(screen.queryByText(t.lesson.complete.goalMetDetail(5, 10))).toBeNull();
   });
 
   it('waits for the optional rating of the last item, or "Concluir"', async () => {

@@ -6,6 +6,7 @@ import { t } from '../../i18n/pt-BR';
 import { Button } from '../../ui/Button';
 import { NewAchievements, resolveAchievements } from '../lesson/NewAchievements';
 import { BoltIcon, FlameIcon } from '../../ui/icons';
+import { GoalRing } from '../path/GoalRing';
 import { Tuca } from '../../ui/Mascot/Tuca';
 import type { StudySave } from './useMapStudy';
 
@@ -19,8 +20,11 @@ type Props = {
   onQuickTest?: () => void;
 };
 
-const linkClass =
-  'inline-flex min-h-12 items-center justify-center rounded-full border-2 border-line-strong bg-surface px-7 py-3 font-display text-lg font-semibold text-ink focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus';
+const linkBase =
+  'inline-flex min-h-12 w-full items-center justify-center rounded-full px-7 py-3 font-display text-lg font-semibold focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus';
+// Same look as the primary / ghost Button, for links.
+const primaryLink = `${linkBase} bg-primary text-on-primary shadow-[0_6px_16px_-6px_rgb(var(--shadow)/0.45)]`;
+const ghostLink = `${linkBase} border-2 border-line-strong bg-surface text-ink`;
 
 /** End-of-map panel of a finished "Hide the English" study. XP comes from the commit, never recomputed. */
 export function MapStudyComplete({ mapId, save, pendingRating, onFinish, onQuickTest }: Props) {
@@ -28,7 +32,7 @@ export function MapStudyComplete({ mapId, save, pendingRating, onFinish, onQuick
   const commit = save.status === 'saved' ? save.commit : null;
   const xp = commit?.result.xp ?? 0;
   const streak = commit?.streak?.increased ? commit.streak : null;
-  const goal = commit?.goal.celebrate ? commit.goal.progress : null;
+  const goal = commit?.goal ?? null;
 
   const achievements = resolveAchievements(commit?.newAchievements ?? []);
   const ref = useRef<HTMLElement>(null);
@@ -94,25 +98,36 @@ export function MapStudyComplete({ mapId, save, pendingRating, onFinish, onQuick
             </p>
           )}
           {goal && (
-            <p className="font-bold text-success">
-              {t.lesson.complete.goalMetDetail(goal.xp, goal.goal)}
-            </p>
+            <div
+              className={`flex w-full items-center gap-3 rounded-card border-2 p-3 text-left ${
+                goal.celebrate
+                  ? 'border-success bg-success-soft text-success'
+                  : 'border-line bg-surface'
+              }`}
+            >
+              <GoalRing progress={goal.progress} />
+              <p className="flex-1 font-bold">
+                {goal.celebrate
+                  ? t.lesson.complete.goalMetDetail(goal.progress.xp, goal.progress.goal)
+                  : t.header.goal(goal.progress.xp, goal.progress.goal)}
+              </p>
+            </div>
           )}
           {achievements.length > 0 && (
             <div className="w-full text-left">
               <NewAchievements achievements={achievements} />
             </div>
           )}
-          <div className="flex flex-wrap justify-center gap-3 pt-1">
+          <div className="flex w-full max-w-sm flex-col gap-3 pt-1">
+            <Link to={paths.mapPractice(mapId)} className={primaryLink}>
+              {h.practice}
+            </Link>
             {onQuickTest && (
-              <Button variant="ghost" onClick={onQuickTest}>
+              <Button variant="ghost" block onClick={onQuickTest}>
                 {h.quickTest}
               </Button>
             )}
-            <Link to={paths.mapPractice(mapId)} className={linkClass}>
-              {h.practice}
-            </Link>
-            <Link to={paths.maps} className={linkClass}>
+            <Link to={paths.maps} className={ghostLink}>
               {t.maps.backToMaps}
             </Link>
           </div>
