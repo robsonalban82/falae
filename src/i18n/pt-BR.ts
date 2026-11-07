@@ -22,6 +22,12 @@ export const t = {
     body: 'Esta tela chega nas próximas fases.',
     back: 'Voltar para o início',
   },
+  routeError: {
+    title: 'Algo deu errado por aqui',
+    body: 'Não conseguimos abrir esta página agora. Tente recarregar ou volte para a Trilha.',
+    reload: 'Recarregar',
+    back: 'Voltar para a Trilha',
+  },
   mascot: {
     name: 'Tuca',
     moods: {

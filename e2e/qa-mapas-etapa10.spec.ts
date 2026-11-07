@@ -500,13 +500,17 @@ test('offline: coleção visitada abre apos recarregar (service worker)', async 
   }
 });
 
-// Known bug (router-wide, not only collections): a malformed percent sequence renders a blank page.
-test.fail(
-  'URL com escape malformado (%E0%A4%A) mostra nao encontrada, nao tela em branco',
-  async ({ page }) => {
-    await page.goto('/mapas/colecoes/%E0%A4%A');
-    await expect(page.getByRole('link', { name: 'Voltar para os mapas' })).toBeVisible({
-      timeout: 3000,
-    });
-  },
-);
+// Router-wide: a malformed percent sequence is handled by the app (not-found screen), not a blank page.
+test('URL com escape malformado (%E0%A4%A) mostra nao encontrada, nao tela em branco', async ({
+  page,
+}) => {
+  // Vite's preview server answers 404 to a malformed URI itself; serve the SPA shell like a static host's fallback.
+  await page.route('**/mapas/colecoes/%E0%A4%A', async (route) => {
+    const shell = await page.request.fetch('/');
+    await route.fulfill({ response: shell });
+  });
+  await page.goto('/mapas/colecoes/%E0%A4%A');
+  await expect(page.getByRole('link', { name: 'Voltar para os mapas' })).toBeVisible({
+    timeout: 3000,
+  });
+});

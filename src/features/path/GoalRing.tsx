@@ -3,14 +3,24 @@ import { t } from '../../i18n/pt-BR';
 import { CheckIcon } from '../../ui/icons';
 
 /** Daily goal ring. The label carries the numbers; the ring is not the only signal. */
-export function GoalRing({ progress, size = 52 }: { progress: GoalProgress; size?: number }) {
+export function GoalRing({
+  progress,
+  size = 52,
+  decorative = false,
+}: {
+  progress: GoalProgress;
+  size?: number;
+  /** Hide from screen readers when the text next to it already states the goal. */
+  decorative?: boolean;
+}) {
   const stroke = 6;
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   return (
     <span
-      role="img"
-      aria-label={t.header.goal(progress.xp, progress.goal)}
+      role={decorative ? undefined : 'img'}
+      aria-label={decorative ? undefined : t.header.goal(progress.xp, progress.goal)}
+      aria-hidden={decorative || undefined}
       className="relative inline-flex items-center justify-center"
       style={{ width: size, height: size }}
     >

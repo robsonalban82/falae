@@ -61,7 +61,7 @@ function MapLineView({ view, chunkKey, keyClass, onDetails }: Props) {
       );
     case 'text':
       return (
-        <li className="flex flex-wrap items-center gap-x-2 leading-snug">
+        <li className="flex flex-wrap items-center gap-x-2 gap-y-0.5 py-1 leading-snug">
           <HiddenChunk chunkKey={chunkKey} describedBy={view.pt ? `${chunkKey}-pt` : undefined}>
             <SpeakText text={view.speakText}>
               <RichText segments={view.en} boldClassName={keyClass} />

@@ -23,10 +23,11 @@ Executor: `desenvolvedor`. Quatro das cinco pendências do fim de `FASE-3.md`. A
 Arquivos: `src/app/router.tsx`, `src/app/RouteError.tsx` (novo), `src/features/mindmap/QuickTestItem.tsx`, `src/features/mindmap/MapLine.tsx` (ou o CSS do caderno), `src/features/path/StatsBar.tsx`, `src/features/path/GoalRing.tsx`, `src/i18n/pt-BR.ts`, `e2e/qa-mapas-etapa10.spec.ts`, testes.
 
 - **URL com escape malformado** (`/mapas/colecoes/%E0%A4%A`): o `react-router` lança `URIError` ao decodificar e a tela fica em branco. Correção: `errorElement` na raiz (`RouteError`) com Tuca, texto e "Voltar para a Trilha", que cobre também as rotas novas desta fase (`/baralho/:deckKey`, `/cartas/:id`). Erro de rota nunca mostra pilha de erro. O `test.fail` do `qa-mapas-etapa10.spec.ts` vira `test`.
+  - **Desvio na implementação (2026-11-07):** o diagnóstico acima estava errado. O `react-router` não lança `URIError`: o `decodePath` captura o erro e devolve o caminho cru, e o `CollectionScreen` mostra "Coleção não encontrada". A tela branca vinha do servidor (preview do Vite) respondendo 404 vazio antes de o app carregar; o e2e serve o shell com `page.route`. O `RouteError` ficou como proteção para erros de render e de `import()` lazy (com "Recarregar"). No GitHub Pages, quem já tem o service worker abre o app; na primeira visita depende do servidor do GitHub (conferir à mão depois do deploy).
 - **Lacuna do Teste rápido corta palavras longas**: largura do campo pela maior resposta aceita (em `ch`, com mínimo e máximo), quebra de linha permitida no enunciado; nada de rolagem horizontal em 390 px.
 - **Espaçamento das linhas da regra no `mm-to-be` no celular**: ajuste de `gap`/`line-height` do cartão de regra; o `designer-de-mapas` confere por captura antes do commit.
 - **Meta diária lida duas vezes**: o `GoalRing` vira `aria-hidden` quando o texto ao lado já diz a meta (ou o texto some e o anel leva o rótulo). Um único rótulo acessível por estatística.
-- Testes: rota com `%E0%A4%A` mostra a tela de erro (unidade com `createMemoryRouter` + e2e); `StatsBar` tem exatamente um nome acessível com a meta; campo da lacuna com a maior resposta de `mm-to-be` não transborda (e2e 390×844).
+- Testes: rota com `%E0%A4%A` não fica em branco (mostra a tela de não encontrada); erro de render ou de lazy mostra a tela de erro (unidade com `createMemoryRouter` + e2e); `StatsBar` tem exatamente um nome acessível com a meta; campo da lacuna com a maior resposta de `mm-to-be` não transborda (e2e 390×844).
 
 ### 3. `feat: add card decks, selection and quality 3`
 
@@ -332,6 +333,11 @@ Nenhuma etapa avança com bloqueante. Commit ao fim de cada etapa aprovada.
 - Imprimir baralho (`/imprimir/baralho/:deckKey`, Fase 7).
 - Ilustrações das cartas no lugar do emoji (trabalho futuro).
 - Importar só as cartas do aluno (fora do escopo; o backup completo já restaura).
+
+## Pendências encontradas durante a fase
+
+- **Etapa 2 (2026-11-07):** com a fonte a 200% em 390 px, `/mapas/mm-to-be` rola 51 px na horizontal (cartão `li.relative.mt-4` e linhas do `MapLine`). Já existia antes da etapa 2 (medido pelo `designer-de-mapas`). Sugestão do designer, opcional: tirar o `py-1` das linhas de texto do `MapLine` (o `min-h-11` já dá a altura) se o mapa parecer arejado demais no desktop.
+- **Teste intermitente:** o QA viu uma falha única numa contagem de `[data-tag]` no Vitest, que não se repetiu em 3 rodadas. Observar.
 
 ## Perguntas ao usuário (antes das etapas indicadas)
 

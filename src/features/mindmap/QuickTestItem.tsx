@@ -1,5 +1,6 @@
 import { useId, type Ref } from 'react';
 import { BLANK } from '../../domain/grading/blank';
+import { fieldWidthCh } from '../../domain/mindmap/fieldWidth';
 import { shownAnswer, type QuizItemState } from '../../domain/mindmap/quiz';
 import { t } from '../../i18n/pt-BR';
 import { Button } from '../../ui/Button';
@@ -46,7 +47,8 @@ export function QuickTestItem({
   const good = status === 'right' || status === 'almost';
   const border =
     status === 'wrong' ? 'border-danger' : good ? 'border-success' : 'border-line-strong';
-  const longest = Math.max(5, ...accepted.map((a) => shownAnswer({ accepted: [a] }).length + 2));
+  // Field width from the longest accepted answer (bold letters are wider than 1ch), clamped.
+  const widthCh = fieldWidthCh(accepted);
 
   return (
     <li className="space-y-1 border-b-2 border-dashed border-line py-3 last:border-b-0">
@@ -56,7 +58,7 @@ export function QuickTestItem({
       <span id={`${id}-t`} lang="en" className="sr-only">
         {prompt.replace(BLANK, '…')}
       </span>
-      <p className="text-lg leading-[3.25rem]">
+      <p className="text-lg leading-[3.25rem] break-words">
         <span lang="en" aria-hidden="true">
           {before}
         </span>
@@ -65,7 +67,7 @@ export function QuickTestItem({
           id={id}
           type="text"
           lang="en"
-          size={Math.min(longest, 28)}
+          style={{ width: `${widthCh}ch` }}
           value={value}
           autoComplete="off"
           autoCapitalize="off"

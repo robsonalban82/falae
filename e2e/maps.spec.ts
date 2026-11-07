@@ -270,6 +270,17 @@ test.describe('Maps journey', () => {
     await expect(page).toHaveURL(/\/mapas\/mm-phrasal-get$/);
     expect(errors).toEqual([]);
   });
+
+  test('quick test of mm-to-be does not overflow horizontally', async ({ page }, info) => {
+    test.skip(info.project.name !== 'mobile', 'phone layout');
+    await page.goto('/mapas/mm-to-be');
+    const heading = page.getByRole('heading', { level: 2, name: 'Teste rápido' });
+    await heading.scrollIntoViewIfNeeded();
+    const over = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(over).toBeLessThanOrEqual(0);
+  });
 });
 
 // Offline and reduced motion are covered elsewhere (not repeated here):

@@ -47,7 +47,7 @@ describe('PathScreen', () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getAllByRole('region').length).toBeGreaterThanOrEqual(4);
-    expect(screen.getByRole('img', { name: 'Meta diária: 0 de 20 XP' })).toBeInTheDocument();
+    expect(screen.getAllByRole('img', { name: 'Meta diária: 0 de 20 XP' })).toHaveLength(1);
   });
 
   it('pressing a locked node explains why', async () => {
@@ -87,6 +87,6 @@ describe('PathScreen', () => {
       await screen.findByRole('link', { name: /^Lição 1 de 3, .*, concluída$/ }),
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /^Lição 2 de 3, .*, atual$/ })).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: 'Meta diária: 12 de 20 XP' })).toBeInTheDocument();
+    expect(screen.getAllByRole('img', { name: 'Meta diária: 12 de 20 XP' })).toHaveLength(1);
   });
 });

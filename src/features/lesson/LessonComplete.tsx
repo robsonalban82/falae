@@ -200,7 +200,7 @@ export function LessonComplete({
                   : 'border-line bg-surface'
               }`}
             >
-              <GoalRing progress={goal.progress} />
+              <GoalRing progress={goal.progress} decorative />
               <p className="flex-1 font-bold">
                 {goal.celebrate
                   ? t.lesson.complete.goalMetDetail(goal.progress.xp, goal.progress.goal)

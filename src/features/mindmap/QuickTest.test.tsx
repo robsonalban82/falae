@@ -61,6 +61,20 @@ describe('Quick test', () => {
     expect(screen.getByText('Eu tenho 30 anos.')).toBeInTheDocument();
   });
 
+  it('sizes each field in ch from its longest answer, within bounds', async () => {
+    await renderMap();
+    const w = parseInt(field(1).style.width, 10);
+    expect(field(1).style.width).toMatch(/ch$/);
+    expect(w).toBeGreaterThanOrEqual(8);
+    expect(w).toBeLessThanOrEqual(30);
+  });
+
+  it('grows with the longest expansion of any accepted pattern, capped at 30ch', async () => {
+    const { fieldWidthCh } = await import('../../domain/mindmap/fieldWidth');
+    expect(fieldWidthCh(['am', 'a much longer alternative'])).toBeGreaterThan(fieldWidthCh(['am']));
+    expect(fieldWidthCh(['x'.repeat(200)])).toBe(30);
+  });
+
   it('the toolbar button moves focus to the title', async () => {
     await renderMap();
     const bar = screen.getByRole('group', { name: t.maps.viewer.toolbarLabel });

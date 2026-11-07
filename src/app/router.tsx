@@ -1,6 +1,7 @@
 import { createBrowserRouter, type RouteObject } from 'react-router';
 import { AppLayout, type LayoutHandle } from './AppLayout';
 import { ComingSoon } from './ComingSoon';
+import { RouteError } from './RouteError';
 import { OnboardingGate } from './OnboardingGate';
 import { paths } from './routes';
 import { PathScreen } from '../features/path/PathScreen';
@@ -29,98 +30,105 @@ const devRoutes: RouteObject[] =
 export const router = createBrowserRouter(
   [
     {
-      // First access goes to /boas-vindas (welcome, placement and /dev are not guarded).
-      element: <OnboardingGate />,
+      // Root boundary: malformed URLs and loader/render errors show a friendly screen, never a stack.
+      errorElement: <RouteError />,
       children: [
         {
-          element: <AppLayout />,
+          // First access goes to /boas-vindas (welcome, placement and /dev are not guarded).
+          element: <OnboardingGate />,
           children: [
-            { path: paths.path, element: <PathScreen />, handle: tab },
             {
-              path: paths.practice,
-              handle: tab,
+              element: <AppLayout />,
+              children: [
+                { path: paths.path, element: <PathScreen />, handle: tab },
+                {
+                  path: paths.practice,
+                  handle: tab,
+                  lazy: async () => ({
+                    Component: (await import('../features/practice/PracticeScreen')).PracticeScreen,
+                  }),
+                },
+                // Fixed segments before :mapId (MAPAS-E-CARTAS §5.2).
+                {
+                  path: paths.maps,
+                  handle: tab,
+                  lazy: async () => ({
+                    Component: (await import('../features/maps/MapsScreen')).MapsScreen,
+                  }),
+                },
+                {
+                  path: paths.collection(),
+                  handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
+                  lazy: async () => ({
+                    Component: (await import('../features/maps/CollectionScreen')).CollectionScreen,
+                  }),
+                },
+                {
+                  path: paths.map(),
+                  handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
+                  lazy: async () => ({
+                    Component: (await import('../features/mindmap/MapScreen')).MapScreen,
+                  }),
+                },
+                {
+                  path: paths.profile,
+                  handle: tab,
+                  lazy: async () => ({
+                    Component: (await import('../features/profile/ProfileScreen')).ProfileScreen,
+                  }),
+                },
+                {
+                  path: paths.settings,
+                  lazy: async () => ({
+                    Component: (await import('../features/settings/SettingsScreen')).SettingsScreen,
+                  }),
+                },
+                {
+                  path: paths.tip(),
+                  lazy: async () => ({
+                    Component: (await import('../features/tip/TipScreen')).TipScreen,
+                  }),
+                },
+              ],
+            },
+            // Full-screen flows (no navigation bar).
+            {
+              path: paths.lesson(),
               lazy: async () => ({
-                Component: (await import('../features/practice/PracticeScreen')).PracticeScreen,
+                Component: (await import('../features/lesson/LessonScreen')).LessonScreen,
               }),
             },
-            // Fixed segments before :mapId (MAPAS-E-CARTAS §5.2).
             {
-              path: paths.maps,
-              handle: tab,
+              path: paths.mapPractice(),
               lazy: async () => ({
-                Component: (await import('../features/maps/MapsScreen')).MapsScreen,
+                Component: (await import('../features/mindmap/MapPracticeSession'))
+                  .MapPracticeSession,
               }),
             },
             {
-              path: paths.collection(),
-              handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
+              path: paths.practiceSession,
               lazy: async () => ({
-                Component: (await import('../features/maps/CollectionScreen')).CollectionScreen,
-              }),
-            },
-            {
-              path: paths.map(),
-              handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
-              lazy: async () => ({
-                Component: (await import('../features/mindmap/MapScreen')).MapScreen,
-              }),
-            },
-            {
-              path: paths.profile,
-              handle: tab,
-              lazy: async () => ({
-                Component: (await import('../features/profile/ProfileScreen')).ProfileScreen,
-              }),
-            },
-            {
-              path: paths.settings,
-              lazy: async () => ({
-                Component: (await import('../features/settings/SettingsScreen')).SettingsScreen,
-              }),
-            },
-            {
-              path: paths.tip(),
-              lazy: async () => ({
-                Component: (await import('../features/tip/TipScreen')).TipScreen,
+                Component: (await import('../features/practice/PracticeSession')).PracticeSession,
               }),
             },
           ],
         },
-        // Full-screen flows (no navigation bar).
+        ...devRoutes,
         {
-          path: paths.lesson(),
+          path: paths.welcome,
           lazy: async () => ({
-            Component: (await import('../features/lesson/LessonScreen')).LessonScreen,
+            Component: (await import('../features/onboarding/WelcomeScreen')).WelcomeScreen,
           }),
         },
         {
-          path: paths.mapPractice(),
+          path: paths.placement,
           lazy: async () => ({
-            Component: (await import('../features/mindmap/MapPracticeSession')).MapPracticeSession,
+            Component: (await import('../features/placement/PlacementScreen')).PlacementScreen,
           }),
         },
-        {
-          path: paths.practiceSession,
-          lazy: async () => ({
-            Component: (await import('../features/practice/PracticeSession')).PracticeSession,
-          }),
-        },
+        { path: '*', element: <ComingSoon /> },
       ],
     },
-    ...devRoutes,
-    {
-      path: paths.welcome,
-      lazy: async () => ({
-        Component: (await import('../features/onboarding/WelcomeScreen')).WelcomeScreen,
-      }),
-    },
-    {
-      path: paths.placement,
-      lazy: async () => ({
-        Component: (await import('../features/placement/PlacementScreen')).PlacementScreen,
-      }),
-    },
-    { path: '*', element: <ComingSoon /> },
   ],
   // GitHub Pages serves the app under /<repo>/ (VITE_BASE); '/' everywhere else.
   { basename: import.meta.env.BASE_URL },
