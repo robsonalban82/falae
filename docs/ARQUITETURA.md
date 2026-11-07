@@ -2,7 +2,7 @@
 
 > Status: **proposta (Fase 1)** — aguardando aprovação do usuário.
 > Dono: agente `arquiteto`. Qualquer mudança em modelo de dados persistido ou stack exige aprovação do usuário.
-> Extensão aprovada em 2026-11-03: **mapas mentais e cartas** (`docs/MAPAS-E-CARTAS.md`, fases em `docs/fases/mapas-e-cartas/`). Ela muda a navegação (Trilha · Mapas · Praticar · Perfil · Ajustes), o conteúdo (§4) e o banco (Dexie v2, backup v2). As seções deste documento são atualizadas à medida que cada fase é entregue; até lá, vale o que está aqui para o código existente.
+> Extensão aprovada em 2026-11-03: **mapas mentais e cartas** (`docs/MAPAS-E-CARTAS.md`, fases em `docs/fases/mapas-e-cartas/`). Ela muda a navegação (Trilha · Mapas · Praticar · Perfil · Ajustes), o conteúdo (§4) e o banco (Dexie v2, backup v2). Fases 1–3 da extensão entregues; a §11 já descreve o banco e o backup v2.
 
 ## 1. Identidade (original)
 
@@ -290,6 +290,7 @@ Toda regra usa `clock.now()`. Em produção = `Date.now()`. Em testes/E2E (build
 interface Repository {
   getProfile(): Promise<Profile>;
   saveProfile(p: Profile): Promise<void>;
+  updateProfile(mutate: (p: Profile) => Profile): Promise<Profile>; // transacional
   getSettings(): Promise<Settings>;
   saveSettings(s: Settings): Promise<void>;
   getLessonProgress(): Promise<LessonProgress[]>;
@@ -304,6 +305,14 @@ interface Repository {
   getDailyStats(fromDay: string, toDay: string): Promise<DailyStats[]>;
   getAchievements(): Promise<UnlockedAchievement[]>;
   unlockAchievements(a: UnlockedAchievement[]): Promise<void>;
+  // v2 (mapas e cartas)
+  listUserCards(): Promise<UserCard[]>; // mais recente primeiro; linhas inválidas são puladas
+  countUserCards(): Promise<number>;
+  saveUserCard(c: UserCard): Promise<void>; // UserCardLimitError na 501ª carta
+  deleteUserCard(id: string): Promise<void>; // apaga a carta e o SrsCard na mesma transação
+  getMapProgress(): Promise<MapProgress[]>;
+  getPlanProgress(planId: string): Promise<PlanProgress | undefined>;
+  savePlanProgress(p: PlanProgress): Promise<void>;
   exportAll(): Promise<ExportFile>;
   importAll(f: ExportFile): Promise<void>; // substitui tudo, em transação
   resetAll(): Promise<void>;
@@ -348,7 +357,7 @@ type LessonProgress = {
 type LessonResult = {
   id: string;
   lessonId: string;
-  kind: 'lesson' | 'review' | 'practice' | 'placement';
+  kind: 'lesson' | 'review' | 'practice' | 'placement' | 'cards' | 'map';
   day: string;
   finishedAt: string;
   xp: number;
@@ -357,14 +366,36 @@ type LessonResult = {
   mistakes: number;
   perfect: boolean;
   itemOutcomes: { itemId: string; q: number }[];
+  context?: { mapId?: string; deckKey?: string; planDay?: number }; // v2; linhas v1 não têm
 };
-type DailyStats = { day: string; xp: number; lessons: number; goalMet: boolean };
+type DailyStats = {
+  day: string;
+  xp: number;
+  lessons: number;
+  goalMet: boolean;
+  cards?: number; // v2: cartas distintas revisadas no dia
+};
 type UnlockedAchievement = { id: string; unlockedAt: string };
+// v2 (ADR-015)
+type UserCard = {
+  id: `uc-${string}`; // também é o itemId do SrsCard
+  en: string; // 1–120 caracteres, sem ( ) [ ] | (sintaxe do corretor)
+  pt: string;
+  example?: { en: string; pt: string };
+  notes?: string; // até 280
+  emoji?: string;
+  createdAt: string;
+  updatedAt: string;
+}; // no máximo 500 (MAX_USER_CARDS)
+type MapProgress = { mapId: string; firstStudiedAt: string; lastStudiedDay: string; timesStudied: number };
+type PlanProgress = { planId: string; startedDay: string; manualDone: number[] }; // dias 1–30, sem repetição
 ```
 
-### Dexie (`db.ts`, versão 1)
+### Dexie (`db.ts`, versão 2)
 
-`profile: 'id'` · `settings: 'id'` · `lessonProgress: 'lessonId'` · `results: 'id, day, lessonId, finishedAt'` · `srs: 'itemId, dueDay'` · `daily: 'day'` · `achievements: 'id'` · `quarantine: '++id'`.
+- **v1:** `profile: 'id'` · `settings: 'id'` · `lessonProgress: 'lessonId'` · `results: 'id, day, lessonId, finishedAt'` · `srs: 'itemId, dueDay'` · `daily: 'day'` · `achievements: 'id'` · `quarantine: '++id'`.
+- **v2 (mapas e cartas, ADR-015):** só acrescenta `userCards: 'id, updatedAt'` · `mapProgress: 'mapId'` · `planProgress: 'planId'`. Nenhuma tabela v1 muda de chave ou índice, e os campos novos (`LessonResult.context`, `DailyStats.cards`) são opcionais, então **não há `upgrade()`**: nada a reescrever. Teste de migração v1→v2 em `src/data/db.migration*.test.ts`.
+- **Várias abas:** `versionchange` fecha a conexão da aba antiga e pede para recarregar (`emitDbOutdated`); `blocked` (a aba nova espera uma antiga) pede para fechar as outras abas, sem fechar a própria conexão.
 
 `LessonOutcome = { result, profile, srsCards, newAchievements, dailyGoalXp }`. Toda escrita é validada com Zod antes da transação. Linhas corrompidas de `profile`/`settings` são movidas para `quarantine` (com as issues) e o app segue com os padrões — progresso nunca é apagado em silêncio.
 Migrações futuras com `db.version(n).upgrade(...)` e teste de migração obrigatório.
@@ -386,7 +417,11 @@ commitSession(session: SessionCommit, dailyGoalXp: DailyGoal, placement?: Placem
 
 ### Exportar/Importar
 
-Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 1, exportedAt, data: {...todas as tabelas} }`. Import valida com Zod, mostra resumo (XP, ofensiva, data) e pede confirmação antes de substituir. Arquivo inválido → mensagem clara, nada é alterado.
+Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 2, exportedAt, data: {...todas as tabelas} }` (`EXPORT_SCHEMA_VERSION`; v2 inclui `userCards`, `mapProgress` e `planProgress`). Import valida com Zod, mostra resumo (XP, ofensiva, data, cartas do aluno) e pede confirmação antes de substituir. Arquivo inválido → mensagem clara, nada é alterado.
+
+- **Arquivo v1** (antes dos mapas): validado com `exportFileV1Schema` e promovido por `upgradeExportV1` (função pura) com as tabelas novas vazias.
+- **Aviso de perda:** como o import substitui tudo, `importDropsUserCards` avisa quando o arquivo não tem cartas do aluno e o banco tem (ou a contagem falhou).
+- **Versão maior que a do app** (arquivo de um app mais novo) → recusado com mensagem própria.
 
 ## 12. Progressão e trilha (`src/domain/progression/`)
 

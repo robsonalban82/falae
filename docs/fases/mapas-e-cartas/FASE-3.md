@@ -288,4 +288,4 @@ Sem outras pendências: nenhuma dependência nova além da Patrick Hand (aprovad
 - O campo da lacuna do Teste rápido corta palavras longas.
 - Espaçamento das linhas da regra no `mm-to-be` no celular.
 - O leitor de tela lê a meta diária duas vezes, porque o `GoalRing` fica ao lado do texto.
-- **Orçamento do JS inicial**: só restam 0,4 kB de folga sobre a meta de 240 kB. Planejar antes da Fase 4 (rever a meta ou tirar algo do inicial).
+- **Orçamento do JS inicial**: restavam só 0,4 kB de folga sobre a meta de 240 kB. **Resolvido em 2026-11-07 (ADR-021)**: a meta das próximas fases sobe para 250 kB gzip; o teto de 260 kB do ADR-013 continua.

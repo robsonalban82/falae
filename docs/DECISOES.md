@@ -136,3 +136,9 @@ As checagens do `pdf.mjs` viram testes `page.pdf()`. **Revisão de 2026-11-03:**
 **Contexto:** as lições de uma habilidade abriam uma de cada vez. O usuário pediu que a trilha abra por "sessão" (habilidade): "Olá e tchau" aberta inteira; "Meu nome é…" só depois de tudo feito.
 **Decisão:** em `computePathState`, uma habilidade desbloqueada abre todas as suas lições; a ordem é livre e o nó "atual" continua sendo a primeira lição não concluída. A habilidade seguinte, a revisão e a próxima unidade seguem as regras de antes (coroa, 4 coroas, revisão concluída).
 **Consequências:** nenhuma mudança de dados (o estado da trilha é derivado). O aviso de nó bloqueado passa a falar da habilidade anterior, não da lição anterior.
+
+## ADR-021 — Meta do JS inicial sobe para 250 kB gzip (aprovado em 2026-11-07)
+
+**Contexto:** a Fase 3 de mapas e cartas fechou com o JS inicial em 239,6 kB gzip, só 0,4 kB abaixo da meta de 240 kB do seu critério de aceite. A Fase 4 não caberia nessa folga sem antes tirar coisas do inicial.
+**Decisão:** a meta de aceite das próximas fases passa a **≤ 250 kB gzip**. O teto do ADR-013 (**260 kB**, conferido por `scripts/check-prod-bundle.ts`) não muda.
+**Consequências:** ~10 kB de folga para a Fase 4. Tela ou recurso novo que não é da navegação continua entrando por `lazy`, e o PR de cada fase informa o número. Se a meta for passada, revisar o que está no inicial antes de pensar em subir de novo.
