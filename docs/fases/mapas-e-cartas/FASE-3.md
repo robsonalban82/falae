@@ -257,20 +257,20 @@ Sem outras pendências: nenhuma dependência nova além da Patrick Hand (aprovad
 
 ### Etapas
 
-| Etapa | Commit                                               | Status    |
-| ----- | ---------------------------------------------------- | --------- |
-| 1     | `docs: plan mind maps phase 3`                       | concluída |
-| 2     | `refactor: extract pure helpers for map screens`     | concluída |
-| 3     | `feat: add pure mind map view model`                 | concluída |
-| 4     | `feat: add notebook icons, tag chips and hand font`  | concluída |
-| 5     | `feat: add maps tab and routes`                      | concluída |
-| 6     | `feat: add mind map viewer`                          | concluída |
-| 7     | `feat: add hide-english study and map commit`        | concluída |
-| 8     | `feat: add map quick test`                           | concluída |
-| 9     | `feat: add practice this map`                        | concluída |
-| 10    | `feat: add read-only collection screen`              | concluída |
+| Etapa | Commit                                                                                 | Status    |
+| ----- | -------------------------------------------------------------------------------------- | --------- |
+| 1     | `docs: plan mind maps phase 3`                                                         | concluída |
+| 2     | `refactor: extract pure helpers for map screens`                                       | concluída |
+| 3     | `feat: add pure mind map view model`                                                   | concluída |
+| 4     | `feat: add notebook icons, tag chips and hand font`                                    | concluída |
+| 5     | `feat: add maps tab and routes`                                                        | concluída |
+| 6     | `feat: add mind map viewer`                                                            | concluída |
+| 7     | `feat: add hide-english study and map commit`                                          | concluída |
+| 8     | `feat: add map quick test`                                                             | concluída |
+| 9     | `feat: add practice this map`                                                          | concluída |
+| 10    | `feat: add read-only collection screen`                                                | concluída |
 | 11    | `test: add maps e2e and screenshots` (+ `fix: polish maps screens after phase review`) | concluída |
-| 12    | `docs: update architecture for maps tab`             | concluída |
+| 12    | `docs: update architecture for maps tab`                                               | concluída |
 
 ### Desvios do plano
 

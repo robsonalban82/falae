@@ -48,16 +48,25 @@ Arquivos: `src/domain/srs/sm2.ts`, `src/domain/cards/{decks,select,mistakes,flas
     | { kind: 'minhas' }
     | { kind: 'hoje' };
   export function parseDeckKey(raw: string): DeckKey | null; // só [a-z0-9-] por segmento; senão null
-  export function formatDeckKey(k: DeckKey): string;         // parse(format(k)) == k
+  export function formatDeckKey(k: DeckKey): string; // parse(format(k)) == k
   /** Catálogo estrutural montado pela store a partir do manifesto, das coleções e das cartas do aluno. */
   type DeckCatalog = {
-    units: { id: string; itemIds: readonly string[]; skills: { id: string; itemIds: readonly string[] }[] }[];
+    units: {
+      id: string;
+      itemIds: readonly string[];
+      skills: { id: string; itemIds: readonly string[] }[];
+    }[];
     maps: { id: string; itemIds: readonly string[] }[];
     themes: { id: string; itemIds: readonly string[] }[];
     collections?: { id: string; entries: { itemId: string; topic?: string }[] }[]; // lazy
     userCardIds: readonly string[];
   };
-  export function deckItemIds(k: DeckKey, catalog: DeckCatalog, cards: readonly Card[], today: DayKey): string[] | null;
+  export function deckItemIds(
+    k: DeckKey,
+    catalog: DeckCatalog,
+    cards: readonly Card[],
+    today: DayKey,
+  ): string[] | null;
   ```
   `erros` = cartas com `isMistake` cujo item ainda existe; `minhas` = `userCardIds`; `hoje` = cartas vencidas de qualquer item existente (conteúdo ou aluno). Chave desconhecida, ou id fora do catálogo → `null` (a tela mostra "baralho não encontrado"). Ordem: a do conteúdo (para `minhas`, a da lista: mais recente primeiro).
 - **`select.ts`** (§3, ADR-018 a, ADR-022):
@@ -76,7 +85,9 @@ Arquivos: `src/domain/srs/sm2.ts`, `src/domain/cards/{decks,select,mistakes,flas
 - **`flashcard.ts`** (estende o da Fase 3, sem quebrar o painel do mapa): `back.notes?` para carta do aluno; `userCardToFlashcard(card)` com `source: 'user'` (o `en` é literal, sem padrões).
 - **`modes.ts`**: `type CardMode = 'virar' | 'inverter' | 'digitar' | 'ouvir'` e as regras de quem entra em cada modo.
   ```ts
-  export function typingTarget(item: TypingShape): { prompt: string; promptLang: Lang; patterns: string[]; answerLang: Lang } | null;
+  export function typingTarget(
+    item: TypingShape,
+  ): { prompt: string; promptLang: Lang; patterns: string[]; answerLang: Lang } | null;
   ```
   Vocab: PT → EN com `[en, ...acceptedEn]`. Frase: EN → PT com `[pt, ...acceptedPt]`. Item de banco sem `acceptedEn` (vocab) ou sem `acceptedPt` (frase) → `null` (fora do Digitar até o Lote A). Carta do aluno: PT → EN com `[en]` literal (o schema já proíbe `( ) [ ] |`). `listenOptions(target, pool, rng)`: 4 traduções PT distintas (normalizadas), a certa + 3 do próprio baralho e, se faltar, do resto do pool; menos de 4 distintas → `null` (modo indisponível para o baralho).
 - Testes: `parseDeckKey` com todas as formas, chave com `..`, maiúsculas, `%`, segmento vazio; ida e volta; `deckItemIds` de cada tipo sobre um catálogo de fixture; `erros` ignora item que sumiu do conteúdo; `selectCards`: só novas, só vencidas, mistura, teto de 10 novas e de 20, completar até 5, baralho de 3 itens, `allowNew: false`; `typingTarget` para vocab de unidade, frase de unidade, item de banco sem `accepted*` e carta do aluno; `listenOptions` sem repetir tradução e com pool pequeno.
@@ -89,12 +100,13 @@ Executor: `desenvolvedor` com **`model: opus`** (máquina de estados com fila, r
 type CardSessionState = {
   deckKey: string;
   mode: CardMode;
-  queue: string[];             // itemIds; "Errei" reinsere uma vez no fim
+  queue: string[]; // itemIds; "Errei" reinsere uma vez no fim
   index: number;
   phase: 'presenting' | 'flipped' | 'answered' | 'finished';
-  retried: string[];           // itens já reinseridos (só uma vez)
+  retried: string[]; // itens já reinseridos (só uma vez)
   outcomes: Record<string, number>; // menor q por item
-  answer?: { value: string; grade: 'right' | 'almost' | 'wrong' } | { choice: number; right: boolean };
+  answer?:
+    { value: string; grade: 'right' | 'almost' | 'wrong' } | { choice: number; right: boolean };
   combo: number;
   comboBonus: number;
   mistakes: number;
@@ -102,12 +114,18 @@ type CardSessionState = {
   seed: number;
 };
 type CardAction =
-  | { type: 'flip' }                                   // virar / inverter
+  | { type: 'flip' } // virar / inverter
   | { type: 'rate'; rating: 'errei' | 'dificil' | 'bom' | 'facil' }
-  | { type: 'type'; grade: GradeResult }               // digitar: a tela chama gradeText
-  | { type: 'choose'; index: number; right: boolean }  // ouvir
+  | { type: 'type'; grade: GradeResult } // digitar: a tela chama gradeText
+  | { type: 'choose'; index: number; right: boolean } // ouvir
   | { type: 'next' };
-export function startCardSession(input: { deckKey: string; mode: CardMode; itemIds: string[]; nowMs: number; seed: number }): CardSessionState;
+export function startCardSession(input: {
+  deckKey: string;
+  mode: CardMode;
+  itemIds: string[];
+  nowMs: number;
+  seed: number;
+}): CardSessionState;
 export function cardReducer(s: CardSessionState, a: CardAction): CardSessionState;
 export function cardSessionSummary(s: CardSessionState, nowMs: number): LessonSummary;
 ```
@@ -238,34 +256,34 @@ Antes da etapa 6, o agente principal ajusta em `.claude/` (fora do alcance do ar
 
 ## Agentes e modelos por etapa
 
-| Etapa | Executor                  | Revisão (paralelo)                                                       |
-| ----- | ------------------------- | ------------------------------------------------------------------------ |
-| 1, 13 | `arquiteto` (opus)        | usuário (diff dos docs)                                                  |
-| 2     | `desenvolvedor` (sonnet)  | `revisor-de-codigo` (opus) + `qa-tester` (sonnet); `designer-de-mapas` (sonnet) no `mm-to-be` e na lacuna |
-| 3     | `desenvolvedor` (sonnet)  | `revisor-de-codigo` (opus) + `qa-tester` (sonnet)                        |
-| **4** | `desenvolvedor` (**opus**) | `revisor-de-codigo` (opus) + `qa-tester` (sonnet)                       |
-| 5     | `desenvolvedor` (sonnet)  | `revisor-de-codigo` (opus) + `qa-tester` (sonnet); número do bundle no PR |
-| **6** | `desenvolvedor` (sonnet)  | `revisor-de-codigo` (**opus**, escreve `results`/`srs`/`daily`) + `qa-tester` (sonnet) |
-| **7** | `desenvolvedor` (**opus**) | `revisor-de-codigo` (opus) + `qa-tester` (sonnet); `designer-de-mapas` (sonnet) no showcase |
-| 8, 9, 11 | `desenvolvedor` (sonnet) | `revisor-de-codigo` (opus) + `qa-tester` (sonnet)                     |
-| 10    | `desenvolvedor` (sonnet)  | `revisor-de-codigo` (**opus**, escreve e apaga `userCards`/`srs`) + `qa-tester` (sonnet) |
-| 12    | `qa-tester` (sonnet)      | `revisor-de-codigo` (opus) nos testes                                    |
-| Fim   | —                         | `revisor-ux` (sonnet) + `designer-de-mapas` (sonnet), em paralelo, com as capturas da etapa 12 |
+| Etapa    | Executor                   | Revisão (paralelo)                                                                                        |
+| -------- | -------------------------- | --------------------------------------------------------------------------------------------------------- |
+| 1, 13    | `arquiteto` (opus)         | usuário (diff dos docs)                                                                                   |
+| 2        | `desenvolvedor` (sonnet)   | `revisor-de-codigo` (opus) + `qa-tester` (sonnet); `designer-de-mapas` (sonnet) no `mm-to-be` e na lacuna |
+| 3        | `desenvolvedor` (sonnet)   | `revisor-de-codigo` (opus) + `qa-tester` (sonnet)                                                         |
+| **4**    | `desenvolvedor` (**opus**) | `revisor-de-codigo` (opus) + `qa-tester` (sonnet)                                                         |
+| 5        | `desenvolvedor` (sonnet)   | `revisor-de-codigo` (opus) + `qa-tester` (sonnet); número do bundle no PR                                 |
+| **6**    | `desenvolvedor` (sonnet)   | `revisor-de-codigo` (**opus**, escreve `results`/`srs`/`daily`) + `qa-tester` (sonnet)                    |
+| **7**    | `desenvolvedor` (**opus**) | `revisor-de-codigo` (opus) + `qa-tester` (sonnet); `designer-de-mapas` (sonnet) no showcase               |
+| 8, 9, 11 | `desenvolvedor` (sonnet)   | `revisor-de-codigo` (opus) + `qa-tester` (sonnet)                                                         |
+| 10       | `desenvolvedor` (sonnet)   | `revisor-de-codigo` (**opus**, escreve e apaga `userCards`/`srs`) + `qa-tester` (sonnet)                  |
+| 12       | `qa-tester` (sonnet)       | `revisor-de-codigo` (opus) nos testes                                                                     |
+| Fim      | —                          | `revisor-ux` (sonnet) + `designer-de-mapas` (sonnet), em paralelo, com as capturas da etapa 12            |
 
 Comandos mecânicos (rodar lint/test/build e resumir saída, conferir checklist) podem ir para `haiku`; portões de revisão nunca. O agente principal passa `model` explicitamente em toda delegação.
 
 ## Testes exigidos (resumo)
 
-| Área               | Teste                                                                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Dívidas da Fase 3  | URL malformada mostra erro de rota; meta com um só nome acessível; lacuna sem transbordo                                           |
-| Domínio das cartas | `Quality` 3, `isMistake`, `parseDeckKey`/`formatDeckKey`, `deckItemIds`, `selectCards`, `typingTarget`, `listenOptions`            |
-| Motor da sessão    | fila com uma reinserção, menor `q`, 4 modos, combo, perfeita, ações fora de fase, serialização                                     |
-| Commit de cartas   | `kind: 'cards'`, `context.deckKey`, `q` 1/3/4/5 e 5/4/2/1, `daily.cards`, 8 (+5) XP, corações intactos, id determinístico          |
-| Telas              | sessão, hub, baralho, editor, não encontrado, modo indisponível, sem TTS, limite de 500, falha ao salvar com tentar de novo         |
-| Acessibilidade     | teclado em tudo, atalhos fora de campos, foco ao virar/avaliar, `aria-live`, uma face lida, `lang="en"`, reduced motion            |
-| Bundle             | sessão, seletor, editor e `generatePractice` fora do inicial; JS inicial ≤ 250 kB gzip                                             |
-| E2E                | `cards.spec.ts` mobile + desktop com gesto, `advanceDays`, reload, offline; suíte atual verde                                      |
+| Área               | Teste                                                                                                                       |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| Dívidas da Fase 3  | URL malformada mostra erro de rota; meta com um só nome acessível; lacuna sem transbordo                                    |
+| Domínio das cartas | `Quality` 3, `isMistake`, `parseDeckKey`/`formatDeckKey`, `deckItemIds`, `selectCards`, `typingTarget`, `listenOptions`     |
+| Motor da sessão    | fila com uma reinserção, menor `q`, 4 modos, combo, perfeita, ações fora de fase, serialização                              |
+| Commit de cartas   | `kind: 'cards'`, `context.deckKey`, `q` 1/3/4/5 e 5/4/2/1, `daily.cards`, 8 (+5) XP, corações intactos, id determinístico   |
+| Telas              | sessão, hub, baralho, editor, não encontrado, modo indisponível, sem TTS, limite de 500, falha ao salvar com tentar de novo |
+| Acessibilidade     | teclado em tudo, atalhos fora de campos, foco ao virar/avaliar, `aria-live`, uma face lida, `lang="en"`, reduced motion     |
+| Bundle             | sessão, seletor, editor e `generatePractice` fora do inicial; JS inicial ≤ 250 kB gzip                                      |
+| E2E                | `cards.spec.ts` mobile + desktop com gesto, `advanceDays`, reload, offline; suíte atual verde                               |
 
 ## Critérios de aceite
 
@@ -286,15 +304,15 @@ Comandos mecânicos (rodar lint/test/build e resumir saída, conferir checklist)
 
 ## Portões
 
-| Etapas                 | Revisão                                                                                                                                |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| 2, 3, 4, 5, 8, 9, 11   | `revisor-de-codigo` (opus) + `qa-tester` (paralelo) → correção → nova verificação                                                     |
-| **6, 10**              | `revisor-de-codigo` em **opus** com atenção ao commit e às escritas em `userCards`/`srs` + `qa-tester`                               |
-| 7                      | `revisor-de-codigo` + `qa-tester`; **`designer-de-mapas`** aprova a carta no showcase                                                 |
-| 2, 6, 7, 9, 10         | `designer-de-mapas` confere cada tela nova por capturas parciais antes do commit (claro, escuro, escala de cinza)                     |
-| 12                     | `revisor-de-codigo` nos testes; capturas finais para o portão de fase                                                                  |
-| **Fim da fase**        | `revisor-ux` com screenshots 390×844 e desktop (claro e escuro) + `designer-de-mapas` (mesmas capturas + escala de cinza), em paralelo |
-| 1, 13                  | o usuário vê o diff dos docs no commit                                                                                                 |
+| Etapas               | Revisão                                                                                                                                |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 2, 3, 4, 5, 8, 9, 11 | `revisor-de-codigo` (opus) + `qa-tester` (paralelo) → correção → nova verificação                                                      |
+| **6, 10**            | `revisor-de-codigo` em **opus** com atenção ao commit e às escritas em `userCards`/`srs` + `qa-tester`                                 |
+| 7                    | `revisor-de-codigo` + `qa-tester`; **`designer-de-mapas`** aprova a carta no showcase                                                  |
+| 2, 6, 7, 9, 10       | `designer-de-mapas` confere cada tela nova por capturas parciais antes do commit (claro, escuro, escala de cinza)                      |
+| 12                   | `revisor-de-codigo` nos testes; capturas finais para o portão de fase                                                                  |
+| **Fim da fase**      | `revisor-ux` com screenshots 390×844 e desktop (claro e escuro) + `designer-de-mapas` (mesmas capturas + escala de cinza), em paralelo |
+| 1, 13                | o usuário vê o diff dos docs no commit                                                                                                 |
 
 Nenhuma etapa avança com bloqueante. Commit ao fim de cada etapa aprovada.
 

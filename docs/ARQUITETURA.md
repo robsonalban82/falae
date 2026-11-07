@@ -387,7 +387,12 @@ type UserCard = {
   createdAt: string;
   updatedAt: string;
 }; // no máximo 500 (MAX_USER_CARDS)
-type MapProgress = { mapId: string; firstStudiedAt: string; lastStudiedDay: string; timesStudied: number };
+type MapProgress = {
+  mapId: string;
+  firstStudiedAt: string;
+  lastStudiedDay: string;
+  timesStudied: number;
+};
 type PlanProgress = { planId: string; startedDay: string; manualDone: number[] }; // dias 1–30, sem repetição
 ```
 
@@ -433,21 +438,21 @@ Arquivo `falae-progresso-AAAA-MM-DD.json` = `{ app: 'falae', schemaVersion: 2, e
 
 ## 13. Telas e rotas
 
-| Rota               | Tela                                                                                                                               |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `/boas-vindas`     | Onboarding: Tuca se apresenta → escolhe meta diária → "Sou iniciante" ou "Fazer teste de nível"                                    |
-| `/nivelamento`     | Teste de nível                                                                                                                     |
-| `/`                | **Trilha**: barra de estatísticas (ofensiva 🔥, XP, corações, anel da meta), unidades com nós em caminho sinuoso, botão da dica por habilidade |
-| `/mapas?nivel=&unidade=&tipo=&estudado=&q=` | **Mapas**: estante de coleções + lista de mapas do manifesto, filtros e busca na URL, selo "já estudado" |
-| `/mapas/colecoes/:collectionId` | Coleção só de leitura (dentro do `AppLayout`, `handle` `hideBottomNav` + `wide`) |
-| `/mapas/:mapId`    | Visualizador do mapa (dentro do `AppLayout`, `handle` `hideBottomNav` + `wide`): ramos, "Esconder o inglês", Teste rápido |
-| `/mapas/:mapId/praticar` | "Praticar este mapa" (tela cheia, **fora** do `AppLayout`, `LessonPlayer` com `kind: 'practice'`; sai para o mapa) |
-| `/dica/:skillId`   | Dica de gramática                                                                                                                  |
-| `/licao/:lessonId` | Lição (tela cheia, sem barra inferior) → tela de fim (XP, precisão, tempo, ofensiva, Tuca comemorando)                             |
-| `/praticar`        | Praticar (itens vencidos; contador; botão iniciar)                                                                                 |
-| `/perfil`          | XP total, palavras aprendidas, ofensiva atual/recorde, gráfico 7 dias, conquistas                                                  |
-| `/config`          | Som, vibração, meta, tema, lembrete, exportar/importar, redefinir progresso (confirmação dupla)                                    |
-| `/praticar/sessao` | Sessão de prática (tela cheia, `LessonPlayer` com `kind: 'practice'`; `?from=outOfHearts`) |
+| Rota                                        | Tela                                                                                                                                           |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/boas-vindas`                              | Onboarding: Tuca se apresenta → escolhe meta diária → "Sou iniciante" ou "Fazer teste de nível"                                                |
+| `/nivelamento`                              | Teste de nível                                                                                                                                 |
+| `/`                                         | **Trilha**: barra de estatísticas (ofensiva 🔥, XP, corações, anel da meta), unidades com nós em caminho sinuoso, botão da dica por habilidade |
+| `/mapas?nivel=&unidade=&tipo=&estudado=&q=` | **Mapas**: estante de coleções + lista de mapas do manifesto, filtros e busca na URL, selo "já estudado"                                       |
+| `/mapas/colecoes/:collectionId`             | Coleção só de leitura (dentro do `AppLayout`, `handle` `hideBottomNav` + `wide`)                                                               |
+| `/mapas/:mapId`                             | Visualizador do mapa (dentro do `AppLayout`, `handle` `hideBottomNav` + `wide`): ramos, "Esconder o inglês", Teste rápido                      |
+| `/mapas/:mapId/praticar`                    | "Praticar este mapa" (tela cheia, **fora** do `AppLayout`, `LessonPlayer` com `kind: 'practice'`; sai para o mapa)                             |
+| `/dica/:skillId`                            | Dica de gramática                                                                                                                              |
+| `/licao/:lessonId`                          | Lição (tela cheia, sem barra inferior) → tela de fim (XP, precisão, tempo, ofensiva, Tuca comemorando)                                         |
+| `/praticar`                                 | Praticar (itens vencidos; contador; botão iniciar)                                                                                             |
+| `/perfil`                                   | XP total, palavras aprendidas, ofensiva atual/recorde, gráfico 7 dias, conquistas                                                              |
+| `/config`                                   | Som, vibração, meta, tema, lembrete, exportar/importar, redefinir progresso (confirmação dupla)                                                |
+| `/praticar/sessao`                          | Sessão de prática (tela cheia, `LessonPlayer` com `kind: 'practice'`; `?from=outOfHearts`)                                                     |
 
 Barra inferior (celular, `grid-cols-5`) / lateral (desktop ≥ 1024px), 5 itens: **Trilha · Mapas · Praticar · Perfil · Ajustes**. O item Mapas não usa `end` e fica ativo em todo `/mapas/*`; os outros usam `end`.
 
