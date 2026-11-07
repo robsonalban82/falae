@@ -142,3 +142,15 @@ As checagens do `pdf.mjs` viram testes `page.pdf()`. **Revisão de 2026-11-03:**
 **Contexto:** a Fase 3 de mapas e cartas fechou com o JS inicial em 239,6 kB gzip, só 0,4 kB abaixo da meta de 240 kB do seu critério de aceite. A Fase 4 não caberia nessa folga sem antes tirar coisas do inicial.
 **Decisão:** a meta de aceite das próximas fases passa a **≤ 250 kB gzip**. O teto do ADR-013 (**260 kB**, conferido por `scripts/check-prod-bundle.ts`) não muda.
 **Consequências:** ~10 kB de folga para a Fase 4. Tela ou recurso novo que não é da navegação continua entrando por `lazy`, e o PR de cada fase informa o número. Se a meta for passada, revisar o que está no inicial antes de pensar em subir de novo.
+
+## ADR-022 — Montagem da sessão de cartas e fila única com duas formas de revisar (proposto e aprovado em 2026-11-07)
+
+**Contexto:** a Fase 4 de mapas e cartas (`docs/fases/mapas-e-cartas/FASE-4.md`) precisa fechar três pontos que o `MAPAS-E-CARTAS.md` §3 e o ADR-018 a deixam abertos. (1) O que a sessão faz quando o baralho tem poucas cartas vencidas e nenhuma nova. (2) As cartas do aluno (`uc-`) entram no contador "para revisar hoje" (§3), mas o gerador de exercícios do Praticar só trabalha com itens do conteúdo (distratores, `acceptedPt`, fallbacks). (3) A faixa da Trilha entra no JS inicial e não pode puxar o gerador de exercícios.
+**Decisão:**
+
+- **Seleção** (`domain/cards/select.ts`): vencidas do baralho (mesma ordem do Praticar) → até 10 novas (só em baralhos de conteúdo e `minhas`; `hoje` e `erros` não têm novas) → se ainda houver menos de 5, completa com as não vencidas de menor `ease` (revisão extra, como o Praticar) → no máximo 20. Um baralho com menos de 5 itens entra inteiro. O XP segue o ADR-018 a (8 + bônus, sempre); as regras de mesmo dia do SM-2 impedem que a revisão extra avance cartas.
+- **Fila única, duas formas**: o contador da Trilha e do hub conta as cartas vencidas de itens do conteúdo **e** do aluno. "Revisar com cartas" (`hoje`) cobre as duas. "Revisar com exercícios" continua só com itens do conteúdo, e o hub diz quantas das vencidas são cartas do aluno e só aparecem no modo cartas.
+- **Store leve**: a leitura dos `SrsCard` e dos ids das cartas do aluno sai de `usePractice` para `stores/useSrsCards.ts`, que é a única store de cartas no JS inicial. Montadores de sessão, catálogo de baralhos e editor ficam em módulos de rotas lazy; o `check-prod-bundle` confere pelo grafo de módulos.
+- **Sessão em andamento**: guardada no `sessionStorage` da aba (versionada, validada com Zod, descartável), como a lição. Nada vai para o Dexie antes do fim, e sair no meio não grava.
+
+**Consequências:** nenhuma tabela, campo ou versão de backup muda. Cartas do aluno nunca viram exercício (sem distratores e sem `acceptedPt` confiáveis); para elas, o único caminho é o modo cartas. Sessões curtas continuam pagando o XP de sessão, como o Praticar de hoje: o `pedagogo` pode rever isso na Fase 6. **Exige aprovação do usuário** (pergunta Q4 de `FASE-4.md`).
