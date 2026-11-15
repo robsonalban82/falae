@@ -71,6 +71,13 @@ export const router = createBrowserRouter(
                   }),
                 },
                 {
+                  path: paths.story,
+                  handle: { hideBottomNav: true, wide: true } satisfies LayoutHandle,
+                  lazy: async () => ({
+                    Component: (await import('../features/story/StoryScreen')).StoryScreen,
+                  }),
+                },
+                {
                   path: paths.profile,
                   handle: tab,
                   lazy: async () => ({

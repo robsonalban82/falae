@@ -9,6 +9,7 @@ export const paths = {
   map: (mapId = ':mapId') => `/mapas/${mapId}`,
   mapPractice: (mapId = ':mapId') => `/mapas/${mapId}/praticar`,
   collection: (collectionId = ':collectionId') => `/mapas/colecoes/${collectionId}`,
+  story: '/historias/zeca-e-giulia',
   practice: '/praticar',
   practiceSession: '/praticar/sessao',
   profile: '/perfil',

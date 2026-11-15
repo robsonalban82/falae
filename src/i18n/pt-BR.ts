@@ -149,6 +149,56 @@ export const t = {
       },
     },
   },
+  story: {
+    entryHeading: 'Hora da história',
+    entryMeta: 'História animada · 1 minuto',
+    kicker: 'História animada',
+    title: 'Zeca e Giulia',
+    back: 'Mapas',
+    play: 'Assistir',
+    pause: 'Pausar',
+    replay: 'Ver de novo',
+    prev: 'Voltar',
+    next: 'Avançar',
+    end: 'Fim!',
+    sceneCount: (n: number, total: number) => `Cena ${n} de ${total}`,
+    reducedMotion:
+      'Seu aparelho pede menos movimento, então as cenas ficam paradas. A história continua igual.',
+    scenes: [
+      {
+        text: 'Lá no fundo do mar vivia o Zeca. Ele sempre sonhava em ver o que tinha lá em cima.',
+        alt: 'No fundo do mar, o caranguejo Zeca olha para a superfície, sentado numa pedra. Os pais dele estão perto da toca.',
+      },
+      {
+        text: 'Um dia, na praia, ele encontrou a Giulia… e levou um susto enorme!',
+        alt: 'Na praia, a menina Giulia estende o dedo para o Zeca, que levanta as garras, assustado.',
+      },
+      {
+        text: 'Ele beliscou o dedinho dela sem querer. Mas a Giulia perdoou e ofereceu uma frutinha.',
+        alt: 'A Giulia sorri e deixa um pedaço de fruta na areia. O Zeca chega perto, envergonhado.',
+      },
+      {
+        text: 'Os dois viraram amigos e passaram a tarde fazendo castelos de areia.',
+        alt: 'A Giulia ri ao lado de um castelo de areia e de um balde vermelho. O Zeca cava um túnel.',
+      },
+      {
+        text: 'A Giulia levou o Zeca para conhecer a casa dela. Que cama fofinha!',
+        alt: 'No quarto da Giulia, o Zeca pula na cama cor-de-rosa, entre ursinhos de pelúcia. A Giulia ri.',
+      },
+      {
+        text: 'Mas, quando a noite chegou, o Zeca sentiu saudade da família.',
+        alt: 'À noite, o Zeca olha o mar pela janela, com uma lágrima no olho. A Giulia observa, de pijama.',
+      },
+      {
+        text: 'A Giulia entendeu. Na praia, os dois se despediram com um toquinho.',
+        alt: 'Na praia, sob a lua, a Giulia toca a ponta do dedo na garra do Zeca para se despedir.',
+      },
+      {
+        text: 'E o Zeca voltou para casa, onde a família esperava com um abraço bem apertado.',
+        alt: 'No fundo do mar, à noite, o Zeca abraça os pais em frente à toca. Corações sobem pela água.',
+      },
+    ],
+  },
   showcase: {
     notebook: 'Caderno',
     notebookIcons: 'Ícones de ramo',

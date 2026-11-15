@@ -12,6 +12,7 @@ import {
 import { t } from '../../i18n/pt-BR';
 import { useMapProgress } from '../../stores/useMapProgress';
 import { Tuca } from '../../ui/Mascot/Tuca';
+import { StoryEntry } from '../story/StoryEntry';
 import { CollectionShelf } from './CollectionShelf';
 import { MapFilters } from './MapFilters';
 import { MapListItem } from './MapListItem';
@@ -53,6 +54,8 @@ export function MapsScreen() {
       </header>
 
       <CollectionShelf collections={manifest.collections} />
+
+      <StoryEntry />
 
       <section aria-labelledby="maps-title" className="space-y-4">
         <h2 id="maps-title" className="text-xl font-semibold">

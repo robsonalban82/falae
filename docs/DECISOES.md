@@ -154,3 +154,14 @@ As checagens do `pdf.mjs` viram testes `page.pdf()`. **Revisão de 2026-11-03:**
 - **Sessão em andamento**: guardada no `sessionStorage` da aba (versionada, validada com Zod, descartável), como a lição. Nada vai para o Dexie antes do fim, e sair no meio não grava.
 
 **Consequências:** nenhuma tabela, campo ou versão de backup muda. Cartas do aluno nunca viram exercício (sem distratores e sem `acceptedPt` confiáveis); para elas, o único caminho é o modo cartas. Sessões curtas continuam pagando o XP de sessão, como o Praticar de hoje: o `pedagogo` pode rever isso na Fase 6. **Exige aprovação do usuário** (pergunta Q4 de `FASE-4.md`).
+
+## ADR-023 — História animada "Zeca e Giulia" (pedido do usuário em 2026-11-15)
+
+**Contexto:** o usuário trouxe o roteiro de um vídeo infantil em 8 cenas (o caranguejo Zeca e a menina Giulia) e pediu que ele virasse uma animação dentro do app, feita com `motion`. O ROADMAP já previa "histórias curtas".
+**Decisão:** nova rota `/historias/zeca-e-giulia` (`src/features/story/`), lazy, com entrada por um cartão na aba Mapas. As cenas são componentes React em SVG (palco 320×180), animadas por laços do `motion` (`Loop.tsx`); a troca de cena é um fade. O estado do player é um reducer puro (`storyPlayback.ts`); a tela só cuida do temporizador (8 s por cena).
+
+- **Cores:** as ilustrações não mudam com o tema, então a paleta fica em `src/features/story/palette.ts`, e não nos tokens. Componentes continuam sem hex solto.
+- **Acessibilidade:** a história abre pausada; pausar para os laços e o avanço automático (WCAG 2.2.2); com `prefers-reduced-motion` as cenas ficam paradas e a troca é instantânea; cada cena tem descrição (`aria-label`) e a legenda fica em `aria-live`.
+- **Textos:** narração e descrições em PT-BR em `t.story` (`src/i18n/pt-BR.ts`). A história não é conteúdo de estudo: não tem inglês, não dá XP e não toca no SRS.
+
+**Consequências:** nenhuma tabela, campo, versão de backup ou formato de conteúdo muda; nada entra no JS inicial além do cartão de entrada (`StoryEntry`) e de dois ícones. As cenas de `src/content/art/` e o guia `docs/ESTILO-CENAS.md` não se aplicam aqui (lá é cena estática de caderno 160×160). Uma versão bilíngue, com palavras em inglês, passaria pelo `autor-de-conteudo` e pelo `revisor-linguistico`.

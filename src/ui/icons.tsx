@@ -197,3 +197,20 @@ export function BookIcon({ className, size = 26 }: SizedIconProps) {
     </svg>
   );
 }
+
+export function PlayIcon({ className, size = 26 }: SizedIconProps) {
+  return (
+    <svg {...solid(size)} className={className}>
+      <path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l11.3-6.8a1 1 0 0 0 0-1.72L9.5 4.34A1 1 0 0 0 8 5.2Z" />
+    </svg>
+  );
+}
+
+export function PauseIcon({ className, size = 26 }: SizedIconProps) {
+  return (
+    <svg {...solid(size)} className={className}>
+      <rect x="6" y="4.5" width="4.5" height="15" rx="1.4" />
+      <rect x="13.5" y="4.5" width="4.5" height="15" rx="1.4" />
+    </svg>
+  );
+}
